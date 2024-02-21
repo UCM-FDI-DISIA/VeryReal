@@ -26,6 +26,9 @@
 *.a
 *.lib
 
+# Ajustes de usuario
+*.vcxproj.user
+
 # Executables
 *.exe
 *.out
