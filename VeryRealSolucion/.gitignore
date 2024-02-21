@@ -34,9 +34,7 @@
 # Directorios 
 .vs/
 Builds/
-bin/
-temp/
-
-
-
+[Bb]in/*
+[Tt]emp/
+[Ll]ib/
 
