@@ -1,0 +1,108 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.28/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDependentOption.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindFrameworks.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CPack.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CPackComponent.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCXXCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCXXSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckFunctionExists.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckTypeSize.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FeatureSummary.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindBullet.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindDoxygen.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindFreetype.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindOpenGL.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPkgConfig.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPythonInterp.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPythonLibs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindSWIG.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindZLIB.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckFlagCommonConfig.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-Initialize.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/ProcessorCount.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/SelectLibraryConfigurations.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/WriteBasicConfigVersionFile.cmake
+C:/Program Files/CMake/share/cmake-3.28/Templates/CPackConfig.cmake.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/3.28.3/CMakeCCompiler.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/3.28.3/CMakeCXXCompiler.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/3.28.3/CMakeRCCompiler.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/3.28.3/CMakeSystem.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/cmake/SDL2Config.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/cmake/SDL2ConfigVersion.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/cmake/SDL2Targets-relwithdebinfo.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/cmake/SDL2Targets.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/cmake/SDL2mainTargets-relwithdebinfo.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/cmake/SDL2mainTargets.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/cmake/SDL2testTargets-relwithdebinfo.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/cmake/SDL2testTargets.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/cmake/sdlfind.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/lib/cmake/assimp-5.2/assimpConfig.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/lib/cmake/assimp-5.2/assimpConfigVersion.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/lib/cmake/assimp-5.2/assimpTargets-relwithdebinfo.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/lib/cmake/assimp-5.2/assimpTargets.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/lib/cmake/pugixml/pugixml-config-version.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/lib/cmake/pugixml/pugixml-config.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/lib/cmake/pugixml/pugixml-targets-relwithdebinfo.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/Dependencies/lib/cmake/pugixml/pugixml-targets.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/ConfigureBuild.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Dependencies.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/InstallDependencies.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/InstallResources.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/OgreFeatureSummary.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages/FindCg.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages/FindDirectX.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages/FindDirectX11.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages/FindFreeImage.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages/FindOpenEXR.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages/FindOpenGLES2.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages/FindSoftimage.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packaging.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/PrepareThreadingOptions.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Templates/OGREConfig.cmake.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Templates/OgreBuildSettings.h.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Templates/OgreComponents.h.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Templates/OgreConfigPaths.h.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Templates/OgreGLES2Config.h.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Templates/OgreRTShaderConfig.h.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Templates/plugins.cfg.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Templates/resources.cfg.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Templates/samples.cfg.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Templates/version.txt.in
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Utils/FindPkgMacros.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Utils/MacroLogFeature.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Utils/OgreConfigTargets.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Utils/PrecompiledHeader.cmake
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMakeLists.txt
+E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/LICENSE

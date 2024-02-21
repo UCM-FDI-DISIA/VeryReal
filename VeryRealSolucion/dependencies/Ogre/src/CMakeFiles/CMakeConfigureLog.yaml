@@ -1,0 +1,457 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "CMakeLists.txt:69 (project)"
+    message: |
+      The system is: Windows - 10.0.19045 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:69 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.4.1+9a89d02ff for .NET Framework
+      Compilaci¢n iniciada a las 21/02/2024 12:51:33.
+      Proyecto "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\3.28.3\\CompilerIdC\\CompilerIdC.vcxproj" en nodo 1 (destinos predeterminados).
+      PrepareForBuild:
+        Creando directorio "Debug\\".
+        Creando directorio "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Se crear  "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\3.28.3\\CompilerIdC\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Se eliminar  el archivo "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+        Aplicando tarea Touch a "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      Compilaci¢n del proyecto terminada "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\3.28.3\\CompilerIdC\\CompilerIdC.vcxproj" (destinos predeterminados).
+      
+      Compilaci¢n correcta.
+          0 Advertencia(s)
+          0 Errores
+      
+      Tiempo transcurrido 00:00:01.01
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/3.28.3/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:69 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.4.1+9a89d02ff for .NET Framework
+      Compilaci¢n iniciada a las 21/02/2024 12:51:34.
+      Proyecto "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\3.28.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" en nodo 1 (destinos predeterminados).
+      PrepareForBuild:
+        Creando directorio "Debug\\".
+        Creando directorio "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Se crear  "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\3.28.3\\CompilerIdCXX\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Se eliminar  el archivo "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+        Aplicando tarea Touch a "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      Compilaci¢n del proyecto terminada "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\3.28.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (destinos predeterminados).
+      
+      Compilaci¢n correcta.
+          0 Advertencia(s)
+          0 Errores
+      
+      Tiempo transcurrido 00:00:00.79
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/3.28.3/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:69 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-hgsp71"
+      binary: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-hgsp71"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-hgsp71'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_28c07.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 21/02/2024 12:51:35.
+        Proyecto "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-hgsp71\\cmTC_28c07.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_28c07.dir\\Debug\\".
+          Creando directorio "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-hgsp71\\Debug\\".
+          Creando directorio "cmTC_28c07.dir\\Debug\\cmTC_28c07.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_28c07.dir\\Debug\\cmTC_28c07.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_28c07.dir\\Debug\\\\" /Fd"cmTC_28c07.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          CMakeCCompilerABI.c
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_28c07.dir\\Debug\\\\" /Fd"cmTC_28c07.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-hgsp71\\Debug\\cmTC_28c07.exe" /INCREMENTAL /ILK:"cmTC_28c07.dir\\Debug\\cmTC_28c07.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/TERCER A¥O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-hgsp71/Debug/cmTC_28c07.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/TERCER A¥O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-hgsp71/Debug/cmTC_28c07.lib" /MACHINE:X64  /machine:x64 cmTC_28c07.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_28c07.vcxproj -> E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-hgsp71\\Debug\\cmTC_28c07.exe
+        FinalizeBuildStatus:
+          Se eliminar  el archivo "cmTC_28c07.dir\\Debug\\cmTC_28c07.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_28c07.dir\\Debug\\cmTC_28c07.tlog\\cmTC_28c07.lastbuildstate".
+        Compilaci¢n del proyecto terminada "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-hgsp71\\cmTC_28c07.vcxproj" (destinos predeterminados).
+        
+        Compilaci¢n correcta.
+            0 Advertencia(s)
+            0 Errores
+        
+        Tiempo transcurrido 00:00:00.74
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:69 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-58z51h"
+      binary: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-58z51h"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-58z51h'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_fb935.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 21/02/2024 12:51:36.
+        Proyecto "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-58z51h\\cmTC_fb935.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_fb935.dir\\Debug\\".
+          Creando directorio "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-58z51h\\Debug\\".
+          Creando directorio "cmTC_fb935.dir\\Debug\\cmTC_fb935.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_fb935.dir\\Debug\\cmTC_fb935.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++14 /Fo"cmTC_fb935.dir\\Debug\\\\" /Fd"cmTC_fb935.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          CMakeCXXCompilerABI.cpp
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++14 /Fo"cmTC_fb935.dir\\Debug\\\\" /Fd"cmTC_fb935.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-58z51h\\Debug\\cmTC_fb935.exe" /INCREMENTAL /ILK:"cmTC_fb935.dir\\Debug\\cmTC_fb935.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/TERCER A¥O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-58z51h/Debug/cmTC_fb935.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/TERCER A¥O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-58z51h/Debug/cmTC_fb935.lib" /MACHINE:X64  /machine:x64 cmTC_fb935.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_fb935.vcxproj -> E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-58z51h\\Debug\\cmTC_fb935.exe
+        FinalizeBuildStatus:
+          Se eliminar  el archivo "cmTC_fb935.dir\\Debug\\cmTC_fb935.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_fb935.dir\\Debug\\cmTC_fb935.tlog\\cmTC_fb935.lastbuildstate".
+        Compilaci¢n del proyecto terminada "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-58z51h\\cmTC_fb935.vcxproj" (destinos predeterminados).
+        
+        Compilaci¢n correcta.
+            0 Advertencia(s)
+            0 Errores
+        
+        Tiempo transcurrido 00:00:00.77
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckTypeSize.cmake:146 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckTypeSize.cmake:271 (__check_type_size_impl)"
+      - "CMakeLists.txt:111 (CHECK_TYPE_SIZE)"
+    checks:
+      - "Check size of void*"
+    directories:
+      source: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-a1mtpz"
+      binary: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-a1mtpz"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake;E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Utils;E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages"
+    buildResult:
+      variable: "HAVE_OGRE_PTR_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-a1mtpz'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4301c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 21/02/2024 12:51:37.
+        Proyecto "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a1mtpz\\cmTC_4301c.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_4301c.dir\\Debug\\".
+          Creando directorio "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a1mtpz\\Debug\\".
+          Creando directorio "cmTC_4301c.dir\\Debug\\cmTC_4301c.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_4301c.dir\\Debug\\cmTC_4301c.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4301c.dir\\Debug\\\\" /Fd"cmTC_4301c.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a1mtpz\\OGRE_PTR_SIZE.c"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          OGRE_PTR_SIZE.c
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4301c.dir\\Debug\\\\" /Fd"cmTC_4301c.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a1mtpz\\OGRE_PTR_SIZE.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a1mtpz\\Debug\\cmTC_4301c.exe" /INCREMENTAL /ILK:"cmTC_4301c.dir\\Debug\\cmTC_4301c.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/TERCER A¥O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-a1mtpz/Debug/cmTC_4301c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/TERCER A¥O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-a1mtpz/Debug/cmTC_4301c.lib" /MACHINE:X64  /machine:x64 cmTC_4301c.dir\\Debug\\OGRE_PTR_SIZE.obj
+          cmTC_4301c.vcxproj -> E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a1mtpz\\Debug\\cmTC_4301c.exe
+        FinalizeBuildStatus:
+          Se eliminar  el archivo "cmTC_4301c.dir\\Debug\\cmTC_4301c.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_4301c.dir\\Debug\\cmTC_4301c.tlog\\cmTC_4301c.lastbuildstate".
+        Compilaci¢n del proyecto terminada "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a1mtpz\\cmTC_4301c.vcxproj" (destinos predeterminados).
+        
+        Compilaci¢n correcta.
+            0 Advertencia(s)
+            0 Errores
+        
+        Tiempo transcurrido 00:00:00.74
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "CMake/ConfigureBuild.cmake:127 (CHECK_FUNCTION_EXISTS)"
+      - "CMakeLists.txt:428 (include)"
+    checks:
+      - "Looking for strtol_l"
+    directories:
+      source: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-woymor"
+      binary: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-woymor"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake;E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Utils;E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages"
+    buildResult:
+      variable: "HAVE_STRTOL_L"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-woymor'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_5ef08.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 21/02/2024 12:57:00.
+        Proyecto "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\cmTC_5ef08.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_5ef08.dir\\Debug\\".
+          Creando directorio "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\Debug\\".
+          Creando directorio "cmTC_5ef08.dir\\Debug\\cmTC_5ef08.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_5ef08.dir\\Debug\\cmTC_5ef08.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=strtol_l /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5ef08.dir\\Debug\\\\" /Fd"cmTC_5ef08.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\CheckFunctionExists.c"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          CheckFunctionExists.c
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=strtol_l /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5ef08.dir\\Debug\\\\" /Fd"cmTC_5ef08.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\CheckFunctionExists.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\Debug\\cmTC_5ef08.exe" /INCREMENTAL /ILK:"cmTC_5ef08.dir\\Debug\\cmTC_5ef08.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/TERCER A¥O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-woymor/Debug/cmTC_5ef08.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/TERCER A¥O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-woymor/Debug/cmTC_5ef08.lib" /MACHINE:X64  /machine:x64 cmTC_5ef08.dir\\Debug\\CheckFunctionExists.obj
+        CheckFunctionExists.obj : error LNK2019: s¡mbolo externo strtol_l sin resolver al que se hace referencia en la funci¢n main [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\cmTC_5ef08.vcxproj]
+        E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\Debug\\cmTC_5ef08.exe : fatal error LNK1120: 1 externos sin resolver [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\cmTC_5ef08.vcxproj]
+        Compilaci¢n del proyecto terminada "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\cmTC_5ef08.vcxproj" (destinos predeterminados) -- ERROR.
+        
+        ERROR al compilar.
+        
+        "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\cmTC_5ef08.vcxproj" (destino predeterminado) (1) ->
+        (Link destino) -> 
+          CheckFunctionExists.obj : error LNK2019: s¡mbolo externo strtol_l sin resolver al que se hace referencia en la funci¢n main [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\cmTC_5ef08.vcxproj]
+          E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\Debug\\cmTC_5ef08.exe : fatal error LNK1120: 1 externos sin resolver [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-woymor\\cmTC_5ef08.vcxproj]
+        
+            0 Advertencia(s)
+            2 Errores
+        
+        Tiempo transcurrido 00:00:00.73
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckSourceCompiles.cmake:77 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:206 (check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:263 (_check_cxx_compiler_attribute)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:420 (_test_compiler_has_deprecated)"
+      - "OgreMain/CMakeLists.txt:166 (generate_export_header)"
+    checks:
+      - "Performing Test COMPILER_HAS_DEPRECATED_ATTR"
+    directories:
+      source: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-a0p45f"
+      binary: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-a0p45f"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MP /Zm256"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1 /Oi /bigobj"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake;E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Utils;E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages"
+    buildResult:
+      variable: "COMPILER_HAS_DEPRECATED_ATTR"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-a0p45f'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3bcf9.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 21/02/2024 12:57:01.
+        Proyecto "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_3bcf9.dir\\Debug\\".
+          Creando directorio "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\Debug\\".
+          Creando directorio "cmTC_3bcf9.dir\\Debug\\cmTC_3bcf9.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_3bcf9.dir\\Debug\\cmTC_3bcf9.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /MP /Od /Ob0 /Oi /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED_ATTR /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++14 /Fo"cmTC_3bcf9.dir\\Debug\\\\" /Fd"cmTC_3bcf9.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue  /Zm256 /bigobj "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          src.cxx
+        E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(1,16): error C2065: '__deprecated__': identificador no declarado [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+        E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(1,31): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+        E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(1,33): error C2062: tipo 'int' inesperado [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+        E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(1,48): error C2143: error de sintaxis: falta ';' delante de '{' [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+        E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(1,48): error C2447: '{': falta el encabezado de funci¢n (¨lista formal de estilo anterior?) [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+        E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(2,25): error C3861: 'somefunc': no se encontr¢ el identificador [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /Zi /W3 /WX- /diagnostics:column /MP /Od /Ob0 /Oi /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED_ATTR /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++14 /Fo"cmTC_3bcf9.dir\\Debug\\\\" /Fd"cmTC_3bcf9.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue  /Zm256 /bigobj "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx"
+        Compilaci¢n del proyecto terminada "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj" (destinos predeterminados) -- ERROR.
+        
+        ERROR al compilar.
+        
+        "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj" (destino predeterminado) (1) ->
+        (ClCompile destino) -> 
+          E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(1,16): error C2065: '__deprecated__': identificador no declarado [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+          E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(1,31): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+          E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(1,33): error C2062: tipo 'int' inesperado [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+          E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(1,48): error C2143: error de sintaxis: falta ';' delante de '{' [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+          E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(1,48): error C2447: '{': falta el encabezado de funci¢n (¨lista formal de estilo anterior?) [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+          E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\src.cxx(2,25): error C3861: 'somefunc': no se encontr¢ el identificador [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-a0p45f\\cmTC_3bcf9.vcxproj]
+        
+            0 Advertencia(s)
+            6 Errores
+        
+        Tiempo transcurrido 00:00:00.51
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckSourceCompiles.cmake:77 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:206 (check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:269 (_check_cxx_compiler_attribute)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:420 (_test_compiler_has_deprecated)"
+      - "OgreMain/CMakeLists.txt:166 (generate_export_header)"
+    checks:
+      - "Performing Test COMPILER_HAS_DEPRECATED"
+    directories:
+      source: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-ymbeg7"
+      binary: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-ymbeg7"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MP /Zm256"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1 /Oi /bigobj"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake;E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Utils;E:/TERCER A\u00d1O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/src/CMake/Packages"
+    buildResult:
+      variable: "COMPILER_HAS_DEPRECATED"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/TERCER AÑO/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-ymbeg7'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_99842.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 21/02/2024 12:57:02.
+        Proyecto "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\cmTC_99842.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_99842.dir\\Debug\\".
+          Creando directorio "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\Debug\\".
+          Creando directorio "cmTC_99842.dir\\Debug\\cmTC_99842.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_99842.dir\\Debug\\cmTC_99842.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /MP /Od /Ob0 /Oi /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++14 /Fo"cmTC_99842.dir\\Debug\\\\" /Fd"cmTC_99842.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue  /Zm256 /bigobj "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\src.cxx"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          src.cxx
+        E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\src.cxx(2,25): warning C4996: 'somefunc': se declar¢ desusado [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\cmTC_99842.vcxproj]
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /Zi /W3 /WX- /diagnostics:column /MP /Od /Ob0 /Oi /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++14 /Fo"cmTC_99842.dir\\Debug\\\\" /Fd"cmTC_99842.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue  /Zm256 /bigobj "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\src.cxx"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\Debug\\cmTC_99842.exe" /INCREMENTAL /ILK:"cmTC_99842.dir\\Debug\\cmTC_99842.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/TERCER A¥O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-ymbeg7/Debug/cmTC_99842.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/TERCER A¥O/PROYECTOS III/VeryReal/VeryRealSolucion/dependencies/Ogre/Builds/CMakeFiles/CMakeScratch/TryCompile-ymbeg7/Debug/cmTC_99842.lib" /MACHINE:X64  /machine:x64 cmTC_99842.dir\\Debug\\src.obj
+          cmTC_99842.vcxproj -> E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\Debug\\cmTC_99842.exe
+        FinalizeBuildStatus:
+          Se eliminar  el archivo "cmTC_99842.dir\\Debug\\cmTC_99842.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_99842.dir\\Debug\\cmTC_99842.tlog\\cmTC_99842.lastbuildstate".
+        Compilaci¢n del proyecto terminada "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\cmTC_99842.vcxproj" (destinos predeterminados).
+        
+        Compilaci¢n correcta.
+        
+        "E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\cmTC_99842.vcxproj" (destino predeterminado) (1) ->
+        (ClCompile destino) -> 
+          E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\src.cxx(2,25): warning C4996: 'somefunc': se declar¢ desusado [E:\\TERCER A¥O\\PROYECTOS III\\VeryReal\\VeryRealSolucion\\dependencies\\Ogre\\Builds\\CMakeFiles\\CMakeScratch\\TryCompile-ymbeg7\\cmTC_99842.vcxproj]
+        
+            1 Advertencia(s)
+            0 Errores
+        
+        Tiempo transcurrido 00:00:00.79
+        
+      exitCode: 0
+...
