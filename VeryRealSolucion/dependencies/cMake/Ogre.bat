@@ -59,7 +59,7 @@ if not exist %OGRE_BUILD% (
     -D OGRE_NODELESS_POSITIONING:BOOL=FALSE ^
     -D OGRE_PROJECT_FOLDERS:BOOL=TRUE ^
     -S %OGRE_SRC% -B %OGRE_BUILD%
-)else echo eres gay
+)
 
 if exist %OGRE_SLN% (
     rem Compilacion de la solucion en Debug y en Release
