@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-
+#include <OgreRoot.h>
 int main()
 {
     std::cout << "Hello World!\n";
