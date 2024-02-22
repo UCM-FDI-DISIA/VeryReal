@@ -3,20 +3,20 @@
 rem Directorios
 set BAT_DIR=%~dp0
 set OGRE_SRC=%BAT_DIR%..\Ogre\src
-set OGRE_BUILD=%BAT_DIR%\..\Ogre\Builds\
+set OGRE_BUILD=%BAT_DIR%..\Ogre\Builds\
 set OGRE_SLN=%BAT_DIR%..\Ogre\Builds\OGRE.sln
-
+set DLL_FOLDERS=%BAT_DIR%..\..\bin
 rem Se crea el directorio si no está ya creado
-if not exist %OGRE_BUILD% (
+
     mkdir %OGRE_BUILD%
 
 
-    echo %OGRE_SRC%
+
     echo Comenzando la ejecucion de cmake
     cmake ^
         -D CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release ^
         -D OGRE_BUILD_COMPONENT_BITES:BOOL=FALSE ^
-	-D OGRE_BUILD_COMPONENT_BULLET:BOOL=FALSE ^
+	-D OGRE_BUILD_COMPONENT_BULLET:BOOL="0" ^
  	-D OGRE_BUILD_COMPONENT_CSHARP:BOOL=FALSE ^
  	-D OGRE_BUILD_COMPONENT_JAVA:BOOL=FALSE ^
 	-D OGRE_BUILD_COMPONENT_MESHLODGENERATOR:BOOL=TRUE ^
@@ -59,15 +59,15 @@ if not exist %OGRE_BUILD% (
     -D OGRE_NODELESS_POSITIONING:BOOL=FALSE ^
     -D OGRE_PROJECT_FOLDERS:BOOL=TRUE ^
     -S %OGRE_SRC% -B %OGRE_BUILD%
-)
 
-if exist %OGRE_SLN% (
+    cd %OGRE_BUILD%
     rem Compilacion de la solucion en Debug y en Release
-    msbuild %OGRE_SLN% /p:configuration=Debug /t:ALL_BUILD /p:Platform=x64 /p:PlatformToolset=v143
-    msbuild %OGRE_SLN% /p:configuration=Release /t:ALL_BUILD /p:Platform=x64 /p:PlatformToolset=v143
-    cd ..
-    XCOPY .\Ogre\build\x64\bin\release*.dll ..\bin /Y
-    XCOPY .\Ogre\build\x64\bin\debug*.dll ..\bin /Y
-    cd Scripts
+    msbuild "OGRE.sln" /p:configuration=Debug /maxcpucount
+    msbuild "OGRE.sln" /p:configuration=Release /maxcpucount
+    		 	
+    XCOPY /y /s .\bin\debug\OgreMain_d.dll %DLL_FOLDERS%\Ogre\debug\
+       echo %DLL_FOLDERS%
+    XCOPY /y /s .\bin\release\OgreMain.dll %DLL_FOLDERS%\Ogre\release\
+       echo %DLL_FOLDERS%
     echo Terminada la build de Ogre
-) else echo No se ha encontrado el archivo %OGRE_SLN%
+pause
