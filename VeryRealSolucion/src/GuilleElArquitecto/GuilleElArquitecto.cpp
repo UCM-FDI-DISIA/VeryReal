@@ -2,9 +2,14 @@
 //
 
 #include <iostream>
-
+#include "Entity.h"
+#include "Component.h"
 int main()
 {
+    std::cout << "Hello World!\n";
+    Entity* ent = new Entity();
+    Component* c=ent->AddComponent<Component>(PACEVON,0);
+    Component* c1 = ent->AddComponent<Component>(PACEVON,1);
     std::cout << "Hello World!\n";
 }
 

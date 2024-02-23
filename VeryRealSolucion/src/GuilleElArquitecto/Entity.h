@@ -20,20 +20,26 @@ class Entity
 	//start
 	//update
 private:
-	unordered_map<component_name, Component*> components;
+	unordered_map<component_name, Component*> components_map;
 	bool is_alive;
 public:
 	//mirar si queremos que reciba algo, de momento PedroPablo gestiona la escena
 	Entity();
 	virtual ~Entity();
-
-	void AddComponent(component_name component);
-	void RemoveComponent(component_name component);
-	inline bool HasComponent(component_name component) {
-		
+	template<typename T, typename ...Ts>
+	inline T* AddComponent(component_name c_name, Ts && ... args) {
+		T* component = new T(forward<Ts>(args)...);
+		RemoveComponent(c_name);
+		components_map.insert({c_name,component});
+		//quizas initcomponent
+		return component;
 	}
-	inline Component* GetComponent(component_name component) {
-		return components[component];
+	void RemoveComponent(component_name c_name);
+	inline bool HasComponent(component_name c_name) {
+		return components_map.count(c_name);
+	}
+	inline Component* GetComponent(component_name c_name) {
+		return components_map.at(c_name);
 	}
 	inline void SetActive(bool active) {
 		is_alive = active;
