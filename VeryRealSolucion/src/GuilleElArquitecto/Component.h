@@ -1,39 +1,23 @@
 #pragma once
 class Entity;
-class Component
+class Component	//CLASE ABSTRACTA
 {
 	
 private:
-	bool active;
+	bool active = true;
 	Entity* entity;
-	int a = 0;
 
 public:
-	Component(int a) {
-		this->a = a;
-	}
-	virtual ~Component() {
-
-	}
-	void Update() {
-
-	}
-
-	/*inline void SetActive(bool active) {this->active = active;}
-	inline bool GetActive() { return active; }*/
-	//COSAS BASICAS:
-	//-Constructora
-	//-Destructora
-	// 
-	// 
-	//setActive
-	//getActive
-
-	/*void SetEntity(Entity* entity);
-	inline Entity* GetEntity() { return entity; }*/
-	//setEntidad
-	//getEntidad
-	// 
-	//update
+	Component() {}
+	virtual ~Component() {}
+	//quizas INIT
+	virtual void Update() {}
+	
+	inline void SetActive(bool active) {this->active = active;}
+	inline bool GetActive() { return active; }
+	
+	//El componente necesita saber cual es su entidad, para acceder a otros componentes de esta
+	inline void SetEntity(Entity* entity) { this->entity = entity; }
+	inline Entity* GetEntity() { return entity; }
 };
 

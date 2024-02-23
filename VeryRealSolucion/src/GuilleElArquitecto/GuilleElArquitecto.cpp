@@ -8,8 +8,16 @@ int main()
 {
     std::cout << "Hello World!\n";
     Entity* ent = new Entity();
-    Component* c=ent->AddComponent<Component>(PACEVON,0);
-    Component* c1 = ent->AddComponent<Component>(PACEVON,1);
+    Component* c=ent->AddComponent<Component>(PACEVON);
+    Component* c1 = ent->AddComponent<Component>(SHEILON);
+    Component* c2 = ent->AddComponent<Component>(CISCON);
+    Component* c3 = ent->AddComponent<Component>(CRISTININI);
+    while (true) {
+        ent->Update();
+        ent->GetComponent<Component>(PACEVON)->SetActive(false);
+        ent->GetComponent<Component>(SHEILON)->SetActive(false);
+        ent->GetComponent<Component>(CISCON)->SetActive(false);
+    }
     std::cout << "Hello World!\n";
 }
 
