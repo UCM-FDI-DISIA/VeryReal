@@ -10,9 +10,6 @@ rem Se crea el directorio si no está ya creado
 
     mkdir %OGRE_BUILD%
 
-
-
-    echo Comenzando la ejecucion de cmake
     cmake ^
         -D CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release ^
         -D OGRE_BUILD_COMPONENT_BITES:BOOL=FALSE ^
@@ -64,10 +61,24 @@ rem Se crea el directorio si no está ya creado
     rem Compilacion de la solucion en Debug y en Release
     msbuild "OGRE.sln" /p:configuration=Debug /maxcpucount
     msbuild "OGRE.sln" /p:configuration=Release /maxcpucount
-    		 	
+    
+    
     XCOPY /y /s .\bin\debug\OgreMain_d.dll %DLL_FOLDERS%\Ogre\debug\
        echo %DLL_FOLDERS%
     XCOPY /y /s .\bin\release\OgreMain.dll %DLL_FOLDERS%\Ogre\release\
        echo %DLL_FOLDERS%
+
+    XCOPY /y /s .\bin\release\SDL2.dll %DLL_FOLDERS%\SDL2\
+       echo %DLL_FOLDERS%
+	
+
+
+if exist .\bullet3-3.25 (
+    rd /s /q .\bullet3-3.25
+) else (
+    echo La carpeta no existe.
+)
+
+
     echo Terminada la build de Ogre
 pause
