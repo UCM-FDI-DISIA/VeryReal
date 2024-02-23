@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include "Component_Names.h"
 #include "Component.h"
+#include <iostream>
 using namespace std;
 class Entity
 {
@@ -21,6 +22,7 @@ class Entity
 	//update
 private:
 	unordered_map<component_name, Component*> components_map;
+	list<component_name> components_list_removed;
 	bool is_alive;
 public:
 	//mirar si queremos que reciba algo, de momento PedroPablo gestiona la escena
@@ -35,18 +37,21 @@ public:
 		return component;
 	}
 	void RemoveComponent(component_name c_name);
+
 	inline bool HasComponent(component_name c_name) {
 		return components_map.count(c_name);
 	}
-	inline Component* GetComponent(component_name c_name) {
-		return components_map.at(c_name);
+	template<typename T>
+	inline T* GetComponent(component_name c_name) {
+		if (!HasComponent(c_name)) {
+			cerr << "No existe dicho componente\n";
+			return nullptr;
+		}
+		return static_cast<T*>(components_map.at(c_name));
 	}
-	inline void SetActive(bool active) {
-		is_alive = active;
-	}
-	inline bool GetActive() {
-		return is_alive;
-	}
+
+	inline void SetActive(bool active) { is_alive = active; }
+	inline bool GetActive() { return is_alive; }
 
 	void Update();
 };
