@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GuilleElArquitecto", "proje
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaLuengo", "projects\LuaLuengo\LuaLuengo.vcxproj", "{8CC5FD81-7FB6-4BBF-B68C-6DB7B3EDED3A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TonInput", "TonInput\TonInput.vcxproj", "{89FD502F-7C6E-44E9-9C55-C64DF8E56579}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TonInput", "projects\TonInput\TonInput.vcxproj", "{89FD502F-7C6E-44E9-9C55-C64DF8E56579}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

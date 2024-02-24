@@ -1,9 +1,34 @@
-
+// RomeRender.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+//
 
 #include <iostream>
-
+#include <crtdbg.h> //memory
+#include <SDL.h>
+#undef main
+#include <stdlib.h>
 int main()
 {
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
+    SDL_Init(SDL_INIT_EVERYTHING);
+    SDL_Window* mWindow;
+    mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+        854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+    SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
+    while (true)
+    {
+
+    }
+    if (mWindow != nullptr)
+    {
+        SDL_DestroyWindow(mWindow);
+        mWindow = nullptr;
+        SDL_Quit();
+    }
+
+
+    _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
+    _CrtDumpMemoryLeaks();
     std::cout << "Hello World!\n";
 }
 
