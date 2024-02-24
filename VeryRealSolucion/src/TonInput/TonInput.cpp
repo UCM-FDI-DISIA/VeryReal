@@ -6,8 +6,11 @@
 #include <SDL.h>
 #undef main
 #include <stdlib.h>
+#include "InputHandler.h"
+using namespace std;
 int main()
 {
+	const int FRAME_RATE = 3;
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -15,10 +18,36 @@ int main()
     mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
     SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
-    while (true)
-    {
+    
+	uint32_t startTime, frameTime;
+	startTime = SDL_GetTicks();
+	while (true) {
+		frameTime = SDL_GetTicks() - startTime;
+		ih().refresh(); // Ih se actualiza (actua como el handleEvents())
+		if (frameTime >= FRAME_RATE) {
+			
+			if (ih().isKeyDown(SDL_SCANCODE_X))
+				cout << "X" << endl;
 
-    }
+			if (ih().isGamePadButtonDown(SDL_CONTROLLER_BUTTON_X))
+				cout << "boton1" << endl;
+			if (ih().isGamePadButtonDown(SDL_CONTROLLER_BUTTON_A))
+				cout << "boton2" << endl;
+			if (ih().isGamePadButtonDown(SDL_CONTROLLER_BUTTON_B))
+				cout << "boton3" << endl;
+
+			if (ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_LEFTX) != 0)
+				cout << ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_LEFTX) << endl;
+			if (ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_RIGHTY) != 0)
+				cout << ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_RIGHTY) << endl;
+
+			if (ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_TRIGGERLEFT) != 0)
+				cout << ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_TRIGGERLEFT) << endl;
+
+			startTime = SDL_GetTicks();
+		}
+	}
+
     if (mWindow != nullptr)
     {
         SDL_DestroyWindow(mWindow);
