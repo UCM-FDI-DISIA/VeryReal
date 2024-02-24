@@ -7,6 +7,7 @@
 #include <crtdbg.h> //memory
 #include <OgreRenderSystem.h>
 #include <SDL.h>
+#undef main
 #include <stdlib.h>
 int main()
 {
