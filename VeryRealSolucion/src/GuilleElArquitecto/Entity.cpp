@@ -7,7 +7,8 @@ Entity::~Entity() {
 }
 
 void Entity::RemoveComponent(component_name c_name) {
-	if (components_map.find(c_name) != components_map.end()) {
+	//para que no te de error si el componente no está incluido y tu quieres removerlo
+	if (HasComponent(c_name)) {
 		delete components_map.at(c_name);
 		components_map.erase(c_name);
 	}

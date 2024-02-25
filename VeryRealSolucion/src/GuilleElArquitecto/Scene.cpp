@@ -6,12 +6,15 @@ Scene::~Scene() {
 
 }
 Entity* Scene::AddEntity(entity_name e_name) {
-
+	Entity* entity = new Entity();
+	RemoveEntity(e_name);
+	entities_map.insert({ e_name,entity });
+	return entity;
 }
 void Scene::RemoveEntity(entity_name e_name) {
-	if (entities_map.find(e_name) != entities_map.end()) {
-		delete entities_map.at(e_name);
-		entities_map.erase(e_name);
+	if (HasEntity(e_name)) {
+		delete entities_map.at(e_name);	//eliminas el puntero
+		entities_map.erase(e_name);	//eliminas del mapa
 	}
 }
 Entity* Scene::GetEntity(entity_name e_name) {

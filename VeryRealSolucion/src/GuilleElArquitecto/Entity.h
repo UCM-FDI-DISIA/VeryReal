@@ -31,6 +31,7 @@ public:
 	template<typename T, typename ...Ts>
 	inline T* AddComponent(component_name c_name, Ts && ... args) {
 		T* component = new T(forward<Ts>(args)...);
+		//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 		RemoveComponent(c_name);
 		components_map.insert({c_name,component});
 		//quizas initcomponent
