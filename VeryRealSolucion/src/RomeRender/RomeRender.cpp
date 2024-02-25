@@ -1,17 +1,22 @@
 // RomeRender.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
 
-#include <iostream>
-#include <OgreRoot.h>
-#include <Ogre.h>
-#include <crtdbg.h> //memory
-#include <OgreRenderSystem.h>
-#include <SDL.h>
-#undef main
-#include <stdlib.h>
+//#include <iostream>
+//#include <OgreRoot.h>
+//#include <Ogre.h>
+//#include <crtdbg.h> //memory
+//#include <OgreRenderSystem.h>
+//#include <SDL.h>
+//#undef main
+//#include <stdlib.h>
+
+#include "Window.h"
+using namespace VeryReal;
 int main()
 {
-    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    Window* wind = new Window();
+    wind->init();
+   /* _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
    
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window* mWindow;
@@ -32,7 +37,7 @@ int main()
 
     _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
     _CrtDumpMemoryLeaks();
-    std::cout << "Hello World!\n";
+    std::cout << "Hello World!\n";*/
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
