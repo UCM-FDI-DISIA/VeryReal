@@ -54,5 +54,6 @@ public:
 	inline bool GetActive() { return is_alive; }
 
 	void Update();
+	void Refresh();
 };
 

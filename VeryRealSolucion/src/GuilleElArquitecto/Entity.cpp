@@ -32,6 +32,9 @@ void Entity::Update() {
 			components_list_removed.push_back(c.first);
 		}
 	}
+	Refresh();
+}
+void Entity::Refresh() {
 	for (auto c = components_list_removed.begin(); c != components_list_removed.end();) {
 		RemoveComponent(*c);
 		auto p = c;
