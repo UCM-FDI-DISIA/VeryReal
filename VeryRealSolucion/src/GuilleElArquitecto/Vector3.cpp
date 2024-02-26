@@ -22,14 +22,26 @@ Vector3::~Vector3() {
 Vector3 Vector3::operator+(const Vector3& vector) {
 	return { x + vector.x,y + vector.y,z+vector.z };
 }
+Vector3 Vector3::operator+=(const Vector3& vector) {
+	return { x + vector.x,y + vector.y,z + vector.z };
+}
 Vector3 Vector3::operator-(const Vector3& vector) {
 	return { x - vector.x,y - vector.y,z-vector.z };
+}
+Vector3 Vector3::operator-=(const Vector3& vector) {
+	return { x - vector.x,y - vector.y,z - vector.z };
 }
 Vector3 Vector3::operator*(const float k) {
 	return{ x * k,y * k,z*k };
 }
+Vector3 Vector3::operator*=(const float k) {
+	return{ x * k,y * k,z * k };
+}
 Vector3 Vector3::operator/(const float k) {
 	return{ x / k,y / k,z/k };
+}
+Vector3 Vector3::operator/=(const float k) {
+	return{ x / k,y / k,z / k };
 }
 Vector3 Vector3::operator=(const Vector3& vector) {
 	return{ x = vector.x,y = vector.y,z=vector.z };

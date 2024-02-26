@@ -32,6 +32,5 @@ public:
 	Vector4 operator=(const Vector4& vector);
 	bool operator==(const Vector4& vector);
 	bool operator!=(const Vector4& vector);
-
 };
 std::ostream& operator<<(std::ostream& o, const Vector4& vec);

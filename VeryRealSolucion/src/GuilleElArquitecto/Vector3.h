@@ -27,9 +27,13 @@ public:
 	inline Vector3 GetVector() { return { x,y,z }; }
 
 	Vector3 operator+(const Vector3& vector);
+	Vector3 operator+=(const Vector3& vector);
 	Vector3 operator-(const Vector3& vector);
+	Vector3 operator-=(const Vector3& vector);
 	Vector3 operator*(const float k);
+	Vector3 operator*=(const float k);
 	Vector3 operator/(const float k);
+	Vector3 operator/=(const float k);
 	Vector3 operator=(const Vector3& vector);
 	bool operator==(const Vector3& vector);
 	bool operator!=(const Vector3& vector);

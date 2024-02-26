@@ -20,18 +20,31 @@ Vector2::~Vector2() {
 Vector2 Vector2::operator+(const Vector2& vector) {
 	return {x + vector.x,y + vector.y };
 }
+Vector2 Vector2::operator+=(const Vector2& vector) {
+	return { x + vector.x,y + vector.y };
+}
 Vector2 Vector2::operator-(const Vector2& vector) {
 	return { x - vector.x,y - vector.y };
 }
+Vector2 Vector2::operator-=(const Vector2& vector) {
+	return { x + vector.x,y + vector.y };
+}
 Vector2 Vector2::operator*(const float k) {
+	return{ x * k,y * k };
+}
+Vector2 Vector2::operator*=(const float k) {
 	return{ x * k,y * k };
 }
 Vector2 Vector2::operator/(const float k) {
 	return{ x / k,y / k };
 }
+Vector2 Vector2::operator/=(const float k) {
+	return{ x / k,y / k };
+}
 Vector2 Vector2::operator=(const Vector2& vector) {
 	return{ x = vector.x,y = vector.y };
 }
+
 bool Vector2::operator==(const Vector2& vector) {
 	return(x == vector.x && y == vector.y);
 }

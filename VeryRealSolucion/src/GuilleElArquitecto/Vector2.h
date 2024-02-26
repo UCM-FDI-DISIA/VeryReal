@@ -23,9 +23,13 @@ public:
 	inline Vector2 GetVector() { return { x,y }; }
 
 	Vector2 operator+(const Vector2& vector);
+	Vector2 operator+=(const Vector2& vector);
 	Vector2 operator-(const Vector2& vector);
+	Vector2 operator-=(const Vector2& vector);
 	Vector2 operator*(const float k);
+	Vector2 operator*=(const float k);
 	Vector2 operator/(const float k);
+	Vector2 operator/=(const float k);
 	Vector2 operator=(const Vector2& vector);
 	bool operator==(const Vector2& vector);
 	bool operator!=(const Vector2& vector);
