@@ -12,9 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\RomeRender\RomeRender.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\SGTechniqueResolverListener.cpp" />
     <ClCompile Include="..\..\src\RomeRender\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\RomeRender\SGTechniqueResolverListener.h" />
     <ClInclude Include="..\..\src\RomeRender\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -64,13 +66,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Ogre\Builds\lib\$(Configuration);$(SolutionDir)dependencies\Ogre\Builds\Dependencies\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;OgreMeshLodGenerator_d.lib;OgreOverlay_d.lib;OgrePaging_d.lib;OgreMain_d.lib;OgreGLSupport_d.lib;OgreProperty_d.lib;RenderSystem_GL_d.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;OgreRTShaderSystem_d.lib;SDL2main.lib;OgreMeshLodGenerator_d.lib;OgreOverlay_d.lib;OgrePaging_d.lib;OgreMain_d.lib;OgreGLSupport_d.lib;OgreProperty_d.lib;RenderSystem_GL_d.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Ogre\Builds\lib\$(Configuration);$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\RelWithDebInfo</AdditionalLibraryDirectories>
@@ -85,7 +87,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

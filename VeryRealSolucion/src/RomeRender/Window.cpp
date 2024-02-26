@@ -61,9 +61,36 @@ void Window::init() {
     ogre_window = root->createRenderWindow(name, window_width, window_height, false, &miscParams);
     scene_manager = root->createSceneManager();
     render_system->_initRenderTargets();
+    //asignamos la 
+    string ruta = ruta_configuracion + "\\..\\..\\..\\Assets";
+    Ogre::ResourceGroupManager::getSingleton().addResourceLocation(ruta, "FileSystem");
+    Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+    //luz principal
+    Ogre::Light* light = scene_manager->createLight("LuzPrincipal");
+    Ogre::SceneNode* lightNode = scene_manager->getRootSceneNode()->createChildSceneNode();
+    lightNode->setPosition(-10, 0, 0);
+    lightNode->attachObject(light);
 
+    //camara
+    Ogre::SceneNode* camNode = scene_manager->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
+    camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
+    camNode->setPosition(0, 0, 30);
+    Ogre::Camera* cam = scene_manager->createCamera("Camara"); // objetoi camara en si 
+    cam->setNearClipDistance(1); //queremos que serenderice lo mas cerca posible desde la camara
+    camNode->attachObject(cam);
+    Ogre::Viewport* vp = ogre_window->addViewport(cam);
+
+
+    //cambio de color de fondo
+    vp->setBackgroundColour(Ogre::ColourValue(0.1, 0.2, 0.3));
+
+    //cargamos sinbad SOLO SE PUEDEN CARGAR .MESH
+    Ogre::Entity* ent = scene_manager->createEntity("Sinbad.mesh"); 
+    Ogre::SceneNode* node = scene_manager->getRootSceneNode()->createChildSceneNode();
+    node->attachObject(ent);
     //BUCLE PARA QUE NO SE CIERRE LA VENANA SE TIENE QUE QUITAR
+    root->startRendering();
     while(true) {
-
+        root->renderOneFrame();
     }
 }

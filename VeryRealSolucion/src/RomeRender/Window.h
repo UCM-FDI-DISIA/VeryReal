@@ -21,7 +21,6 @@ namespace VeryReal {
 			void init();
 			~Window();
 		private:
-			Ogre::Root* mRoot;
 			Ogre::SceneManager* scene_manager;        
 			Ogre::RenderSystem* render_system;    
 			Ogre::RenderWindow* ogre_window;  
