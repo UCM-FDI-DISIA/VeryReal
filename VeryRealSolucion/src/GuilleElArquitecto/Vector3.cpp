@@ -34,6 +34,13 @@ Vector3 Vector3::operator/(const float k) {
 Vector3 Vector3::operator=(const Vector3& vector) {
 	return{ x = vector.x,y = vector.y,z=vector.z };
 }
+bool Vector3::operator==(const Vector3& vector) {
+	return(x == vector.x && y == vector.y && z == vector.z);
+}
+bool Vector3::operator!=(const Vector3& vector) {
+	return(x != vector.x && y != vector.y && z != vector.z);
+}
+
 Vector3 Vector3::Normalize() {
 	float m = Magnitude();
 	if (m != 0)

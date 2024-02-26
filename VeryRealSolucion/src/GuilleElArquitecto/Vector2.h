@@ -27,6 +27,8 @@ public:
 	Vector2 operator*(const float k);
 	Vector2 operator/(const float k);
 	Vector2 operator=(const Vector2& vector);
+	bool operator==(const Vector2& vector);
+	bool operator!=(const Vector2& vector);
 	
 	//devuelve el modulo
 	inline float Magnitude() { return sqrtf(powf(x, 2) + powf(y, 2)); }

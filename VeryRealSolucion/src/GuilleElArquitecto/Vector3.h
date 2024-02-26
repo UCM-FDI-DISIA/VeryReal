@@ -31,6 +31,8 @@ public:
 	Vector3 operator*(const float k);
 	Vector3 operator/(const float k);
 	Vector3 operator=(const Vector3& vector);
+	bool operator==(const Vector3& vector);
+	bool operator!=(const Vector3& vector);
 
 	//devuelve el modulo
 	inline float Magnitude() { return sqrtf(powf(x, 2) + powf(y, 2)+powf(y,2)); }

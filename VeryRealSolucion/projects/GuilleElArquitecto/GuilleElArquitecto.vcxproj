@@ -18,6 +18,7 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\Singleton.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector2.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector3.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h" />
@@ -28,6 +29,7 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\Singleton.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector2.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector3.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\Vector4.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
