@@ -15,6 +15,7 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\Entity.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Scene.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\Singleton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h" />
@@ -22,6 +23,7 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity_Names.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Scene.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\Singleton.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
