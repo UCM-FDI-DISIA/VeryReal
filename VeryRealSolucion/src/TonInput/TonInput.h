@@ -1,89 +1,37 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
-// Added gameController suport
+#ifndef TONINPUT
+#define TONINPUT
 #pragma once
-#include <iostream>
-#include <SDL.h>
+
+#include <vector>
+#include <Singleton.h>
 #include <array>
-#include "Singleton.h"
+#include <SDL.h>
 
-// Instead of a Singleton class, we could make it part of
-// SDLUtils as well.
-
-class InputHandler : public Singleton<InputHandler> {
-    friend Singleton<InputHandler>;
+using namespace std;
+class TonInput : public Singleton<TonInput> {
+    friend Singleton<TonInput>;
 
 public:
     enum MOUSEBUTTON : uint8_t {
         LEFT = 0, MIDDLE = 1, RIGHT = 2
     };
 
-    virtual ~InputHandler() {
-    }
+    virtual ~TonInput() {}
 
     // clear the state
-    inline void clearState(bool clearMouseButtons = false) {
-        isCloseWindoEvent_ = false;
-        isKeyDownEvent_ = false;
-        isKeyUpEvent_ = false;
-        isMouseButtonEvent_ = false;
-        isMouseMotionEvent_ = false;
-        if (clearMouseButtons) {
-            for (auto i = 0u; i < 3; i++) {
-                mbState_[i] = false;
-            }
-        }
-    }
+    void clearState(bool clearMouseButtons = false);
+       
+    
 
     // update the state with a new event
-    inline void update(const SDL_Event& event) {
-        switch (event.type) {
-        case SDL_KEYDOWN:
-            onKeyDown(event);
-            break;
-        case SDL_KEYUP:
-            onKeyUp(event);
-            break;
-        case SDL_MOUSEMOTION:
-            onMouseMotion(event);
-            break;
-        case SDL_MOUSEBUTTONDOWN:
-            onMouseButtonChange(event, true);
-            break;
-        case SDL_MOUSEBUTTONUP:
-            onMouseButtonChange(event, false);
-            break;
-        case SDL_WINDOWEVENT:
-            handleWindowEvent(event);
-            break;
-        case SDL_QUIT:
-            isQuit = true;
-        default:
-            break;
-        }
-    }
+    void update(const SDL_Event& event);
+       
+    
 
     // refresh
-    inline void refresh() {
-        SDL_Event event;
-        clearState();
-
-        if (SDL_NumJoysticks() < 1) { // No hay mandos conectados
-            if (isGameControllerConected_) {
-                SDL_GameControllerClose(controller_);
-                isGameControllerConected_ = false;
-            }
-        }
-        else { // Se detecta un mando
-            if (!isGameControllerConected_) {
-                controller_ = SDL_GameControllerOpen(0);
-                if (SDL_IsGameController(0)) 
-                    isGameControllerConected_ = true;
-            }
-        }
-
-        while (SDL_PollEvent(&event))
-            update(event);
-    }
+    inline void refresh();
+       
+  
 
     // close window event
     inline bool closeWindowEvent() {
@@ -157,33 +105,18 @@ public:
         return isGameControllerConected_;
     }
 
-    inline bool isGamePadButtonDown(SDL_GameControllerButton button) {
-        if (isGameControllerConected_) {
-            if (SDL_GameControllerGetButton(controller_, button)) {
-                return true;
-            }
-        }
-        return false;
-    }
+    bool isGamePadButtonDown(SDL_GameControllerButton button);
+    
 
-    inline float getJoystickAxisState(SDL_GameControllerAxis axis) {
-        if (isGameControllerConected_) {
-            float axisState = SDL_GameControllerGetAxis(controller_, axis) / 32767.0;
-            if (abs(axisState) > 1) axisState = round(axisState); // Corrección (los negativos llegan hasta -32768 y los positivos hasta 32767)
-            else if(abs(axisState) < joystickDeathZone_) axisState = 0;
-            return (axisState);
-        }
-        return 0; // Valor predeterminado si el joystick no está conectado o el eje no se está utilizando
-    }
+    float getJoystickAxisState(SDL_GameControllerAxis axis);
 
-    // add support for Joystick, see Chapter 4 of
-    // the book 'SDL Game Development'
+
 
 private:
 
     bool isQuit = false;
 
-    InputHandler() {
+    TonInput() {
         kbState_ = SDL_GetKeyboardState(0);
         clearState(true);
     }
@@ -243,8 +176,7 @@ private:
     SDL_GameController* controller_;
 };
 
-// This macro defines a compact way for using the singleton InputHandler, instead of
-// writing InputHandler::instance()->method() we write ih().method()
-inline InputHandler& ih() {
-    return *InputHandler::Instance();
+inline TonInput& getInputRef() {
+    return *TonInput::Instance();
 }
+#endif // !TONINPUT

@@ -6,60 +6,96 @@
 #include <SDL.h>
 #undef main
 #include <stdlib.h>
-#include "InputHandler.h"
+#include <TonInput.h>
 using namespace std;
-int main()
+
+
+void TonInput::clearState(bool clearMouseButtons)
 {
-	const int FRAME_RATE = 3;
-    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    isCloseWindoEvent_ = false;
+    isKeyDownEvent_ = false;
+    isKeyUpEvent_ = false;
+    isMouseButtonEvent_ = false;
+    isMouseMotionEvent_ = false;
+    if (clearMouseButtons) {
+        for (auto i = 0u; i < 3; i++) {
+            mbState_[i] = false;
+        }
+    }
+}
 
-    SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_Window* mWindow;
-    mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-        854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
-    SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
-    
-	uint32_t startTime, frameTime;
-	startTime = SDL_GetTicks();
-	while (true) {
-		frameTime = SDL_GetTicks() - startTime;
-		ih().refresh(); // Ih se actualiza (actua como el handleEvents())
-		if (frameTime >= FRAME_RATE) {
-			
-			if (ih().isKeyDown(SDL_SCANCODE_X))
-				cout << "X" << endl;
+void TonInput::update(const SDL_Event& event)
+{
+    switch (event.type) {
+    case SDL_KEYDOWN:
+        onKeyDown(event);
+        break;
+    case SDL_KEYUP:
+        onKeyUp(event);
+        break;
+    case SDL_MOUSEMOTION:
+        onMouseMotion(event);
+        break;
+    case SDL_MOUSEBUTTONDOWN:
+        onMouseButtonChange(event, true);
+        break;
+    case SDL_MOUSEBUTTONUP:
+        onMouseButtonChange(event, false);
+        break;
+    case SDL_WINDOWEVENT:
+        handleWindowEvent(event);
+        break;
+    case SDL_QUIT:
+        isQuit = true;
+    default:
+        break;
+    }
+}
 
-			if (ih().isGamePadButtonDown(SDL_CONTROLLER_BUTTON_X))
-				cout << "boton1" << endl;
-			if (ih().isGamePadButtonDown(SDL_CONTROLLER_BUTTON_A))
-				cout << "boton2" << endl;
-			if (ih().isGamePadButtonDown(SDL_CONTROLLER_BUTTON_B))
-				cout << "boton3" << endl;
+void TonInput::refresh() 
+{
+    SDL_Event event;
+    clearState();
 
-			if (ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_LEFTX) != 0)
-				cout << ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_LEFTX) << endl;
-			if (ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_RIGHTY) != 0)
-				cout << ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_RIGHTY) << endl;
-
-			if (ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_TRIGGERLEFT) != 0)
-				cout << ih().getJoystickAxisState(SDL_CONTROLLER_AXIS_TRIGGERLEFT) << endl;
-
-			startTime = SDL_GetTicks();
-		}
-	}
-
-    if (mWindow != nullptr)
-    {
-        SDL_DestroyWindow(mWindow);
-        mWindow = nullptr;
-        SDL_Quit();
+    if (SDL_NumJoysticks() < 1) { // No hay mandos conectados
+        if (isGameControllerConected_) {
+            SDL_GameControllerClose(controller_);
+            isGameControllerConected_ = false;
+        }
+    }
+    else { // Se detecta un mando
+        if (!isGameControllerConected_) {
+            controller_ = SDL_GameControllerOpen(0);
+            if (SDL_IsGameController(0))
+                isGameControllerConected_ = true;
+        }
     }
 
-
-    _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
-    _CrtDumpMemoryLeaks();
-    std::cout << "Hello World!\n";
+    while (SDL_PollEvent(&event))
+        update(event);
 }
+
+bool TonInput::isGamePadButtonDown(SDL_GameControllerButton button) 
+{
+    if (isGameControllerConected_) {
+        if (SDL_GameControllerGetButton(controller_, button)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+float TonInput:: getJoystickAxisState(SDL_GameControllerAxis axis) 
+{
+    if (isGameControllerConected_) {
+        float axisState = SDL_GameControllerGetAxis(controller_, axis) / 32767.0;
+        if (abs(axisState) > 1) axisState = round(axisState); // Corrección (los negativos llegan hasta -32768 y los positivos hasta 32767)
+        else if (abs(axisState) < joystickDeathZone_) axisState = 0;
+        return (axisState);
+    }
+    return 0; // Valor predeterminado si el joystick no está conectado o el eje no se está utilizando
+}
+
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
