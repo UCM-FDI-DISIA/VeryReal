@@ -32,6 +32,12 @@ Vector2 Vector2::operator/(const float k) {
 Vector2 Vector2::operator=(const Vector2& vector) {
 	return{ x = vector.x,y = vector.y };
 }
+Vector2 Vector2::Normalize() {
+	float m = Magnitude();
+	if (m != 0)
+		return *this / Magnitude();
+	//CERROR
+}
 //para hacer Cout en la consola, ayudarnos a depurar
 std::ostream& operator<<(std::ostream& o, const Vector2& vector) {
 	o << vector.GetX() << " , " << vector.GetY() << "\n";

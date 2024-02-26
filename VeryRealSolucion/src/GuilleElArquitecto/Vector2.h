@@ -31,7 +31,7 @@ public:
 	//devuelve el modulo
 	inline float Magnitude() { return sqrtf(powf(x, 2) + powf(y, 2)); }
 	//normaliza el vector
-	inline Vector2 Normalize() { return *this / Magnitude(); }
+	inline Vector2 Normalize();
 };
 std::ostream& operator<<(std::ostream& o, const Vector2& vec);
 
