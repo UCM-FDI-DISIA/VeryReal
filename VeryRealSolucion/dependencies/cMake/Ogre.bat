@@ -63,17 +63,16 @@ rem Se crea el directorio si no está ya creado
     msbuild "OGRE.sln" /p:configuration=Release /maxcpucount
     
     
-    XCOPY /y /s .\bin\debug\OgreMain_d.dll %DLL_FOLDERS%\Ogre\debug\
+   XCOPY /y /s .\bin\debug\OgreMain_d.dll %DLL_FOLDERS%\RomeRender\debug\
        echo %DLL_FOLDERS%
-    XCOPY /y /s .\bin\release\OgreMain.dll %DLL_FOLDERS%\Ogre\release\
+    XCOPY /y /s .\bin\release\OgreMain.dll %DLL_FOLDERS%\RomeRender\release\
        echo %DLL_FOLDERS%
-    XCOPY /y /s .\bin\release\OgreRTShaderSystem_d.dll %DLL_FOLDERS%\Ogre\Builds\bin\debug
+    XCOPY /y /s .\bin\debug\OgreRTShaderSystem_d.dll %DLL_FOLDERS%\RomeRender\debug\
        echo %DLL_FOLDERS%
-    XCOPY /y /s .\bin\release\OgreRTShaderSystem.dll %DLL_FOLDERS%\Ogre\Builds\bin\release
+    XCOPY /y /s .\bin\release\OgreRTShaderSystem.dll %DLL_FOLDERS%\RomeRender\release\
        echo %DLL_FOLDERS%
     XCOPY /y /s .\bin\release\SDL2.dll %DLL_FOLDERS%\SDL2\
        echo %DLL_FOLDERS%
-	
 
 
 if exist .\bullet3-3.25 (
