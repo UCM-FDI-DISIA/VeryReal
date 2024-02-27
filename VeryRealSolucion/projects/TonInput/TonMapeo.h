@@ -1,8 +1,9 @@
 #pragma once
 #ifndef TONMAPEO
 #define TONMAPEO
-#endif // !TONMAPEO
+#endif 
 
+//Enum que describe todos los botones que puede tener un mando
 enum GameControllerButtons
 {
     TI_CONTROLLER_BUTTON_INVALID = -1,
@@ -25,6 +26,9 @@ enum GameControllerButtons
     TI_CONTROLLER_BUTTON_MAX
 };
 
+
+//Enum que describe todos los ejes que puede tener un mando.
+//Estos incluyen tantos los joysticks como los gatillos.
 enum GameControllerAxis
 {
     TI_CONTROLLER_AXIS_INVALID = -1,
@@ -37,6 +41,7 @@ enum GameControllerAxis
     TI_CONTROLLER_AXIS_MAX
 };
 
+//Todas las teclas posibles en un teclado
 enum KeyCodes 
 {
      TI_SCANCODE_UNKNOWN = 0,
@@ -109,8 +114,7 @@ enum KeyCodes
      TI_SCANCODE_PRINTSCREEN = 70,
      TI_SCANCODE_SCROLLLOCK = 71,
      TI_SCANCODE_PAUSE = 72,
-     TI_SCANCODE_INSERT = 73, /**< insert on PC, help on some Mac keyboards (but
-     *   does send code 73, not 117) */
+     TI_SCANCODE_INSERT = 73,
      TI_SCANCODE_HOME = 74,
      TI_SCANCODE_PAGEUP = 75,
      TI_SCANCODE_DELETE = 76,
@@ -120,7 +124,7 @@ enum KeyCodes
      TI_SCANCODE_LEFT = 80,
      TI_SCANCODE_DOWN = 81,
      TI_SCANCODE_UP = 82,
-     TI_SCANCODE_NUMLOCKCLEAR = 83, /**< num lock on PC, clear on Mac keyboards */
+     TI_SCANCODE_NUMLOCKCLEAR = 83, 
      TI_SCANCODE_KP_DIVIDE = 84,
      TI_SCANCODE_KP_MULTIPLY = 85,
      TI_SCANCODE_KP_MINUS = 86,
@@ -137,20 +141,8 @@ enum KeyCodes
      TI_SCANCODE_KP_9 = 97,
      TI_SCANCODE_KP_0 = 98,
      TI_SCANCODE_KP_PERIOD = 99,
-     TI_SCANCODE_NONUSBACKSLASH = 100, /**< This is the additional key that ISO
-     *   keyboards have over ANSI ones,
-     *   located between left shift and Y.
-     *   Produces GRAVE ACCENT and TILDE in a
-     *   US or UK Mac layout, REVERSE SOLIDUS
-     *   (backslash) and VERTICAL LINE in a
-     *   US or UK Windows layout, and
-     *   LESS-THAN SIGN and GREATER-THAN SIGN
-     *   in a Swiss German, German, or French
-     *   layout. */
-     TI_SCANCODE_APPLICATION = 101, /**< windows contextual menu, compose */
-     TI_SCANCODE_POWER = 102, /**< The USB document says this is a status flag,
-     *   not a physical key - but some Mac keyboards
-     *   do have a power key. */
+     TI_SCANCODE_APPLICATION = 101, 
+     TI_SCANCODE_POWER = 102,
      TI_SCANCODE_KP_EQUALS = 103,
      TI_SCANCODE_F13 = 104,
      TI_SCANCODE_F14 = 105,
@@ -164,185 +156,39 @@ enum KeyCodes
      TI_SCANCODE_F22 = 113,
      TI_SCANCODE_F23 = 114,
      TI_SCANCODE_F24 = 115,
-     TI_SCANCODE_EXECUTE = 116,
-     TI_SCANCODE_HELP = 117, /**< AL Integrated Help Center */
-     TI_SCANCODE_MENU = 118, /**< Menu (show menu) */
-     TI_SCANCODE_SELECT = 119,
-     TI_SCANCODE_STOP = 120, /**< AC Stop */
-     TI_SCANCODE_AGAIN = 121, /**< AC Redo/Repeat */
-     TI_SCANCODE_UNDO = 122, /**< AC Undo */
-     TI_SCANCODE_CUT = 123, /**< AC Cut */
-     TI_SCANCODE_COPY = 124, /**< AC Copy */
-     TI_SCANCODE_PASTE = 125, /**< AC Paste */
-     TI_SCANCODE_FIND = 126, /**< AC Find */
+     TI_SCANCODE_UNDO = 122,
+     TI_SCANCODE_CUT = 123,
+     TI_SCANCODE_COPY = 124,
+     TI_SCANCODE_PASTE = 125, 
+     TI_SCANCODE_FIND = 126, 
      TI_SCANCODE_MUTE = 127,
      TI_SCANCODE_VOLUMEUP = 128,
      TI_SCANCODE_VOLUMEDOWN = 129,
-     /* not sure whether there's a reason to enable these */
-     /*     TI_SCANCODE_LOCKINGCAPSLOCK = 130,  */
-     /*     TI_SCANCODE_LOCKINGNUMLOCK = 131, */
-     /*     TI_SCANCODE_LOCKINGSCROLLLOCK = 132, */
-     TI_SCANCODE_KP_COMMA = 133,
-     TI_SCANCODE_KP_EQUALSAS400 = 134,
-     TI_SCANCODE_INTERNATIONAL1 = 135, /**< used on Asian keyboards, see
-     *   footnotes in USB doc */
-
-                                                                                                                                                                                                                                                                 
-         TI_SCANCODE_LANG6 = 149, /**< reserved */
-         TI_SCANCODE_LANG7 = 150, /**< reserved */
-         TI_SCANCODE_LANG8 = 151, /**< reserved */
-         TI_SCANCODE_LANG9 = 152, /**< reserved */
-         TI_SCANCODE_ALTERASE = 153, /**< Erase-Eaze */
-         TI_SCANCODE_SYSREQ = 154,
-         TI_SCANCODE_CANCEL = 155, /**< AC Cancel */
-         TI_SCANCODE_CLEAR = 156,
-         TI_SCANCODE_PRIOR = 157,
-         TI_SCANCODE_RETURN2 = 158,
-         TI_SCANCODE_SEPARATOR = 159,
-         TI_SCANCODE_OUT = 160,
-         TI_SCANCODE_OPER = 161,
-         TI_SCANCODE_CLEARAGAIN = 162,
-         TI_SCANCODE_CRSEL = 163,
-         TI_SCANCODE_EXSEL = 164,
-         TI_SCANCODE_KP_00 = 176,
-         TI_SCANCODE_KP_000 = 177,
-         TI_SCANCODE_THOUSANDSSEPARATOR = 178,
-         TI_SCANCODE_DECIMALSEPARATOR = 179,
-         TI_SCANCODE_CURRENCYUNIT = 180,
-         TI_SCANCODE_CURRENCYSUBUNIT = 181,
-         TI_SCANCODE_KP_LEFTPAREN = 182,
-         TI_SCANCODE_KP_RIGHTPAREN = 183,
-         TI_SCANCODE_KP_LEFTBRACE = 184,
-         TI_SCANCODE_KP_RIGHTBRACE = 185,
-         TI_SCANCODE_KP_TAB = 186,
-         TI_SCANCODE_KP_BACKSPACE = 187,
-         TI_SCANCODE_KP_A = 188,
-         TI_SCANCODE_KP_B = 189,
-         TI_SCANCODE_KP_C = 190,
-         TI_SCANCODE_KP_D = 191,
-         TI_SCANCODE_KP_E = 192,
-         TI_SCANCODE_KP_F = 193,
-         TI_SCANCODE_KP_XOR = 194,
-         TI_SCANCODE_KP_POWER = 195,
-         TI_SCANCODE_KP_PERCENT = 196,
-         TI_SCANCODE_KP_LESS = 197,
-         TI_SCANCODE_KP_GREATER = 198,
-         TI_SCANCODE_KP_AMPERSAND = 199,
-         TI_SCANCODE_KP_DBLAMPERSAND = 200,
-         TI_SCANCODE_KP_VERTICALBAR = 201,
-         TI_SCANCODE_KP_DBLVERTICALBAR = 202,
-         TI_SCANCODE_KP_COLON = 203,
-         TI_SCANCODE_KP_HASH = 204,
-         TI_SCANCODE_KP_SPACE = 205,
-         TI_SCANCODE_KP_AT = 206,
-         TI_SCANCODE_KP_EXCLAM = 207,
-         TI_SCANCODE_KP_MEMSTORE = 208,
-         TI_SCANCODE_KP_MEMRECALL = 209,
-         TI_SCANCODE_KP_MEMCLEAR = 210,
-         TI_SCANCODE_KP_MEMADD = 211,
-         TI_SCANCODE_KP_MEMSUBTRACT = 212,
-         TI_SCANCODE_KP_MEMMULTIPLY = 213,
-         TI_SCANCODE_KP_MEMDIVIDE = 214,
-         TI_SCANCODE_KP_PLUSMINUS = 215,
-         TI_SCANCODE_KP_CLEAR = 216,
-         TI_SCANCODE_KP_CLEARENTRY = 217,
-         TI_SCANCODE_KP_BINARY = 218,
-         TI_SCANCODE_KP_OCTAL = 219,
-         TI_SCANCODE_KP_DECIMAL = 220,
-         TI_SCANCODE_KP_HEXADECIMAL = 221,
-         TI_SCANCODE_LCTRL = 224,
-         TI_SCANCODE_LSHIFT = 225,
-         TI_SCANCODE_LALT = 226, /**< alt, option */
-         TI_SCANCODE_LGUI = 227, /**< windows, command (apple), meta */
-         TI_SCANCODE_RCTRL = 228,
-         TI_SCANCODE_RSHIFT = 229,
-         TI_SCANCODE_RALT = 230, /**< alt gr, option */
-         TI_SCANCODE_RGUI = 231, /**< windows, command (apple), meta */
-         TI_SCANCODE_MODE = 257, /**< I'm not sure if this is really not covered
-         *   by any of the above, but since there's a
-         *   special KMOD_MODE for it I'm adding it here
-         */
-
+     TI_SCANCODE_KP_TAB = 186,
+     TI_SCANCODE_KP_BACKSPACE = 187,
+     TI_SCANCODE_KP_A = 188,
+     TI_SCANCODE_KP_B = 189,
+     TI_SCANCODE_KP_C = 190,
+     TI_SCANCODE_KP_D = 191,
+     TI_SCANCODE_KP_E = 192,
+     TI_SCANCODE_KP_F = 193,
+     TI_SCANCODE_KP_SPACE = 205,
+     TI_SCANCODE_LCTRL = 224,
+     TI_SCANCODE_LSHIFT = 225,
+     TI_SCANCODE_LALT = 226,
+     TI_SCANCODE_LGUI = 227,
+     TI_SCANCODE_RCTRL = 228,
+     TI_SCANCODE_RSHIFT = 229,
+    
          
-         TI_SCANCODE_AUDIONEXT = 258,
-         TI_SCANCODE_AUDIOPREV = 259,
-         TI_SCANCODE_AUDIOSTOP = 260,
-         TI_SCANCODE_AUDIOPLAY = 261,
-         TI_SCANCODE_AUDIOMUTE = 262,
-         TI_SCANCODE_MEDIASELECT = 263,
-         TI_SCANCODE_WWW = 264, /**< AL Internet Browser */
-         TI_SCANCODE_MAIL = 265,
-         TI_SCANCODE_CALCULATOR = 266, /**< AL Calculator */
-         TI_SCANCODE_COMPUTER = 267,
-         TI_SCANCODE_AC_SEARCH = 268, /**< AC Search */
-         TI_SCANCODE_AC_HOME = 269, /**< AC Home */
-         TI_SCANCODE_AC_BACK = 270, /**< AC Back */
-         TI_SCANCODE_AC_FORWARD = 271, /**< AC Forward */
-         TI_SCANCODE_AC_STOP = 272, /**< AC Stop */
-         TI_SCANCODE_AC_REFRESH = 273, /**< AC Refresh */
-         TI_SCANCODE_AC_BOOKMARKS = 274, /**< AC Bookmarks */
-
-         /* @} *//* Usage page 0x0C */
-
-         /**
-          *  \name Walther keys
-          *
-          *  These are values that Christian Walther added (for mac keyboard?).
-          */
-          /* @{ */
-
-          TI_SCANCODE_BRIGHTNESSDOWN = 275,
-          TI_SCANCODE_BRIGHTNESSUP = 276,
-          TI_SCANCODE_DISPLAYSWITCH = 277, /**< display mirroring/dual display
-          *   switch, video mode switch */
-          TI_SCANCODE_KBDILLUMTOGGLE = 278,
-          TI_SCANCODE_KBDILLUMDOWN = 279,
-          TI_SCANCODE_KBDILLUMUP = 280,
-          TI_SCANCODE_EJECT = 281,
-          TI_SCANCODE_SLEEP = 282, /**< SC System Sleep */
-
-          TI_SCANCODE_APP1 = 283,
-          TI_SCANCODE_APP2 = 284,
-
-          /* @} *//* Walther keys */
-
-          /**
-           *  \name Usage page 0x0C (additional media keys)
-           *
-           *  These values are mapped from usage page 0x0C (USB consumer page).
-           */
-           /* @{ */
-
-           TI_SCANCODE_AUDIOREWIND = 285,
-           TI_SCANCODE_AUDIOFASTFORWARD = 286,
-
-           /* @} *//* Usage page 0x0C (additional media keys) */
-
-           /**
-            *  \name Mobile keys
-            *
-            *  These are values that are often used on mobile phones.
-            */
-            /* @{ */
-
-            TI_SCANCODE_SOFTLEFT = 287, /**< Usually situated below the display on phones and
-            *   used as a multi-function feature key for selecting
-            *   a software defined function shown on the bottom left
-            *   of the display. */
-            TI_SCANCODE_SOFTRIGHT = 288, /**< Usually situated below the display on phones and
-            *   used as a multi-function feature key for selecting
-            *   a software defined function shown on the bottom right
-            *   of the display. */
-            TI_SCANCODE_CALL = 289, /**< Used for accepting phone calls. */
-            TI_SCANCODE_ENDCALL = 290, /**< Used for rejecting phone calls. */
-
-            /* @} *//* Mobile keys */
-
-            /* Add any other keys here. */
-
-            TI_NUM_SCANCODES = 512 /**< not a key, just marks the number of scancodes */
+         
+     TI_SCANCODE_BRIGHTNESSDOWN = 275,
+     TI_SCANCODE_BRIGHTNESSUP = 276,
+     TI_NUM_SCANCODES = 512 /**< not a key, just marks the number of scancodes */
 };
 
+
+//Lista de eventos de SDL
 
 enum Events
 {
