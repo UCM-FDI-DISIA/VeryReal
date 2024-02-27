@@ -2,8 +2,8 @@
 
 rem Directorios
 set BAT_DIR=%~dp0
-set BULLET_SRC=C:/Users/pk/Desktop/p3/VeryReal/VeryRealSolucion/dependencies/Bullet/Src
-set BULLET_BUILD=C:/Users/pk/Desktop/p3/VeryReal/VeryRealSolucion/dependencies/Bullet/Build
+set BULLET_SRC=%BAT_DIR%..\Bullet\Src
+set BULLET_BUILD=%BAT_DIR%..\Bullet\Builds
 set DLL_FOLDERS=%BAT_DIR%..\..\bin
 
 rem Crear el directorio de compilación si no existe
@@ -37,8 +37,8 @@ cmake ^
   -D USE_GLUT=OFF ^
   -D USE_MSVC_RUNTIME_LIBRARY_DLL=ON ^
   -D USE_SOFT_BODY_MULTI_BODY_DYNAMICS_WORLD=ON ^
-  -D CMAKE_INSTALL_PREFIX="C:/Program Files (x86)/BULLET_PHYSICS" ^
-  -D LIBRARY_OUTPUT_PATH="C:/Users/pk/Desktop/p3/VeryReal/VeryRealSolucion/dependencies/Bullet/Build/lib" ^
+  -D CMAKE_INSTALL_PREFIX="C:\Program Files (x86)\BULLET_PHYSICS" ^
+  -D LIBRARY_OUTPUT_PATH="%BAT_DIR%..\Bullet\Builds\lib" ^
   -D CMAKE_CONFIGURATION_TYPES="Debug;Release;MinSizeRel;RelWithDebInfo" ^
   -D CMAKE_DEBUG_POSTFIX="_Debug" ^
   -D CMAKE_MINSIZEREL_POSTFIX="_MinSizeRel" ^
