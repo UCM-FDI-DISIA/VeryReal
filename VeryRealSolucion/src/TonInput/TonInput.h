@@ -20,18 +20,12 @@ public:
 
     // clear the state
     void clearState(bool clearMouseButtons = false);
-       
-    
 
     // update the state with a new event
     void update(const SDL_Event& event);
-       
-    
-
+         
     // refresh
-    inline void refresh();
-       
-  
+    void refresh(); 
 
     // close window event
     inline bool closeWindowEvent() {
@@ -109,7 +103,6 @@ public:
     
 
     float getJoystickAxisState(SDL_GameControllerAxis axis);
-
 
 
 private:
