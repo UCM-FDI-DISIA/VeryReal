@@ -125,6 +125,8 @@ rem Se crea el directorio si no está ya creado
        echo %RENDERSYSTEMGL%
     XCOPY /y /s .\bin\debug\zlib.dll %DLL_FOLDERS%\RomeRender\debug\
        echo %ZLIB%
+    XCOPY /y /s .\bin\release\plugins.cfg %DLL_FOLDERS%\RomeRender\debug\
+       echo %PLUGINS%
     XCOPY /y /s .\bin\release\SDL2.dll %DLL_FOLDERS%\SDL2\
        echo %DLL_FOLDERS%
 	
