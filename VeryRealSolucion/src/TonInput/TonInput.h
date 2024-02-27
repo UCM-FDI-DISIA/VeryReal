@@ -29,7 +29,7 @@ public:
     
 
     // refresh
-    inline void refresh();
+    void refresh();
        
   
 
