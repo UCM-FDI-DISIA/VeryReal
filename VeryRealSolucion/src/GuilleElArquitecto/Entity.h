@@ -42,6 +42,7 @@ public:
 	inline bool HasComponent(component_name c_name) {
 		return components_map.count(c_name);
 	}
+	//deuelve el componente especifico y si no esta devuelve nullptr, no es error
 	template<typename T>
 	inline T* GetComponent(component_name c_name) {
 		if (!HasComponent(c_name)) {

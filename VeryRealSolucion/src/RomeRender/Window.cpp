@@ -24,8 +24,9 @@ void Window::init() {
     ruta_configuracion = file_system_layer->getConfigFilePath("plugins.cfg");
     //  FALTA TRATAMIENTO DE ERROR SU NO EXISTE ruta_configuracion
     file_system_layer->setHomePath(ruta_configuracion);
-    Ogre::Root* root = new Ogre::Root();
+    Ogre::Root* root = new Ogre::Root(ruta_configuracion+ "\\..\\", "", file_system_layer->getWritablePath("ogre.log"));
     //obtenermos el render system de tipo GL (los datos se descargan en el .bat)
+    
     root->loadPlugin("RenderSystem_GL");
     Ogre::RenderSystem* renderSystem = root->getRenderSystemByName("GL Rendering Subsystem");
     const Ogre::RenderSystemList renderSystems = root->getAvailableRenderers();

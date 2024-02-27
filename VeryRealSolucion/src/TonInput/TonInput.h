@@ -8,6 +8,7 @@
 #include <SDL.h>
 
 using namespace std;
+
 class TonInput : public Singleton<TonInput> {
     friend Singleton<TonInput>;
 
@@ -18,158 +19,219 @@ public:
 
     virtual ~TonInput() {}
 
-    // clear the state
-    void clearState(bool clearMouseButtons = false);
+    /// Clears the state of the input
+    void ClearState(bool clearMouseButtons = false);
 
-    // update the state with a new event
-    void update(const SDL_Event& event);
-         
-    // refresh
-    void refresh(); 
+    /// Updates the input state with a new event
+    void Update(const SDL_Event& event);
 
-    // close window event
-    inline bool closeWindowEvent() {
-        return isCloseWindoEvent_;
+    /// Refreshes the input state of keyboard, controller and mouse
+    void Refresh();
+
+    /// Checks if a close window event has occurred
+    /// @return True if a close window event has occurred, false otherwise
+    inline bool CloseWindowEvent() {
+        return is_close_window_event;
     }
 
-    // keyboard
-    inline bool keyDownEvent() {
-        return isKeyDownEvent_;
+
+
+    // KEYBOARD METHODS
+
+    /// Checks if a key down event has occurred
+    /// @return True if a key down event has occurred, false otherwise
+    inline bool KeyDownEvent() {
+        return is_key_down_event;
     }
 
-    inline bool keyUpEvent() {
-        return isKeyUpEvent_;
+    /// Checks if a key up event has occurred
+    /// @return True if a key up event has occurred, false otherwise
+    inline bool KeyUpEvent() {
+        return is_key_up_event;
     }
 
-    inline bool isKeyJustDown(SDL_Scancode key) {
-        return keyDownEvent() && kbState_[key] == 1;
+    /// Checks if a specific key has just been pressed down
+    /// @param key -> The SDL_Scancode of the key to check
+    /// @return True if the specific key just down event has occurred, false otherwise
+    inline bool IsKeyJustDown(SDL_Scancode key) {
+        return KeyDownEvent() && kb_state[key] == 1;
     }
 
-    inline bool isKeyJustDown(SDL_Keycode key) {
-        return isKeyDown(SDL_GetScancodeFromKey(key));
+    /// Checks if a specific key has just been pressed down
+    /// @param key -> The SDL_Keycode of the key to check
+    inline bool IsKeyJustDown(SDL_Keycode key) {
+        return IsKeyDown(SDL_GetScancodeFromKey(key));
     }
 
-    inline bool isKeyDown(SDL_Scancode key) {
-        return kbState_[key] == 1;
+    /// Checks if a specific key is currently down
+    /// @param key -> The SDL_Scancode of the key to check
+    inline bool IsKeyDown(SDL_Scancode key) {
+        return kb_state[key] == 1;
     }
 
-    inline bool isKeyDown(SDL_Keycode key) {
-        return isKeyDown(SDL_GetScancodeFromKey(key));
+    /// Checks if a specific key is currently down
+    /// @param key -> The SDL_Keycode of the key to check
+    inline bool IsKeyDown(SDL_Keycode key) {
+        return IsKeyDown(SDL_GetScancodeFromKey(key));
     }
 
-    inline bool isKeyJustUp(SDL_Scancode key) {
-        return keyUpEvent() && kbState_[key] == 0;
+    /// Checks if a specific key has just been released
+    /// @param key -> The SDL_Scancode of the key to check
+    inline bool IsKeyJustUp(SDL_Scancode key) {
+        return KeyUpEvent() && kb_state[key] == 0;
     }
 
-    inline bool isKeyJustUp(SDL_Keycode key) {
-        return isKeyJustUp(SDL_GetScancodeFromKey(key));
+    /// Checks if a specific key has just been released
+    /// @param key -> The SDL_Keycode of the key to check
+    inline bool IsKeyJustUp(SDL_Keycode key) {
+        return IsKeyJustUp(SDL_GetScancodeFromKey(key));
     }
 
-    inline bool isKeyUp(SDL_Scancode key) {
-        return kbState_[key] == 0;
+    /// Checks if a specific key is currently up
+    /// @param key -> The SDL_Scancode of the key to check
+    inline bool IsKeyUp(SDL_Scancode key) {
+        return kb_state[key] == 0;
     }
 
-    inline bool isKeyUp(SDL_Keycode key) {
-        return isKeyUp(SDL_GetScancodeFromKey(key));
+    /// Checks if a specific key is currently up
+    /// @param key -> The SDL_Keycode of the key to check
+    inline bool IsKeyUp(SDL_Keycode key) {
+        return IsKeyUp(SDL_GetScancodeFromKey(key));
     }
 
-    // mouse
-    inline bool mouseMotionEvent() {
-        return isMouseMotionEvent_;
+
+
+    // MOUSE METHODS
+
+    /// Checks if the mouse is receiving any motion event
+    /// @return True if the mouse is receiving any motion event, false otherwise
+    inline bool MouseMotionEvent() {
+        return is_mouse_motion_event;
     }
 
-    inline bool quit() {
-        return isQuit;
+    /// Checks if the event "quit" is activated
+    /// @return True if the event "quit" is activated, false otherwise
+    inline bool Quit() {
+        return is_quit;
     }
 
-    inline bool mouseButtonEvent() {
-        return isMouseButtonEvent_;
+    /// Checks if the mouse is receiving any button event
+    /// @return True if the mouse is receiving any button event, false otherwise
+    inline bool MouseButtonEvent() {
+        return is_mouse_button_event;
     }
 
-    inline const std::pair<Sint32, Sint32>& getMousePos() {
-        return mousePos_;
+    /// Checks mouse position
+    /// @return A pair containing the x and y coordinates of the mouse position
+    inline const std::pair<Sint32, Sint32>& GetMousePos() {
+        return mouse_pos;
     }
 
-    inline int getMouseButtonState(MOUSEBUTTON b) {
-        return mbState_[b];
+    /// Checks the state of a specific mouse button
+    /// @param button -> The mouse button to check
+    /// @return The state of the specified mouse button
+    inline int GetMouseButtonState(MOUSEBUTTON button) {
+        return mb_state[button];
     }
 
-    //controller
-    inline bool isGameControllerConected() {
-        return isGameControllerConected_;
+
+
+    //CONTROLLER METHODS
+
+    /// Checks if there is a game controller connected
+    /// @return True if a game controller is connected, false otherwise
+    inline bool IsGameControllerConnected() {
+        return is_game_controller_connected;
     }
 
-    bool isGamePadButtonDown(SDL_GameControllerButton button);
-    
+    /// Checks if a specific button on the game controller is pressed
+    /// @param button -> The button on the game controller to check
+    /// @return True if the specified button is pressed, false otherwise
+    bool IsGamePadButtonDown(SDL_GameControllerButton button);
 
-    float getJoystickAxisState(SDL_GameControllerAxis axis);
+    /// Checks the value of a specific controller axis
+    /// @param axis -> The joystick or trigger axis to check
+    /// @return The value of the specified joystick or trigger axis (ranging from -1 to 1)
+    float GetJoystickAxisState(SDL_GameControllerAxis axis);
 
 
 private:
 
-    bool isQuit = false;
+    bool is_quit = false;
 
+    /// Initializes the input system (Called only once as part of Singleton)
     TonInput() {
-        kbState_ = SDL_GetKeyboardState(0);
-        clearState(true);
+        kb_state = SDL_GetKeyboardState(0);
+        ClearState(true);
     }
 
-    inline void onKeyDown(const SDL_Event&) {
-        isKeyDownEvent_ = true;
+    /// Updates the state of the key down event
+    inline void OnKeyDown(const SDL_Event&) {
+        is_key_down_event = true;
     }
 
-    inline void onKeyUp(const SDL_Event&) {
-        isKeyUpEvent_ = true;
+
+    /// Updates the state of the key up event
+    inline void OnKeyUp(const SDL_Event&) {
+        is_key_up_event = true;
     }
 
-    inline void onMouseMotion(const SDL_Event& event) {
-        isMouseMotionEvent_ = true;
-        mousePos_.first = event.motion.x;
-        mousePos_.second = event.motion.y;
-
+    /// Updates the state of mouse motion (position and whether it's moving or not)
+    /// @param -> event The SDL event containing mouse motion information
+    inline void OnMouseMotion(const SDL_Event& event) {
+        is_mouse_motion_event = true;
+        mouse_pos.first = event.motion.x;
+        mouse_pos.second = event.motion.y;
     }
 
-    inline void onMouseButtonChange(const SDL_Event& event, bool isDown) {
-        isMouseButtonEvent_ = true;
+    /// Updates the state of mouse buttons
+    /// @param event -> The SDL event containing mouse button information
+    /// @param isDown -> True if the mouse button is pressed, false if released
+    inline void OnMouseButtonChange(const SDL_Event& event, bool isDown) {
+        is_mouse_button_event = true;
         switch (event.button.button) {
         case SDL_BUTTON_LEFT:
-            mbState_[LEFT] = isDown;
+            mb_state[LEFT] = isDown;
             break;
         case SDL_BUTTON_MIDDLE:
-            mbState_[MIDDLE] = isDown;
+            mb_state[MIDDLE] = isDown;
             break;
         case SDL_BUTTON_RIGHT:
-            mbState_[RIGHT] = isDown;
+            mb_state[RIGHT] = isDown;
             break;
         default:
             break;
         }
     }
 
-    inline void handleWindowEvent(const SDL_Event& event) {
+    /// Handles all window events
+    /// @param event -> The SDL event containing window information
+    inline void HandleWindowEvent(const SDL_Event& event) {
         switch (event.window.event) {
         case SDL_WINDOWEVENT_CLOSE:
-            isCloseWindoEvent_ = true;
+            is_close_window_event = true;
             break;
         default:
             break;
         }
     }
 
-    float joystickDeathZone_ = 0.12;
-    bool isGameControllerConected_;
-    bool isCloseWindoEvent_;
-    bool isKeyUpEvent_;
-    bool isKeyDownEvent_;
-    bool isMouseMotionEvent_;
-    bool isMouseButtonEvent_;
-    std::pair<Sint32, Sint32> mousePos_;
-    std::array<bool, 3> mbState_;
-    const Uint8* kbState_;
-    SDL_GameController* controller_;
+    float joystick_death_zone = 0.12;
+    bool is_game_controller_connected;
+    bool is_close_window_event;
+    bool is_key_up_event;
+    bool is_key_down_event;
+    bool is_mouse_motion_event;
+    bool is_mouse_button_event;
+    std::pair<Sint32, Sint32> mouse_pos;
+    std::array<bool, 3> mb_state;
+    const Uint8* kb_state;
+    SDL_GameController* controller;
 };
 
-inline TonInput& getInputRef() {
+/// Singleton instance
+/// @return A pointer of the instance
+inline TonInput& TI() {
     return *TonInput::Instance();
 }
 #endif // !TONINPUT

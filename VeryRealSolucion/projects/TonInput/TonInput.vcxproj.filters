@@ -32,5 +32,8 @@
     <ClInclude Include="..\..\src\TonInput\TonInput.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="TonMapeo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

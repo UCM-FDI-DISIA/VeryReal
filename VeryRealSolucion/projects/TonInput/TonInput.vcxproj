@@ -26,6 +26,7 @@
     <ClInclude Include="..\..\src\TonInput\InputHandler.h" />
     <ClInclude Include="..\..\src\TonInput\Singleton.h" />
     <ClInclude Include="..\..\src\TonInput\TonInput.h" />
+    <ClInclude Include="TonMapeo.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

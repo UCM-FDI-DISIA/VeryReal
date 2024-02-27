@@ -8,93 +8,86 @@
 #include <TonInput.h>
 using namespace std;
 
-
-void TonInput::clearState(bool clearMouseButtons)
-{
-    isCloseWindoEvent_ = false;
-    isKeyDownEvent_ = false;
-    isKeyUpEvent_ = false;
-    isMouseButtonEvent_ = false;
-    isMouseMotionEvent_ = false;
+void TonInput::ClearState(bool clearMouseButtons){
+    is_close_window_event = false;
+    is_key_down_event = false;
+    is_key_up_event = false;
+    is_mouse_button_event = false;
+    is_mouse_motion_event = false;
     if (clearMouseButtons) {
         for (auto i = 0u; i < 3; i++) {
-            mbState_[i] = false;
+            mb_state[i] = false;
         }
     }
 }
 
-void TonInput::update(const SDL_Event& event)
-{
+void TonInput::Update(const SDL_Event& event) {
     switch (event.type) {
     case SDL_KEYDOWN:
-        onKeyDown(event);
+        OnKeyDown(event);
         break;
     case SDL_KEYUP:
-        onKeyUp(event);
+        OnKeyUp(event);
         break;
     case SDL_MOUSEMOTION:
-        onMouseMotion(event);
+        OnMouseMotion(event);
         break;
     case SDL_MOUSEBUTTONDOWN:
-        onMouseButtonChange(event, true);
+        OnMouseButtonChange(event, true);
         break;
     case SDL_MOUSEBUTTONUP:
-        onMouseButtonChange(event, false);
+        OnMouseButtonChange(event, false);
         break;
     case SDL_WINDOWEVENT:
-        handleWindowEvent(event);
+        HandleWindowEvent(event);
         break;
     case SDL_QUIT:
-        isQuit = true;
+        is_quit = true;
     default:
         break;
     }
 }
 
-void TonInput::refresh() 
-{
+void TonInput::Refresh() {
     SDL_Event event;
-    clearState();
+    ClearState();
 
     if (SDL_NumJoysticks() < 1) { // No hay mandos conectados
-        if (isGameControllerConected_) {
-            SDL_GameControllerClose(controller_);
-            isGameControllerConected_ = false;
+        if (is_game_controller_connected) {
+            SDL_GameControllerClose(controller);
+            is_game_controller_connected = false;
         }
     }
     else { // Se detecta un mando
-        if (!isGameControllerConected_) {
-            controller_ = SDL_GameControllerOpen(0);
+        if (!is_game_controller_connected) {
+            controller = SDL_GameControllerOpen(0);
             if (SDL_IsGameController(0))
-                isGameControllerConected_ = true;
+                is_game_controller_connected = true;
         }
     }
 
     while (SDL_PollEvent(&event))
-        update(event);
+        Update(event);
 }
 
-bool TonInput::isGamePadButtonDown(SDL_GameControllerButton button) 
-{
-    if (isGameControllerConected_) {
-        if (SDL_GameControllerGetButton(controller_, button)) {
+bool TonInput::IsGamePadButtonDown(SDL_GameControllerButton button) {
+    if (is_game_controller_connected) {
+        if (SDL_GameControllerGetButton(controller, button)) {
             return true;
         }
     }
     return false;
 }
 
-float TonInput:: getJoystickAxisState(SDL_GameControllerAxis axis) 
-{
-    if (isGameControllerConected_) {
-        float axisState = SDL_GameControllerGetAxis(controller_, axis) / 32767.0;
+float TonInput:: GetJoystickAxisState(SDL_GameControllerAxis axis) {
+    if (is_game_controller_connected) {
+        float axisState = SDL_GameControllerGetAxis(controller, axis) / 32767.0;
         if (abs(axisState) > 1) axisState = round(axisState); // Corrección (los negativos llegan hasta -32768 y los positivos hasta 32767)
-        else if (abs(axisState) < joystickDeathZone_) axisState = 0;
+        else if (abs(axisState) < joystick_death_zone) axisState = 0;
         return (axisState);
     }
     return 0; // Valor predeterminado si el joystick no está conectado o el eje no se está utilizando
 }
-
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración

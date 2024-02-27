@@ -63,11 +63,68 @@ rem Se crea el directorio si no está ya creado
     msbuild "OGRE.sln" /p:configuration=Release /maxcpucount
     
     
-    XCOPY /y /s .\bin\debug\OgreMain_d.dll %DLL_FOLDERS%\Ogre\debug\
-       echo %DLL_FOLDERS%
-    XCOPY /y /s .\bin\release\OgreMain.dll %DLL_FOLDERS%\Ogre\release\
-       echo %DLL_FOLDERS%
-
+    XCOPY /y /s .\bin\debug\OgreMain_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %OGRE_MAIN_D%
+    XCOPY /y /s .\bin\release\OgreMain.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %OGRE_MAIN%
+    XCOPY /y /s .\bin\debug\OgreRTShaderSystem_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %OGRERTSHADERSYSTEM_D%
+    XCOPY /y /s .\bin\release\OgreRTShaderSystem.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %OGRERTSHADERSYSTEM%
+    XCOPY /y /s .\bin\debug\Codec_STBI_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %CODEC_D%
+    XCOPY /y /s .\bin\release\Codec_STBI.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %CODEC%
+    XCOPY /y /s .\bin\debug\OgreMeshLodGenerator_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %OGREMESH_D%
+    XCOPY /y /s .\bin\release\OgreMeshLodGenerator.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %OGREMESH%
+    XCOPY /y /s .\bin\debug\OgreOverlay_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %OGREOVERLAY_D%
+    XCOPY /y /s .\bin\release\OgreOverlay.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %OGREOVERLAY%
+    XCOPY /y /s .\bin\debug\OgrePaging_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %OGREPAGING_D%
+    XCOPY /y /s .\bin\release\OgrePaging.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %OGREPAGING%
+    XCOPY /y /s .\bin\debug\OgreProperty_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %OGREPROPERY_D%
+    XCOPY /y /s .\bin\release\OgreProperty.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %OGREPROPERY%
+    XCOPY /y /s .\bin\debug\OgreTerrain_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %OGRETERRAIN_D%
+    XCOPY /y /s .\bin\release\OgreTerrain.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %OGRETERRAIN%
+    XCOPY /y /s .\bin\debug\OgreVolume_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %OGREVOLUME_D%
+    XCOPY /y /s .\bin\release\OgreVolume.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %OGREVOLUME%
+    XCOPY /y /s .\bin\debug\Plugin_BSPSceneManager_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %PLUGINBSPS_D%
+    XCOPY /y /s .\bin\release\Plugin_BSPSceneManager.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %PLUGINBSPS%
+    XCOPY /y /s .\bin\debug\Plugin_OctreeSceneManager_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %PLUGINOCTREE_D%
+    XCOPY /y /s .\bin\release\Plugin_OctreeSceneManager.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %PLUGINOCTREE%
+    XCOPY /y /s .\bin\debug\Plugin_OctreeZone_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %PLUGINOCTREEZONE_D%
+    XCOPY /y /s .\bin\release\Plugin_OctreeZone.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %PLUGINOCTREEZONE%
+    XCOPY /y /s .\bin\debug\Plugin_ParticleFX_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %PLUGINPARTICLE%
+    XCOPY /y /s .\bin\release\Plugin_ParticleFX.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %PLUGINPARTICLE%
+    XCOPY /y /s .\bin\debug\Plugin_PCZSceneManager_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %PLUGINPCZ_D%
+    XCOPY /y /s .\bin\release\Plugin_PCZSceneManager.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %PLUGINPCZ%
+    XCOPY /y /s .\bin\debug\RenderSystem_GL_d.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %RENDERSYSTEMGL_D%
+    XCOPY /y /s .\bin\release\RenderSystem_GL.dll %DLL_FOLDERS%\RomeRender\release\
+       echo %RENDERSYSTEMGL%
+    XCOPY /y /s .\bin\debug\zlib.dll %DLL_FOLDERS%\RomeRender\debug\
+       echo %ZLIB%
     XCOPY /y /s .\bin\release\SDL2.dll %DLL_FOLDERS%\SDL2\
        echo %DLL_FOLDERS%
 	
