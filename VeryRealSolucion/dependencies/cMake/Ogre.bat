@@ -67,7 +67,10 @@ rem Se crea el directorio si no está ya creado
        echo %DLL_FOLDERS%
     XCOPY /y /s .\bin\release\OgreMain.dll %DLL_FOLDERS%\Ogre\release\
        echo %DLL_FOLDERS%
-
+    XCOPY /y /s .\bin\release\OgreRTShaderSystem_d.dll %DLL_FOLDERS%\Ogre\Builds\bin\debug
+       echo %DLL_FOLDERS%
+    XCOPY /y /s .\bin\release\OgreRTShaderSystem.dll %DLL_FOLDERS%\Ogre\Builds\bin\release
+       echo %DLL_FOLDERS%
     XCOPY /y /s .\bin\release\SDL2.dll %DLL_FOLDERS%\SDL2\
        echo %DLL_FOLDERS%
 	
