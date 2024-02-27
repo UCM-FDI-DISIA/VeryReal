@@ -4,11 +4,12 @@ template<class T>
 class Singleton
 {
 private:
-	//The only instance of class T
-	static std::unique_ptr<T> instance_pointer;
+
 
 protected:
 	Singleton() {};
+	//The only instance of class T
+	static std::unique_ptr<T> instance_pointer;
 
 public:
 	Singleton<T>& operator=(const Singleton<T>& o) = delete;
@@ -44,3 +45,5 @@ public:
 	}
 };
 
+template<typename T>
+std::unique_ptr<T> Singleton<T>::instance_pointer;
