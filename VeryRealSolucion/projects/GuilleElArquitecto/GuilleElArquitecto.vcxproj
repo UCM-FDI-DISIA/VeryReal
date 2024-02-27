@@ -14,6 +14,7 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\Component.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Entity.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\Manager.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Scene.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Singleton.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector2.cpp" />
@@ -25,6 +26,7 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component_Names.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity_Names.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\Manager.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Scene.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Singleton.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector2.h" />
