@@ -22,26 +22,26 @@ int main()
 	startTime = SDL_GetTicks();
 	while (true) {
 		frameTime = SDL_GetTicks() - startTime;
-		getInputRef().refresh(); // Ih se actualiza (actua como el handleEvents())
+		TI().Refresh(); // Ih se actualiza (actua como el handleEvents())
 		if (frameTime >= FRAME_RATE) {
 
-			if (getInputRef().isKeyDown(SDL_SCANCODE_X))
+			if (TI().IsKeyDown(SDL_SCANCODE_X))
 				cout << "X" << endl;
 
-			if (getInputRef().isGamePadButtonDown(SDL_CONTROLLER_BUTTON_X))
+			if (TI().IsGamePadButtonDown(SDL_CONTROLLER_BUTTON_X))
 				cout << "boton1" << endl;
-			if (getInputRef().isGamePadButtonDown(SDL_CONTROLLER_BUTTON_A))
+			if (TI().IsGamePadButtonDown(SDL_CONTROLLER_BUTTON_A))
 				cout << "boton2" << endl;
-			if (getInputRef().isGamePadButtonDown(SDL_CONTROLLER_BUTTON_B))
+			if (TI().IsGamePadButtonDown(SDL_CONTROLLER_BUTTON_B))
 				cout << "boton3" << endl;
 
-			if (getInputRef().getJoystickAxisState(SDL_CONTROLLER_AXIS_LEFTX) != 0)
-				cout << getInputRef().getJoystickAxisState(SDL_CONTROLLER_AXIS_LEFTX) << endl;
-			if (getInputRef().getJoystickAxisState(SDL_CONTROLLER_AXIS_RIGHTY) != 0)
-				cout << getInputRef().getJoystickAxisState(SDL_CONTROLLER_AXIS_RIGHTY) << endl;
+			if (TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_LEFTX) != 0)
+				cout << TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_LEFTX) << endl;
+			if (TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_RIGHTY) != 0)
+				cout << TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_RIGHTY) << endl;
 
-			if (getInputRef().getJoystickAxisState(SDL_CONTROLLER_AXIS_TRIGGERLEFT) != 0)
-				cout << getInputRef().getJoystickAxisState(SDL_CONTROLLER_AXIS_TRIGGERLEFT) << endl;
+			if (TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_TRIGGERLEFT) != 0)
+				cout << TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_TRIGGERLEFT) << endl;
 
 			startTime = SDL_GetTicks();
 		}
