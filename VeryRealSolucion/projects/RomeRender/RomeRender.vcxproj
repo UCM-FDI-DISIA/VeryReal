@@ -11,11 +11,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\RomeRender\Animator.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\Camera.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\Light.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\MeshRender.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\RenderSystem.cpp" />
     <ClCompile Include="..\..\src\RomeRender\RomeRender.cpp" />
     <ClCompile Include="..\..\src\RomeRender\SGTechniqueResolverListener.cpp" />
     <ClCompile Include="..\..\src\RomeRender\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\RomeRender\Animator.h" />
+    <ClInclude Include="..\..\src\RomeRender\Camera.h" />
+    <ClInclude Include="..\..\src\RomeRender\Light.h" />
+    <ClInclude Include="..\..\src\RomeRender\MeshRender.h" />
+    <ClInclude Include="..\..\src\RomeRender\RenderSystem.h" />
     <ClInclude Include="..\..\src\RomeRender\SGTechniqueResolverListener.h" />
     <ClInclude Include="..\..\src\RomeRender\Window.h" />
   </ItemGroup>

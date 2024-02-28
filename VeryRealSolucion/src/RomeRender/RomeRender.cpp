@@ -14,8 +14,11 @@
 using namespace VeryReal;
 int main()
 {
+
     Window* wind = new Window();
-    wind->init();
+    wind->Init();
+   // wind->CreateWindoww();
+    wind->demo();
    /* _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
    
     SDL_Init(SDL_INIT_EVERYTHING);
