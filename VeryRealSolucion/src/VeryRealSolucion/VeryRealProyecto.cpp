@@ -23,8 +23,7 @@ int main(int argc, char* argv[])
 			// Update (Componentes)
 			// Render
 			
-			
-				cout << TI().IsGamePadButtonDown(SDL_CONTROLLER_BUTTON_A) << endl;
+			cout << TI().IsGamePadButtonDown(SDL_CONTROLLER_BUTTON_A) << endl;
 
 			// Sonido
 			startTime = SDL_GetTicks();

@@ -63,7 +63,7 @@ void Window::init() {
     scene_manager = root->createSceneManager();
     render_system->_initRenderTargets();
     //asignamos la 
-    string ruta = ruta_configuracion + "\\..\\..\\..\\Assets";
+    string ruta = ruta_configuracion + "\\..\\Assets";
     Ogre::ResourceGroupManager::getSingleton().addResourceLocation(ruta, "FileSystem");
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
     //luz principal
