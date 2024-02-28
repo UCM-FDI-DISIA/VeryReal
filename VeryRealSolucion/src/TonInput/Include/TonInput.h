@@ -3,7 +3,7 @@
 #pragma once
 
 #include <vector>
-#include <Singleton.h>
+#include "Singleton.h"
 #include <array>
 #include <SDL.h>
 
@@ -157,8 +157,6 @@ public:
 
 private:
 
-    bool is_quit = false;
-
     /// Initializes the input system (Called only once as part of Singleton)
     TonInput() {
         kb_state = SDL_GetKeyboardState(0);
@@ -216,6 +214,7 @@ private:
         }
     }
 
+    bool is_quit = false;
     float joystick_death_zone = 0.12;
     bool is_game_controller_connected;
     bool is_close_window_event;

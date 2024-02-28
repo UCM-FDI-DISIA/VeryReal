@@ -5,7 +5,6 @@ class Singleton
 {
 private:
 
-
 protected:
 	Singleton() {};
 	//The only instance of class T
