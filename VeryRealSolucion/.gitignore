@@ -44,5 +44,5 @@ Builds/
 # Excepciones
 
 ![Bb]in/[Aa]ssets/
-![Dd]ependencies/FMOD/[Ss]rc/*.dll
-![Dd]ependencies/FMOD/[Ss]rc/*.lib
+![Dd]ependencies/FMOD/[Ss]rc/*/[Ll]ib/*.dll
+![Dd]ependencies/FMOD/[Ss]rc/*/[Ll]ib/*.lib
