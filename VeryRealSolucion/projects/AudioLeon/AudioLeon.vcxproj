@@ -80,7 +80,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>fmodL_vc.lib;fmodstudioL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\FMOD\src\api\core\lib\x64\;$(SolutionDir)Dependencies\FMOD\src\api\studio\lib\x64\;</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -101,7 +102,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>fmod_vc.lib;fmodstudio_vc.lib;</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\FMOD\src\api\core\lib\x64\;$(SolutionDir)Dependencies\FMOD\src\api\studio\lib\x64\;</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
