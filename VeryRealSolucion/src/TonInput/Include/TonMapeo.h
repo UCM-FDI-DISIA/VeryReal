@@ -1,11 +1,15 @@
 #pragma once
 #ifndef TONMAPEO
-#define TONMAPEO
-#endif 
+#define TONMAPEO 
+
+typedef enum {
+    TI_MOUSE_LEFT = 0, 
+    TI_MOUSE_MIDDLE = 1, 
+    TI_MOUSE_RIGHT = 2
+}TI_MouseButton;
 
 //Enum que describe todos los botones que puede tener un mando
-enum TIGameControllerButtons
-{
+typedef enum {
     TI_CONTROLLER_BUTTON_INVALID = -1,
     TI_CONTROLLER_BUTTON_A,
     TI_CONTROLLER_BUTTON_B,
@@ -24,13 +28,11 @@ enum TIGameControllerButtons
     TI_CONTROLLER_BUTTON_DPAD_RIGHT,
     TI_CONTROLLER_BUTTON_MISC1,   
     TI_CONTROLLER_BUTTON_MAX
-};
-
+}TI_GameControllerButton;
 
 //Enum que describe todos los ejes que puede tener un mando.
 //Estos incluyen tantos los joysticks como los gatillos.
-enum TIGameControllerAxis
-{
+typedef enum {
     TI_CONTROLLER_AXIS_INVALID = -1,
     TI_CONTROLLER_AXIS_LEFTX,
     TI_CONTROLLER_AXIS_LEFTY,
@@ -39,11 +41,10 @@ enum TIGameControllerAxis
     TI_CONTROLLER_AXIS_TRIGGERLEFT,
     TI_CONTROLLER_AXIS_TRIGGERRIGHT,
     TI_CONTROLLER_AXIS_MAX
-};
+}TI_GameControllerAxis;
 
 //Todas las teclas posibles en un teclado
-enum TIKeyCodes 
-{
+typedef enum {
      TI_SCANCODE_UNKNOWN = 0,
      TI_SCANCODE_A = 4,
      TI_SCANCODE_B = 5,
@@ -180,18 +181,15 @@ enum TIKeyCodes
      TI_SCANCODE_RCTRL = 228,
      TI_SCANCODE_RSHIFT = 229,
     
-         
-         
+          
      TI_SCANCODE_BRIGHTNESSDOWN = 275,
      TI_SCANCODE_BRIGHTNESSUP = 276,
      TI_NUM_SCANCODES = 512 /**< not a key, just marks the number of scancodes */
-};
+}TI_KeyCode;
 
 
 //Lista de eventos de SDL
-
-enum TIEvents
-{
+typedef enum {
     TI_FIRSTEVENT = 0, /**< Unused (do not remove) */
 
     /* Application events */
@@ -305,8 +303,7 @@ enum TIEvents
 
     TI_USEREVENT = 0x8000,
 
-    /**
-     *  This last event is only for bounding internal arrays
-     */
-    TI_LASTEVENT = 0xFFFF
-};
+    TI_LASTEVENT = 0xFFFF /* This last event is only for bounding internal arrays */
+}TI_Event;
+
+#endif

@@ -14,10 +14,7 @@ class TonInput : public Singleton<TonInput> {
     friend Singleton<TonInput>;
 
 public:
-    enum MOUSEBUTTON : uint8_t {
-        LEFT = 0, MIDDLE = 1, RIGHT = 2
-    };
-
+  
     virtual ~TonInput() {}
 
     /// Clears the state of the input
@@ -54,7 +51,7 @@ public:
     /// Checks if a specific key has just been pressed down
     /// @param key -> The SDL_Scancode of the key to check
     /// @return True if the specific key just down event has occurred, false otherwise
-    inline bool IsKeyJustDown(TIKeyCodes key) {
+    inline bool IsKeyJustDown(TI_KeyCode key) {
         return KeyDownEvent() && kb_state[key] == 1;
     }
 
@@ -62,14 +59,14 @@ public:
 
     /// Checks if a specific key is currently down
     /// @param key -> The SDL_Scancode of the key to check
-    inline bool IsKeyDown(TIKeyCodes key) {
+    inline bool IsKeyDown(TI_KeyCode key) {
         return kb_state[key] == 1;
     }
 
   
     /// Checks if a specific key has just been released
     /// @param key -> The SDL_Scancode of the key to check
-    inline bool IsKeyJustUp(TIKeyCodes key) {
+    inline bool IsKeyJustUp(TI_KeyCode key) {
         return KeyUpEvent() && kb_state[key] == 0;
     }
 
@@ -77,7 +74,7 @@ public:
 
     /// Checks if a specific key is currently up
     /// @param key -> The SDL_Scancode of the key to check
-    inline bool IsKeyUp(TIKeyCodes key) {
+    inline bool IsKeyUp(TI_KeyCode key) {
         return kb_state[key] == 0;
     }
 
@@ -111,7 +108,7 @@ public:
     /// Checks the state of a specific mouse button
     /// @param button -> The mouse button to check
     /// @return The state of the specified mouse button
-    inline int GetMouseButtonState(MOUSEBUTTON button) {
+    inline int GetMouseButtonState(TI_MouseButton button) {
         return mb_state[button];
     }
 
@@ -128,12 +125,12 @@ public:
     /// Checks if a specific button on the game controller is pressed
     /// @param button -> The button on the game controller to check
     /// @return True if the specified button is pressed, false otherwise
-    bool IsGamePadButtonDown(SDL_GameControllerButton button);
+    bool IsGamePadButtonDown(TI_GameControllerButton button);
 
     /// Checks the value of a specific controller axis
     /// @param axis -> The joystick or trigger axis to check
     /// @return The value of the specified joystick or trigger axis (ranging from -1 to 1)
-    float GetJoystickAxisState(SDL_GameControllerAxis axis);
+    float GetJoystickAxisState(TI_GameControllerAxis axis);
 
 
 private:
@@ -170,13 +167,13 @@ private:
         is_mouse_button_event = true;
         switch (event.button.button) {
         case SDL_BUTTON_LEFT:
-            mb_state[LEFT] = isDown;
+            mb_state[TI_MOUSE_LEFT] = isDown;
             break;
         case SDL_BUTTON_MIDDLE:
-            mb_state[MIDDLE] = isDown;
+            mb_state[TI_MOUSE_MIDDLE] = isDown;
             break;
         case SDL_BUTTON_RIGHT:
-            mb_state[RIGHT] = isDown;
+            mb_state[TI_MOUSE_RIGHT] = isDown;
             break;
         default:
             break;

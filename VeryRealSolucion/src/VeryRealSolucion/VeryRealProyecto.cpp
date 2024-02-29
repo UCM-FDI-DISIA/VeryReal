@@ -22,9 +22,8 @@ int main(int argc, char* argv[])
 			// Fisicas
 			// Update (Componentes)
 			// Render
-			if (TI().IsKeyDown(TI_SCANCODE_A))
-				cout << "A"<<endl;
 			// Sonido
+
 			startTime = SDL_GetTicks();
 		}
 	}

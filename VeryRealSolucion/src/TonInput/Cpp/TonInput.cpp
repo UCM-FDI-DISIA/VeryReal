@@ -70,18 +70,18 @@ void TonInput::Refresh() {
         Update(event);
 }
 
-bool TonInput::IsGamePadButtonDown(SDL_GameControllerButton button) {
+bool TonInput::IsGamePadButtonDown(TI_GameControllerButton button) {
     if (is_game_controller_connected) {
-        if (SDL_GameControllerGetButton(controller, button)) {
+        if (SDL_GameControllerGetButton(controller, (SDL_GameControllerButton)button)) {
             return true;
         }
     }
     return false;
 }
 
-float TonInput:: GetJoystickAxisState(SDL_GameControllerAxis axis) {
+float TonInput::GetJoystickAxisState(TI_GameControllerAxis axis) {
     if (is_game_controller_connected) {
-        float axisState = SDL_GameControllerGetAxis(controller, axis) / 32767.0;
+        float axisState = SDL_GameControllerGetAxis(controller, (SDL_GameControllerAxis)axis) / 32767.0;
         if (abs(axisState) > 1) axisState = round(axisState); // Corrección (los negativos llegan hasta -32768 y los positivos hasta 32767)
         else if (abs(axisState) < joystick_death_zone) axisState = 0;
         return (axisState);
