@@ -24,7 +24,7 @@ if exist "%DLL_FOLDERS%" (
 
     XCOPY /y /s "%FMOD_CORE_ORIGIN%\fmodL.dll" "%DLL_FOLDERS%"
     XCOPY /y /s "%FMOD_STUDIO_ORIGIN%\fmodstudioL.dll" "%DLL_FOLDERS%"
-    echo Copia en %DLL_FOLDERS%\Debug completada
+    echo Copia en %DLL_FOLDERS% completada
 
     echo Copia de DLLs en Release
 
@@ -32,7 +32,7 @@ if exist "%DLL_FOLDERS%" (
 
     XCOPY /y /s "%FMOD_CORE_ORIGIN%\fmod.dll" "%DLL_FOLDERS%"
     XCOPY /y /s "%FMOD_STUDIO_ORIGIN%\fmodstudio.dll" "%DLL_FOLDERS%"
-    echo Copia en %DLL_FOLDERS%\Release completada
+    echo Copia en %DLL_FOLDERS% completada
 
 	
 

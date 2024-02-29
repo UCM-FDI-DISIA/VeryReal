@@ -1,6 +1,5 @@
 #include <TonInput.h>
 #include <TonMapeo.h>
-#include "AudioLeon.h"
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
 
@@ -24,8 +23,10 @@ int main(int argc, char* argv[])
 			// Update (Componentes)
 			// Render
 			
-			cout << TI().IsGamePadButtonDown(SDL_CONTROLLER_BUTTON_A) << endl;
-
+			if(TI().IsKeyDown(SDLK_a))
+			cout << "A" << endl;
+			if (TI().IsKeyDown(SDLK_b))
+				cout << "B" << endl;
 			// Sonido
 			startTime = SDL_GetTicks();
 		}
