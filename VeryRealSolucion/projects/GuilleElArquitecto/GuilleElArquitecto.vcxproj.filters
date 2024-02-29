@@ -56,12 +56,6 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\Scene.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Entity_Names.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Component_Names.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>

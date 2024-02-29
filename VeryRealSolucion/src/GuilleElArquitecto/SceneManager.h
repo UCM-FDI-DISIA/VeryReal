@@ -6,11 +6,15 @@
 class SceneManager:public Manager
 {
 private:
+	//lista con todas la escenas
 	list<Scene*> scenes_list;
 public:
 	SceneManager();
 	virtual ~SceneManager();
+
 	void Update(const double& dt);
+	//si hay escenas que quieren ser eliminadas las removemos aquí
+	//esto elimina de manera más segura las escenas
 	void Refresh();
 
 	Scene* AddScene(scene_name name);

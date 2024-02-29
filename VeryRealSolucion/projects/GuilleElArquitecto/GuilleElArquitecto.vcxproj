@@ -25,9 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Component_Names.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Entity_Names.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Manager.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Scene.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\SceneManager.h" />

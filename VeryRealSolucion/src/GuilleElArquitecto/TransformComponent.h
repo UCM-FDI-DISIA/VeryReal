@@ -1,7 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "Vector3.h"
-//class Component;
+//class Component; PREGUNTAR
 class TransformComponent : public Component {
 private:
 	Vector3 position;
