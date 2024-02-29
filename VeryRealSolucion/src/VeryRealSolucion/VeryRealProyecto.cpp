@@ -1,5 +1,5 @@
 #include <TonInput.h>
-#include <TonMapeo.h>
+
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
 
@@ -22,11 +22,8 @@ int main(int argc, char* argv[])
 			// Fisicas
 			// Update (Componentes)
 			// Render
-			
-			if(TI().IsKeyDown(SDLK_a))
-			cout << "A" << endl;
-			if (TI().IsKeyDown(SDLK_b))
-				cout << "B" << endl;
+			if (TI().IsKeyDown(TI_SCANCODE_A))
+				cout << "A"<<endl;
 			// Sonido
 			startTime = SDL_GetTicks();
 		}

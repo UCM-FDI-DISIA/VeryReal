@@ -6,6 +6,7 @@
 #include "Singleton.h"
 #include <array>
 #include <SDL.h>
+#include <TonMapeo.h>
 
 using namespace std;
 
@@ -53,54 +54,34 @@ public:
     /// Checks if a specific key has just been pressed down
     /// @param key -> The SDL_Scancode of the key to check
     /// @return True if the specific key just down event has occurred, false otherwise
-    inline bool IsKeyJustDown(SDL_Scancode key) {
+    inline bool IsKeyJustDown(TIKeyCodes key) {
         return KeyDownEvent() && kb_state[key] == 1;
     }
 
-    /// Checks if a specific key has just been pressed down
-    /// @param key -> The SDL_Keycode of the key to check
-    inline bool IsKeyJustDown(SDL_Keycode key) {
-        return IsKeyDown(SDL_GetScancodeFromKey(key));
-    }
+   
 
     /// Checks if a specific key is currently down
     /// @param key -> The SDL_Scancode of the key to check
-    inline bool IsKeyDown(SDL_Scancode key) {
+    inline bool IsKeyDown(TIKeyCodes key) {
         return kb_state[key] == 1;
     }
 
-    /// Checks if a specific key is currently down
-    /// @param key -> The SDL_Keycode of the key to check
-    inline bool IsKeyDown(SDL_Keycode key) {
-        return IsKeyDown(SDL_GetScancodeFromKey(key));
-    }
-
+  
     /// Checks if a specific key has just been released
     /// @param key -> The SDL_Scancode of the key to check
-    inline bool IsKeyJustUp(SDL_Scancode key) {
+    inline bool IsKeyJustUp(TIKeyCodes key) {
         return KeyUpEvent() && kb_state[key] == 0;
     }
 
-    /// Checks if a specific key has just been released
-    /// @param key -> The SDL_Keycode of the key to check
-    inline bool IsKeyJustUp(SDL_Keycode key) {
-        return IsKeyJustUp(SDL_GetScancodeFromKey(key));
-    }
+   
 
     /// Checks if a specific key is currently up
     /// @param key -> The SDL_Scancode of the key to check
-    inline bool IsKeyUp(SDL_Scancode key) {
+    inline bool IsKeyUp(TIKeyCodes key) {
         return kb_state[key] == 0;
     }
 
-    /// Checks if a specific key is currently up
-    /// @param key -> The SDL_Keycode of the key to check
-    inline bool IsKeyUp(SDL_Keycode key) {
-        return IsKeyUp(SDL_GetScancodeFromKey(key));
-    }
-
-
-
+  
     // MOUSE METHODS
 
     /// Checks if the mouse is receiving any motion event

@@ -4,7 +4,7 @@
 #endif 
 
 //Enum que describe todos los botones que puede tener un mando
-enum GameControllerButtons
+enum TIGameControllerButtons
 {
     TI_CONTROLLER_BUTTON_INVALID = -1,
     TI_CONTROLLER_BUTTON_A,
@@ -29,7 +29,7 @@ enum GameControllerButtons
 
 //Enum que describe todos los ejes que puede tener un mando.
 //Estos incluyen tantos los joysticks como los gatillos.
-enum GameControllerAxis
+enum TIGameControllerAxis
 {
     TI_CONTROLLER_AXIS_INVALID = -1,
     TI_CONTROLLER_AXIS_LEFTX,
@@ -42,7 +42,7 @@ enum GameControllerAxis
 };
 
 //Todas las teclas posibles en un teclado
-enum KeyCodes 
+enum TIKeyCodes 
 {
      TI_SCANCODE_UNKNOWN = 0,
      TI_SCANCODE_A = 4,
@@ -190,7 +190,7 @@ enum KeyCodes
 
 //Lista de eventos de SDL
 
-enum Events
+enum TIEvents
 {
     TI_FIRSTEVENT = 0, /**< Unused (do not remove) */
 
