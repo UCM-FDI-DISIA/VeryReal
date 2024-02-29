@@ -16,7 +16,9 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Manager.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Scene.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\SceneManager.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Singleton.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\TransformComponent.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector2.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector3.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector4.cpp" />
@@ -28,7 +30,9 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity_Names.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Manager.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Scene.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\SceneManager.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Singleton.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\TransformComponent.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector2.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector3.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector4.h" />

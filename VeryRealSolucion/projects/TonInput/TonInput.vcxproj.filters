@@ -18,9 +18,6 @@
     <ClInclude Include="..\..\src\TonInput\Include\InputHandler.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\TonInput\Include\Singleton.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\TonInput\Include\TonInput.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>

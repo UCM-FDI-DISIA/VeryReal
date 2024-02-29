@@ -24,7 +24,7 @@ Entity* Scene::GetEntity(entity_name e_name) {
 	}
 	return entities_map.at(e_name);
 }
-void  Scene::Update(const double& dt) {
+void  Scene::Update() {
 	for (auto e : entities_map) {
 		if (e.second->GetActive()) {
 			e.second->Update();

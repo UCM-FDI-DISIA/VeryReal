@@ -1,9 +1,9 @@
 #pragma once
 #include <unordered_map>
-#include "Component_Names.h"
 #include "Component.h"
 #include <iostream>
 using namespace std;
+using entity_name = string;
 class Entity
 {
 	//COSAS BASICAS:
@@ -24,6 +24,7 @@ private:
 	unordered_map<component_name, Component*> components_map;
 	list<component_name> components_list_removed;
 	bool is_alive;
+	entity_name name;
 public:
 	//mirar si queremos que reciba algo, de momento PedroPablo gestiona la escena
 	Entity();
@@ -57,5 +58,8 @@ public:
 
 	void Update();
 	void Refresh();
+
+	inline void SetName(entity_name name) { this->name = name; }
+	inline entity_name GetName() { return name; }
 };
 

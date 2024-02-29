@@ -1,12 +1,13 @@
 #pragma once
 class Entity;
+using component_name = string;
 class Component	//CLASE ABSTRACTA
 {
 	
 private:
 	bool active = true;
 	Entity* entity;
-
+	component_name name;
 public:
 	Component() {}
 	virtual ~Component() {}
@@ -19,5 +20,8 @@ public:
 	//El componente necesita saber cual es su entidad, para acceder a otros componentes de esta
 	inline void SetEntity(Entity* entity) { this->entity = entity; }
 	inline Entity* GetEntity() { return entity; }
+
+	inline void SetName(component_name name) { this->name = name; }
+	inline component_name GetName() { return name; }
 };
 

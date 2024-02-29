@@ -7,7 +7,7 @@ set OGRE_BUILD=%BAT_DIR%..\Ogre\Builds\
 set OGRE_SLN=%BAT_DIR%..\Ogre\Builds\OGRE.sln
 set DLL_FOLDERS=%BAT_DIR%..\..\bin
 rem Se crea el directorio si no está ya creado
-
+echo %BAT_DIR%
     mkdir %OGRE_BUILD%
 
     cmake ^
