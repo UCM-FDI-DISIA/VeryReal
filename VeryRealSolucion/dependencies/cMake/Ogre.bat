@@ -1,11 +1,10 @@
-@echo off
 
 rem Directorios
 set BAT_DIR=%~dp0
 set OGRE_SRC=%BAT_DIR%..\Ogre\src
 set OGRE_BUILD=%BAT_DIR%..\Ogre\Builds\
 set OGRE_SLN=%BAT_DIR%..\Ogre\Builds\OGRE.sln
-set DLL_FOLDERS=%BAT_DIR%..\..\bin
+set DLL_FOLDERS=%BAT_DIR%..\..\bin\
 rem Se crea el directorio si no está ya creado
 echo %BAT_DIR%
     mkdir %OGRE_BUILD%
