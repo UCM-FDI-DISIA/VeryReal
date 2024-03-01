@@ -43,6 +43,12 @@ else()
   add_library(lua STATIC ${LUA_CORE_SRC} ${LUA_LIB_SRC})
 endif()
 
+# Definir los nombres de las DLLs según la configuración
+set_target_properties(lua PROPERTIES 
+    DEBUG_OUTPUT_NAME lua_d
+    RELEASE_OUTPUT_NAME lua
+)
+
 add_executable(luai ${LUA_CORE_SRC} ${LUA_LIB_SRC} src/lua.c src/lua.c)
 
 if (WIN32)

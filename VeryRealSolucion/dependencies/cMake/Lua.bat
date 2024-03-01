@@ -16,8 +16,8 @@ rem Compilacion de la solucion en Debug y en Release
 msbuild %LUA_SLN% /t:build /p:configuration=Debug /maxcpucount
 msbuild %LUA_SLN% /t:build /p:configuration=Release /maxcpucount
 
-::XCOPY /y /s .\Debug\lua_d.dll %DLL_FOLDERS%
-::    echo %DLL_FOLDERS%
+XCOPY /y /s .\Debug\lua_d.dll %DLL_FOLDERS%
+    echo %DLL_FOLDERS%
 XCOPY /y /s .\Release\lua.dll %DLL_FOLDERS%
     echo %DLL_FOLDERS%
 echo Terminada la build de Lua
