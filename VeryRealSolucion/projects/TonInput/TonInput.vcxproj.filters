@@ -15,25 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\TonInput\TonInput.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Pruebas.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
+    <ClInclude Include="..\..\src\TonInput\Include\InputHandler.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TonInput\Include\TonInput.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TonInput\Include\TonMapeo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\TonInput\InputHandler.h">
+    <ClCompile Include="..\..\src\TonInput\Cpp\Pruebas.cpp">
       <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\TonInput\Singleton.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\TonInput\TonInput.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="TonMapeo.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TonInput\Cpp\TonInput.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Component.h"
 class SDL_Window;
 
 namespace Ogre {
@@ -14,12 +15,45 @@ namespace Ogre {
 namespace VeryReal {
 	using namespace Ogre;
 	using namespace std;
+	//clase para crear una ventana en nuestro motor
 	class Window
 	{
 		public:
-			Window();
-			void init();
+			// <summary>
+			/// Método que inicializa los valores de la clase
+			/// </summary>
+			/// <param name="root">Raiz de ogre.</param>
+
+			Window(Ogre::Root* root=nullptr);
+			// <summary>
+			/// Destructora.Elimina la ventana y desactiva el modulo de video de sdl
+			/// </summary>
+
 			~Window();
+			// <summary>
+			/// Método que crea la ventana inicializando el modulo de SDL.
+			/// Se crea una ventana con sdl y luego se le pasa a ogre. 
+			/// Por ahora se cargan aqui los plguings de renderizado de ogre (no irán aqui en un futuro)
+			/// </summary>
+			//<returns> un puntero a la ventana creada con sdl
+			SDL_Window* CreateWindoww();
+			void Init();//ira fuera
+			// <summary>
+			///Actualiza la ventana en caso de cerrarla,camviarla de tamaño y así
+			/// </summary>
+
+			void Update();
+			void demo();
+			// <summary>
+			/// Método que devuelve un puntero a la ventana de sdl
+			/// </summary>
+			/// <returns>Puntero a la ventana de SDL.</returns>
+			SDL_Window*  GetSDLWindow();
+			// <summary>
+			/// Método que devuelve un puntero a la ventana de ogre
+			/// </summary>
+			/// <returns>Puntero a la ventana de ogre.</returns>
+			Ogre::RenderWindow* GetOgreWindow();
 		private:
 			Ogre::SceneManager* scene_manager;        
 			Ogre::RenderSystem* render_system;    
@@ -30,6 +64,7 @@ namespace VeryReal {
 			int window_width, window_height;
 			SDL_Window* sdl_window;
 			FileSystemLayer* file_system_layer;
+			Ogre::Root* root;
 	};
 }
 

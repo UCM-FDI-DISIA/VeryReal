@@ -12,6 +12,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\AudioLeon\AudioLeon.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioListener.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioSource.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
+      <Project>{e9fe864b-f16f-44b6-a10f-dad3701db44f}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h" />
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListener.h" />
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSource.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -47,11 +59,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)</OutDir>
+    <OutDir>$(SolutionDir)lib</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)</OutDir>
+    <OutDir>$(SolutionDir)bin\</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -60,11 +73,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\FMOD\src\api\core\lib\x64\;$(SolutionDir)Dependencies\FMOD\src\api\studio\lib\x64\;</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -74,6 +93,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -81,6 +101,11 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\FMOD\src\api\core\lib\x64\;$(SolutionDir)Dependencies\FMOD\src\api\studio\lib\x64\;</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

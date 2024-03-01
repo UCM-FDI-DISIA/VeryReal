@@ -4,7 +4,7 @@
 #include <SDL.h>
 #undef main
 #include <stdlib.h>
-#include <TonInput.h>
+#include "TonInput.h"
 using namespace std;
 
 int main()
@@ -25,23 +25,18 @@ int main()
 		TI().Refresh(); // Ih se actualiza (actua como el handleEvents())
 		if (frameTime >= FRAME_RATE) {
 
-			if (TI().IsKeyDown(SDL_SCANCODE_X))
-				cout << "X" << endl;
-
-			if (TI().IsGamePadButtonDown(SDL_CONTROLLER_BUTTON_X))
-				cout << "boton1" << endl;
-			if (TI().IsGamePadButtonDown(SDL_CONTROLLER_BUTTON_A))
-				cout << "boton2" << endl;
-			if (TI().IsGamePadButtonDown(SDL_CONTROLLER_BUTTON_B))
-				cout << "boton3" << endl;
-
-			if (TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_LEFTX) != 0)
-				cout << TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_LEFTX) << endl;
-			if (TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_RIGHTY) != 0)
-				cout << TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_RIGHTY) << endl;
-
-			if (TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_TRIGGERLEFT) != 0)
-				cout << TI().GetJoystickAxisState(SDL_CONTROLLER_AXIS_TRIGGERLEFT) << endl;
+			if(TI().IsKeyDown(TI_SCANCODE_A))
+				cout << "A" << endl;
+			if (TI().IsKeyJustDown(TI_SCANCODE_B))
+				cout << "B" << endl;
+			if (TI().IsGamePadButtonDown(TI_CONTROLLER_BUTTON_A))
+				cout << "BUTTON" << endl;
+			if (TI().GetJoystickAxisState(TI_CONTROLLER_AXIS_LEFTX) != 0)
+				cout << TI().GetJoystickAxisState(TI_CONTROLLER_AXIS_LEFTX) << endl;
+			if (TI().GetJoystickAxisState(TI_CONTROLLER_AXIS_TRIGGERRIGHT) != 0)
+				cout << TI().GetJoystickAxisState(TI_CONTROLLER_AXIS_TRIGGERRIGHT) << endl;
+			if (TI().GetMouseButtonState(TI_MOUSE_LEFT))
+				cout << "L" << endl;
 
 			startTime = SDL_GetTicks();
 		}
@@ -55,7 +50,8 @@ int main()
 	}
 
 
-	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
-	_CrtDumpMemoryLeaks();
-	std::cout << "Hello World!\n";
+	//_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
+	//_CrtDumpMemoryLeaks();
+	//std::cout << "Hello World!\n";
+	return 0;
 }

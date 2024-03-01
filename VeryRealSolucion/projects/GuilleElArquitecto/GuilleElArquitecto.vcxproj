@@ -16,19 +16,21 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Manager.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Scene.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\SceneManager.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Singleton.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\TransformComponent.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector2.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector3.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Component_Names.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Entity_Names.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Manager.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Scene.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\SceneManager.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Singleton.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\TransformComponent.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector2.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector3.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector4.h" />
@@ -42,13 +44,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -67,11 +69,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)</OutDir>
+    <OutDir>$(SolutionDir)lib</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)</OutDir>
+    <OutDir>$(SolutionDir)lib</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

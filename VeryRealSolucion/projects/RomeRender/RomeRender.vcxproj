@@ -11,13 +11,28 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\RomeRender\Animator.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\Camera.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\Light.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\MeshRender.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\RenderSystem.cpp" />
     <ClCompile Include="..\..\src\RomeRender\RomeRender.cpp" />
     <ClCompile Include="..\..\src\RomeRender\SGTechniqueResolverListener.cpp" />
     <ClCompile Include="..\..\src\RomeRender\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\RomeRender\Animator.h" />
+    <ClInclude Include="..\..\src\RomeRender\Camera.h" />
+    <ClInclude Include="..\..\src\RomeRender\Light.h" />
+    <ClInclude Include="..\..\src\RomeRender\MeshRender.h" />
+    <ClInclude Include="..\..\src\RomeRender\RenderSystem.h" />
     <ClInclude Include="..\..\src\RomeRender\SGTechniqueResolverListener.h" />
     <ClInclude Include="..\..\src\RomeRender\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
+      <Project>{e9fe864b-f16f-44b6-a10f-dad3701db44f}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -28,7 +43,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -53,11 +68,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)lib</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)bin\</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -66,7 +81,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -87,7 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

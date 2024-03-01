@@ -13,6 +13,14 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\VeryRealSolucion\VeryRealProyecto.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AudioLeon\AudioLeon.vcxproj">
+      <Project>{cac0128e-e2fd-47e5-84ca-4e93e472f912}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
+      <Project>{e9fe864b-f16f-44b6-a10f-dad3701db44f}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -47,12 +55,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)</OutDir>
+    <OutDir>$(SolutionDir)bin</OutDir>
     <TargetName>$(ProjectName)_Debug</TargetName>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)</OutDir>
+    <OutDir>$(SolutionDir)bin</OutDir>
     <TargetName>$(ProjectName)_Release</TargetName>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
   </PropertyGroup>
@@ -62,13 +70,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)src\TonInput\include;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\AudioLeon;$(SolutionDir)dependencies\Ogre\Builds\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Ogre\Builds\lib\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>TonInput_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -79,15 +87,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)src\TonInput\include;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\AudioLeon;$(SolutionDir)dependencies\Ogre\Builds\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Ogre\Builds\lib\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>TonInput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,15 +1,15 @@
 #pragma once
 #include <memory>
+
 template<class T>
 class Singleton
 {
 private:
-	//The only instance of class T
+	//unica instancia de la clase de tipo T
 	static std::unique_ptr<T> instance_pointer;
 
 protected:
 	Singleton() {};
-
 public:
 	Singleton<T>& operator=(const Singleton<T>& o) = delete;
 	Singleton(const Singleton<T>& o) = delete;
@@ -28,16 +28,11 @@ public:
 	static T* Init(Targs &&...args) {
 		if (instance_pointer.get() == nullptr) {
 			instance_pointer.reset(new T(std::forward<Targs>(args)...));
-			//PREGUNTAR CERROR
-			//std::cout << "Singleton: Instance of " << typeid(T).name() << " created.\n";
-		}
-		else {
-			//PREGUNTAR CERROR
-			//std::cout << "Singleton error: There already is an instance of class " << typeid(T).name() << ".\n";
 		}
 		return instance_pointer.get();
 	}
 
+	//elimina el puntero de la instancia
 	static void Delete() {
 		if (instance_pointer.get() != nullptr)
 			delete instance_pointer.release();
