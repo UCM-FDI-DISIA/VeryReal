@@ -5,38 +5,46 @@
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
 
+
+//Submodulos de Github
+//Los juegos, descargan consigo el motor.
+//Desde el motor siempre sabemos donde esta la dll del juego.
+//dll export es una manera de que desde el juego, esa función sea visible.
+
+
 #include <iostream>
 int main(int argc, char* argv[])
 {
-	VeryReal::Window* a = new VeryReal::Window();
-	//const int FRAME_RATE = 3;
-	//SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
-	//SDL_Window* mWindow; // Ventana (temporal) para que funcione el input
-	//mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-	//	854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
-	//SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
+	
+	const int FRAME_RATE = 3;
 
-	//uint32_t startTime, frameTime;
-	//startTime = SDL_GetTicks();
-	//while (true) {
-	//	frameTime = SDL_GetTicks() - startTime;
-	//	TI().Refresh(); // Ih se actualiza (actua como el handleEvents())
-	//	if (frameTime >= FRAME_RATE) {
-	//		// Fisicas
-	//		// Update (Componentes)
-	//		// Render
-	//		// Sonido
+	SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
+	SDL_Window* mWindow; // Ventana (temporal) para que funcione el input
+	mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+		854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+	SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
 
-	//		startTime = SDL_GetTicks();
-	//	}
-	//}
+	uint32_t startTime, frameTime;
+	startTime = SDL_GetTicks();
+	while (true) {
+		frameTime = SDL_GetTicks() - startTime;
+		TI().Refresh(); // Ih se actualiza (actua como el handleEvents())
+		if (frameTime >= FRAME_RATE) {
+			// Fisicas
+			// Update (Componentes)
+			// Render
+			// Sonido
 
-	//if (mWindow != nullptr)
-	//{
-	//	SDL_DestroyWindow(mWindow);
-	//	mWindow = nullptr;
-	//	SDL_Quit();
-	//}
+			startTime = SDL_GetTicks();
+		}
+	}
+
+	if (mWindow != nullptr)
+	{
+		SDL_DestroyWindow(mWindow);
+		mWindow = nullptr;
+		SDL_Quit();
+	}
 	return 0;
 }
 
