@@ -17,6 +17,8 @@ Scene* SceneManager::AddScene(scene_name name) {
 	scenes_list.push_back(scene);
 	ActivationScene(name, true);
 	EliminationScene(name, false);
+
+	return scene;
 }
 void SceneManager::RemoveScene(scene_name name) {
 	for (auto it : scenes_list) if (it->GetName() == name) scenes_list.remove(it);
