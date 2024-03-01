@@ -1,5 +1,7 @@
 #include <TonInput.h>
-#include <Window.h> 
+#include <TonMapeo.h>
+#include <Window.h>
+
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
 
