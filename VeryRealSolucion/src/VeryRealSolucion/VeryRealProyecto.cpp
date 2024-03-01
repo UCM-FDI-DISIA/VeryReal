@@ -8,8 +8,7 @@
 #include <iostream>
 int main(int argc, char* argv[])
 {
-	VeryReal::Window* a;
-	a = new VeryReal::Window();
+	VeryReal::Window* a = new VeryReal::Window();
 	//const int FRAME_RATE = 3;
 	//SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
 	//SDL_Window* mWindow; // Ventana (temporal) para que funcione el input

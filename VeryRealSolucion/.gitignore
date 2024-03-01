@@ -42,7 +42,5 @@ Builds/
 [Ll]ib/
 
 # Excepciones
-
-![Bb]in/[Aa]ssets/
 ![Dd]ependencies/FMOD/[Ss]rc/api/*/[Ll]ib/*.dll
 ![Dd]ependencies/FMOD/[Ss]rc/api/*/[Ll]ib/*.lib
