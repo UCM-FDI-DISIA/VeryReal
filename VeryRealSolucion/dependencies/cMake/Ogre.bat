@@ -2,7 +2,7 @@
 rem Directorios
 set BAT_DIR=%~dp0
 set OGRE_SRC=%BAT_DIR%..\Ogre\src
-set OGRE_BUILD=%BAT_DIR%..\Ogre\Builds\
+set OGRE_BUILD=%BAT_DIR%..\Ogre\Builds
 set OGRE_SLN=%BAT_DIR%..\Ogre\Builds\OGRE.sln
 set DLL_FOLDERS=%BAT_DIR%..\..\bin\
 rem Se crea el directorio si no está ya creado
@@ -139,4 +139,4 @@ if exist .\bullet3-3.25 (
 
 
     echo Terminada la build de Ogre
-pause
+    cd %BAT_DIR%
