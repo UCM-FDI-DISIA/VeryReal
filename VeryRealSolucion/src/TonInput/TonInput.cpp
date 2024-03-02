@@ -5,7 +5,7 @@
 #include <SDL.h>
 #undef main
 #include <stdlib.h>
-#include <TonInput.h>
+#include "TonInput.h"
 using namespace std;
 
 void TonInput::ClearState(bool clearMouseButtons){

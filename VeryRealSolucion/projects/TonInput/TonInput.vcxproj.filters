@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\TonInput\Include\InputHandler.h">
+    <ClInclude Include="..\..\src\TonInput\InputHandler.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\TonInput\Include\TonInput.h">
+    <ClInclude Include="..\..\src\TonInput\TonInput.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\TonInput\Include\TonMapeo.h">
+    <ClInclude Include="..\..\src\TonInput\TonMapeo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\TonInput\Cpp\Pruebas.cpp">
+    <ClCompile Include="..\..\src\TonInput\Pruebas.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\TonInput\Cpp\TonInput.cpp">
+    <ClCompile Include="..\..\src\TonInput\TonInput.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
