@@ -24,5 +24,7 @@ call FMOD.bat
 
 cd %BAT_DIR%
 
+
+cd ..\..\
 msbuild "VeryRealSolucion.sln" /p:configuration=Debug
 msbuild "VeryRealSolucion.sln" /p:configuration=Release
