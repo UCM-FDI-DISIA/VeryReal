@@ -26,6 +26,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Manager.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Scene.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\SceneManager.h" />
@@ -71,6 +72,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)lib</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)lib</OutDir>

@@ -37,14 +37,6 @@ echo Compilando Bullet (Versiones Estáticas)
 cmake --build . --config Release
 cmake --build . --config Debug
 
-echo Copiando y renombrando LIBs estáticas a la carpeta correspondiente
-for %%f in ("%BULLET_BUILD_STATIC%\lib\Release\*.lib") do (
-    copy "%%f" "%LIB_FOLDERS%\%%~nf.lib"
-)
-for %%f in ("%BULLET_BUILD_STATIC%\lib\Debug\*.lib") do (
-    copy "%%f" "%LIB_FOLDERS%\%%~nf.lib"
-)
-
 rem Configuración para la compilación de bibliotecas compartidas
 echo Configurando la compilacion de Bullet (Versiones Compartidas)
 cd "%BULLET_BUILD_SHARED%"
