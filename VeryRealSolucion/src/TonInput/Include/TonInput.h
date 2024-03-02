@@ -6,7 +6,7 @@
 #include "Singleton.h"
 #include <array>
 #include <SDL.h>
-#include <TonMapeo.h>
+#include "TonMapeo.h"
 
 using namespace std;
 
@@ -14,7 +14,6 @@ class TonInput : public Singleton<TonInput> {
     friend Singleton<TonInput>;
 
 public:
-  
     virtual ~TonInput() {}
 
     /// Clears the state of the input
@@ -33,7 +32,6 @@ public:
     }
 
 
-
     // KEYBOARD METHODS
 
     /// Checks if a key down event has occurred
@@ -48,29 +46,11 @@ public:
         return is_key_up_event;
     }
 
-    /// Checks if a specific key has just been pressed down
-    /// @param key -> The SDL_Scancode of the key to check
-    /// @return True if the specific key just down event has occurred, false otherwise
-    inline bool IsKeyJustDown(TI_KeyCode key) {
-        return KeyDownEvent() && kb_state[key] == 1;
-    }
-
-   
-
     /// Checks if a specific key is currently down
     /// @param key -> The SDL_Scancode of the key to check
     inline bool IsKeyDown(TI_KeyCode key) {
         return kb_state[key] == 1;
     }
-
-  
-    /// Checks if a specific key has just been released
-    /// @param key -> The SDL_Scancode of the key to check
-    inline bool IsKeyJustUp(TI_KeyCode key) {
-        return KeyUpEvent() && kb_state[key] == 0;
-    }
-
-   
 
     /// Checks if a specific key is currently up
     /// @param key -> The SDL_Scancode of the key to check
@@ -113,7 +93,6 @@ public:
     }
 
 
-
     //CONTROLLER METHODS
 
     /// Checks if there is a game controller connected
@@ -145,7 +124,6 @@ private:
     inline void OnKeyDown(const SDL_Event&) {
         is_key_down_event = true;
     }
-
 
     /// Updates the state of the key up event
     inline void OnKeyUp(const SDL_Event&) {

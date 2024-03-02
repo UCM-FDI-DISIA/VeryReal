@@ -1,12 +1,12 @@
 @echo off
 
 rem Directorios
-set BAT_DIR=%~dp0
+set WORKING_DIR=%~dp0..\FMOD
 
-set FMOD_CORE_ORIGIN=%BAT_DIR%\src\api\core\lib\x64
-set FMOD_STUDIO_ORIGIN=%BAT_DIR%\src\api\studio\lib\x64
+set FMOD_CORE_ORIGIN=%WORKING_DIR%\src\api\core\lib\x64
+set FMOD_STUDIO_ORIGIN=%WORKING_DIR%\src\api\studio\lib\x64
 
-set DLL_FOLDERS=%BAT_DIR%..\..\bin
+set DLL_FOLDERS=%WORKING_DIR%\..\..\bin
 
 
 rem Se crea el directorio si no está ya creado

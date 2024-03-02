@@ -4,7 +4,6 @@
 #include <OgreFileSystem.h>
 #include <OgreFileSystemLayer.h>
 #include <SDL_syswm.h>
-#undef main   
 #include <iostream>
 using namespace VeryReal;
 using namespace Ogre;
@@ -112,9 +111,7 @@ void  Window::demo(){
     node->attachObject(ent);
     //BUCLE PARA QUE NO SE CIERRE LA VENANA SE TIENE QUE QUITAR
     root->startRendering();
-    while (true) {
-        root->renderOneFrame();
-    }
+
 }
 
 SDL_Window* Window::CreateWindoww() {
@@ -173,6 +170,7 @@ SDL_Window* Window::CreateWindoww() {
 }
 
 void Window::Update() {
+    root->renderOneFrame();
     if (sdl_window != nullptr && ogre_window != nullptr) {
 
         //aqui van las cosas del input de la ventana tipo si se cierra y eso

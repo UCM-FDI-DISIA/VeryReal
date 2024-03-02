@@ -2,8 +2,9 @@
 #include "Manager.h"
 #include "Scene.h"
 #include <list>
+using namespace std;
 
-class SceneManager:public Manager
+class SceneManager:public Manager<SceneManager>
 {
 private:
 	//lista con todas la escenas
