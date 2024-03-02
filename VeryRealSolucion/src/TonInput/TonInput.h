@@ -31,7 +31,6 @@ public:
         return is_close_window_event;
     }
 
-
     // KEYBOARD METHODS
 
     /// Checks if a key down event has occurred
@@ -91,7 +90,6 @@ public:
     inline int GetMouseButtonState(TI_MouseButton button) {
         return mb_state[button];
     }
-
 
     //CONTROLLER METHODS
 

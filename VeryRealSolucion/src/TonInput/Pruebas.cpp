@@ -4,7 +4,7 @@
 #include <SDL.h>
 #undef main
 #include <stdlib.h>
-#include <TonInput.h>
+#include "TonInput.h"
 using namespace std;
 
 int main()
@@ -25,10 +25,8 @@ int main()
 		TI().Refresh(); // Ih se actualiza (actua como el handleEvents())
 		if (frameTime >= FRAME_RATE) {
 
-			if(TI().IsKeyDown(TI_SCANCODE_A))
+			if (TI().IsKeyDown(TI_SCANCODE_A))
 				cout << "A" << endl;
-			if (TI().IsKeyJustDown(TI_SCANCODE_B))
-				cout << "B" << endl;
 			if (TI().IsGamePadButtonDown(TI_CONTROLLER_BUTTON_A))
 				cout << "BUTTON" << endl;
 			if (TI().GetJoystickAxisState(TI_CONTROLLER_AXIS_LEFTX) != 0)

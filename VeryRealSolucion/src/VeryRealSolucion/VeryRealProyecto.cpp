@@ -1,7 +1,5 @@
 #include <TonInput.h>
-#include <TonMapeo.h>
 #include <Window.h>
-
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
 
@@ -10,6 +8,7 @@
 //Los juegos, descargan consigo el motor.
 //Desde el motor siempre sabemos donde esta la dll del juego.
 //dll export es una manera de que desde el juego, esa función sea visible.
+
 
 
 #include <iostream>
