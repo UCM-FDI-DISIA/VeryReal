@@ -37,4 +37,3 @@ if exist "%DLL_FOLDERS%" (
 	
 
     echo Terminada la copia de DLLs de FMOD
-pause

@@ -17,4 +17,3 @@ msbuild %LUA_SLN% /t:build /p:configuration=Debug /maxcpucount
 msbuild %LUA_SLN% /t:build /p:configuration=Release /maxcpucount
 
 echo Terminada la build de Lua
-pause

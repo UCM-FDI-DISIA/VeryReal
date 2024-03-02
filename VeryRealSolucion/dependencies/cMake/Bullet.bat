@@ -67,4 +67,4 @@ xcopy /y /s "%BULLET_BUILD_SHARED%\lib\Release\*.dll" "%DLL_FOLDERS%"
 xcopy /y /s "%BULLET_BUILD_SHARED%\lib\Debug\*.dll" "%DLL_FOLDERS%"
 
 echo Compilacion y copia de archivos completadas.
-pause
+
