@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Component.h"
+
 class SDL_Window;
 
 namespace Ogre {

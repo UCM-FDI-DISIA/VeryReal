@@ -24,30 +24,8 @@ Window::~Window() {
 }
 
 void Window::Init() {
-    // creamos un nuevo filesystem layer
-    file_system_layer = new Ogre::FileSystemLayer("VeryReal"); 
-    Ogre::String plugins_path;
-    //asignamos la ruta para las configuraciones de la pantalla
-    ruta_configuracion = file_system_layer->getConfigFilePath("plugins.cfg");
- 
-    file_system_layer->setHomePath(ruta_configuracion);
-    if(root==nullptr)root = new Ogre::Root(ruta_configuracion+ "\\..\\", "", file_system_layer->getWritablePath("ogre.log"));//esto no va asi vale es solo temp
     
-    //obtenermos el render system de tipo GL (los datos se descargan en el .bat)
-    //como esto no nos va lo cargamos a mano
-    root->loadPlugin("RenderSystem_GL");
-    Ogre::RenderSystem* renderSystem = root->getRenderSystemByName("GL Rendering Subsystem");
-    const Ogre::RenderSystemList renderSystems = root->getAvailableRenderers();
-    render_system = renderSystems.front();
-    root->setRenderSystem(render_system);
-   //inicializamos root pero sin ventana
-    root->initialise(false);
-
-    //inicializamos sdl
-    if(SDL_WasInit(SDL_INIT_VIDEO))SDL_Init(SDL_INIT_VIDEO);
-    SDL_Init(SDL_INIT_EVERYTHING);//mientras no esta todo bien
-
-
+  
     Ogre::NameValuePairList miscParams;
     Ogre::ConfigOptionMap ropts = render_system->getConfigOptions();
     //cogemos un modo de configuracion (solo ese modo tiene alto y ancho?)
@@ -80,8 +58,7 @@ void Window::Init() {
 void  Window::demo(){
 
     //ESTO NO VA AQUI ES SOLO PARA LA DEMO
-    scene_manager = root->createSceneManager();
-    render_system->_initRenderTargets();
+    
     //asignamos la 
     string ruta = ruta_configuracion + "\\..\\Assets";
     Ogre::ResourceGroupManager::getSingleton().addResourceLocation(ruta, "FileSystem");
@@ -113,32 +90,8 @@ void  Window::demo(){
     root->startRendering();
 
 }
-
 SDL_Window* Window::CreateWindoww() {
-    // creamos un nuevo filesystem layer
-    file_system_layer = new Ogre::FileSystemLayer("VeryReal");
-    Ogre::String plugins_path;
-    //asignamos la ruta para las configuraciones de la pantalla
-    ruta_configuracion = file_system_layer->getConfigFilePath("plugins.cfg");
-
-    file_system_layer->setHomePath(ruta_configuracion);
-    if (root == nullptr)root = new Ogre::Root(ruta_configuracion + "\\..\\", "", file_system_layer->getWritablePath("ogre.log"));//esto no va asi vale es solo temp
-
-    //obtenermos el render system de tipo GL (los datos se descargan en el .bat)
-    //como esto no nos va lo cargamos a mano
-    root->loadPlugin("RenderSystem_GL");
-    Ogre::RenderSystem* renderSystem = root->getRenderSystemByName("GL Rendering Subsystem");
-    const Ogre::RenderSystemList renderSystems = root->getAvailableRenderers();
-    render_system = renderSystems.front();
-    root->setRenderSystem(render_system);
-    //inicializamos root pero sin ventana
-    root->initialise(false);
-
-    //inicializamos sdl
-    if (SDL_WasInit(SDL_INIT_VIDEO))SDL_Init(SDL_INIT_VIDEO);
-    SDL_Init(SDL_INIT_EVERYTHING);//mientras no esta todo bien
-
-
+   
     Ogre::NameValuePairList miscParams;
     Ogre::ConfigOptionMap ropts = render_system->getConfigOptions();
     //cogemos un modo de configuracion (solo ese modo tiene alto y ancho?)
@@ -168,6 +121,7 @@ SDL_Window* Window::CreateWindoww() {
     return sdl_window;
 
 }
+
 
 void Window::Update() {
     root->renderOneFrame();

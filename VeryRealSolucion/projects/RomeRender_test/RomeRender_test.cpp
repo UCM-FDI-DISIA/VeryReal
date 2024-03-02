@@ -2,9 +2,15 @@
 //
 
 #include <iostream>
-#include <RenderSystem.h>
+#include <RenderManager.h>
 int main()
 {
+
+    
+    //VeryReal::RenderManager::Instance()->InitManager("app");
+    while (true) {
+
+    }
     std::cout << "Hello World!\n";
 }
 
