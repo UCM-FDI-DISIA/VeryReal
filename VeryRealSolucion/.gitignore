@@ -44,6 +44,9 @@ Builds/
 # Excepciones
 ![Bb]in/[Aa]ssets/
 ![Dd]ependencies/FMOD/[Ss]rc/api/*/[Ll]ib/
+
+# Excepciones y exclusiones FMOD
+
 !fmod_vc.lib
 !fmodL_vc.lib
 !fmodstudio_vc.lib
@@ -52,3 +55,8 @@ Builds/
 !fmodL.dll
 !fmodstudio.dll
 !fmodstudioL.dll
+
+[Bb]in/fmod.dll
+[Bb]in/fmodL.dll
+[Bb]in/fmodstudio.dll
+[Bb]in/fmodstudioL.dll
