@@ -17,6 +17,19 @@ VeryReal::RenderManager::RenderManager():window_(nullptr),root_(nullptr), scenem
 }
 VeryReal::RenderManager::~RenderManager() {
 
+    if (root_ == nullptr)return;
+    //vuelta a la escena por defecto
+    root_->destroySceneManager(scenemanager_);
+    Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
+
+    UnloadShaders();
+    delete(window_);
+    window_ = nullptr;
+    delete root_;
+    root_ = nullptr;
+    delete filesystemlayer_;
+    filesystemlayer_ = nullptr;
+    
 }
 void VeryReal::RenderManager::InitManager(std::string const& name) {
     appname_ = name;

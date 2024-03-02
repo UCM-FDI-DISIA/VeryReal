@@ -4,17 +4,20 @@
 #include "Manager.h"
 #include "Vector3.h"
 #include "string"
+
 namespace VeryReal {
+
 	class Window;
 	class Light;
 	class MeshRender;
 	class Camera;
 	class Animator;
 	class SGTechniqueResolverListener;
-
 }
 
+
 namespace Ogre {
+	
 	class SceneNode;
 	class Node;
 	class FileSystemLayer;
@@ -30,40 +33,76 @@ namespace Ogre {
 }
 
 namespace VeryReal {
+	// Declaración de la clase RenderManager, que hereda de Manager
 	class RenderManager :public Manager<RenderManager> {
-
 	public:
-
+		// Constructor de la clase RenderManager
 		RenderManager();
+
+		// Destructor virtual de la clase RenderManager
 		virtual ~RenderManager();
+
+		// Inicializa el administrador de renderizado con el nombre proporcionado
+		// @param name Nombre de la aplicación
 		virtual void InitManager(std::string const& name);
+
+		// Actualiza el administrador de renderizado con el paso de tiempo proporcionado
+		// @param dt Paso de tiempo desde la última actualización
 		virtual void Update(const double& dt);
 
+		// Crea un nodo de escena en Ogre y devuelve un puntero a él
+		// @return Puntero al nodo de escena creado
 		Ogre::SceneNode* CreateNode();
+
+		// Crea un nodo de escena secundario y lo adjunta al nodo proporcionado
+		// @param nod Nodo de escena al que se adjuntará el nuevo nodo secundario
+		// @return Puntero al nodo de escena secundario creado
 		Ogre::SceneNode* CreateChildSceneNode(Ogre::SceneNode* nod);
+
+		// Elimina un nodo de escena de Ogre
+		// @param nod Puntero al nodo de escena que se eliminará
 		void DeleteNode(Ogre::SceneNode* nod);
 
 	protected:
+		// Puntero a la ventana de la aplicación
 		VeryReal::Window* window_;
+
+		// Nombre de la aplicación
 		std::string appname_;
+
+		// Capa del sistema de archivos de Ogre
 		Ogre::FileSystemLayer* filesystemlayer_;
+
+		// Administrador de escena de Ogre
 		Ogre::SceneManager* scenemanager_;
+
+		// Sistema de renderizado de Ogre
 		Ogre::RenderSystem* rendersystem_;
+
+		// Ruta de configuración
 		std::string cfgPath_;
+
+		// Raíz de Ogre
 		Ogre::Root* root_;
+
+		// Escuchador de resolución de técnicas ShaderGenerator
 		VeryReal::SGTechniqueResolverListener* materialListener_;
+
+		// Generador de shaders RTShader
 		Ogre::RTShader::ShaderGenerator* shaderGenerator;
+
+		// Ventana de visualización
 		Ogre::Viewport* viewport_;
 
-
+		// Carga los recursos necesarios para la aplicación
 		void LoadResources();
+
+		// Carga los shaders necesarios para la aplicación
 		void LoadShaders();
+
+		// Descarga los shaders cargados previamente
 		void UnloadShaders();
 	};
-
-
-
 }
-
 
 #endif // !RENDERMANAGER

@@ -7,7 +7,7 @@ int main()
 {
 
     
-    //VeryReal::RenderManager::Instance()->InitManager("app");
+    VeryReal::RenderManager::Instance()->InitManager("app");
     while (true) {
 
     }

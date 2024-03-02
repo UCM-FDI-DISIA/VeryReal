@@ -9,16 +9,16 @@
 //#include <SDL.h>
 //#undef main
 //#include <stdlib.h>
-
+#include "RenderManager.h"
 #include "Window.h"
 using namespace VeryReal;
 int main()
 {
-
-    Window* wind = new Window();
-    wind->Init();
-   // wind->CreateWindoww();
-    wind->demo();
+    //VeryReal::RenderManager::Instance()->InitManager("app");
+   // Window* wind = new Window();
+   // wind->Init();
+   //// wind->CreateWindoww();
+   // wind->demo();
    /* _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
    
     SDL_Init(SDL_INIT_EVERYTHING);
