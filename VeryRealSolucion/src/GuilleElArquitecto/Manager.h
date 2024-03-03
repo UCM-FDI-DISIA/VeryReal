@@ -1,15 +1,19 @@
 #pragma once
+#ifndef MANAGER
+#define MANAGER
 #include "Singleton.h"
 
 //CLASE ABSTRACTA, hereda de Singleton 
-template<typename T>
-class Manager : public Singleton<T>{
-	friend Singleton<T>;
-private:
+namespace VeryReal {
+	template<typename T>
+	class Manager : public Singleton<T> {
+		friend Singleton<T>;
+	private:
 
-public:
-	Manager(){}
-	virtual ~Manager(){}
-	virtual void Update(const double& dt) {}
-};
-
+	public:
+		Manager() {}
+		virtual ~Manager() {}
+		virtual void Update(const double& dt) {}
+	};
+}
+#endif
