@@ -1,7 +1,7 @@
 #pragma once
 #ifndef LIGHT
 #define LIGHT
-#endif // !LIGHT
+
 
 #include "Component.h"
 #include "Vector3.h"
@@ -12,9 +12,11 @@ namespace Ogre
     class SceneManager;
     class Light;
 }
-
+namespace VeryReal {
+    class TransformComponent;
+}
 namespace  VeryReal {
-    class Light {
+    class Light:public Component {
     public:
         // Constructuora del componente Light
         Light();
@@ -23,7 +25,7 @@ namespace  VeryReal {
        
         virtual void Update();
         //initcomponent de light, pone la posicion, tamaño... del modo atachado al componente a parti de su transform
-        void InitComponent();
+        void InitComponent(int type, Vector3 const& diffusecolour, float shadowfardist, float shadowdist, float ineerangle, float outerangle, float nearclipdist, bool shdws);
 
         // Gira el nodo del componente los grados dados en el vector
         // @param vector que indica la cantidad qie será pasada a grados  
@@ -53,12 +55,50 @@ namespace  VeryReal {
         // Actica o desactiva la generación de sombras
         // @param bool shdows que indica si se generan sombras o no.
         void ActivateShadows(bool shdows);
+
+        //Gets y eso
+
+  
+        /// <returns>El tipo de luz (0 para DIRECCIONAL, 1 para PUNTO, etc.).</returns>
+        int getType() const;
+
+    
+        /// <returns>El color difuso de la luz como un objeto Vector3.</returns>
+        VeryReal::Vector3 getDiffuseColour() const;
+
+        
+        /// <returns>La distancia hasta la que se generan sombras.</returns>
+        float getShadowFarDistance() const;
+
+        /// <returns>El ángulo interno del foco de la luz.</returns>
+        float getSpotlightInnerAngle() const;
+
+        /// <returns>El ángulo externo del foco de la luz.</returns>
+        float getSpotlightOuterAngle() const;
+
+       
+        float getSpotlightNearClipDistance() const;
+
+        
+        /// <returns>true si las sombras están activadas, false si no.</returns>
+        bool  areShadowsActivated() const;
+
     protected:
         Ogre::Light* light_;
         Ogre::SceneNode* mNode;
         Ogre::SceneManager* mngr_;
+        TransformComponent* trans_;
+        int type_;
+        Vector3  diffusecolour_;
+        float shadowfardist_;
+        float shadowdist_;
+        float ineerangle_;
+        float outerangle_;
+        float nearclipdist_;
+        bool shdws_;
     };
 
 
 }
 
+#endif // !LIGHT

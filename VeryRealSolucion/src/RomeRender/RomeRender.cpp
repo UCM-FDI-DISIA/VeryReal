@@ -14,9 +14,9 @@
 using namespace VeryReal;
 int main()
 {
-    //VeryReal::RenderManager::Instance()->InitManager("app");
-   // Window* wind = new Window();
-   // wind->Init();
+    /*VeryReal::RenderManager::Instance()->InitManager("app");
+    Window* wind = new Window();
+    wind->Init();*/
    //// wind->CreateWindoww();
    // wind->demo();
    /* _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
