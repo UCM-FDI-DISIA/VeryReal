@@ -1,12 +1,68 @@
 // PedroBullet.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
 
+#include <BulletCollision/BroadphaseCollision/btAxisSweep3.h>
+#include <btBulletDynamicsCommon.h>
 #include <iostream>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+    // Inicializar el mundo de física
+    btBroadphaseInterface* broadphase = new btDbvtBroadphase();
+    btDefaultCollisionConfiguration* collisionConfiguration = new btDefaultCollisionConfiguration();
+    btCollisionDispatcher* dispatcher = new btCollisionDispatcher(collisionConfiguration);
+    btSequentialImpulseConstraintSolver* solver = new btSequentialImpulseConstraintSolver;
+    btDiscreteDynamicsWorld* dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
+
+    dynamicsWorld->setGravity(btVector3(0, -10, 0));
+
+    // Crear el suelo
+    btCollisionShape* groundShape = new btStaticPlaneShape(btVector3(0, 1, 0), 1);
+    btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, -1, 0)));
+    btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, groundMotionState, groundShape, btVector3(0, 0, 0));
+    btRigidBody* groundRigidBody = new btRigidBody(groundRigidBodyCI);
+    dynamicsWorld->addRigidBody(groundRigidBody);
+
+    // Crear una esfera
+    btCollisionShape* fallShape = new btSphereShape(1);
+    btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, 50, 0)));
+    btScalar mass = 1;
+    btVector3 fallInertia(0, 0, 0);
+    fallShape->calculateLocalInertia(mass, fallInertia);
+    btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
+    btRigidBody* fallRigidBody = new btRigidBody(fallRigidBodyCI);
+    dynamicsWorld->addRigidBody(fallRigidBody);
+
+    // Simulación
+    for (int i = 0; i < 300; i++) {
+        dynamicsWorld->stepSimulation(1 / 60.f, 10);
+
+        btTransform trans;
+        fallRigidBody->getMotionState()->getWorldTransform(trans);
+
+        std::cout << "sphere height: " << trans.getOrigin().getY() << std::endl;
+    }
+
+    // Limpieza
+    dynamicsWorld->removeRigidBody(fallRigidBody);
+    delete fallRigidBody->getMotionState();
+    delete fallRigidBody;
+
+    dynamicsWorld->removeRigidBody(groundRigidBody);
+    delete groundRigidBody->getMotionState();
+    delete groundRigidBody;
+
+    delete fallShape;
+    delete groundShape;
+
+    delete dynamicsWorld;
+    delete solver;
+    delete dispatcher;
+    delete collisionConfiguration;
+    delete broadphase;
+
+    return 0;
 }
+
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
