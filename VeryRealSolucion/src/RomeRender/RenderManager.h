@@ -1,6 +1,7 @@
 #ifndef RENDERMANAGER
 #define RENDERMANAGER
 
+
 #include "Manager.h"
 #include "Vector3.h"
 #include "string"
@@ -34,7 +35,7 @@ namespace Ogre {
 
 namespace VeryReal {
 	// Declaración de la clase RenderManager, que hereda de Manager
-	class RenderManager :public Manager<RenderManager> {
+	class RenderManager :public VeryReal::Manager<RenderManager> {
 	public:
 		// Constructor de la clase RenderManager
 		RenderManager();
