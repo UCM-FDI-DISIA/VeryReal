@@ -1,4 +1,5 @@
 #include "Vector3.h"
+using namespace VeryReal;
 Vector3::Vector3() {
 	x = 0;
 	y = 0;

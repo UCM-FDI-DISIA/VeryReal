@@ -1,19 +1,20 @@
 #include "Vector2.h"
-Vector2::Vector2() {
+using namespace VeryReal;
+VeryReal::Vector2::Vector2() {
 	x = 0;
 	y = 0;
 }
-Vector2::Vector2(float x, float y) {
+VeryReal::Vector2::Vector2(float x, float y) {
 	this->x = x;
 	this->y= y;
 
 }
-Vector2::Vector2(const Vector2& vector) {
+VeryReal::Vector2::Vector2(const Vector2& vector) {
 	x = vector.x;
 	y = vector.y;
 }
 
-Vector2::~Vector2() {
+VeryReal::Vector2::~Vector2() {
 
 }
 

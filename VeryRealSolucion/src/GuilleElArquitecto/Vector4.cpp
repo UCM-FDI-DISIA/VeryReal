@@ -1,4 +1,5 @@
 #include "Vector4.h"
+using namespace VeryReal;
 Vector4::Vector4() {
 	r = 0;
 	g = 0;

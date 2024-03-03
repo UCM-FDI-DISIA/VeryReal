@@ -1,14 +1,15 @@
 #include "SceneManager.h"
-SceneManager::SceneManager() {}
-SceneManager::~SceneManager() {}
+using namespace VeryReal;
+VeryReal::SceneManager::SceneManager() {}
+VeryReal::SceneManager::~SceneManager() {}
 
-void SceneManager::Update(const double& dt) {
+void VeryReal::SceneManager::Update(const double& dt) {
 	for (auto it : scenes_list) if (it->GetActive())it->Update();
 	Refresh();
 	
 }
 
-void SceneManager::Refresh() {
+void VeryReal::SceneManager::Refresh() {
 	for (auto it : scenes_list)if (it->GetToEliminate())RemoveScene(it->GetName());
 }
 Scene* SceneManager::AddScene(scene_name name) {
@@ -20,15 +21,15 @@ Scene* SceneManager::AddScene(scene_name name) {
 
 	return scene;
 }
-void SceneManager::RemoveScene(scene_name name) {
+void VeryReal::SceneManager::RemoveScene(scene_name name) {
 	for (auto it : scenes_list) if (it->GetName() == name) scenes_list.remove(it);
 }
-void SceneManager::ActivationScene(scene_name name, bool active) {
+void VeryReal::SceneManager::ActivationScene(scene_name name, bool active) {
 	for (auto it : scenes_list) if (it->GetName() == name)it->SetActive(active);
 }
 /*void DesactivateScene(scene_name name) {
 	for (auto it : scenes_list) if (it->GetName() == name)it->SetActive(false);
 }*/
-void SceneManager::EliminationScene(scene_name name, bool to_eliminate) {
+void VeryReal::SceneManager::EliminationScene(scene_name name, bool to_eliminate) {
 	for (auto it : scenes_list) if (it->GetName() == name)it->SetToEliminate(to_eliminate);
 }
