@@ -27,6 +27,8 @@ public:
     virtual ~PedroBullet() {}
     virtual void Init();
     virtual void Update(const double& timeStep);        //de momento pasaremos solo el dt, pero sabemos que hay dos variables mas.
+  
+    //Nos quedamos aquí, esta funcion la llamaran los Rb para crearse.
     void createRigidBody(btTransform* transform);
     void deleteRigidbody(btRigidBody* rB);
 private:

@@ -29,5 +29,8 @@
     <ClInclude Include="..\..\src\PedroBullet\RigidBody.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\PedroBullet\PhysicsValues.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

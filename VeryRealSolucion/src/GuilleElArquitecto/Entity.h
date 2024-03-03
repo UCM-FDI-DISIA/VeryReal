@@ -12,6 +12,8 @@ namespace VeryReal {
 	class Entity
 	{
 	private:
+
+
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
 		unordered_map<component_name, VeryReal::Component*> components_map;
 

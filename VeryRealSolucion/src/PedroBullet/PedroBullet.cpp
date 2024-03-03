@@ -6,7 +6,6 @@
 #include <BulletCollision/CollisionShapes/btSphereShape.h>
 #include <BulletCollision/CollisionShapes/btCylinderShape.h>
 #include <BulletCollision/CollisionShapes/btCapsuleShape.h>
-#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
 #include <BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h>
 #include <BulletCollision/BroadphaseCollision/btDbvtBroadphase.h>
 #include <BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h>
@@ -25,9 +24,7 @@ void PedroBullet::Init()
 	dynamicWorld = new btDiscreteDynamicsWorld(collisionDispatcher, this->interface, constraintSolver, collisionConfig);
 
 	dynamicWorld->setGravity(btVector3(0, -9.8, 0));
-
-
-
+	
 }
 
 

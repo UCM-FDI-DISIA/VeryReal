@@ -21,6 +21,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\PedroBullet\PedroBullet.h" />
+    <ClInclude Include="..\..\src\PedroBullet\PhysicsValues.h" />
     <ClInclude Include="..\..\src\PedroBullet\RigidBody.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
