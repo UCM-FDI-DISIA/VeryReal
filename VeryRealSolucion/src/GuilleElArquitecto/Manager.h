@@ -6,8 +6,8 @@
 //CLASE ABSTRACTA, hereda de Singleton 
 namespace VeryReal {
 	template<typename T>
-	class Manager : public Singleton<T> {
-		friend Singleton<T>;
+	class Manager : public VeryReal::Singleton<T> {
+		friend VeryReal::Singleton<T>;
 	private:
 
 	public:

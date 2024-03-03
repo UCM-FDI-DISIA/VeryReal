@@ -13,7 +13,7 @@ namespace VeryReal {
 	{
 	private:
 		//Mapa de: Clave: nombre de Entidad, Valor: puntero a esa entidad
-		unordered_map<entity_name, Entity*> entities_map;
+		unordered_map<entity_name, VeryReal::Entity*> entities_map;
 
 		//Lista de entidades a remover
 		list<entity_name> entities_list_removed;
@@ -31,7 +31,7 @@ namespace VeryReal {
 		virtual ~Scene();
 
 		//añade la entidad a la escena
-		Entity* AddEntity(entity_name e_name);
+		VeryReal::Entity* AddEntity(entity_name e_name);
 		//eliminas la entidad de la escena
 		void RemoveEntity(entity_name e_name);
 
@@ -41,7 +41,7 @@ namespace VeryReal {
 		}
 
 		//devuelve la entidad si la escena la tiene y si no nullptr;
-		inline Entity* GetEntity(entity_name e_name) {
+		inline VeryReal::Entity* GetEntity(entity_name e_name) {
 			if (!HasEntity(e_name)) return nullptr;
 
 			return entities_map.at(e_name);

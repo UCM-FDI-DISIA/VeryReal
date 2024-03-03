@@ -7,11 +7,11 @@
 using namespace std;
 
 namespace VeryReal {
-	class SceneManager :public Manager<SceneManager>
+	class SceneManager :public VeryReal::Manager<SceneManager>
 	{
 	private:
 		//lista con todas la escenas
-		list<Scene*> scenes_list;
+		list<VeryReal::Scene*> scenes_list;
 	public:
 		SceneManager();
 		virtual ~SceneManager();
@@ -21,7 +21,7 @@ namespace VeryReal {
 		//esto elimina de manera más segura las escenas
 		void Refresh();
 
-		Scene* AddScene(scene_name name);
+		VeryReal::Scene* AddScene(scene_name name);
 		void RemoveScene(scene_name name);
 
 		void ActivationScene(scene_name name, bool active);

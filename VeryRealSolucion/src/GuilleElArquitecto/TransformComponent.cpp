@@ -2,7 +2,7 @@
 VeryReal::TransformComponent::TransformComponent() {
 
 }
-VeryReal::TransformComponent::TransformComponent(Vector3 position, Vector3 rotation, Vector3 scale) {
+VeryReal::TransformComponent::TransformComponent(VeryReal::Vector3 position, VeryReal::Vector3 rotation, VeryReal::Vector3 scale) {
 	this->position = position;
 	this->rotation = rotation;
 	this->scale = scale;
@@ -10,12 +10,12 @@ VeryReal::TransformComponent::TransformComponent(Vector3 position, Vector3 rotat
 VeryReal::TransformComponent::~TransformComponent() {
 
 }
-void VeryReal::TransformComponent::Translate(Vector3 translateposition) {
+void VeryReal::TransformComponent::Translate(VeryReal::Vector3 translateposition) {
 	position += translateposition;
 }
-void VeryReal::TransformComponent::Rotate(Vector3 rotaterotation) {
+void VeryReal::TransformComponent::Rotate(VeryReal::Vector3 rotaterotation) {
 	rotation += rotaterotation;
 }
-void VeryReal::TransformComponent::Scaler(Vector3 scalerscale) {
+void VeryReal::TransformComponent::Scaler(VeryReal::Vector3 scalerscale) {
 	scale += scalerscale;
 }

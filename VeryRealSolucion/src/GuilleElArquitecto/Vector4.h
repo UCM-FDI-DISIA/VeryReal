@@ -16,7 +16,7 @@ namespace VeryReal {
 		//MIRAR CONVERSION A VECTORES DE LIBRERIAS OGRE, STD, FMOD, BULLET
 		Vector4();
 		Vector4(float r, float g, float b, float a);
-		Vector4(const Vector4& vector);
+		Vector4(const VeryReal::Vector4& vector);
 
 		virtual ~Vector4();
 
@@ -31,12 +31,12 @@ namespace VeryReal {
 		inline float GetG()const { return g; }
 		inline float GetB()const { return b; }
 		inline float GetA()const { return a; }
-		inline Vector4 GetVector() { return { r,g,b,a }; }
+		inline VeryReal::Vector4 GetVector() { return { r,g,b,a }; }
 
-		Vector4 operator=(const Vector4& vector);
-		bool operator==(const Vector4& vector);
-		bool operator!=(const Vector4& vector);
+		VeryReal::Vector4 operator=(const VeryReal::Vector4& vector);
+		bool operator==(const VeryReal::Vector4& vector);
+		bool operator!=(const VeryReal::Vector4& vector);
 	};
-	std::ostream& operator<<(std::ostream& o, const Vector4& vec);
+	std::ostream& operator<<(std::ostream& o, const VeryReal::Vector4& vec);
 }
 #endif

@@ -7,25 +7,25 @@
 namespace VeryReal {
 	class TransformComponent : public Component {
 	private:
-		Vector3 position;
-		Vector3 rotation;
-		Vector3 scale;
+		VeryReal::Vector3 position;
+		VeryReal:: Vector3 rotation;
+		VeryReal::Vector3 scale;
 	public:
 		TransformComponent();
-		TransformComponent(Vector3 position, Vector3 rotation, Vector3 scale);
+		TransformComponent(VeryReal::Vector3 position, VeryReal::Vector3 rotation, VeryReal::Vector3 scale);
 		virtual ~TransformComponent();
 
-		inline Vector3 GetPosition() { return position; }
-		inline Vector3 GetRotation() { return rotation; }
-		inline Vector3 GetScale() { return scale; }
+		inline VeryReal::Vector3 GetPosition() { return position; }
+		inline VeryReal::Vector3 GetRotation() { return rotation; }
+		inline VeryReal::Vector3 GetScale() { return scale; }
 
-		inline void SetPosition(Vector3 position) { this->position = position; }
-		inline void SetRotation(Vector3 rotation) { this->rotation = rotation; }
-		inline void SetScale(Vector3 scale) { this->scale = scale; }
+		inline void SetPosition(VeryReal::Vector3 position) { this->position = position; }
+		inline void SetRotation(VeryReal::Vector3 rotation) { this->rotation = rotation; }
+		inline void SetScale(VeryReal::Vector3 scale) { this->scale = scale; }
 
-		void Translate(Vector3 translateposition);
-		void Rotate(Vector3 rotaterotation);
-		void Scaler(Vector3 scalerscale);
+		void Translate(VeryReal::Vector3 translateposition);
+		void Rotate(VeryReal::Vector3 rotaterotation);
+		void Scaler(VeryReal::Vector3 scalerscale);
 	};
 }
 #endif

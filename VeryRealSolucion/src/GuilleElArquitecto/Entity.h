@@ -13,7 +13,7 @@ namespace VeryReal {
 	{
 	private:
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
-		unordered_map<component_name, Component*> components_map;
+		unordered_map<component_name, VeryReal::Component*> components_map;
 
 		//lista de componentes a remover, porque no están activos
 		list<component_name> components_list_removed;

@@ -12,7 +12,7 @@ namespace VeryReal {
 	{
 	private:
 		bool active = true;
-		Entity* entity;
+		VeryReal::Entity* entity;
 		component_name name;
 	public:
 		Component() {}
@@ -24,8 +24,8 @@ namespace VeryReal {
 		inline bool GetActive() { return active; }
 
 		//El componente necesita saber cual es su entidad, para acceder a otros componentes de esta
-		inline void SetEntity(Entity* entity) { this->entity = entity; }
-		inline Entity* GetEntity() { return entity; }
+		inline void SetEntity(VeryReal::Entity* entity) { this->entity = entity; }
+		inline VeryReal::Entity* GetEntity() { return entity; }
 
 		//Damos nombre a nuestro componente
 		inline void SetName(component_name name) { this->name = name; }

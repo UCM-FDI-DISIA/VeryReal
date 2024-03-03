@@ -14,8 +14,8 @@ namespace VeryReal {
 	protected:
 		Singleton() {};
 	public:
-		Singleton<T>& operator=(const Singleton<T>& o) = delete;
-		Singleton(const Singleton<T>& o) = delete;
+		VeryReal::Singleton<T>& operator=(const VeryReal::Singleton<T>& o) = delete;
+		Singleton(const VeryReal::Singleton<T>& o) = delete;
 		virtual ~Singleton() {}
 
 		//devuelve la clase singelton:
@@ -43,6 +43,6 @@ namespace VeryReal {
 	};
 
 	template<typename T>
-	std::unique_ptr<T> Singleton<T>::instance_pointer;
+	std::unique_ptr<T> VeryReal::Singleton<T>::instance_pointer;
 }
 #endif
