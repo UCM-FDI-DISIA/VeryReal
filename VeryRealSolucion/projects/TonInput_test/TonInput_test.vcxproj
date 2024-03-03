@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include-config-debug\SDL2;$(SolutionDir)src\TonInput;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include-config-debug\SDL2;$(SolutionDir)src\TonInput;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

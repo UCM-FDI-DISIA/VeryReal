@@ -4,13 +4,14 @@
 
 #include <vector>
 #include "Singleton.h"
+#include <Manager.h>
 #include <array>
 #include <SDL.h>
 #include "TonMapeo.h"
 
 using namespace std;
 
-class TonInput : public Singleton<TonInput> {
+class TonInput : public VeryReal::Manager<TonInput> {
     friend Singleton<TonInput>;
 
 public:

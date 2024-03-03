@@ -2,10 +2,26 @@
 //
 
 #include <iostream>
+#include <PedroBullet.h>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	PB().Init();
+	uint32_t startTime, frameTime;
+	startTime = 0;
+	while (true) {
+		frameTime = 3;
+		
+		if (frameTime >= 3) {
+			// Fisicas
+			// Update (Componentes)
+			// Render
+			// Sonido
+			
+		}
+		PB().Update(3);
+	}
+	return 0;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

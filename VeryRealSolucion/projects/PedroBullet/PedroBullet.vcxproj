@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\PedroBullet\PedroBullet.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\RigidBody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
@@ -20,6 +21,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\PedroBullet\PedroBullet.h" />
+    <ClInclude Include="..\..\src\PedroBullet\RigidBody.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

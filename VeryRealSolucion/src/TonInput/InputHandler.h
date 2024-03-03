@@ -9,7 +9,7 @@
 // Instead of a Singleton class, we could make it part of
 // SDLUtils as well.
 
-class InputHandler : public Singleton<InputHandler> {
+class InputHandler : public VeryReal::Singleton<InputHandler> {
     friend Singleton<InputHandler>;
 
 public:
