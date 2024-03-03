@@ -69,18 +69,7 @@ void  Window::demo(){
     lightNode->setPosition(-10, 0, 0);
     lightNode->attachObject(light);
 
-    //camara
-    Ogre::SceneNode* camNode = scene_manager->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
-    camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-    camNode->setPosition(0, 0, 30);
-    Ogre::Camera* cam = scene_manager->createCamera("Camara"); // objetoi camara en si 
-    cam->setNearClipDistance(1); //queremos que serenderice lo mas cerca posible desde la camara
-    camNode->attachObject(cam);
-    Ogre::Viewport* vp = ogre_window->addViewport(cam);
-
-
-    //cambio de color de fondo
-    vp->setBackgroundColour(Ogre::ColourValue(0.1, 0.2, 0.3));
+   
 
     //cargamos sinbad SOLO SE PUEDEN CARGAR .MESH
     Ogre::Entity* ent = scene_manager->createEntity("Sinbad.mesh");

@@ -124,8 +124,6 @@ echo %BAT_DIR%
        echo %RENDERSYSTEMGL%
     XCOPY /y /s .\bin\debug\zlib.dll %DLL_FOLDERS%
        echo %ZLIB%
-    XCOPY /y /s .\bin\release\plugins.cfg %DLL_FOLDERS%
-       echo %PLUGINS%
     XCOPY /y /s .\bin\release\SDL2.dll %DLL_FOLDERS%
        echo %DLL_FOLDERS%
 	

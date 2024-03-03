@@ -1,77 +1,62 @@
 #include "Camera.h"
 #include <OgreViewport.h>
 #include <iostream>
+#include <Ogre.h>
 
 using namespace VeryReal;
 using namespace Ogre;
 
-    Camara::Camara(std::string name, float t_color_x, float t_color_y, float t_color_z){
-        vewport = nullptr;
-        /* auto sys = m_mngr->getSystem<RenderSystem>();
-                m_scene_mngr = FlamingoSceneManager().getSceneToAttach()->getSceneManger();
-                m_cam = nullptr;
-                m_vp = nullptr;
-                m_target = nullptr;
-                m_window = sys->getWindow();
-                m_cam_node = FlamingoSceneManager().getSceneToAttach()->getSceneRoot()->createChildSceneNode();
-                m_name = t_name;
-                m_color = { t_color_x, t_color_y, t_color_z };*/
-    }
+    Camara::Camara(std::string name, Ogre::ColourValue color, Ogre::RenderWindow* ogre_window,
+        Ogre::SceneManager* mgr, Vector3 m_offset ){
+       
+        //camara
+        mNode = mgr->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
+        mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
+        mNode->setPosition(0, 0, 30);
+        camara = mgr->createCamera(name); // objeto y camara en si 
+        camara->setNearClipDistance(1); //queremos que serenderice lo mas cerca posible desde la camara
+        mNode->attachObject(camara);
+        vewport = ogre_window->addViewport(camara);
 
+        //cambio de color de fondo
+        vewport->setBackgroundColour(color);
+         
+    }
+    
     Camara::~Camara()
     {
        
     }
 
-    void Camara::InitComponent()
-    {
-        //auto t = getComponent<Transform>(m_ent);
-        //if (t == nullptr)
-        //{
-        //    throw std::exception("Transform is missing");
-        //}
-        //m_cam = m_scene_mngr->createCamera(m_name);
-        //m_cam_node->setScale(t->getScale());
-        //m_cam_node->setPosition(t->getPosition());
-        //m_cam_node->attachObject(m_cam);
 
-        //m_vp = m_window->getRenderWindow()->addViewport(m_cam, -m_window->getRenderWindow()->getNumViewports());
-        //m_vp->setDimensions(0, 0, 1, 1); // Tamaño completo de la ventana
-        //m_vp->setBackgroundColour(m_color);
+    void Camara::lookAt( Vector3 pos)
+    {
+        mNode->lookAt(pos, Ogre::Node::TransformSpace::TS_PARENT);
     }
 
-    void Camara::lookAt( Vector3 t_pos)
+    void Camara::translate(float x, float y, float z)
     {
-       
-        mNode->lookAt(t_pos, Ogre::Node::TransformSpace::TS_PARENT);
-            
+        mNode->translate(x, y, z, Ogre::Node::TransformSpace::TS_LOCAL);
     }
 
-    void Camara::translate(float t_x, float t_y, float t_z)
+    void Camara::roll(float d)
     {
-        mNode->translate(t_x, t_y, t_z, Ogre::Node::TransformSpace::TS_LOCAL);
+        mNode->roll(Ogre::Degree(d));
     }
 
-    void Camara::roll(float t_d)
+    void Camara::yaw(float d)
     {
-        mNode->roll(Ogre::Degree(t_d));
+        mNode->yaw(Ogre::Degree(d));
     }
 
-    void Camara::yaw(float t_d)
+    void Camara::pitch(float d)
     {
-        mNode->yaw(Ogre::Degree(t_d));
+        mNode->pitch(Ogre::Degree(d));
     }
-
-    void Camara::pitch(float t_d)
+    void Camara::Offset(Vector2 offset)
     {
-        mNode->pitch(Ogre::Degree(t_d));
+        camara->setFrustumOffset(offset.x, offset.y);
     }
-
-    void Camara::setAutoAspectRatio(bool t_b)
-    {
-        camara->setAspectRatio(t_b);
-    }
-
     void Camara::setNearClipDistance(float t_clip)
     {
         camara->setNearClipDistance(t_clip);
@@ -109,23 +94,6 @@ using namespace Ogre;
         vewport->setCamera(camara);
     }
 
+ 
     
-    void Camara::setOffset(Vector3 offset)
-    {
-        m_offset = offset;
-    }
-    void Camara::FollowTarget()
-    {
-        /*if (m_target != nullptr)
-        {
-            auto trpTarget = m_mngr->getComponent<Transform>(m_target);
-            auto mtrp = m_mngr->getComponent<Transform>(m_ent);
-
-            SVector3 newOffset = trpTarget->getRotation().Rotate(m_offset);
-            mtrp->setPosition(trpTarget->getPosition() - newOffset);
-            mtrp->setRotation(trpTarget->getRotation(), WORLD);
-
-            lookAt({ trpTarget->getPosition().getX(), trpTarget->getPosition().getY(), trpTarget->getPosition().getZ() }, WORLD);
-            roll(180);
-        }*/
-    }
+    
