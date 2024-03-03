@@ -1,7 +1,5 @@
 #pragma once
 #include "Component.h"
-#include <Ogre.h>
-#include "Window.h"
 
 namespace Ogre
 {
@@ -15,39 +13,30 @@ namespace Ogre
 namespace  VeryReal {
     class Camara: public Component {
     public:
-        Camara(std::string name="", float t_color_x=0, float t_color_y=0, float t_color_z=0);
+        Camara(std::string name, Ogre::ColourValue color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, Vector3 m_offset);
         virtual ~Camara();
-        //virtual void Update();
-        void InitComponent();
-
-         void lookAt(Vector3 t_pos);
-         void translate(float t_x, float t_y, float t_z);
-
-         void roll(float t_d);
-         void yaw(float t_d);
-         void pitch(float t_d);
-         void setAutoAspectRatio(bool t_b);
-         void setNearClipDistance(float t_clip);
-         void setFarClipDistance(float t_clip);
-
-        void setViewPortBackgroundColour(Ogre::ColourValue t_vp_color);
+        void lookAt(Vector3 pos);
+        void translate(float x, float y, float z);
+        void roll(float d);
+        void yaw(float d);
+        void pitch(float d);
+        void Offset(Vector2 offset);
+        void setNearClipDistance(float t_clip);
+        void setFarClipDistance(float t_clip);
+        void setViewPortBackgroundColour(Ogre::ColourValue color);
         void desactiveViewport();
         void activeViewport();
         void desactive();
         void active();
         Ogre::SceneNode* getNode();
 
-         void setOffset(Vector3 offset);
-         void FollowTarget();
+        
     protected:
         Ogre::SceneNode* mNode;
         Ogre::Camera* camara;
         Ogre::Viewport* vewport;
         Ogre::SceneManager* mgr;
-        //referencia a la ventana 
-        Vector3 m_offset;
-        Ogre::ColourValue* color;
-        std::string m_name;
+        //referencia a la ventana  NECESARIA
         
     };
 
