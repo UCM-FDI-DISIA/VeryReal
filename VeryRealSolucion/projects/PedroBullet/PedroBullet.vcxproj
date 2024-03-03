@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\PedroBullet\PedroBullet.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\RigidBody.cpp" />
+    <ClCompile Include="BasicPhysicsWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
@@ -23,6 +24,7 @@
     <ClInclude Include="..\..\src\PedroBullet\PedroBullet.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsValues.h" />
     <ClInclude Include="..\..\src\PedroBullet\RigidBody.h" />
+    <ClInclude Include="BasicPhysicsWorld.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

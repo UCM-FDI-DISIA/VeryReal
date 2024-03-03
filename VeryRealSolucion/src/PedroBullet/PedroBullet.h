@@ -23,28 +23,26 @@ class btTransform;
 class PedroBullet : public VeryReal::Manager<PedroBullet> {
     friend Singleton<PedroBullet>;
 
-public:
-    virtual ~PedroBullet() {}
-    virtual void Init();
-    virtual void Update(const double& timeStep);        //de momento pasaremos solo el dt, pero sabemos que hay dos variables mas.
-  
-    //Nos quedamos aquí, esta funcion la llamaran los Rb para crearse.
-    void createRigidBody(btTransform* transform);
-    void deleteRigidbody(btRigidBody* rB);
 private:
-    PedroBullet() {};
-
-    void addRigidbody(btRigidBody* rB);
-
-
     btDiscreteDynamicsWorld* dynamicWorld;
     btCollisionConfiguration* collisionConfig;
     btCollisionDispatcher* collisionDispatcher;
-    btBroadphaseInterface* interface;
-    btSequentialImpulseConstraintSolver* constraintSolver;
+    btBroadphaseInterface* broadphase;
+    btSequentialImpulseConstraintSolver* solver;
 
-    
+protected:
+    PedroBullet();
+
+
+public:
+    void Init();
+    void Update(float deltaTime);
+    void Cleanup();
+    virtual ~PedroBullet();
+    void AddRigidBody(btRigidBody* body);
+    void RemoveRigidBody(btRigidBody* body);
 };
+
 
 /// Singleton instance
 /// @return A pointer of the instance

@@ -21,9 +21,10 @@ public:
 	RigidBody(float mass, float friccion, float bounce,int mGroup,VeryReal::TransformComponent* transform,PBShapes shape, PBMovementType mType,unordered_set<int>* mask);
 	void addToMask(int newGroup);
 	void start();
+	virtual ~RigidBody() {}
 private:
 	
-	~RigidBody();
+	//~RigidBody();
 
 	PBShapes shape;
 	PBMovementType movementType;
