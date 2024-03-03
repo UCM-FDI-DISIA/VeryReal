@@ -1,6 +1,6 @@
 #pragma once
-#ifndef VECTOR3
-#define VECTOR3
+#ifndef VECTOR3VR
+#define VECTOR3VR
 #include <math.h>
 #include <iostream>
 

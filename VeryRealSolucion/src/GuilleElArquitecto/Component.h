@@ -3,11 +3,14 @@
 #define COMPONENT
 #include <string>
 
-class Entity;
+
 using namespace std;
-using component_name = string;
+
 
 namespace VeryReal {
+	class Entity;
+	using component_name = string;
+
 	class Component	//CLASE ABSTRACTA
 	{
 	private:
