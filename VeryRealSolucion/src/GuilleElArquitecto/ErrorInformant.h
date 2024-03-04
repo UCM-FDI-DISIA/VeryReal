@@ -8,14 +8,21 @@
 
 using namespace std;
 
+//Tipos de errores posibles
 enum errorType { 
 	EI_WARNING = MB_ICONWARNING, 
 	EI_ERROR = MB_ICONERROR, 
 	EI_UNKNOWN = MB_ICONQUESTION
 };
 
+
+//Tipos de ventanas posibles, estas se diferenciaran por el tipo y numero de botones que tengan
+//La primera de ellas tiene un unico boton para aceptar.
+//La segunda tiene dos botones para aceptar o cancelar
+//La ultima tiene dos botones para reintentar o cancelar
+
 enum windowType{ 
-	EI_W_OK = MB_OK, 
+	EI_W_OK = MB_OK,	
 	EI_W_CANCEL = MB_OKCANCEL, 
 	EI_W_RETRY = MB_RETRYCANCEL
 };

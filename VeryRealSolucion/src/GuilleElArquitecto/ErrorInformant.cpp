@@ -1,6 +1,8 @@
 #include "ErrorInformant.h"
 
+
 options ErrorInformant::showErrorMessageBox(string ErrorName, string ErrorMessage, errorType ErrorType, windowType WindowType) {
+	
 	wstring wName = wstring(ErrorName.begin(), ErrorName.end());
 	wstring wMessage = wstring(ErrorMessage.begin(), ErrorMessage.end());
 
