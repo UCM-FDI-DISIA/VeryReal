@@ -51,6 +51,9 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\ErrorInformant.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h">
@@ -83,16 +86,13 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\SceneManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component_Names.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Entity_Names.h">
+    <ClInclude Include="..\..\src\GuilleElArquitecto\ErrorInformant.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GuilleElArquitecto\ErrorInformant.h">
+    <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

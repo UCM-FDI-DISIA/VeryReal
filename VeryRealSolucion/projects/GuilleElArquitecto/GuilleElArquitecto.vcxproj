@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\GuilleElArquitecto\Component.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorComponent.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Entity.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\ErrorInformant.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.cpp" />
@@ -27,10 +28,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component_Names.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorComponent.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Entity_Names.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\ErrorInformant.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Manager.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Scene.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\SceneManager.h" />
@@ -103,7 +103,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

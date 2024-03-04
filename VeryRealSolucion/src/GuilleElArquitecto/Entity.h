@@ -12,8 +12,6 @@ namespace VeryReal {
 	class Entity
 	{
 	private:
-
-
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
 		unordered_map<component_name, VeryReal::Component*> components_map;
 
@@ -29,15 +27,17 @@ namespace VeryReal {
 
 		//Añade componente a la Entidad
 		template<typename T, typename ...Ts>
+		//PON UN CREATE DELANTE DE LA PALABRA: EJEMPLO: CREATETRANSFORM
 		inline T* AddComponent(component_name c_name, Ts && ... args) {
 			T* component = new T(forward<Ts>(args)...);
+			bool juni= static_cast<Component>(T*).GetActive();
+			
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);
 			components_map.insert({ c_name,component });
 			//quizas initcomponent
 			return component;
 		}
-
 		//Remueve el Componente de la Entidad en la que se encuentra
 		void RemoveComponent(component_name c_name);
 

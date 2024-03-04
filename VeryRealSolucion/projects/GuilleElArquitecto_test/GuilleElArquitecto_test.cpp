@@ -1,5 +1,4 @@
 #include <iostream>
-#include <GuilleElArquitecto.h>
 #include <ErrorInformant.h>
 int main()
 {
@@ -10,5 +9,6 @@ int main()
     //Devuelve un entero que determina que opcion ha seleccionado el usuario
     cout << ErrorInf().showErrorMessageBox("test", "do", EI_WARNING, EI_W_RETRY) << endl;
     std::cout << "Hello World!\n";
+
 }
 
