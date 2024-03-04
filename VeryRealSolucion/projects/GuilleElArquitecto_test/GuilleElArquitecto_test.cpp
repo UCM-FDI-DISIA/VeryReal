@@ -1,8 +1,12 @@
 // GuilleElArquitecto_test.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 #include <iostream>
 #include <GuilleElArquitecto.h>
+#include <ErrorInformant.h>
 int main()
 {
+    cout << ErrorInf().showErrorMessageBox("test", "do", EI_ERROR, EI_W_CANCEL) << endl;
+    cout << ErrorInf().showErrorMessageBox("test", "do", EI_ERROR, EI_W_CANCEL) << endl;
+    cout << ErrorInf().showErrorMessageBox("test", "do", EI_ERROR, EI_W_CANCEL) << endl;
     std::cout << "Hello World!\n";
 }
 
