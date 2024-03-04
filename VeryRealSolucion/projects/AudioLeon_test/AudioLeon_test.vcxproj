@@ -113,7 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\AudioLeon;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\AudioLeon;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)dependencies\FMOD\src\api\core\inc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
