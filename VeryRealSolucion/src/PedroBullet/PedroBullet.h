@@ -35,12 +35,12 @@ protected:
 
 
 public:
-    void Init();
-    void Update(float deltaTime);
-    void Cleanup();
+    virtual void Init();
+    virtual void Update(float deltaTime);
     virtual ~PedroBullet();
     void AddRigidBody(btRigidBody* body);
     void RemoveRigidBody(btRigidBody* body);
+    void createRigidBody(btTransform* rB);
 };
 
 

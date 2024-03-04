@@ -8,6 +8,8 @@ namespace Ogre
     class SceneManager;
     class Viewport;
     class ColourValue;
+    class RenderWindow;
+
 }
 
 namespace  VeryReal {
@@ -37,7 +39,6 @@ namespace  VeryReal {
         Ogre::Viewport* vewport;
         Ogre::SceneManager* mgr;
         //referencia a la ventana  NECESARIA
-        
     };
 
 

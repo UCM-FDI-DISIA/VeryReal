@@ -1,6 +1,6 @@
 #include "PedroBullet.h"
 #include <iostream>
-#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>
+#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>  //gestion de colisiones, gravedad...
 #include <BulletCollision/CollisionShapes/btSphereShape.h>
 #include <BulletCollision/CollisionShapes/btCylinderShape.h>
 #include <BulletCollision/CollisionShapes/btCapsuleShape.h>
@@ -20,7 +20,11 @@ PedroBullet::PedroBullet() :
 
 // Destructor
 PedroBullet::~PedroBullet() {
-    Cleanup();
+    delete dynamicWorld;
+    delete solver;
+    delete broadphase;
+    delete collisionDispatcher;
+    delete collisionConfig;
 }
 
 // Initialize Bullet Physics
@@ -30,21 +34,12 @@ void PedroBullet::Init() {
     broadphase = new btDbvtBroadphase();
     solver = new btSequentialImpulseConstraintSolver();
     dynamicWorld = new btDiscreteDynamicsWorld(collisionDispatcher, broadphase, solver, collisionConfig);
-    dynamicWorld->setGravity(btVector3(0, -10, 0));
+    dynamicWorld->setGravity(btVector3(0, -9.8, 0));
 }
 
 // Update Bullet Physics
 void PedroBullet::Update(float deltaTime) {
     dynamicWorld->stepSimulation(deltaTime);
-}
-
-// Cleanup Bullet Physics
-void PedroBullet::Cleanup() {
-    delete dynamicWorld;
-    delete solver;
-    delete broadphase;
-    delete collisionDispatcher;
-    delete collisionConfig;
 }
 
 // Add a rigid body to the simulation
@@ -57,7 +52,10 @@ void PedroBullet::RemoveRigidBody(btRigidBody* body) {
     dynamicWorld->removeRigidBody(body);
 }
 
+void PedroBullet::createRigidBody(btTransform* transform)
+{
 
+}
 
 
 
