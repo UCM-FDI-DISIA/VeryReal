@@ -1,4 +1,5 @@
 #include <TonInput.h>
+#include <RenderManager.h>
 #include <Window.h>
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
@@ -12,16 +13,21 @@
 
 
 #include <iostream>
-int main(int argc, char* argv[])
-{
-	
-	const int FRAME_RATE = 3;
+
+const int FRAME_RATE = 3;
+
+bool Init() {
 
 	SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
 	//SDL_Window* mWindow; // Ventana (temporal) para que funcione el input
 	//mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 	//	854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
-	//SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
+	////SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
+	//VeryReal::RenderManager().Instance()->InitManager("app"); //InitManager
+	TI().Init();
+}
+
+void Loop() {
 
 	uint32_t startTime, frameTime;
 	startTime = SDL_GetTicks();
@@ -33,19 +39,23 @@ int main(int argc, char* argv[])
 			// Update (Componentes)
 			// Render
 			// Sonido
-			cout << frameTime<<endl;
+			cout << frameTime << endl;
 			startTime = SDL_GetTicks();
 		}
 	}
 
+}
+
+void Exit() {
 	//if (mWindow != nullptr)
 	//{
 	//	SDL_DestroyWindow(mWindow);
 	//	mWindow = nullptr;
 	//	SDL_Quit();
 	//}
-	return 0;
+
 }
+
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
