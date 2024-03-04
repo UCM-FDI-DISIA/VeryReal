@@ -1,4 +1,6 @@
 #include "Vector3.h"
+#include <fmod.hpp>
+
 VeryReal::Vector3::Vector3() {
 	x = 0;
 	y = 0;
@@ -59,6 +61,14 @@ VeryReal::Vector3 VeryReal::Vector3::Normalize() {
 		return *this / Magnitude();
 	//CERROR
 }
+
+FMOD_VECTOR VeryReal::Vector3::v3ToFmodV3() const
+{
+	FMOD_VECTOR newVector;
+	newVector.x = x; newVector.y = y; newVector.z = z;
+	return newVector;
+}
+
 //para hacer Cout en la consola, ayudarnos a depurar
 std::ostream& operator<<(std::ostream& o, const VeryReal::Vector3& vector) {
 	o << vector.GetX() << " , " << vector.GetY() <<" , "<<vector.GetZ()<<"\n";
