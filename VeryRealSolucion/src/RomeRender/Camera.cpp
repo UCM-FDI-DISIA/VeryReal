@@ -2,12 +2,14 @@
 #include <OgreViewport.h>
 #include <iostream>
 #include <Ogre.h>
+#include <Vector3.h>
+#include <Vector2.h>
 
 using namespace VeryReal;
 using namespace Ogre;
 
     Camara::Camara(std::string name, Ogre::ColourValue color, Ogre::RenderWindow* ogre_window,
-        Ogre::SceneManager* mgr, Vector3 m_offset ){
+        Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset ){
        
         //camara
         mNode = mgr->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
@@ -29,9 +31,9 @@ using namespace Ogre;
     }
 
 
-    void Camara::lookAt( Vector3 pos)
+    void Camara::lookAt( VeryReal::Vector3 pos)
     {
-        mNode->lookAt(pos, Ogre::Node::TransformSpace::TS_PARENT);
+        //mNode->lookAt(pos, Ogre::Node::TransformSpace::TS_PARENT);
     }
 
     void Camara::translate(float x, float y, float z)
@@ -53,9 +55,9 @@ using namespace Ogre;
     {
         mNode->pitch(Ogre::Degree(d));
     }
-    void Camara::Offset(Vector2 offset)
+    void Camara::Offset(VeryReal::Vector2 offset)
     {
-        camara->setFrustumOffset(offset.x, offset.y);
+       // camara->setFrustumOffset(offset.x, offset.y);
     }
     void Camara::setNearClipDistance(float t_clip)
     {

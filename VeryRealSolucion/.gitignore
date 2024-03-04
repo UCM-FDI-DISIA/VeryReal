@@ -44,7 +44,9 @@ Builds/
 # Excepciones
 ![Bb]in/[Aa]ssets/
 ![Dd]ependencies/FMOD/[Ss]rc/api/*/[Ll]ib/
-
+![Bb]in/ogre.cfg
+![Bb]in/plugins.cfg
+![Bb]in/resources.cfg
 # Excepciones y exclusiones FMOD
 
 !fmod_vc.lib
