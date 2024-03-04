@@ -6,6 +6,8 @@
 
 int main()
 {
+    AL().Instance();
+    AL().startRecording();
     std::cout << "Hello World!\n";
 }
 

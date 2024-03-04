@@ -44,7 +44,7 @@ AudioSource::AudioSource()
 
 AudioSource::~AudioSource()
 {
-    soundManager().deleteSound(mSoundName);
+    AL().deleteSound(mSoundName);
 }
 
 void AudioSource::Start()
@@ -59,10 +59,10 @@ void AudioSource::Start()
 
     // Create a 3D sound or a normal sound
     if (mIsThreeD)
-        soundManager().create3DSound(mSoundPath, mSoundName, mMinDistance, mMaxDistance, mLoop);
+        AL().create3DSound(mSoundPath, mSoundName, mMinDistance, mMaxDistance, mLoop);
     //Hacer el wrapeado aqui
     else
-        soundManager().createNormalSound(mSoundPath, mSoundName, mLoop);
+        AL().createNormalSound(mSoundPath, mSoundName, mLoop);
     //Hacer el wrapeado aqui
 
     if (mPlayOnStart)
@@ -72,7 +72,7 @@ void AudioSource::Start()
 void AudioSource::Update(const double& dt)
 {
     if (mIsThreeD) {
-        soundManager().setSoundAtributes(mSoundName, this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetPosition(), this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetVelocity());
+        AL().setSoundAtributes(mSoundName, this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetPosition(), this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetVelocity());
         //Hacer el wrapeado aqui
     }
 }
@@ -81,7 +81,7 @@ void AudioSource::play()
 {
     VeryReal::Vector3 pos = mTransform->GetPosition();
     VeryReal::Vector3 vel = mTransform->GetVelocity();
-    soundManager().playSound(mSoundName, mSoundGroup, &pos, &vel, mVolume);
+    AL().playSound(mSoundName, mSoundGroup, &pos, &vel, mVolume);
     //Hacer el wrapeado aqui
 
     mPlaying = true;
@@ -89,19 +89,19 @@ void AudioSource::play()
 
 void AudioSource::stop()
 {
-    soundManager().stopSound(mSoundName);
+    AL().stopSound(mSoundName);
     //Hacer el wrapeado aqui
 }
 
 void AudioSource::pause()
 {
-    soundManager().pauseSound(mSoundName, true);
+    AL().pauseSound(mSoundName, true);
     //Hacer el wrapeado aqui
 }
 
 void AudioSource::resume()
 {
-    soundManager().pauseSound(mSoundName, false);
+    AL().pauseSound(mSoundName, false);
 }
 
 bool AudioSource::isPlaying()

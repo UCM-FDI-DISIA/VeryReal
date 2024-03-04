@@ -261,14 +261,14 @@ typedef int CHANNEL_NUMBER;
 			return -1;
 		}
 
-
+		void startRecording();
 	};
 
 	/**
 	This macro defines a compact way for using the singleton SoundManager, instead of
 	writing SoundManager::instance()->method() we write soundManager().method()
 	*/
-	inline AudioLeon& soundManager() {
+	inline AudioLeon& AL() {
 		return *AudioLeon::Instance();
 	}
 

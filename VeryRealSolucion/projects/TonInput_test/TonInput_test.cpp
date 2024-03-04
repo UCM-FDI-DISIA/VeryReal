@@ -6,6 +6,10 @@
 #undef main
 int main()
 {
+	while (true)
+	{
+		TI().IsKeyDown(TI_SCANCODE_0);
+	}
     std::cout << "Hello World!\n";
     return 0;
 }

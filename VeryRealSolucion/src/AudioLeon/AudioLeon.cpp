@@ -40,6 +40,7 @@ AudioLeon::AudioLeon() {
 	mSoundSystem->createChannelGroup("music", &mMusic);
 	mChannelGroupMaps["music"] = mMusic;
 
+
 	mMaster->addGroup(mEffects);
 	mMaster->addGroup(mMusic);
 
@@ -423,4 +424,19 @@ float AudioLeon::getVolume(std::string soundName)
 		checkFMODResult(mResult);
 		return volume;
 	}
+}
+void AudioLeon::startRecording()
+{
+	std::cout << "a";
+	FMOD::Sound* audio;
+	mResult = this->mSoundSystem->createSound(0, FMOD_LOOP_NORMAL | FMOD_OPENUSER, 0, &audio);
+	mResult = this->mSoundSystem->recordStart(0, audio, true);
+	std::cout << "a";
+	std::cin.get();
+	mResult = this->mSoundSystem->recordStop(0);
+
+	const int fftSize = 1024;
+	float* spectrumData = new float[fftSize];
+	mResult = channel->getSpectrum(spectrumData, fftSize, 0, FMOD_DSP_FFT_WINDOW_TRIANGLE);
+
 }

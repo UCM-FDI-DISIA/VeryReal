@@ -24,13 +24,13 @@ AudioListener::AudioListener()
 
 AudioListener::~AudioListener()
 {
-	soundManager().removeListener(mListenerIndex);
+	AL().removeListener(mListenerIndex);
 }
 
 void AudioListener::Start()
 {
 	// Get the next available index for a listener in the sound manager
-	mListenerIndex = soundManager().getNextUsefulListenerIndex();
+	mListenerIndex = AL().getNextUsefulListenerIndex();
 
 #ifdef _DEBUG
 	if (mListenerIndex == -1)
