@@ -1,13 +1,6 @@
 #include "PedroBullet.h"
-#include <iostream>
-#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>  //gestion de colisiones, gravedad...
-#include <BulletCollision/CollisionShapes/btSphereShape.h>
-#include <BulletCollision/CollisionShapes/btCylinderShape.h>
-#include <BulletCollision/CollisionShapes/btCapsuleShape.h>
-#include <BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h>
-#include <BulletCollision/BroadphaseCollision/btDbvtBroadphase.h>
-#include <BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h>
-#include <LinearMath/btDefaultMotionState.h>
+
+
 
 // Constructor
 PedroBullet::PedroBullet() :
@@ -64,8 +57,8 @@ void PedroBullet::createRigidBody(btTransform* transform)
 
 
 
-
-
+//
+//
 //int main() {
 //    // Inicializar el mundo de física
 //    PedroBullet::Instance()->Init();
@@ -83,14 +76,14 @@ void PedroBullet::createRigidBody(btTransform* transform)
 //
 //    return 0;
 //}
+//
+//
 
 
-
-
-
-
-
-
+//
+//
+//
+//
 //int main() {
 //    // Inicializar el mundo de física
 //    btBroadphaseInterface* broadphase = new btDbvtBroadphase();

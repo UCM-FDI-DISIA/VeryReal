@@ -32,6 +32,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaLuengo_test", "projects\LuaLuengo_test\LuaLuengo_test.vcxproj", "{F25076E0-4665-4A55-B8FA-DCD7C7A28ACD}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PedroBullet_test", "projects\PedroBullet_test\PedroBullet_test.vcxproj", "{2AF93D23-1F5B-4A7C-92BC-E712818AD693}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E3D8A301-E059-4F24-AD00-EF274E8C1144} = {E3D8A301-E059-4F24-AD00-EF274E8C1144}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RomeRender_test", "projects\RomeRender_test\RomeRender_test.vcxproj", "{145997E5-E01A-44C9-8935-F6A11A1B1A10}"
 EndProject
