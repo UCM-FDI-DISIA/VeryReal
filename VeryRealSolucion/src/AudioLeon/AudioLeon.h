@@ -3,9 +3,8 @@
 #ifndef _FMOD_SOUND_MANAGER
 #define _FMOD_SOUND_MANAGER
 
-#include "MotorEngine/MotorEngineAPI.h"
-#include "Utils/Singleton.h"
-#include "Utils/Vector3.h"
+#include <Singleton.h>
+#include <Vector3.h>
 #include <string>
 #include <unordered_map>
 #include <fmod_studio.hpp>
@@ -22,7 +21,6 @@ enum FMOD_RESULT;
 typedef unsigned int FMOD_MODE;
 typedef int CHANNEL_NUMBER;
 
-namespace me {
 	//Maximum number of channels allowed to exist in this particular system setting.
 	const int MAX_CHANNELS = 100;
 	//Scaling factor for how much the pitch varies due to doppler shifting in 3D sound.
@@ -39,10 +37,9 @@ namespace me {
 	audio channel and audio channel groups.
 	You can access the InputManager calling sm().
 	*/
-	class __MOTORENGINE_API SoundManager : public Singleton<SoundManager>
-	{
-		friend Singleton<SoundManager>;
-		SoundManager();
+	class AudioLeon : public VeryReal::Singleton<AudioLeon> {
+		friend Singleton<AudioLeon>;
+		AudioLeon();
 		//Stores audio handles linked to their name.
 		std::unordered_map<std::string, FMOD::Sound*> mSoundsMap;
 		//Stores audio handles linked to the last channel they where played in.
@@ -109,7 +106,7 @@ namespace me {
 		/**
 		Destructor for the SoundManager class
 		*/
-		~SoundManager();
+		~AudioLeon();
 		/**
 		Updates the sound system every step of the game loop.
 		*/
@@ -212,7 +209,7 @@ namespace me {
 		@param channelVel : the channel' group where the sound will played on's velocity in 3D space used for doppler.
 		@return A boolean showing whether or not a channel group was found to play the sound.
 		*/
-		bool playSound(std::string soundName, std::string channelGroup, Vector3* channelPos, Vector3* channelVel, float channelVolume);
+		bool playSound(std::string soundName, std::string channelGroup, VeryReal::Vector3* channelPos, VeryReal::Vector3* channelVel, float channelVolume);
 		/**
 		Releases the dynamic memory created on runtime when creating new sounds.
 		@param soundName : the especific name of the sound which speed will be changed.
@@ -227,8 +224,8 @@ namespace me {
 		@param listenerUP : the up vector of the listener.
 		@param listenerVel : the velocity of the listener.
 		*/
-		void updateListenersPosition(int index, Vector3 listenerPos,
-			Vector3 listenerFW, Vector3 listenerUP, Vector3 listenerVel = { 0,0,0 });
+		void updateListenersPosition(int index, VeryReal::Vector3 listenerPos,
+			VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel = { 0,0,0 });
 		/**
 		Removes the listener from its vector and resets its values.
 		@param index : the index that refers to a certain listener.
@@ -241,7 +238,7 @@ namespace me {
 		@param position : the value of the position of the sound.
 		@return A boolean showing wether or not the position was set.
 		*/
-		bool setSoundAtributes(std::string soundName, Vector3 position, Vector3 velocity);
+		bool setSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity);
 
 		/**
 		Sets the pitch of a certain sound depending on the velocity of the object it is attached to.
@@ -249,7 +246,7 @@ namespace me {
 		@param velocity : the value of the velocity of the object.
 		@return A boolean showing wether or not the new pitch was set.
 		*/
-		bool setPitchVelocity(std::string soundName, Vector3 velocity);
+		bool setPitchVelocity(std::string soundName, VeryReal::Vector3 velocity);
 
 		/**
 		Gets the useful listener which will be able to listen to a new sound.
@@ -271,10 +268,9 @@ namespace me {
 	This macro defines a compact way for using the singleton SoundManager, instead of
 	writing SoundManager::instance()->method() we write soundManager().method()
 	*/
-	inline SoundManager& soundManager() {
-		return *SoundManager::Instance();
+	inline AudioLeon& soundManager() {
+		return *AudioLeon::Instance();
 	}
-}
 
 #endif // !_FMOD_SOUND_MANAGER
 

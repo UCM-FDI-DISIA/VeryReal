@@ -10,14 +10,11 @@
 //Desde el motor siempre sabemos donde esta la dll del juego.
 //dll export es una manera de que desde el juego, esa función sea visible.
 
-
-
 #include <iostream>
 
 const int FRAME_RATE = 3;
 
 bool Init() {
-
 	SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
 	//SDL_Window* mWindow; // Ventana (temporal) para que funcione el input
 	//mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,

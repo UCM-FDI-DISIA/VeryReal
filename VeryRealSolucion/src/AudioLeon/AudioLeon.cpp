@@ -17,13 +17,13 @@
 ////   4. Use la ventana Lista de errores para ver los errores
 ////   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
 ////   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
-#include "SoundManager.h"
+#include "AudioLeon.h"
 #include <fmod.hpp>
 #include <fmod_errors.h>
 
 #include <algorithm>
 
-me::SoundManager::SoundManager() {
+AudioLeon::AudioLeon() {
 
 	mResult = FMOD::System_Create(&mSoundSystem);      // Create the main system object.
 	checkFMODResult(mResult);
@@ -51,7 +51,7 @@ me::SoundManager::SoundManager() {
 	}
 }
 
-bool me::SoundManager::checkFMODResult(FMOD_RESULT FMODResult)
+bool AudioLeon::checkFMODResult(FMOD_RESULT FMODResult)
 {
 	if (FMODResult != FMOD_OK)
 	{
@@ -63,7 +63,7 @@ bool me::SoundManager::checkFMODResult(FMOD_RESULT FMODResult)
 	return true;
 }
 
-FMOD::Sound* me::SoundManager::getSound(std::string soundName)
+FMOD::Sound* AudioLeon::getSound(std::string soundName)
 {
 	nameToLower(soundName);
 	auto returnedSound = mSoundsMap.find(soundName);
@@ -71,7 +71,7 @@ FMOD::Sound* me::SoundManager::getSound(std::string soundName)
 	return returnedSound->second;
 }
 
-FMOD::Channel* me::SoundManager::getChannel(std::string soundName)
+FMOD::Channel* AudioLeon::getChannel(std::string soundName)
 {
 	nameToLower(soundName);
 	FMOD::Sound* soundHandle = getSound(soundName);
@@ -85,7 +85,7 @@ FMOD::Channel* me::SoundManager::getChannel(std::string soundName)
 	}
 }
 
-FMOD::ChannelGroup* me::SoundManager::getGroupChannel(std::string channelGroupName)
+FMOD::ChannelGroup* AudioLeon::getGroupChannel(std::string channelGroupName)
 {
 	nameToLower(channelGroupName);
 	auto returnedGroup = mChannelGroupMaps.find(channelGroupName);
@@ -93,7 +93,7 @@ FMOD::ChannelGroup* me::SoundManager::getGroupChannel(std::string channelGroupNa
 	return returnedGroup->second;
 }
 
-bool me::SoundManager::changeChannelVolume(std::string channelGroupName, float volume)
+bool AudioLeon::changeChannelVolume(std::string channelGroupName, float volume)
 {
 	nameToLower(channelGroupName);
 	auto returnedGroup = mChannelGroupMaps.find(channelGroupName);
@@ -102,14 +102,14 @@ bool me::SoundManager::changeChannelVolume(std::string channelGroupName, float v
 	return checkFMODResult(mResult);
 }
 
-void me::SoundManager::nameToLower(std::string& name)
+void AudioLeon::nameToLower(std::string& name)
 {
 	name.erase(std::remove_if(name.begin(), name.end(), ::isspace),
 		name.end());
 	std::transform(name.begin(), name.end(), name.begin(), ::tolower);
 }
 
-me::SoundManager::~SoundManager()
+AudioLeon::~AudioLeon()
 {
 	for (auto s : mSoundsMap)
 	{
@@ -125,13 +125,13 @@ me::SoundManager::~SoundManager()
 	checkFMODResult(mResult);
 }
 
-void me::SoundManager::systemRefresh(const double& dt)
+void AudioLeon::systemRefresh(const double& dt)
 {
 	mResult = mSoundSystem->update();
 	checkFMODResult(mResult);
 }
 
-bool me::SoundManager::create3DSound(std::string soundPath, std::string soundName, float minDistance, float maxDistance, bool loop)
+bool AudioLeon::create3DSound(std::string soundPath, std::string soundName, float minDistance, float maxDistance, bool loop)
 {
 	soundPath = "Assets/Sounds/" + soundPath;
 	nameToLower(soundName);
@@ -166,7 +166,7 @@ bool me::SoundManager::create3DSound(std::string soundPath, std::string soundNam
 
 }
 
-bool me::SoundManager::createNormalSound(std::string soundPath, std::string soundName, bool loop)
+bool AudioLeon::createNormalSound(std::string soundPath, std::string soundName, bool loop)
 {
 	soundPath = "Assets/Sounds/" + soundPath;
 	nameToLower(soundName);
@@ -194,7 +194,7 @@ bool me::SoundManager::createNormalSound(std::string soundPath, std::string soun
 	}
 }
 
-bool me::SoundManager::pauseSound(std::string soundName, bool pause)
+bool AudioLeon::pauseSound(std::string soundName, bool pause)
 {
 	nameToLower(soundName);
 	bool isPaused;
@@ -210,7 +210,7 @@ bool me::SoundManager::pauseSound(std::string soundName, bool pause)
 	}
 }
 
-bool me::SoundManager::stopSound(std::string soundName)
+bool AudioLeon::stopSound(std::string soundName)
 {
 	nameToLower(soundName);
 	bool isPaused;
@@ -226,7 +226,7 @@ bool me::SoundManager::stopSound(std::string soundName)
 	}
 }
 
-bool me::SoundManager::stopEverySound()
+bool AudioLeon::stopEverySound()
 {
 	for (auto i : mChannelsVector) {
 		i->stop();
@@ -234,7 +234,7 @@ bool me::SoundManager::stopEverySound()
 	return true;
 }
 
-bool me::SoundManager::playSound(std::string soundName, std::string channelGroup, Vector3* channelPos, Vector3* channelVel, float channelVolume)
+bool AudioLeon::playSound(std::string soundName, std::string channelGroup, VeryReal::Vector3* channelPos, VeryReal::Vector3* channelVel, float channelVolume)
 {
 	nameToLower(soundName);
 	FMOD::Sound* soundHandle = getSound(soundName);
@@ -278,7 +278,7 @@ bool me::SoundManager::playSound(std::string soundName, std::string channelGroup
 	return true;
 }
 
-bool me::SoundManager::deleteSound(std::string soundName)
+bool AudioLeon::deleteSound(std::string soundName)
 {
 	nameToLower(soundName);
 	FMOD::Sound* soundHandle = getSound(soundName);
@@ -289,19 +289,19 @@ bool me::SoundManager::deleteSound(std::string soundName)
 	return checkFMODResult(mResult);
 }
 
-void me::SoundManager::updateListenersPosition(int index, Vector3 listenerPos, Vector3 listenerFW, Vector3 listenerUP, Vector3 listenerVel)
+void AudioLeon::updateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel)
 {
 	FMOD_VECTOR pos = listenerPos.v3ToFmodV3(), fw = listenerFW.v3ToFmodV3(), up = listenerUP.v3ToFmodV3(), vel = listenerVel.v3ToFmodV3();
 	mSoundSystem->set3DListenerAttributes(index, &pos, &vel, &fw, &up);
 }
 
-void me::SoundManager::removeListener(int index)
+void AudioLeon::removeListener(int index)
 {
 	mListeners[index] = false;
 	updateListenersPosition(index, { 999999,999999,999999 }, { 0,0,0 }, { 0,0,0 }, { 0,0,0 });
 }
 
-bool me::SoundManager::setSoundAtributes(std::string soundName, Vector3 position, Vector3 velocity)
+bool AudioLeon::setSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity)
 {
 	nameToLower(soundName);
 	FMOD::Channel* channelHandle = getChannel(soundName);
@@ -312,11 +312,11 @@ bool me::SoundManager::setSoundAtributes(std::string soundName, Vector3 position
 	return true;
 }
 
-bool me::SoundManager::setPitchVelocity(std::string soundName, Vector3 velocity)
+bool AudioLeon::setPitchVelocity(std::string soundName, VeryReal::Vector3 velocity)
 {
 	nameToLower(soundName);
 	FMOD::Channel* channel = getChannel(soundName);
-	float velMagnitude = velocity.magnitude();
+	float velMagnitude = velocity.Magnitude();
 	float newPitch = 1 + (velMagnitude - 1) / 10;
 	if (channel != nullptr) {
 		channel->setPitch(newPitch);
@@ -325,7 +325,7 @@ bool me::SoundManager::setPitchVelocity(std::string soundName, Vector3 velocity)
 	else return false;
 }
 
-bool me::SoundManager::setSpeed(std::string soundName, float newSpeed)
+bool AudioLeon::setSpeed(std::string soundName, float newSpeed)
 {
 	nameToLower(soundName);
 	FMOD::Sound* soundHandle = getSound(soundName);
@@ -336,7 +336,7 @@ bool me::SoundManager::setSpeed(std::string soundName, float newSpeed)
 	return checkFMODResult(mResult);
 }
 
-bool me::SoundManager::setMode(std::string soundName, FMOD_MODE newMode)
+bool AudioLeon::setMode(std::string soundName, FMOD_MODE newMode)
 {
 	nameToLower(soundName);
 	FMOD::Sound* soundHandle = getSound(soundName);
@@ -361,7 +361,7 @@ bool me::SoundManager::setMode(std::string soundName, FMOD_MODE newMode)
 	checkFMODResult(mResult);
 }
 
-bool me::SoundManager::setMinMaxDistance(std::string soundName, float minDistance, float maxDistance)
+bool AudioLeon::setMinMaxDistance(std::string soundName, float minDistance, float maxDistance)
 {
 	nameToLower(soundName);
 	auto soundHandle = getSound(soundName);
@@ -370,7 +370,7 @@ bool me::SoundManager::setMinMaxDistance(std::string soundName, float minDistanc
 	return true;
 }
 
-bool me::SoundManager::createChannelGroup(std::string groupName)
+bool AudioLeon::createChannelGroup(std::string groupName)
 {
 	nameToLower(groupName);
 	const char* channelGroupName = groupName.c_str();
@@ -387,7 +387,7 @@ bool me::SoundManager::createChannelGroup(std::string groupName)
 	return false;
 }
 
-bool me::SoundManager::setChannelVolume(std::string groupName, float newVolume)
+bool AudioLeon::setChannelVolume(std::string groupName, float newVolume)
 {
 	nameToLower(groupName);
 	const char* channelGroup = groupName.c_str();
@@ -400,7 +400,7 @@ bool me::SoundManager::setChannelVolume(std::string groupName, float newVolume)
 	}
 }
 
-bool me::SoundManager::setVolume(std::string soundName, float newVolume)
+bool AudioLeon::setVolume(std::string soundName, float newVolume)
 {
 	nameToLower(soundName);
 	FMOD::Channel* channel = getChannel(soundName);
@@ -413,7 +413,7 @@ bool me::SoundManager::setVolume(std::string soundName, float newVolume)
 	}
 }
 
-float me::SoundManager::getVolume(std::string soundName)
+float AudioLeon::getVolume(std::string soundName)
 {
 	nameToLower(soundName);
 	FMOD::Channel* channel = getChannel(soundName);

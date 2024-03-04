@@ -1,33 +1,33 @@
 #include "AudioListener.h"
-#include "Audio/SoundManager.h"
-#include "EntityComponent/Entity.h"
-#include "EntityComponent/Transform.h"
-#include "MotorEngine/MotorEngineError.h"
-#include "MotorEngine/SceneManager.h"
+#include <AudioLeon.h>
+#include <TransformComponent.h>
+#include <Entity.h>
+#include <ErrorInformant.h>
+#include <SceneManager.h>
 
 
-me::Component* me::FactoryAudioListener::create(Parameters& params)
+//Component* FactoryAudioListener::create(Parameters& params)
+//{
+//	AudioListener* audioListener = new AudioListener();
+//
+//	return audioListener;
+//}
+//
+//void FactoryAudioListener::destroy(Component* component)
+//{
+//	delete component;
+//}
+
+AudioListener::AudioListener()
 {
-	AudioListener* audioListener = new AudioListener();
-
-	return audioListener;
 }
 
-void me::FactoryAudioListener::destroy(Component* component)
-{
-	delete component;
-}
-
-me::AudioListener::AudioListener()
-{
-}
-
-me::AudioListener::~AudioListener()
+AudioListener::~AudioListener()
 {
 	soundManager().removeListener(mListenerIndex);
 }
 
-void me::AudioListener::start()
+void AudioListener::Start()
 {
 	// Get the next available index for a listener in the sound manager
 	mListenerIndex = soundManager().getNextUsefulListenerIndex();
@@ -38,24 +38,24 @@ void me::AudioListener::start()
 #endif // _DEBUG
 }
 
-void me::AudioListener::update(const double& dt)
+void AudioListener::Update(const double& dt)
 {
-	if (!mEntity->getComponent<Transform>("transform")) {
-		errorManager().throwMotorEngineError("AudioListener error", "An entity doesn't have transform component");
-		sceneManager().quit();
+	if (!this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")) {
+		ErrorInf().showErrorMessageBox("AudioListener error", "An entity doesn't have transform component", EI_ERROR);
+	/*	sceneManager().quit();*/
 		return;
 	}
 
 
-	Vector3 position = mEntity->getComponent<Transform>("transform")->getPosition();
-	Vector3 velocity = mEntity->getComponent<Transform>("transform")->getVelocity();
-	Vector3 up = mEntity->getComponent<Transform>("transform")->up();
-	Vector3 forward = mEntity->getComponent<Transform>("transform")->forward();
+	VeryReal::Vector3 position = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetPosition();
+	VeryReal::Vector3 velocity = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetVelocity();
+	//VeryReal::Vector3 up = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->up();
+	//VeryReal::Vector3 forward = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->forward();
 
-	Vector3 v = { (position.x - lastPosition.x) * float(dt),(position.y - lastPosition.y) * float(dt),(position.z - lastPosition.z) * float(dt) };
+	//VeryReal::Vector3 v = { (position.x - lastPosition.x) * float(dt),(position.y - lastPosition.y) * float(dt),(position.z - lastPosition.z) * float(dt) };
 
-	lastPosition = position;
+	//lastPosition = position;
 
-	// Update the position of the audio listener in the sound manager
-	soundManager().updateListenersPosition(mListenerIndex, position, forward, up, v);
+	//// Update the position of the audio listener in the sound manager
+	//soundManager().updateListenersPosition(mListenerIndex, position, forward, up, v);
 }

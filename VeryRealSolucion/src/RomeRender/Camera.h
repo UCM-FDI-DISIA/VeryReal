@@ -3,7 +3,6 @@
 
 namespace Ogre
 {
-    class Vector3;
     class Camera;
     class SceneNode;
     class SceneManager;

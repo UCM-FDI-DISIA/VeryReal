@@ -5,30 +5,29 @@
 
 #include <string>
 
-#include "EntityComponent/Component.h"
-#include "EntityComponent/FactoryComponent.h"
+#include <Component.h>
+//#include "EntityComponent/FactoryComponent.h"
 
 namespace FMOD {
 	class Sound;
 }
 
-namespace me {
 	class SoundManager;
 	class Transform;
 
 	//Creates and destroys AudioSource components
-	class FactoryAudioSource : public FactoryComponent {
+	/*class FactoryAudioSource : public FactoryComponent {
 	public:
 		Component* create(Parameters& params) override;
 		void destroy(Component* component) override;
-	};
+	};*/
 
 
 	/**
 	Plays an audio file in the scene. AudioListeners within range
 	will hear it with the intensity based in their position in the scene.
 	*/
-	class __MOTORENGINE_API AudioSource : public Component
+	class AudioSource : public VeryReal::Component
 	{
 	public:
 
@@ -38,9 +37,9 @@ namespace me {
 		AudioSource();
 		~AudioSource();
 
-		void start() override;
+		virtual void Start();
 
-		void update(const double& dt) override;
+		virtual void Update(const double& dt);
 
 		/**
 		* Play the audio.
@@ -153,9 +152,8 @@ namespace me {
 		bool mPlayOnStart;
 
 
-		Transform* mTransform = nullptr;
+		VeryReal::TransformComponent* mTransform = nullptr;
 	};
-}
 
 
 #endif
