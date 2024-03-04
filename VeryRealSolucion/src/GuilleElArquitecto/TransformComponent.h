@@ -23,7 +23,7 @@ namespace VeryReal {
 
 		inline void SetPosition(VeryReal::Vector3 position) { this->position = position; }
 		inline void SetRotation(VeryReal::Vector3 rotation) { this->rotation = rotation; }
-		inline void SetRotation(VeryReal::Vector3 velocity) { this->velocity = velocity; }
+		inline void SetVelocity(VeryReal::Vector3 velocity) { this->velocity = velocity; }
 		inline void SetScale(VeryReal::Vector3 scale) { this->scale = scale; }
 
 		void Translate(VeryReal::Vector3 translateposition);

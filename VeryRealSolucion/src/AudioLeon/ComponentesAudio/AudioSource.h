@@ -13,8 +13,9 @@ namespace FMOD {
 }
 
 	class SoundManager;
-	class Transform;
-
+	namespace VeryReal {
+		class TransformComponent;
+	}
 	//Creates and destroys AudioSource components
 	/*class FactoryAudioSource : public FactoryComponent {
 	public:
