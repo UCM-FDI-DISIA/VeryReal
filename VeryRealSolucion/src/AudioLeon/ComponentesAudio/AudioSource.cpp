@@ -56,18 +56,18 @@ bool AudioSource::create3DSound(std::string soundPath, std::string soundName, fl
     if (soundHandle != nullptr) return false;
 
     if (loop) {
-        mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_3D_LINEARROLLOFF | FMOD_3D | FMOD_LOOP_NORMAL, 0, &newSoundHandle);
+        this->mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_3D_LINEARROLLOFF | FMOD_3D | FMOD_LOOP_NORMAL, 0, &newSoundHandle);
     }
     else {
-        mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_3D_LINEARROLLOFF | FMOD_3D, 0, &newSoundHandle);
+        this->mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_3D_LINEARROLLOFF | FMOD_3D, 0, &newSoundHandle);
     }
 
-    if (!AL().CheckFMODResult(mResult)) return false;
+    if (!AL().CheckFMODResult(this->mResult)) return false;
 
-    mResult = newSoundHandle->set3DMinMaxDistance(minDistance, maxDistance);
-    if (!AL().CheckFMODResult(mResult)) return false;
+    this->mResult = newSoundHandle->set3DMinMaxDistance(minDistance, maxDistance);
+    if (!AL().CheckFMODResult(this->mResult)) return false;
 
-    if (AL().CheckFMODResult(mResult)) {
+    if (AL().CheckFMODResult(this->mResult)) {
         std::pair<std::string, FMOD::Sound*> newSound(soundName, newSoundHandle);
         AL().AddNewSound(newSound);
         
@@ -90,13 +90,13 @@ bool AudioSource::createNormalSound(std::string soundPath, std::string soundName
     if (soundHandle != nullptr) return false;
 
     if (loop) {
-        mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_DEFAULT | FMOD_LOOP_NORMAL, 0, &newSoundHandle);
+        this->mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_DEFAULT | FMOD_LOOP_NORMAL, 0, &newSoundHandle);
     }
     else {
-        mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_DEFAULT, 0, &newSoundHandle);
+        this->mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_DEFAULT, 0, &newSoundHandle);
     }
 
-    if (AL().CheckFMODResult(mResult)) {
+    if (AL().CheckFMODResult(this->mResult)) {
         std::pair<std::string, FMOD::Sound*> newSound(soundName, newSoundHandle);
         AL().AddNewSound(newSound);
 #ifdef _DEBUG
@@ -139,8 +139,8 @@ bool AudioSource::PlayAudioSource(std::string soundName, std::string channelGrou
             AL().GetChannelsVector()[i]->isPlaying(&isPlaying);
 
             if (isPlaying) continue;
-            mResult = AL().GetSoundSystem()->PlayAudioSource(soundHandle, playedChannelGroup, false, &AL().GetChannelsVector()[i]);
-            AL().CheckFMODResult(mResult);
+            this->mResult = AL().GetSoundSystem()->playSound(soundHandle, playedChannelGroup, false, &AL().GetChannelsVector()[i]);
+            AL().CheckFMODResult(this->mResult);
 
             reproChannel = AL().GetChannelsVector()[i];
 
@@ -152,8 +152,8 @@ bool AudioSource::PlayAudioSource(std::string soundName, std::string channelGrou
         }
     }
     else {
-        mResult = AL().GetSoundSystem()->PlayAudioSource(soundHandle, playedChannelGroup, false, &reproChannel);
-        AL().CheckFMODResult(mResult);
+        this->mResult = AL().GetSoundSystem()->playSound(soundHandle, playedChannelGroup, false, &reproChannel);
+        AL().CheckFMODResult(this->mResult);
     }
 
     if (finalSoundMode & FMOD_3D) {
@@ -170,8 +170,8 @@ bool AudioSource::StopSound(std::string soundName)
     bool isPaused;
     FMOD::Channel* channel = AL().GetChannel(soundName);
     if (channel != nullptr) {
-        mResult = channel->getPaused(&isPaused);
-        AL().CheckFMODResult(mResult);
+        this->mResult = channel->getPaused(&isPaused);
+        AL().CheckFMODResult(this->mResult);
         channel->stop();
         return true;
     }
@@ -186,8 +186,8 @@ bool AudioSource::PauseSound(std::string soundName, bool pause)
     bool isPaused;
     FMOD::Channel* channel = AL().GetChannel(soundName);
     if (channel != nullptr) {
-        mResult = channel->getPaused(&isPaused);
-        AL().CheckFMODResult(mResult);
+        this->mResult = channel->getPaused(&isPaused);
+        AL().CheckFMODResult(this->mResult);
         channel->setPaused(pause);
         return true;
     }
@@ -218,7 +218,6 @@ void AudioSource::Start()
 
 void AudioSource::Update(const double& dt)
 {
-    Esto esta mal, si no es 3d que pasa
     if (mIsThreeD) {
         setSoundAtributes(mSoundName, this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetPosition(), this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetVelocity());
     }
@@ -266,9 +265,9 @@ bool AudioSource::setSpeed(float newSpeed) {
     FMOD::Sound* soundHandle = AL().GetSound(mSoundName);
     if (soundHandle == nullptr) return false;
 
-    mResult = soundHandle->setMusicSpeed(newSpeed);
+    this->mResult = soundHandle->setMusicSpeed(newSpeed);
 
-    return AL().CheckFMODResult(mResult);
+    return AL().CheckFMODResult(this->mResult);
 }
 
 void AudioSource::setMinDistance(float value) {
