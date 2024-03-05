@@ -2,7 +2,6 @@
 #include "BulletDynamics/Dynamics/btRigidBody.h"
 #include "PedroBullet.h"
 #include "Entity.h"
-
 #include <LinearMath/btDefaultMotionState.h>
 
 
@@ -19,33 +18,19 @@
 RigidBody::RigidBody(float mass, float friccion, float bounce, int mGroup, VeryReal::TransformComponent* transform, btCollisionShape* shape, PBMovementType mType, unordered_set<int>* mask)
 {
 
-    //btRigidBody::btRigidBodyConstructionInfo info{
-    //    m_mass = mass;
-    //    this->friccion = friccion;
-    //    this->bounce = bounce;
-    //    this->mGroup = mGroup;
-    //    this->transform = transform;
-    //    this->shape = shape;
-    //    this->movementType = mType;
-    //    this->mask = mask;
-    //    this->SetName("rigidbody");
-    //};
+    btRigidBody::btRigidBodyConstructionInfo* constructionInfo = new btRigidBody::btRigidBodyConstructionInfo(mass, shape, btTransform({ 0, 0, 0, 0 }, { 0,0,0 }), btVector3{ 0,0,0 });
+    this->mass = mass;
+    this->friccion = friccion;
+    this->bounce = bounce;
+    this->mGroup = mGroup;
+    this->transform = transform;
+    this->shape = shape;
+    this->movementType = mType;
+    this->mask = mask;
+    this->SetName("rigidbody");
+    // bulletRigidBody = new btRigidBody(btRigidBody::btScalar(this->mass),this->shape, btMotionState*, this->movementType, btVector3( 0, 0, 0)); // temporal
 
-
-   
-    btRigidBody::btRigidBodyConstructionInfo* constructionInfo = new btRigidBody::btRigidBodyConstructionInfo(mass, shape, btTransform({ 0, 0, 0, 0 }, {0,0,0}), btVector3{ 0,0,0 });
-	this->mass = mass;
-	this->friccion = friccion;
-	this->bounce = bounce;
-	this->mGroup = mGroup;
-	this->transform = transform;
-	this->shape = shape;
-	this->movementType = mType;
-	this->mask = mask;
-	this->SetName("rigidbody");
-   // bulletRigidBody = new btRigidBody(btRigidBody::btScalar(this->mass),this->shape, btMotionState*, this->movementType, btVector3( 0, 0, 0)); // temporal
-                   
-
+}
 
 RigidBody::~RigidBody() {
     if (btRigidBody) {

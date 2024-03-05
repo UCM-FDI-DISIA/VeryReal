@@ -1,6 +1,16 @@
 #include "PedroBullet.h"
 
 
+#include <iostream>
+#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>  //gestion de colisiones, gravedad...
+#include <BulletCollision/CollisionShapes/btSphereShape.h>
+#include <BulletCollision/CollisionShapes/btCylinderShape.h>
+#include <BulletCollision/CollisionShapes/btCapsuleShape.h>
+#include <BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h>
+#include <BulletCollision/BroadphaseCollision/btDbvtBroadphase.h>
+#include <BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h>
+#include <LinearMath/btDefaultMotionState.h>
+#include <LinearMath/btVector3.h>
 
 // Constructor
 PedroBullet::PedroBullet() :
@@ -50,12 +60,11 @@ void PedroBullet::createRigidBody(btTransform* transform)
 
 }
 
-
-
-
-
-
-
+btVector3 PedroBullet::V3ToBtV3(VeryReal::Vector3 conversion) const
+{
+    btVector3 newVector = btVector3(conversion.GetX(), conversion.GetY(), conversion.GetZ());
+    return newVector;
+}
 
 //
 //

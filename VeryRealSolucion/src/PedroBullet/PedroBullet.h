@@ -6,16 +6,8 @@
 #include <Singleton.h>
 #include <Manager.h>
 #include <array>
+#include "Vector3.h"
 
-#include <iostream>
-#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>  //gestion de colisiones, gravedad...
-#include <BulletCollision/CollisionShapes/btSphereShape.h>
-#include <BulletCollision/CollisionShapes/btCylinderShape.h>
-#include <BulletCollision/CollisionShapes/btCapsuleShape.h>
-#include <BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h>
-#include <BulletCollision/BroadphaseCollision/btDbvtBroadphase.h>
-#include <BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h>
-#include <LinearMath/btDefaultMotionState.h>
 
 
 using namespace std;
@@ -30,6 +22,7 @@ class btBroadphaseInterface;
 class btSequentialImpulseConstraintSolver;
 class btRigidBody;
 class btTransform;
+class btVector3;
 
 class PedroBullet : public VeryReal::Manager<PedroBullet> {
     friend Singleton<PedroBullet>;
@@ -52,6 +45,10 @@ public:
     void AddRigidBody(btRigidBody* body);
     void RemoveRigidBody(btRigidBody* body);
     void createRigidBody(btTransform* rB);
+
+    //vector conversion for bullet
+    btVector3 V3ToBtV3(VeryReal::Vector3 conversion) const;
+
 };
 
 
