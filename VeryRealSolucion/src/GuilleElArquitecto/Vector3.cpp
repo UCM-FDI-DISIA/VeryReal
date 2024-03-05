@@ -1,5 +1,4 @@
 #include "Vector3.h"
-#include <fmod.hpp>
 
 VeryReal::Vector3::Vector3() {
 	x = 0;
@@ -60,13 +59,6 @@ VeryReal::Vector3 VeryReal::Vector3::Normalize() {
 	if (m != 0)
 		return *this / Magnitude();
 	//CERROR
-}
-
-FMOD_VECTOR VeryReal::Vector3::v3ToFmodV3() const
-{
-	FMOD_VECTOR newVector;
-	newVector.x = x; newVector.y = y; newVector.z = z;
-	return newVector;
 }
 
 //para hacer Cout en la consola, ayudarnos a depurar

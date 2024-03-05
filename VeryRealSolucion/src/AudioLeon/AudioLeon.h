@@ -54,36 +54,18 @@ typedef int CHANNEL_NUMBER;
 		//The sound system over which every bit of audio gets created.
 		FMOD::System* mSoundSystem = nullptr;
 
-		/**
-		Chech if the result of any FMOD-related action is without any error.
-		@param FMODResult: a flag that shows if there has been an error
-		@returns A boolean representing whether there was an error or not.
-		*/
-		bool checkFMODResult(FMOD_RESULT FMODResult);
+		FMOD_RESULT mResult;
+
+		
 		//Se queda
 
-		/**
-		Gets a sound handle via the name of the sound.
-		@param soundName : the name of the sound linked to a channek needed to look for a certain channel.
-		@returns Nullptr if there is no sound with that given name.
-		*/
-		FMOD::Sound* getSound(std::string soundName);
+		
 		//Se queda
 
-		/**
-		Gets a channel handle via the sound that was last played on it.
-		@param soundName : the name of the sound linked to a channel needed to look for a certain channel.
-		@returns Nullptr if there is no such channel or the correspondent channel.
-		*/
-		FMOD::Channel* getChannel(std::string soundName);
+		
 		//Se queda
 
-		/**
-		Gets a group channel handle via the name it was created with.
-		@param groupName : the name of the group channel.
-		@returns Nullptr if there is no such group channel or the correspondent group channel.
-		*/
-		FMOD::ChannelGroup* getGroupChannel(std::string channelGroupName);
+		
 
 		/**
 		Changes the volume of a channel.
@@ -92,14 +74,6 @@ typedef int CHANNEL_NUMBER;
 		@returns False if there is no such channel os ir an FMOD error, true if the volume is changed.
 		*/
 		bool changeChannelVolume(std::string channelGroupName, float volume);
-
-		/**
-		Makes sure the sound name is in all lower case with no spaces.
-		@param name : the name to change.
-		*/
-		void nameToLower(std::string& name);
-
-		FMOD_RESULT mResult;
 
 	public:
 
@@ -120,22 +94,60 @@ typedef int CHANNEL_NUMBER;
 		@param loop : if the sound will loop or not.
 		@return A boolean representing whether or not a the sound was created.
 		*/
-		bool create3DSound(std::string soundPath, std::string soundName, float minDistance, float maxDistance, bool loop);
-		/**
-		Creates a normal sound.
-		@param soundPath : relative path to the sound that will be loaded in the sound handle.
-		@param soundName : the especific name of the sound which mode will be changed.
-		@param loop : if the sound will loop or not.
-		@return A boolean representing whether or not a the sound was created.
+
+		/*
+		Returns the conversion of a Vector3 to an FMOD_VECTOR
 		*/
-		bool createNormalSound(std::string soundPath, std::string soundName, bool loop);
+		FMOD_VECTOR V3ToFmodV3(VeryReal::Vector3 conversion) const;
+
 		/**
-		Sets the speed a certain sound wil be played at.
-		@param soundName : the especific name of the sound which speed will be changed.
-		@param newSpeed : the new value the sound will be played at.
-		@return A boolean showing wether or not the speed was changed.
+		Makes sure the sound name is in all lower case with no spaces.
+		@param name : the name to change.
 		*/
-		bool setSpeed(std::string soundName, float newSpeed);
+		void NameToLower(std::string& name);
+
+		/**
+		Chech if the result of any FMOD-related action is without any error.
+		@param FMODResult: a flag that shows if there has been an error
+		@returns A boolean representing whether there was an error or not.
+		*/
+		bool CheckFMODResult(FMOD_RESULT FMODResult);
+
+		/**
+		Gets a sound handle via the name of the sound.
+		@param soundName : the name of the sound linked to a channek needed to look for a certain channel.
+		@returns Nullptr if there is no sound with that given name.
+		*/
+		FMOD::Sound* GetSound(std::string soundName);
+
+		/**
+		Returns the reference to the FMOD sound system.
+		*/
+		FMOD::System* GetSoundSystem();
+
+		/**
+		Gets a group channel handle via the name it was created with.
+		@param groupName : the name of the group channel.
+		@returns Nullptr if there is no such group channel or the correspondent group channel.
+		*/
+		FMOD::ChannelGroup* GetGroupChannel(std::string channelGroupName);
+
+		std::vector<FMOD::Channel*> GetChannelsVector();
+
+		std::unordered_map<FMOD::Sound*, CHANNEL_NUMBER> GetLastPlayedMap();
+
+		/*
+		Adds a new sound to the sounds map.
+		*/
+		void AddNewSound(std::pair<std::string, FMOD::Sound*> newSound);
+
+		/**
+		Gets a channel handle via the sound that was last played on it.
+		@param soundName : the name of the sound linked to a channel needed to look for a certain channel.
+		@returns Nullptr if there is no such channel or the correspondent channel.
+		*/
+		FMOD::Channel* GetChannel(std::string soundName);
+
 		/**
 		Sets the mode of a certain sound.
 		@param soundName : the especific name of the sound which mode will be changed.
@@ -180,36 +192,12 @@ typedef int CHANNEL_NUMBER;
 		float getVolume(std::string soundName);
 
 		/**
-		Looks for a sound channel and in case that it exists, sets the pause state of that channel to "pause".
-		@param soundName : the especific name of the sound which speed will be paused.
-		@param pause : the new pause value the channel will get.
-		@return True if the sound is paused, false if the sound didn't exist.
-		*/
-		bool pauseSound(std::string soundName, bool pause);
-
-		/**
-		Looks for a sound channel and in case that it exists, stops that channel from playing.
-		@param soundName : the especific name of the sound which speed will be paused.
-
-		@return True if the sound is stopped, false if the sound didn't exist.
-		*/
-		bool stopSound(std::string soundName);
-
-		/**
 		Stops every channel playing at the moment.
 
 		@return True if every channel was stopped.
 		*/
 		bool stopEverySound();
-		/**
-		It checks for available channels to play the sound and assigns a group channel depending on the user input.
-		@param soundName : the especific name of the sound which will be played.
-		@param channelGroup : the channel group where the sound will played on.
-		@param channelPos : the channel's position used for panning and attenuation.
-		@param channelVel : the channel' group where the sound will played on's velocity in 3D space used for doppler.
-		@return A boolean showing whether or not a channel group was found to play the sound.
-		*/
-		bool playSound(std::string soundName, std::string channelGroup, VeryReal::Vector3* channelPos, VeryReal::Vector3* channelVel, float channelVolume);
+
 		/**
 		Releases the dynamic memory created on runtime when creating new sounds.
 		@param soundName : the especific name of the sound which speed will be changed.
@@ -217,36 +205,11 @@ typedef int CHANNEL_NUMBER;
 		*/
 		bool deleteSound(std::string soundName);
 		/**
-		Updates the position of a sound listener relative to a certain sound.
-		@param index : the index that refers to a certain listener.
-		@param listenerPos : the position of the listener.
-		@param listenerFW : the forward vector of the listener.
-		@param listenerUP : the up vector of the listener.
-		@param listenerVel : the velocity of the listener.
-		*/
-		void updateListenersPosition(int index, VeryReal::Vector3 listenerPos,
-			VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel = { 0,0,0 });
-		/**
 		Removes the listener from its vector and resets its values.
 		@param index : the index that refers to a certain listener.
 		*/
 		void removeListener(int index);
-
-		/**
-		Sets the global position of a sound i.
-		@param soundName : the especific name of the sound which position will be set.
-		@param position : the value of the position of the sound.
-		@return A boolean showing wether or not the position was set.
-		*/
-		bool setSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity);
-
-		/**
-		Sets the pitch of a certain sound depending on the velocity of the object it is attached to.
-		@param soundName : the especific name of the sound which pitch will be set.
-		@param velocity : the value of the velocity of the object.
-		@return A boolean showing wether or not the new pitch was set.
-		*/
-		bool setPitchVelocity(std::string soundName, VeryReal::Vector3 velocity);
+		Se queda;
 
 		/**
 		Gets the useful listener which will be able to listen to a new sound.
@@ -260,8 +223,9 @@ typedef int CHANNEL_NUMBER;
 			}
 			return -1;
 		}
+		Se queda;
 
-		void startRecording();
+		/*void startRecording();*/
 	};
 
 	/**

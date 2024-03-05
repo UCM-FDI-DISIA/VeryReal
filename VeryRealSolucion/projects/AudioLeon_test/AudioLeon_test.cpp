@@ -7,7 +7,7 @@
 int main()
 {
     AL().Instance();
-    AL().startRecording();
+    /*AL().startRecording();*/
     std::cout << "Hello World!\n";
 }
 

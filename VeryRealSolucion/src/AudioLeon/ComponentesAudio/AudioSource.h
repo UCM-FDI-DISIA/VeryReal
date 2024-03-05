@@ -30,6 +30,8 @@ namespace FMOD {
 	*/
 	class AudioSource : public VeryReal::Component
 	{
+	private:
+		FMOD_RESULT mResult;
 	public:
 
 		/*
@@ -38,6 +40,60 @@ namespace FMOD {
 		AudioSource();
 		~AudioSource();
 
+		/**
+		Creates a 3D sound.
+		@param soundPath : relative path to the sound that will be loaded in the sound handle.
+		@param soundName : the especific name of the sound which mode will be changed.
+		@param minDistance : minimum audible distance for a 3D sound.
+		@param maxDistance : maximum audible distance for a 3D sound.
+		@param loop : if the sound will loop or not.
+		@return A boolean representing whether or not a the sound was created.
+		*/
+		bool create3DSound(std::string soundPath, std::string soundName, float minDistance, float maxDistance, bool loop);
+
+		/**
+		Creates a normal sound.
+		@param soundPath : relative path to the sound that will be loaded in the sound handle.
+		@param soundName : the especific name of the sound which mode will be changed.
+		@param loop : if the sound will loop or not.
+		@return A boolean representing whether or not a the sound was created.
+		*/
+		bool createNormalSound(std::string soundPath, std::string soundName, bool loop);
+
+		/**
+		Sets the global position of a sound i.
+		@param soundName : the especific name of the sound which position will be set.
+		@param position : the value of the position of the sound.
+		@return A boolean showing wether or not the position was set.
+		*/
+		bool setSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity);
+
+		/**
+		It checks for available channels to play the sound and assigns a group channel depending on the user input.
+		@param soundName : the especific name of the sound which will be played.
+		@param channelGroup : the channel group where the sound will played on.
+		@param channelPos : the channel's position used for panning and attenuation.
+		@param channelVel : the channel' group where the sound will played on's velocity in 3D space used for doppler.
+		@return A boolean showing whether or not a channel group was found to play the sound.
+		*/
+		bool PlayAudioSource(std::string soundName, std::string channelGroup, VeryReal::Vector3* channelPos, VeryReal::Vector3* channelVel, float channelVolume);
+
+		/**
+		Looks for a sound channel and in case that it exists, stops that channel from playing.
+		@param soundName : the especific name of the sound which speed will be paused.
+
+		@return True if the sound is stopped, false if the sound didn't exist.
+		*/
+		bool StopSound(std::string soundName);
+
+		/**
+		Looks for a sound channel and in case that it exists, sets the pause state of that channel to "pause".
+		@param soundName : the especific name of the sound which speed will be paused.
+		@param pause : the new pause value the channel will get.
+		@return True if the sound is paused, false if the sound didn't exist.
+		*/
+		bool PauseSound(std::string soundName, bool pause);
+		
 		virtual void Start();
 
 		virtual void Update(const double& dt);
@@ -76,10 +132,11 @@ namespace FMOD {
 		void setVolume(float value);
 
 		/**
-		* Set the speed of the audio.
-		* @param value The new speed value.
+		Sets the speed a certain sound wil be played at.
+		@param newSpeed : the new value the sound will be played at.
+		@return A boolean showing wether or not the speed was changed.
 		*/
-		void setSpeed(float value);
+		bool setSpeed(float newSpeed);
 
 		/**
 		* Set the minimum distance a sound can be heard from.

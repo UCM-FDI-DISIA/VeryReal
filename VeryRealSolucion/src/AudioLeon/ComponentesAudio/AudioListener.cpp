@@ -25,6 +25,7 @@ AudioListener::AudioListener()
 AudioListener::~AudioListener()
 {
 	AL().removeListener(mListenerIndex);
+	updateListenersPosition(mListenerIndex, { 999999,999999,999999 }, { 0,0,0 }, { 0,0,0 }, { 0,0,0 });
 }
 
 void AudioListener::Start()
@@ -57,5 +58,11 @@ void AudioListener::Update(const double& dt)
 	//lastPosition = position;
 
 	//// Update the position of the audio listener in the sound manager
-	//soundManager().updateListenersPosition(mListenerIndex, position, forward, up, v);
+	//updateListenersPosition(mListenerIndex, position, forward, up, v);
+}
+
+void AudioListener::updateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel)
+{
+	FMOD_VECTOR pos = AL().V3ToFmodV3(listenerPos), fw = AL().V3ToFmodV3(listenerFW), up = AL().V3ToFmodV3(listenerUP), vel = AL().V3ToFmodV3(listenerVel);
+	AL().GetSoundSystem()->set3DListenerAttributes(index, &pos, &vel, &fw, &up);
 }

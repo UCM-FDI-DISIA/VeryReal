@@ -44,11 +44,6 @@ namespace VeryReal {
 		bool operator==(const VeryReal::Vector3& vector);
 		bool operator!=(const VeryReal::Vector3& vector);
 
-		/*
-		Returns the conversion of a Vector3 to an FMOD_VECTOR
-		*/
-		FMOD_VECTOR v3ToFmodV3() const;
-
 		//devuelve el modulo
 		inline float Magnitude() { return sqrtf(powf(x, 2) + powf(y, 2) + powf(y, 2)); }
 		//normaliza el vector

@@ -9,7 +9,6 @@
 
 namespace FMOD {
 	class Sound;
-	class FMOD_VECTOR;
 }
 
 
@@ -39,6 +38,17 @@ namespace FMOD {
 		* Update the position of the audio listener based on the position of the entity it is attached to.
 		*/
 		virtual void Update(const double& dt);
+
+		/**
+		Updates the position of a sound listener relative to a certain sound.
+		@param index : the index that refers to a certain listener.
+		@param listenerPos : the position of the listener.
+		@param listenerFW : the forward vector of the listener.
+		@param listenerUP : the up vector of the listener.
+		@param listenerVel : the velocity of the listener.
+		*/
+		void updateListenersPosition(int index, VeryReal::Vector3 listenerPos,
+			VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel = { 0,0,0 });
 
 	private:
 		VeryReal::Vector3 position;

@@ -47,6 +47,155 @@ AudioSource::~AudioSource()
     AL().deleteSound(mSoundName);
 }
 
+bool AudioSource::create3DSound(std::string soundPath, std::string soundName, float minDistance, float maxDistance, bool loop)
+{
+    soundPath = "Assets/Sounds/" + soundPath;
+    AL().NameToLower(soundName);
+    FMOD::Sound* newSoundHandle;
+    auto soundHandle = AL().GetSound(soundName);
+    if (soundHandle != nullptr) return false;
+
+    if (loop) {
+        mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_3D_LINEARROLLOFF | FMOD_3D | FMOD_LOOP_NORMAL, 0, &newSoundHandle);
+    }
+    else {
+        mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_3D_LINEARROLLOFF | FMOD_3D, 0, &newSoundHandle);
+    }
+
+    if (!AL().CheckFMODResult(mResult)) return false;
+
+    mResult = newSoundHandle->set3DMinMaxDistance(minDistance, maxDistance);
+    if (!AL().CheckFMODResult(mResult)) return false;
+
+    if (AL().CheckFMODResult(mResult)) {
+        std::pair<std::string, FMOD::Sound*> newSound(soundName, newSoundHandle);
+        AL().AddNewSound(newSound);
+        
+#ifdef _DEBUG
+        std::cout << "Sound created." << "\n";
+#endif // DEBUG
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool AudioSource::createNormalSound(std::string soundPath, std::string soundName, bool loop)
+{
+    soundPath = "Assets/Sounds/" + soundPath;
+    AL().NameToLower(soundName);
+    FMOD::Sound* newSoundHandle;
+    auto soundHandle = AL().GetSound(soundName);
+    if (soundHandle != nullptr) return false;
+
+    if (loop) {
+        mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_DEFAULT | FMOD_LOOP_NORMAL, 0, &newSoundHandle);
+    }
+    else {
+        mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_DEFAULT, 0, &newSoundHandle);
+    }
+
+    if (AL().CheckFMODResult(mResult)) {
+        std::pair<std::string, FMOD::Sound*> newSound(soundName, newSoundHandle);
+        AL().AddNewSound(newSound);
+#ifdef _DEBUG
+        std::cout << "Sound created." << "\n";
+#endif // DEBUG
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool AudioSource::setSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity)
+{
+    AL().NameToLower(soundName);
+    FMOD::Channel* channelHandle = AL().GetChannel(soundName);
+    if (channelHandle == nullptr) return false;
+    FMOD_VECTOR p = AL().V3ToFmodV3(position), v = AL().V3ToFmodV3(velocity);
+
+    channelHandle->set3DAttributes(&p, &v);
+    return true;
+}
+
+bool AudioSource::PlayAudioSource(std::string soundName, std::string channelGroup, VeryReal::Vector3* channelPos, VeryReal::Vector3* channelVel, float channelVolume)
+{
+    AL().NameToLower(soundName);
+    FMOD::Sound* soundHandle = AL().GetSound(soundName);
+    if (soundHandle == nullptr) return false;
+
+    FMOD::ChannelGroup* playedChannelGroup = AL().GetGroupChannel(channelGroup);
+    if (playedChannelGroup == nullptr) return false;
+
+    FMOD_MODE finalSoundMode;
+    soundHandle->getMode(&finalSoundMode);
+
+    FMOD::Channel* reproChannel = AL().GetChannel(soundName);
+    if (reproChannel == nullptr) {
+        for (int i = 0; i < AL().GetChannelsVector().size(); i++) {
+            bool isPlaying;
+            AL().GetChannelsVector()[i]->isPlaying(&isPlaying);
+
+            if (isPlaying) continue;
+            mResult = AL().GetSoundSystem()->PlayAudioSource(soundHandle, playedChannelGroup, false, &AL().GetChannelsVector()[i]);
+            AL().CheckFMODResult(mResult);
+
+            reproChannel = AL().GetChannelsVector()[i];
+
+            AL().GetChannelsVector()[i]->setVolume(channelVolume);
+
+           AL().GetLastPlayedMap()[soundHandle] = i;
+
+            break;
+        }
+    }
+    else {
+        mResult = AL().GetSoundSystem()->PlayAudioSource(soundHandle, playedChannelGroup, false, &reproChannel);
+        AL().CheckFMODResult(mResult);
+    }
+
+    if (finalSoundMode & FMOD_3D) {
+        FMOD_VECTOR v = AL().V3ToFmodV3(*channelVel), p = AL().V3ToFmodV3(*channelPos);
+        reproChannel->set3DAttributes(&p, &v);
+    }
+
+    return true;
+}
+
+bool AudioSource::StopSound(std::string soundName)
+{
+    AL().NameToLower(soundName);
+    bool isPaused;
+    FMOD::Channel* channel = AL().GetChannel(soundName);
+    if (channel != nullptr) {
+        mResult = channel->getPaused(&isPaused);
+        AL().CheckFMODResult(mResult);
+        channel->stop();
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool AudioSource::PauseSound(std::string soundName, bool pause)
+{
+    AL().NameToLower(soundName);
+    bool isPaused;
+    FMOD::Channel* channel = AL().GetChannel(soundName);
+    if (channel != nullptr) {
+        mResult = channel->getPaused(&isPaused);
+        AL().CheckFMODResult(mResult);
+        channel->setPaused(pause);
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 void AudioSource::Start()
 {
     mTransform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform");
@@ -59,11 +208,9 @@ void AudioSource::Start()
 
     // Create a 3D sound or a normal sound
     if (mIsThreeD)
-        AL().create3DSound(mSoundPath, mSoundName, mMinDistance, mMaxDistance, mLoop);
-    //Hacer el wrapeado aqui
+        create3DSound(mSoundPath, mSoundName, mMinDistance, mMaxDistance, mLoop);
     else
-        AL().createNormalSound(mSoundPath, mSoundName, mLoop);
-    //Hacer el wrapeado aqui
+        createNormalSound(mSoundPath, mSoundName, mLoop);
 
     if (mPlayOnStart)
         play();
@@ -71,9 +218,9 @@ void AudioSource::Start()
 
 void AudioSource::Update(const double& dt)
 {
+    Esto esta mal, si no es 3d que pasa
     if (mIsThreeD) {
-        AL().setSoundAtributes(mSoundName, this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetPosition(), this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetVelocity());
-        //Hacer el wrapeado aqui
+        setSoundAtributes(mSoundName, this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetPosition(), this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetVelocity());
     }
 }
 
@@ -81,7 +228,7 @@ void AudioSource::play()
 {
     VeryReal::Vector3 pos = mTransform->GetPosition();
     VeryReal::Vector3 vel = mTransform->GetVelocity();
-    AL().playSound(mSoundName, mSoundGroup, &pos, &vel, mVolume);
+    PlayAudioSource(mSoundName, mSoundGroup, &pos, &vel, mVolume);
     //Hacer el wrapeado aqui
 
     mPlaying = true;
@@ -89,19 +236,19 @@ void AudioSource::play()
 
 void AudioSource::stop()
 {
-    AL().stopSound(mSoundName);
+    StopSound(mSoundName);
     //Hacer el wrapeado aqui
 }
 
 void AudioSource::pause()
 {
-    AL().pauseSound(mSoundName, true);
+    PauseSound(mSoundName, true);
     //Hacer el wrapeado aqui
 }
 
 void AudioSource::resume()
 {
-    AL().pauseSound(mSoundName, false);
+    PauseSound(mSoundName, false);
 }
 
 bool AudioSource::isPlaying()
@@ -113,8 +260,15 @@ void AudioSource::setVolume(float value) {
     mVolume = value;
 }
 
-void AudioSource::setSpeed(float value) {
-    mSpeed = value;
+bool AudioSource::setSpeed(float newSpeed) {
+    mSpeed = newSpeed;
+    AL().NameToLower(mSoundName);
+    FMOD::Sound* soundHandle = AL().GetSound(mSoundName);
+    if (soundHandle == nullptr) return false;
+
+    mResult = soundHandle->setMusicSpeed(newSpeed);
+
+    return AL().CheckFMODResult(mResult);
 }
 
 void AudioSource::setMinDistance(float value) {

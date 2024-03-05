@@ -16,8 +16,8 @@
     <Filter Include="Archivos de origen\Componentes">
       <UniqueIdentifier>{59139661-e049-4ece-a8e2-cf718ba08f1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de recursos\Componentes">
-      <UniqueIdentifier>{ddd4db98-ff89-4543-9711-1c376327b0df}</UniqueIdentifier>
+    <Filter Include="Archivos de encabezado\Componentes">
+      <UniqueIdentifier>{76def1d0-dccf-4d53-bcf4-872be3c1801c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -32,14 +32,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListener.h">
-      <Filter>Archivos de recursos\Componentes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSource.h">
-      <Filter>Archivos de recursos\Componentes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListener.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSource.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
