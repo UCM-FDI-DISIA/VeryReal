@@ -64,6 +64,8 @@ namespace VeryReal {
 		// @param nod Puntero al nodo de escena que se eliminará
 		void DeleteNode(Ogre::SceneNode* nod);
 
+		Ogre::SceneManager* SceneManagerOgree();
+
 	protected:
 		// Puntero a la ventana de la aplicación
 		VeryReal::Window* window_;

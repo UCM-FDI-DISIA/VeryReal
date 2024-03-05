@@ -29,7 +29,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Component_Names.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Creator.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorComponent.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.h" />

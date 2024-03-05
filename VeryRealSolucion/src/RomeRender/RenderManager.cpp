@@ -13,7 +13,7 @@
 
 //mehrender, camara y eso
 VeryReal::RenderManager::RenderManager():window_(nullptr),root_(nullptr), scenemanager_(nullptr), rendersystem_(nullptr), viewport_(nullptr), filesystemlayer_(nullptr){
-
+    
 }
 VeryReal::RenderManager::~RenderManager() {
 
@@ -69,7 +69,7 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
     window_ = new VeryReal::Window(root_, rendersystem_, scenemanager_);
     window_->CreateWindoww();
 
-
+    //root_->startRendering();
    
 
  }
@@ -106,7 +106,9 @@ void VeryReal::RenderManager::UnloadShaders() {
     //    shaderGenerator = nullptr;
     //}
 }
-
+Ogre::SceneManager* VeryReal::RenderManager::SceneManagerOgree() {
+    return scenemanager_;
+}
 void VeryReal::RenderManager::Update(const double& dt) {
     root_->renderOneFrame();
  }
