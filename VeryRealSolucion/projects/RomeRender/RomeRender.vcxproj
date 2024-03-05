@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\RomeRender\Animator.cpp" />
     <ClCompile Include="..\..\src\RomeRender\Camera.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\conversorvectores.cpp" />
     <ClCompile Include="..\..\src\RomeRender\Light.cpp" />
     <ClCompile Include="..\..\src\RomeRender\MeshRender.cpp" />
     <ClCompile Include="..\..\src\RomeRender\RenderManager.cpp" />
@@ -23,6 +24,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\RomeRender\Animator.h" />
     <ClInclude Include="..\..\src\RomeRender\Camera.h" />
+    <ClInclude Include="..\..\src\RomeRender\conversorvectores.h" />
     <ClInclude Include="..\..\src\RomeRender\Light.h" />
     <ClInclude Include="..\..\src\RomeRender\MeshRender.h" />
     <ClInclude Include="..\..\src\RomeRender\RenderManager.h" />
@@ -69,13 +71,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)lib</OutDir>
-    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
+    <OutDir>$(SolutionDir)lib\</OutDir>
+    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)lib</OutDir>
-    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
+    <OutDir>$(SolutionDir)lib\</OutDir>
+    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

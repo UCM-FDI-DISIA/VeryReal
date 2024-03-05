@@ -15,8 +15,8 @@ namespace VeryReal {
 	{
 	private:
 		bool active = true;
-		VeryReal::Entity* entity;
-		component_name name;
+		VeryReal::Entity* entity = nullptr;
+		component_name name = "";
 	public:
 		Component() {}
 		virtual ~Component() {}
