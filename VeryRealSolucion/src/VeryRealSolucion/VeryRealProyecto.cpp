@@ -58,7 +58,7 @@ void VeryRealEngine::Delete() {
 
 }
 void VeryRealEngine::CreateCreators() {
-	VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
+	//VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
 }
 
 

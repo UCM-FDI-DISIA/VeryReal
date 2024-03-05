@@ -2,25 +2,25 @@
 #include "Singleton.h"
 #include <unordered_map>
 #include "CreatorComponent.h"
-#include "Creator.h"
+
 namespace VeryReal {
 	using creator_name = string;
 
 	class Creator :public VeryReal::Singleton<Creator>
 	{
 		friend Singleton<Creator>;
+		
 	private:
 		unordered_map<creator_name, CreatorComponent*> creators_map;
 	public:
+		Creator();
 		virtual ~Creator();
 		template<typename ...Ts>
 		inline Component* CallSpecificCreator(string creator_name, Ts && ... args) {
-			//Creatorcomponent_name->CreatorSpecificComponent();
-			Component* c = creators_map[creator_name]->CreatorSpecificComponent();
-			return c;
+			return creators_map[creator_name]->CreatorSpecificComponent();
 		}
 
-		void AddCreator(creator_name c_name, CreatorComponent* cretorcomponent);
+		void AddCreator(const creator_name& c_name, CreatorComponent* cretorcomponent);
 		//Remueve el Componente de la Entidad en la que se encuentra
 		void RemoveCreator(creator_name c_name);
 
