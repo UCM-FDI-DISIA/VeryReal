@@ -30,7 +30,7 @@ namespace VeryReal {
 		//PON UN CREATE DELANTE DE LA PALABRA: EJEMPLO: CREATETRANSFORM
 		inline T* AddComponent(component_name c_name, Ts && ... args) {
 			T* component = new T(forward<Ts>(args)...);
-			bool juni= static_cast<Component>(T*).GetActive();
+			//bool juni= static_cast<Component>(T*).GetActive();
 			
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);

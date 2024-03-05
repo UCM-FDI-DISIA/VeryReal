@@ -13,7 +13,7 @@ namespace VeryReal {
 		virtual ~CreatorComponent() {};
 		virtual Component* CreatorSpecificComponent() const = 0;
 		void LlamaalCreator(string component_name) {
-			Creatorcomponent_name->CreatorSpecificComponent();
+			//Creatorcomponent_name->CreatorSpecificComponent();
 		}
 	};
 }
