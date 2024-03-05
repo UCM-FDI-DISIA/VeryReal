@@ -7,6 +7,7 @@ public:
 	bool Init();
 	void Loop();
 	virtual void Delete();
+	void CreateCreators();
 };
 
 inline VeryRealEngine& VR() {

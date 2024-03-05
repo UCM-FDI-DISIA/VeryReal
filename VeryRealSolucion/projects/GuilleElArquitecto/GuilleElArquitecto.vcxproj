@@ -12,7 +12,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\GuilleElArquitecto\Component.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\Creator.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorComponent.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Entity.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\ErrorInformant.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.cpp" />
@@ -28,7 +30,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component_Names.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\Creator.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorComponent.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\ErrorInformant.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Manager.h" />
@@ -74,13 +78,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)lib\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)lib</OutDir>
+    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)lib\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)lib</OutDir>
+    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -88,8 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

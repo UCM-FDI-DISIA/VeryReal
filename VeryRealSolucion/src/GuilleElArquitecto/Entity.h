@@ -3,6 +3,7 @@
 #define ENTITY
 #include <unordered_map>
 #include "Component.h"
+#include "Creator.h"
 
 using namespace std;
 using entity_name = string;
@@ -27,15 +28,14 @@ namespace VeryReal {
 
 		//Añade componente a la Entidad
 		template<typename T, typename ...Ts>
-		//PON UN CREATE DELANTE DE LA PALABRA: EJEMPLO: CREATETRANSFORM
-		inline T* AddComponent(component_name c_name, Ts && ... args) {
-			T* component = new T(forward<Ts>(args)...);
-			//bool juni= static_cast<Component>(T*).GetActive();
-			
+		inline Component* AddComponent(component_name c_name, Ts && ... args) {
+			Component* component= Creator::Instance()->CallSpecificCreator(c_name, forward<Ts>(args)...);
+		/*	T* component = new T(forward<Ts>(args)...);*/
+
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);
-			components_map.insert({ c_name,component });
-			//quizas initcomponent
+			components_map.insert({ c_name,component});
+			//quizas initcomponentpai
 			return component;
 		}
 		//Remueve el Componente de la Entidad en la que se encuentra

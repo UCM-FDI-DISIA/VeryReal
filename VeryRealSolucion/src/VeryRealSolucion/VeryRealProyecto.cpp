@@ -2,6 +2,8 @@
 #include <TonInput.h>
 #include <RenderManager.h>
 #include <Window.h>
+#include "Creator.h"
+#include "CreatorTransformComponent.h"
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 
 //Submodulos de Github
@@ -21,6 +23,8 @@ bool VeryRealEngine::Init() {
 	////SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
 	//VeryReal::RenderManager().Instance()->InitManager("app"); //InitManager
 	TI().Init();
+	CreateCreators();
+
 
 	return true;
 }
@@ -52,6 +56,9 @@ void VeryRealEngine::Delete() {
 	//	SDL_Quit();
 	//}
 
+}
+void VeryRealEngine::CreateCreators() {
+	VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
 }
 
 
