@@ -7,19 +7,64 @@
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include "Vector4.h"
-
 #include "RenderManager.h"
-//entity y transform (transform ya esta en el otro lado)
+#include "TransformComponent.h"
+#include <Ogre.h>
+#include "conversorvectores.h"
+#include <OgreSceneNode.h>
+#include <OgreNode.h>
+
+
+#include <Ogre.h>
+#include <SDL.h>
+#include <OgreFileSystem.h>
+#include <OgreFileSystemLayer.h>
+#include <SDL_syswm.h>
+#include <iostream>
+#include <Windows.h>
+#include <OgreRTShaderSystem.h>
+#include "SGTechniqueResolverListener.h"
+#include "Window.h"
+#include <Vector3.h>
+#include <OgreVector3.h>
 #include <cassert>
+
+
 
 using namespace VeryReal;
 using namespace Ogre;
 
 
 //constructora aqui se le pasaran todos los datos necesarios para inicializar
-MeshRender::MeshRender(bool isstatic) {
+MeshRender::MeshRender(bool isstatic, string modelname, string entityname, string matirialname, SceneNode* node ) {
+   
+    m_material_name = matirialname;
     mStaticObject = isstatic;
-    
+    m_entity_name = entityname;
+    m_mesh_name = modelname;
+
+    m_scene_node = node;
+    Ogre::SceneManager* mSM = m_scene_node->getCreator();
+
+    //CREO LA ENTIDAD DE OGRE
+    m_ent_ogre = mSM->createEntity(m_entity_name);
+    m_scene_node->attachObject(m_ent_ogre);
+    m_scene_node->setVisible(true);
+    //TIENE QUE SER ENTIDAD MIAm??
+   // auto t = getComponent<Transform>(m_ent);
+
+   /* m_scene_node->setScale(t->getScale());
+    m_scene_node->setPosition(t->getPosition());
+    m_scene_node->setOrientation(t->getRotation());
+    m_scene_node->attachObject(m_ent_ogre);*/
+  
+
+    if (m_material_name != "")
+        m_ent_ogre->setMaterialName(m_material_name);
+
+
+
+  
 }
 //destructora
  MeshRender::~MeshRender() {
@@ -45,7 +90,7 @@ MeshRender::MeshRender(bool isstatic) {
 
 
  void MeshRender::update() {
-    // if (!mStaticObject) setTransform(mTransform->GetPosition(), mTransform->GetScale(), mTransform->GetRotation());
+     //if (!mStaticObject) setTransform(mTransform->GetPosition(), mTransform->GetScale(), mTransform->GetRotation());
 }
 void MeshRender::setName(std::string name) {
      m_entity_name = name;
@@ -54,9 +99,9 @@ void MeshRender::setMeshName(std::string meshName) {
      m_mesh_name = meshName;
 }
 void MeshRender::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector4 rot) {
-   // m_scene_node->setPosition(pos.());
-   // m_scene_node->setScale(scale.());
-   // m_scene_node->setOrientation(rot.());
+   /* m_scene_node->setPosition(pos.());
+    m_scene_node->setScale(scale.());
+    m_scene_node->setOrientation(rot.());*/
 }
 void MeshRender::setPosition(VeryReal::Vector3 pos) {
    // m_scene_node->setPosition(pos.());
@@ -65,7 +110,7 @@ void MeshRender::setScale(VeryReal::Vector3 scale) {
    // m_scene_node->setScale(scale); //necesito que pase de nuestro v3 al de ogre 
 }
 void MeshRender::setRotation(VeryReal::Vector4 rot) {
-   // m_scene_node->setOrientation();//necesita un Quaternion
+ //   m_scene_node->setOrientation(VRconversorOgre());//necesita un Quaternion
 }
 void MeshRender::activeMesh() {
     m_scene_node->setVisible(true);

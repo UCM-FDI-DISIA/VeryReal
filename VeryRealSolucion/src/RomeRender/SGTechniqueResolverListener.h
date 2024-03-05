@@ -9,7 +9,7 @@ namespace Ogre {
     class Technique;
     class Material;
     class Renderable;
-
+    class OgreMaterialManager;
     namespace RTShader {
         class ShaderGenerator;
     }

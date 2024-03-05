@@ -4,7 +4,8 @@
 
 
 #include "Component.h"
-#include "Vector3.h"
+#include <Vector3.h>	
+
  
 namespace Ogre
 {
@@ -12,10 +13,11 @@ namespace Ogre
     class SceneManager;
     class Light;
 }
-namespace VeryReal {
-    class TransformComponent;
-}
+
 namespace  VeryReal {
+    class TransformComponent;
+
+
     class Light:public Component {
     public:
         // Constructuora del componente Light
@@ -25,17 +27,17 @@ namespace  VeryReal {
        
         virtual void Update();
         //initcomponent de light, pone la posicion, tamaño... del modo atachado al componente a parti de su transform
-        void InitComponent(int type, Vector3 const& diffusecolour, float shadowfardist, float shadowdist, float ineerangle, float outerangle, float nearclipdist, bool shdws);
+        void InitComponent(int type, VeryReal::Vector3 const& diffusecolour, float shadowfardist, float shadowdist, float ineerangle, float outerangle, float nearclipdist, bool shdws);
 
         // Gira el nodo del componente los grados dados en el vector
         // @param vector que indica la cantidad qie será pasada a grados  
-        void SetDirection(Vector3 const& v);
+        void SetDirection(VeryReal::Vector3 const& v);
         //Cambia el tipo de la luz 
         // @param Int 0;DIRECCIONAL 1:PUNTO 2:RECTÁNGULO LUZ  3:FOCO
         void setType(int const dir);
         //Indica el color difuso de la luz
         // @param Vector3 que Indica en color de la luz en rgb
-        void SetDiffuseColour(Vector3 const& color);
+        void SetDiffuseColour(VeryReal::Vector3 const& color);
         // Distancia hasta la que se generan sombras
         //  @param float 
         void SetshadowFarDistance(float distance);
@@ -89,7 +91,7 @@ namespace  VeryReal {
         Ogre::SceneManager* mngr_;
         TransformComponent* trans_;
         int type_;
-        Vector3  diffusecolour_;
+        Vector3 diffusecolour_;
         float shadowfardist_;
         float shadowdist_;
         float ineerangle_;

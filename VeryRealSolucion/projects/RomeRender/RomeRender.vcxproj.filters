@@ -21,9 +21,6 @@
     <ClCompile Include="..\..\src\RomeRender\Window.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\RomeRender\SGTechniqueResolverListener.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\RomeRender\Animator.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -47,9 +44,6 @@
     <ClInclude Include="..\..\src\RomeRender\Window.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\RomeRender\SGTechniqueResolverListener.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\Animator.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -60,9 +54,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\MeshRender.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\RomeRender\RomeRender.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\RenderManager.h">

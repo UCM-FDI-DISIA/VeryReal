@@ -1,7 +1,5 @@
 #pragma once
 #include "Component.h"
-#include <Ogre.h>
-#include "TransformComponent.h"
 
 namespace Ogre
 {
@@ -11,14 +9,26 @@ namespace Ogre
 	class SceneNode;
 	class Entity;
 	class SceneManager;
+	class SceneNode;
+	class Node;
+
+	
+	class FileSystemLayer;
+	class Root;
+	class RenderSystem;
+	class RenderWindow;
+	class ManualObject;
+	class Viewport;
 }
 
 namespace  VeryReal {
+	class TransformComponent;
 	class Vector4;
+	class Vector3;
     class MeshRender : public Component {
     public:
 		
-		MeshRender(bool isstatic= false);
+		MeshRender(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node);
 		virtual ~MeshRender();
 		bool createMesh();
 		void start();
@@ -54,7 +64,7 @@ namespace  VeryReal {
 		Ogre::Entity* m_ent_ogre;
 		Ogre::SceneManager* m_scene_mngr;
 		Ogre::SceneNode* m_scene_node;
-		VeryReal::Vector3 m_scale_diff;
+		//VeryReal::Vector3 m_scale_diff;
 		
     };
 

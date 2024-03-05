@@ -5,14 +5,14 @@
 #include <OgreFileSystemLayer.h>
 #include <SDL_syswm.h>
 #include <iostream>
-#include <iostream>
 #include <Windows.h>
 #include <OgreRTShaderSystem.h>
-#include "SGTechniqueResolverListener.h"
 #include "Window.h"
+#include <Vector3.h>
+#include <OgreVector3.h>
 
 //mehrender, camara y eso
-VeryReal::RenderManager::RenderManager():window_(nullptr),root_(nullptr), scenemanager_(nullptr), rendersystem_(nullptr), viewport_(nullptr), materialListener_(nullptr), filesystemlayer_(nullptr){
+VeryReal::RenderManager::RenderManager():window_(nullptr),root_(nullptr), scenemanager_(nullptr), rendersystem_(nullptr), viewport_(nullptr), filesystemlayer_(nullptr){
 
 }
 VeryReal::RenderManager::~RenderManager() {
@@ -41,15 +41,21 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
         cerr << "ERROR, no se ha encontrado el archivo  plugins.cfg en la ruta: " << pluginsPath;
     }
     //lo pongo asi y no la rita porque en teoria va a estar al lado del .exe
-    root_= new Ogre::Root("plugins.cfg", "ogre.cfg", "Ogre.log");
+    Ogre::String ogrepath = filesystemlayer_->getConfigFilePath("ogre.cfg");
 
+    root_= new Ogre::Root(pluginsPath, ogrepath);
+    if (!root_->restoreConfig())
+    {
+         root_->showConfigDialog(nullptr);
+    }
+    //inicializamos root pero sin ventana
+    root_->initialise(false);
    
     const Ogre::RenderSystemList renderSystems = root_->getAvailableRenderers();
     rendersystem_ = renderSystems.front();
     root_->setRenderSystem(rendersystem_);
 
-    //inicializamos root pero sin ventana
-    root_->initialise(false);
+   
 
     //inicializamos sdl
     if (SDL_WasInit(SDL_INIT_VIDEO))SDL_Init(SDL_INIT_VIDEO);
@@ -60,7 +66,7 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
     rendersystem_->_initRenderTargets();//mira esto ni idea que hace
 
 
-    window_ = new VeryReal::Window(root_);
+    window_ = new VeryReal::Window(root_, rendersystem_, scenemanager_);
     window_->CreateWindoww();
 
 
@@ -75,30 +81,30 @@ void VeryReal::RenderManager::LoadResources() {
 
 }
 void VeryReal::RenderManager::LoadShaders() {
-    if (Ogre::RTShader::ShaderGenerator::initialize()) {
+  /*  if (Ogre::RTShader::ShaderGenerator::initialize()) {
 
         shaderGenerator = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
         shaderGenerator->addSceneManager(scenemanager_);
 
         materialListener_ = new VeryReal::SGTechniqueResolverListener(shaderGenerator);
         Ogre::MaterialManager::getSingleton().addListener(materialListener_);
-    }
+    }*/
 }
 void VeryReal::RenderManager::UnloadShaders() {
    
-    if (materialListener_ != nullptr)
-    {
-        Ogre::MaterialManager::getSingleton().removeListener(materialListener_);
-        delete materialListener_;
-        materialListener_ = nullptr;
-    }
+    //if (materialListener_ != nullptr)
+    //{
+    //    Ogre::MaterialManager::getSingleton().removeListener(materialListener_);
+    //    delete materialListener_;
+    //    materialListener_ = nullptr;
+    //}
 
-    // Destroy RTShader system.
-    if (shaderGenerator != nullptr)
-    {
-        Ogre::RTShader::ShaderGenerator::destroy();
-        shaderGenerator = nullptr;
-    }
+    //// Destroy RTShader system.
+    //if (shaderGenerator != nullptr)
+    //{
+    //    Ogre::RTShader::ShaderGenerator::destroy();
+    //    shaderGenerator = nullptr;
+    //}
 }
 
 void VeryReal::RenderManager::Update(const double& dt) {

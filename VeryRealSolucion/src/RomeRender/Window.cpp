@@ -8,9 +8,12 @@
 using namespace VeryReal;
 using namespace Ogre;
 
-Window::Window(Ogre::Root* root):scene_manager(nullptr),render_system(nullptr),ogre_window(nullptr),sdl_window(nullptr) {
+Window::Window(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager ):  scene_manager(scene_manager),render_system(render_system),ogre_window(nullptr),sdl_window(nullptr), file_system_layer(nullptr), window_width(0), window_height(0){
     name = "VeryReall";
     this->root = root;
+     ruta_configuracion ="";
+     name ="";
+  
 }
 
 Window::~Window() {
@@ -29,6 +32,7 @@ void Window::Init() {
     Ogre::NameValuePairList miscParams;
     Ogre::ConfigOptionMap ropts = render_system->getConfigOptions();
     //cogemos un modo de configuracion (solo ese modo tiene alto y ancho?)
+   
     std::istringstream mode(ropts["Video Mode"].currentValue);
     Ogre::String token;
     mode >> window_width;    
@@ -79,7 +83,7 @@ void  Window::demo(){
     root->startRendering();
 
 }
-SDL_Window* Window::CreateWindoww() {
+void  Window::CreateWindoww() {
    
     Ogre::NameValuePairList miscParams;
     Ogre::ConfigOptionMap ropts = render_system->getConfigOptions();
@@ -107,7 +111,7 @@ SDL_Window* Window::CreateWindoww() {
     miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
     //pasamos los valores a una ventana de ogre a partir de la ventana de sdl creada
     ogre_window = root->createRenderWindow(name, window_width, window_height, false, &miscParams);
-    return sdl_window;
+   // return sdl_window;
 
 }
 

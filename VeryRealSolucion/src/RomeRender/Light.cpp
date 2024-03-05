@@ -1,5 +1,4 @@
 #include "Light.h"
-
 #include <OgreLight.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
@@ -15,7 +14,7 @@ VeryReal::Light::~Light() {
 void VeryReal::Light::Update() {
 
  }
-void VeryReal::Light::InitComponent(int type,Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
+void VeryReal::Light::InitComponent(int type, VeryReal::Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
 	trans_ = this->GetEntity()->GetComponent<TransformComponent>("transform");
 	SetDirection(trans_->GetPosition());
 	setType(type);
@@ -29,7 +28,7 @@ void VeryReal::Light::InitComponent(int type,Vector3 const& diffusecolour, float
 }
 
 
-void VeryReal::Light::SetDirection(Vector3 const& v) {
+void VeryReal::Light::SetDirection(VeryReal::Vector3 const& v) {
 	Ogre::Vector3 vec(v.GetX(), v.GetY(), v.GetZ());
 	mNode->setDirection(vec);
 }
@@ -55,7 +54,7 @@ void VeryReal::Light::setType(int const dir) {
 	}
 }
 
-void VeryReal::Light::SetDiffuseColour(Vector3 const& color) {
+void VeryReal::Light::SetDiffuseColour(VeryReal::Vector3 const& color) {
 	this->diffusecolour_ = color;
 	light_->setDiffuseColour(color.GetX(), color.GetY(), color.GetZ());
 	

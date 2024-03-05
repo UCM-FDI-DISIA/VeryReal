@@ -23,7 +23,7 @@ namespace VeryReal {
 			/// </summary>
 			/// <param name="root">Raiz de ogre.</param>
 
-			Window(Ogre::Root* root=nullptr);
+			Window(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager);
 			// <summary>
 			/// Destructora.Elimina la ventana y desactiva el modulo de video de sdl
 			/// </summary>
@@ -35,7 +35,7 @@ namespace VeryReal {
 			/// Por ahora se cargan aqui los plguings de renderizado de ogre (no irán aqui en un futuro)
 			/// </summary>
 			//<returns> un puntero a la ventana creada con sdl
-			SDL_Window* CreateWindoww();
+			void  CreateWindoww();
 			void Init();//ira fuera
 			// <summary>
 			///Actualiza la ventana en caso de cerrarla,camviarla de tamaño y así
@@ -60,7 +60,8 @@ namespace VeryReal {
 			string ruta_configuracion;
 			string name;
 			// Ventana
-			int window_width, window_height;
+			int window_width;
+			int window_height;
 			SDL_Window* sdl_window;
 			FileSystemLayer* file_system_layer;
 			Ogre::Root* root;

@@ -2,8 +2,8 @@
 #define RENDERMANAGER
 
 
-#include <Manager.h>
-#include <Vector3.h>
+#include "Manager.h"
+#include "Vector3.h"
 #include "string"
 
 namespace VeryReal {
@@ -13,7 +13,7 @@ namespace VeryReal {
 	class MeshRender;
 	class Camera;
 	class Animator;
-	class SGTechniqueResolverListener;
+	
 }
 
 
@@ -87,10 +87,10 @@ namespace VeryReal {
 		Ogre::Root* root_;
 
 		// Escuchador de resolución de técnicas ShaderGenerator
-		VeryReal::SGTechniqueResolverListener* materialListener_;
+		//VeryReal::SGTechniqueResolverListener* materialListener_;
 
 		// Generador de shaders RTShader
-		Ogre::RTShader::ShaderGenerator* shaderGenerator;
+		//Ogre::RTShader::ShaderGenerator* shaderGenerator;
 
 		// Ventana de visualización
 		Ogre::Viewport* viewport_;
