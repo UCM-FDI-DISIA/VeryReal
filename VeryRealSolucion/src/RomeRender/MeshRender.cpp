@@ -6,7 +6,6 @@
 #include <OgreEntity.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
-
 #include "Vector4.h"
 
 #include "RenderManager.h"
@@ -20,7 +19,7 @@ using namespace Ogre;
 //constructora aqui se le pasaran todos los datos necesarios para inicializar
 MeshRender::MeshRender(bool isstatic) {
     mStaticObject = isstatic;
-   
+    
 }
 //destructora
  MeshRender::~MeshRender() {
