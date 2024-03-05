@@ -52,6 +52,7 @@ class ErrorInformant : public VeryReal::Singleton<ErrorInformant> {
 		/// @param ErrorName -> Nombre del error
 		/// @param ErrorMessage -> Descripcion del error ocurrido
 		/// @param ErrorType -> Tipo del error (EI_WARNING, EI_ERROR o EI_UNKNOWN)
+		/// @return options -> Opción seleccionada por el usuario en la ventana de error
 		options showErrorMessageBox(string ErrorName = "Unknown error", string ErrorMessage = "Description not avaliable", errorType ErrorType = EI_UNKNOWN, windowType = EI_W_OK);
 
 private:
