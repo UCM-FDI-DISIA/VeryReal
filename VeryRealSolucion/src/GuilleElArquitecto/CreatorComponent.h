@@ -12,6 +12,8 @@ namespace VeryReal {
 	public:
 		virtual ~CreatorComponent() {};
 		virtual Component* CreatorSpecificComponent() const = 0;
+
+		//OPCION B: llamar a Dios y luego Profetas
 		void LlamaalCreator(string component_name) {
 			//Creatorcomponent_name->CreatorSpecificComponent();
 		}

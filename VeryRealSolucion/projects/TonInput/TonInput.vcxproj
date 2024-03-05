@@ -29,7 +29,6 @@
     <ClInclude Include="..\..\src\TonInput\TonMapeo.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\TonInput\Pruebas.cpp" />
     <ClCompile Include="..\..\src\TonInput\TonInput.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

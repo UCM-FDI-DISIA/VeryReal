@@ -86,9 +86,6 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\SceneManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Component_Names.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\GuilleElArquitecto\ErrorInformant.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
