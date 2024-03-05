@@ -22,6 +22,8 @@ bool Init() {
 	////SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
 	//VeryReal::RenderManager().Instance()->InitManager("app"); //InitManager
 	TI().Init();
+
+	return true;
 }
 
 void Loop() {

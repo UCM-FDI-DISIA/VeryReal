@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #ifndef __ENTITYCOMPONENT_AUDIOSOURCE
 #define __ENTITYCOMPONENT_AUDIOSOURCE
 
@@ -11,10 +10,12 @@
 namespace FMOD {
 	class Sound;
 }
-
+    enum FMOD_RESULT;
+	
 	class SoundManager;
 	namespace VeryReal {
 		class TransformComponent;
+		class Vector3;
 	}
 	//Creates and destroys AudioSource components
 	/*class FactoryAudioSource : public FactoryComponent {
@@ -30,8 +31,6 @@ namespace FMOD {
 	*/
 	class AudioSource : public VeryReal::Component
 	{
-	private:
-		FMOD_RESULT mResult;
 	public:
 
 		/*
@@ -210,6 +209,7 @@ namespace FMOD {
 		bool mPlayOnStart;
 
 
+		FMOD_RESULT mResult;
 		VeryReal::TransformComponent* mTransform = nullptr;
 	};
 

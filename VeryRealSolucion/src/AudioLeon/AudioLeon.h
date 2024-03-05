@@ -209,7 +209,7 @@ typedef int CHANNEL_NUMBER;
 		@param index : the index that refers to a certain listener.
 		*/
 		void removeListener(int index);
-		Se queda;
+		//Se queda;
 
 		/**
 		Gets the useful listener which will be able to listen to a new sound.
@@ -223,8 +223,7 @@ typedef int CHANNEL_NUMBER;
 			}
 			return -1;
 		}
-		Se queda;
-
+	
 		/*void startRecording();*/
 	};
 
