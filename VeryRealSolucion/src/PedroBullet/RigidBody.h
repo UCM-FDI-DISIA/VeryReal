@@ -8,6 +8,8 @@
 #include <unordered_set>
 #include "PhysicsValues.h"
 #include "TransformComponent.h"
+#include "BulletDynamics/Dynamics/btRigidBody.h"
+
 class btRigidBody;
 class btTransform;
 class btQuaternion;
@@ -18,7 +20,7 @@ class RigidBody : public VeryReal::Component
 {
 public:
 
-	RigidBody(float mass, float friccion, float bounce,int mGroup,VeryReal::TransformComponent* transform,PBShapes shape, PBMovementType mType,unordered_set<int>* mask);
+	RigidBody(float mass, float friccion, float bounce,int mGroup,VeryReal::TransformComponent* transform, btCollisionShape* shape, PBMovementType mType,unordered_set<int>* mask);
 	void addToMask(int newGroup);
 	void start();
 	virtual ~RigidBody() {}
@@ -26,7 +28,7 @@ private:
 	
 	//~RigidBody();
 
-	PBShapes shape;
+	btCollisionShape* shape;
 	PBMovementType movementType;
 
 	bool isTrigger = false;
@@ -43,7 +45,7 @@ private:
 	int mGroup;
 
 
-	btRigidBody* btRigidBody = nullptr;
+	btRigidBody* bulletRigidBody = nullptr;
 	btTransform* bulletTransform = nullptr;
 
 	VeryReal::TransformComponent* transform = nullptr;
