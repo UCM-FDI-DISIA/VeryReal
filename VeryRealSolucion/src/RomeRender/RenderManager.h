@@ -2,8 +2,8 @@
 #define RENDERMANAGER
 
 
-#include "Manager.h"
-#include "Vector3.h"
+#include <Manager.h>
+#include <Vector3.h>
 #include "string"
 
 namespace VeryReal {

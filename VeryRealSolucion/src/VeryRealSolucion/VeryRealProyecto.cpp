@@ -1,9 +1,8 @@
+#include "VeryRealProyecto.h"
 #include <TonInput.h>
 #include <RenderManager.h>
 #include <Window.h>
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
 
 //Submodulos de Github
 //Los juegos, descargan consigo el motor.
@@ -14,7 +13,7 @@
 
 const int FRAME_RATE = 3;
 
-bool Init() {
+bool VeryRealEngine::Init() {
 	SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
 	//SDL_Window* mWindow; // Ventana (temporal) para que funcione el input
 	//mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -26,7 +25,7 @@ bool Init() {
 	return true;
 }
 
-void Loop() {
+void VeryRealEngine::Loop() {
 
 	uint32_t startTime, frameTime;
 	startTime = SDL_GetTicks();
@@ -45,7 +44,7 @@ void Loop() {
 
 }
 
-void Exit() {
+void VeryRealEngine::Delete() {
 	//if (mWindow != nullptr)
 	//{
 	//	SDL_DestroyWindow(mWindow);

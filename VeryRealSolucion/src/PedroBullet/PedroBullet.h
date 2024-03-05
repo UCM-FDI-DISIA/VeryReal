@@ -3,7 +3,7 @@
 #pragma once
 
 #include <vector>
-#include "Singleton.h"
+#include <Singleton.h>
 #include <Manager.h>
 #include <array>
 
