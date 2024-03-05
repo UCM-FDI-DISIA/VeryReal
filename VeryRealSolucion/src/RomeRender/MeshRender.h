@@ -28,7 +28,7 @@ namespace  VeryReal {
     class MeshRender : public Component {
     public:
 		
-		MeshRender(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node);
+		MeshRender(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager);
 		virtual ~MeshRender();
 		bool createMesh();
 		void start();

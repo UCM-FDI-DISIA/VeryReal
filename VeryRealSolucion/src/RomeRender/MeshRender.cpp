@@ -14,29 +14,12 @@
 #include <OgreSceneNode.h>
 #include <OgreNode.h>
 
-
-#include <Ogre.h>
-#include <SDL.h>
-#include <OgreFileSystem.h>
-#include <OgreFileSystemLayer.h>
-#include <SDL_syswm.h>
-#include <iostream>
-#include <Windows.h>
-#include <OgreRTShaderSystem.h>
-#include "SGTechniqueResolverListener.h"
-#include "Window.h"
-#include <Vector3.h>
-#include <OgreVector3.h>
-#include <cassert>
-
-
-
 using namespace VeryReal;
 using namespace Ogre;
 
 
 //constructora aqui se le pasaran todos los datos necesarios para inicializar
-MeshRender::MeshRender(bool isstatic, string modelname, string entityname, string matirialname, SceneNode* node ) {
+MeshRender::MeshRender(bool isstatic, string modelname, string entityname, string matirialname, SceneNode* node, SceneManager* scenemana ) {
    
     m_material_name = matirialname;
     mStaticObject = isstatic;
@@ -44,10 +27,12 @@ MeshRender::MeshRender(bool isstatic, string modelname, string entityname, strin
     m_mesh_name = modelname;
 
     m_scene_node = node;
-    Ogre::SceneManager* mSM = m_scene_node->getCreator();
+    Ogre::SceneManager* mSM = scenemana;
 
     //CREO LA ENTIDAD DE OGRE
-    m_ent_ogre = mSM->createEntity(m_entity_name);
+   // scenemana->getRootSceneNode()->createChildSceneNode();
+    //else node = parent->createChild(this);
+    m_ent_ogre = mSM->createEntity(m_material_name);
     m_scene_node->attachObject(m_ent_ogre);
     m_scene_node->setVisible(true);
     //TIENE QUE SER ENTIDAD MIAm??

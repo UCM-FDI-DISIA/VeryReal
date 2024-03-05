@@ -3,13 +3,22 @@
 
 #include <iostream>
 #include <RenderManager.h>
+#include <Entity.h>
+#include <TransformComponent.h>
+#include <Camera.h>
+#include <Light.h>
+#include <MeshRender.h>
+#include <Animator.h>
+using namespace VeryReal;
 int main()
 {
    VeryReal::RenderManager::Instance()->InitManager("app");
-    while (true) {
+   VeryReal::Entity sinbad;
 
+   sinbad.AddComponent<MeshRender>("MeshRender", true,"modelname", "entityname", "sinbad", VeryReal::RenderManager::Instance()->CreateNode(), VeryReal::RenderManager::Instance()->SceneManagerOgree());
+    while (true) {
+        VeryReal::RenderManager::Instance()->Update(0.2);
     }
-    std::cout << "Hello World!\n";
     return 1;
 }
 
