@@ -1,55 +1,42 @@
 #pragma once
-
-
-#ifndef RIGIDBODY
-#define RIGIDBODY
+#ifndef RIGIDBODYCOMPONENT_H
+#define RIGIDBODYCOMPONENT_H
 
 #include "Component.h"
-#include <unordered_set>
-#include "PhysicsValues.h"
 #include "TransformComponent.h"
-#include "BulletDynamics/Dynamics/btRigidBody.h"
+#include "PhysicsValues.h"
+#include <btBulletDynamicsCommon.h>
+#include <memory>
 
-class btRigidBody;
-class btTransform;
-class btQuaternion;
-class btCollisionShape;
+namespace VeryReal {
 
+    class RigidBodyComponent : public Component {
+    public:
+        RigidBodyComponent(TransformComponent* transform, PBShapes shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, PBMovementType movementType = MOVEMENT_TYPE_DYNAMIC);
+        virtual ~RigidBodyComponent();
 
-class RigidBody : public VeryReal::Component
-{
-public:
+        // Funciones para manipular el cuerpo rígido
+        void SetVelocity(const Vector3& velocity);
+        Vector3 GetVelocity() const;
 
-	RigidBody(float mass, float friccion, float bounce,int mGroup,VeryReal::TransformComponent* transform, btCollisionShape* shape, PBMovementType mType,unordered_set<int>* mask);
-	void addToMask(int newGroup);
-	void start();
-	virtual ~RigidBody() {}
-private:
-	
-	//~RigidBody();
+        // Obtiene el btRigidBody 
+        btRigidBody* GetBulletRigidBody() const;
 
-	btCollisionShape* shape;
-	PBMovementType movementType;
+    private:
+        TransformComponent* transformComponent;
+        std::unique_ptr<btCollisionShape> collisionShape;
+        std::unique_ptr<btDefaultMotionState> motionState;
+        std::unique_ptr<btRigidBody> rigidBody;
 
-	bool isTrigger = false;
+        float mass;
+        float friction;
+        float restitution;
+        PBMovementType movementType;
 
-	float mass;
-	
-	float friccion;
-	
-	float bounce;
-	
-	//Conjunto en el que tenemos las mascaras con las que el rB puede chocar
-	unordered_set<int>* mask;
-	
-	int mGroup;
+        void InitializeRigidBody(PBShapes shapeType);
+        btCollisionShape* CreateCollisionShape(PBShapes shapeType);
+    };
 
+} 
 
-	btRigidBody* bulletRigidBody = nullptr;
-	btTransform* bulletTransform = nullptr;
-
-	VeryReal::TransformComponent* transform = nullptr;
-
-};
-
-#endif
+#endif 
