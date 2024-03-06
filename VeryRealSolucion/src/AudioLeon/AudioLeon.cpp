@@ -1,35 +1,15 @@
-//// AudioLeon.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-////
-//
-//#include <iostream>
-//
-//int main()
-//{
-//    std::cout << "Hello World!\n";
-//}
-//
-//// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-//// Depurar programa: F5 o menú Depurar > Iniciar depuración
-//
-//// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-////   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-////   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-////   4. Use la ventana Lista de errores para ver los errores
-////   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-////   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
 #include "AudioLeon.h"
 #include <fmod.hpp>
 #include <fmod_errors.h>
-
 #include <algorithm>
 
 AudioLeon::AudioLeon() {
-
-	mResult = FMOD::System_Create(&mSoundSystem);      // Create the main system object.
+	mResult = FMOD::System_Create(&mSoundSystem); // Create the main system object.
 	CheckFMODResult(mResult);
 
-	mResult = mSoundSystem->init(MAX_CHANNELS, FMOD_INIT_3D_RIGHTHANDED, 0);    // Initialize FMOD.
+	mResult = mSoundSystem->init(MAX_CHANNELS, FMOD_INIT_NORMAL | FMOD_INIT_3D_RIGHTHANDED, 0);    // Initialize FMOD.
 	CheckFMODResult(mResult);
+
 	mResult = mSoundSystem->set3DSettings(0.0f, DISTANCE_FACTOR, ROLLOFF_SCALE);
 	CheckFMODResult(mResult);
 
@@ -40,7 +20,6 @@ AudioLeon::AudioLeon() {
 	mSoundSystem->createChannelGroup("music", &mMusic);
 	mChannelGroupMaps["music"] = mMusic;
 
-
 	mMaster->addGroup(mEffects);
 	mMaster->addGroup(mMusic);
 
@@ -50,6 +29,33 @@ AudioLeon::AudioLeon() {
 	for (int i = 0; i < MAX_CHANNELS; i++) {
 		mChannelsVector.push_back(nullptr);
 	}
+	
+	InitAudioRecording();
+}
+
+void AudioLeon::InitAudioRecording() {
+	int nativeRate = 0;
+	int nativeChannels = 0;
+	mResult = mSoundSystem->getRecordDriverInfo(0, NULL, 0, NULL, &nativeRate, NULL, &nativeChannels, NULL);
+	CheckFMODResult(mResult);
+
+
+	FMOD_CREATESOUNDEXINFO exinfo = { 0 };
+	exinfo.cbsize = sizeof(FMOD_CREATESOUNDEXINFO);
+	exinfo.numchannels = nativeChannels;
+	exinfo.format = FMOD_SOUND_FORMAT_PCM16;
+	exinfo.defaultfrequency = nativeRate;
+	exinfo.length = nativeRate * sizeof(short) * nativeChannels; /* 1 second buffer, size here doesn't change latency */
+
+	mResult = mSoundSystem->createSound(0, FMOD_LOOP_NORMAL | FMOD_OPENUSER, &exinfo, &micSound);
+	CheckFMODResult(mResult);
+
+	mResult = mSoundSystem->recordStart(0, micSound, true);
+	CheckFMODResult(mResult);
+
+	unsigned int soundLength = 0;
+	mResult = micSound->getLength(&soundLength, FMOD_TIMEUNIT_PCM);
+	CheckFMODResult(mResult);
 }
 
 bool AudioLeon::CheckFMODResult(FMOD_RESULT FMODResult)
@@ -271,6 +277,34 @@ float AudioLeon::getVolume(std::string soundName)
 		return volume;
 	}
 }
+
+float AudioLeon::inputSoundIntensity() {
+	// Longitud del sonido
+	unsigned int soundLength = 0;
+	mResult = micSound->getLength(&soundLength, FMOD_TIMEUNIT_PCM);
+	CheckFMODResult(mResult);
+
+	int numSamples = soundLength / sizeof(short); // Numero de muestras de audio
+
+	// Obtener los datos de audio
+	short* audioData = new short[numSamples];
+	mResult = micSound->lock(0, soundLength, (void**)&audioData, nullptr, nullptr, nullptr);
+	CheckFMODResult(mResult);
+
+	// Calcular la "potencia" del sonido
+	float totalEnergy = 0.0f;
+	for (int i = 0; i < numSamples; ++i) {
+		float sample = static_cast<float>(audioData[i]) / 32768.0f; // Normalizar la muestra
+		totalEnergy += sample * sample; // Sumar el cuadrado de la muestra
+	}
+
+	mResult = micSound->unlock(audioData, nullptr, soundLength, 0);
+
+	// Calcular la intensidad (en un rango de 0 a 1)
+	float intensity = totalEnergy / numSamples;
+	return intensity;
+}
+
 //void AudioLeon::startRecording()
 //{
 //	std::cout << "a";

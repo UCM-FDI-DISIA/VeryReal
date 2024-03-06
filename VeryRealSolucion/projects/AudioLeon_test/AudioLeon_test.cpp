@@ -4,10 +4,15 @@
 #include <iostream>
 #include <AudioLeon.h>
 
-int main()
-{
-    AL().Instance();
-    /*AL().startRecording();*/
+using namespace std;
+
+int main() {
+    int t = 0;
+    while ((true)) {
+        AL().systemRefresh(t);
+        cout << "PRUEBA " << AL().inputSoundIntensity() << endl;
+        ++t;
+    }
     std::cout << "Hello World!\n";
 }
 

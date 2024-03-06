@@ -3,7 +3,7 @@
 #ifndef _FMOD_SOUND_MANAGER
 #define _FMOD_SOUND_MANAGER
 
-#include <Singleton.h>
+#include <Manager.h>
 #include <Vector3.h>
 #include <string>
 #include <unordered_map>
@@ -32,14 +32,14 @@ typedef int CHANNEL_NUMBER;
 	//Base pitch of a sound. The "normal" pitch of a sound when it is not moving.
 	const float BASE_PITCH = 1.0f;
 
-	/**
-	SoundManager provides FMOD wrappers to manage audio creation and modulation,
+	/* SoundManager provides FMOD wrappers to manage audio creation and modulation,
 	audio channel and audio channel groups.
-	You can access the InputManager calling sm().
-	*/
-	class AudioLeon : public VeryReal::Singleton<AudioLeon> {
+	You can access the InputManager calling sm(). */
+
+	class AudioLeon : public VeryReal::Manager<AudioLeon> {
 		friend Singleton<AudioLeon>;
 		AudioLeon();
+		void InitAudioRecording();
 		//Stores audio handles linked to their name.
 		std::unordered_map<std::string, FMOD::Sound*> mSoundsMap;
 		//Stores audio handles linked to the last channel they where played in.
@@ -53,20 +53,19 @@ typedef int CHANNEL_NUMBER;
 		std::vector<bool> mListeners;
 		//The sound system over which every bit of audio gets created.
 		FMOD::System* mSoundSystem = nullptr;
+		//Sonido recibido por el microfono
+		FMOD::Sound* micSound = NULL;
 
 		FMOD_RESULT mResult;
 
 		
 		//Se queda
 
+		//Se queda
 		
 		//Se queda
 
 		
-		//Se queda
-
-		
-
 		/**
 		Changes the volume of a channel.
 		@param groupName : the name of the group channel which volume will be changed.
@@ -190,6 +189,8 @@ typedef int CHANNEL_NUMBER;
 		@return The specific float of the volume.
 		*/
 		float getVolume(std::string soundName);
+
+		float inputSoundIntensity();
 
 		/**
 		Stops every channel playing at the moment.
