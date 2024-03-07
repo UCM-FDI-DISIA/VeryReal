@@ -5,18 +5,30 @@
 #include <RenderManager.h>
 #include <Entity.h>
 #include <TransformComponent.h>
+#include <CreatorTransformComponent.h>
 #include <Camera.h>
 #include <Light.h>
 #include <MeshRender.h>
 #include <Animator.h>
+#include <Scene.h>
+#include <SceneManager.h>
+#include <CreatorMeshRenderComponent.h>
 using namespace VeryReal;
 int main()
 {
    VeryReal::RenderManager::Instance()->InitManager("app");
-   VeryReal::Entity sinbad;
-   sinbad.AddComponent<TransformComponent>("CreatorTransformComponent");
-   sinbad.AddComponent<MeshRender>("MeshRender", true, "modelname", "entityname", "Sinbad.mesh", VeryReal::RenderManager::Instance()->CreateNode(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), VeryReal::RenderManager::Instance()->filesystemlayer_);
-   sinbad.AddComponent<Light>("Light");
+  
+
+   VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
+   
+   Scene* s = SceneManager::Instance()->AddScene("Play");
+   s = SceneManager::Instance()->GetScene("Play");
+   VeryReal::Entity* sinbad = s->AddEntity("Player");
+   Component* c = sinbad->AddComponent("transform");
+   VeryReal::Creator::Instance()->AddCreator("meshrender", new VeryReal::CreatorMeshRenderComponent( true, "modelname", "entityname", "Sinbad.mesh", VeryReal::RenderManager::Instance()->CreateNode(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), VeryReal::RenderManager::Instance()->filesystemlayer_));
+   c = sinbad->AddComponent("meshrender");
+
+
     while (true) {
         VeryReal::RenderManager::Instance()->Update(0.2);
     }

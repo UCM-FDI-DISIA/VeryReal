@@ -17,12 +17,14 @@ namespace VeryReal {
 	using namespace std;
 	class MeshRender;
 	class TransformComponent;
+	class Vector3;
+	class Vector4;
 	class  Animator : public Component
 	{
 
 	public:
 		Animator();
-		Animator(Ogre::SceneManager* m_scene_mng, std::string name, TransformComponent* trans, MeshRender* meshrender); //constructora
+		void InitComponent(Ogre::SceneManager* m_scene_mng, std::string name, TransformComponent* trans, MeshRender* meshrender);
 		virtual ~Animator(); //destructora
 		void update(const double& dt);
 		void setActive(bool a); //metodo para activar la animacion
@@ -34,6 +36,10 @@ namespace VeryReal {
 		void stopAnim(); //la para
 		void resumeAnim(); //la vuelve a iniciar (no la crea)
 		void createAnimation(string t_name, double t_duration);
+		void setAnimation(std::string t_name, bool t_active, bool t_loop);
+		void allAnimations(bool t_active);
+		void setFrameAnimation(std::string t_nameAnimation, double t_duration,
+			Vector3 t_translate, Vector4 t_rotacion, Vector3 t_scale);
 
 	private:
 		bool active;
