@@ -12,7 +12,7 @@ namespace FMOD {
 }
 
 
-	class SoundManager;
+	class AudioLeon;
 
 	////Creates and destroys AudioListener components
 	//class FactoryAudioListener : public FactoryComponent {

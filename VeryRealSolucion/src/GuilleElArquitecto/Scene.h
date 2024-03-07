@@ -2,23 +2,23 @@
 #ifndef SCENE
 #define SCENE
 #include <unordered_map>
-#include "Entity.h"
+#include <string>
 
 using namespace std;
-
+using scene_name = string;
+using entity_name = string;
 namespace VeryReal {
-	using scene_name = string;
-
+	class Entity;
 	class Scene
 	{
 	private:
 		//Mapa de: Clave: nombre de Entidad, Valor: puntero a esa entidad
-		unordered_map<entity_name, VeryReal::Entity*> entities_map;
+		unordered_map<entity_name, Entity*> entities_map;
 
 		//Lista de entidades a remover
 		list<entity_name> entities_list_removed;
 
-		bool is_active;
+		bool is_active = true;
 		bool to_eliminate = false;
 		scene_name name;
 
@@ -31,7 +31,7 @@ namespace VeryReal {
 		virtual ~Scene();
 
 		//añade la entidad a la escena
-		VeryReal::Entity* AddEntity(entity_name e_name);
+		Entity* AddEntity(entity_name e_name);
 		//eliminas la entidad de la escena
 		void RemoveEntity(entity_name e_name);
 
@@ -41,9 +41,8 @@ namespace VeryReal {
 		}
 
 		//devuelve la entidad si la escena la tiene y si no nullptr;
-		inline VeryReal::Entity* GetEntity(entity_name e_name) {
+		inline Entity* GetEntity(entity_name e_name) {
 			if (!HasEntity(e_name)) return nullptr;
-
 			return entities_map.at(e_name);
 		}
 

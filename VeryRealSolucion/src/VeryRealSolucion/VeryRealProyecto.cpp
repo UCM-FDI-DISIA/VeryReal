@@ -2,8 +2,8 @@
 #include <TonInput.h>
 #include <RenderManager.h>
 #include <Window.h>
-#include "Creator.h"
-#include "CreatorTransformComponent.h"
+#include <Creator.h>
+#include <CreatorTransformComponent.h>
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 
 //Submodulos de Github
@@ -15,7 +15,7 @@
 
 const int FRAME_RATE = 3;
 
-bool VeryRealEngine::Init() {
+bool VeryRealProyecto::Init() {
 	SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
 	//SDL_Window* mWindow; // Ventana (temporal) para que funcione el input
 	//mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -23,13 +23,13 @@ bool VeryRealEngine::Init() {
 	////SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
 	//VeryReal::RenderManager().Instance()->InitManager("app"); //InitManager
 	TI().Init();
-	CreateCreators();
+	VR().CreateCreators();
 
 
 	return true;
 }
 
-void VeryRealEngine::Loop() {
+void VeryRealProyecto::Loop() {
 
 	uint32_t startTime, frameTime;
 	startTime = SDL_GetTicks();
@@ -48,7 +48,7 @@ void VeryRealEngine::Loop() {
 
 }
 
-void VeryRealEngine::Delete() {
+void VeryRealProyecto::Delete() {
 	//if (mWindow != nullptr)
 	//{
 	//	SDL_DestroyWindow(mWindow);
@@ -57,8 +57,9 @@ void VeryRealEngine::Delete() {
 	//}
 
 }
-void VeryRealEngine::CreateCreators() {
-	//VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
+void VeryRealProyecto::CreateCreators() {
+	//VeryReal::CreatorTransformComponent* t = new VeryReal::CreatorTransformComponent();
+	VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
 }
 
 

@@ -12,7 +12,8 @@ namespace FMOD {
 }
     enum FMOD_RESULT;
 	
-	class SoundManager;
+	class AudioLeon;
+	typedef unsigned int FMOD_MODE;
 	namespace VeryReal {
 		class TransformComponent;
 		class Vector3;
@@ -65,7 +66,7 @@ namespace FMOD {
 		@param position : the value of the position of the sound.
 		@return A boolean showing wether or not the position was set.
 		*/
-		bool setSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity);
+		bool set3DSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity);
 
 		/**
 		It checks for available channels to play the sound and assigns a group channel depending on the user input.
@@ -123,12 +124,12 @@ namespace FMOD {
 		*/
 		bool isPlaying();
 
-
-		/**
-		* Set the volume of the audio.
-		* @param value The new volume value.
+		/*
+		Changes the volume of the channel a soud is being played, if it exists.
+		@param value : the volume value the channel will be changed to.
+		@return A boolean representing wether or not the volume was changed.
 		*/
-		void setVolume(float value);
+		bool setVolume(float value);
 
 		/**
 		Sets the speed a certain sound wil be played at.
@@ -138,17 +139,22 @@ namespace FMOD {
 		bool setSpeed(float newSpeed);
 
 		/**
-		* Set the minimum distance a sound can be heard from.
-		* @param value The new speed value.
+		Sets a new minimum and maximum distance a 3D sound can be heard from.
+		@param soundName : the especific name of the sound which hearing distance will be changed.
+		@param minDistance : the new minimum distance a 3D sound can be heard from.
+		@param maxDistance : the new maximun distance a 3D sound can be heard from.
+		@return A boolean showing wether or not the new hearing distances was set.
 		*/
-		void setMinDistance(float value);
+		bool setMinMaxDistance(float minDistance, float maxDistance);
 
 		/**
-		* Set the minimum distance a sound can be heard from.
-		* @param value The new speed value.
+		Sets the mode of a certain sound.
+		@param soundName : the especific name of the sound which mode will be changed.
+		@param newMode: the new flag the sound will be changed to.
+		@return A boolean showing wether or not the mode was set.
 		*/
-		void setMaxDistance(float value);
-
+		bool setMode(FMOD_MODE newMode);
+		
 		/**
 		* Set the path of the audio
 		* @param path The path to the audio file to play.

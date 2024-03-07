@@ -1,37 +1,30 @@
 #pragma once
 #ifndef ENTITY
 #define ENTITY
-#include <unordered_map>
-#include "Component.h"
 #include "Creator.h"
 
-using namespace std;
-using entity_name = string;
 namespace VeryReal {
-
-
+	using component_name = string;
+	class Component;
 	class Entity
 	{
 	private:
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
-		unordered_map<component_name, VeryReal::Component*> components_map;
+		unordered_map<component_name, Component*> components_map;
 
 		//lista de componentes a remover, porque no están activos
 		list<component_name> components_list_removed;
 
 		bool is_alive;
-		entity_name name;
-
 	public:
 		Entity();
 		virtual ~Entity();
 
 		//Añade componente a la Entidad
-		template<typename T, typename ...Ts>
+		template< typename ...Ts>
 		inline Component* AddComponent(component_name c_name, Ts && ... args) {
 			Component* component= Creator::Instance()->CallSpecificCreator(c_name, forward<Ts>(args)...);
-		/*	T* component = new T(forward<Ts>(args)...);*/
-
+			/*	T* component = new T(forward<Ts>(args)...);*/
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);
 			components_map.insert({ c_name,component});
@@ -60,23 +53,23 @@ namespace VeryReal {
 		inline bool GetActive() { return is_alive; }
 
 		/*
-	Recorremos de primeras con un for el mapa:
-		-->Comprobamos si el componente está activo-->hacemos su Update
-		-->Si no está activo, lo añadimos a una lista de componentes no activos
-		(Hecho de esta forma para evitar llamadas a null, a componentes ya removidos, en el propio Update)
+			Recorremos de primeras con un for el mapa:
+				-->Comprobamos si el componente está activo-->hacemos su Update
+				-->Si no está activo, lo añadimos a una lista de componentes no activos
+				(Hecho de esta forma para evitar llamadas a null, a componentes ya removidos, en el propio Update)
 
-	Posteriormente, recorremos la lista de componentes a eliminar
-		-->Removemos el componente del mapa
-		-->Removemos el componente de la lista
+			Posteriormente, recorremos la lista de componentes a eliminar
+				-->Removemos el componente del mapa
+				-->Removemos el componente de la lista
 
-	Elimina de manera segura los componentes
-	*/
+			Elimina de manera segura los componentes
+		*/
 		void Update();
 		void Refresh();
 
 		//Indica el nombre de la Entidad
-		inline void SetName(entity_name name) { this->name = name; }
-		inline entity_name GetName() { return name; }
+		//inline void SetName(entity_name name) { this->name = name; }
+		//inline entity_name GetName() { return name; }
 	};
 }
 #endif

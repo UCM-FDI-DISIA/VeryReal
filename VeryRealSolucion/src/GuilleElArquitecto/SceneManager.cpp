@@ -1,6 +1,7 @@
 #include "SceneManager.h"
-VeryReal::SceneManager::SceneManager() {}
-VeryReal::SceneManager::~SceneManager() {}
+#include "Scene.h"
+//VeryReal::SceneManager::SceneManager() {}
+//VeryReal::SceneManager::~SceneManager() {}
 
 void VeryReal::SceneManager::Update(const double& dt) {
 	for (auto it : scenes_list) if (it->GetActive())it->Update();
@@ -14,6 +15,7 @@ void VeryReal::SceneManager::Refresh() {
 VeryReal::Scene* VeryReal::SceneManager::AddScene(scene_name name) {
 	RemoveScene(name);
 	Scene* scene = new Scene();
+	scene->SetName(name);
 	scenes_list.push_back(scene);
 	ActivationScene(name, true);
 	EliminationScene(name, false);
@@ -31,4 +33,7 @@ void VeryReal::SceneManager::ActivationScene(scene_name name, bool active) {
 }*/
 void VeryReal::SceneManager::EliminationScene(scene_name name, bool to_eliminate) {
 	for (auto it : scenes_list) if (it->GetName() == name)it->SetToEliminate(to_eliminate);
+}
+VeryReal::Scene* VeryReal::SceneManager::GetScene(scene_name name) { 
+	for (auto c : scenes_list) if (c->GetName() == name)return c; 
 }

@@ -11,14 +11,8 @@ namespace Ogre
 	class SceneManager;
 	class SceneNode;
 	class Node;
-
-	
 	class FileSystemLayer;
-	class Root;
-	class RenderSystem;
-	class RenderWindow;
-	class ManualObject;
-	class Viewport;
+
 }
 
 namespace  VeryReal {
@@ -28,7 +22,7 @@ namespace  VeryReal {
     class MeshRender : public Component {
     public:
 		
-		MeshRender(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager);
+		MeshRender(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_);
 		virtual ~MeshRender();
 		bool createMesh();
 		void start();
@@ -36,10 +30,10 @@ namespace  VeryReal {
 		void setName(std::string name);
 		void setMeshName(std::string meshName);
 		void setStatic(bool stat);
-		void setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector4 rot); //cambia el transform en general
+		void setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot); //cambia el transform en general
 		void setPosition(VeryReal::Vector3 pos); //cambia la posicion del mesh
 		void setScale(VeryReal::Vector3 scale); //escala la info del mesh ??
-		void setRotation(VeryReal::Vector4 rot); //rota la info del mesh ???
+		void setRotation(VeryReal::Vector3 rot); //rota la info del mesh ???
 		void activeMesh();
 		void desactiveMesh();
 		void setMaterial(std::string materialName); //asigna el nombre del material al objeto ejemplo.material como nombre (mirar)
@@ -64,6 +58,7 @@ namespace  VeryReal {
 		Ogre::Entity* m_ent_ogre;
 		Ogre::SceneManager* m_scene_mngr;
 		Ogre::SceneNode* m_scene_node;
+		Ogre::SceneManager* mSM;
 		//VeryReal::Vector3 m_scale_diff;
 		
     };

@@ -17,6 +17,11 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\VeryRealSolucion\VeryRealProyecto.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
+      <Project>{e9fe864b-f16f-44b6-a10f-dad3701db44f}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

@@ -65,7 +65,8 @@ namespace VeryReal {
 		void DeleteNode(Ogre::SceneNode* nod);
 
 		Ogre::SceneManager* SceneManagerOgree();
-
+		// Capa del sistema de archivos de Ogre
+		Ogre::FileSystemLayer* filesystemlayer_;
 	protected:
 		// Puntero a la ventana de la aplicación
 		VeryReal::Window* window_;
@@ -73,8 +74,7 @@ namespace VeryReal {
 		// Nombre de la aplicación
 		std::string appname_;
 
-		// Capa del sistema de archivos de Ogre
-		Ogre::FileSystemLayer* filesystemlayer_;
+		
 
 		// Administrador de escena de Ogre
 		Ogre::SceneManager* scenemanager_;

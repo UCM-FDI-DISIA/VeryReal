@@ -1,8 +1,12 @@
 #pragma once
+#ifndef CREATOR
+#define CREATOR
 #include "Singleton.h"
-#include <unordered_map>
 #include "CreatorComponent.h"
+#include <unordered_map>
+#include <string>
 
+using namespace std;
 namespace VeryReal {
 	using creator_name = string;
 
@@ -13,11 +17,11 @@ namespace VeryReal {
 	private:
 		unordered_map<creator_name, CreatorComponent*> creators_map;
 	public:
-		Creator();
-		virtual ~Creator();
+		//Creator();
+		//virtual ~Creator();
 		template<typename ...Ts>
-		inline Component* CallSpecificCreator(string creator_name, Ts && ... args) {
-			return creators_map[creator_name]->CreatorSpecificComponent();
+		inline Component* CallSpecificCreator(creator_name c_name, Ts && ... args) {
+			return creators_map[c_name]->CreatorSpecificComponent();
 		}
 
 		void AddCreator(const creator_name& c_name, CreatorComponent* cretorcomponent);
@@ -40,5 +44,6 @@ namespace VeryReal {
 
 	};
 }
+#endif
 
 

@@ -1,22 +1,18 @@
 #pragma once
 #ifndef COMPONENT
 #define COMPONENT
-#include <string>
-
-
 using namespace std;
-
 
 namespace VeryReal {
 	class Entity;
-	using component_name = string;
+	//using component_name = string;
 
 	class Component	//CLASE ABSTRACTA
 	{
 	private:
 		bool active = true;
 		VeryReal::Entity* entity = nullptr;
-		component_name name = "";
+		
 	public:
 		Component() {}
 		virtual ~Component() {}
@@ -31,8 +27,8 @@ namespace VeryReal {
 		inline VeryReal::Entity* GetEntity() { return entity; }
 
 		//Damos nombre a nuestro componente
-		inline void SetName(component_name name) { this->name = name; }
-		inline component_name GetName() { return name; }
+		/*inline void SetName(component_name name) { this->name = name; }
+		inline component_name GetName() { return name; }*/
 	};
 }
 #endif

@@ -14,8 +14,9 @@ int main()
 {
    VeryReal::RenderManager::Instance()->InitManager("app");
    VeryReal::Entity sinbad;
-
-   sinbad.AddComponent<MeshRender>("MeshRender", true,"modelname", "entityname", "sinbad", VeryReal::RenderManager::Instance()->CreateNode(), VeryReal::RenderManager::Instance()->SceneManagerOgree());
+   sinbad.AddComponent<TransformComponent>("CreatorTransformComponent");
+   sinbad.AddComponent<MeshRender>("MeshRender", true, "modelname", "entityname", "Sinbad.mesh", VeryReal::RenderManager::Instance()->CreateNode(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), VeryReal::RenderManager::Instance()->filesystemlayer_);
+   sinbad.AddComponent<Light>("Light");
     while (true) {
         VeryReal::RenderManager::Instance()->Update(0.2);
     }
