@@ -237,6 +237,78 @@ float AudioLeon::inputSoundIntensity() {
 	return intensity;
 }
 
+void AudioLeon::audioSourceListener_Test()
+{
+	std::string soundPath = "musicaCircuito.mp3";
+	std::string soundName = "test";
+	float minDistance = 0.1f;
+	float maxDistance = 9999;
+
+	soundPath = "../../bin/Assets/" + soundPath;
+	AL().NameToLower(soundName);
+	FMOD::Sound* newSoundHandle;
+
+
+	this->mResult = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_3D_LINEARROLLOFF | FMOD_3D | FMOD_LOOP_NORMAL, 0, &newSoundHandle);
+
+
+
+	this->mResult = newSoundHandle->set3DMinMaxDistance(minDistance, maxDistance);
+
+	if (AL().CheckFMODResult(this->mResult)) {
+		std::pair<std::string, FMOD::Sound*> newSound(soundName, newSoundHandle);
+		AL().AddNewSound(newSound);
+	}
+
+	AL().NameToLower(soundName);
+	newSoundHandle = AL().GetSound(soundName);
+	if (newSoundHandle != nullptr) {
+		std::cout << "Sonido \n";
+	}
+
+	FMOD::ChannelGroup* playedChannelGroup = AL().GetGroupChannel("music");
+	if (playedChannelGroup != nullptr) {
+		std::cout << "Grupo de canal \n";
+	}
+
+	FMOD_MODE finalSoundMode;
+	newSoundHandle->getMode(&finalSoundMode);
+
+	FMOD::Channel* reproChannel = AL().GetChannel(soundName);
+	if (reproChannel == nullptr) {
+		for (int i = 0; i < AL().GetChannelsVector().size(); i++) {
+			bool isPlaying;
+			AL().GetChannelsVector()[i]->isPlaying(&isPlaying);
+
+			if (isPlaying) continue;
+			this->mResult = AL().GetSoundSystem()->playSound(newSoundHandle, playedChannelGroup, false, &AL().GetChannelsVector()[i]);
+			AL().CheckFMODResult(this->mResult);
+
+			reproChannel = AL().GetChannelsVector()[i];
+
+			AL().GetChannelsVector()[i]->setVolume(5.0f);
+
+			AL().GetLastPlayedMap()[newSoundHandle] = i;
+
+			break;
+		}
+	}
+	else {
+		this->mResult = AL().GetSoundSystem()->playSound(newSoundHandle, playedChannelGroup, false, &reproChannel);
+		AL().CheckFMODResult(this->mResult);
+	}
+	FMOD_VECTOR pos = { 0.0f, 0.0f, 0.0f };
+	FMOD_VECTOR vel = { 0.0f, 0.0f, 0.0f };
+	reproChannel->set3DAttributes(&pos, &vel);
+
+
+	FMOD_VECTOR forward = { 0.0f, 0.0f, 1.0f };
+	FMOD_VECTOR up = { 0.0f, 1.0f, 0.0f };
+
+	AL().GetSoundSystem()->set3DListenerAttributes(0, &pos, &vel, &forward, &up);
+
+}
+
 //void AudioLeon::startRecording() {
 //	std::cout << "a";
 //	FMOD::Sound* audio;
