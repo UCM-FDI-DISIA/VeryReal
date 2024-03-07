@@ -32,7 +32,7 @@ typedef int CHANNEL_NUMBER;
 	//Base pitch of a sound. The "normal" pitch of a sound when it is not moving.
 	const float BASE_PITCH = 1.0f;
 
-	/* SoundManager provides FMOD wrappers to manage audio creation and modulation,
+	/* AudioLeon provides FMOD wrappers to manage audio creation and modulation,
 	audio channel and audio channel groups.
 	You can access the InputManager calling sm(). */
 
@@ -49,7 +49,7 @@ typedef int CHANNEL_NUMBER;
 		std::unordered_map<std::string, FMOD::ChannelGroup*> mChannelGroupMaps;
 		//Stores every audio channel.
 		std::vector<FMOD::Channel*> mChannelsVector;
-		//Basic channel groups provided by the SoundManager.
+		//Basic channel groups provided by the AudioLeon.
 		FMOD::ChannelGroup* mEffects, * mMusic, * mMaster;
 		std::vector<bool> mListeners;
 		//The sound system over which every bit of audio gets created.
@@ -58,13 +58,6 @@ typedef int CHANNEL_NUMBER;
 		FMOD::Sound* micSound = NULL;
 
 		FMOD_RESULT mResult;
-
-		
-		//Se queda
-
-		//Se queda
-		
-		//Se queda
 
 		
 		/**
@@ -78,7 +71,7 @@ typedef int CHANNEL_NUMBER;
 	public:
 
 		/**
-		Destructor for the SoundManager class
+		Destructor for the AudioLeon class
 		*/
 		~AudioLeon();
 		/**
@@ -148,21 +141,7 @@ typedef int CHANNEL_NUMBER;
 		*/
 		FMOD::Channel* GetChannel(std::string soundName);
 
-		/**
-		Sets the mode of a certain sound.
-		@param soundName : the especific name of the sound which mode will be changed.
-		@param newMode: the new flag the sound will be changed to.
-		@return A boolean showing wether or not the mode was set.
-		*/
-		bool setMode(std::string soundName, FMOD_MODE newMode);
-		/**
-		Sets a new minimum and maximum distance a 3D sound can be heard from.
-		@param soundName : the especific name of the sound which hearing distance will be changed.
-		@param minDistance : the new minimum distance a 3D sound can be heard from.
-		@param maxDistance : the new maximun distance a 3D sound can be heard from.
-		@return A boolean showing wether or not the new hearing distances was set.
-		*/
-		bool setMinMaxDistance(std::string soundName, float minDistance, float maxDistance);
+		
 		/**
 		Create a channel group if a channel with the same name doesn't already exists.
 		@param newChannelGroup : the name for the new channel group.
@@ -175,21 +154,13 @@ typedef int CHANNEL_NUMBER;
 		@param newVolume : the volume value the group channel will be changed to.
 		@return A boolean representing whether or not a the volume was changed.
 		*/
-		bool setChannelVolume(std::string groupName, float newVolume);
+		bool setGroupChannelVolume(std::string groupName, float newVolume);
 		/**
-		Changes the volume of a certain channel if it exists.
-		@param soundName : the especific name of the sound which volume will be changed.
-		@param newVolume : the volume value the channel will be changed to.
-		@return A boolean representing wether or not the volume was changed.
-		*/
-		bool setVolume(std::string soundName, float newVolume);
-
-		/**
-		Checks the volume of a certain channel if it exists.
-		@param soundName : the especific name of the sound which speed will be changed.
+		Checks the volume of a certain group channel if it exists.
+		@param groupName : the especific name of the sound which speed will be changed.
 		@return The specific float of the volume.
 		*/
-		float getVolume(std::string soundName);
+		float getGroupChannelVolume(std::string groupName);
 
 		/// Obtiene la intensidad del sonido recibido por el microfono
 		/// @return Intensidad del sonido (en un rango de 0 a 1)
@@ -231,8 +202,8 @@ typedef int CHANNEL_NUMBER;
 	};
 
 	/**
-	This macro defines a compact way for using the singleton SoundManager, instead of
-	writing SoundManager::instance()->method() we write soundManager().method()
+	This macro defines a compact way for using the singleton AudioLeon, instead of
+	writing AudioLeon::instance()->method() we write AL(). method()
 	*/
 	inline AudioLeon& AL() {
 		return *AudioLeon::Instance();

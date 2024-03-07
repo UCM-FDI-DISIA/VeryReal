@@ -170,37 +170,6 @@ void AudioLeon::removeListener(int index) {
 	mListeners[index] = false;
 }
 
-bool AudioLeon::setMode(std::string soundName, FMOD_MODE newMode) {
-	NameToLower(soundName);
-	FMOD::Sound* soundHandle = GetSound(soundName);
-	if (soundHandle == nullptr) return false;
-	FMOD_MODE soundMode;
-	soundHandle->getMode(&soundMode);
-	FMOD_MODE newSoundMode;
-	newSoundMode = soundMode | newMode;
-	mResult = soundHandle->setMode(newSoundMode);
-	soundHandle->getMode(&soundMode);
-
-#ifdef _DEBUG
-	if (soundMode & FMOD_3D)
-		std::cout << "3d" << " ";
-	if (soundMode & FMOD_3D_LINEARROLLOFF)
-		std::cout << "atenuacion" << " ";
-	if (soundMode & FMOD_LOOP_NORMAL)
-		std::cout << "loop" << " ";
-#endif
-
-	CheckFMODResult(mResult);
-}
-
-bool AudioLeon::setMinMaxDistance(std::string soundName, float minDistance, float maxDistance) {
-	NameToLower(soundName);
-	auto soundHandle = GetSound(soundName);
-	if (soundHandle == nullptr) return false;
-	soundHandle->set3DMinMaxDistance(minDistance, maxDistance);
-	return true;
-}
-
 bool AudioLeon::createChannelGroup(std::string groupName) {
 	NameToLower(groupName);
 	const char* channelGroupName = groupName.c_str();
@@ -217,7 +186,7 @@ bool AudioLeon::createChannelGroup(std::string groupName) {
 	return false;
 }
 
-bool AudioLeon::setChannelVolume(std::string groupName, float newVolume) {
+bool AudioLeon::setGroupChannelVolume(std::string groupName, float newVolume) {
 	NameToLower(groupName);
 	const char* channelGroup = groupName.c_str();
 	FMOD::ChannelGroup* changedGroup = GetGroupChannel(channelGroup);
@@ -229,24 +198,12 @@ bool AudioLeon::setChannelVolume(std::string groupName, float newVolume) {
 	}
 }
 
-bool AudioLeon::setVolume(std::string soundName, float newVolume) {
-	NameToLower(soundName);
-	FMOD::Channel* channel = GetChannel(soundName);
-	if (channel != nullptr) {
-		mResult = channel->setVolume(newVolume);
-		return CheckFMODResult(mResult);
-	}
-	else {
-		return false;
-	}
-}
-
-float AudioLeon::getVolume(std::string soundName) {
-	NameToLower(soundName);
-	FMOD::Channel* channel = GetChannel(soundName);
+float AudioLeon::getGroupChannelVolume(std::string groupName) {
+	NameToLower(groupName);
+	FMOD::ChannelGroup* groupChannel = GetGroupChannel(groupName);
 	float volume;
-	if (channel != nullptr) {
-		mResult = channel->getVolume(&volume);
+	if (groupChannel != nullptr) {
+		mResult = groupChannel->getVolume(&volume);
 		CheckFMODResult(mResult);
 		return volume;
 	}

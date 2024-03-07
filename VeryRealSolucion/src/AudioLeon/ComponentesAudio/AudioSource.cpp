@@ -109,7 +109,7 @@ bool AudioSource::createNormalSound(std::string soundPath, std::string soundName
     }
 }
 
-bool AudioSource::setSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity)
+bool AudioSource::set3DSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity)
 {
     AL().NameToLower(soundName);
     FMOD::Channel* channelHandle = AL().GetChannel(soundName);
@@ -219,7 +219,7 @@ void AudioSource::Start()
 void AudioSource::Update(const double& dt)
 {
     if (mIsThreeD) {
-        setSoundAtributes(mSoundName, this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetPosition(), this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetVelocity());
+        set3DSoundAtributes(mSoundName, this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetPosition(), this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetVelocity());
     }
 }
 
@@ -236,13 +236,11 @@ void AudioSource::play()
 void AudioSource::stop()
 {
     StopSound(mSoundName);
-    //Hacer el wrapeado aqui
 }
 
 void AudioSource::pause()
 {
     PauseSound(mSoundName, true);
-    //Hacer el wrapeado aqui
 }
 
 void AudioSource::resume()
@@ -255,8 +253,17 @@ bool AudioSource::isPlaying()
     return mPlaying;
 }
 
-void AudioSource::setVolume(float value) {
+bool AudioSource::setVolume(float value) {
     mVolume = value;
+    AL().NameToLower(mSoundName);
+    FMOD::Channel* channel = AL().GetChannel(mSoundName);
+    if (channel != nullptr) {
+        mResult = channel->setVolume(value);
+        return AL().CheckFMODResult(mResult);
+    }
+    else {
+        return false;
+    }
 }
 
 bool AudioSource::setSpeed(float newSpeed) {
@@ -270,12 +277,40 @@ bool AudioSource::setSpeed(float newSpeed) {
     return AL().CheckFMODResult(this->mResult);
 }
 
-void AudioSource::setMinDistance(float value) {
-    mMinDistance = value * DISTANCE_FACTOR;
+bool AudioSource::setMinMaxDistance(float minDistance, float maxDistance)
+{
+    mMinDistance = minDistance * DISTANCE_FACTOR;
+    mMaxDistance = maxDistance * DISTANCE_FACTOR;
+
+    AL().NameToLower(mSoundName);
+    auto soundHandle = AL().GetSound(mSoundName);
+    if (soundHandle == nullptr) return false;
+    soundHandle->set3DMinMaxDistance(mMinDistance, mMaxDistance);
+    return true;
 }
 
-void AudioSource::setMaxDistance(float value) {
-    mMaxDistance = value * DISTANCE_FACTOR;
+bool AudioSource::setMode(FMOD_MODE newMode)
+{
+    AL().NameToLower(mSoundName);
+    FMOD::Sound* soundHandle = AL().GetSound(mSoundName);
+    if (soundHandle == nullptr) return false;
+    FMOD_MODE soundMode;
+    soundHandle->getMode(&soundMode);
+    FMOD_MODE newSoundMode;
+    newSoundMode = soundMode | newMode;
+    mResult = soundHandle->setMode(newSoundMode);
+    soundHandle->getMode(&soundMode);
+
+#ifdef _DEBUG
+    if (soundMode & FMOD_3D)
+        std::cout << "3d" << " ";
+    if (soundMode & FMOD_3D_LINEARROLLOFF)
+        std::cout << "atenuacion" << " ";
+    if (soundMode & FMOD_LOOP_NORMAL)
+        std::cout << "loop" << " ";
+#endif
+
+    AL().CheckFMODResult(mResult);
 }
 
 void AudioSource::setSourcePath(std::string path) {

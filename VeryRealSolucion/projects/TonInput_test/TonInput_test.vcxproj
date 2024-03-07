@@ -136,7 +136,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib;E:\TERCERANHO\PROYECTOSIII\VeryReal\VeryRealSolucion\dependencies\Ogre\Builds\SDL2-build\RelWithDebInfo\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\RelWithDebInfo\</AdditionalLibraryDirectories>
       <AdditionalDependencies>TonInput.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
