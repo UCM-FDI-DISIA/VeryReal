@@ -70,9 +70,38 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
     window_->CreateWindoww();
 
     //root_->startRendering();
+
+    string sec_name;
+    string type_name;
+    string arch_name;
+    Ogre::String ogrepath2 = filesystemlayer_->getConfigFilePath("resources.cfg");
+    Ogre::ConfigFile cf;
+    cf.load(ogrepath2);
+
+    Ogre::ConfigFile::SettingsBySection_ seci = cf.getSettingsBySection();
+    for (auto i = seci.begin(); i != seci.end(); i++)
+    {
+        sec_name = i->first;
+        Ogre::ConfigFile::SettingsMultiMap settings = i->second;
+        Ogre::ConfigFile::SettingsMultiMap::iterator mmi;
+        for (mmi = settings.begin(); mmi != settings.end(); ++mmi)
+        {
+            type_name = mmi->first;
+            arch_name = mmi->second;
+            Ogre::ResourceGroupManager::getSingleton().addResourceLocation(
+                ogrepath2+arch_name, type_name);
+        }
+    }
+   
+    Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+
+}
+
+
+
    
 
- }
+ 
 
 void VeryReal::RenderManager::LoadResources() {
 

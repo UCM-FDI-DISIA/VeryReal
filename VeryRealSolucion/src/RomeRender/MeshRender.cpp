@@ -13,25 +13,26 @@
 #include "conversorvectores.h"
 #include <OgreSceneNode.h>
 #include <OgreNode.h>
+#include <OgreFileSystemLayer.h>
 
 using namespace VeryReal;
 using namespace Ogre;
 
 
 //constructora aqui se le pasaran todos los datos necesarios para inicializar
-MeshRender::MeshRender(bool isstatic, string modelname, string entityname, string matirialname, SceneNode* node, SceneManager* scenemana ) {
+MeshRender::MeshRender(bool isstatic, string modelname, string entityname, string matirialname, SceneNode* node, SceneManager* scenemana ,FileSystemLayer* filesystemlayer_) {
+    //carga de archivos?
+    // load resource paths from config file
+   
+
    
     m_material_name = matirialname;
     mStaticObject = isstatic;
     m_entity_name = entityname;
     m_mesh_name = modelname;
-
     m_scene_node = node;
-    Ogre::SceneManager* mSM = scenemana;
-
-    //CREO LA ENTIDAD DE OGRE
-   // scenemana->getRootSceneNode()->createChildSceneNode();
-    //else node = parent->createChild(this);
+    //como se deberia hacer pero que falla 
+     mSM = scenemana;
     m_ent_ogre = mSM->createEntity(m_material_name);
     m_scene_node->attachObject(m_ent_ogre);
     m_scene_node->setVisible(true);
@@ -75,7 +76,7 @@ MeshRender::MeshRender(bool isstatic, string modelname, string entityname, strin
 
 
  void MeshRender::update() {
-     //if (!mStaticObject) setTransform(mTransform->GetPosition(), mTransform->GetScale(), mTransform->GetRotation());
+     if (!mStaticObject) setTransform(mTransform->GetPosition(), mTransform->GetScale(), mTransform->GetRotation());
 }
 void MeshRender::setName(std::string name) {
      m_entity_name = name;
@@ -83,19 +84,24 @@ void MeshRender::setName(std::string name) {
 void MeshRender::setMeshName(std::string meshName) {
      m_mesh_name = meshName;
 }
-void MeshRender::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector4 rot) {
-   /* m_scene_node->setPosition(pos.());
-    m_scene_node->setScale(scale.());
-    m_scene_node->setOrientation(rot.());*/
+void MeshRender::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot) {
+    conversor conve;
+    
+    setPosition(pos);
+    setScale(scale);
+    setRotation(rot);
 }
 void MeshRender::setPosition(VeryReal::Vector3 pos) {
-   // m_scene_node->setPosition(pos.());
+    conversor conve;
+    m_scene_node->setPosition(conve.VRconversorOgre(pos));
 }
 void MeshRender::setScale(VeryReal::Vector3 scale) {
-   // m_scene_node->setScale(scale); //necesito que pase de nuestro v3 al de ogre 
+    conversor conve;
+    m_scene_node->setScale(conve.VRconversorOgre(scale));
 }
-void MeshRender::setRotation(VeryReal::Vector4 rot) {
- //   m_scene_node->setOrientation(VRconversorOgre());//necesita un Quaternion
+void MeshRender::setRotation(VeryReal::Vector3 rot) {
+    conversor conve;
+   // m_scene_node->setOrientation(Ogre::Quaternion(conve.VRconversorOgre(rot)));//necesita un Quaternion
 }
 void MeshRender::activeMesh() {
     m_scene_node->setVisible(true);

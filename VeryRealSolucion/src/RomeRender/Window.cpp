@@ -9,7 +9,7 @@ using namespace VeryReal;
 using namespace Ogre;
 
 Window::Window(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager ):  scene_manager(scene_manager),render_system(render_system),ogre_window(nullptr),sdl_window(nullptr), file_system_layer(nullptr), window_width(0), window_height(0){
-    name = "VeryReall";
+    name = "VeryReal";
     this->root = root;
      ruta_configuracion ="";
      name ="";
