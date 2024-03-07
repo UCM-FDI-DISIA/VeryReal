@@ -8,7 +8,7 @@ using namespace std;
 
 namespace VeryReal {
 	using scene_name = string;
-
+	using entity_name = string;
 	class Scene
 	{
 	private:

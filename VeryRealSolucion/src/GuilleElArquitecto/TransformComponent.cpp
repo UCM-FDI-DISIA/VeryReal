@@ -6,7 +6,6 @@ VeryReal::TransformComponent::TransformComponent(VeryReal::Vector3 position, Ver
 	this->position = position;
 	this->rotation = rotation;
 	this->scale = scale;
-	this->SetName("transform");
 }
 VeryReal::TransformComponent::~TransformComponent() {
 

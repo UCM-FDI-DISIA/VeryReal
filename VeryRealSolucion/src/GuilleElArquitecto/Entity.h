@@ -6,7 +6,7 @@
 #include "Creator.h"
 
 using namespace std;
-using entity_name = string;
+using component_name = string;
 namespace VeryReal {
 
 
@@ -20,7 +20,7 @@ namespace VeryReal {
 		list<component_name> components_list_removed;
 
 		bool is_alive;
-		entity_name name;
+		
 
 	public:
 		Entity();
@@ -60,23 +60,23 @@ namespace VeryReal {
 		inline bool GetActive() { return is_alive; }
 
 		/*
-	Recorremos de primeras con un for el mapa:
-		-->Comprobamos si el componente está activo-->hacemos su Update
-		-->Si no está activo, lo añadimos a una lista de componentes no activos
-		(Hecho de esta forma para evitar llamadas a null, a componentes ya removidos, en el propio Update)
+			Recorremos de primeras con un for el mapa:
+				-->Comprobamos si el componente está activo-->hacemos su Update
+				-->Si no está activo, lo añadimos a una lista de componentes no activos
+				(Hecho de esta forma para evitar llamadas a null, a componentes ya removidos, en el propio Update)
 
-	Posteriormente, recorremos la lista de componentes a eliminar
-		-->Removemos el componente del mapa
-		-->Removemos el componente de la lista
+			Posteriormente, recorremos la lista de componentes a eliminar
+				-->Removemos el componente del mapa
+				-->Removemos el componente de la lista
 
-	Elimina de manera segura los componentes
-	*/
+			Elimina de manera segura los componentes
+		*/
 		void Update();
 		void Refresh();
 
 		//Indica el nombre de la Entidad
-		inline void SetName(entity_name name) { this->name = name; }
-		inline entity_name GetName() { return name; }
+		//inline void SetName(entity_name name) { this->name = name; }
+		//inline entity_name GetName() { return name; }
 	};
 }
 #endif

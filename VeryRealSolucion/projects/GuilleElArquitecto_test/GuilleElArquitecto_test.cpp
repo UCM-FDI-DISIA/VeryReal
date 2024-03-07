@@ -16,13 +16,13 @@ int main()
     /*cout << ErrorInf().showErrorMessageBox("test", "do", EI_WARNING, EI_W_RETRY) << endl;
     std::cout << "Hello World!\n";*/
  
-    
-       VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
-       Scene* s =SceneManager::Instance()->AddScene("Play");
-        s = SceneManager::Instance()->GetScene("Play");
-       Entity* e = s->AddEntity("Player");
-       Component* c=e ->AddComponent("transform");
-       cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("transform") << "\n";
+    //prueba funcional
+    VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
+    Scene* s =SceneManager::Instance()->AddScene("Play");
+    s = SceneManager::Instance()->GetScene("Play");
+    Entity* e = s->AddEntity("Player");
+    Component* c=e ->AddComponent("transform");
+    cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("transform") << "\n";
 
 }
 
