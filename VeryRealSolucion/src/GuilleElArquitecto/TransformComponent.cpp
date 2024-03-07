@@ -1,4 +1,5 @@
 #include "TransformComponent.h"
+
 VeryReal::TransformComponent::TransformComponent() {
 
 }

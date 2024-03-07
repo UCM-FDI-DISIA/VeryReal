@@ -1,8 +1,7 @@
 #include "Entity.h"
-
+#include "Component.h"
 VeryReal::Entity::Entity() {}
 VeryReal::Entity::~Entity() {}
-
 
 void VeryReal::Entity::RemoveComponent(component_name c_name) {
 	if (HasComponent(c_name)) {

@@ -1,4 +1,5 @@
 #include "SceneManager.h"
+#include "Scene.h"
 //VeryReal::SceneManager::SceneManager() {}
 //VeryReal::SceneManager::~SceneManager() {}
 
@@ -32,4 +33,7 @@ void VeryReal::SceneManager::ActivationScene(scene_name name, bool active) {
 }*/
 void VeryReal::SceneManager::EliminationScene(scene_name name, bool to_eliminate) {
 	for (auto it : scenes_list) if (it->GetName() == name)it->SetToEliminate(to_eliminate);
+}
+VeryReal::Scene* VeryReal::SceneManager::GetScene(scene_name name) { 
+	for (auto c : scenes_list) if (c->GetName() == name)return c; 
 }

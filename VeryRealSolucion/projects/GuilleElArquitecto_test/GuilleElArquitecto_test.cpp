@@ -4,6 +4,7 @@
 #include "CreatorTransformComponent.h"
 #include "SceneManager.h"
 #include "Scene.h"
+#include "Entity.h"
 
 using namespace VeryReal;
 int main()
@@ -20,7 +21,7 @@ int main()
     VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
     Scene* s =SceneManager::Instance()->AddScene("Play");
     s = SceneManager::Instance()->GetScene("Play");
-    Entity* e = s->AddEntity("Player");
+    VeryReal::Entity* e = s->AddEntity("Player");
     Component* c=e ->AddComponent("transform");
     cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("transform") << "\n";
 

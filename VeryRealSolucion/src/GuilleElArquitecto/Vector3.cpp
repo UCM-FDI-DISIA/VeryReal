@@ -1,5 +1,5 @@
 #include "Vector3.h"
-
+#include <iostream>
 VeryReal::Vector3::Vector3() {
 	x = 0;
 	y = 0;

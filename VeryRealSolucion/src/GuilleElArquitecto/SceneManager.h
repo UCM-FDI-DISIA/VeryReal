@@ -2,11 +2,12 @@
 #ifndef SCENEMANAGER
 #define SCENEMANAGER
 #include "Manager.h"
-#include "Scene.h"
 #include <list>
+#include <string>
 using namespace std;
-
+using scene_name = string;
 namespace VeryReal {
+	class Scene;
 	class SceneManager :public VeryReal::Manager<SceneManager>
 	{
 	private:
@@ -27,7 +28,7 @@ namespace VeryReal {
 		void ActivationScene(scene_name name, bool active);
 		void EliminationScene(scene_name name, bool to_eliminate);
 
-		inline Scene* GetScene(scene_name name) { for (auto c : scenes_list) if (c->GetName() == name)return c; }
+		Scene* GetScene(scene_name name);
 	};
 }
 #endif

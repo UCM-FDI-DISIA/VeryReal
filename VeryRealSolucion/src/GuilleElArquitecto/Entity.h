@@ -1,27 +1,21 @@
 #pragma once
 #ifndef ENTITY
 #define ENTITY
-#include <unordered_map>
-#include "Component.h"
 #include "Creator.h"
 
-using namespace std;
-using component_name = string;
 namespace VeryReal {
-
-
+	using component_name = string;
+	class Component;
 	class Entity
 	{
 	private:
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
-		unordered_map<component_name, VeryReal::Component*> components_map;
+		unordered_map<component_name, Component*> components_map;
 
 		//lista de componentes a remover, porque no están activos
 		list<component_name> components_list_removed;
 
 		bool is_alive;
-		
-
 	public:
 		Entity();
 		virtual ~Entity();
@@ -30,8 +24,7 @@ namespace VeryReal {
 		template< typename ...Ts>
 		inline Component* AddComponent(component_name c_name, Ts && ... args) {
 			Component* component= Creator::Instance()->CallSpecificCreator(c_name, forward<Ts>(args)...);
-		/*	T* component = new T(forward<Ts>(args)...);*/
-
+			/*	T* component = new T(forward<Ts>(args)...);*/
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);
 			components_map.insert({ c_name,component});

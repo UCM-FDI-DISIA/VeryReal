@@ -1,8 +1,12 @@
 #pragma once
+#ifndef CREATOR
+#define CREATOR
 #include "Singleton.h"
-#include <unordered_map>
 #include "CreatorComponent.h"
+#include <unordered_map>
+#include <string>
 
+using namespace std;
 namespace VeryReal {
 	using creator_name = string;
 
@@ -40,5 +44,6 @@ namespace VeryReal {
 
 	};
 }
+#endif
 
 

@@ -1,9 +1,7 @@
 #pragma once
 #ifndef COMPONENT
 #define COMPONENT
-#include <string>
 using namespace std;
-
 
 namespace VeryReal {
 	class Entity;

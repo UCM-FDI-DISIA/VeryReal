@@ -1,9 +1,9 @@
 #pragma once
 #ifndef CREATORCOMPONENT
 #define CREATORCOMPONENT
-#include "Component.h"
+
 namespace VeryReal {
-	
+	class Component;
 	class CreatorComponent{
 	private:
 		
