@@ -39,6 +39,7 @@ typedef int CHANNEL_NUMBER;
 	class AudioLeon : public VeryReal::Manager<AudioLeon> {
 		friend Singleton<AudioLeon>;
 		AudioLeon();
+		//Inicializacion de los recursos necesarios para recoger input del microfono
 		void InitAudioRecording();
 		//Stores audio handles linked to their name.
 		std::unordered_map<std::string, FMOD::Sound*> mSoundsMap;
@@ -190,6 +191,8 @@ typedef int CHANNEL_NUMBER;
 		*/
 		float getVolume(std::string soundName);
 
+		/// Obtiene la intensidad del sonido recibido por el microfono
+		/// @return Intensidad del sonido (en un rango de 0 a 1)
 		float inputSoundIntensity();
 
 		/**
@@ -224,7 +227,6 @@ typedef int CHANNEL_NUMBER;
 			}
 			return -1;
 		}
-	
 		/*void startRecording();*/
 	};
 
@@ -237,4 +239,3 @@ typedef int CHANNEL_NUMBER;
 	}
 
 #endif // !_FMOD_SOUND_MANAGER
-
