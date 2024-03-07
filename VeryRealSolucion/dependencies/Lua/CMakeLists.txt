@@ -32,7 +32,7 @@
 cmake_minimum_required(VERSION 3.5)
 project (Lua)
 
-option(SHARED_LIB "Build lua.dll instead of lua.lib" ON)
+option(SHARED_LIB "Build lua.dll instead of lua.lib" OFF)
 
 set(LUA_CORE_SRC src/lapi.c src/lcode.c src/lctype.c src/ldebug.c src/ldo.c src/ldump.c src/lfunc.c src/lgc.c src/llex.c src/lmem.c src/lobject.c src/lopcodes.c src/lparser.c src/lstate.c src/lstring.c src/ltable.c src/ltm.c src/lundump.c src/lvm.c src/lzio.c)
 set(LUA_LIB_SRC src/lauxlib.c src/lbaselib.c src/lcorolib.c src/ldblib.c src/liolib.c src/lmathlib.c src/loadlib.c src/loslib.c src/lstrlib.c src/ltablib.c src/lutf8lib.c src/linit.c)
