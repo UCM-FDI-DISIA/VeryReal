@@ -24,12 +24,30 @@ using namespace Ogre;
         vewport->setBackgroundColour(color);
          
     }
-    
+
+
+  
     Camara::~Camara()
     {
        
     }
+    void Camara::InitComponent(string name, Vector3 color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset) {
+       
 
+            //camara
+            mNode = mgr->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
+            mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
+            mNode->setPosition(0, 0, 30);
+            camara = mgr->createCamera(name); // objeto y camara en si 
+            camara->setNearClipDistance(1); //queremos que serenderice lo mas cerca posible desde la camara
+            mNode->attachObject(camara);
+            vewport = ogre_window->addViewport(camara);
+
+            //cambio de color de fondo
+
+            vewport->setBackgroundColour(Ogre::ColourValue(color.GetX(), color.GetY(),color.GetZ()));
+
+    }
 
     void Camara::lookAt( VeryReal::Vector3 pos)
     {

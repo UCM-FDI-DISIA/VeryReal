@@ -4,8 +4,9 @@ namespace VeryReal {
 	
 	class CreatorCameraComponent:public CreatorComponent
 	{
-		CreatorCameraComponent();
-		virtual ~CreatorCameraComponent();
+	public:
+		CreatorCameraComponent() {};
+		virtual ~CreatorCameraComponent() {};
 		Component* CreatorSpecificComponent() override;
 	};
 }

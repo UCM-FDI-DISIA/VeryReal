@@ -63,7 +63,8 @@ namespace VeryReal {
 		// Elimina un nodo de escena de Ogre
 		// @param nod Puntero al nodo de escena que se eliminará
 		void DeleteNode(Ogre::SceneNode* nod);
-
+		
+		Ogre::RenderWindow* GetRenderWindow();
 		Ogre::SceneManager* SceneManagerOgree();
 		// Capa del sistema de archivos de Ogre
 		Ogre::FileSystemLayer* filesystemlayer_;

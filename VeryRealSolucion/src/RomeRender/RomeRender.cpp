@@ -10,12 +10,12 @@
 //#undef main
 //#include <stdlib.h>
 #include "RenderManager.h"
-#include "Window.h"
+
 using namespace VeryReal;
 int main()
 {
-    /*VeryReal::RenderManager::Instance()->InitManager("app");
-    Window* wind = new Window();
+    VeryReal::RenderManager::Instance()->InitManager("app");
+    /*Window* wind = new Window();
     wind->Init();*/
    //// wind->CreateWindoww();
    // wind->demo();

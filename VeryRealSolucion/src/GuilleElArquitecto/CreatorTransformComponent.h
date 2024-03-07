@@ -11,6 +11,7 @@ namespace VeryReal {
 		virtual ~CreatorTransformComponent();
 		Component* CreatorSpecificComponent() override;	
 	};
+
 }
 #endif
 

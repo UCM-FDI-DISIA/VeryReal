@@ -20,11 +20,13 @@ namespace  VeryReal {
 	class TransformComponent;
 	class Vector4;
 	class Vector3;
+	class conversor;
     class MeshRender : public Component {
     public:
 		//constructora temporal sin parametros por los creators
 		MeshRender() {}
 		MeshRender(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_);
+		void InitComponent(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_);
 		virtual ~MeshRender();
 		bool createMesh();
 		void start();

@@ -13,11 +13,42 @@
 #include <OgreSceneNode.h>
 #include <OgreNode.h>
 #include <OgreFileSystemLayer.h>
-
+#include "OgreVector3.h"
+#include "Vector3.h"
 using namespace VeryReal;
 using namespace Ogre;
 
+void MeshRender::InitComponent(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_) {
+    //carga de archivos?
+   // load resource paths from config file
 
+
+
+    m_material_name = matirialname;
+    mStaticObject = isstatic;
+    m_entity_name = entityname;
+    m_mesh_name = modelname;
+    m_scene_node = node;
+    //como se deberia hacer pero que falla 
+    mSM = scenemanager;
+    m_ent_ogre = mSM->createEntity(m_material_name);
+    m_scene_node->attachObject(m_ent_ogre);
+    m_scene_node->setVisible(true);
+    //TIENE QUE SER ENTIDAD MIAm??
+   // auto t = getComponent<Transform>(m_ent);
+
+   /* m_scene_node->setScale(t->getScale());
+    m_scene_node->setPosition(t->getPosition());
+    m_scene_node->setOrientation(t->getRotation());
+    m_scene_node->attachObject(m_ent_ogre);*/
+
+
+    if (m_material_name != "")
+        m_ent_ogre->setMaterialName(m_material_name);
+
+
+
+}
 //constructora aqui se le pasaran todos los datos necesarios para inicializar
 MeshRender::MeshRender(bool isstatic, string modelname, string entityname, string matirialname, SceneNode* node, SceneManager* scenemana ,FileSystemLayer* filesystemlayer_) {
     //carga de archivos?
@@ -95,11 +126,11 @@ void MeshRender::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, Ve
 }
 void MeshRender::setPosition(VeryReal::Vector3 pos) {
     conversor conve;
-    m_scene_node->setPosition(conve.VRconversorOgre(pos));
+   // m_scene_node->setPosition(conve.VRconversorOgre(pos));
 }
 void MeshRender::setScale(VeryReal::Vector3 scale) {
     conversor conve;
-    m_scene_node->setScale(conve.VRconversorOgre(scale));
+   // m_scene_node->setScale(conve.VRconversorOgre(scale));
 }
 void MeshRender::setRotation(VeryReal::Vector3 rot) {
     conversor conve;

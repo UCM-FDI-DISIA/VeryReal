@@ -135,6 +135,9 @@ void VeryReal::RenderManager::UnloadShaders() {
     //    shaderGenerator = nullptr;
     //}
 }
+Ogre::RenderWindow* VeryReal::RenderManager::GetRenderWindow() {
+    return window_->GetOgreWindow();
+}
 Ogre::SceneManager* VeryReal::RenderManager::SceneManagerOgree() {
     return scenemanager_;
 }

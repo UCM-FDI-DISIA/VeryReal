@@ -4,6 +4,7 @@
 #include <OgreSceneNode.h>
 #include <OgreVector3.h>
 #include <Entity.h>
+#include "RenderManager.h"
 #include <TransformComponent.h>
 VeryReal::Light::Light() {
 
@@ -15,7 +16,10 @@ void VeryReal::Light::Update() {
 
  }
 void VeryReal::Light::InitComponent(int type, VeryReal::Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
-	trans_ = this->GetEntity()->GetComponent<TransformComponent>("transform");
+	trans_ = GetEntity()->GetComponent<TransformComponent>("transform");
+	light_ = VeryReal::RenderManager::Instance()->SceneManagerOgree()->createLight("LuzPrincipal");
+	mNode = VeryReal::RenderManager::Instance()->CreateNode();
+	
 	SetDirection(trans_->GetPosition());
 	setType(type);
 	SetDiffuseColour(diffusecolour);
@@ -24,7 +28,7 @@ void VeryReal::Light::InitComponent(int type, VeryReal::Vector3 const& diffuseco
 	SetSpotlightOuterAngle(outerangle);
 	SetSpotlightNearClipDistance(nearclipdist);
 	ActivateShadows(shdws);
-
+	mNode->attachObject(light_);
 }
 
 
