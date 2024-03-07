@@ -4,15 +4,19 @@
 
 
 #include <memory>
-#include "Entity.h"
+#include <Component.h>
+#include "PhysicsValues.h"
+#include <Vector3.h>
 
     enum PBShapes;
     enum PBMovementType;
+    class btCollisionShape;
+    class btRigidBody;
+    class btDefaultMotionState;
 namespace VeryReal {
 
     class TransformComponent;
-
-
+   
     class RigidBodyComponent : public Component {
     public:
         RigidBodyComponent(PBShapes shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, PBMovementType movementType = MOVEMENT_TYPE_DYNAMIC);

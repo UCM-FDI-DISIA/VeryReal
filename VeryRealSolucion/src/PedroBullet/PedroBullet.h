@@ -21,7 +21,7 @@ class btVector3;
 
 enum PBShapes;
 enum PBMovementType;
-class VeryReal::RigidBodyComponent;
+class RigidBodyComponent;
 
 class PedroBullet : public VeryReal::Manager<PedroBullet> {
 
@@ -34,7 +34,7 @@ private:
     btSequentialImpulseConstraintSolver* solver;
 
     //vector<VeryReal::RigidBodyComponent*> rigidbodies;
-    vector<VeryReal::RigidBodyComponent*> rigidbodies;
+    vector<RigidBodyComponent*> rigidbodies;
 
 
 protected:
