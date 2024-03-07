@@ -18,11 +18,14 @@ class btSequentialImpulseConstraintSolver;
 class btRigidBody;
 class btTransform;
 class btVector3;
-class RigidBodyComponent;
+
+enum PBShapes;
+enum PBMovementType;
+class VeryReal::RigidBodyComponent;
 
 class PedroBullet : public VeryReal::Manager<PedroBullet> {
-    friend Singleton<PedroBullet>;
 
+    friend Singleton<PedroBullet>;
 private:
     btDiscreteDynamicsWorld* dynamicWorld;
     btCollisionConfiguration* collisionConfig;
@@ -31,7 +34,7 @@ private:
     btSequentialImpulseConstraintSolver* solver;
 
     //vector<VeryReal::RigidBodyComponent*> rigidbodies;
-    vector<btRigidBody*> rigidbodies;
+    vector<VeryReal::RigidBodyComponent*> rigidbodies;
 
 
 protected:
@@ -44,10 +47,8 @@ public:
     virtual ~PedroBullet();
     void createGround(); //Inicializar el mundo de físicas
 
-    //void AddRigidBody(VeryReal::TransformComponent* transform, PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType);    
-    // void RemoveRigidBody(RigidBodyComponent* body);
-    void AddRigidBody(btRigidBody* body);
-    void RemoveRigidBody(btRigidBody* body);
+    void AddRigidBody(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType);    
+    //void RemoveRigidBody(VeryReal::RigidBodyComponent* body);
 
     void addForce(btRigidBody* body, btVector3 force);
     void Cleanup();

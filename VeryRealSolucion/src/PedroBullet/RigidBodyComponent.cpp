@@ -1,10 +1,14 @@
 #include "RigidBodyComponent.h"
 #include <BulletCollision/CollisionShapes/btBoxShape.h> // Asegúrate de incluir todos los tipos de formas que necesites
+#include "TransformComponent.h"
+#include "PhysicsValues.h"
+#include <btBulletDynamicsCommon.h>
+
 
 using namespace VeryReal;
 
-RigidBodyComponent::RigidBodyComponent(TransformComponent* transform, PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType)
-    : transformComponent(transform), mass(mass), friction(friction), restitution(restitution), movementType(movementType) {
+RigidBodyComponent::RigidBodyComponent(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType)
+    : mass(mass), friction(friction), restitution(restitution), movementType(movementType) {
     InitializeRigidBody(shapeType);
 }
 
@@ -13,6 +17,8 @@ RigidBodyComponent::~RigidBodyComponent() {
 }
 
 void RigidBodyComponent::InitializeRigidBody(PBShapes shapeType) {
+    transformComponent  = GetEntity()->GetComponent<TransformComponent>("transform");
+
     collisionShape.reset(CreateCollisionShape(shapeType));
 
     btVector3 localInertia(0, 0, 0);

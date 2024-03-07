@@ -12,6 +12,7 @@
 #include <LinearMath/btVector3.h>
 #include "RigidBodyComponent.h"
 #include "PhysicsValues.h"
+
 // Constructor
 PedroBullet::PedroBullet() :
     dynamicWorld(nullptr),
@@ -23,11 +24,7 @@ PedroBullet::PedroBullet() :
 
 // Destructor
 PedroBullet::~PedroBullet() {
-    delete dynamicWorld;
-    delete solver;
-    delete broadphase;
-    delete collisionDispatcher;
-    delete collisionConfig;
+    
 }
 
 void PedroBullet::createGround()
@@ -53,35 +50,37 @@ void PedroBullet::Init() {
 
 // Update Bullet Physics
 void PedroBullet::Update(float deltaTime) {
-    dynamicWorld->stepSimulation(deltaTime);
-}
 
-void PedroBullet::AddRigidBody(btRigidBody* body) {
 
-    dynamicWorld->addRigidBody(body);
+    // Inicializar el mundo de física
+    PedroBullet::Instance()->Init();
 
-    rigidbodies.push_back(body);
+    // Bucle principal de la aplicación
+    while (true) {
 
-}
-////// Add a rigid body to the simulation
-//void PedroBullet::AddRigidBody(VeryReal::TransformComponent* transform, PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType) {
-//    
-//    //(TransformComponent * transform, PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType)
-//    //dynamicWorld->addRigidBody(body);
-//    //rigidbodies.push_back(body);
-//}
+        // Actualizar el mundo de física
+        dynamicWorld->stepSimulation(deltaTime);// Ejemplo con 60Hz de frecuencia de actualización
 
-void PedroBullet::RemoveRigidBody(btRigidBody* body) {
+    }
 
-    dynamicWorld->removeRigidBody(body);
+
+    // Limpiar al finalizar
+    PedroBullet::Instance()->Cleanup();
 
 }
 
-// Remove a rigid body from the simulation
-//void PedroBullet::RemoveRigidBody(RigidBodyComponent* body) {
-//
-//    dynamicWorld->removeRigidBody(body->GetBulletRigidBody());
-//    delete body;
+
+void PedroBullet::AddRigidBody(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType)
+{
+    VeryReal::RigidBodyComponent* body = new  VeryReal::RigidBodyComponent(shapeType, mass, friction, restitution, movementType);
+    //rigidbodies.push_back(body);
+}
+
+
+////Remove a rigid body from the simulation
+//void PedroBullet::RemoveRigidBody(VeryReal::RigidBodyComponent* body) {
+//  dynamicWorld->removeRigidBody(body->GetBulletRigidBody());
+//  delete body;
 //}
 
 void PedroBullet::addForce(btRigidBody* body, btVector3 force)

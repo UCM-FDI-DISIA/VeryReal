@@ -2,17 +2,20 @@
 #ifndef RIGIDBODYCOMPONENT_H
 #define RIGIDBODYCOMPONENT_H
 
-#include "Component.h"
-#include "TransformComponent.h"
-#include "PhysicsValues.h"
-#include <btBulletDynamicsCommon.h>
-#include <memory>
 
+#include <memory>
+#include "Entity.h"
+
+    enum PBShapes;
+    enum PBMovementType;
 namespace VeryReal {
+
+    class TransformComponent;
+
 
     class RigidBodyComponent : public Component {
     public:
-        RigidBodyComponent(TransformComponent* transform, PBShapes shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, PBMovementType movementType = MOVEMENT_TYPE_DYNAMIC);
+        RigidBodyComponent(PBShapes shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, PBMovementType movementType = MOVEMENT_TYPE_DYNAMIC);
         virtual ~RigidBodyComponent();
 
         // Funciones para manipular el cuerpo rígido
