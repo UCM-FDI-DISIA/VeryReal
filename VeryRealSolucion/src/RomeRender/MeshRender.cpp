@@ -1,7 +1,6 @@
 
 
 #include "MeshRender.h"
-
 #include <OgreAxisAlignedBox.h>
 #include <OgreEntity.h>
 #include <OgreSceneManager.h>
@@ -83,6 +82,9 @@ void MeshRender::setName(std::string name) {
 }
 void MeshRender::setMeshName(std::string meshName) {
      m_mesh_name = meshName;
+}
+void setStatic(bool stat) {
+
 }
 void MeshRender::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot) {
     conversor conve;

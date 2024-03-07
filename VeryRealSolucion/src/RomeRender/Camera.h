@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
-
+#include <string>
+using namespace std;
 namespace Ogre
 {
     class Camera;
@@ -17,7 +18,9 @@ namespace  VeryReal {
     class Vector2;
     class Camara: public Component {
     public:
-        Camara(std::string name, Ogre::ColourValue color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset);
+        //constructora temporal para los creadores. ESTO SE VA A CAMBIAR
+        Camara() {}
+        Camara(string name, Ogre::ColourValue color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset);
         virtual ~Camara();
         void lookAt(Vector3 pos);
         void translate(float x, float y, float z);

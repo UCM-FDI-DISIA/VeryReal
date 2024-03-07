@@ -10,6 +10,8 @@ namespace VeryReal {
 	public:
 		CreatorComponent();
 		virtual ~CreatorComponent();
+		//Tenemos que preguntar a Pedro Pablo como hacer para pasarle como argumento valores, 
+		// con un template no puedes un metodo virtual
 		virtual Component* CreatorSpecificComponent() = 0;
 	};
 }

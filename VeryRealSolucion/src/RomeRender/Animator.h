@@ -8,6 +8,7 @@
 //	{
 //		
 //		public:
+//			Animator();
 //			Animator(Ogre::SceneManager* m_scene_mng, std::string name, TransformComponent* trans, MeshRender* meshrender); //constructora
 //			virtual ~Animator(); //destructora
 //			void update(const double& dt);

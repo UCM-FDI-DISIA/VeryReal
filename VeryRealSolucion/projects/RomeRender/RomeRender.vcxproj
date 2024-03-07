@@ -12,8 +12,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\RomeRender\Animator.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\CreatorAnimatorComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\Camera.cpp" />
     <ClCompile Include="..\..\src\RomeRender\conversorvectores.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\CreatorCameraComponent.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\CreatorLightComponent.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\CreatorMeshRenderComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\Light.cpp" />
     <ClCompile Include="..\..\src\RomeRender\MeshRender.cpp" />
     <ClCompile Include="..\..\src\RomeRender\RenderManager.cpp" />
@@ -22,8 +26,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\RomeRender\Animator.h" />
+    <ClInclude Include="..\..\src\RomeRender\CreatorAnimatorComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\Camera.h" />
     <ClInclude Include="..\..\src\RomeRender\conversorvectores.h" />
+    <ClInclude Include="..\..\src\RomeRender\CreatorCameraComponent.h" />
+    <ClInclude Include="..\..\src\RomeRender\CreatorLightComponent.h" />
+    <ClInclude Include="..\..\src\RomeRender\CreatorMeshRenderComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\Light.h" />
     <ClInclude Include="..\..\src\RomeRender\MeshRender.h" />
     <ClInclude Include="..\..\src\RomeRender\RenderManager.h" />
