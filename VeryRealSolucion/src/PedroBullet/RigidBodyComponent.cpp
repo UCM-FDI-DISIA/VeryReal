@@ -1,4 +1,4 @@
-#include "RigidBody.h"
+#include "RigidBodyComponent.h"
 #include <BulletCollision/CollisionShapes/btBoxShape.h> // Asegúrate de incluir todos los tipos de formas que necesites
 
 using namespace VeryReal;

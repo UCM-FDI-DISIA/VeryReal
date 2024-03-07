@@ -10,7 +10,8 @@
 #include <BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h>
 #include <LinearMath/btDefaultMotionState.h>
 #include <LinearMath/btVector3.h>
-
+#include "RigidBodyComponent.h"
+#include "PhysicsValues.h"
 // Constructor
 PedroBullet::PedroBullet() :
     dynamicWorld(nullptr),
@@ -55,16 +56,33 @@ void PedroBullet::Update(float deltaTime) {
     dynamicWorld->stepSimulation(deltaTime);
 }
 
-// Add a rigid body to the simulation
 void PedroBullet::AddRigidBody(btRigidBody* body) {
+
     dynamicWorld->addRigidBody(body);
+
     rigidbodies.push_back(body);
+
+}
+////// Add a rigid body to the simulation
+//void PedroBullet::AddRigidBody(VeryReal::TransformComponent* transform, PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType) {
+//    
+//    //(TransformComponent * transform, PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType)
+//    //dynamicWorld->addRigidBody(body);
+//    //rigidbodies.push_back(body);
+//}
+
+void PedroBullet::RemoveRigidBody(btRigidBody* body) {
+
+    dynamicWorld->removeRigidBody(body);
+
 }
 
 // Remove a rigid body from the simulation
-void PedroBullet::RemoveRigidBody(btRigidBody* body) {
-    dynamicWorld->removeRigidBody(body);
-}
+//void PedroBullet::RemoveRigidBody(RigidBodyComponent* body) {
+//
+//    dynamicWorld->removeRigidBody(body->GetBulletRigidBody());
+//    delete body;
+//}
 
 void PedroBullet::addForce(btRigidBody* body, btVector3 force)
 {
@@ -75,13 +93,13 @@ void PedroBullet::Cleanup()
 {
     //Limpieza de objetos
     //...
-    auto it = rigidbodies.begin();
-    while (it != rigidbodies.end()) {
-        dynamicWorld->removeRigidBody(*it);
-        delete (*it)->getMotionState();
-        delete (*it);
-        it = rigidbodies.erase(it);
-    }
+    //auto it = rigidbodies.begin();
+    //while (it != rigidbodies.end()) {
+    //    //dynamicWorld->removeRigidBody(*it);
+    //    delete (*it)->getMotionState();
+    //    delete (*it);
+    //    it = rigidbodies.erase(it);
+    //}
     //Limpieza de fisicas
     delete dynamicWorld;
     delete solver;

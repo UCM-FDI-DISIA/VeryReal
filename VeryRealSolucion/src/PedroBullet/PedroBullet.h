@@ -3,7 +3,7 @@
 #pragma once
 
 #include <vector>
-#include <Singleton.h>
+#include "Singleton.h"
 #include <Manager.h>
 #include <array>
 #include "Vector3.h"
@@ -18,6 +18,7 @@ class btSequentialImpulseConstraintSolver;
 class btRigidBody;
 class btTransform;
 class btVector3;
+class RigidBodyComponent;
 
 class PedroBullet : public VeryReal::Manager<PedroBullet> {
     friend Singleton<PedroBullet>;
@@ -29,7 +30,10 @@ private:
     btBroadphaseInterface* broadphase;
     btSequentialImpulseConstraintSolver* solver;
 
+    //vector<VeryReal::RigidBodyComponent*> rigidbodies;
     vector<btRigidBody*> rigidbodies;
+
+
 protected:
     PedroBullet();
 
@@ -39,8 +43,12 @@ public:
     virtual void Update(float deltaTime);
     virtual ~PedroBullet();
     void createGround(); //Inicializar el mundo de físicas
+
+    //void AddRigidBody(VeryReal::TransformComponent* transform, PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType);    
+    // void RemoveRigidBody(RigidBodyComponent* body);
     void AddRigidBody(btRigidBody* body);
     void RemoveRigidBody(btRigidBody* body);
+
     void addForce(btRigidBody* body, btVector3 force);
     void Cleanup();
     //vector conversion for bullet

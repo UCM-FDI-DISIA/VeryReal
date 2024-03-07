@@ -18,7 +18,7 @@
     <ClCompile Include="..\..\src\PedroBullet\PedroBullet.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\PedroBullet\RigidBody.cpp">
+    <ClCompile Include="..\..\src\PedroBullet\RigidBodyComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="BasicPhysicsWorld.cpp">
@@ -29,7 +29,7 @@
     <ClInclude Include="..\..\src\PedroBullet\PedroBullet.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\PedroBullet\RigidBody.h">
+    <ClInclude Include="..\..\src\PedroBullet\RigidBodyComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\PedroBullet\PhysicsValues.h">
