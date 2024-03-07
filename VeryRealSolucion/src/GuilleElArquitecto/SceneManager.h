@@ -13,8 +13,8 @@ namespace VeryReal {
 		//lista con todas la escenas
 		list<VeryReal::Scene*> scenes_list;
 	public:
-		SceneManager();
-		virtual ~SceneManager();
+		/*SceneManager();
+		virtual ~SceneManager();*/
 
 		void Update(const double& dt);
 		//si hay escenas que quieren ser eliminadas las removemos aquí
@@ -26,6 +26,8 @@ namespace VeryReal {
 
 		void ActivationScene(scene_name name, bool active);
 		void EliminationScene(scene_name name, bool to_eliminate);
+
+		inline Scene* GetScene(scene_name name) { for (auto c : scenes_list) if (c->GetName() == name)return c; }
 	};
 }
 #endif

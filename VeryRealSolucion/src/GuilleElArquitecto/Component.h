@@ -2,8 +2,6 @@
 #ifndef COMPONENT
 #define COMPONENT
 #include <string>
-
-
 using namespace std;
 
 

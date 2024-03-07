@@ -8,6 +8,8 @@ namespace VeryReal {
 	private:
 		
 	public:
+		CreatorComponent();
+		virtual ~CreatorComponent();
 		virtual Component* CreatorSpecificComponent() = 0;
 	};
 }

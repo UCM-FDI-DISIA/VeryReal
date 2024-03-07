@@ -1,8 +1,8 @@
 #pragma once
 #include <Singleton.h>
 
-class VeryRealEngine : public VeryReal::Singleton<VeryRealEngine> {
-	friend Singleton<VeryRealEngine>;
+class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
+	friend Singleton<VeryRealProyecto>;
 public:
 	bool Init();
 	void Loop();
@@ -10,6 +10,6 @@ public:
 	void CreateCreators();
 };
 
-inline VeryRealEngine& VR() {
-	return *VeryRealEngine::Instance();
+inline VeryRealProyecto& VR() {
+	return *VeryRealProyecto::Instance();
 }
