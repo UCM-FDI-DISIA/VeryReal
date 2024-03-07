@@ -166,6 +166,8 @@ typedef int CHANNEL_NUMBER;
 		/// @return Intensidad del sonido (en un rango de 0 a 1)
 		float inputSoundIntensity();
 
+		void audioSourceListener_Test();
+
 		/**
 		Stops every channel playing at the moment.
 

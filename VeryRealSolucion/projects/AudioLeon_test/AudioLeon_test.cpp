@@ -8,10 +8,16 @@ using namespace std;
 
 int main() {
     int t = 0;
+    bool play = false;
     while ((true)) {
         AL().systemRefresh(t);
+        if (!play) {
+            AL().audioSourceListener_Test();
+            play = true;
+        }
         cout << "PRUEBA " << AL().inputSoundIntensity() << endl;
         ++t;
+
     }
     std::cout << "Hello World!\n";
 }
