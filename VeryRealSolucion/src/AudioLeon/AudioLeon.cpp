@@ -287,8 +287,9 @@ float AudioLeon::inputSoundIntensity() {
 	int numSamples = soundLength / sizeof(short); // Numero de muestras de audio
 
 	// Obtener los datos de audio
-	short* audioData = new short[numSamples];
-	mResult = micSound->lock(0, soundLength, (void**)&audioData, nullptr, nullptr, nullptr);
+	short* audioData;
+	unsigned int audioDataSize = sizeof(short) * numSamples;
+	mResult = micSound->lock(0, soundLength, (void**)&audioData, nullptr, &audioDataSize, nullptr);
 	CheckFMODResult(mResult);
 
 	// Calcular la "potencia" del sonido
@@ -298,7 +299,8 @@ float AudioLeon::inputSoundIntensity() {
 		totalEnergy += sample * sample; // Sumar el cuadrado de la muestra
 	}
 
-	mResult = micSound->unlock(audioData, nullptr, soundLength, 0);
+	mResult = micSound->unlock(audioData, nullptr, audioDataSize, 0);
+	CheckFMODResult(mResult);
 
 	// Calcular la intensidad (en un rango de 0 a 1)
 	float intensity = totalEnergy / numSamples;
