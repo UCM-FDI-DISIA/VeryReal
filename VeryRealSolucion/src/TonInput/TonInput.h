@@ -17,129 +17,129 @@ class TonInput : public VeryReal::Manager<TonInput> {
 public:
     virtual ~TonInput() {}
 
-    /// Clears the state of the input
+    /// Limpia el estado de la entrada
     void ClearState(bool clearMouseButtons = false);
 
-    /// Updates the input state with a new event
+    /// Actualiza el estado de la entrada con un nuevo evento
     void Update(const SDL_Event& event);
 
-    /// Refreshes the input state of keyboard, controller and mouse
+    /// Refresca el estado de entrada del teclado, controlador y raton
     void Refresh();
 
-    /// Checks if a close window event has occurred
-    /// @return True if a close window event has occurred, false otherwise
+    /// Comprueba si ha ocurrido un evento de cierre de ventana
+    /// @return True si ha ocurrido un evento de cierre de ventana, false en caso contrario
     inline bool CloseWindowEvent() {
         return is_close_window_event;
     }
 
-    // KEYBOARD METHODS
+    // METODOS DE TECLADO
 
-    /// Checks if a key down event has occurred
-    /// @return True if a key down event has occurred, false otherwise
+    /// Comprueba si ha ocurrido un evento de tecla presionada
+    /// @return True si ha ocurrido un evento de tecla presionada, false en caso contrario
     inline bool KeyDownEvent() {
         return is_key_down_event;
     }
 
-    /// Checks if a key up event has occurred
-    /// @return True if a key up event has occurred, false otherwise
+    /// Comprueba si ha ocurrido un evento de tecla liberada
+    /// @return True si ha ocurrido un evento de tecla liberada, false en caso contrario
     inline bool KeyUpEvent() {
         return is_key_up_event;
     }
 
-    /// Checks if a specific key is currently down
-    /// @param key -> The SDL_Scancode of the key to check
+    /// Comprueba si una tecla especifica esta presionada actualmente
+    /// @param key -> El SDL_Scancode de la tecla a comprobar
     inline bool IsKeyDown(TI_KeyCode key) {
         return kb_state[key] == 1;
     }
 
-    /// Checks if a specific key is currently up
-    /// @param key -> The SDL_Scancode of the key to check
+    /// Comprueba si una tecla especifica esta liberada actualmente
+    /// @param key -> El SDL_Scancode de la tecla a comprobar
     inline bool IsKeyUp(TI_KeyCode key) {
         return kb_state[key] == 0;
     }
 
-  
-    // MOUSE METHODS
 
-    /// Checks if the mouse is receiving any motion event
-    /// @return True if the mouse is receiving any motion event, false otherwise
+    // METODOS DE RATON
+
+    /// Comprueba si el raton esta recibiendo algun evento de movimiento
+    /// @return True si el raton esta recibiendo algun evento de movimiento, false en caso contrario
     inline bool MouseMotionEvent() {
         return is_mouse_motion_event;
     }
 
-    /// Checks if the event "quit" is activated
-    /// @return True if the event "quit" is activated, false otherwise
+    /// Comprueba si se ha activado el evento "quit"
+    /// @return True si se ha activado el evento "quit", false en caso contrario
     inline bool Quit() {
         return is_quit;
     }
 
-    /// Checks if the mouse is receiving any button event
-    /// @return True if the mouse is receiving any button event, false otherwise
+    /// Comprueba si el raton esta recibiendo algun evento de boton
+    /// @return True si el raton esta recibiendo algun evento de boton, false en caso contrario
     inline bool MouseButtonEvent() {
         return is_mouse_button_event;
     }
 
-    /// Checks mouse position
-    /// @return A pair containing the x and y coordinates of the mouse position
+    /// Comprueba la posicion del raton
+    /// @return Un par que contiene las coordenadas x e y de la posicion del raton
     inline const std::pair<Sint32, Sint32>& GetMousePos() {
         return mouse_pos;
     }
 
-    /// Checks the state of a specific mouse button
-    /// @param button -> The mouse button to check
-    /// @return The state of the specified mouse button
+    /// Comprueba el estado de un boton especifico del raton
+    /// @param button -> El boton del raton a comprobar
+    /// @return El estado del boton del raton especificado
     inline int GetMouseButtonState(TI_MouseButton button) {
         return mb_state[button];
     }
 
-    //CONTROLLER METHODS
+    // METODOS DEL CONTROLADOR
 
-    /// Checks if there is a game controller connected
-    /// @return True if a game controller is connected, false otherwise
+    /// Comprueba si hay un controlador de juego conectado
+    /// @return True si hay un controlador de juego conectado, false en caso contrario
     inline bool IsGameControllerConnected() {
         return is_game_controller_connected;
     }
 
-    /// Checks if a specific button on the game controller is pressed
-    /// @param button -> The button on the game controller to check
-    /// @return True if the specified button is pressed, false otherwise
+    /// Comprueba si un boton especifico del controlador de juego esta presionado
+    /// @param button -> El boton del controlador de juego a comprobar
+    /// @return True si se presiona el boton especificado, false en caso contrario
     bool IsGamePadButtonDown(TI_GameControllerButton button);
 
-    /// Checks the value of a specific controller axis
-    /// @param axis -> The joystick or trigger axis to check
-    /// @return The value of the specified joystick or trigger axis (ranging from -1 to 1)
+    /// Comprueba el valor de un eje especifico del controlador
+    /// @param axis -> El eje del joystick o gatillo a comprobar
+    /// @return El valor del eje del joystick o gatillo especificado (en el rango de -1 a 1)
     float GetJoystickAxisState(TI_GameControllerAxis axis);
 
 
 private:
 
-    /// Initializes the input system (Called only once as part of Singleton)
+    /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
     TonInput() {
         kb_state = SDL_GetKeyboardState(0);
         ClearState(true);
     }
 
-    /// Updates the state of the key down event
+    /// Actualiza el estado del evento de tecla presionada
     inline void OnKeyDown(const SDL_Event&) {
         is_key_down_event = true;
     }
 
-    /// Updates the state of the key up event
+    /// Actualiza el estado del evento de tecla liberada
     inline void OnKeyUp(const SDL_Event&) {
         is_key_up_event = true;
     }
 
-    /// Updates the state of mouse motion (position and whether it's moving or not)
-    /// @param -> event The SDL event containing mouse motion information
+    /// Actualiza el estado del movimiento del raton (posicion y si se esta moviendo o no)
+    /// @param -> event El evento SDL que contiene informacion sobre el movimiento del raton
     inline void OnMouseMotion(const SDL_Event& event) {
         is_mouse_motion_event = true;
         mouse_pos.first = event.motion.x;
         mouse_pos.second = event.motion.y;
     }
 
-    /// Updates the state of mouse buttons
-    /// @param event -> The SDL event containing mouse button information
-    /// @param isDown -> True if the mouse button is pressed, false if released
+    /// Actualiza el estado de los botones del raton
+    /// @param event -> El evento SDL que contiene informacion sobre el boton del raton
+    /// @param isDown -> True si se presiona el boton del raton, false si se suelta
     inline void OnMouseButtonChange(const SDL_Event& event, bool isDown) {
         is_mouse_button_event = true;
         switch (event.button.button) {
@@ -157,8 +157,8 @@ private:
         }
     }
 
-    /// Handles all window events
-    /// @param event -> The SDL event containing window information
+    /// Maneja todos los eventos de ventana
+    /// @param event -> El evento SDL que contiene informacion sobre la ventana
     inline void HandleWindowEvent(const SDL_Event& event) {
         switch (event.window.event) {
         case SDL_WINDOWEVENT_CLOSE:

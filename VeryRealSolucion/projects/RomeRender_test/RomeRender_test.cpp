@@ -58,18 +58,14 @@ int main()
    static_cast<Animator*>(animator)->InitComponent(VeryReal::RenderManager::Instance()->SceneManagerOgree(), "hola", static_cast<TransformComponent*>(c), static_cast<MeshRender*>(t));
     while (true) {
         VeryReal::RenderManager::Instance()->Update(0.2);
-
-
         e->Update();
         cam->Update();
-
-
     }
     return 1;
 }
 
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
+// Ejecutar programa: Ctrl + F5 o menu Depurar > Iniciar sin depurar
+// Depurar programa: F5 o menu Depurar > Iniciar depuración
 
 // Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
 //   2. Use la ventana de Team Explorer para conectar con el control de código fuente
