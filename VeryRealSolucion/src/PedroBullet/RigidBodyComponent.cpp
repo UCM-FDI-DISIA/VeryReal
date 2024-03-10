@@ -3,12 +3,20 @@
 #include "TransformComponent.h"
 #include <btBulletDynamicsCommon.h>
 #include "Entity.h"
+#include "Collider.h"
 
 using namespace VeryReal;
 
 RigidBodyComponent::RigidBodyComponent(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType)
     : mass(mass), friction(friction), restitution(restitution), movementType(movementType) {
     InitializeRigidBody(shapeType);
+    collider = this->GetEntity()->GetComponent<Collider>("collider");
+    if(!collider)
+    {
+        //ERROR
+        return;
+    }
+    this->GetBulletRigidBody()->setUserPointer(collider);
 }
 
 RigidBodyComponent::~RigidBodyComponent() {

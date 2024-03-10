@@ -11,9 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\PedroBullet\BasicPhysicsWorld.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\Collider.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\PedroBullet.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\PhysicsManager.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\RigidBodyComponent.cpp" />
-    <ClCompile Include="BasicPhysicsWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
@@ -21,10 +23,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\PedroBullet\BasicPhysicsWorld.h" />
+    <ClInclude Include="..\..\src\PedroBullet\Collider.h" />
     <ClInclude Include="..\..\src\PedroBullet\PedroBullet.h" />
+    <ClInclude Include="..\..\src\PedroBullet\PhysicsManager.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsValues.h" />
     <ClInclude Include="..\..\src\PedroBullet\RigidBodyComponent.h" />
-    <ClInclude Include="BasicPhysicsWorld.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

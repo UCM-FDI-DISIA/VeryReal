@@ -29,3 +29,27 @@ void VeryReal::Entity::Refresh() {
 		c = p;
 	}
 }
+void VeryReal::Entity::onCollisionEnter(Entity* other) 
+{
+	for(auto& c :components_map)
+	{
+		if(c.second->GetActive() && c.first != "collider")
+			c.second->onCollisionEnter(other);
+	}
+}
+void VeryReal::Entity::onCollisionExit(Entity* other)
+{
+	for (auto& c : components_map)
+	{
+		if (c.second->GetActive() && c.first != "collider")
+			c.second->onCollisionExit(other);
+	}
+}
+void VeryReal::Entity::onCollisionStay(Entity* other)
+{
+	for (auto& c : components_map)
+	{
+		if (c.second->GetActive() && c.first != "collider")
+			c.second->onCollisionStay(other);
+	}
+}

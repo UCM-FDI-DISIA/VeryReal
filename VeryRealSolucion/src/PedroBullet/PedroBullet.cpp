@@ -12,6 +12,7 @@
 #include <LinearMath/btVector3.h>
 #include "RigidBodyComponent.h"
 #include "PhysicsValues.h"
+#include "Collider.h"
 
 // Constructor
 PedroBullet::PedroBullet() :
@@ -38,6 +39,69 @@ void PedroBullet::createGround()
 
 }
 
+
+//btPersistentManifold almacena los puntos de contacto entre dos objetos y proporciona métodos para acceder a ambos cuerpos.
+void callBackEnter(btPersistentManifold* const& manifold) {
+
+    const btCollisionObject* ent1 = manifold->getBody0();
+    const btCollisionObject* ent2 = manifold->getBody1();
+
+    //Si los cuerpos NO son nullptr
+    if (ent1 && ent2) {
+
+        VeryReal::Collider* colliderEntity1 = static_cast<VeryReal::Collider*>(ent1->getUserPointer());
+        VeryReal::Collider* colliderEntity2 = static_cast<VeryReal::Collider*>(ent2->getUserPointer());
+
+        //Si tienen colliders, colisionan
+        if (colliderEntity1 && colliderEntity2)
+        {
+            colliderEntity1->onCollisionEnter(colliderEntity2->GetEntity());
+            colliderEntity2->onCollisionEnter(colliderEntity1->GetEntity());
+        }
+    }
+}
+
+void callBackExit(btPersistentManifold* const& manifold) {
+
+    const btCollisionObject* ent1 = manifold->getBody0();
+    const btCollisionObject* ent2 = manifold->getBody1();
+
+    if (ent1 && ent2) {
+
+        VeryReal::Collider* colliderEntity1 = static_cast<VeryReal::Collider*>(ent1->getUserPointer());
+        VeryReal::Collider* colliderEntity2 = static_cast<VeryReal::Collider*>(ent2->getUserPointer());
+        if (colliderEntity1 && colliderEntity2)
+        {
+            colliderEntity1->onCollisionExit(colliderEntity2->GetEntity());
+            colliderEntity2->onCollisionExit(colliderEntity1->GetEntity());
+        }
+    }
+}
+
+//Tiene que devolver un bool
+//Recibe los dos objetos que están colisionando
+bool callBackStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
+
+    const btCollisionObject* ent1 = static_cast<btCollisionObject*>(obj1);
+    const btCollisionObject* ent2 = static_cast<btCollisionObject*>(obj2);
+
+    if (ent1 && ent2) {
+
+        VeryReal::Collider* colliderEntity1 = static_cast<VeryReal::Collider*>(ent1->getUserPointer());
+        VeryReal::Collider* colliderEntity2 = static_cast<VeryReal::Collider*>(ent2->getUserPointer());
+        if (colliderEntity1 && colliderEntity2)
+        {
+            colliderEntity1->onCollisionStay(colliderEntity2->GetEntity());
+            colliderEntity2->onCollisionStay(colliderEntity1->GetEntity());
+            return true;
+        }
+    }
+    return false;
+   
+}
+
+
+
 // Initialize Bullet Physics
 void PedroBullet::Init() {
     collisionConfig = new btDefaultCollisionConfiguration();
@@ -46,6 +110,13 @@ void PedroBullet::Init() {
     solver = new btSequentialImpulseConstraintSolver();
     dynamicWorld = new btDiscreteDynamicsWorld(collisionDispatcher, broadphase, solver, collisionConfig);
     dynamicWorld->setGravity(btVector3(0, -9.8, 0));
+
+    //Variable global a la que establecemos un callback para manejar eventos de colisiones de Bullet.
+    //Cuando se produce una colisión en el mundo físico de Bullet, la función callback se activa
+    gContactStartedCallback = callBackEnter;
+    gContactProcessedCallback = callBackStay;
+    gContactEndedCallback = callBackExit;
+
 }
 
 // Update Bullet Physics

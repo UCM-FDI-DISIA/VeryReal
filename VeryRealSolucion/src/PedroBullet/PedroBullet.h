@@ -18,10 +18,12 @@ class btSequentialImpulseConstraintSolver;
 class btRigidBody;
 class btTransform;
 class btVector3;
+class btPersistentManifold;
 
 enum PBShapes;
 enum PBMovementType;
 class RigidBodyComponent;
+class Collider;
 
 class PedroBullet : public VeryReal::Manager<PedroBullet> {
 
@@ -55,6 +57,8 @@ public:
     //vector conversion for bullet
     btVector3 V3ToBtV3(VeryReal::Vector3 conversion) const;
 
+
+   
 };
 
 /// Singleton instance

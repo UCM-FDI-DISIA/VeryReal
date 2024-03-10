@@ -16,7 +16,7 @@
 namespace VeryReal {
 
     class TransformComponent;
-   
+    class Collider;
     class RigidBodyComponent : public Component {
     public:
         RigidBodyComponent(PBShapes shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, PBMovementType movementType = MOVEMENT_TYPE_DYNAMIC);
@@ -39,7 +39,7 @@ namespace VeryReal {
         float friction;
         float restitution;
         PBMovementType movementType;
-
+        Collider* collider = nullptr;
         void InitializeRigidBody(PBShapes shapeType);
         btCollisionShape* CreateCollisionShape(PBShapes shapeType);
     };
@@ -47,3 +47,17 @@ namespace VeryReal {
 } 
 
 #endif 
+
+
+
+/*FALTA:
+*   - Mascara
+*   - Capa
+*   - Setters/ Getters
+*   - Convertir en trigger
+*   - AddImpulse
+*   - AddTorque
+*   - Activar/Desactivar el RB
+*   - Cambiar la velocidad angular
+*   -
+*/
