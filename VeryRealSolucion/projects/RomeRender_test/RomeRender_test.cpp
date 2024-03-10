@@ -10,10 +10,8 @@
 #include <Light.h>
 #include <MeshRender.h>
 #include <Animator.h>
-
 #include <ErrorInformant.h>
 #include "Creator.h"
-#include "CreatorTransformComponent.h"
 #include "SceneManager.h"
 #include "Scene.h"
 #include "CreatorLightComponent.h"
@@ -47,7 +45,7 @@ int main()
    Component* t=e->AddComponent("MeshRender");
    Component* ligh = e->AddComponent("Light");
    ligh->SetEntity(e);
-   static_cast<Light*>(ligh)->InitComponent(1, Vector3(0.4, 1, 0.6), 25, 25, 90, 180, 0.1, true);
+   static_cast<Light*>(ligh)->InitComponent(1, Vector3(1, 1, 1), 25, 25, 90, 180, 0.1, true);
    Component* animator = e->AddComponent("Animator");
    animator->SetEntity(e);
   

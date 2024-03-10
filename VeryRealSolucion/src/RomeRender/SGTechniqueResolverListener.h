@@ -1,38 +1,26 @@
-#pragma once
+#ifndef __SGTechniqueResolverListener_H__
+#define __SGTechniqueResolverListener_H__
 
-#ifndef RENDER_SGTECHNIQUERESOLVERLISTENER
-#define RENDER_SGTECHNIQUERESOLVERLISTENER
+#include "OgreMaterialManager.h"
+#include <OgreRTShaderSystem.h>
 
-#include <OgreMaterialManager.h>
-
-namespace Ogre {
-    class Technique;
-    class Material;
-    class Renderable;
-    class OgreMaterialManager;
-    namespace RTShader {
-        class ShaderGenerator;
-    }
-}
-
+/** Implementación por defecto de un Listener para usar con el sistema Ogre::RTShader.
+    Cuando se invoca una devolución de llamada del esquema de destino con el esquema del generador de sombreado, intenta crear un sombreador equivalente
+    técnica basada en la técnica predeterminada del material dado
+*/
 namespace VeryReal {
-    /**
-    Default implementation of a Listener to use with the Ogre::RTShader system.
-    When a target scheme callback is invoked with the shader generator scheme it tries to create an equivalent shader
-    based technique based on the default technique of the given material.
-    */
-    class  SGTechniqueResolverListener : public Ogre::MaterialManager::Listener {
+    class SGTechniqueResolverListener : public Ogre::MaterialManager::Listener
+    {
     public:
-        explicit SGTechniqueResolverListener(Ogre::RTShader::ShaderGenerator* pShaderGenerator);
+        SGTechniqueResolverListener(Ogre::RTShader::ShaderGenerator* pShaderGenerator);
 
-        /** 
-        This is the hook point where shader based technique will be created.
-        It will be called whenever the material manager won't find appropriate technique
-        that satisfy the target scheme name. If the scheme name is out target RT Shader System
-        scheme name we will try to create shader generated technique for it.
+        /** Este es el punto de enlace donde se creará la técnica basada en shaders.
+            Se llamará siempre que el responsable del material no encuentre la técnica adecuada
+            que satisfacen el nombre del esquema de destino. Si el nombre del esquema está fuera del sistema RT Shader de destino
+            nombre del esquema, intentaremos crear una técnica generada por el sombreador para él
         */
         Ogre::Technique* handleSchemeNotFound(unsigned short schemeIndex,
-            const Ogre::String &schemeName,
+            const Ogre::String& schemeName,
             Ogre::Material* originalMaterial, unsigned short lodIndex,
             const Ogre::Renderable* rend) override;
 
@@ -41,9 +29,7 @@ namespace VeryReal {
         bool beforeIlluminationPassesCleared(Ogre::Technique* tech) override;
 
     protected:
-        // The shader generator instance.
-        Ogre::RTShader::ShaderGenerator* mShaderGenerator; 
+        Ogre::RTShader::ShaderGenerator* mShaderGenerator;
     };
-}
-
+} 
 #endif

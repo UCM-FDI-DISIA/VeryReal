@@ -22,6 +22,7 @@
     <ClCompile Include="..\..\src\RomeRender\MeshRender.cpp" />
     <ClCompile Include="..\..\src\RomeRender\RenderManager.cpp" />
     <ClCompile Include="..\..\src\RomeRender\RomeRender.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\SGTechniqueResolverListener.cpp" />
     <ClCompile Include="..\..\src\RomeRender\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -35,6 +36,7 @@
     <ClInclude Include="..\..\src\RomeRender\Light.h" />
     <ClInclude Include="..\..\src\RomeRender\MeshRender.h" />
     <ClInclude Include="..\..\src\RomeRender\RenderManager.h" />
+    <ClInclude Include="..\..\src\RomeRender\SGTechniqueResolverListener.h" />
     <ClInclude Include="..\..\src\RomeRender\Window.h" />
   </ItemGroup>
   <ItemGroup>
