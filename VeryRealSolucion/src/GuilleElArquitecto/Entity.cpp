@@ -9,10 +9,10 @@ void VeryReal::Entity::RemoveComponent(component_name c_name) {
 		components_map.erase(c_name);
 	}
 }
-void VeryReal::Entity::Update() {
+void VeryReal::Entity::Update(const double& dt) {
 	for (auto c : components_map) {
 		if (c.second->GetActive()) {
-			c.second->Update();
+			c.second->Update(dt);
 		}
 		else {
 			components_list_removed.push_back(c.first);
@@ -27,5 +27,29 @@ void VeryReal::Entity::Refresh() {
 		p++;
 		components_list_removed.pop_front();
 		c = p;
+	}
+}
+void VeryReal::Entity::onCollisionEnter(Entity* other) 
+{
+	for(auto& c :components_map)
+	{
+		if(c.second->GetActive() && c.first != "collider")
+			c.second->onCollisionEnter(other);
+	}
+}
+void VeryReal::Entity::onCollisionExit(Entity* other)
+{
+	for (auto& c : components_map)
+	{
+		if (c.second->GetActive() && c.first != "collider")
+			c.second->onCollisionExit(other);
+	}
+}
+void VeryReal::Entity::onCollisionStay(Entity* other)
+{
+	for (auto& c : components_map)
+	{
+		if (c.second->GetActive() && c.first != "collider")
+			c.second->onCollisionStay(other);
 	}
 }

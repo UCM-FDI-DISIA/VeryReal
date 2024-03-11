@@ -60,6 +60,9 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\Creator.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\GuilleElArquitecto\VariantClass.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h">
@@ -92,9 +95,6 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\SceneManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Component_Names.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\GuilleElArquitecto\ErrorInformant.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -105,6 +105,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Creator.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GuilleElArquitecto\VariantClass.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

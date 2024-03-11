@@ -6,6 +6,7 @@
 #include <Entity.h>
 #include "RenderManager.h"
 #include <TransformComponent.h>
+#include "conversorvectores.h"
 VeryReal::Light::Light() {
 
 }
@@ -13,7 +14,8 @@ VeryReal::Light::~Light() {
 
 }
 void VeryReal::Light::Update() {
-
+	Ogre::Vector3 v(trans_->GetPosition().GetX(), trans_->GetPosition().GetY(), trans_->GetPosition().GetZ());
+	mNode->setPosition(v);
  }
 void VeryReal::Light::InitComponent(int type, VeryReal::Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
 	trans_ = GetEntity()->GetComponent<TransformComponent>("transform");

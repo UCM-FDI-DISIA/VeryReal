@@ -22,7 +22,7 @@ int main()
     Scene* s =SceneManager::Instance()->AddScene("Play");
     s = SceneManager::Instance()->GetScene("Play");
     VeryReal::Entity* e = s->AddEntity("Player");
-    Component* c=e ->AddComponent("transform");
+    Component* c=e->AddComponent("transform");
     cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("transform") << "\n";
 
 }

@@ -14,6 +14,11 @@ enum PBMovementType {
 	MOVEMENT_TYPE_STATIC,
 	MOVEMENT_TYPE_KINEMATIC
 };
-
+enum PhysicsLayer {
+	DEFAULT = 0,
+	PLAYER,
+	ENEMY,
+	TERRAIN,
+};
 
 #endif

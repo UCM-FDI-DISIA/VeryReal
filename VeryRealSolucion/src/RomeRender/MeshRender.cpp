@@ -19,11 +19,7 @@ using namespace VeryReal;
 using namespace Ogre;
 
 void MeshRender::InitComponent(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_) {
-    //carga de archivos?
-   // load resource paths from config file
-
-
-
+   
     m_material_name = matirialname;
     mStaticObject = isstatic;
     m_entity_name = entityname;
@@ -31,7 +27,7 @@ void MeshRender::InitComponent(bool isstatic, string modelname, string entitynam
     m_scene_node = node;
     //como se deberia hacer pero que falla 
     mSM = scenemanager;
-    m_ent_ogre = mSM->createEntity(m_material_name);
+    m_ent_ogre = mSM->createEntity(modelname);
     m_scene_node->attachObject(m_ent_ogre);
     m_scene_node->setVisible(true);
     //TIENE QUE SER ENTIDAD MIAm??
@@ -44,17 +40,14 @@ void MeshRender::InitComponent(bool isstatic, string modelname, string entitynam
 
 
     if (m_material_name != "")
-        m_ent_ogre->setMaterialName(m_material_name);
+        m_ent_ogre->setMaterialName(m_material_name,"General");
 
 
 
 }
-//constructora aqui se le pasaran todos los datos necesarios para inicializar
+//modelname = .mesh materialname = .material
 MeshRender::MeshRender(bool isstatic, string modelname, string entityname, string matirialname, SceneNode* node, SceneManager* scenemana ,FileSystemLayer* filesystemlayer_) {
-    //carga de archivos?
-    // load resource paths from config file
-   
-
+ 
    
     m_material_name = matirialname;
     mStaticObject = isstatic;
@@ -63,7 +56,7 @@ MeshRender::MeshRender(bool isstatic, string modelname, string entityname, strin
     m_scene_node = node;
     //como se deberia hacer pero que falla 
      mSM = scenemana;
-    m_ent_ogre = mSM->createEntity(m_material_name);
+    m_ent_ogre = mSM->createEntity(modelname);
     m_scene_node->attachObject(m_ent_ogre);
     m_scene_node->setVisible(true);
     //TIENE QUE SER ENTIDAD MIAm??

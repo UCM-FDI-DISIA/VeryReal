@@ -11,9 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\PedroBullet\BasicPhysicsWorld.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\Collider.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\CollisionMatrix.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\CreatorColliderComponent.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\PedroBullet.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\PhysicsManager.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\RigidBodyComponent.cpp" />
-    <ClCompile Include="BasicPhysicsWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
@@ -21,10 +26,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\PedroBullet\BasicPhysicsWorld.h" />
+    <ClInclude Include="..\..\src\PedroBullet\Collider.h" />
+    <ClInclude Include="..\..\src\PedroBullet\CollisionMatrix.h" />
+    <ClInclude Include="..\..\src\PedroBullet\CreatorColliderComponent.h" />
+    <ClInclude Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.h" />
     <ClInclude Include="..\..\src\PedroBullet\PedroBullet.h" />
+    <ClInclude Include="..\..\src\PedroBullet\PhysicsManager.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsValues.h" />
     <ClInclude Include="..\..\src\PedroBullet\RigidBodyComponent.h" />
-    <ClInclude Include="BasicPhysicsWorld.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -75,6 +85,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Bullet\Src\src</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -98,6 +110,8 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Bullet\Src\src</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

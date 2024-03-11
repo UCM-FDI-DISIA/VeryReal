@@ -10,10 +10,8 @@
 #include <Light.h>
 #include <MeshRender.h>
 #include <Animator.h>
-
 #include <ErrorInformant.h>
 #include "Creator.h"
-#include "CreatorTransformComponent.h"
 #include "SceneManager.h"
 #include "Scene.h"
 #include "CreatorLightComponent.h"
@@ -26,7 +24,6 @@ int main()
 {
 
    VeryReal::RenderManager::Instance()->InitManager("app");
-   VeryReal::Entity sinbad;
    VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
    VeryReal::Creator::Instance()->AddCreator("MeshRender", new VeryReal::CreatorMeshRenderComponent());
    VeryReal::Creator::Instance()->AddCreator("Animator", new VeryReal::CreatorAnimatorComponent());
@@ -35,6 +32,7 @@ int main()
    Scene* s = SceneManager::Instance()->AddScene("Play");
    s = SceneManager::Instance()->GetScene("Play");
    Entity* e = s->AddEntity("Player");
+   Entity* luz = s->AddEntity("Luz");
    Entity* camara = s->AddEntity("Cam");
   Component*cam= camara->AddComponent("Camera");
 
@@ -43,33 +41,48 @@ int main()
 
    Component* c = e->AddComponent("transform");
    c->SetEntity(e);
-  // e->AddComponent("Animator");
+  
    Component* t=e->AddComponent("MeshRender");
-   Component* ligh = e->AddComponent("Light");
-   ligh->SetEntity(e);
-   static_cast<Light*>(ligh)->InitComponent(1, Vector3(0.4, 1, 0.6), 25, 25, 90, 180, 0.1, true);
+
+
+   Component* transluz=  luz->AddComponent("transform");
+   static_cast<TransformComponent*>(transluz)->SetPosition(static_cast<TransformComponent*>(transluz)->GetPosition()- Vector3(400,-600,0));
+   Component* ligh = luz->AddComponent("Light");
+   ligh->SetEntity(luz);
+   static_cast<Light*>(ligh)->InitComponent(1, Vector3(1, 1, 1), 25, 25, 90, 180, 0.1, true);
+
+
    Component* animator = e->AddComponent("Animator");
+  
    animator->SetEntity(e);
   
    //MOMENTANEO
-   static_cast<MeshRender*>(t)->InitComponent(false, "sinbad", "hola", "Sinbad.mesh", VeryReal::RenderManager::Instance()->CreateNode(),
+   static_cast<MeshRender*>(t)->InitComponent(false, "Sinbad.mesh", "hola", "Ogre/Skin", VeryReal::RenderManager::Instance()->CreateNode(),
        VeryReal::RenderManager::Instance()->SceneManagerOgree(), VeryReal::RenderManager::Instance()->filesystemlayer_);
    cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("transform") << "\n";
+
+   //init, create, play
    static_cast<Animator*>(animator)->InitComponent(VeryReal::RenderManager::Instance()->SceneManagerOgree(), "hola", static_cast<TransformComponent*>(c), static_cast<MeshRender*>(t));
+   //static_cast<Animator*>(animator)->createAnimation("Sinbad.skeleton", 0.10);
+   static_cast<Animator*>(animator)->setAnimation("Dance", true, true);
+   unsigned long long  m_initTime = GetTickCount64();
+   auto time = m_initTime;
+   //tiempo actual- el tiempo de inicio - el tiempo desde anterior;
+   auto dt =( GetTickCount64() - m_initTime)-time;
     while (true) {
+         dt = (GetTickCount64() - m_initTime) - time;
+         time = (GetTickCount64() - m_initTime);
+        e->Update(dt);
+        luz->Update(dt);
+        camara->Update(dt);
         VeryReal::RenderManager::Instance()->Update(0.2);
-
-
-        e->Update();
-        cam->Update();
-
 
     }
     return 1;
 }
 
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
+// Ejecutar programa: Ctrl + F5 o menu Depurar > Iniciar sin depurar
+// Depurar programa: F5 o menu Depurar > Iniciar depuración
 
 // Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
 //   2. Use la ventana de Team Explorer para conectar con el control de código fuente

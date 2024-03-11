@@ -26,20 +26,15 @@ namespace VeryReal {
 		Animator();
 		void InitComponent(Ogre::SceneManager* m_scene_mng, std::string name, TransformComponent* trans, MeshRender* meshrender);
 		virtual ~Animator(); //destructora
-		void update(const double& dt);
-		void setActive(bool a); //metodo para activar la animacion
-		void setLoop(bool l);  //metodo que pone la animacion en bucle
-		string getCurrAnimName();  //para que devuelva el nombre de la anim actual
-		bool isActive(); // getter
-		bool isLoop(); //geter
-		void playAnim(string animacion, bool loop = true); //inicia una aminacion
-		void stopAnim(); //la para
-		void resumeAnim(); //la vuelve a iniciar (no la crea)
 		void createAnimation(string t_name, double t_duration);
-		void setAnimation(std::string t_name, bool t_active, bool t_loop);
-		void allAnimations(bool t_active);
 		void setFrameAnimation(std::string t_nameAnimation, double t_duration,
 			Vector3 t_translate, Vector4 t_rotacion, Vector3 t_scale);
+		void setAnimation(std::string t_name, bool t_active, bool t_loop);
+		void allAnimations(bool t_active);
+		int getAnimationsActive() { return m_num_animations_active; };
+
+		void Update(const double& dt) override;
+		
 
 	private:
 		bool active;
@@ -50,9 +45,7 @@ namespace VeryReal {
 		MeshRender* m_meshRender;
 		int m_num_animations_active;
 		std::string m_name;
-		Ogre::AnimationState* mCurrentState; // Pointer to the current animation state
 
-		Ogre::AnimationStateSet* mAnimStatesMap; // Pointer to the animation state set
 
 
 	};

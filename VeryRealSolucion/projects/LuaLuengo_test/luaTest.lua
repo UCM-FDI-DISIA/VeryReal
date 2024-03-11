@@ -7,6 +7,9 @@ Entities = {
             },
             {
                 name = "Rigidbody"
+            }, 
+            {
+                name = "Light"
             }
         }
     }, 

@@ -10,7 +10,7 @@
 #include "Window.h"
 #include <Vector3.h>
 #include <OgreVector3.h>
-
+#include "SGTechniqueResolverListener.h"
 //mehrender, camara y eso
 VeryReal::RenderManager::RenderManager():window_(nullptr),root_(nullptr), scenemanager_(nullptr), rendersystem_(nullptr), viewport_(nullptr), filesystemlayer_(nullptr){
     
@@ -110,30 +110,30 @@ void VeryReal::RenderManager::LoadResources() {
 
 }
 void VeryReal::RenderManager::LoadShaders() {
-  /*  if (Ogre::RTShader::ShaderGenerator::initialize()) {
+    if (Ogre::RTShader::ShaderGenerator::initialize()) {
 
         shaderGenerator = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
         shaderGenerator->addSceneManager(scenemanager_);
 
         materialListener_ = new VeryReal::SGTechniqueResolverListener(shaderGenerator);
         Ogre::MaterialManager::getSingleton().addListener(materialListener_);
-    }*/
+    }
 }
 void VeryReal::RenderManager::UnloadShaders() {
    
-    //if (materialListener_ != nullptr)
-    //{
-    //    Ogre::MaterialManager::getSingleton().removeListener(materialListener_);
-    //    delete materialListener_;
-    //    materialListener_ = nullptr;
-    //}
+    if (materialListener_ != nullptr)
+    {
+      //  Ogre::MaterialManager::getSingleton().removeListener(materialListener_);
+        delete materialListener_;
+        materialListener_ = nullptr;
+    }
 
-    //// Destroy RTShader system.
-    //if (shaderGenerator != nullptr)
-    //{
-    //    Ogre::RTShader::ShaderGenerator::destroy();
-    //    shaderGenerator = nullptr;
-    //}
+    // Destroy RTShader system.
+    if (shaderGenerator != nullptr)
+    {
+        Ogre::RTShader::ShaderGenerator::destroy();
+        shaderGenerator = nullptr;
+    }
 }
 Ogre::RenderWindow* VeryReal::RenderManager::GetRenderWindow() {
     return window_->GetOgreWindow();
@@ -143,6 +143,7 @@ Ogre::SceneManager* VeryReal::RenderManager::SceneManagerOgree() {
 }
 void VeryReal::RenderManager::Update(const double& dt) {
     root_->renderOneFrame();
+   
  }
 
 Ogre::SceneNode* VeryReal::RenderManager::CreateNode() {
