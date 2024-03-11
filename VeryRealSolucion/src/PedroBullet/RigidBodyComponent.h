@@ -13,18 +13,28 @@
     class btCollisionShape;
     class btRigidBody;
     class btDefaultMotionState;
+
+
 namespace VeryReal {
 
     class TransformComponent;
     class Collider;
     class RigidBodyComponent : public Component {
     public:
-        RigidBodyComponent(PBShapes shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, PBMovementType movementType = MOVEMENT_TYPE_DYNAMIC);
+        RigidBodyComponent(PBShapes shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, PBMovementType movementType = MOVEMENT_TYPE_DYNAMIC, bool trigger = false);
         virtual ~RigidBodyComponent();
 
         // Funciones para manipular el cuerpo rígido
         void SetVelocity(const Vector3& velocity);
+        void SetAngularVelocity(const Vector3& velocity);
         Vector3 GetVelocity() const;
+        void AddImpulse(const Vector3& impulse);
+        void AddTorque(const Vector3& torque);
+
+        void SetActiveRB(bool b);
+        void SetActiveTrigger(bool b);
+        bool GetActiveRB();
+        bool GetActiveTrigger();
 
         // Obtiene el btRigidBody 
         btRigidBody* GetBulletRigidBody() const;
@@ -35,6 +45,8 @@ namespace VeryReal {
         std::unique_ptr<btDefaultMotionState> motionState;
         std::unique_ptr<btRigidBody> rigidBody;
 
+        bool isActive;
+        bool isTrigger;
         float mass;
         float friction;
         float restitution;
@@ -53,11 +65,6 @@ namespace VeryReal {
 /*FALTA:
 *   - Mascara
 *   - Capa
-*   - Setters/ Getters
-*   - Convertir en trigger
-*   - AddImpulse
-*   - AddTorque
-*   - Activar/Desactivar el RB
-*   - Cambiar la velocidad angular
-*   -
+*   - Setters/ Getters(algunos hechos)
+*   - Convertir en trigger(medio hecho pero falta)
 */
