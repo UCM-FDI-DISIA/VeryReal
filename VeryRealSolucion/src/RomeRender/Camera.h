@@ -18,7 +18,7 @@ namespace  VeryReal {
     class Vector2;
     class Camara: public Component {
     public:
-        //constructora temporal para los creadores. ESTO SE VA A CAMBIAR
+       
         Camara() {};
         Camara(string name, Ogre::ColourValue color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset);
         void InitComponent(string name, Vector3 color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset);
@@ -44,7 +44,7 @@ namespace  VeryReal {
         Ogre::Camera* camara;
         Ogre::Viewport* vewport;
         Ogre::SceneManager* mgr;
-        //referencia a la ventana  NECESARIA
+  
     };
 
 

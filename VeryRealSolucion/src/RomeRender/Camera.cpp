@@ -5,6 +5,7 @@
 #include <Vector3.h>
 #include <Vector2.h>
 
+
 using namespace VeryReal;
 using namespace Ogre;
 
@@ -24,8 +25,6 @@ using namespace Ogre;
         vewport->setBackgroundColour(color);
          
     }
-
-
   
     Camara::~Camara()
     {
@@ -51,7 +50,8 @@ using namespace Ogre;
 
     void Camara::lookAt( VeryReal::Vector3 pos)
     {
-        //mNode->lookAt(pos, Ogre::Node::TransformSpace::TS_PARENT);
+        Ogre::Vector3 p(pos.GetX(), pos.GetY(), pos.GetZ());
+        mNode->lookAt(p, Ogre::Node::TransformSpace::TS_PARENT);
     }
 
     void Camara::translate(float x, float y, float z)
@@ -75,7 +75,7 @@ using namespace Ogre;
     }
     void Camara::Offset(VeryReal::Vector2 offset)
     {
-       // camara->setFrustumOffset(offset.x, offset.y);
+        camara->setFrustumOffset(offset.GetX(), offset.GetY());
     }
     void Camara::setNearClipDistance(float t_clip)
     {
