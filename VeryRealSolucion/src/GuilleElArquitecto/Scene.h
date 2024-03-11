@@ -58,7 +58,7 @@ namespace VeryReal {
 	//elimina de manera segura las entidades del mapa
 
 	*/
-		void  Update();
+		void  Update(const double& dt);
 		void Refresh();
 
 		//Indica si la  Escena esta activa

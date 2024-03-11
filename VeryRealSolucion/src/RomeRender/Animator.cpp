@@ -27,8 +27,6 @@ void Animator::InitComponent(Ogre::SceneManager* m_scene_mng, std::string name, 
     m_scene_mngr = m_scene_mng;
     m_name = name;
     m_num_animations_active = (0);
-    m_transform = nullptr;
-    m_meshRender = nullptr;
     m_transform = trans;
 
     if (m_transform == nullptr)
@@ -57,84 +55,79 @@ void Animator::InitComponent(Ogre::SceneManager* m_scene_mng, std::string name, 
 Animator::~Animator()
 {
 }
-void Animator::update(const double& dt)
+void Animator::Update(const double& dt)
 {
-    if (mCurrentState != nullptr && active) {
-        // Increment the animation time by the time between frames
-        mCurrentState->addTime(dt);
-    }
+   
     int num = 0;
     auto it = m_animations.begin();
-   /* while (num != m_num_animations_active)
+    while (num != m_num_animations_active)
     {
         if (it->second->getEnabled())
         {
-            it->second->addTime(Ogre::Real(time));
+            it->second->addTime(dt* 0.001);
             num++;
         }
         it++;
-    }*/
+    }
 }
 
-void Animator::setActive(bool active)
-{
-    // Set the enabled state for the current animation
-    mCurrentState->setEnabled(active);
-}
-
-void Animator::setLoop(bool loop)
-{
-    // Set the loop state for the current animation
-    mCurrentState->setLoop(loop);
-}
-
-std::string Animator::getCurrAnimName()
-{
-    // Return the name of the current animation
-    return mCurrentState->getAnimationName();
-}
-
-bool Animator::isActive()
-{
-    // Return whether the current animation is enabled
-    return mCurrentState->getEnabled();
-}
-
-bool Animator::isLoop()
-{
-    // Return whether the current animation is set to loop
-    return mCurrentState->getLoop();
-}
-
-
-void Animator::playAnim(std::string anim, bool loop)
-{
-    if (mCurrentState != nullptr)
-        mCurrentState->setEnabled(false);
-
-    // cambia el estado actual
-    mCurrentState = mAnimStatesMap->getAnimationState(anim);
-    // lo activa
-    mCurrentState->setEnabled(true);
-    // bucle
-    mCurrentState->setLoop(loop);
-    mCurrentState->setTimePosition(0);
-    active = true;
-}
-
-void Animator::stopAnim()
-{
-
-    active = false;
-}
-
-void Animator::resumeAnim()
-{
-
-    active = true;
-}
-
-
+//void Animator::setActive(bool active)
+//{
+//    // Set the enabled state for the current animation
+//    mCurrentState->setEnabled(active);
+//}
+//
+//void Animator::setLoop(bool loop)
+//{
+//    // Set the loop state for the current animation
+//    mCurrentState->setLoop(loop);
+//}
+//
+//std::string Animator::getCurrAnimName()
+//{
+//    // Return the name of the current animation
+//    return mCurrentState->getAnimationName();
+//}
+//
+//bool Animator::isActive()
+//{
+//    // Return whether the current animation is enabled
+//    return mCurrentState->getEnabled();
+//}
+//
+//bool Animator::isLoop()
+//{
+//    // Return whether the current animation is set to loop
+//    return mCurrentState->getLoop();
+//}
+//
+//
+//void Animator::playAnim(std::string anim, bool loop)
+//{
+//    if (mCurrentState != nullptr)
+//        mCurrentState->setEnabled(false);
+//
+//    // cambia el estado actual
+//    mCurrentState = m_animations[anim];
+//    // lo activa
+//    mCurrentState->setEnabled(true);
+//    // bucle
+//    mCurrentState->setLoop(loop);
+//    mCurrentState->setTimePosition(0);
+//    active = true;
+//}
+//
+//void Animator::stopAnim()
+//{
+//
+//    active = false;
+//}
+//
+//void Animator::resumeAnim()
+//{
+//
+//    active = true;
+//}
 
 void Animator::createAnimation(std::string t_name, double t_duration)
 {
@@ -154,9 +147,9 @@ void Animator::setFrameAnimation(std::string t_nameAnimation, double t_duration,
     Ogre::NodeAnimationTrack* track = animation->getNodeTrack(0);
 
     Ogre::TransformKeyFrame* kf = track->createNodeKeyFrame(Ogre::Real(t_duration));
-   /* kf->setTranslate(t_translate);
-    kf->setRotation(t_rotacion);
-    kf->setScale(t_scale);*/
+    kf->setTranslate(Ogre::Vector3(t_translate.GetX(), t_translate.GetY(), t_translate.GetZ()));
+    kf->setRotation(Ogre::Quaternion(t_rotacion.GetR(), t_rotacion.GetG(), t_rotacion.GetB(), t_rotacion.GetA()));
+    kf->setScale(Ogre::Vector3(t_scale.GetX(), t_scale.GetY(), t_scale.GetZ()));
 }
 
 void Animator::allAnimations(bool t_active)

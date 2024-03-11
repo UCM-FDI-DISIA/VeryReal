@@ -17,10 +17,10 @@ void VeryReal::Scene::RemoveEntity(entity_name e_name) {
 	}
 }
 
-void  VeryReal::Scene::Update() {
+void  VeryReal::Scene::Update(const double& dt) {
 	for (auto e : entities_map) {
 		if (e.second->GetActive()) {
-			e.second->Update();
+			e.second->Update( dt);
 		}
 		else {
 			entities_list_removed.push_back(e.first);

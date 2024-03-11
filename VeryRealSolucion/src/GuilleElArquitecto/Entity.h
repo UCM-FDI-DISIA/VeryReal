@@ -64,7 +64,7 @@ namespace VeryReal {
 
 			Elimina de manera segura los componentes
 		*/
-		void Update();
+		void Update(const double& dt);
 		void Refresh();
 
 		//Indica el nombre de la Entidad

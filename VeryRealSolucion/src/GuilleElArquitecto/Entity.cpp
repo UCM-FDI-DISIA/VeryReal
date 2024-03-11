@@ -9,10 +9,10 @@ void VeryReal::Entity::RemoveComponent(component_name c_name) {
 		components_map.erase(c_name);
 	}
 }
-void VeryReal::Entity::Update() {
+void VeryReal::Entity::Update(const double& dt) {
 	for (auto c : components_map) {
 		if (c.second->GetActive()) {
-			c.second->Update();
+			c.second->Update(dt);
 		}
 		else {
 			components_list_removed.push_back(c.first);

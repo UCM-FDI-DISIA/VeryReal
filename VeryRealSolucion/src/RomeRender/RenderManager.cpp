@@ -143,6 +143,7 @@ Ogre::SceneManager* VeryReal::RenderManager::SceneManagerOgree() {
 }
 void VeryReal::RenderManager::Update(const double& dt) {
     root_->renderOneFrame();
+   
  }
 
 Ogre::SceneNode* VeryReal::RenderManager::CreateNode() {

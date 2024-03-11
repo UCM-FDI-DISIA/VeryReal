@@ -53,19 +53,30 @@ int main()
 
 
    Component* animator = e->AddComponent("Animator");
+  
    animator->SetEntity(e);
   
    //MOMENTANEO
    static_cast<MeshRender*>(t)->InitComponent(false, "Sinbad.mesh", "hola", "Ogre/Skin", VeryReal::RenderManager::Instance()->CreateNode(),
        VeryReal::RenderManager::Instance()->SceneManagerOgree(), VeryReal::RenderManager::Instance()->filesystemlayer_);
    cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("transform") << "\n";
-   static_cast<Animator*>(animator)->InitComponent(VeryReal::RenderManager::Instance()->SceneManagerOgree(), "hola", static_cast<TransformComponent*>(c), static_cast<MeshRender*>(t));
 
+   //init, create, play
+   static_cast<Animator*>(animator)->InitComponent(VeryReal::RenderManager::Instance()->SceneManagerOgree(), "hola", static_cast<TransformComponent*>(c), static_cast<MeshRender*>(t));
+   //static_cast<Animator*>(animator)->createAnimation("Sinbad.skeleton", 0.10);
+   static_cast<Animator*>(animator)->setAnimation("Dance", true, true);
+   unsigned long long  m_initTime = GetTickCount64();
+   auto time = m_initTime;
+   //tiempo actual- el tiempo de inicio - el tiempo desde anterior;
+   auto dt =( GetTickCount64() - m_initTime)-time;
     while (true) {
+         dt = (GetTickCount64() - m_initTime) - time;
+         time = (GetTickCount64() - m_initTime);
+        e->Update(dt);
+        luz->Update(dt);
+        camara->Update(dt);
         VeryReal::RenderManager::Instance()->Update(0.2);
-        e->Update();
-        cam->Update();
-        ligh->Update();
+
     }
     return 1;
 }

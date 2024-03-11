@@ -4,7 +4,7 @@
 //VeryReal::SceneManager::~SceneManager() {}
 
 void VeryReal::SceneManager::Update(const double& dt) {
-	for (auto it : scenes_list) if (it->GetActive())it->Update();
+	for (auto it : scenes_list) if (it->GetActive())it->Update(dt);
 	Refresh();
 	
 }
