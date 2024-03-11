@@ -14,6 +14,8 @@
     <ClCompile Include="..\..\src\PedroBullet\BasicPhysicsWorld.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\Collider.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\CollisionMatrix.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\CreatorColliderComponent.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\PedroBullet.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\PhysicsManager.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\RigidBodyComponent.cpp" />
@@ -27,6 +29,8 @@
     <ClInclude Include="..\..\src\PedroBullet\BasicPhysicsWorld.h" />
     <ClInclude Include="..\..\src\PedroBullet\Collider.h" />
     <ClInclude Include="..\..\src\PedroBullet\CollisionMatrix.h" />
+    <ClInclude Include="..\..\src\PedroBullet\CreatorColliderComponent.h" />
+    <ClInclude Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.h" />
     <ClInclude Include="..\..\src\PedroBullet\PedroBullet.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsManager.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsValues.h" />

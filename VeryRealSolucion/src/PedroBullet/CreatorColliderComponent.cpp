@@ -3,4 +3,5 @@
 using namespace VeryReal;
 Component* CreatorColliderComponent::CreatorSpecificComponent() {
 	Component* c = new Collider();
+	return c;
 }

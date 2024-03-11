@@ -25,8 +25,8 @@ namespace VeryReal {
         virtual ~RigidBodyComponent();
 
         // Funciones para manipular el cuerpo rígido
-        void SetVelocity(const Vector3& velocity);
-        void SetAngularVelocity(const Vector3& velocity);
+        void SetVelocityLinear(const Vector3& velocity);
+        void SetVelocityAngular(const Vector3& velocity);
         Vector3 GetVelocity() const;
         void AddImpulse(const Vector3& impulse);
         void AddTorque(const Vector3& torque);

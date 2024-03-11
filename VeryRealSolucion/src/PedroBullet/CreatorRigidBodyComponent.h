@@ -1,11 +1,11 @@
 #pragma once
 #include "CreatorComponent.h"
 namespace VeryReal {
-	class CreatorColliderComponent :public CreatorComponent
+	class CreatorRigidBodyComponent: public CreatorComponent
 	{
 	public:
-		CreatorColliderComponent(){}
-		virtual ~CreatorColliderComponent(){}
+		CreatorRigidBodyComponent(){}
+		virtual ~CreatorRigidBodyComponent(){}
 		Component* CreatorSpecificComponent() override;
 	};
 }
