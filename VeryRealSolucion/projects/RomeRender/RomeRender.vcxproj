@@ -93,6 +93,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -114,6 +116,8 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
