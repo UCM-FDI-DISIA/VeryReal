@@ -31,10 +31,21 @@ namespace VeryReal {
         void AddImpulse(const Vector3& impulse);
         void AddTorque(const Vector3& torque);
 
+        // Getters y Setters de las variables internas de rigidbody 
         void SetActiveRB(bool b);
-        void SetActiveTrigger(bool b);
         bool GetActiveRB();
+
+        void SetActiveTrigger(bool b);
         bool GetActiveTrigger();
+
+        void SetMass(float n);
+        float GetMass();
+
+        void SetFriction(float n);
+        float GetFriction();
+
+        void SetRestitution(float n);
+        float GetRestitution();
 
         // Obtiene el btRigidBody 
         btRigidBody* GetBulletRigidBody() const;
@@ -65,6 +76,5 @@ namespace VeryReal {
 /*FALTA:
 *   - Mascara
 *   - Capa
-*   - Setters/ Getters(algunos hechos)
 *   - Convertir en trigger(medio hecho pero falta)
 */

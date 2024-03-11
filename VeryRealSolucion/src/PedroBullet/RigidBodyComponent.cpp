@@ -105,6 +105,36 @@ bool RigidBodyComponent::GetActiveTrigger() {
 
 }
 
+void VeryReal::RigidBodyComponent::SetMass(float n)
+{
+    mass = n;
+}
+
+float VeryReal::RigidBodyComponent::GetMass()
+{
+    return mass;
+}
+
+void VeryReal::RigidBodyComponent::SetFriction(float n)
+{
+    friction = n;
+}
+
+float VeryReal::RigidBodyComponent::GetFriction()
+{
+    return friction;
+}
+
+void VeryReal::RigidBodyComponent::SetRestitution(float n)
+{
+    restitution = n;
+}
+
+float VeryReal::RigidBodyComponent::GetRestitution()
+{
+    return restitution;
+}
+
 btRigidBody* RigidBodyComponent::GetBulletRigidBody() const {
     return rigidBody.get();
 }

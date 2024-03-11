@@ -185,35 +185,35 @@ btVector3 PedroBullet::V3ToBtV3(VeryReal::Vector3 conversion) const
 }
 
 
-int main() {
-    // Inicializar el mundo de física
-    PedroBullet::Instance()->Init();
-
-    // Crear objetos y añadirlos al mundo de física
-
-    // Bucle principal de la aplicación
-    while (true) {
-        // Actualizar el mundo de física
-        PedroBullet::Instance()->Update(1.0f / 60.0f); // Ejemplo con 60Hz de frecuencia de actualización
-    }
-
-
-    //    //Crear una esfera   
-    btCollisionShape* fallShape = new btSphereShape(1);  //asign a collition shape
-    btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, 50, 0)));  //asign the motion state
-    btScalar mass = 1;
-    btVector3 fallInertia(0, 0, 0);
-    fallShape->calculateLocalInertia(mass, fallInertia);
-    btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
-    btRigidBody* fallRigidBody = new btRigidBody(fallRigidBodyCI);
-    //dynamicWorld->addRigidBody(fallRigidBody);
-
-
-    // Limpiar al finalizar
-    PedroBullet::Instance()->Cleanup();
-
-    return 0;
-}
+//int main() {
+//    // Inicializar el mundo de física
+//    PedroBullet::Instance()->Init();
+//
+//    // Crear objetos y añadirlos al mundo de física
+//
+//    // Bucle principal de la aplicación
+//    while (true) {
+//        // Actualizar el mundo de física
+//        PedroBullet::Instance()->Update(1.0f / 60.0f); // Ejemplo con 60Hz de frecuencia de actualización
+//    }
+//
+//
+//    //    //Crear una esfera   
+//    btCollisionShape* fallShape = new btSphereShape(1);  //asign a collition shape
+//    btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, 50, 0)));  //asign the motion state
+//    btScalar mass = 1;
+//    btVector3 fallInertia(0, 0, 0);
+//    fallShape->calculateLocalInertia(mass, fallInertia);
+//    btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
+//    btRigidBody* fallRigidBody = new btRigidBody(fallRigidBodyCI);
+//    //dynamicWorld->addRigidBody(fallRigidBody);
+//
+//
+//    // Limpiar al finalizar
+//    PedroBullet::Instance()->Cleanup();
+//
+//    return 0;
+//}
 //
 //int main() {
 //    // Inicializar el mundo de física

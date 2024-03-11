@@ -34,8 +34,6 @@ private:
     btCollisionDispatcher* collisionDispatcher;
     btBroadphaseInterface* broadphase;
     btSequentialImpulseConstraintSolver* solver;
-
-    //vector<VeryReal::RigidBodyComponent*> rigidbodies;
     vector<RigidBodyComponent*> rigidbodies;
 
 
@@ -44,17 +42,17 @@ protected:
 
 
 public:
+
     virtual void Init();
     virtual void Update(float deltaTime);
     virtual ~PedroBullet();
     void createGround(); //Inicializar el mundo de físicas
 
     void AddRigidBody(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType);    
-    //void RemoveRigidBody(VeryReal::RigidBodyComponent* body);
 
     void addForce(btRigidBody* body, btVector3 force);
     void Cleanup();
-    //vector conversion for bullet
+    //conversión al vector de bullet
     btVector3 V3ToBtV3(VeryReal::Vector3 conversion) const;
 
 
