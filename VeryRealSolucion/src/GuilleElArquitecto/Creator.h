@@ -16,11 +16,12 @@ namespace VeryReal {
 		
 	private:
 		unordered_map<creator_name, CreatorComponent*> creators_map;
+		
 	public:
 		//Creator();
 		//virtual ~Creator();
-		template<typename ...Ts>
-		inline Component* CallSpecificCreator(creator_name c_name, Ts && ... args) {
+	
+		inline Component* CallSpecificCreator(creator_name c_name) {
 			return creators_map[c_name]->CreatorSpecificComponent();
 		}
 
@@ -32,15 +33,28 @@ namespace VeryReal {
 		inline bool HasCreator(creator_name c_name) {
 			return creators_map.count(c_name);
 		}
-		//Devuelve el componente especifico y si no esta devuelve nullptr
-		template<typename T>
-		inline T* GetCreator(creator_name c_name) {
+		//Devuelve el creator especifico y si no esta devuelve nullptr
+	
+		inline CreatorComponent* GetCreator(creator_name c_name) {
 			if (!HasCreator(c_name)) {
 				return nullptr;
 			}
-			return static_cast<T*>(creators_map.at(c_name));
+			return creators_map.at(c_name);
 
 		}
+
+
+		//ESTO NO VA AQUÍ, ES UN ESQUEMA PARA ENTENDER DESPUÉS COMO LLERA LUA Y A QUÉ TENDREMOS QUE LLAMAR!!!!
+		//IMPORTANTE
+		void LUARead() {
+			string namecomponent, position, rotation, scale;
+			Vector3 p, r, s;
+			if (HasCreator(namecomponent)) {
+				GetCreator(namecomponent)->AddParameter(position, p);
+			}
+		}
+
+
 
 	};
 }

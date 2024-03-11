@@ -23,6 +23,7 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\SceneManager.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Singleton.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\TransformComponent.cpp" />
+    <ClCompile Include="..\..\src\GuilleElArquitecto\VariantClass.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector2.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector3.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Vector4.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\SceneManager.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Singleton.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\TransformComponent.h" />
+    <ClInclude Include="..\..\src\GuilleElArquitecto\VariantClass.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector2.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector3.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Vector4.h" />
@@ -92,6 +94,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -108,6 +112,8 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
