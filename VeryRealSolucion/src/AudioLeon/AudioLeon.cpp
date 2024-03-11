@@ -244,7 +244,7 @@ void AudioLeon::audioSourceListener_Test()
 	float minDistance = 0.1f;
 	float maxDistance = 9999;
 
-	soundPath = "../../bin/Assets/" + soundPath;
+	soundPath = "Assets/" + soundPath;
 	AL().NameToLower(soundName);
 	FMOD::Sound* newSoundHandle;
 
@@ -286,7 +286,7 @@ void AudioLeon::audioSourceListener_Test()
 
 			reproChannel = AL().GetChannelsVector()[i];
 
-			AL().GetChannelsVector()[i]->setVolume(5.0f);
+			AL().GetChannelsVector()[i]->setVolume(0.01f);
 
 			AL().GetLastPlayedMap()[newSoundHandle] = i;
 
