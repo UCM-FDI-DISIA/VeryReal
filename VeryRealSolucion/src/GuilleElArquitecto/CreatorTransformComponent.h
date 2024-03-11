@@ -9,9 +9,20 @@ namespace VeryReal {
 	public:
 		CreatorTransformComponent();
 		virtual ~CreatorTransformComponent();
-		Component* CreatorSpecificComponent() override;	
+		Component* CreatorSpecificComponent() override;
 	};
 
 }
+
+
+
+
+//scene{
+//entity{
+//tranform{
+//position {0,50,0
+//rotation {0,0,0}
+//scale{0,0,0}
+//}
 #endif
 
