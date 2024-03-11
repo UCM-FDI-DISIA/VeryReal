@@ -1,9 +1,15 @@
-#ifndef __SGTechniqueResolverListener_H__
-#define __SGTechniqueResolverListener_H__
 
 #include "OgreMaterialManager.h"
 #include <OgreRTShaderSystem.h>
 
+ namespace Ogre {
+     class Technique;
+     class Material;
+     class Renderable;
+     namespace RTShader {
+         class ShaderGenerator;
+     }
+}
 /** Implementación por defecto de un Listener para usar con el sistema Ogre::RTShader.
     Cuando se invoca una devolución de llamada del esquema de destino con el esquema del generador de sombreado, intenta crear un sombreador equivalente
     técnica basada en la técnica predeterminada del material dado
@@ -32,4 +38,3 @@ namespace VeryReal {
         Ogre::RTShader::ShaderGenerator* mShaderGenerator;
     };
 } 
-#endif

@@ -123,7 +123,7 @@ void VeryReal::RenderManager::UnloadShaders() {
    
     if (materialListener_ != nullptr)
     {
-        Ogre::MaterialManager::getSingleton().removeListener(materialListener_);
+      //  Ogre::MaterialManager::getSingleton().removeListener(materialListener_);
         delete materialListener_;
         materialListener_ = nullptr;
     }

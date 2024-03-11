@@ -16,7 +16,7 @@ namespace Ogre
 
 namespace  VeryReal {
     class TransformComponent;
-
+    class Conversor;
 
     class Light:public Component {
     public:

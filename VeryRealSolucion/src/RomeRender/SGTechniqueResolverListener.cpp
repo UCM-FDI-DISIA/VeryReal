@@ -1,6 +1,7 @@
 #include "SGTechniqueResolverListener.h"
 #include "OgreTechnique.h"
 #include <OgreShaderGenerator.h>
+
 namespace VeryReal
 {
     SGTechniqueResolverListener::SGTechniqueResolverListener(Ogre::RTShader::ShaderGenerator* pShaderGenerator)
