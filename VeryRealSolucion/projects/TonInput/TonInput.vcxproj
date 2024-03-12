@@ -24,10 +24,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\TonInput\InputManager.h" />
     <ClInclude Include="..\..\src\TonInput\TonInput.h" />
     <ClInclude Include="..\..\src\TonInput\TonMapeo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\TonInput\InputManager.cpp" />
     <ClCompile Include="..\..\src\TonInput\TonInput.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

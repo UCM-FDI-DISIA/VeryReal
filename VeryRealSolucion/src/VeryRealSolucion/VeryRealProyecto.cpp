@@ -1,5 +1,5 @@
 #include "VeryRealProyecto.h"
-#include <TonInput.h>
+#include <InputManager.h>
 #include <RenderManager.h>
 #include <Window.h>
 #include <Creator.h>
@@ -22,7 +22,7 @@ bool VeryRealProyecto::Init() {
 	//	854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 	////SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
 	//VeryReal::RenderManager().Instance()->InitManager("app"); //InitManager
-	TI().Init();
+	VeryReal::InputManager::Init();
 	VR().CreateCreators();
 
 
@@ -35,7 +35,7 @@ void VeryRealProyecto::Loop() {
 	startTime = SDL_GetTicks();
 	while (true) {
 		frameTime = SDL_GetTicks() - startTime;
-		TI().Refresh(); // Ih se actualiza (actua como el handleEvents())
+		VeryReal::InputManager::Instance()->Refresh(); // Ih se actualiza (actua como el handleEvents())
 		if (frameTime >= FRAME_RATE) {
 			// Fisicas
 			// Update (Componentes)
