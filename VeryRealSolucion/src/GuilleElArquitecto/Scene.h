@@ -4,19 +4,19 @@
 #include <unordered_map>
 #include <string>
 
-using namespace std;
-using scene_name = string;
-using entity_name = string;
+
+using scene_name = std::string;
+using entity_name = std::string;
 namespace VeryReal {
 	class Entity;
 	class Scene
 	{
 	private:
 		//Mapa de: Clave: nombre de Entidad, Valor: puntero a esa entidad
-		unordered_map<entity_name, Entity*> entities_map;
+		std::unordered_map<entity_name, Entity*> entities_map;
 
 		//Lista de entidades a remover
-		list<entity_name> entities_list_removed;
+		std::list<entity_name> entities_list_removed;
 
 		bool is_active = true;
 		bool to_eliminate = false;

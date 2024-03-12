@@ -2,7 +2,7 @@
 #include "Scene.h"
 //VeryReal::SceneManager::SceneManager() {}
 //VeryReal::SceneManager::~SceneManager() {}
-
+using namespace std;
 void VeryReal::SceneManager::Update(const double& dt) {
 	for (auto it : scenes_list) if (it->GetActive())it->Update(dt);
 	Refresh();

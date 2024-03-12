@@ -8,7 +8,7 @@
 #include <array>
 #include "Vector3.h"
 
-using namespace std;
+
 
 class btDiscreteDynamicsWorld;
 class btCollisionConfiguration;

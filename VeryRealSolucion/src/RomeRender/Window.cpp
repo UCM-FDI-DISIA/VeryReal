@@ -64,7 +64,7 @@ void  Window::demo(){
     //ESTO NO VA AQUI ES SOLO PARA LA DEMO
     
     //asignamos la 
-    string ruta = ruta_configuracion + "\\..\\Assets";
+    std::string ruta = ruta_configuracion + "\\..\\Assets";
     Ogre::ResourceGroupManager::getSingleton().addResourceLocation(ruta, "FileSystem");
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
     //luz principal

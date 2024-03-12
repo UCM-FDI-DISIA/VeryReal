@@ -6,16 +6,16 @@
 #include <unordered_map>
 #include <string>
 
-using namespace std;
+
 namespace VeryReal {
-	using creator_name = string;
+	using creator_name = std::string;
 
 	class Creator :public VeryReal::Singleton<Creator>
 	{
 		friend Singleton<Creator>;
 		
 	private:
-		unordered_map<creator_name, CreatorComponent*> creators_map;
+		std::unordered_map<creator_name, CreatorComponent*> creators_map;
 		
 	public:
 		//Creator();
@@ -47,7 +47,7 @@ namespace VeryReal {
 		//ESTO NO VA AQUÍ, ES UN ESQUEMA PARA ENTENDER DESPUÉS COMO LLERA LUA Y A QUÉ TENDREMOS QUE LLAMAR!!!!
 		//IMPORTANTE
 		void LUARead() {
-			string namecomponent, position, rotation, scale;
+			std::string namecomponent, position, rotation, scale;
 			Vector3 p, r, s;
 			if (HasCreator(namecomponent)) {
 				GetCreator(namecomponent)->AddParameter(position, p);

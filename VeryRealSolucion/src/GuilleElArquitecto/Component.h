@@ -1,7 +1,7 @@
 #pragma once
 #ifndef COMPONENT
 #define COMPONENT
-using namespace std;
+
 
 namespace VeryReal {
 	class Entity;

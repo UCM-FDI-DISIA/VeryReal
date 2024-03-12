@@ -18,7 +18,7 @@
 using namespace VeryReal;
 using namespace Ogre;
 
-void MeshRender::InitComponent(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_) {
+void MeshRender::InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_) {
    
     m_material_name = matirialname;
     mStaticObject = isstatic;
@@ -46,7 +46,7 @@ void MeshRender::InitComponent(bool isstatic, string modelname, string entitynam
 
 }
 //modelname = .mesh materialname = .material
-MeshRender::MeshRender(bool isstatic, string modelname, string entityname, string matirialname, SceneNode* node, SceneManager* scenemana ,FileSystemLayer* filesystemlayer_) {
+MeshRender::MeshRender(bool isstatic, std::string modelname, std::string entityname, std::string matirialname, SceneNode* node, SceneManager* scenemana ,FileSystemLayer* filesystemlayer_) {
  
    
     m_material_name = matirialname;

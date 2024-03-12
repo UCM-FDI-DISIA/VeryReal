@@ -4,16 +4,16 @@
 #include "Creator.h"
 
 namespace VeryReal {
-	using component_name = string;
+	using component_name = std::string;
 	class Component;
 	class Entity
 	{
 	private:
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
-		unordered_map<component_name, Component*> components_map;
+		std::unordered_map<component_name, Component*> components_map;
 
 		//lista de componentes a remover, porque no están activos
-		list<component_name> components_list_removed;
+		std::list<component_name> components_list_removed;
 
 		bool is_alive;
 	public:
@@ -23,7 +23,7 @@ namespace VeryReal {
 		//Añade componente a la Entidad
 		template< typename ...Ts>
 		inline Component* AddComponent(component_name c_name, Ts && ... args) {
-			Component* component= Creator::Instance()->CallSpecificCreator(c_name, forward<Ts>(args)...);
+			Component* component= Creator::Instance()->CallSpecificCreator(c_name, std::forward<Ts>(args)...);
 			/*	T* component = new T(forward<Ts>(args)...);*/
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);

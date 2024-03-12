@@ -7,7 +7,7 @@
 
 struct lua_State;
 
-using namespace std;
+
 class ScriptManager : public VeryReal::Manager<ScriptManager> {
 	friend Singleton<ScriptManager>;
 

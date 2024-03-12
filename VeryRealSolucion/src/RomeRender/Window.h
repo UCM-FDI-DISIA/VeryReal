@@ -12,8 +12,6 @@ namespace Ogre {
 
 }
 namespace VeryReal {
-	using namespace Ogre;
-	using namespace std;
 	//clase para crear una ventana en nuestro motor
 	class Window
 	{
@@ -57,13 +55,13 @@ namespace VeryReal {
 			Ogre::SceneManager* scene_manager;        
 			Ogre::RenderSystem* render_system;    
 			Ogre::RenderWindow* ogre_window;  
-			string ruta_configuracion;
-			string name;
+			std::string ruta_configuracion;
+			std::string name;
 			// Ventana
 			int window_width;
 			int window_height;
 			SDL_Window* sdl_window;
-			FileSystemLayer* file_system_layer;
+			Ogre::FileSystemLayer* file_system_layer;
 			Ogre::Root* root;
 	};
 }

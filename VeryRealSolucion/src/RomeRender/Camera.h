@@ -1,7 +1,7 @@
 #pragma once
 #include "Component.h"
 #include <string>
-using namespace std;
+
 namespace Ogre
 {
     class Camera;
@@ -20,8 +20,8 @@ namespace  VeryReal {
     public:
        
         Camara() {};
-        Camara(string name, Ogre::ColourValue color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset);
-        void InitComponent(string name, Vector3 color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset);
+        Camara(std::string name, Ogre::ColourValue color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset);
+        void InitComponent(std::string name, VeryReal::Vector3 color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset);
         virtual ~Camara();
         void lookAt(Vector3 pos);
         void translate(float x, float y, float z);

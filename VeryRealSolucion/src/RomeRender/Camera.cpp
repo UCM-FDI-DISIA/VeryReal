@@ -30,7 +30,7 @@ using namespace Ogre;
     {
        
     }
-    void Camara::InitComponent(string name, Vector3 color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset) {
+    void Camara::InitComponent(std::string name, Vector3 color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset) {
        
 
             //camara

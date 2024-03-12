@@ -6,7 +6,7 @@
 #include <Windows.h>
 #include <string>
 
-using namespace std;
+
 
 //Tipos de errores posibles
 enum errorType { 
@@ -53,7 +53,7 @@ class ErrorInformant : public VeryReal::Singleton<ErrorInformant> {
 		/// @param ErrorMessage -> Descripcion del error ocurrido
 		/// @param ErrorType -> Tipo del error (EI_WARNING, EI_ERROR o EI_UNKNOWN)
 		/// @return options -> Opción seleccionada por el usuario en la ventana de error
-		options showErrorMessageBox(string ErrorName = "Unknown error", string ErrorMessage = "Description not avaliable", errorType ErrorType = EI_UNKNOWN, windowType = EI_W_OK);
+		options showErrorMessageBox(std::string ErrorName = "Unknown error", std::string ErrorMessage = "Description not avaliable", errorType ErrorType = EI_UNKNOWN, windowType = EI_W_OK);
 
 private:
 	ErrorInformant() {};

@@ -4,15 +4,15 @@
 #include "Manager.h"
 #include <list>
 #include <string>
-using namespace std;
-using scene_name = string;
+
+using scene_name = std::string;
 namespace VeryReal {
 	class Scene;
 	class SceneManager :public VeryReal::Manager<SceneManager>
 	{
 	private:
 		//lista con todas la escenas
-		list<VeryReal::Scene*> scenes_list;
+		std::list<VeryReal::Scene*> scenes_list;
 	public:
 		/*SceneManager();
 		virtual ~SceneManager();*/

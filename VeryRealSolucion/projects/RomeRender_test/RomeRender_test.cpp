@@ -59,7 +59,7 @@ int main()
    //MOMENTANEO
    static_cast<MeshRender*>(t)->InitComponent(false, "Sinbad.mesh", "hola", "Ogre/Skin", VeryReal::RenderManager::Instance()->CreateNode(),
        VeryReal::RenderManager::Instance()->SceneManagerOgree(), VeryReal::RenderManager::Instance()->filesystemlayer_);
-   cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("transform") << "\n";
+   std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("transform") << "\n";
 
    //init, create, play
    static_cast<Animator*>(animator)->InitComponent(VeryReal::RenderManager::Instance()->SceneManagerOgree(), "hola", static_cast<TransformComponent*>(c), static_cast<MeshRender*>(t));

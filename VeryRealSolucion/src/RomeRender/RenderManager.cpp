@@ -33,12 +33,12 @@ VeryReal::RenderManager::~RenderManager() {
 }
 void VeryReal::RenderManager::InitManager(std::string const& name) {
     appname_ = name;
-	filesystemlayer_ = new FileSystemLayer(appname_);
+	filesystemlayer_ = new Ogre::FileSystemLayer(appname_);
     Ogre::String pluginsPath;
     pluginsPath = filesystemlayer_->getConfigFilePath("plugins.cfg");
     if (!Ogre::FileSystemLayer::fileExists(pluginsPath))
     {
-        cerr << "ERROR, no se ha encontrado el archivo  plugins.cfg en la ruta: " << pluginsPath;
+        std::cerr << "ERROR, no se ha encontrado el archivo  plugins.cfg en la ruta: " << pluginsPath;
     }
     //lo pongo asi y no la rita porque en teoria va a estar al lado del .exe
     Ogre::String ogrepath = filesystemlayer_->getConfigFilePath("ogre.cfg");
@@ -71,9 +71,9 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
 
     //root_->startRendering();
 
-    string sec_name;
-    string type_name;
-    string arch_name;
+    std::string sec_name;
+    std::string type_name;
+    std::string arch_name;
     Ogre::String ogrepath2 = filesystemlayer_->getConfigFilePath("resources.cfg");
     Ogre::ConfigFile cf;
     cf.load(ogrepath2);

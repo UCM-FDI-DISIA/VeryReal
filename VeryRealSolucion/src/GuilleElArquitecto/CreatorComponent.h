@@ -6,9 +6,9 @@
 namespace VeryReal {
 	class Component;
 	class CreatorComponent{
-		using parameters_name = string;
+		using parameters_name = std::string;
 	protected:
-		unordered_map<parameters_name, VariantClass*> parameters_map;
+		std::unordered_map<parameters_name, VariantClass*> parameters_map;
 		
 	public:
 		CreatorComponent();
@@ -29,7 +29,7 @@ namespace VeryReal {
 				parameters_map.erase(p_name);
 			}
 		}
-		inline bool HasParameter(string s) {
+		inline bool HasParameter(std::string s) {
 			return parameters_map.count(s);
 		}
 		inline VariantClass* GetParameter(parameters_name p_name) {

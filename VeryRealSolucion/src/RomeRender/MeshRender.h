@@ -1,7 +1,7 @@
 #pragma once
 #include "Component.h"
 #include <string>
-using namespace std;
+
 namespace Ogre
 {
 	class AxisAlignedBox;
@@ -25,8 +25,8 @@ namespace  VeryReal {
     public:
 		//constructora temporal sin parametros por los creators
 		MeshRender() {}
-		MeshRender(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_);
-		void InitComponent(bool isstatic, string modelname, string entityname, string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_);
+		MeshRender(bool isstatic, std::string modelname, std::string entityname, std::string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_);
+		void InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_);
 		virtual ~MeshRender();
 		bool createMesh();
 		void start();
