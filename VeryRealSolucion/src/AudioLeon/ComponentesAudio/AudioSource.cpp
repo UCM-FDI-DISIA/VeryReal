@@ -4,10 +4,43 @@
 #include <Entity.h>
 #include <ErrorInformant.h>
 #include <SceneManager.h>
+#include "VariantClass.h"
 using namespace VeryReal;
-Component* CreatorSpecificComponent() {
+using namespace std;
+Component* CreatorAudioSource::CreatorSpecificComponent() {
     Audio_Source* a = new Audio_Source;
-    //INIT?
+    string name, path, groupchannel;
+    bool onstart=false, threed=false, loop=false;
+    float volume=0.1, mindistance=1.0f, maxdistance =60.0f;
+    
+    if (std::holds_alternative<string>(parameters_map.at("name")->GetVariant())) {
+        name = std::get<string>(parameters_map.at("name")->GetVariant());
+    }
+    if (std::holds_alternative<string>(parameters_map.at("path")->GetVariant())) {
+        path = std::get<string>(parameters_map.at("path")->GetVariant());
+    }
+    if (std::holds_alternative<string>(parameters_map.at("groupchannel")->GetVariant())) {
+        groupchannel = std::get<string>(parameters_map.at("groupchannel")->GetVariant());
+    }
+    if (std::holds_alternative<bool>(parameters_map.at("onstart")->GetVariant())) {
+        onstart = std::get<bool>(parameters_map.at("onstart")->GetVariant());
+    }
+    if (std::holds_alternative<bool>(parameters_map.at("loop")->GetVariant())) {
+        loop = std::get<bool>(parameters_map.at("loop")->GetVariant());
+    }
+    if (std::holds_alternative<bool>(parameters_map.at("threed")->GetVariant())) {
+        threed = std::get<bool>(parameters_map.at("threed")->GetVariant());
+    }
+    if (std::holds_alternative<float>(parameters_map.at("volume")->GetVariant())) {
+        volume = std::get<float>(parameters_map.at("volume")->GetVariant());
+    }
+    if (std::holds_alternative<float>(parameters_map.at("mindistance")->GetVariant())) {
+        mindistance = std::get<float>(parameters_map.at("mindistance")->GetVariant());
+    }
+    if (std::holds_alternative<float>(parameters_map.at("maxdistance")->GetVariant())) {
+        maxdistance = std::get<float>(parameters_map.at("maxdistance")->GetVariant());
+    }
+    a->InitComponent(name, path, onstart, groupchannel, volume, threed, loop, mindistance, maxdistance);
     return a;
 }
 
@@ -18,7 +51,20 @@ Audio_Source::~Audio_Source()
 {
     AL().DeleteSound(sound_name);
 }
+bool Audio_Source::InitComponent(std::string name, std::string path, bool onstart = false, std::string groupchannel = "master", float volume = 0.1,
+    bool threed = false, bool loop = false, float mindistance = 1.0f, float maxdistance = 60.0f) {
 
+    SetSourceName(name);
+    SetSourcePath(path);
+    SetPlayOnStart(onstart);
+    SetGroupChannelName(groupchannel);
+    SetVolume(volume);
+    SetIsThreeD(threed);
+    SetLoop(loop);
+    SetMinMaxDistance(mindistance, maxdistance);
+
+
+}
 bool Audio_Source::Create3DSound(std::string soundPath, std::string soundName, float minDistance, float maxDistance, bool loop)
 {
     soundPath = "Assets/Sounds/" + soundPath;

@@ -37,6 +37,9 @@ namespace VeryReal {
 		Audio_Source();
 		//Destructora que se encarga de eliminar la memoria dinámica del sonido concreto.
 		~Audio_Source();
+		bool InitComponent(std::string name, std::string path, bool onstart=false, std::string groupchannel="master", float volume=0.1,
+			bool threed=false, bool loop=false, float mindistance=1.0f, float maxdistance=60.0f);
+
 
 		/// <summary>
 		/// Crea un sonido 3D.
