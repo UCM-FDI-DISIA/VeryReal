@@ -25,8 +25,9 @@ namespace  VeryReal {
     public:
 		//constructora temporal sin parametros por los creators
 		MeshRender() {}
-		MeshRender(bool isstatic, std::string modelname, std::string entityname, std::string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_);
-		void InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_);
+		MeshRender(bool isstatic, std::string modelname, std::string entityname, std::string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* 
+		);
+		void InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystem_layer);
 		virtual ~MeshRender();
 		bool createMesh();
 		void start();

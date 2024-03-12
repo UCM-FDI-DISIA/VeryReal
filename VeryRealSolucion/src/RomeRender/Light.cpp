@@ -7,23 +7,23 @@
 #include "RenderManager.h"
 #include <TransformComponent.h>
 #include "conversorvectores.h"
-VeryReal::Light::Light():light_(nullptr),shadowdist_(10),ineerangle_(45),outerangle_(90),shadowfardist_(10),diffusecolour_(Vector3(0,0,0)),nearclipdist_(0.5),shdws_(true) {
+VeryReal::Light::Light():light(nullptr),shadowdist(10),ineerangle_(45),outerangle(90),shadowfardist(10),diffusecolour(Vector3(0,0,0)),nearclipdist(0.5),shdws(true) {
 
 }
 VeryReal::Light::~Light() {
 
 }
 void VeryReal::Light::Update() {
-	Ogre::Vector3 v(trans_->GetPosition().GetX(), trans_->GetPosition().GetY(), trans_->GetPosition().GetZ());
+	Ogre::Vector3 v(trans->GetPosition().GetX(), trans->GetPosition().GetY(), trans->GetPosition().GetZ());
 	mNode->setPosition(v);
  }
 void VeryReal::Light::InitComponent(int type, VeryReal::Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
-	trans_ = GetEntity()->GetComponent<TransformComponent>("transform");
-	if (trans_ == nullptr)std::cerr << "NO SE PUEDE INICIALIZAR EL COMPONENTE LIGHT DEBIDO A QUE NO TIENE EL COMPONENTE TRANSFORM\n";
-	light_ = VeryReal::RenderManager::Instance()->SceneManagerOgree()->createLight("LuzPrincipal");
+	trans = GetEntity()->GetComponent<TransformComponent>("transform");
+	if (trans == nullptr)std::cerr << "NO SE PUEDE INICIALIZAR EL COMPONENTE LIGHT DEBIDO A QUE NO TIENE EL COMPONENTE TRANSFORM\n";
+	light = VeryReal::RenderManager::Instance()->SceneManagerOgree()->createLight("LuzPrincipal");
 	mNode = VeryReal::RenderManager::Instance()->CreateNode();
 	
-	SetDirection(trans_->GetPosition());
+	SetDirection(trans->GetPosition());
 	setType(type);
 	SetDiffuseColour(diffusecolour);
 	SetshadowFarDistance(shadowdist);
@@ -31,7 +31,7 @@ void VeryReal::Light::InitComponent(int type, VeryReal::Vector3 const& diffuseco
 	SetSpotlightOuterAngle(outerangle);
 	SetSpotlightNearClipDistance(nearclipdist);
 	ActivateShadows(shdws);
-	mNode->attachObject(light_);
+	mNode->attachObject(light);
 }
 
 
@@ -41,20 +41,20 @@ void VeryReal::Light::SetDirection(VeryReal::Vector3 const& v) {
 }
 void VeryReal::Light::setType(int const dir) {
 	
-	this->type_ = dir;
+	this->type = dir;
 	switch (dir)
 	{
 	case 0:
-		light_->setType(Ogre::Light::LT_DIRECTIONAL);
+		light->setType(Ogre::Light::LT_DIRECTIONAL);
 		break;
-	case 1: light_->setType(Ogre::Light::LT_POINT);
+	case 1: light->setType(Ogre::Light::LT_POINT);
 		break;
 
 	case 2:
-		light_->setType(Ogre::Light::LT_RECTLIGHT);
+		light->setType(Ogre::Light::LT_RECTLIGHT);
 		break;
 	case 3:
-		light_->setType(Ogre::Light::LT_SPOTLIGHT);
+		light->setType(Ogre::Light::LT_SPOTLIGHT);
 		break;
 	default:
 		break;
@@ -62,44 +62,44 @@ void VeryReal::Light::setType(int const dir) {
 }
 
 void VeryReal::Light::SetDiffuseColour(VeryReal::Vector3 const& color) {
-	this->diffusecolour_ = color;
-	light_->setDiffuseColour(color.GetX(), color.GetY(), color.GetZ());
+	this->diffusecolour = color;
+	light->setDiffuseColour(color.GetX(), color.GetY(), color.GetZ());
 	
 }
 void VeryReal::Light::SetshadowFarDistance(float distance) {
-	this->shadowfardist_=distance;
-	light_->setShadowFarClipDistance(distance);
+	this->shadowfardist=distance;
+	light->setShadowFarClipDistance(distance);
 }
 
 void VeryReal::Light::SetSpotlightInnerAngle(float dist) {
 	this->ineerangle_ = dist;
-	light_->setSpotlightInnerAngle(Ogre::Radian(dist));
+	light->setSpotlightInnerAngle(Ogre::Radian(dist));
 }
 void VeryReal::Light::SetSpotlightOuterAngle(float dist) {
-	this->outerangle_ = dist;
-	light_->setSpotlightOuterAngle(Ogre::Radian(dist));
+	this->outerangle = dist;
+	light->setSpotlightOuterAngle(Ogre::Radian(dist));
 }
 
 void VeryReal::Light::SetSpotlightNearClipDistance(float dist) {
-	this->nearclipdist_ = dist;
-	light_->setSpotlightNearClipDistance(dist);
+	this->nearclipdist = dist;
+	light->setSpotlightNearClipDistance(dist);
 }
 
 void VeryReal::Light::ActivateShadows(bool shdows) {
-	this->shdws_ = shdows;
-	light_->setCastShadows(shdows);
+	this->shdws = shdows;
+	light->setCastShadows(shdows);
 }
 
 int VeryReal::Light::getType() const {
-	return type_;
+	return type;
 }
 
 VeryReal::Vector3 VeryReal::Light::getDiffuseColour() const {
-	return diffusecolour_;
+	return diffusecolour;
 }
 
 float VeryReal::Light::getShadowFarDistance() const {
-	return shadowfardist_;
+	return shadowfardist;
 }
 
 float VeryReal::Light::getSpotlightInnerAngle() const {
@@ -107,13 +107,13 @@ float VeryReal::Light::getSpotlightInnerAngle() const {
 }
 
 float VeryReal::Light::getSpotlightOuterAngle() const {
-	return outerangle_;
+	return outerangle;
 }
 
 float VeryReal::Light::getSpotlightNearClipDistance() const {
-	return nearclipdist_;
+	return nearclipdist;
 }
 
 bool VeryReal::Light::areShadowsActivated() const {
-	return shdws_;
+	return shdws;
 }

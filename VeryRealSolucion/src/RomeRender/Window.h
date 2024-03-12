@@ -33,7 +33,7 @@ namespace VeryReal {
 			/// Por ahora se cargan aqui los plguings de renderizado de ogre (no irán aqui en un futuro)
 			/// </summary>
 			//<returns> un puntero a la ventana creada con sdl
-			void  CreateWindoww();
+			void CreateWindoww();
 			void Init();//ira fuera
 			// <summary>
 			///Actualiza la ventana en caso de cerrarla,camviarla de tamaño y así
@@ -51,11 +51,11 @@ namespace VeryReal {
 			/// </summary>
 			/// <returns>Puntero a la ventana de ogre.</returns>
 			Ogre::RenderWindow* GetOgreWindow();
-		private:
+			private:
 			Ogre::SceneManager* scene_manager;        
 			Ogre::RenderSystem* render_system;    
 			Ogre::RenderWindow* ogre_window;  
-			std::string ruta_configuracion;
+			std::string config_route;
 			std::string name;
 			// Ventana
 			int window_width;

@@ -11,7 +11,7 @@ using namespace Ogre;
 Window::Window(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager ):  scene_manager(scene_manager),render_system(render_system),ogre_window(nullptr),sdl_window(nullptr), file_system_layer(nullptr), window_width(0), window_height(0){
     name = "VeryReal";
     this->root = root;
-     ruta_configuracion ="";
+     config_route ="";
      name ="";
   
 }
@@ -64,7 +64,7 @@ void  Window::demo(){
     //ESTO NO VA AQUI ES SOLO PARA LA DEMO
     
     //asignamos la 
-    std::string ruta = ruta_configuracion + "\\..\\Assets";
+    std::string ruta = config_route + "\\..\\Assets";
     Ogre::ResourceGroupManager::getSingleton().addResourceLocation(ruta, "FileSystem");
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
     //luz principal
