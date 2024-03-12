@@ -7,7 +7,7 @@
 #include "RenderManager.h"
 #include <TransformComponent.h>
 #include "conversorvectores.h"
-VeryReal::Light::Light() {
+VeryReal::Light::Light():light_(nullptr),shadowdist_(10),ineerangle_(45),outerangle_(90),shadowfardist_(10),diffusecolour_(Vector3(0,0,0)),nearclipdist_(0.5),shdws_(true) {
 
 }
 VeryReal::Light::~Light() {

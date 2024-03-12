@@ -86,18 +86,18 @@ namespace  VeryReal {
         bool  areShadowsActivated() const;
 
     protected:
-        Ogre::Light* light_;
-        Ogre::SceneNode* mNode;
-        Ogre::SceneManager* mngr_;
-        TransformComponent* trans_;
-        int type_;
+        Ogre::Light* light_=nullptr;
+        Ogre::SceneNode* mNode=nullptr;
+        Ogre::SceneManager* mngr_=nullptr;
+        TransformComponent* trans_=nullptr;
+        int type_=0;
         Vector3 diffusecolour_;
-        float shadowfardist_;
-        float shadowdist_;
-        float ineerangle_;
-        float outerangle_;
-        float nearclipdist_;
-        bool shdws_;
+        float shadowfardist_=0.25;
+        float shadowdist_=5;
+        float ineerangle_=45;
+        float outerangle_=25;
+        float nearclipdist_=10;
+        bool shdws_=false;
     };
 
 
