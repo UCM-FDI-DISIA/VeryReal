@@ -10,7 +10,7 @@ namespace FMOD {
 	class Sound;
 }
 
-namespace VeryReal {
+
 	
 	class CreatorAudioListener :public CreatorComponent {
 	public :
@@ -55,6 +55,6 @@ namespace VeryReal {
 		//Índice con el que se identifica cada listener para FMOD.
 		int listener_index;
 	};
-}
+
 
 #endif // !EC_AUDIO_LISTENER

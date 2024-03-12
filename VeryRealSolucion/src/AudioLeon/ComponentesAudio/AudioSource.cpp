@@ -62,8 +62,7 @@ bool Audio_Source::InitComponent(std::string name, std::string path, bool onstar
     SetIsThreeD(threed);
     SetLoop(loop);
     SetMinMaxDistance(mindistance, maxdistance);
-
-
+    return true;
 }
 bool Audio_Source::Create3DSound(std::string soundPath, std::string soundName, float minDistance, float maxDistance, bool loop)
 {

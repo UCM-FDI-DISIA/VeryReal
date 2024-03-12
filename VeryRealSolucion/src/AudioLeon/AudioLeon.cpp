@@ -2,7 +2,7 @@
 #include <fmod.hpp>
 #include <fmod_errors.h>
 #include <algorithm>
-
+using namespace VeryReal;
 Audio_Leon::Audio_Leon() {
 	result = FMOD::System_Create(&sound_system); // Create the main system object.
 	CheckFMODResult(result);
