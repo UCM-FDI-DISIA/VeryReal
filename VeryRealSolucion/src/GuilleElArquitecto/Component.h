@@ -26,9 +26,9 @@ namespace VeryReal {
 		inline void SetEntity(VeryReal::Entity* entity) { this->entity = entity; }
 		inline VeryReal::Entity* GetEntity() { return entity; }
 
-		virtual void onCollisionEnter(Entity* other) {};
-		virtual void onCollisionStay(Entity* other) {};
-		virtual void onCollisionExit(Entity* other) {};
+		virtual void OnCollisionEnter(Entity* other) {};
+		virtual void OnCollisionStay(Entity* other) {};
+		virtual void OnCollisionExit(Entity* other) {};
 
 		
 		//Damos nombre a nuestro componente

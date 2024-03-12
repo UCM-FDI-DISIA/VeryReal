@@ -71,9 +71,9 @@ namespace VeryReal {
 		//inline void SetName(entity_name name) { this->name = name; }
 		//inline entity_name GetName() { return name; }
 
-		void onCollisionEnter(Entity* other);
-		void onCollisionExit(Entity* other);
-		void onCollisionStay(Entity* other);
+		void OnCollisionEnter(Entity* other);
+		void OnCollisionExit(Entity* other);
+		void OnCollisionStay(Entity* other);
 
 
 

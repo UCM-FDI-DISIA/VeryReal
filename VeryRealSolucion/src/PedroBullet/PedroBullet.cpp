@@ -55,8 +55,8 @@ void callBackEnter(btPersistentManifold* const& manifold) {
         //Si tienen colliders, colisionan
         if (colliderEntity1 && colliderEntity2)
         {
-            colliderEntity1->onCollisionEnter(colliderEntity2->GetEntity());
-            colliderEntity2->onCollisionEnter(colliderEntity1->GetEntity());
+            colliderEntity1->OnCollisionEnter(colliderEntity2->GetEntity());
+            colliderEntity2->OnCollisionEnter(colliderEntity1->GetEntity());
         }
     }
 }
@@ -72,8 +72,8 @@ void callBackExit(btPersistentManifold* const& manifold) {
         VeryReal::Collider* colliderEntity2 = static_cast<VeryReal::Collider*>(ent2->getUserPointer());
         if (colliderEntity1 && colliderEntity2)
         {
-            colliderEntity1->onCollisionExit(colliderEntity2->GetEntity());
-            colliderEntity2->onCollisionExit(colliderEntity1->GetEntity());
+            colliderEntity1->OnCollisionExit(colliderEntity2->GetEntity());
+            colliderEntity2->OnCollisionExit(colliderEntity1->GetEntity());
         }
     }
 }
@@ -91,8 +91,8 @@ bool callBackStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
         VeryReal::Collider* colliderEntity2 = static_cast<VeryReal::Collider*>(ent2->getUserPointer());
         if (colliderEntity1 && colliderEntity2)
         {
-            colliderEntity1->onCollisionStay(colliderEntity2->GetEntity());
-            colliderEntity2->onCollisionStay(colliderEntity1->GetEntity());
+            colliderEntity1->OnCollisionStay(colliderEntity2->GetEntity());
+            colliderEntity2->OnCollisionStay(colliderEntity1->GetEntity());
             return true;
         }
     }

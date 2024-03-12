@@ -1,15 +1,21 @@
 #include "Collider.h"
 #include <Entity.h>
 
-void VeryReal::Collider::onCollisionEnter(Entity* entity)
+
+
+void VeryReal::Collider::Init()
 {
-	entity->onCollisionEnter(entity);
+
 }
-void VeryReal::Collider::onCollisionExit(Entity* entity)
+void VeryReal::Collider::OnCollisionEnter(Entity* entity)
 {
-	entity->onCollisionExit(entity);
+	entity->OnCollisionEnter(entity);
 }
-void VeryReal::Collider::onCollisionStay(Entity* entity)
+void VeryReal::Collider::OnCollisionExit(Entity* entity)
 {
-	entity->onCollisionStay(entity);
+	entity->OnCollisionExit(entity);
+}
+void VeryReal::Collider::OnCollisionStay(Entity* entity)
+{
+	entity->OnCollisionStay(entity);
 }

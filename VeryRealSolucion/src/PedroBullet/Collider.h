@@ -17,10 +17,10 @@ namespace VeryReal
 	public:
 		Collider();
 		virtual ~Collider();
-		void start();
-		void onCollisionEnter(Entity* other) override;
-		void onCollisionStay(Entity* other) override;
-		void onCollisionExit(Entity* other) override;
+		void Init();
+		void OnCollisionEnter(Entity* other) override;
+		void OnCollisionStay(Entity* other) override;
+		void OnCollisionExit(Entity* other) override;
 	private:
 	};
 
