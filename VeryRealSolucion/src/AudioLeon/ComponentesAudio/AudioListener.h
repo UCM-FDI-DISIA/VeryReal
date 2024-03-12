@@ -12,9 +12,9 @@ namespace FMOD {
 }
 
 
-	class AudioLeon;
+	class Audio_Leon;
 
-	////Creates and destroys AudioListener components
+	////Creates and destroys Audio_Listener components
 	//class FactoryAudioListener : public FactoryComponent {
 	//public:
 	//	Component* create(Parameters& params) override;
@@ -22,38 +22,43 @@ namespace FMOD {
 	//};
 
 
-	/**
-	An Entity with this component will output the audio it listens
-	where it is located.
-	*/
-	class AudioListener : public VeryReal::Component
+	//FMOD ofrece "escuchadores" dinámicos que hacen de veces de receptores de los sonidos reproducidos por FMOD.
+	//Este componente gestiona el listener de una entidad y actualiza sus parámetros.
+	class Audio_Listener : public VeryReal::Component
 	{
 	public:
-		AudioListener();
-		~AudioListener();
+		//Constructora por defecto de AudioListener.
+		Audio_Listener();
+		//Destructora del componente AudioListener.
+		~Audio_Listener();
+
 
 		virtual void Start();
 
-		/**
-		* Update the position of the audio listener based on the position of the entity it is attached to.
-		*/
+		/// <summary>
+		/// Actualiza la posición del "listener" de FMOD en función de la posición de la entidad a la que este componente esta enlazado.
+		/// </summary>
+		/// <param name="dt">El delta time que se encarga de sincronizar las actualizaciones.</param>
 		virtual void Update(const double& dt);
 
-		/**
-		Updates the position of a sound listener relative to a certain sound.
-		@param index : the index that refers to a certain listener.
-		@param listenerPos : the position of the listener.
-		@param listenerFW : the forward vector of the listener.
-		@param listenerUP : the up vector of the listener.
-		@param listenerVel : the velocity of the listener.
-		*/
-		void updateListenersPosition(int index, VeryReal::Vector3 listenerPos,
+		/// <summary>
+		/// Establece la posición de un listener.
+		/// </summary>
+		/// <param name="index">El índice necesario para referirse a un listener.</param>
+		/// <param name="listenerPos">´Vector posición a establecer del listener.</param>
+		/// <param name="listenerFW">Vector forward a establecer del listener.</param>
+		/// <param name="listenerUP">Vector up a establecer del listener.</param>
+		/// <param name="listenerVel">Vector de velocidad a establecer del listener.</param>
+		void UpdateListenersPosition(int index, VeryReal::Vector3 listenerPos,
 			VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel = { 0,0,0 });
 
 	private:
+		//Posición del listener.
 		VeryReal::Vector3 position;
-		VeryReal::Vector3 lastPosition = { 0,0,0 };
-		int mListenerIndex;
+		//Última posicióm registrada del listener.
+		VeryReal::Vector3 last_position = { 0,0,0 };
+		//Índice con el que se identifica cada listener para FMOD.
+		int listener_index;
 	};
 
 

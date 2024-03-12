@@ -8,7 +8,7 @@
 
 //Component* FactoryAudioListener::create(Parameters& params)
 //{
-//	AudioListener* audioListener = new AudioListener();
+//	Audio_Listener* audioListener = new Audio_Listener();
 //
 //	return audioListener;
 //}
@@ -18,31 +18,31 @@
 //	delete component;
 //}
 
-AudioListener::AudioListener()
+Audio_Listener::Audio_Listener()
 {
 }
 
-AudioListener::~AudioListener()
+Audio_Listener::~Audio_Listener()
 {
-	AL().removeListener(mListenerIndex);
-	updateListenersPosition(mListenerIndex, { 999999,999999,999999 }, { 0,0,0 }, { 0,0,0 }, { 0,0,0 });
+	AL().RemoveListener(listener_index);
+	UpdateListenersPosition(listener_index, { 999999,999999,999999 }, { 0,0,0 }, { 0,0,0 }, { 0,0,0 });
 }
 
-void AudioListener::Start()
+void Audio_Listener::Start()
 {
 	// Get the next available index for a listener in the sound manager
-	mListenerIndex = AL().getNextUsefulListenerIndex();
+	listener_index = AL().GetNextUsefulListenerIndex();
 
 #ifdef _DEBUG
-	if (mListenerIndex == -1)
+	if (listener_index == -1)
 		std::cout << "ERROR: Listeners vector is full\n";
 #endif // _DEBUG
 }
 
-void AudioListener::Update(const double& dt)
+void Audio_Listener::Update(const double& dt)
 {
 	if (!this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")) {
-		ErrorInf().showErrorMessageBox("AudioListener error", "An entity doesn't have transform component", EI_ERROR);
+		ErrorInf().showErrorMessageBox("Audio_Listener error", "An entity doesn't have transform component", EI_ERROR);
 	/*	sceneManager().quit();*/
 		return;
 	}
@@ -53,15 +53,15 @@ void AudioListener::Update(const double& dt)
 	//VeryReal::Vector3 up = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->up();
 	//VeryReal::Vector3 forward = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->forward();
 
-	//VeryReal::Vector3 v = { (position.x - lastPosition.x) * float(dt),(position.y - lastPosition.y) * float(dt),(position.z - lastPosition.z) * float(dt) };
+	//VeryReal::Vector3 v = { (position.x - last_position.x) * float(dt),(position.y - last_position.y) * float(dt),(position.z - last_position.z) * float(dt) };
 
-	//lastPosition = position;
+	//last_position = position;
 
 	//// Update the position of the audio listener in the sound manager
-	//updateListenersPosition(mListenerIndex, position, forward, up, v);
+	//UpdateListenersPosition(listener_index, position, forward, up, v);
 }
 
-void AudioListener::updateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel)
+void Audio_Listener::UpdateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel)
 {
 	FMOD_VECTOR pos = AL().V3ToFmodV3(listenerPos), fw = AL().V3ToFmodV3(listenerFW), up = AL().V3ToFmodV3(listenerUP), vel = AL().V3ToFmodV3(listenerVel);
 	AL().GetSoundSystem()->set3DListenerAttributes(index, &pos, &vel, &fw, &up);

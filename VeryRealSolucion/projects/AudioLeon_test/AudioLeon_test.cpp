@@ -8,14 +8,14 @@ using namespace std;
 
 int main() {
     int t = 0;
-    bool play = false;
+    bool Play = false;
     while ((true)) {
-        AL().systemRefresh(t);
-        if (!play) {
-            AL().audioSourceListener_Test();
-            play = true;
+        AL().SystemRefresh(t);
+        if (!Play) {
+            AL().AudioSourceListenerTest();
+            Play = true;
         }
-        cout << "PRUEBA " << AL().inputSoundIntensity() << endl;
+        cout << "PRUEBA " << AL().InputSoundIntensity() << endl;
         ++t;
 
     }

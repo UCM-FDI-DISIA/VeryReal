@@ -12,13 +12,13 @@ namespace FMOD {
 }
     enum FMOD_RESULT;
 	
-	class AudioLeon;
+	class Audio_Leon;
 	typedef unsigned int FMOD_MODE;
 	namespace VeryReal {
 		class TransformComponent;
 		class Vector3;
 	}
-	//Creates and destroys AudioSource components
+	//Creates and destroys Audio_Source components
 	/*class FactoryAudioSource : public FactoryComponent {
 	public:
 		Component* create(Parameters& params) override;
@@ -26,197 +26,216 @@ namespace FMOD {
 	};*/
 
 
-	/**
-	Plays an audio file in the scene. AudioListeners within range
-	will hear it with the intensity based in their position in the scene.
-	*/
-	class AudioSource : public VeryReal::Component
+	//Audio_Source se encarga de reproducir un archivo de audio en la escena.
+	//Los Audio_Listeners que se encuentren en rango escucharán el audio con distintas variaciones en lugar de su posición en la escena.
+	class Audio_Source : public VeryReal::Component
 	{
 	public:
 
-		/*
-		Default constructor
-		*/
-		AudioSource();
-		~AudioSource();
 
-		/**
-		Creates a 3D sound.
-		@param soundPath : relative path to the sound that will be loaded in the sound handle.
-		@param soundName : the especific name of the sound which mode will be changed.
-		@param minDistance : minimum audible distance for a 3D sound.
-		@param maxDistance : maximum audible distance for a 3D sound.
-		@param loop : if the sound will loop or not.
-		@return A boolean representing whether or not a the sound was created.
-		*/
-		bool create3DSound(std::string soundPath, std::string soundName, float minDistance, float maxDistance, bool loop);
+		//Constructor por defecto.
+		Audio_Source();
+		//Destructora que se encarga de eliminar la memoria dinámica del sonido concreto.
+		~Audio_Source();
 
-		/**
-		Creates a normal sound.
-		@param soundPath : relative path to the sound that will be loaded in the sound handle.
-		@param soundName : the especific name of the sound which mode will be changed.
-		@param loop : if the sound will loop or not.
-		@return A boolean representing whether or not a the sound was created.
-		*/
-		bool createNormalSound(std::string soundPath, std::string soundName, bool loop);
+		/// <summary>
+		/// Crea un sonido 3D.
+		/// </summary>
+		/// <param name="soundPath">Ruta relativa al archivo de audio que será cargado en el sonido de FMOD.</param>
+		/// <param name="soundName">Nombre dado por el usuario al sonido de FMOD.</param>
+		/// <param name="minDistance">Distancia en la que el sonido no tendrá atenuación.</param>
+		/// <param name="maxDistance">Distancia en la cuál el sonido tendrá máxima atenuación.</param>
+		/// <param name="loop">Si el sonido se reproducirá en bucle o no.</param>
+		/// <returns>Devuelve true o false en función de si el sonido fue creado con éxito o no.</returns>
+		bool Create3DSound(std::string soundPath, std::string soundName, float minDistance, float maxDistance, bool loop);
 
-		/**
-		Sets the global position of a sound i.
-		@param soundName : the especific name of the sound which position will be set.
-		@param position : the value of the position of the sound.
-		@return A boolean showing wether or not the position was set.
-		*/
-		bool set3DSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity);
+		/// <summary>
+		/// Crea un sonido no 3D.
+		/// </summary>
+		/// <param name="soundPath">Ruta relativa al archivo de audio que será cargado en el sonido de FMOD.</param>
+		/// <param name="soundName">Nombre dado por el usuario al sonido de FMOD.</param>
+		/// <param name="loop">Si el sonido se reproducirá en bucle o no.</param>
+		/// <returns>Devuelve true o false en función de si el sonido fue creado con éxito o no.</returns>
+		bool CreateNormalSound(std::string soundPath, std::string soundName, bool loop);
 
-		/**
-		It checks for available channels to play the sound and assigns a group channel depending on the user input.
-		@param soundName : the especific name of the sound which will be played.
-		@param channelGroup : the channel group where the sound will played on.
-		@param channelPos : the channel's position used for panning and attenuation.
-		@param channelVel : the channel' group where the sound will played on's velocity in 3D space used for doppler.
-		@return A boolean showing whether or not a channel group was found to play the sound.
-		*/
+		/// <summary>
+		/// Configuira los atributos 3D (posición y velocidad) de un sonido.
+		/// </summary>
+		/// <param name="soundName">El nombre del sonido cuyos atributos se van a configurar.</param>
+		/// <param name="position">El valor de la posición de la fuente de sonido.</param>
+		/// <param name="velocity"EL valor de la velocidad a la que se mueve la fuente de sonido.</param>
+		/// <returns>Devuelve true o false en función de si los atributos fueron configurados con éxito o no.</returns>
+		bool Set3DSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity);
+
+		/// <summary>
+		/// Comprueba si hay algún canal disponible para reproducir el sonido asignado al componente y se lo asigna para ser reproducido.
+		/// </summary>
+		/// <param name="soundName">El nombre del audio que será reproducido.</param>
+		/// <param name="channelGroup">EL grupo de canales desde el que se reproducirá el sonido.</param>
+		/// <param name="channelPos">La posición del canal que será usado para paneado y atenuación.</param>
+		/// <param name="channelVel">La velocidad del cana que será usado para efecto doppler.</param>
+		/// <param name="channelVolume">Volumen de reproducción del sonido.</param>
+		/// <returns>Devuelve true o false en función de si se encontró un canal para re3producir el sonido.</returns>
 		bool PlayAudioSource(std::string soundName, std::string channelGroup, VeryReal::Vector3* channelPos, VeryReal::Vector3* channelVel, float channelVolume);
 
-		/**
-		Looks for a sound channel and in case that it exists, stops that channel from playing.
-		@param soundName : the especific name of the sound which speed will be paused.
-
-		@return True if the sound is stopped, false if the sound didn't exist.
-		*/
+		/// <summary>
+		/// Busca un canal y en caso de que exista, para el sonido que se este reproduciendo, devolviéndolo al principio. 
+		/// </summary>
+		/// <param name="soundName">El nombre del sonido que se va a parar.</param>
+		/// <returns>Devuelve true o false en función de si el sonido fue detenido con éxito o no.</returns>
 		bool StopSound(std::string soundName);
 
-		/**
-		Looks for a sound channel and in case that it exists, sets the pause state of that channel to "pause".
-		@param soundName : the especific name of the sound which speed will be paused.
-		@param pause : the new pause value the channel will get.
-		@return True if the sound is paused, false if the sound didn't exist.
-		*/
-		bool PauseSound(std::string soundName, bool pause);
+		/// <summary>
+		/// Busca un canal y en caso de que exista, pause el sonido que se esté reproduciendo en ese canal.
+		/// </summary>
+		/// <param name="soundName">El nombre del sonido que se va a parar.</param>
+		/// <param name="Pause"></param>
+		/// <returns>Devuelve true o false en función de si el sonido fue detenido con éxito o no.</returns>
+		bool PauseSound(std::string soundName, bool Pause);
 		
+		/// <summary>
+		/// Inicia el sonido con los parámetros que se hayan facilitado desde la factoría.
+		/// </summary>
 		virtual void Start();
 
+		/// <summary>
+		/// Actualiza a cada paso del bucle principal el componente AudioSource.
+		/// </summary>
+		/// <param name="dt">El delta time que se encarga de sincronizar las actualizaciones.</param>
 		virtual void Update(const double& dt);
 
-		/**
-		* Play the audio.
-		*/
-		void play();
+		/// <summary>
+		/// Le da play al sonido del Audio_Source.
+		/// </summary>
+		void Play();
 
-		/**
-		* Stop the audio.
-		*/
-		void stop();
+		/// <summary>
+		/// Detiene por completo el sonido del Audio_Source.
+		/// </summary>
+		void Stop();
 
-		/**
-		* Pause the audio.
-		*/
-		void pause();
+		/// <summary>
+		/// Para el sonido del Audio_Source.
+		/// </summary>
+		void Pause();
 
-		/**
-		* Resume playing the audio after it has been paused.
-		*/
-		void resume();
+		/// <summary>
+		/// Vuelve a reproducir un sonido desde donde se pausó.
+		/// </summary>
+		void Resume();
 
-		/**
-		* Check if the audio is currently playing.
-		* @return True if the audio is playing, false otherwise.
-		*/
-		bool isPlaying();
+		/// <summary>
+		/// Chequea si un audio esta siendo reproducido o no.
+		/// </summary>
+		/// <returns>DEvuelve truo o false en funcón de si el audio esta siendo reproducido o no.</returns>
+		bool IsPlaying();
 
-		/*
-		Changes the volume of the channel a soud is being played, if it exists.
-		@param value : the volume value the channel will be changed to.
-		@return A boolean representing wether or not the volume was changed.
-		*/
-		bool setVolume(float value);
+		/// <summary>
+		/// Establece el volumen con el que un sonido será reproducido.
+		/// </summary>
+		/// <param name="value">El valor para el volumen que se establecerá.</param>
+		/// <returns>Devuelve true o false en función de si se ha cambiado el volumen con éxito o no.</returns>
+		bool SetVolume(float value);
 
-		/**
-		Sets the speed a certain sound wil be played at.
-		@param newSpeed : the new value the sound will be played at.
-		@return A boolean showing wether or not the speed was changed.
-		*/
-		bool setSpeed(float newSpeed);
+		/// <summary>
+		/// Establece la velocidad a la que un sonido será reproducido.
+		/// </summary>
+		/// <param name="newSpeed"></param>
+		/// <returns></returns>
+		bool SetSpeed(float newSpeed);
 
-		/**
-		Sets a new minimum and maximum distance a 3D sound can be heard from.
-		@param soundName : the especific name of the sound which hearing distance will be changed.
-		@param minDistance : the new minimum distance a 3D sound can be heard from.
-		@param maxDistance : the new maximun distance a 3D sound can be heard from.
-		@return A boolean showing wether or not the new hearing distances was set.
-		*/
-		bool setMinMaxDistance(float minDistance, float maxDistance);
+		/// <summary>
+		/// Establece una nueva configuración para la atenuación mínima y máxima que sufrirña un sonido por distancia.
+		/// </summary>
+		/// <param name="minDistance">Distancia a la que no habrá ninguna atenuación.</param>
+		/// <param name="maxDistance">Distancia a la que habrá máxima atenuación</param>
+		/// <returns>Devuelve true o false en función de si las nuevas configuraciones para la atenuación fueron o no establecidas.</returns>
+		bool SetMinMaxDistance(float minDistance, float maxDistance);
 
-		/**
-		Sets the mode of a certain sound.
-		@param soundName : the especific name of the sound which mode will be changed.
-		@param newMode: the new flag the sound will be changed to.
-		@return A boolean showing wether or not the mode was set.
-		*/
-		bool setMode(FMOD_MODE newMode);
+		/// <summary>
+		/// Establece el modo de FMOD para cada sonido.
+		/// </summary>
+		/// <param name="newMode">Nueva flag que indica el modo a establecer.</param>
+		/// <returns>Devuelve true o false en función de si el nuevo modo de reproducción fue establecido con éxito o no.</returns>
+		bool SetMode(FMOD_MODE newMode);
 		
-		/**
-		* Set the path of the audio
-		* @param path The path to the audio file to play.
-		*/
-		void setSourcePath(std::string path);
+		/// <summary>
+		/// Almacena la ruta relativa del archivo de audio.
+		/// </summary>
+		/// <param name="path">El nombre de la ruta relativa.</param>
+		void SetSourcePath(std::string path);
 
-		/**
-		* Set the name of the audio
-		* @param name The name to the audio file to play.
-		*/
-		void setSourceName(std::string name);
+		/// <summary>
+		/// Almacena el nombre dado por el usuario al sonido de FMOD.
+		/// </summary>
+		/// <param name="name">El nombre dado por el jugador.</param>
+		void SetSourceName(std::string name);
 
-		/**
-		* Set the name of the group channel this audio is located in.
-		* @param name The name of the group channel.
-		*/
-		void setGroupChannelName(std::string name);
+		/// <summary>
+		/// Almacena el nombre de grupo de canales desde el cuál se reproducirá este sonido.
+		/// </summary>
+		/// <param name="name">EL nombre del grupo de canales.</param>
+		void SetGroupChannelName(std::string name);
 
-		/**
-		* Set if the audio will play in a loop
-		* @param loop True if the sound should be looping, false otherwise
-		*/
-		void setLoop(bool loop);
+		/// <summary>
+		/// Almacena le condición de bucle del sonido de FMOD.
+		/// </summary>
+		/// <param name="loop">Devuelve true o false en función de si el sonido se reproducirá en bucle o no.</param>
+		void SetLoop(bool loop);
 
-		/**
-		* Set if the audio will be a 3D audio
-		* @param threeD if we need 3d sound
-		*/
-		void setIsThreeD(bool threeD);
+		/// <summary>
+		/// Almacena la condición de 3D del sonido de FMOD.
+		/// </summary>
+		/// <param name="threeD">La condición a almacenar.</param>
+		void SetIsThreeD(bool threeD);
 
-		/**
-		* Set if the adio will play at the start
-		* @param playOnStart True if the sound should starting played, false otherwise
-		*/
-		void setPlayOnStart(bool playOnStart);
+		/// <summary>
+		/// Almacena si el sonido de FMOD será reproducido en cuanto sea posible o si hará falta darle al play.
+		/// </summary>
+		/// <param name="playOnStart">Si el sonido debe ser reproducido en cuanto sea posible o no.</param>
+		void SetPlayOnStart(bool playOnStart);
 
 		/**
 		* Get the volume of the audio.
 		* @return The current volume value.
 		*/
-		float getVolume();
+
+		//Devuelve el valor de volumen almacenado en este componente.
+		float GetVolume();
 
 
 	private:
-		float mVolume;  // The volume of the audio
-		float mSpeed; // The speed of the audio
-		float mMinDistance; //Minimum distance a 3D sound can be heard from.
-		float mMaxDistance; //Maximun distance a 3D sound can be heard from.
+		//El volumen del sonido.
+		float volume;
+		//La velocidad de reproducción del audio.
+		float speed;
+		//Distancia de mínima atenuación de un sonido 3D.
+		float min_distance;
+		//Distancia de máxima atenuación de un sonido 3D.
+		float max_distance;
 
 		//FMOD::Sound* mSound; // The FMOD sound object
-		int mSoundChannel; // The number of the channel this sound will be played on.
-		std::string mSoundGroup; // The name of the channel group this sound will be played on.
-		std::string mSoundPath; // The path to the audio file to play
-		std::string mSoundName; // The name we give to the audio file to play
-		bool mPlaying; // Whether the audio is currently playing or not
-		bool mLoop; // Whether the audio should loop or not
-		bool mIsThreeD;
-		bool mPlayOnStart;
+		//El número que se corresponde con el canal en el que se reproducirá este sonido.
+		int sound_channel;
+		//El nombre de grupo de canales en el que se reproducirá este sonido.
+		std::string sound_group;
+		//La ruta relativa al archivo de audio con el que se creará el sonido de FMOD.
+		std::string sound_path;
+		//El nombre dado por el usuario al sonido de FMOD.
+		std::string sound_name; 
+		//Si el sonido esta siendo reproducido o no.
+		bool playing; 
+		//Si el sonido se reproducirá en bucle o no.
+		bool loop; 
+		//Si el sonido es 3D o no.
+		bool is_three_d;
+		//Si el sonido se reproducirá de inicio o no.
+		bool play_on_start;
 
-
-		FMOD_RESULT mResult;
-		VeryReal::TransformComponent* mTransform = nullptr;
+		//Variable de control que sirve de comprobación después de hacer uso de cualquiera de las funciones de sistema de sonido.
+		FMOD_RESULT result;
+		//Almacena el componente "Transform" de la entidad a la que este componente esta enlazada.
+		VeryReal::TransformComponent* transform = nullptr;
 	};
 
 

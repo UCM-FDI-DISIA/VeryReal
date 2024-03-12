@@ -21,181 +21,170 @@ enum FMOD_RESULT;
 typedef unsigned int FMOD_MODE;
 typedef int CHANNEL_NUMBER;
 
-	//Maximum number of channels allowed to exist in this particular system setting.
+	//Cantidad máxima de canales que puede haber en esta configuración particular del sistema de sonido de FMOD.
 	const int MAX_CHANNELS = 100;
-	//Scaling factor for how much the pitch varies due to doppler shifting in 3D sound.
+	//Factor de escalado que determina cuanto varía el pitch debido al efecto dopler de un sonido 3D.
 	const float DOPPLER_SCALE = 1.0f;
-	//Relative distance factor, compared to 1.0 meters. How many units per meter my engine have.
+	//Factor de distancia relativo, comparado a 1 metro. Establece cuantas unidades por metro el sistema interpreta.
 	const float DISTANCE_FACTOR = 1.0f;
-	//Global attenuation rolloff factor. 
+	//Factor global de atenuación por distancia.
 	const float ROLLOFF_SCALE = 1.0f;
-	//Base pitch of a sound. The "normal" pitch of a sound when it is not moving.
+	//Pitch base de un sonido. Determina el pitch "normal" de un sonido cuando el emisor esta parado.
 	const float BASE_PITCH = 1.0f;
 
-	/* AudioLeon provides FMOD wrappers to manage audio creation and modulation,
-	audio channel and audio channel groups.
-	You can access the InputManager calling sm(). */
+	/* Audio_Leon ofrece un sistema de creación, almacenaje y borrado de sonidos.
+	así como toda el esqueleto interno de funcionamiento de FMOD.
+	Puedes acceder a Audio_Leom llamando al método AL().
+	*/
 
-	class AudioLeon : public VeryReal::Manager<AudioLeon> {
-		friend Singleton<AudioLeon>;
-		AudioLeon();
+	class Audio_Leon : public VeryReal::Manager<Audio_Leon> {
+		friend Singleton<Audio_Leon>;
+		Audio_Leon();
 		//Inicializacion de los recursos necesarios para recoger input del microfono
 		void InitAudioRecording();
-		//Stores audio handles linked to their name.
-		std::unordered_map<std::string, FMOD::Sound*> mSoundsMap;
-		//Stores audio handles linked to the last channel they where played in.
-		std::unordered_map<FMOD::Sound*, CHANNEL_NUMBER> mLastPlayedMap;
-		//Stores channel group names linked to their handle.
-		std::unordered_map<std::string, FMOD::ChannelGroup*> mChannelGroupMaps;
-		//Stores every audio channel.
-		std::vector<FMOD::Channel*> mChannelsVector;
-		//Basic channel groups provided by the AudioLeon.
-		FMOD::ChannelGroup* mEffects, * mMusic, * mMaster;
-		std::vector<bool> mListeners;
-		//The sound system over which every bit of audio gets created.
-		FMOD::System* mSoundSystem = nullptr;
+		//Almacena los sonidos de FMOD enlazados al nombre establecido por el usuario.
+		std::unordered_map<std::string, FMOD::Sound*> sounds_map;
+		//Almacena los sonidos dew FMOD enlazados al último canal en el que sonaron.
+		std::unordered_map<FMOD::Sound*, CHANNEL_NUMBER> last_played_map;
+		//Almacena los grupos de canales enlazados a sus nombres.
+		std::unordered_map<std::string, FMOD::ChannelGroup*> channel_group_maps;
+		//Almacena los canales de FMOD.
+		std::vector<FMOD::Channel*> channels_vector;
+		//Grupos de canales predeterminados ofrecidos por Auido_Leon
+		FMOD::ChannelGroup* effects, * music, * master;
+		//Vector en el que se almacenan los índices disponibles para "listeners" de FMOD.
+		std::vector<bool> listeners;
+		//El sistema de audio ofrecido por FMOD.
+		FMOD::System* sound_system = nullptr;
 		//Sonido recibido por el microfono
-		FMOD::Sound* micSound = NULL;
-
-		FMOD_RESULT mResult;
-
+		FMOD::Sound* mic_sound = NULL;
+		//Variable de control que sirve de comprobación después de hacer uso de cualquiera de las funciones de sistema de sonido.
+		FMOD_RESULT result;
 		
-		/**
-		Changes the volume of a channel.
-		@param groupName : the name of the group channel which volume will be changed.
-		@param volume : the new value the volume will have now.
-		@returns False if there is no such channel os ir an FMOD error, true if the volume is changed.
-		*/
-		bool changeChannelVolume(std::string channelGroupName, float volume);
+		/// <summary>
+		/// Cambia el volumen de un canal determinado.
+		/// </summary>
+		/// <param name="channelGroupName">El canal en concreto del cuál se va acambiar el volumen.</param>
+		/// <param name="volume">EL nuevo valor de volumen que se le dará al canal.</param>
+		/// <returns>False si no se encontró el canal indicado o si hubo un error de FMOD. True si el volumen del canal se cambió con éxito.</returns>
+		bool ChangeChannelVolume(std::string channelGroupName, float volume);
 
 	public:
 
-		/**
-		Destructor for the AudioLeon class
-		*/
-		~AudioLeon();
-		/**
-		Updates the sound system every step of the game loop.
-		*/
-		void systemRefresh(const double& dt);
-		/**
-		Creates a 3D sound.
-		@param soundPath : relative path to the sound that will be loaded in the sound handle.
-		@param soundName : the especific name of the sound which mode will be changed.
-		@param minDistance : minimum audible distance for a 3D sound.
-		@param maxDistance : maximum audible distance for a 3D sound.
-		@param loop : if the sound will loop or not.
-		@return A boolean representing whether or not a the sound was created.
-		*/
-
-		/*
-		Returns the conversion of a Vector3 to an FMOD_VECTOR
-		*/
+		//Destructor de la clase Audio_Leon. Se encarga de eliminar todo sonido creado y de liberar toda la infrestructura de FMOD.
+		~Audio_Leon();
+		//Actualiza el sistema de sonido en cada bucle del juego.
+		void SystemRefresh(const double& dt);
+		
+		//Convierte un Vector3 propio del motor a un FMOD_VECTOR
 		FMOD_VECTOR V3ToFmodV3(VeryReal::Vector3 conversion) const;
 
 		/**
 		Makes sure the sound name is in all lower case with no spaces.
 		@param name : the name to change.
 		*/
+
+		/// <summary>
+		/// Pone todas las letras del nombre de un sonido en minúscula.
+		/// </summary>
+		/// <param name="name">El nombre del sonido que se cambia.</param>
 		void NameToLower(std::string& name);
 
-		/**
-		Chech if the result of any FMOD-related action is without any error.
-		@param FMODResult: a flag that shows if there has been an error
-		@returns A boolean representing whether there was an error or not.
-		*/
+		/// <summary>
+		/// Compureba si el resultado de cualquiera de las funciones de FMOD se han completado con éxito.
+		/// </summary>
+		/// <param name="FMODResult">El resultado a comprobar.</param>
+		/// <returns>Devuelve true o false si el resultado es exitoso o no.</returns>
 		bool CheckFMODResult(FMOD_RESULT FMODResult);
 
-		/**
-		Gets a sound handle via the name of the sound.
-		@param soundName : the name of the sound linked to a channek needed to look for a certain channel.
-		@returns Nullptr if there is no sound with that given name.
-		*/
+		/// <summary>
+		/// Extrae un sonido de FMOD del mapa de sonidos a través del sonido que le dió el usuario.
+		/// </summary>
+		/// <param name="soundName">EL nombre de sonido mediante el cuál se busca en el mapa.</param>
+		/// <returns>Devuelve el sonido concreto que se buscaba o "nullptr" si no se encontró ningún sonido con ese nombre.</returns>
 		FMOD::Sound* GetSound(std::string soundName);
 
-		/**
-		Returns the reference to the FMOD sound system.
-		*/
+		//Devuelve la referencia al sistema de sonido de FMOD.
 		FMOD::System* GetSoundSystem();
 
-		/**
-		Gets a group channel handle via the name it was created with.
-		@param groupName : the name of the group channel.
-		@returns Nullptr if there is no such group channel or the correspondent group channel.
-		*/
+		/// <summary>
+		/// Extrae un grupo de canales de FMOD del mapa de grupos a través del nombre que le dió el usuario.
+		/// </summary>
+		/// <param name="channelGroupName">EL nombre de grupo mediante el cuál se busca en el mapa.</param>
+		/// <returns>Devuelve el grupo concreto que se buscaba o "nullptr" si no se encontró ningún grupo con ese nombre.</returns>
 		FMOD::ChannelGroup* GetGroupChannel(std::string channelGroupName);
 
+		//Devuelve la referencia al vector de canales de Audio_Leon.
 		std::vector<FMOD::Channel*> GetChannelsVector();
 
+		//Devuelve la referencia al mapa que conecta los sonidos al último canal en el que se reprodujeron.
 		std::unordered_map<FMOD::Sound*, CHANNEL_NUMBER> GetLastPlayedMap();
 
-		/*
-		Adds a new sound to the sounds map.
-		*/
+		//Añade un nuevo sonido al mapa de sonidos.
 		void AddNewSound(std::pair<std::string, FMOD::Sound*> newSound);
 
-		/**
-		Gets a channel handle via the sound that was last played on it.
-		@param soundName : the name of the sound linked to a channel needed to look for a certain channel.
-		@returns Nullptr if there is no such channel or the correspondent channel.
-		*/
+		/// <summary>
+		/// Extrae un canal de FMOD del mapa de canales a través del nombre de sonido que se está reproduciendo en dicho canal.
+		/// </summary>
+		/// <param name="soundName">EL nombre del sonido que se está reproduciendo.</param>
+		/// <returns>Devuelve el canal correspondiente o "nullptr" si no se encuentra dicho canal.</returns>
 		FMOD::Channel* GetChannel(std::string soundName);
 
-		
-		/**
-		Create a channel group if a channel with the same name doesn't already exists.
-		@param newChannelGroup : the name for the new channel group.
-		@return A boolean representing whether or not a new channel was indeed created.
-		*/
-		bool createChannelGroup(std::string groupName);
-		/**
-		Changes the volume of a certain group channel if it exists.
-		@param groupName : the name of the channel group.
-		@param newVolume : the volume value the group channel will be changed to.
-		@return A boolean representing whether or not a the volume was changed.
-		*/
-		bool setGroupChannelVolume(std::string groupName, float newVolume);
-		/**
-		Checks the volume of a certain group channel if it exists.
-		@param groupName : the especific name of the sound which speed will be changed.
-		@return The specific float of the volume.
-		*/
-		float getGroupChannelVolume(std::string groupName);
+		/// <summary>
+		/// Crea un grupo de canales si no existe ya un grupo con el mismo nombre.
+		/// </summary>
+		/// <param name="groupName">El nombre del grupo de canales que se quiere crear.</param>
+		/// <returns>Devuelve true o false si el grupo de canales fue creado con éxito o no.</returns>
+		bool CreateChannelGroup(std::string groupName);
+
+		/// <summary>
+		/// Cambia el volumen de un grupo de canales.
+		/// </summary>
+		/// <param name="groupName">El nombre del grupo de canales.</param>
+		/// <param name="newVolume">El nuevo valor del volumen.</param>
+		/// <returns>Devuelve true o false en función de si el volumen fue cambiado con éxito o no.</returns>
+		bool SetGroupChannelVolume(std::string groupName, float newVolume);
+
+		/// <summary>
+		/// Comprueba el volumen de un grupo de canales concreto.
+		/// </summary>
+		/// <param name="groupName">El nombre del grupo de canales que se va a comprobar.</param>
+		/// <returns>Devuelve el valor del volumen del grupo de canales.</returns>
+		float GetGroupChannelVolume(std::string groupName);
 
 		/// Obtiene la intensidad del sonido recibido por el microfono
 		/// @return Intensidad del sonido (en un rango de 0 a 1)
-		float inputSoundIntensity();
+		float InputSoundIntensity();
 
-		void audioSourceListener_Test();
+		void AudioSourceListenerTest();
 
-		/**
-		Stops every channel playing at the moment.
+		/// <summary>
+		/// Para todos los canales que estén reproduciendo añgún sonido.
+		/// </summary>
+		/// <returns>Devuelve true o false en función de si todos los canales dejaron de reproducir o no.</returns>
+		bool StopEverySound();
 
-		@return True if every channel was stopped.
-		*/
-		bool stopEverySound();
+		/// <summary>
+		/// Libera la memoria dinámica creada durante la ejecución al crear un nuevl sonido de FMOD.
+		/// </summary>
+		/// <param name="soundName">EL nombre del sonido que va a ser eliminado.</param>
+		/// <returns>Devuelve true o false en función de si el sonido fue eliminado con éxito o no.</returns>
+		bool DeleteSound(std::string soundName);
 
-		/**
-		Releases the dynamic memory created on runtime when creating new sounds.
-		@param soundName : the especific name of the sound which speed will be changed.
-		@return A boolean showing wether or not the sound was eliminated.
-		*/
-		bool deleteSound(std::string soundName);
-		/**
-		Removes the listener from its vector and resets its values.
-		@param index : the index that refers to a certain listener.
-		*/
-		void removeListener(int index);
-		//Se queda;
+		/// <summary>
+		/// Elimina un listener del vector de listeners y resetea sus valores.
+		/// </summary>
+		/// <param name="index">El índice del listener a resetear.</param>
+		void RemoveListener(int index);
 
-		/**
-		Gets the useful listener which will be able to listen to a new sound.
-		@return A integer showing whether or not a useful listener was found.
-		*/
-		inline int getNextUsefulListenerIndex() {
-			for (int i = 0; i < mListeners.size(); i++) {
-				if (!mListeners[i])
-					mListeners[i] = true;
+		/// <summary>
+		/// Selecciona un listener nuevo para configurarlo.
+		/// </summary>
+		/// <returns>Devuelve el índice del listener configurado o -1 si no se pudo configurar con éxito.</returns>
+		inline int GetNextUsefulListenerIndex() {
+			for (int i = 0; i < listeners.size(); i++) {
+				if (!listeners[i])
+					listeners[i] = true;
 				return i;
 			}
 			return -1;
@@ -203,12 +192,10 @@ typedef int CHANNEL_NUMBER;
 		/*void startRecording();*/
 	};
 
-	/**
-	This macro defines a compact way for using the singleton AudioLeon, instead of
-	writing AudioLeon::instance()->method() we write AL(). method()
-	*/
-	inline AudioLeon& AL() {
-		return *AudioLeon::Instance();
+	//Esta macro define una manera compacta de usar el singleton Audio_Leon.
+	//En lugar de escribir Audio_Leon::instance->method(), escribiremos AL().method()
+	inline Audio_Leon& AL() {
+		return *Audio_Leon::Instance();
 	}
 
 #endif // !_FMOD_SOUND_MANAGER
