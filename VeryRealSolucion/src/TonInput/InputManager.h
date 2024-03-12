@@ -1,5 +1,5 @@
-#ifndef INPUT_MANAGER
-#define INPUT_MANAGER
+#ifndef INPUTMANAGER
+#define INPUTMANAGER
 #pragma once
 
 #include <SDL.h>

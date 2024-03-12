@@ -1,6 +1,6 @@
 #pragma once
-#ifndef RIGIDBODYCOMPONENT_H
-#define RIGIDBODYCOMPONENT_H
+#ifndef RIGIDBODYCOMPONENT
+#define RIGIDBODYCOMPONENT
 
 
 #include <memory>

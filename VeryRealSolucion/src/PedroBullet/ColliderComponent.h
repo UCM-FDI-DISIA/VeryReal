@@ -1,6 +1,6 @@
 #pragma once
-#ifndef COLLIDER
-#define COLLIDER
+#ifndef COLLIDERCOMPONENT
+#define COLLIDERCOMPONENT
 
 #include <Component.h>
 
