@@ -9,27 +9,14 @@ using namespace VeryReal;
 
 RigidBodyComponent::RigidBodyComponent(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType, bool trigger)
     : mass(mass), friction(friction), restitution(restitution), movementType(movementType) {
-    InitializeRigidBody(shapeType);
- 
-    collider = this->GetEntity()->GetComponent<Collider>("collider");
-    if (trigger)
-    {
-        collider->SetActive(false);
-    }
-
-    if(!collider)
-    {
-        //ERROR
-        return;
-    }
-    this->GetBulletRigidBody()->setUserPointer(collider);
+    InitializeRigidBody(shapeType, movementType, trigger);
 }
 
 RigidBodyComponent::~RigidBodyComponent() {
 
 }
 
-void RigidBodyComponent::InitializeRigidBody(PBShapes shapeType) {
+void RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger) {
     transformComponent = this->GetEntity()->GetComponent<TransformComponent>("transform");
 ;
     collisionShape.reset(CreateCollisionShape(shapeType));
@@ -50,6 +37,27 @@ void RigidBodyComponent::InitializeRigidBody(PBShapes shapeType) {
     rbInfo.m_friction = friction;
 
     rigidBody.reset(new btRigidBody(rbInfo));
+
+    //Inicializar el componente colider
+    collider = this->GetEntity()->GetComponent<Collider>("collider");
+
+    if (!collider)
+    {
+        //ERROR
+        return;
+    }
+    this->GetBulletRigidBody()->setUserPointer(collider);
+
+    //Determinar el movement type
+    SetMovementType(movementType);
+
+    //Hacerlo trigger si es trigger
+    if (trigger)
+    {
+        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
+    }
+
+    
 }
 
 btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType) {
@@ -81,28 +89,20 @@ void RigidBodyComponent::AddImpulse(const Vector3& impulse){
 
 void RigidBodyComponent::AddTorque(const Vector3& torque){
 
-    rigidBody->applyCentralImpulse(btVector3(torque.GetX(), torque.GetY(), torque.GetZ()));
-}
-
-void RigidBodyComponent::SetActiveRB(bool b) {
-    isActive = b;
+    rigidBody->applyTorqueImpulse(btVector3(torque.GetX(), torque.GetY(), torque.GetZ()));// poner una de las tres..........................
 }
 
 void RigidBodyComponent::SetActiveTrigger(bool b) {
-    isTrigger = b;
     if(b)
-        collider->SetActive(false);
-    else collider->SetActive(true);
-}
+        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
+    else    rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() & ~btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
-bool RigidBodyComponent::GetActiveRB() {
-    return isActive;
 }
 
 bool RigidBodyComponent::GetActiveTrigger() {
-    return isTrigger;
-    //return !collider->GetActive();
-
+    if (rigidBody->getCollisionFlags() == 4)
+        return true;
+    else return false;
 }
 
 void VeryReal::RigidBodyComponent::SetMass(float n)
@@ -135,6 +135,12 @@ float VeryReal::RigidBodyComponent::GetRestitution()
     return restitution;
 }
 
-btRigidBody* RigidBodyComponent::GetBulletRigidBody() const {
-    return rigidBody.get();
+void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT)
+{
+    if(mT == MOVEMENT_TYPE_DYNAMIC)
+        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_DYNAMIC_OBJECT);
+    if (mT == MOVEMENT_TYPE_STATIC)
+        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
+    if (mT == MOVEMENT_TYPE_KINEMATIC)
+        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
 }

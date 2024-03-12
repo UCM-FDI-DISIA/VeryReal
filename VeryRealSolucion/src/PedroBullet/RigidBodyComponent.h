@@ -31,10 +31,6 @@ namespace VeryReal {
         void AddImpulse(const Vector3& impulse);
         void AddTorque(const Vector3& torque);
 
-        // Getters y Setters de las variables internas de rigidbody 
-        void SetActiveRB(bool b);
-        bool GetActiveRB();
-
         void SetActiveTrigger(bool b);
         bool GetActiveTrigger();
 
@@ -47,6 +43,8 @@ namespace VeryReal {
         void SetRestitution(float n);
         float GetRestitution();
 
+        void SetMovementType(PBMovementType mT);
+
         // Obtiene el btRigidBody 
         btRigidBody* GetBulletRigidBody() const;
 
@@ -56,7 +54,6 @@ namespace VeryReal {
         std::unique_ptr<btDefaultMotionState> motionState;
         std::unique_ptr<btRigidBody> rigidBody;
 
-        bool isActive;
         bool isTrigger;
         float mass;
         float friction;
