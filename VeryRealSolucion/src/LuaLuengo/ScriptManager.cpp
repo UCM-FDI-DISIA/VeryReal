@@ -34,7 +34,7 @@ void ScriptManager::Error(int status)
 		return;
 	}
 
-	cerr << "[LUA ERROR] " << lua_tostring(lua_state, -1) << endl;
+	std::cerr << "[LUA ERROR] " << lua_tostring(lua_state, -1) << std::endl;
 
 	lua_pop(lua_state, 1);
 }
@@ -51,7 +51,7 @@ void ScriptManager::Test()
 {
 	VeryReal::Scene* scn = VeryReal::SceneManager::Instance()->AddScene("luaTest"); // Creación de la escena(lleva el nombre del archivo .lua)
 
-	string ent = "Entities";
+	std::string ent = "Entities";
 	luabridge::LuaRef entities = luabridge::getGlobal(lua_state, ent.c_str()); // Referencia a la primera tabla
 
 	if (entities.isTable()) {
@@ -59,8 +59,8 @@ void ScriptManager::Test()
 			luabridge::LuaRef entity = entities[i];
 			VeryReal::Entity* e = scn->AddEntity(entity.tostring()); // Añadiendo entidades
 			if (entity.isTable()) {
-				string id = entity["id"].tostring(); // DUDA: unsafe_cast
-				cout << "Nombre de la entidad: " << id << endl;
+				std::string id = entity["id"].tostring(); // DUDA: unsafe_cast
+				std::cout << "Nombre de la entidad: " << id << std::endl;
 				luabridge::LuaRef components = entity["Components"];
 				if (components.isTable()) {
 					for (int j = 1; j <= components.length(); ++j) { // Recorremos la tabla interior(componentes)
@@ -68,12 +68,12 @@ void ScriptManager::Test()
 						VeryReal::Creator::Instance()->AddCreator(component.tostring(), new VeryReal::CreatorTransformComponent()); // Ver como generalizar esto
 						VeryReal::Component* c = e->AddComponent(component.tostring()); // Añadiendo componentes
 						if (component.isTable()) {
-							string name = component["name"].tostring();
-							cout << "Nombre del componente: " << name << endl;
-							cout << VeryReal::SceneManager::Instance()->GetScene("luaTest")->GetEntity(entity.tostring())->HasComponent(component.tostring()) << "\n";
+							std::string name = component["name"].tostring();
+							std::cout << "Nombre del componente: " << name << std::endl;
+							std::cout << VeryReal::SceneManager::Instance()->GetScene("luaTest")->GetEntity(entity.tostring())->HasComponent(component.tostring()) << "\n";
 						}
 					}
-					cout << endl;
+					std::cout << std::endl;
 				}
 			}
 		}

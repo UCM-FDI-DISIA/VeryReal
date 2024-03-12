@@ -41,7 +41,7 @@ void VeryRealProyecto::Loop() {
 			// Update (Componentes)
 			// Render
 			// Sonido
-			cout << frameTime << endl;
+			std::cout << frameTime << std::endl;
 			startTime = SDL_GetTicks();
 		}
 	}
