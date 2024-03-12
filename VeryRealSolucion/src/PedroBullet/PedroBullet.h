@@ -23,7 +23,7 @@ class btPersistentManifold;
 enum PBShapes;
 enum PBMovementType;
 class RigidBodyComponent;
-class Collider;
+class ColliderComponent;
 
 class PedroBullet : public VeryReal::Manager<PedroBullet> {
 

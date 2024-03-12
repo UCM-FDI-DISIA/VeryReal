@@ -3,7 +3,7 @@
 #include "TransformComponent.h"
 #include <btBulletDynamicsCommon.h>
 #include "Entity.h"
-#include "Collider.h"
+#include "ColliderComponent.h"
 
 using namespace VeryReal;
 
@@ -39,7 +39,7 @@ void RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
     rigidBody.reset(new btRigidBody(rbInfo));
 
     //Inicializar el componente colider
-    collider = this->GetEntity()->GetComponent<Collider>("collider");
+    collider = this->GetEntity()->GetComponent<ColliderComponent>("collider");
 
     if (!collider)
     {

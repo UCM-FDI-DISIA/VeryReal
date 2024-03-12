@@ -24,7 +24,7 @@
     <ClCompile Include="..\..\src\PedroBullet\BasicPhysicsWorld.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\PedroBullet\Collider.cpp">
+    <ClCompile Include="..\..\src\PedroBullet\ColliderComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\PedroBullet\PhysicsManager.cpp">
@@ -53,7 +53,7 @@
     <ClInclude Include="..\..\src\PedroBullet\BasicPhysicsWorld.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\PedroBullet\Collider.h">
+    <ClInclude Include="..\..\src\PedroBullet\ColliderComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\PedroBullet\PhysicsManager.h">

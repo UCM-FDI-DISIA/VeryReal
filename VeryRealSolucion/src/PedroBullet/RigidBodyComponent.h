@@ -18,7 +18,7 @@
 namespace VeryReal {
 
     class TransformComponent;
-    class Collider;
+    class ColliderComponent;
     class RigidBodyComponent : public Component {
     public:
         RigidBodyComponent(PBShapes shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, PBMovementType movementType = MOVEMENT_TYPE_DYNAMIC, bool trigger = false);
@@ -59,7 +59,7 @@ namespace VeryReal {
         float friction;
         float restitution;
         PBMovementType movementType;
-        Collider* collider = nullptr;
+        ColliderComponent* collider = nullptr;
         void InitializeRigidBody(PBShapes shapeType);
         btCollisionShape* CreateCollisionShape(PBShapes shapeType);
     };

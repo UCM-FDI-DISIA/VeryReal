@@ -1,7 +1,7 @@
 #include "CreatorColliderComponent.h"
-#include "Collider.h"
+#include "ColliderComponent.h"
 using namespace VeryReal;
 Component* CreatorColliderComponent::CreatorSpecificComponent() {
-	Component* c = new Collider();
+	Component* c = new ColliderComponent();
 	return c;
 }

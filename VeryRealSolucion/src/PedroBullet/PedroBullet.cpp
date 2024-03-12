@@ -12,7 +12,7 @@
 #include <LinearMath/btVector3.h>
 #include "RigidBodyComponent.h"
 #include "PhysicsValues.h"
-#include "Collider.h"
+#include "ColliderComponent.h"
 
 // Constructor
 PedroBullet::PedroBullet() :
@@ -49,8 +49,8 @@ void callBackEnter(btPersistentManifold* const& manifold) {
     //Si los cuerpos NO son nullptr
     if (ent1 && ent2) {
 
-        VeryReal::Collider* colliderEntity1 = static_cast<VeryReal::Collider*>(ent1->getUserPointer());
-        VeryReal::Collider* colliderEntity2 = static_cast<VeryReal::Collider*>(ent2->getUserPointer());
+        VeryReal::ColliderComponent* colliderEntity1 = static_cast<VeryReal::ColliderComponent*>(ent1->getUserPointer());
+        VeryReal::ColliderComponent* colliderEntity2 = static_cast<VeryReal::ColliderComponent*>(ent2->getUserPointer());
 
         //Si tienen colliders, colisionan
         if (colliderEntity1 && colliderEntity2)
@@ -68,8 +68,8 @@ void callBackExit(btPersistentManifold* const& manifold) {
 
     if (ent1 && ent2) {
 
-        VeryReal::Collider* colliderEntity1 = static_cast<VeryReal::Collider*>(ent1->getUserPointer());
-        VeryReal::Collider* colliderEntity2 = static_cast<VeryReal::Collider*>(ent2->getUserPointer());
+        VeryReal::ColliderComponent* colliderEntity1 = static_cast<VeryReal::ColliderComponent*>(ent1->getUserPointer());
+        VeryReal::ColliderComponent* colliderEntity2 = static_cast<VeryReal::ColliderComponent*>(ent2->getUserPointer());
         if (colliderEntity1 && colliderEntity2)
         {
             colliderEntity1->OnCollisionExit(colliderEntity2->GetEntity());
@@ -87,8 +87,8 @@ bool callBackStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
 
     if (ent1 && ent2) {
 
-        VeryReal::Collider* colliderEntity1 = static_cast<VeryReal::Collider*>(ent1->getUserPointer());
-        VeryReal::Collider* colliderEntity2 = static_cast<VeryReal::Collider*>(ent2->getUserPointer());
+        VeryReal::ColliderComponent* colliderEntity1 = static_cast<VeryReal::ColliderComponent*>(ent1->getUserPointer());
+        VeryReal::ColliderComponent* colliderEntity2 = static_cast<VeryReal::ColliderComponent*>(ent2->getUserPointer());
         if (colliderEntity1 && colliderEntity2)
         {
             colliderEntity1->OnCollisionStay(colliderEntity2->GetEntity());
