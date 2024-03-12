@@ -144,3 +144,5 @@ void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT)
     if (mT == MOVEMENT_TYPE_KINEMATIC)
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
 }
+
+

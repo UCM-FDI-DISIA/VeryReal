@@ -60,7 +60,7 @@ namespace VeryReal {
         float restitution;
         PBMovementType movementType;
         ColliderComponent* collider = nullptr;
-        void InitializeRigidBody(PBShapes shapeType);
+        void InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger);
         btCollisionShape* CreateCollisionShape(PBShapes shapeType);
     };
 
