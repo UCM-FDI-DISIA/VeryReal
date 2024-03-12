@@ -1,4 +1,4 @@
-#include "Camera.h"
+#include "CameraComponent.h"
 #include <OgreViewport.h>
 #include <iostream>
 #include <Ogre.h>
@@ -8,29 +8,12 @@
 
 using namespace VeryReal;
 using namespace Ogre;
-
-    Camara::Camara(std::string name, Ogre::ColourValue color, Ogre::RenderWindow* ogre_window,
-        Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset ){
-       
-        //camara
-        mNode = mgr->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
-        mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-        mNode->setPosition(0, 0, 30);
-        camara = mgr->createCamera(name); // objeto y camara en si 
-        camara->setNearClipDistance(1); //queremos que serenderice lo mas cerca posible desde la camara
-        mNode->attachObject(camara);
-        vewport = ogre_window->addViewport(camara);
-
-        //cambio de color de fondo
-        vewport->setBackgroundColour(color);
-         
-    }
   
-    Camara::~Camara()
+CameraComponent::~CameraComponent()
     {
        
     }
-    void Camara::InitComponent(std::string name, Vector3 color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset) {
+    void CameraComponent::InitComponent(std::string name, Vector3 color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset) {
        
 
             //camara
@@ -48,68 +31,68 @@ using namespace Ogre;
 
     }
 
-    void Camara::lookAt( VeryReal::Vector3 pos)
+    void CameraComponent::lookAt( VeryReal::Vector3 pos)
     {
         Ogre::Vector3 p(pos.GetX(), pos.GetY(), pos.GetZ());
         mNode->lookAt(p, Ogre::Node::TransformSpace::TS_PARENT);
     }
 
-    void Camara::translate(float x, float y, float z)
+    void CameraComponent::translate(float x, float y, float z)
     {
         mNode->translate(x, y, z, Ogre::Node::TransformSpace::TS_LOCAL);
     }
 
-    void Camara::roll(float d)
+    void CameraComponent::roll(float d)
     {
         mNode->roll(Ogre::Degree(d));
     }
 
-    void Camara::yaw(float d)
+    void CameraComponent::yaw(float d)
     {
         mNode->yaw(Ogre::Degree(d));
     }
 
-    void Camara::pitch(float d)
+    void CameraComponent::pitch(float d)
     {
         mNode->pitch(Ogre::Degree(d));
     }
-    void Camara::Offset(VeryReal::Vector2 offset)
+    void CameraComponent::Offset(VeryReal::Vector2 offset)
     {
         camara->setFrustumOffset(offset.GetX(), offset.GetY());
     }
-    void Camara::setNearClipDistance(float t_clip)
+    void CameraComponent::setNearClipDistance(float t_clip)
     {
         camara->setNearClipDistance(t_clip);
     }
 
-    void Camara::setFarClipDistance(float t_clip)
+    void CameraComponent::setFarClipDistance(float t_clip)
     {
         camara->setFarClipDistance(t_clip);
     }
 
-    void Camara::setViewPortBackgroundColour(Ogre::ColourValue t_vp_color)
+    void CameraComponent::setViewPortBackgroundColour(Ogre::ColourValue t_vp_color)
     {
         vewport->setBackgroundColour(t_vp_color);
     }
 
-    void Camara::desactiveViewport()
+    void CameraComponent::desactiveViewport()
     {
         vewport->setVisibilityMask(0);
     }
 
-    void Camara::activeViewport()
+    void CameraComponent::activeViewport()
     {
         vewport->setVisibilityMask(1);
     }
-    void Camara::desactive()
+    void CameraComponent::desactive()
     {
         vewport->setCamera(nullptr);
     }
-    Ogre::SceneNode* Camara::getNode()
+    Ogre::SceneNode* CameraComponent::getNode()
     {
         return mNode;
     }
-    void Camara::active()
+    void CameraComponent::active()
     {
         vewport->setCamera(camara);
     }

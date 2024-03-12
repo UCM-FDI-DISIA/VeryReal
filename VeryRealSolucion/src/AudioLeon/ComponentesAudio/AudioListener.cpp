@@ -5,22 +5,14 @@
 #include <ErrorInformant.h>
 #include <SceneManager.h>
 
-
-//Component* FactoryAudioListener::create(Parameters& params)
-//{
-//	Audio_Listener* audioListener = new Audio_Listener();
-//
-//	return audioListener;
-//}
-//
-//void FactoryAudioListener::destroy(Component* component)
-//{
-//	delete component;
-//}
-
-Audio_Listener::Audio_Listener()
-{
+using namespace VeryReal;
+Component* CreatorAudioListener::CreatorSpecificComponent() {
+	Audio_Listener* a = new Audio_Listener();
+	a->InitComponent();
+	return a;
 }
+
+Audio_Listener::Audio_Listener(){}
 
 Audio_Listener::~Audio_Listener()
 {
@@ -28,7 +20,7 @@ Audio_Listener::~Audio_Listener()
 	UpdateListenersPosition(listener_index, { 999999,999999,999999 }, { 0,0,0 }, { 0,0,0 }, { 0,0,0 });
 }
 
-void Audio_Listener::Start()
+void Audio_Listener::InitComponent()
 {
 	// Get the next available index for a listener in the sound manager
 	listener_index = AL().GetNextUsefulListenerIndex();

@@ -1,5 +1,5 @@
 #include "CreatorCameraComponent.h"
-#include "Camera.h"
+#include "CameraComponent.h"
 VeryReal::Component* VeryReal::CreatorCameraComponent::CreatorSpecificComponent() {
-	return new VeryReal::Camara();
+	return new VeryReal::CameraComponent();
 }

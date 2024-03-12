@@ -12,48 +12,48 @@
 #include <OgreVector3.h>
 #include "SGTechniqueResolverListener.h"
 //mehrender, camara y eso
-VeryReal::RenderManager::RenderManager():window_(nullptr),root_(nullptr), scenemanager_(nullptr), rendersystem_(nullptr), viewport_(nullptr), filesystemlayer_(nullptr){
+VeryReal::RenderManager::RenderManager():window(nullptr),root(nullptr), scene_manager(nullptr), render_system(nullptr), viewport(nullptr), filesystem_layer(nullptr){
     
 }
 VeryReal::RenderManager::~RenderManager() {
 
-    if (root_ == nullptr)return;
+    if (root == nullptr) { std::cerr << "RenderManager no ha sido inicializado\n"; return; }
     //vuelta a la escena por defecto
-    root_->destroySceneManager(scenemanager_);
+    root->destroySceneManager(scene_manager);
     Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
 
     UnloadShaders();
-    delete(window_);
-    window_ = nullptr;
-    delete root_;
-    root_ = nullptr;
-    delete filesystemlayer_;
-    filesystemlayer_ = nullptr;
+    delete(window);
+    window = nullptr;
+    delete root;
+    root = nullptr;
+    delete filesystem_layer;
+    filesystem_layer = nullptr;
     
 }
 void VeryReal::RenderManager::InitManager(std::string const& name) {
-    appname_ = name;
-	filesystemlayer_ = new Ogre::FileSystemLayer(appname_);
+    appname = name;
+	filesystem_layer = new Ogre::FileSystemLayer(appname);
     Ogre::String pluginsPath;
-    pluginsPath = filesystemlayer_->getConfigFilePath("plugins.cfg");
+    pluginsPath = filesystem_layer->getConfigFilePath("plugins.cfg");
     if (!Ogre::FileSystemLayer::fileExists(pluginsPath))
     {
         std::cerr << "ERROR, no se ha encontrado el archivo  plugins.cfg en la ruta: " << pluginsPath;
     }
     //lo pongo asi y no la rita porque en teoria va a estar al lado del .exe
-    Ogre::String ogrepath = filesystemlayer_->getConfigFilePath("ogre.cfg");
+    Ogre::String ogrepath = filesystem_layer->getConfigFilePath("ogre.cfg");
 
-    root_= new Ogre::Root(pluginsPath, ogrepath);
-    if (!root_->restoreConfig())
+    root= new Ogre::Root(pluginsPath, ogrepath);
+    if (!root->restoreConfig())
     {
-         root_->showConfigDialog(nullptr);
+         root->showConfigDialog(nullptr);
     }
     //inicializamos root pero sin ventana
-    root_->initialise(false);
+    root->initialise(false);
    
-    const Ogre::RenderSystemList renderSystems = root_->getAvailableRenderers();
-    rendersystem_ = renderSystems.front();
-    root_->setRenderSystem(rendersystem_);
+    const Ogre::RenderSystemList renderSystems = root->getAvailableRenderers();
+    render_system = renderSystems.front();
+    root->setRenderSystem(render_system);
 
    
 
@@ -62,19 +62,19 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
     SDL_Init(SDL_INIT_EVERYTHING);//mientras no esta todo bien
 
 
-    scenemanager_ = root_->createSceneManager();
-    rendersystem_->_initRenderTargets();//mira esto ni idea que hace
+    scene_manager = root->createSceneManager();
+    render_system->_initRenderTargets();//mira esto ni idea que hace
 
 
-    window_ = new VeryReal::Window(root_, rendersystem_, scenemanager_);
-    window_->CreateWindoww();
+    window = new VeryReal::Window(root, render_system, scene_manager);
+    window->CreateWindoww();
 
-    //root_->startRendering();
+    //root->startRendering();
 
     std::string sec_name;
     std::string type_name;
     std::string arch_name;
-    Ogre::String ogrepath2 = filesystemlayer_->getConfigFilePath("resources.cfg");
+    Ogre::String ogrepath2 = filesystem_layer->getConfigFilePath("resources.cfg");
     Ogre::ConfigFile cf;
     cf.load(ogrepath2);
 
@@ -112,57 +112,58 @@ void VeryReal::RenderManager::LoadResources() {
 void VeryReal::RenderManager::LoadShaders() {
     if (Ogre::RTShader::ShaderGenerator::initialize()) {
 
-        shaderGenerator = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
-        shaderGenerator->addSceneManager(scenemanager_);
+        shader_generator = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
+        shader_generator->addSceneManager(scene_manager);
 
-        materialListener_ = new VeryReal::SGTechniqueResolverListener(shaderGenerator);
-        Ogre::MaterialManager::getSingleton().addListener(materialListener_);
+        material_listener = new VeryReal::SGTechniqueResolverListener(shader_generator);
+        Ogre::MaterialManager::getSingleton().addListener(material_listener);
     }
 }
 void VeryReal::RenderManager::UnloadShaders() {
    
-    if (materialListener_ != nullptr)
+    if (material_listener != nullptr)
     {
-      //  Ogre::MaterialManager::getSingleton().removeListener(materialListener_);
-        delete materialListener_;
-        materialListener_ = nullptr;
+      //  Ogre::MaterialManager::getSingleton().removeListener(material_listener);
+        delete material_listener;
+        material_listener = nullptr;
     }
 
     // Destroy RTShader system.
-    if (shaderGenerator != nullptr)
+    if (shader_generator!= nullptr)
     {
+       
         Ogre::RTShader::ShaderGenerator::destroy();
-        shaderGenerator = nullptr;
+        shader_generator = nullptr;
     }
 }
 Ogre::RenderWindow* VeryReal::RenderManager::GetRenderWindow() {
-    return window_->GetOgreWindow();
+    return window->GetOgreWindow();
 }
 Ogre::SceneManager* VeryReal::RenderManager::SceneManagerOgree() {
-    return scenemanager_;
+    return scene_manager;
 }
 void VeryReal::RenderManager::Update(const double& dt) {
-    root_->renderOneFrame();
+    root->renderOneFrame();
    
  }
 
 Ogre::SceneNode* VeryReal::RenderManager::CreateNode(VeryReal::Vector3 vec) {
  
     //DA ERROR DE AMBIUEGAD CON VECTOR3 NUESTRO Y VECTOR3 OGRE NO SE
-    Ogre::SceneNode* node = scenemanager_->getRootSceneNode()->createChildSceneNode();
+    Ogre::SceneNode* node = scene_manager->getRootSceneNode()->createChildSceneNode();
     //AQUI VA EL SET POS 
     node->setPosition({ vec.GetX(),vec.GetY(),vec.GetZ() });
     return node;
 }
 Ogre::SceneNode* VeryReal::RenderManager::CreateChildSceneNode(Ogre::SceneNode* nod, VeryReal::Vector3 vec) {
-    Ogre::SceneNode* node = scenemanager_->getRootSceneNode()->createChildSceneNode();
+    Ogre::SceneNode* node = scene_manager->getRootSceneNode()->createChildSceneNode();
     //AQUI VA EL SET POS 
     node->setPosition({ vec.GetX(),vec.GetY(),vec.GetZ() });
     return node;
 }
 void VeryReal::RenderManager::DeleteNode(Ogre::SceneNode* nod) {
     
-    scenemanager_->destroySceneNode(nod);
+    scene_manager->destroySceneNode(nod);
 
    // delete(nod);
 }
