@@ -24,6 +24,7 @@ public:
 	void Error(int status);
 	// Método para probar la creación de entidades y componentes mediante Lua
 	void Test();
+	inline lua_State* GetLuaState() { return lua_state; }
 };
 
 // Instancia Singleton

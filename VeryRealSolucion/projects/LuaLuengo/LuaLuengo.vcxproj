@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\LuaLuengo\LuaLuengo.cpp" />
     <ClCompile Include="..\..\src\LuaLuengo\ScriptManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -20,7 +19,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\LuaLuengo\LuaLuengo.h" />
     <ClInclude Include="..\..\src\LuaLuengo\ScriptManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

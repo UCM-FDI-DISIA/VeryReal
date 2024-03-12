@@ -6,7 +6,7 @@
 #include <SceneManager.h>
 #include <Entity.h>
 #include <Creator.h>
-#include <CreatorTransformComponent.h>
+#include <TransformComponent.h>
 
 extern "C"
 {
