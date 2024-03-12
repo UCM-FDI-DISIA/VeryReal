@@ -146,19 +146,23 @@ void VeryReal::RenderManager::Update(const double& dt) {
    
  }
 
-Ogre::SceneNode* VeryReal::RenderManager::CreateNode() {
+Ogre::SceneNode* VeryReal::RenderManager::CreateNode(VeryReal::Vector3 vec) {
  
     //DA ERROR DE AMBIUEGAD CON VECTOR3 NUESTRO Y VECTOR3 OGRE NO SE
     Ogre::SceneNode* node = scenemanager_->getRootSceneNode()->createChildSceneNode();
     //AQUI VA EL SET POS 
+    node->setPosition({ vec.GetX(),vec.GetY(),vec.GetZ() });
     return node;
 }
-Ogre::SceneNode* VeryReal::RenderManager::CreateChildSceneNode(Ogre::SceneNode* nod) {
+Ogre::SceneNode* VeryReal::RenderManager::CreateChildSceneNode(Ogre::SceneNode* nod, VeryReal::Vector3 vec) {
     Ogre::SceneNode* node = scenemanager_->getRootSceneNode()->createChildSceneNode();
     //AQUI VA EL SET POS 
+    node->setPosition({ vec.GetX(),vec.GetY(),vec.GetZ() });
     return node;
 }
 void VeryReal::RenderManager::DeleteNode(Ogre::SceneNode* nod) {
     
+    scenemanager_->destroySceneNode(nod);
 
+   // delete(nod);
 }

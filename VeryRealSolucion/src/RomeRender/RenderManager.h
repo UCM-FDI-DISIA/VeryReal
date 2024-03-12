@@ -15,6 +15,7 @@ namespace VeryReal {
 	class Animator;
 	class SGTechniqueResolverListener;
 
+
 }
 
 
@@ -54,12 +55,12 @@ namespace VeryReal {
 
 		// Crea un nodo de escena en Ogre y devuelve un puntero a él
 		// @return Puntero al nodo de escena creado
-		Ogre::SceneNode* CreateNode();
+		Ogre::SceneNode* CreateNode(VeryReal::Vector3 vec = Vector3(0, 0, 0));
 
 		// Crea un nodo de escena secundario y lo adjunta al nodo proporcionado
 		// @param nod Nodo de escena al que se adjuntará el nuevo nodo secundario
 		// @return Puntero al nodo de escena secundario creado
-		Ogre::SceneNode* CreateChildSceneNode(Ogre::SceneNode* nod);
+		Ogre::SceneNode* CreateChildSceneNode(Ogre::SceneNode* nod, VeryReal::Vector3 vec=Vector3(0,0,0));
 
 		// Elimina un nodo de escena de Ogre
 		// @param nod Puntero al nodo de escena que se eliminará

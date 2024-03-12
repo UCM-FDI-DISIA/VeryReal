@@ -19,6 +19,7 @@ void VeryReal::Light::Update() {
  }
 void VeryReal::Light::InitComponent(int type, VeryReal::Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
 	trans_ = GetEntity()->GetComponent<TransformComponent>("transform");
+	if (trans_ == nullptr)std::cerr << "NO SE PUEDE INICIALIZAR EL COMPONENTE LIGHT DEBIDO A QUE NO TIENE EL COMPONENTE TRANSFORM\n";
 	light_ = VeryReal::RenderManager::Instance()->SceneManagerOgree()->createLight("LuzPrincipal");
 	mNode = VeryReal::RenderManager::Instance()->CreateNode();
 	
