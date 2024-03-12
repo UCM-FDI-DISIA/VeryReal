@@ -1,5 +1,5 @@
 #include "CreatorMeshRenderComponent.h"
-#include "MeshRender.h"
+#include "MeshRenderComponent.h"
 VeryReal::Component* VeryReal::CreatorMeshRenderComponent::CreatorSpecificComponent() {
-	return new VeryReal::MeshRender();
+	return new VeryReal::MeshRenderComponent();
 }

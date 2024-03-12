@@ -5,11 +5,10 @@
 #include <RenderManager.h>
 #include <Entity.h>
 #include <TransformComponent.h>
-#include <CreatorTransformComponent.h>
-#include <Camera.h>
+#include <CameraComponent.h>
 #include <Light.h>
-#include <MeshRender.h>
-#include <Animator.h>
+#include <MeshRenderComponent.h>
+#include <AnimatorComponent.h>
 #include <ErrorInformant.h>
 #include "Creator.h"
 #include "SceneManager.h"
@@ -36,7 +35,7 @@ int main()
    Entity* camara = s->AddEntity("Cam");
   Component*cam= camara->AddComponent("Camera");
 
-  static_cast<Camara*>(cam)->InitComponent("hola", Vector3(0.8, 0.3, 1), VeryReal::RenderManager::Instance()->GetRenderWindow(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), Vector3(10, 0, 0));
+  static_cast<CameraComponent*>(cam)->InitComponent("hola", Vector3(0.8, 0.3, 1), VeryReal::RenderManager::Instance()->GetRenderWindow(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), Vector3(10, 0, 0));
 
 
    Component* c = e->AddComponent("transform");
@@ -57,14 +56,16 @@ int main()
    animator->SetEntity(e);
   
    //MOMENTANEO
-   static_cast<MeshRender*>(t)->InitComponent(false, "Sinbad.mesh", "hola", "Ogre/Skin", VeryReal::RenderManager::Instance()->CreateNode(),
+
+   static_cast<MeshRenderComponent*>(t)->InitComponent(false, "Sinbad.mesh", "hola", "Ogre/Skin", VeryReal::RenderManager::Instance()->CreateNode(),
        VeryReal::RenderManager::Instance()->SceneManagerOgree(), VeryReal::RenderManager::Instance()->filesystem_layer);
+
    std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("transform") << "\n";
 
    //init, create, play
-   static_cast<Animator*>(animator)->InitComponent(VeryReal::RenderManager::Instance()->SceneManagerOgree(), "hola", static_cast<TransformComponent*>(c), static_cast<MeshRender*>(t));
+   static_cast<AnimatorComponent*>(animator)->InitComponent(VeryReal::RenderManager::Instance()->SceneManagerOgree(), "hola", static_cast<TransformComponent*>(c), static_cast<MeshRenderComponent*>(t));
    //static_cast<Animator*>(animator)->createAnimation("Sinbad.skeleton", 0.10);
-   static_cast<Animator*>(animator)->setAnimation("Dance", true, true);
+   static_cast<AnimatorComponent*>(animator)->setAnimation("Dance", true, true);
    unsigned long long  m_initTime = GetTickCount64();
    auto time = m_initTime;
    //tiempo actual- el tiempo de inicio - el tiempo desde anterior;

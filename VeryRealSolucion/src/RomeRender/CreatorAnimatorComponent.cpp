@@ -1,5 +1,5 @@
 #include "CreatorAnimatorComponent.h"
-#include "Animator.h"
+#include "AnimatorComponent.h"
 VeryReal::Component* VeryReal::CreatorAnimatorComponent::CreatorSpecificComponent() {
-	return new VeryReal::Animator();
+	return new VeryReal::AnimatorComponent();
 }

@@ -21,16 +21,16 @@
     <ClCompile Include="..\..\src\RomeRender\Window.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\RomeRender\Animator.cpp">
+    <ClCompile Include="..\..\src\RomeRender\AnimatorComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\RomeRender\Camera.cpp">
+    <ClCompile Include="..\..\src\RomeRender\CameraComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\RomeRender\Light.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\RomeRender\MeshRender.cpp">
+    <ClCompile Include="..\..\src\RomeRender\MeshRenderComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\RomeRender\RenderManager.cpp">
@@ -59,16 +59,16 @@
     <ClInclude Include="..\..\src\RomeRender\Window.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\RomeRender\Animator.h">
+    <ClInclude Include="..\..\src\RomeRender\AnimatorComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\RomeRender\Camera.h">
+    <ClInclude Include="..\..\src\RomeRender\CameraComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\Light.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\RomeRender\MeshRender.h">
+    <ClInclude Include="..\..\src\RomeRender\MeshRenderComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\RenderManager.h">
