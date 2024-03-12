@@ -51,8 +51,13 @@ funcionalidades:
 
 ### TonInput <br>
 
+TonInput es el proyecto encargado del input del motor a través de SDL. Para ello se vale de un manager con funciones y variables para manejar los eventos tanto de teclado, ratón como de mando. Clases implicadas:
 
-.
+        - InputManager: manager que se encarga de actualizar los estados del ratón, teclado y mando. En el método Update compruebará si se ha dado algún tipo de evento y lo gestiona en caso de que se haya dado. 
+
+        - TonMapeo: clase que contiene enums para el parseo entre variables de SDL y nuestras propias variables.
+
+
 
 <br>
 
@@ -65,16 +70,16 @@ Actualmente también contamos con 2 Proyectos por Módulo:
 
 ## Autores
 <br>
-<li> Pablo Cao
-<li> Agustín Castro
-<li> Pablo Cerrada
-<li> Francisco Miguel Galván
-<li> Sheila Julvez
-<li> Pablo Martinez
-<li> Jose Moreno
-<li> Cristina Mora
-<li> Manuel Prada
-<li> Jose Eduardo Robles
-<li> Alfonso Jaime Rodulfo
 
+- [Pablo Cao](https://github.com/Cao33).
+- [ Agustín Castro](https://github.com/AgusCDT).
+- [Pablo Cerrada](https://github.com/PabloCerrada).
+- [ Francisco Miguel Galván](https://github.com/CiscoGalvan).
+- [ Pablo Martinez](https://github.com/Ares75643).
+- [Jose Moreno](https://github.com/JoseMorenob).
+- [Cristina Mora](https://github.com/CristinaMora).
+- [Manuel Prada](https://github.com/manuelpr07).
+- [Sheila Julvez](https://github.com/sheilajulvez).
+- [Jose Eduardo Robles](https://github.com/josepk01).
+- [Alfonso Jaime Rodulfo](https://github.com/ARodulfo).
 
