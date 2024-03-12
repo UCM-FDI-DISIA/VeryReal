@@ -34,7 +34,6 @@ private:
     btCollisionDispatcher* collisionDispatcher;
     btBroadphaseInterface* broadphase;
     btSequentialImpulseConstraintSolver* solver;
-   /* svector<RigidBodyComponent*> rigidbodies;*/
 
 
 protected:
