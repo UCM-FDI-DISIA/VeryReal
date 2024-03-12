@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-class SDL_Window;
+struct SDL_Window;
 
 namespace Ogre {
 
