@@ -21,9 +21,9 @@ namespace VeryReal {
 		virtual ~Entity();
 
 		//Añade componente a la Entidad
-		template< typename ...Ts>
-		inline Component* AddComponent(component_name c_name, Ts && ... args) {
-			Component* component= Creator::Instance()->CallSpecificCreator(c_name, std::forward<Ts>(args)...);
+		
+		inline Component* AddComponent(component_name c_name) {
+			Component* component= Creator::Instance()->CallSpecificCreator(c_name);
 			/*	T* component = new T(forward<Ts>(args)...);*/
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);

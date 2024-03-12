@@ -77,9 +77,6 @@
     <ClInclude Include="..\..\src\RomeRender\conversorvectores.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\RomeRender\CreatorAnimatorComponent.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\CreatorCameraComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>

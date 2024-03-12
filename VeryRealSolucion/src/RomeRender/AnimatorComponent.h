@@ -4,7 +4,7 @@
 #include "Component.h"
 #include <string>
 #include <unordered_map>
-
+#include "CreatorComponent.h"
 namespace Ogre
 {
 	class AnimationState;
@@ -20,6 +20,15 @@ namespace VeryReal {
 	class TransformComponent;
 	class Vector3;
 	class Vector4;
+
+	class CreatorAnimatorComponent :public CreatorComponent
+	{
+	public:
+		CreatorAnimatorComponent() {}
+		virtual ~CreatorAnimatorComponent() {}
+		Component* CreatorSpecificComponent() override;
+	};
+
 	class  AnimatorComponent : public Component
 	{
 
@@ -27,7 +36,7 @@ namespace VeryReal {
 			//constructora de la clase animación que es un componente de cualquier entidad que queramos que tenga movimiento
 			AnimatorComponent();
 			// Inicializa el componente con un nombre, un gestor de escena, y las componentes de transformación y renderizado de malla.
-			void InitComponent(Ogre::SceneManager* m_scene_mng, std::string name, TransformComponent* trans, MeshRenderComponent* meshrender);
+			bool InitComponent( std::string name);
 			// Destructor de la clase AnimatorComponent.
 			virtual ~AnimatorComponent(); 
 			// Crea una animación con el nombre y la duración especificados.

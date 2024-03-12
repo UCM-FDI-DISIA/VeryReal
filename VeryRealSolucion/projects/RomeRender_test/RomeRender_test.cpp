@@ -14,7 +14,6 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "CreatorLightComponent.h"
-#include "CreatorAnimatorComponent.h"
 #include "CreatorCameraComponent.h"
 #include "CreatorMeshRenderComponent.h"
 
@@ -25,7 +24,7 @@ int main()
    VeryReal::RenderManager::Instance()->InitManager("app");
    VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
    VeryReal::Creator::Instance()->AddCreator("MeshRender", new VeryReal::CreatorMeshRenderComponent());
-   VeryReal::Creator::Instance()->AddCreator("Animator", new VeryReal::CreatorAnimatorComponent());
+   Creator::Instance()->AddCreator("Animator", new CreatorAnimatorComponent());
   VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
   VeryReal::Creator::Instance()->AddCreator("Light", new VeryReal::CreatorLightComponent());
    Scene* s = SceneManager::Instance()->AddScene("Play");
@@ -35,7 +34,8 @@ int main()
    Entity* camara = s->AddEntity("Cam");
   Component*cam= camara->AddComponent("Camera");
 
-  static_cast<CameraComponent*>(cam)->InitComponent("hola", Vector3(0.8, 0.3, 1), VeryReal::RenderManager::Instance()->GetRenderWindow(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), Vector3(10, 0, 0));
+  static_cast<CameraComponent*>(cam)->InitComponent("hola", Vector3(0.8, 0.3, 1), 
+      VeryReal::RenderManager::Instance()->GetRenderWindow(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), Vector3(10, 0, 0));
 
 
    Component* c = e->AddComponent("transform");
@@ -52,8 +52,8 @@ int main()
 
 
    Component* animator = e->AddComponent("Animator");
-  
-   animator->SetEntity(e);
+
+   //animator->SetEntity(e);
   
    //MOMENTANEO
 
@@ -63,7 +63,7 @@ int main()
    std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("transform") << "\n";
 
    //init, create, play
-   static_cast<AnimatorComponent*>(animator)->InitComponent(VeryReal::RenderManager::Instance()->SceneManagerOgree(), "hola", static_cast<TransformComponent*>(c), static_cast<MeshRenderComponent*>(t));
+  //bool p= static_cast<AnimatorComponent*>(animator)->InitComponent("hola");
    //static_cast<Animator*>(animator)->createAnimation("Sinbad.skeleton", 0.10);
    static_cast<AnimatorComponent*>(animator)->setAnimation("Dance", true, true);
    unsigned long long  m_initTime = GetTickCount64();

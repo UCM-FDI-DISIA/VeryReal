@@ -7,12 +7,21 @@
 #include "VariantClass.h"
 using namespace VeryReal;
 using namespace std;
+
+
+Audio_Source::Audio_Source()
+{}
+
+Audio_Source::~Audio_Source()
+{
+    AL().DeleteSound(sound_name);
+}
 Component* CreatorAudioSource::CreatorSpecificComponent() {
     Audio_Source* a = new Audio_Source;
     string name, path, groupchannel;
-    bool onstart=false, threed=false, loop=false;
-    float volume=0.1, mindistance=1.0f, maxdistance =60.0f;
-    
+    bool onstart = false, threed = false, loop = false;
+    float volume = 0.1, mindistance = 1.0f, maxdistance = 60.0f;
+
     if (std::holds_alternative<string>(parameters_map.at("name")->GetVariant())) {
         name = std::get<string>(parameters_map.at("name")->GetVariant());
     }
@@ -43,16 +52,8 @@ Component* CreatorAudioSource::CreatorSpecificComponent() {
     a->InitComponent(name, path, onstart, groupchannel, volume, threed, loop, mindistance, maxdistance);
     return a;
 }
-
-Audio_Source::Audio_Source()
-{}
-
-Audio_Source::~Audio_Source()
-{
-    AL().DeleteSound(sound_name);
-}
-bool Audio_Source::InitComponent(std::string name, std::string path, bool onstart = false, std::string groupchannel = "master", float volume = 0.1,
-    bool threed = false, bool loop = false, float mindistance = 1.0f, float maxdistance = 60.0f) {
+bool Audio_Source::InitComponent(std::string name, std::string path, bool onstart, std::string groupchannel, float volume,
+    bool threed, bool loop, float mindistance, float maxdistance) {
 
     SetSourceName(name);
     SetSourcePath(path);

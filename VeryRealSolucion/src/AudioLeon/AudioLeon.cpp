@@ -2,7 +2,9 @@
 #include <fmod.hpp>
 #include <fmod_errors.h>
 #include <algorithm>
+
 using namespace VeryReal;
+using namespace FMOD;
 Audio_Leon::Audio_Leon() {
 	result = FMOD::System_Create(&sound_system); // Create the main system object.
 	CheckFMODResult(result);
@@ -106,7 +108,7 @@ bool Audio_Leon::ChangeChannelVolume(std::string channelGroupName, float volume)
 	NameToLower(channelGroupName);
 	auto returnedGroup = channel_group_maps.find(channelGroupName);
 	if (returnedGroup == channel_group_maps.end()) return false;
-	result = returnedGroup->second->SetVolume(volume);
+	result = returnedGroup->second->setVolume(volume);
 	return CheckFMODResult(result);
 }
 
@@ -151,7 +153,7 @@ void Audio_Leon::AddNewSound(std::pair<std::string, FMOD::Sound*> newSound) {
 
 bool Audio_Leon::StopEverySound() {
 	for (auto i : channels_vector) {
-		i->Stop();
+		i->stop();
 	}
 	return true;
 }
@@ -203,7 +205,7 @@ float Audio_Leon::GetGroupChannelVolume(std::string groupName) {
 	FMOD::ChannelGroup* groupChannel = GetGroupChannel(groupName);
 	float volume;
 	if (groupChannel != nullptr) {
-		result = groupChannel->GetVolume(&volume);
+		result = groupChannel->getVolume(&volume);
 		CheckFMODResult(result);
 		return volume;
 	}
@@ -278,7 +280,7 @@ void Audio_Leon::AudioSourceListenerTest()
 	if (reproChannel == nullptr) {
 		for (int i = 0; i < AL().GetChannelsVector().size(); i++) {
 			bool IsPlaying;
-			AL().GetChannelsVector()[i]->IsPlaying(&IsPlaying);
+			AL().GetChannelsVector()[i]->isPlaying(&IsPlaying);
 
 			if (IsPlaying) continue;
 			this->result = AL().GetSoundSystem()->playSound(newSoundHandle, playedChannelGroup, false, &AL().GetChannelsVector()[i]);
@@ -286,7 +288,7 @@ void Audio_Leon::AudioSourceListenerTest()
 
 			reproChannel = AL().GetChannelsVector()[i];
 
-			AL().GetChannelsVector()[i]->SetVolume(0.01f);
+			AL().GetChannelsVector()[i]->setVolume(0.01f);
 
 			AL().GetLastPlayedMap()[newSoundHandle] = i;
 

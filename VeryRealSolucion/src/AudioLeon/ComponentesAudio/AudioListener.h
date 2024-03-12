@@ -10,9 +10,7 @@ namespace FMOD {
 	class Sound;
 }
 
-
-	
-	class CreatorAudioListener :public CreatorComponent {
+	class CreatorAudioListener :public VeryReal::CreatorComponent {
 	public :
 		CreatorAudioListener() {}
 		virtual ~CreatorAudioListener(){}
@@ -21,7 +19,7 @@ namespace FMOD {
 
 	//FMOD ofrece "escuchadores" dinámicos que hacen de veces de receptores de los sonidos reproducidos por FMOD.
 	//Este componente gestiona el listener de una entidad y actualiza sus parámetros.
-	class Audio_Listener : public Component
+	class Audio_Listener : public VeryReal::Component
 	{
 	public:
 		//Constructora por defecto de AudioListener.

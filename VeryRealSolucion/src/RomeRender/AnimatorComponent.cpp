@@ -1,5 +1,3 @@
-#include "AnimatorComponent.h"
-#include "MeshRenderComponent.h"
 #include <OgreAnimation.h>
 #include <OgreKeyFrame.h>
 #include <OgreSceneManager.h>
@@ -8,9 +6,23 @@
 #include <Vector4.h>
 #include <Entity.h>
 #include <OgreAnimationState.h>
+#include "RenderManager.h"
+#include "AnimatorComponent.h"
+#include "MeshRenderComponent.h"
+#include "TransformComponent.h"
+
 using namespace VeryReal;
 using namespace std;
 
+Component* CreatorAnimatorComponent::CreatorSpecificComponent() {
+    string name;
+    AnimatorComponent* a = new AnimatorComponent();
+    if (std::holds_alternative<string>(parameters_map.at("name")->GetVariant())) {
+        name = std::get<string>(parameters_map.at("name")->GetVariant());
+    }
+    a->InitComponent(name);
+    return a;
+}
 
  AnimatorComponent::AnimatorComponent()
 {
@@ -23,23 +35,18 @@ using namespace std;
 
     
 }
-void AnimatorComponent::InitComponent(Ogre::SceneManager* m_scene_mng, std::string name, TransformComponent* trans, MeshRenderComponent* meshrender) {
-    scene_mngr = m_scene_mng;
+bool AnimatorComponent::InitComponent(std::string name) {
+    scene_mngr = RenderManager::Instance()->SceneManagerOgree();
     name = name;
     num_animations_active = (0);
-    transform = trans;
 
-    if (transform == nullptr)
-    {
-        throw std::exception("no existe Transform");
-    }
-
-    meshRender = meshrender;
-
-    if (meshRender == nullptr)
-    {
-        throw std::exception("no existe MeshRender");
-    }
+    if (GetEntity()->HasComponent("transform")) transform = GetEntity()->GetComponent<TransformComponent>("transform");
+    else //throw std::exception("no existe Transform"); 
+        return false;
+    
+    if(GetEntity()->HasComponent("meshrender"))meshRender = GetEntity()->GetComponent<MeshRenderComponent>("meshrender");
+    else //throw std::exception("no existe MeshRender");
+        return false;
 
     animations = std::unordered_map<std::string, Ogre::AnimationState*>();
     if (meshRender->getOgreEntity()->getAllAnimationStates() != nullptr)
@@ -51,6 +58,7 @@ void AnimatorComponent::InitComponent(Ogre::SceneManager* m_scene_mng, std::stri
                 animations.insert({ it->first, it->second });
             }
         }
+    return true;
 }
 AnimatorComponent::~AnimatorComponent()
 {

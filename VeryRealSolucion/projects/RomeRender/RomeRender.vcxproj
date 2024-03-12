@@ -27,7 +27,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\RomeRender\AnimatorComponent.h" />
-    <ClInclude Include="..\..\src\RomeRender\CreatorAnimatorComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\CameraComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\conversorvectores.h" />
     <ClInclude Include="..\..\src\RomeRender\CreatorCameraComponent.h" />

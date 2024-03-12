@@ -12,7 +12,6 @@ namespace FMOD {
 }
 enum FMOD_RESULT;
 typedef unsigned int FMOD_MODE;
-namespace VeryReal {
 	
 	class Audio_Leon;
 	class TransformComponent;
@@ -31,7 +30,6 @@ namespace VeryReal {
 	class Audio_Source : public Component
 	{
 	public:
-
 
 		//Constructor por defecto.
 		Audio_Source();
@@ -238,8 +236,8 @@ namespace VeryReal {
 		//Variable de control que sirve de comprobación después de hacer uso de cualquiera de las funciones de sistema de sonido.
 		FMOD_RESULT result;
 		//Almacena el componente "Transform" de la entidad a la que este componente esta enlazada.
-		TransformComponent* transform = nullptr;
+		VeryReal::TransformComponent* transform = nullptr;
 	};
-}
+
 #endif
 
