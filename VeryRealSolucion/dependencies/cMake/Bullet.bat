@@ -37,8 +37,7 @@ echo Compilando Bullet (Versiones Estáticas)
 cmake --build . --config Release
 cmake --build . --config Debug
 
-xcopy /y /s "%BULLET_BUILD_STATIC%\lib\Release\*.lib" "%LIB_FOLDERS%"
-xcopy /y /s "%BULLET_BUILD_STATIC%\lib\Debug\*.lib" "%LIB_FOLDERS%"
+
 
 rem Configuración para la compilación de bibliotecas compartidas
 echo Configurando la compilacion de Bullet (Versiones Compartidas)
