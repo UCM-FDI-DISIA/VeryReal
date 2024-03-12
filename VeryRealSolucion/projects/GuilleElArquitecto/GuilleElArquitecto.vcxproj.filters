@@ -54,9 +54,6 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\GuilleElArquitecto\Creator.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -99,9 +96,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorComponent.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Creator.h">

@@ -5,7 +5,7 @@
 
 namespace VeryReal {
 	class Entity;
-	//using component_name = string;
+	class VariantClass;	
 
 	class Component	//CLASE ABSTRACTA
 	{

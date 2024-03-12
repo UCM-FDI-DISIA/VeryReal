@@ -3,7 +3,7 @@
 #define TRANSFORMCOMPONET
 #include "Component.h"
 #include "Vector3.h"
-
+#include "CreatorComponent.h"
 namespace VeryReal {
 	
 	class TransformComponent : public Component {
@@ -14,7 +14,7 @@ namespace VeryReal {
 		Vector3 scale;
 	public:
 		TransformComponent();
-		TransformComponent(Vector3 position,Vector3 rotation,Vector3 scale);
+		bool InitComponent(Vector3 position, Vector3 rotation, Vector3 scale);
 		virtual ~TransformComponent();
 
 		inline Vector3 GetPosition() { return position; }
@@ -30,6 +30,14 @@ namespace VeryReal {
 		void Translate(Vector3 translateposition);
 		void Rotate(Vector3 rotaterotation);
 		void Scaler(Vector3 scalerscale);
+	};
+
+	class CreatorTransformComponent :public CreatorComponent {
+	private:
+	public:
+		CreatorTransformComponent(){}
+		virtual ~CreatorTransformComponent(){}
+		Component* CreatorSpecificComponent() override;
 	};
 }
 #endif

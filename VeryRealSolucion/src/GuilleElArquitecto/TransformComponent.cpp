@@ -1,22 +1,47 @@
 #include "TransformComponent.h"
-
-VeryReal::TransformComponent::TransformComponent() {
+using namespace VeryReal;
+TransformComponent::TransformComponent() {
 
 }
-VeryReal::TransformComponent::TransformComponent(VeryReal::Vector3 position, VeryReal::Vector3 rotation, VeryReal::Vector3 scale) {
+
+TransformComponent::~TransformComponent() {
+
+}
+bool TransformComponent::InitComponent(Vector3 position, Vector3 rotation, Vector3 scale) {
 	this->position = position;
 	this->rotation = rotation;
 	this->scale = scale;
+	return true;
 }
-VeryReal::TransformComponent::~TransformComponent() {
-
-}
-void VeryReal::TransformComponent::Translate(VeryReal::Vector3 translateposition) {
+void TransformComponent::Translate(VeryReal::Vector3 translateposition) {
 	position += translateposition;
 }
-void VeryReal::TransformComponent::Rotate(VeryReal::Vector3 rotaterotation) {
+void TransformComponent::Rotate(VeryReal::Vector3 rotaterotation) {
 	rotation += rotaterotation;
 }
-void VeryReal::TransformComponent::Scaler(VeryReal::Vector3 scalerscale) {
+void TransformComponent::Scaler(VeryReal::Vector3 scalerscale) {
 	scale += scalerscale;
+}
+
+Component* CreatorTransformComponent::CreatorSpecificComponent() {
+	//FALTA GESTION DE ERRORES
+	Vector3 position, rotation, scale;
+	TransformComponent* t;
+	if (parameters_map.empty()) {
+		t = new TransformComponent();
+	}
+	else {
+		if (std::holds_alternative<Vector3>(parameters_map.at("position")->GetVariant())) {
+			position = std::get<Vector3>(parameters_map.at("position")->GetVariant());
+		}
+		if (std::holds_alternative<Vector3>(parameters_map.at("rotation")->GetVariant())) {
+			rotation = std::get<Vector3>(parameters_map.at("rotation")->GetVariant());
+		}
+		if (std::holds_alternative<Vector3>(parameters_map.at("rotation")->GetVariant())) {
+			scale = std::get<Vector3>(parameters_map.at("scale")->GetVariant());
+		}
+		t = new TransformComponent();
+		t->InitComponent(position, rotation, scale);
+	}
+	return t;
 }

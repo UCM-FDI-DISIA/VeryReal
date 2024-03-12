@@ -14,7 +14,6 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\Component.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Creator.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorComponent.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Entity.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\ErrorInformant.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.cpp" />
@@ -32,7 +31,6 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Creator.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorComponent.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\ErrorInformant.h" />
     <ClInclude Include="..\..\src\GuilleElArquitecto\Manager.h" />

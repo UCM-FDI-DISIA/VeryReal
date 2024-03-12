@@ -1,7 +1,7 @@
 #include <iostream>
 #include <ErrorInformant.h>
 #include "Creator.h"
-#include "CreatorTransformComponent.h"
+#include "TransformComponent.h"
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Entity.h"
