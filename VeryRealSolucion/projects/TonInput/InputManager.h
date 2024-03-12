@@ -1,17 +1,17 @@
-#ifndef TONINPUT
-#define TONINPUT
+#ifndef INPUT_MANAGER
+#define INPUT_MANAGER
 #pragma once
 
 #include <SDL.h>
 #include <Manager.h>
-#include "TonMapeo.h"
+#include 
 #include <array>
 
-class TonInput : public VeryReal::Manager<TonInput> {
-    friend Singleton<TonInput>;
+class InputManager : public VeryReal::Manager<InputManager> {
+    friend Singleton<InputManager>;
 
 public:
-    virtual ~TonInput() {}
+    virtual ~InputManager() {}
 
     /// Limpia el estado de la entrada
     void ClearState(bool clearMouseButtons = false);
@@ -110,7 +110,7 @@ public:
 private:
 
     /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
-    TonInput() {
+    InputManager() {
         kb_state = SDL_GetKeyboardState(0);
         ClearState(true);
     }
@@ -181,7 +181,7 @@ private:
 
 /// Singleton instance
 /// @return A pointer of the instance
-inline TonInput& TI() {
-    return *TonInput::Instance();
+inline InputManager& TI() {
+    return *InputManager::Instance();
 }
-#endif // !TONINPUT
+#endif // !InputManager

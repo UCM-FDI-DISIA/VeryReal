@@ -2,10 +2,10 @@
 
 #include <iostream>
 #include <SDL.h>
-#include "TonInput.h"
+#include "InputManager.h"
 using namespace std;
 
-void TonInput::ClearState(bool clearMouseButtons){
+void InputManager::ClearState(bool clearMouseButtons) {
     is_close_window_event = false;
     is_key_down_event = false;
     is_key_up_event = false;
@@ -18,7 +18,7 @@ void TonInput::ClearState(bool clearMouseButtons){
     }
 }
 
-void TonInput::Update(const SDL_Event& event) {
+void InputManager::Update(const SDL_Event& event) {
     switch (event.type) {
     case SDL_KEYDOWN:
         OnKeyDown(event);
@@ -45,7 +45,7 @@ void TonInput::Update(const SDL_Event& event) {
     }
 }
 
-void TonInput::Refresh() {
+void InputManager::Refresh() {
     SDL_Event event;
     ClearState();
 
@@ -67,7 +67,7 @@ void TonInput::Refresh() {
         Update(event);
 }
 
-bool TonInput::IsGamePadButtonDown(TI_GameControllerButton button) {
+bool InputManager::IsGamePadButtonDown(TI_GameControllerButton button) {
     if (is_game_controller_connected) {
         if (SDL_GameControllerGetButton(controller, (SDL_GameControllerButton)button)) {
             return true;
@@ -76,7 +76,7 @@ bool TonInput::IsGamePadButtonDown(TI_GameControllerButton button) {
     return false;
 }
 
-float TonInput::GetJoystickAxisState(TI_GameControllerAxis axis) {
+float InputManager::GetJoystickAxisState(TI_GameControllerAxis axis) {
     if (is_game_controller_connected) {
         float axisState = SDL_GameControllerGetAxis(controller, (SDL_GameControllerAxis)axis) / 32767.0;
         if (abs(axisState) > 1) axisState = round(axisState); // Corrección (los negativos llegan hasta -32768 y los positivos hasta 32767)
