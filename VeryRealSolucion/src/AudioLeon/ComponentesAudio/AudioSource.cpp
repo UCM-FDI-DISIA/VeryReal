@@ -4,43 +4,15 @@
 #include <Entity.h>
 #include <ErrorInformant.h>
 #include <SceneManager.h>
-
-//Component* FactoryAudioSource::create(Parameters& params)
-//{
-//    Audio_Source* audioSource = new Audio_Source();
-//
-//    audioSource->SetSourceName(Value(params, "name", std::string()));
-//    //Hacer el wrapeado aqui
-//    audioSource->SetSourcePath(Value(params, "path", std::string("fire.wav")));
-//    //Hacer el wrapeado aqui
-//    audioSource->SetPlayOnStart(Value(params, "onstart", false));
-//    //Hacer el wrapeado aqui
-//    audioSource->SetGroupChannelName(Value(params, "groupchannel", std::string("master")));
-//    //Hacer el wrapeado aqui
-//    audioSource->SetVolume(Value(params, "volume", 1.0f));
-//    //Hacer el wrapeado aqui
-//    audioSource->SetIsThreeD(Value(params, "threed", false));
-//    //Hacer el wrapeado aqui
-//    audioSource->SetLoop(Value(params, "loop", false));
-//    //Hacer el wrapeado aqui
-//    audioSource->setMinDistance(Value(params, "mindistance", 1.0f));
-//    //Hacer el wrapeado aqui
-//    audioSource->setMaxDistance(Value(params, "maxdistance", 60.0f));
-//    //Hacer el wrapeado aqui
-//
-//    return audioSource;
-//}
-//
-//void FactoryAudioSource::destroy(Component* component)
-//{
-//    delete component;
-//}
-
+using namespace VeryReal;
+Component* CreatorSpecificComponent() {
+    Audio_Source* a = new Audio_Source;
+    //INIT?
+    return a;
+}
 
 Audio_Source::Audio_Source()
-{
-
-}
+{}
 
 Audio_Source::~Audio_Source()
 {

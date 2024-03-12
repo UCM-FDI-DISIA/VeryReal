@@ -3,32 +3,32 @@
 #define __ENTITYCOMPONENT_AUDIOSOURCE
 
 #include <string>
-
+#include "CreatorComponent.h"
 #include <Component.h>
 //#include "EntityComponent/FactoryComponent.h"
 
 namespace FMOD {
 	class Sound;
 }
-    enum FMOD_RESULT;
+enum FMOD_RESULT;
+typedef unsigned int FMOD_MODE;
+namespace VeryReal {
 	
 	class Audio_Leon;
-	typedef unsigned int FMOD_MODE;
-	namespace VeryReal {
-		class TransformComponent;
-		class Vector3;
-	}
-	//Creates and destroys Audio_Source components
-	/*class FactoryAudioSource : public FactoryComponent {
+	class TransformComponent;
+	class Vector3;
+	
+	class CreatorAudioSource :public CreatorComponent {
 	public:
-		Component* create(Parameters& params) override;
-		void destroy(Component* component) override;
-	};*/
+		CreatorAudioSource(){}
+		virtual ~CreatorAudioSource(){}
+		Component* CreatorSpecificComponent() override;
+	};
 
 
 	//Audio_Source se encarga de reproducir un archivo de audio en la escena.
 	//Los Audio_Listeners que se encuentren en rango escucharán el audio con distintas variaciones en lugar de su posición en la escena.
-	class Audio_Source : public VeryReal::Component
+	class Audio_Source : public Component
 	{
 	public:
 
@@ -92,7 +92,7 @@ namespace FMOD {
 		/// <param name="Pause"></param>
 		/// <returns>Devuelve true o false en función de si el sonido fue detenido con éxito o no.</returns>
 		bool PauseSound(std::string soundName, bool Pause);
-		
+
 		/// <summary>
 		/// Inicia el sonido con los parámetros que se hayan facilitado desde la factoría.
 		/// </summary>
@@ -158,7 +158,7 @@ namespace FMOD {
 		/// <param name="newMode">Nueva flag que indica el modo a establecer.</param>
 		/// <returns>Devuelve true o false en función de si el nuevo modo de reproducción fue establecido con éxito o no.</returns>
 		bool SetMode(FMOD_MODE newMode);
-		
+
 		/// <summary>
 		/// Almacena la ruta relativa del archivo de audio.
 		/// </summary>
@@ -222,11 +222,11 @@ namespace FMOD {
 		//La ruta relativa al archivo de audio con el que se creará el sonido de FMOD.
 		std::string sound_path;
 		//El nombre dado por el usuario al sonido de FMOD.
-		std::string sound_name; 
+		std::string sound_name;
 		//Si el sonido esta siendo reproducido o no.
-		bool playing; 
+		bool playing;
 		//Si el sonido se reproducirá en bucle o no.
-		bool loop; 
+		bool loop;
 		//Si el sonido es 3D o no.
 		bool is_three_d;
 		//Si el sonido se reproducirá de inicio o no.
@@ -235,9 +235,8 @@ namespace FMOD {
 		//Variable de control que sirve de comprobación después de hacer uso de cualquiera de las funciones de sistema de sonido.
 		FMOD_RESULT result;
 		//Almacena el componente "Transform" de la entidad a la que este componente esta enlazada.
-		VeryReal::TransformComponent* transform = nullptr;
+		TransformComponent* transform = nullptr;
 	};
-
-
+}
 #endif
 

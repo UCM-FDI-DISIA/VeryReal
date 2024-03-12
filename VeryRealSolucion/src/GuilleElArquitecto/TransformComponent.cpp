@@ -24,7 +24,6 @@ void TransformComponent::Scaler(VeryReal::Vector3 scalerscale) {
 }
 
 Component* CreatorTransformComponent::CreatorSpecificComponent() {
-	//FALTA GESTION DE ERRORES
 	Vector3 position, rotation, scale;
 	TransformComponent* t;
 	if (parameters_map.empty()) {
@@ -41,7 +40,7 @@ Component* CreatorTransformComponent::CreatorSpecificComponent() {
 			scale = std::get<Vector3>(parameters_map.at("scale")->GetVariant());
 		}
 		t = new TransformComponent();
-		t->InitComponent(position, rotation, scale);
+		t->InitComponent(position, rotation, scale);//FALTA GESTION DE ERRORES
 	}
 	return t;
 }
