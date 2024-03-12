@@ -198,28 +198,22 @@ typedef enum {
     /* These application events have special meaning on iOS, see README-ios.md for details */
     TI_APP_TERMINATING, /**< The application is being terminated by the OS
                           Called on iOS in applicationWillTerminate()
-                          Called on Android in onDestroy()
-                       */
+                          Called on Android in onDestroy()*/
     TI_APP_LOWMEMORY, /**< The application is low on memory, free memory if possible.
                           Called on iOS in applicationDidReceiveMemoryWarning()
-                          Called on Android in onLowMemory()
-                       */
+                          Called on Android in onLowMemory()*/
     TI_APP_WILLENTERBACKGROUND, /**< The application is about to enter the background
                                      Called on iOS in applicationWillResignActive()
-                                     Called on Android in onPause()
-                                  */
+                                     Called on Android in onPause()*/
     TI_APP_DIDENTERBACKGROUND, /**< The application did enter the background and may not get CPU for some time
                                     Called on iOS in applicationDidEnterBackground()
-                                    Called on Android in onPause()
-                                 */
+                                    Called on Android in onPause()*/
     TI_APP_WILLENTERFOREGROUND, /**< The application is about to enter the foreground
                                      Called on iOS in applicationWillEnterForeground()
-                                     Called on Android in onResume()
-                                  */
+                                     Called on Android in onResume()*/
     TI_APP_DIDENTERFOREGROUND, /**< The application is now interactive
                                    Called on iOS in applicationDidBecomeActive()
-                                   Called on Android in onResume()
-                                */
+                                   Called on Android in onResume()*/
 
     TI_LOCALECHANGED, /**< The user's locale preferences have changed. */
 
@@ -236,8 +230,7 @@ typedef enum {
     TI_TEXTEDITING, /**< Keyboard text editing (composition) */
     TI_TEXTINPUT, /**< Keyboard text input */
     TI_KEYMAPCHANGED, /**< Keymap changed due to a system event such as an
-                          input language or keyboard layout change.
-                       */
+                          input language or keyboard layout change.*/
     TI_TEXTEDITING_EXT, /**< Extended keyboard text editing (composition) */
 
     /* Mouse events */

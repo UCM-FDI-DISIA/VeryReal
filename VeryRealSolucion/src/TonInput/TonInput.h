@@ -2,14 +2,10 @@
 #define TONINPUT
 #pragma once
 
-#include <vector>
-#include "Singleton.h"
-#include <Manager.h>
-#include <array>
 #include <SDL.h>
+#include <Manager.h>
 #include "TonMapeo.h"
-
-using namespace std;
+#include <array>
 
 class TonInput : public VeryReal::Manager<TonInput> {
     friend Singleton<TonInput>;
@@ -81,7 +77,7 @@ public:
 
     /// Comprueba la posicion del raton
     /// @return Un par que contiene las coordenadas x e y de la posicion del raton
-    inline const std::pair<Sint32, Sint32>& GetMousePos() {
+    inline const std::pair<int32_t, int32_t>& GetMousePos() {
         return mouse_pos;
     }
 
@@ -177,9 +173,9 @@ private:
     bool is_key_down_event;
     bool is_mouse_motion_event;
     bool is_mouse_button_event;
-    std::pair<Sint32, Sint32> mouse_pos;
+    std::pair<int32_t, int32_t> mouse_pos;
     std::array<bool, 3> mb_state;
-    const Uint8* kb_state;
+    const uint8_t* kb_state;
     SDL_GameController* controller;
 };
 

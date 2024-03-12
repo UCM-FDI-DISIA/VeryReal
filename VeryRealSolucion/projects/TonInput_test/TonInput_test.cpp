@@ -1,16 +1,29 @@
 // TonInput_test.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
 
 #include <iostream>
 #include <TonInput.h>
+#include <SDL.h>
 #undef main
+
 int main()
 {
-	while (true)
-	{
-		TI().IsKeyDown(TI_SCANCODE_0);
+	SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_Window* mWindow;
+	mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+		854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+	SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
+
+	TI().Instance()->Init();
+	std::cout << "Hello World!\n";
+	
+
+	while (true) {
+
+		TI().Refresh(); // Ih se actualiza (actua como el handleEvents())
+
+		std::cout << TI().IsKeyDown(TI_SCANCODE_F) << std::endl;
 	}
-    std::cout << "Hello World!\n";
+
     return 0;
 }
 

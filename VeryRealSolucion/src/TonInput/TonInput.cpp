@@ -1,10 +1,7 @@
 // RomeRender.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 
 #include <iostream>
-#include <crtdbg.h> //memory
 #include <SDL.h>
-#undef main
-#include <stdlib.h>
 #include "TonInput.h"
 using namespace std;
 

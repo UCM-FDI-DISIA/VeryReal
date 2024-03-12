@@ -24,7 +24,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\TonInput\InputHandler.h" />
     <ClInclude Include="..\..\src\TonInput\TonInput.h" />
     <ClInclude Include="..\..\src\TonInput\TonMapeo.h" />
   </ItemGroup>
