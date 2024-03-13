@@ -1,3 +1,9 @@
+extern "C"
+{
+#include "lua.h"
+#include "lauxlib.h"
+#include "lualib.h"
+}
 #include "ScriptManager.h"
 #include <lua.hpp>
 #include <LuaBridge.h>
@@ -8,12 +14,6 @@
 #include <Creator.h>
 #include <TransformComponent.h>
 
-extern "C"
-{
-#include "lua.h"
-#include "lauxlib.h"
-#include "lualib.h"
-}
 
 ScriptManager::ScriptManager()
 {
