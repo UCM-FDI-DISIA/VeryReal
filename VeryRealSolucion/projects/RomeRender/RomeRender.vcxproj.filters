@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\UI">
+      <UniqueIdentifier>{297f9a74-adfe-4a20-ae0b-eba864e61a9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\UI">
+      <UniqueIdentifier>{65827a3a-7e2b-4db2-9dfd-734202a227ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\RomeRender\RomeRender.cpp">
@@ -54,6 +60,21 @@
     <ClCompile Include="..\..\src\RomeRender\SGTechniqueResolverListener.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\UI\UIButtonComponent.cpp">
+      <Filter>Archivos de origen\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\UI\UIProgressBarComponent.cpp">
+      <Filter>Archivos de origen\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\UI\UISpriteRenderComponent.cpp">
+      <Filter>Archivos de origen\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\UI\UITextComponent.cpp">
+      <Filter>Archivos de origen\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\UI\UItransformComponent.cpp">
+      <Filter>Archivos de origen\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\RomeRender\Window.h">
@@ -88,6 +109,21 @@
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\SGTechniqueResolverListener.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\UI\UIButtonComponent.h">
+      <Filter>Archivos de encabezado\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\UI\UIProgressBarComponent.h">
+      <Filter>Archivos de encabezado\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\UI\UISpriteRenderComponent.h">
+      <Filter>Archivos de encabezado\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\UI\UITextComponent.h">
+      <Filter>Archivos de encabezado\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\UI\UItransformComponent.h">
+      <Filter>Archivos de encabezado\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
