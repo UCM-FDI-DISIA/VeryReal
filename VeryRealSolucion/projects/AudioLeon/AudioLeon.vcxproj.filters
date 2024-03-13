@@ -24,18 +24,18 @@
     <ClCompile Include="..\..\src\AudioLeon\AudioLeon.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioListener.cpp">
+    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioSource.cpp">
+    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListener.h">
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.h">
       <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSource.h">
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.h">
       <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h">

@@ -12,8 +12,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\AudioLeon\AudioLeon.cpp" />
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioListener.cpp" />
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioSource.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
@@ -22,8 +22,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h" />
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListener.h" />
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSource.h" />
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.h" />
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
