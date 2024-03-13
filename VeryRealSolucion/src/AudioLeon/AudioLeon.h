@@ -18,8 +18,11 @@ namespace FMOD {
 }
 
 enum FMOD_RESULT;
-typedef unsigned int FMOD_MODE;
-typedef int CHANNEL_NUMBER;
+namespace VeryReal
+{
+
+	typedef unsigned int FMOD_MODE;
+	typedef int CHANNEL_NUMBER;
 
 	//Cantidad máxima de canales que puede haber en esta configuración particular del sistema de sonido de FMOD.
 	const int MAX_CHANNELS = 100;
@@ -60,7 +63,7 @@ typedef int CHANNEL_NUMBER;
 		FMOD::Sound* mic_sound = NULL;
 		//Variable de control que sirve de comprobación después de hacer uso de cualquiera de las funciones de sistema de sonido.
 		FMOD_RESULT result;
-		
+
 		/// <summary>
 		/// Cambia el volumen de un canal determinado.
 		/// </summary>
@@ -75,7 +78,7 @@ typedef int CHANNEL_NUMBER;
 		~Audio_Leon();
 		//Actualiza el sistema de sonido en cada bucle del juego.
 		void SystemRefresh(const double& dt);
-		
+
 		//Convierte un Vector3 propio del motor a un FMOD_VECTOR
 		FMOD_VECTOR V3ToFmodV3(VeryReal::Vector3 conversion) const;
 
@@ -197,5 +200,7 @@ typedef int CHANNEL_NUMBER;
 	inline Audio_Leon& AL() {
 		return *Audio_Leon::Instance();
 	}
+}
+
 
 #endif // !_FMOD_SOUND_MANAGER

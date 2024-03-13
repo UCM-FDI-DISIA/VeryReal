@@ -4,17 +4,22 @@
 #define __ENTITYCOMPONENT_AUDIOLISTENER
 
 #include <Component.h>
-#include <Vector3.h>
 #include "CreatorComponent.h"
 namespace FMOD {
 	class Sound;
 }
 
+namespace VeryReal
+{
+	class Vector3;
+}
+
+
 	class CreatorAudioListener :public VeryReal::CreatorComponent {
 	public :
 		CreatorAudioListener() {}
 		virtual ~CreatorAudioListener(){}
-		Component* CreatorSpecificComponent() override;
+		VeryReal::Component* CreatorSpecificComponent() override;
 	};
 
 	//FMOD ofrece "escuchadores" dinámicos que hacen de veces de receptores de los sonidos reproducidos por FMOD.
@@ -42,14 +47,14 @@ namespace FMOD {
 		/// <param name="listenerFW">Vector forward a establecer del listener.</param>
 		/// <param name="listenerUP">Vector up a establecer del listener.</param>
 		/// <param name="listenerVel">Vector de velocidad a establecer del listener.</param>
-		void UpdateListenersPosition(int index, Vector3 listenerPos,
-			Vector3 listenerFW, Vector3 listenerUP, Vector3 listenerVel = { 0,0,0 });
+		void UpdateListenersPosition(int index,VeryReal::Vector3 listenerPos,
+			VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel = { 0,0,0 });
 
 	private:
 		//Posición del listener.
-		Vector3 position;
+		VeryReal::Vector3 position;
 		//Última posicióm registrada del listener.
-		Vector3 last_position = { 0,0,0 };
+		VeryReal::Vector3 last_position = VeryReal::Vector3(0,0,0);
 		//Índice con el que se identifica cada listener para FMOD.
 		int listener_index;
 	};

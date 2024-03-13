@@ -10,12 +10,12 @@ int main() {
     int t = 0;
     bool Play = false;
     while ((true)) {
-        AL().SystemRefresh(t);
+        VeryReal::AL().SystemRefresh(t);
         if (!Play) {
-            AL().AudioSourceListenerTest();
+            VeryReal::AL().AudioSourceListenerTest();
             Play = true;
         }
-        cout << "PRUEBA " << AL().InputSoundIntensity() << endl;
+        cout << "PRUEBA " << VeryReal::AL().InputSoundIntensity() << endl;
         ++t;
 
     }

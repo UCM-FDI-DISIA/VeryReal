@@ -45,9 +45,6 @@
     <ClCompile Include="..\..\src\RomeRender\conversorvectores.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\RomeRender\CreatorAnimatorComponent.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\RomeRender\CreatorCameraComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>

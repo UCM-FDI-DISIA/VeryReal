@@ -4,6 +4,7 @@
 #include <Entity.h>
 #include <ErrorInformant.h>
 #include <SceneManager.h>
+#include <Vector3.h>
 
 using namespace VeryReal;
 Component* CreatorAudioListener::CreatorSpecificComponent() {
@@ -33,15 +34,15 @@ void Audio_Listener::InitComponent()
 
 void Audio_Listener::Update(const double& dt)
 {
-	if (!this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")) {
+	if (!this->GetEntity()->GetComponent<TransformComponent>("transform")) {
 		ErrorInf().showErrorMessageBox("Audio_Listener error", "An entity doesn't have transform component", EI_ERROR);
 	/*	sceneManager().quit();*/
 		return;
 	}
 
 
-	VeryReal::Vector3 position = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetPosition();
-	VeryReal::Vector3 velocity = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetVelocity();
+	Vector3 position = this->GetEntity()->GetComponent<TransformComponent>("transform")->GetPosition();
+	Vector3 velocity = this->GetEntity()->GetComponent<TransformComponent>("transform")->GetVelocity();
 	//VeryReal::Vector3 up = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->up();
 	//VeryReal::Vector3 forward = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->forward();
 

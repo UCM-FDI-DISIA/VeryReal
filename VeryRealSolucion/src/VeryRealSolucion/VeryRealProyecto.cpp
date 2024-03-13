@@ -3,7 +3,7 @@
 #include <RenderManager.h>
 #include <Window.h>
 #include <Creator.h>
-#include <CreatorTransformComponent.h>
+#include "TransformComponent.h"
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 
 //Submodulos de Github
@@ -11,11 +11,15 @@
 //Desde el motor siempre sabemos donde esta la dll del juego.
 //dll export es una manera de que desde el juego, esa función sea visible.
 
-#include <iostream>
-
 const int FRAME_RATE = 3;
 
 bool VeryRealProyecto::Init() {
+
+
+
+
+
+
 	SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
 	//SDL_Window* mWindow; // Ventana (temporal) para que funcione el input
 	//mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -62,7 +66,24 @@ void VeryRealProyecto::CreateCreators() {
 	VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
 }
 
+bool VeryRealProyecto::LoadGame(std::string gameName)
+{
+	//Tengo que hacer cambios a gameName para que este sea la ruta al juego. Puede ser relativa ya que siempre sabemos donde va a estar el juego.
+	
+	std::wstring wideGameName = std::wstring(gameName.begin(), gameName.end());
+	gameDll = LoadLibrary(wideGameName.c_str());
 
+	if(gameDll != NULL)
+	{
+		std::cout << "Juego cargado correctamente";
+	}
+	else
+	{
+		std::cout << "El juego no existe";
+		return false;
+	}
+	return true;
+}
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
 

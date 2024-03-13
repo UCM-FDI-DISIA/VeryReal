@@ -10,24 +10,32 @@
 namespace FMOD {
 	class Sound;
 }
+
+
+
+namespace VeryReal {
+	class TransformComponent;
+	class Vector3;
+
+}
+
 enum FMOD_RESULT;
 typedef unsigned int FMOD_MODE;
 	
-	class Audio_Leon;
-	class TransformComponent;
-	class Vector3;
+class Audio_Leon;
 	
-	class CreatorAudioSource :public CreatorComponent {
+	
+	
+	class CreatorAudioSource :public VeryReal::CreatorComponent {
 	public:
-		CreatorAudioSource(){}
-		virtual ~CreatorAudioSource(){}
-		Component* CreatorSpecificComponent() override;
+		CreatorAudioSource() {}
+		virtual ~CreatorAudioSource() {}
+		VeryReal::Component* CreatorSpecificComponent() override;
 	};
-
 
 	//Audio_Source se encarga de reproducir un archivo de audio en la escena.
 	//Los Audio_Listeners que se encuentren en rango escucharán el audio con distintas variaciones en lugar de su posición en la escena.
-	class Audio_Source : public Component
+	class Audio_Source : public VeryReal::Component
 	{
 	public:
 

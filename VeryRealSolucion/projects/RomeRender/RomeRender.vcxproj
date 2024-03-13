@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\RomeRender\AnimatorComponent.cpp" />
-    <ClCompile Include="..\..\src\RomeRender\CreatorAnimatorComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\CameraComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\conversorvectores.cpp" />
     <ClCompile Include="..\..\src\RomeRender\CreatorCameraComponent.cpp" />
