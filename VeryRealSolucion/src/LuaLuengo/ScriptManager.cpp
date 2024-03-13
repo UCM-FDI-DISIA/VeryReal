@@ -14,7 +14,7 @@ extern "C"
 #include <Creator.h>
 #include <TransformComponent.h>
 
-
+using namespace VeryReal;
 ScriptManager::ScriptManager()
 {
 	lua_state = luaL_newstate();
@@ -40,16 +40,24 @@ void ScriptManager::Error(int status)
 }
 
 
-void ScriptManager::Init()
+void ScriptManager::Init(std::string p)
 {
-	int script_status = luaL_dofile(lua_state, "luaTest.lua");
-
+	std::string a = "../../bin/LuaFiles/" + p + ".lua";
+	int script_status = luaL_dofile(lua_state, a.c_str());		//TEMPORAL!
 	Error(script_status);
+
+
 }
 
-void ScriptManager::Test()
+void ScriptManager::TestScene() {
+	Scene* scn = SceneManager::Instance()->AddScene("luaTest"); // Creación de la escena(lleva el nombre del archivo .lua)
+	std::cout << "TestScene" << "\n";
+}
+
+void ScriptManager::Test(std::string namescene)
 {
-	VeryReal::Scene* scn = VeryReal::SceneManager::Instance()->AddScene("luaTest"); // Creación de la escena(lleva el nombre del archivo .lua)
+	VeryReal::Scene* scene = VeryReal::SceneManager::Instance()->AddScene(namescene); // Creación de la escena(lleva el nombre del archivo .lua)
+	std::cout << "Nombre de la escena: " << namescene << std::endl;
 
 	std::string ent = "Entities";
 	luabridge::LuaRef entities = luabridge::getGlobal(lua_state, ent.c_str()); // Referencia a la primera tabla
@@ -57,25 +65,50 @@ void ScriptManager::Test()
 	if (entities.isTable()) {
 		for (int i = 1; i <= entities.length(); ++i) { // Recorremos la tabla de entidades
 			luabridge::LuaRef entity = entities[i];
-			VeryReal::Entity* e = scn->AddEntity(entity.tostring()); // Añadiendo entidades
+
 			if (entity.isTable()) {
-				std::string id = entity["id"].tostring(); // DUDA: unsafe_cast
-				std::cout << "Nombre de la entidad: " << id << std::endl;
-				luabridge::LuaRef components = entity["Components"];
+				std::string nameentity = entity["name"].tostring(); // DUDA: unsafe_cast
+				std::cout << "Nombre de la entidad: " << nameentity << std::endl;
+				VeryReal::Entity* e = scene->AddEntity(nameentity); // Añadiendo entidades
+				luabridge::LuaRef components = entity["components"];
+
 				if (components.isTable()) {
 					for (int j = 1; j <= components.length(); ++j) { // Recorremos la tabla interior(componentes)
 						luabridge::LuaRef component = components[j];
-						VeryReal::Creator::Instance()->AddCreator(component.tostring(), new VeryReal::CreatorTransformComponent()); // Ver como generalizar esto
-						VeryReal::Component* c = e->AddComponent(component.tostring()); // Añadiendo componentes
+						
 						if (component.isTable()) {
-							std::string name = component["name"].tostring();
-							std::cout << "Nombre del componente: " << name << std::endl;
-							std::cout << VeryReal::SceneManager::Instance()->GetScene("luaTest")->GetEntity(entity.tostring())->HasComponent(component.tostring()) << "\n";
+							std::string namecomponent = component["name"].tostring();
+							std::cout << "Nombre del componente: " << namecomponent << std::endl;
+						
+							if (VeryReal::Creator::Instance()->GetCreator(namecomponent) != nullptr) {
+								luabridge::LuaRef parameters = component["parameters"];
+								if (parameters.isTable()) {
+									for (int k = 1; k <= parameters.length(); ++k) {
+										luabridge::LuaRef parameter = parameters[k];
+										std::cout << "Nombre parametro" << parameter["name"]<<std::endl;
+										std::cout << "Value parametro" << parameter["value"].type()<<std::endl;
+										//auto a = parameter["value"].getClassName().value();
+										//VeryReal::Creator::Instance()->GetCreator(namecomponent)->AddParameter(parameter["name"], parameter["value"].type());
+									}
+								}
+								
+								VeryReal::Component* c = e->AddComponent(namecomponent);
+								
+								std::cout << VeryReal::SceneManager::Instance()->GetScene("PlayScene")->GetEntity(nameentity)->HasComponent(namecomponent) << "\n";
+
+								
+							}
+							else {//ERROR
+							}
+							
 						}
+						
+						
 					}
 					std::cout << std::endl;
 				}
 			}
 		}
 	}
+	std::cout << "Test" << "\n";
 }

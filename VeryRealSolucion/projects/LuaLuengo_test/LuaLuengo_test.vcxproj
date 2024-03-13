@@ -154,6 +154,14 @@
   <ItemGroup>
     <ClCompile Include="LuaLuengo_test.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
+      <Project>{e9fe864b-f16f-44b6-a10f-dad3701db44f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\LuaLuengo\LuaLuengo.vcxproj">
+      <Project>{8cc5fd81-7fb6-4bbf-b68c-6db7b3eded3a}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

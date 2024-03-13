@@ -4,6 +4,7 @@
 #include <Window.h>
 #include <Creator.h>
 #include "TransformComponent.h"
+
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 
 //Submodulos de Github
@@ -14,12 +15,6 @@
 const int FRAME_RATE = 3;
 
 bool VeryRealProyecto::Init() {
-
-
-
-
-
-
 	SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
 	//SDL_Window* mWindow; // Ventana (temporal) para que funcione el input
 	//mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -28,6 +23,7 @@ bool VeryRealProyecto::Init() {
 	//VeryReal::RenderManager().Instance()->InitManager("app"); //InitManager
 	VeryReal::InputManager::Init();
 	VR().CreateCreators();
+	
 
 
 	return true;

@@ -10,21 +10,19 @@ namespace VeryReal {
 	private:
 		Vector3 position;
 		Vector3 rotation;
-		Vector3 velocity;
 		Vector3 scale;
+		int a;
 	public:
 		TransformComponent();
-		bool InitComponent(Vector3 position, Vector3 rotation, Vector3 scale);
+		bool InitComponent(int a,Vector3 position, Vector3 rotation, Vector3 scale);
 		virtual ~TransformComponent();
 
 		inline Vector3 GetPosition() { return position; }
 		inline Vector3 GetRotation() { return rotation; }
-		inline Vector3 GetVelocity() { return velocity; }
 		inline Vector3 GetScale() { return scale; }
 
 		inline void SetPosition(Vector3 position) { this->position = position; }
 		inline void SetRotation(Vector3 rotation) { this->rotation = rotation; }
-		inline void SetVelocity(Vector3 velocity) { this->velocity = velocity; }
 		inline void SetScale(Vector3 scale) { this->scale = scale; }
 
 		void Translate(Vector3 translateposition);

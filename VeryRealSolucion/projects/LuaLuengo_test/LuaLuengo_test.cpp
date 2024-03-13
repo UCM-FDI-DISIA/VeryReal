@@ -8,12 +8,13 @@
 #include <Creator.h>
 #include <TransformComponent.h>
 #include <ScriptManager.h>
+#include "Creator.h"
 
 
 
 int main()
-{   
-    SM().Init();
-    SM().Test();
-	
+{
+    VeryReal::Creator::Instance()->AddCreator("Transform", new VeryReal::CreatorTransformComponent());
+    ScriptManager::Instance()->Init("PlayScene");
+    SM().Test("PlayScene");
 }

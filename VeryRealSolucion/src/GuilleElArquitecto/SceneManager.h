@@ -27,8 +27,9 @@ namespace VeryReal {
 
 		void ActivationScene(scene_name name, bool active);
 		void EliminationScene(scene_name name, bool to_eliminate);
-
+		//si existe la escen la devuleve si no devuelve nullptr
 		Scene* GetScene(scene_name name);
+		bool HasScene(scene_name name);
 	};
 }
 #endif

@@ -14,6 +14,7 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "CreatorMeshRenderComponent.h"
+#include "Component.h"
 
 using namespace VeryReal;
 int main()
@@ -23,22 +24,20 @@ int main()
    VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
    VeryReal::Creator::Instance()->AddCreator("MeshRender", new VeryReal::CreatorMeshRenderComponent());
    Creator::Instance()->AddCreator("Animator", new CreatorAnimatorComponent());
-  VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
-  VeryReal::Creator::Instance()->AddCreator("Light", new VeryReal::CreatorLightComponent());
+   VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
+   VeryReal::Creator::Instance()->AddCreator("Light", new VeryReal::CreatorLightComponent());
    Scene* s = SceneManager::Instance()->AddScene("Play");
    s = SceneManager::Instance()->GetScene("Play");
    Entity* e = s->AddEntity("Player");
    Entity* luz = s->AddEntity("Luz");
    Entity* camara = s->AddEntity("Cam");
-  Component*cam= camara->AddComponent("Camera");
+   Component*cam= camara->AddComponent("Camera");
 
-  static_cast<CameraComponent*>(cam)->InitComponent("hola", Vector3(0.8, 0.3, 1), 
-      VeryReal::RenderManager::Instance()->GetRenderWindow(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), Vector3(10, 0, 0));
+ /* static_cast<CameraComponent*>(cam)->InitComponent("hola", Vector3(0.8, 0.3, 1), 
+   VeryReal::RenderManager::Instance()->GetRenderWindow(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), Vector3(10, 0, 0));*/
 
 
    Component* c = e->AddComponent("transform");
-   c->SetEntity(e);
-  
    Component* t=e->AddComponent("MeshRender");
 
 

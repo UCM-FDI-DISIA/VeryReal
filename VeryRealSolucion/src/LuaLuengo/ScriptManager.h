@@ -4,7 +4,7 @@
 
 #include "Singleton.h"
 #include "Manager.h"
-
+#include <string>
 struct lua_State;
 
 
@@ -19,11 +19,12 @@ public:
 	~ScriptManager();
 
 	// Abre el archivo .lua
-	void Init();
+	void Init(std::string p);
 	// Compreueba error al abrir archivo
 	void Error(int status);
 	// Método para probar la creación de entidades y componentes mediante Lua
-	void Test();
+	void Test(std::string n);
+	void TestScene();
 	inline lua_State* GetLuaState() { return lua_state; }
 };
 

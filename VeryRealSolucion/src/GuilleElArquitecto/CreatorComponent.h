@@ -21,7 +21,9 @@ namespace VeryReal {
 		template<typename T>
 		void AddParameter(parameters_name p_name,T p) {
 			RemoveParameter(p_name);
-			parameters_map[p_name]->SetVariant(p);
+			VariantClass* v = new  VariantClass();
+			v->SetVariant(p);
+			parameters_map.insert({ p_name ,v });
 		}
 		void RemoveParameter(parameters_name p_name) {
 			if (HasParameter(p_name)) {
