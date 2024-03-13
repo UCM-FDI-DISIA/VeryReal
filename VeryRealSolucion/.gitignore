@@ -3,7 +3,7 @@
 
 # Compiled Object files
 *.slo
-*.lo
+*.log
 *.o
 *.obj
 
