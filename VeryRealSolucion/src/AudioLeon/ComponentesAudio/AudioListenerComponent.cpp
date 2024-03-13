@@ -1,4 +1,4 @@
-#include "AudioListener.h"
+#include "AudioListenerComponent.h"
 #include <AudioLeon.h>
 #include <TransformComponent.h>
 #include <Entity.h>
@@ -8,20 +8,20 @@
 
 using namespace VeryReal;
 Component* CreatorAudioListener::CreatorSpecificComponent() {
-	Audio_Listener* a = new Audio_Listener();
+	AudioListenerComponent* a = new AudioListenerComponent();
 	a->InitComponent();
 	return a;
 }
 
-Audio_Listener::Audio_Listener(){}
+AudioListenerComponent::AudioListenerComponent(){}
 
-Audio_Listener::~Audio_Listener()
+AudioListenerComponent::~AudioListenerComponent()
 {
 	AL().RemoveListener(listener_index);
 	UpdateListenersPosition(listener_index, { 999999,999999,999999 }, { 0,0,0 }, { 0,0,0 }, { 0,0,0 });
 }
 
-void Audio_Listener::InitComponent()
+void AudioListenerComponent::InitComponent()
 {
 	// Get the next available index for a listener in the sound manager
 	listener_index = AL().GetNextUsefulListenerIndex();
@@ -32,10 +32,10 @@ void Audio_Listener::InitComponent()
 #endif // _DEBUG
 }
 
-void Audio_Listener::Update(const double& dt)
+void AudioListenerComponent::Update(const double& dt)
 {
 	if (!this->GetEntity()->GetComponent<TransformComponent>("transform")) {
-		ErrorInf().showErrorMessageBox("Audio_Listener error", "An entity doesn't have transform component", EI_ERROR);
+		ErrorInf().showErrorMessageBox("AudioListenerComponent error", "An entity doesn't have transform component", EI_ERROR);
 	/*	sceneManager().quit();*/
 		return;
 	}
@@ -54,7 +54,7 @@ void Audio_Listener::Update(const double& dt)
 	//UpdateListenersPosition(listener_index, position, forward, up, v);
 }
 
-void Audio_Listener::UpdateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel)
+void AudioListenerComponent::UpdateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel)
 {
 	FMOD_VECTOR pos = AL().V3ToFmodV3(listenerPos), fw = AL().V3ToFmodV3(listenerFW), up = AL().V3ToFmodV3(listenerUP), vel = AL().V3ToFmodV3(listenerVel);
 	AL().GetSoundSystem()->set3DListenerAttributes(index, &pos, &vel, &fw, &up);

@@ -5,7 +5,7 @@
 
 using namespace VeryReal;
 using namespace FMOD;
-Audio_Leon::Audio_Leon() {
+AudioLeon::AudioLeon() {
 	result = FMOD::System_Create(&sound_system); // Create the main system object.
 	CheckFMODResult(result);
 
@@ -35,7 +35,7 @@ Audio_Leon::Audio_Leon() {
 	InitAudioRecording();
 }
 
-void Audio_Leon::InitAudioRecording() {
+void AudioLeon::InitAudioRecording() {
 	int nativeRate = 0;
 	int nativeChannels = 0;
 	result = sound_system->getRecordDriverInfo(0, NULL, 0, NULL, &nativeRate, NULL, &nativeChannels, NULL);
@@ -59,7 +59,7 @@ void Audio_Leon::InitAudioRecording() {
 	CheckFMODResult(result);
 }
 
-bool Audio_Leon::CheckFMODResult(FMOD_RESULT FMODResult) {
+bool AudioLeon::CheckFMODResult(FMOD_RESULT FMODResult) {
 	if (FMODResult != FMOD_OK) {
 	#ifdef _DEBUG
 		printf("FMOD error! (%d) %s\n", FMODResult, FMOD_ErrorString(FMODResult));
@@ -69,14 +69,14 @@ bool Audio_Leon::CheckFMODResult(FMOD_RESULT FMODResult) {
 	return true;
 }
 
-FMOD::Sound* Audio_Leon::GetSound(std::string soundName) {
+FMOD::Sound* AudioLeon::GetSound(std::string soundName) {
 	NameToLower(soundName);
 	auto returnedSound = sounds_map.find(soundName);
 	if (returnedSound == sounds_map.end()) return nullptr;
 	return returnedSound->second;
 }
 
-FMOD::Channel* Audio_Leon::GetChannel(std::string soundName) {
+FMOD::Channel* AudioLeon::GetChannel(std::string soundName) {
 	NameToLower(soundName);
 	FMOD::Sound* soundHandle = GetSound(soundName);
 	if (soundHandle != nullptr) {
@@ -89,22 +89,22 @@ FMOD::Channel* Audio_Leon::GetChannel(std::string soundName) {
 	}
 }
 
-FMOD::ChannelGroup* Audio_Leon::GetGroupChannel(std::string channelGroupName) {
+FMOD::ChannelGroup* AudioLeon::GetGroupChannel(std::string channelGroupName) {
 	NameToLower(channelGroupName);
 	auto returnedGroup = channel_group_maps.find(channelGroupName);
 	if (returnedGroup == channel_group_maps.end()) return nullptr;
 	return returnedGroup->second;
 }
 
-std::vector<FMOD::Channel*> Audio_Leon::GetChannelsVector() {
+std::vector<FMOD::Channel*> AudioLeon::GetChannelsVector() {
 	return channels_vector;
 }
 
-std::unordered_map<FMOD::Sound*, CHANNEL_NUMBER> Audio_Leon::GetLastPlayedMap() {
+std::unordered_map<FMOD::Sound*, CHANNEL_NUMBER> AudioLeon::GetLastPlayedMap() {
 	return last_played_map;
 }
 
-bool Audio_Leon::ChangeChannelVolume(std::string channelGroupName, float volume) {
+bool AudioLeon::ChangeChannelVolume(std::string channelGroupName, float volume) {
 	NameToLower(channelGroupName);
 	auto returnedGroup = channel_group_maps.find(channelGroupName);
 	if (returnedGroup == channel_group_maps.end()) return false;
@@ -112,13 +112,13 @@ bool Audio_Leon::ChangeChannelVolume(std::string channelGroupName, float volume)
 	return CheckFMODResult(result);
 }
 
-void Audio_Leon::NameToLower(std::string& name) {
+void AudioLeon::NameToLower(std::string& name) {
 	name.erase(std::remove_if(name.begin(), name.end(), ::isspace),
 		name.end());
 	std::transform(name.begin(), name.end(), name.begin(), ::tolower);
 }
 
-Audio_Leon::~Audio_Leon() {
+AudioLeon::~AudioLeon() {
 	for (auto s : sounds_map) {
 		result = s.second->release();
 		CheckFMODResult(result);
@@ -132,33 +132,33 @@ Audio_Leon::~Audio_Leon() {
 	CheckFMODResult(result);
 }
 
-void Audio_Leon::SystemRefresh(const double& dt) {
+void AudioLeon::SystemRefresh(const double& dt) {
 	result = sound_system->update();
 	CheckFMODResult(result);
 }
 
-FMOD_VECTOR Audio_Leon::V3ToFmodV3(VeryReal::Vector3 conversion) const {
+FMOD_VECTOR AudioLeon::V3ToFmodV3(VeryReal::Vector3 conversion) const {
 	FMOD_VECTOR newVector;
 	newVector.x = conversion.GetX(); newVector.y = conversion.GetY(); newVector.z = conversion.GetZ();
 	return newVector;
 }
 
-FMOD::System* Audio_Leon::GetSoundSystem() {
+FMOD::System* AudioLeon::GetSoundSystem() {
 	return sound_system;
 }
 
-void Audio_Leon::AddNewSound(std::pair<std::string, FMOD::Sound*> newSound) {
+void AudioLeon::AddNewSound(std::pair<std::string, FMOD::Sound*> newSound) {
 	sounds_map.insert(newSound);
 }
 
-bool Audio_Leon::StopEverySound() {
+bool AudioLeon::StopEverySound() {
 	for (auto i : channels_vector) {
 		i->stop();
 	}
 	return true;
 }
 
-bool Audio_Leon::DeleteSound(std::string soundName) {
+bool AudioLeon::DeleteSound(std::string soundName) {
 	NameToLower(soundName);
 	FMOD::Sound* soundHandle = GetSound(soundName);
 	if (soundHandle == nullptr) return false;
@@ -168,11 +168,11 @@ bool Audio_Leon::DeleteSound(std::string soundName) {
 	return CheckFMODResult(result);
 }
 
-void Audio_Leon::RemoveListener(int index) {
+void AudioLeon::RemoveListener(int index) {
 	listeners[index] = false;
 }
 
-bool Audio_Leon::CreateChannelGroup(std::string groupName) {
+bool AudioLeon::CreateChannelGroup(std::string groupName) {
 	NameToLower(groupName);
 	const char* channelGroupName = groupName.c_str();
 	if ((int(channelGroupName[0]) > 96) && (int(channelGroupName[0]) < 122)) channelGroupName[0] - 32;
@@ -188,7 +188,7 @@ bool Audio_Leon::CreateChannelGroup(std::string groupName) {
 	return false;
 }
 
-bool Audio_Leon::SetGroupChannelVolume(std::string groupName, float newVolume) {
+bool AudioLeon::SetGroupChannelVolume(std::string groupName, float newVolume) {
 	NameToLower(groupName);
 	const char* channelGroup = groupName.c_str();
 	FMOD::ChannelGroup* changedGroup = GetGroupChannel(channelGroup);
@@ -200,7 +200,7 @@ bool Audio_Leon::SetGroupChannelVolume(std::string groupName, float newVolume) {
 	}
 }
 
-float Audio_Leon::GetGroupChannelVolume(std::string groupName) {
+float AudioLeon::GetGroupChannelVolume(std::string groupName) {
 	NameToLower(groupName);
 	FMOD::ChannelGroup* groupChannel = GetGroupChannel(groupName);
 	float volume;
@@ -211,7 +211,7 @@ float Audio_Leon::GetGroupChannelVolume(std::string groupName) {
 	}
 }
 
-float Audio_Leon::InputSoundIntensity() {
+float AudioLeon::InputSoundIntensity() {
 	// Longitud del sonido
 	unsigned int soundLength = 0;
 	result = mic_sound->getLength(&soundLength, FMOD_TIMEUNIT_PCM);
@@ -239,7 +239,7 @@ float Audio_Leon::InputSoundIntensity() {
 	return intensity;
 }
 
-void Audio_Leon::AudioSourceListenerTest()
+void AudioLeon::AudioSourceListenerTest()
 {
 	std::string soundPath = "musicaCircuito.mp3";
 	std::string soundName = "test";
@@ -311,7 +311,7 @@ void Audio_Leon::AudioSourceListenerTest()
 
 }
 
-//void Audio_Leon::startRecording() {
+//void AudioLeon::startRecording() {
 //	std::cout << "a";
 //	FMOD::Sound* audio;
 //	result = this->sound_system->createSound(0, FMOD_LOOP_NORMAL | FMOD_OPENUSER, 0, &audio);

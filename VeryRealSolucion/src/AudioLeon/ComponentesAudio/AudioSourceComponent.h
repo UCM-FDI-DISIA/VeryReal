@@ -22,7 +22,7 @@ namespace VeryReal {
 enum FMOD_RESULT;
 typedef unsigned int FMOD_MODE;
 	
-class Audio_Leon;
+class AudioLeon;
 	
 	
 	
@@ -33,16 +33,16 @@ class Audio_Leon;
 		VeryReal::Component* CreatorSpecificComponent() override;
 	};
 
-	//Audio_Source se encarga de reproducir un archivo de audio en la escena.
+	//AudioSourceComponent se encarga de reproducir un archivo de audio en la escena.
 	//Los Audio_Listeners que se encuentren en rango escucharán el audio con distintas variaciones en lugar de su posición en la escena.
-	class Audio_Source : public VeryReal::Component
+	class AudioSourceComponent : public VeryReal::Component
 	{
 	public:
 
 		//Constructor por defecto.
-		Audio_Source();
+		AudioSourceComponent();
 		//Destructora que se encarga de eliminar la memoria dinámica del sonido concreto.
-		~Audio_Source();
+		~AudioSourceComponent();
 		bool InitComponent(std::string name, std::string path, bool onstart=false, std::string groupchannel="master", float volume=0.1,
 			bool threed=false, bool loop=false, float mindistance=1.0f, float maxdistance=60.0f);
 
@@ -114,17 +114,17 @@ class Audio_Leon;
 		virtual void Update(const double& dt);
 
 		/// <summary>
-		/// Le da play al sonido del Audio_Source.
+		/// Le da play al sonido del AudioSourceComponent.
 		/// </summary>
 		void Play();
 
 		/// <summary>
-		/// Detiene por completo el sonido del Audio_Source.
+		/// Detiene por completo el sonido del AudioSourceComponent.
 		/// </summary>
 		void Stop();
 
 		/// <summary>
-		/// Para el sonido del Audio_Source.
+		/// Para el sonido del AudioSourceComponent.
 		/// </summary>
 		void Pause();
 

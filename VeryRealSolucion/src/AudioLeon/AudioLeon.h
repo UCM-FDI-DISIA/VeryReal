@@ -35,14 +35,14 @@ namespace VeryReal
 	//Pitch base de un sonido. Determina el pitch "normal" de un sonido cuando el emisor esta parado.
 	const float BASE_PITCH = 1.0f;
 
-	/* Audio_Leon ofrece un sistema de creación, almacenaje y borrado de sonidos.
+	/* AudioLeon ofrece un sistema de creación, almacenaje y borrado de sonidos.
 	así como toda el esqueleto interno de funcionamiento de FMOD.
 	Puedes acceder a Audio_Leom llamando al método AL().
 	*/
 
-	class Audio_Leon : public VeryReal::Manager<Audio_Leon> {
-		friend Singleton<Audio_Leon>;
-		Audio_Leon();
+	class AudioLeon : public VeryReal::Manager<AudioLeon> {
+		friend Singleton<AudioLeon>;
+		AudioLeon();
 		//Inicializacion de los recursos necesarios para recoger input del microfono
 		void InitAudioRecording();
 		//Almacena los sonidos de FMOD enlazados al nombre establecido por el usuario.
@@ -74,8 +74,8 @@ namespace VeryReal
 
 	public:
 
-		//Destructor de la clase Audio_Leon. Se encarga de eliminar todo sonido creado y de liberar toda la infrestructura de FMOD.
-		~Audio_Leon();
+		//Destructor de la clase AudioLeon. Se encarga de eliminar todo sonido creado y de liberar toda la infrestructura de FMOD.
+		~AudioLeon();
 		//Actualiza el sistema de sonido en cada bucle del juego.
 		void SystemRefresh(const double& dt);
 
@@ -117,7 +117,7 @@ namespace VeryReal
 		/// <returns>Devuelve el grupo concreto que se buscaba o "nullptr" si no se encontró ningún grupo con ese nombre.</returns>
 		FMOD::ChannelGroup* GetGroupChannel(std::string channelGroupName);
 
-		//Devuelve la referencia al vector de canales de Audio_Leon.
+		//Devuelve la referencia al vector de canales de AudioLeon.
 		std::vector<FMOD::Channel*> GetChannelsVector();
 
 		//Devuelve la referencia al mapa que conecta los sonidos al último canal en el que se reprodujeron.
@@ -195,10 +195,10 @@ namespace VeryReal
 		/*void startRecording();*/
 	};
 
-	//Esta macro define una manera compacta de usar el singleton Audio_Leon.
-	//En lugar de escribir Audio_Leon::instance->method(), escribiremos AL().method()
-	inline Audio_Leon& AL() {
-		return *Audio_Leon::Instance();
+	//Esta macro define una manera compacta de usar el singleton AudioLeon.
+	//En lugar de escribir AudioLeon::instance->method(), escribiremos AL().method()
+	inline AudioLeon& AL() {
+		return *AudioLeon::Instance();
 	}
 }
 
