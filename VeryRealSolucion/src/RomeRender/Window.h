@@ -63,6 +63,8 @@ namespace VeryReal {
 			SDL_Window* sdl_window;
 			Ogre::FileSystemLayer* file_system_layer;
 			Ogre::Root* root;
+
+			
 	};
 }
 

@@ -3,6 +3,7 @@
 #define CAMERACOMPONENT
 #include "Component.h"
 #include <string>
+#include "CreatorComponent.h"
 
 namespace Ogre
 {
@@ -18,6 +19,14 @@ namespace Ogre
 namespace  VeryReal {
     class Vector3;
     class Vector2;
+
+    class CreatorCameraComponent :public CreatorComponent
+    {
+    public:
+        CreatorCameraComponent() {};
+        virtual ~CreatorCameraComponent() {};
+        Component* CreatorSpecificComponent() override;
+    };
     class CameraComponent : public Component {
     public:
        
@@ -26,7 +35,7 @@ namespace  VeryReal {
 
         // Inicializa el componente de cámara con un nombre, un color, una ventana de renderizado de Ogre,
         // un gestor de escena de Ogre y un desplazamiento de posición.
-        void InitComponent(std::string name, VeryReal::Vector3 color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset);
+        void InitComponent(std::string name, VeryReal::Vector3 color, VeryReal::Vector3 m_offset);
 
         // Destructor de la clase CameraComponent.
         virtual ~CameraComponent();

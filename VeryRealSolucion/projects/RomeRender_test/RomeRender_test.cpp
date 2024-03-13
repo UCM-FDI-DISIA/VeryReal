@@ -13,8 +13,6 @@
 #include "Creator.h"
 #include "SceneManager.h"
 #include "Scene.h"
-#include "CreatorLightComponent.h"
-#include "CreatorCameraComponent.h"
 #include "CreatorMeshRenderComponent.h"
 
 using namespace VeryReal;

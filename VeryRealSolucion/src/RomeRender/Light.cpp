@@ -7,19 +7,53 @@
 #include "RenderManager.h"
 #include <TransformComponent.h>
 #include "conversorvectores.h"
+#include "VariantClass.h"
+
+using namespace VeryReal;
+Component* CreatorLightComponent::CreatorSpecificComponent() {
+	Light* l =new Light();
+	int type;
+	Vector3 diffusecolour;
+	float shadowfardist, shadowdist, ineerangle, outerangle, nearclipdist;
+	bool shdws;
+	if (std::holds_alternative<int>(parameters_map.at("type")->GetVariant())) {
+		type = std::get<int>(parameters_map.at("type")->GetVariant());
+	}
+	if (std::holds_alternative<Vector3>(parameters_map.at("diffusecolour")->GetVariant())) {
+		diffusecolour = std::get<Vector3>(parameters_map.at("diffusecolour")->GetVariant());
+	}
+	if (std::holds_alternative<float>(parameters_map.at("shadowfardist")->GetVariant())) {
+		shadowfardist = std::get<float>(parameters_map.at("shadowfardist")->GetVariant());
+	}
+	if (std::holds_alternative<float>(parameters_map.at("shadowdist")->GetVariant())) {
+		shadowdist = std::get<float>(parameters_map.at("shadowdist")->GetVariant());
+	}
+	if (std::holds_alternative<float>(parameters_map.at("ineerangle")->GetVariant())) {
+		ineerangle = std::get<float>(parameters_map.at("ineerangle")->GetVariant());
+	}
+	if (std::holds_alternative<float>(parameters_map.at("outerangle")->GetVariant())) {
+		outerangle = std::get<float>(parameters_map.at("outerangle")->GetVariant());
+	}
+	if (std::holds_alternative<float>(parameters_map.at("nearclipdist")->GetVariant())) {
+		nearclipdist = std::get<float>(parameters_map.at("nearclipdist")->GetVariant());
+	}
+	if (std::holds_alternative<bool>(parameters_map.at("shdws")->GetVariant())) {
+		shdws = std::get<bool>(parameters_map.at("shdws")->GetVariant());
+	}
+	l->InitComponent(type, diffusecolour, shadowfardist, shadowdist, ineerangle, outerangle, nearclipdist, shdws);
+	return l;
+
+
+}
 VeryReal::Light::Light():light(nullptr),shadowdist(10),ineerangle_(45),outerangle(90),shadowfardist(10),diffusecolour(Vector3(0,0,0)),nearclipdist(0.5),shdws(true) {
 
 }
 VeryReal::Light::~Light() {
 
 }
-void VeryReal::Light::Update() {
-	Ogre::Vector3 v(trans->GetPosition().GetX(), trans->GetPosition().GetY(), trans->GetPosition().GetZ());
-	mNode->setPosition(v);
- }
 void VeryReal::Light::InitComponent(int type, VeryReal::Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
-	trans = GetEntity()->GetComponent<TransformComponent>("transform");
-	if (trans == nullptr)std::cerr << "NO SE PUEDE INICIALIZAR EL COMPONENTE LIGHT DEBIDO A QUE NO TIENE EL COMPONENTE TRANSFORM\n";
+	if(GetEntity()->HasComponent("transform"))trans = GetEntity()->GetComponent<TransformComponent>("transform");
+	else std::cerr << "NO SE PUEDE INICIALIZAR EL COMPONENTE LIGHT DEBIDO A QUE NO TIENE EL COMPONENTE TRANSFORM\n";
 	light = VeryReal::RenderManager::Instance()->SceneManagerOgree()->createLight("LuzPrincipal");
 	mNode = VeryReal::RenderManager::Instance()->CreateNode();
 	
@@ -34,7 +68,10 @@ void VeryReal::Light::InitComponent(int type, VeryReal::Vector3 const& diffuseco
 	mNode->attachObject(light);
 }
 
-
+void VeryReal::Light::Update() {
+	Ogre::Vector3 v(trans->GetPosition().GetX(), trans->GetPosition().GetY(), trans->GetPosition().GetZ());
+	mNode->setPosition(v);
+}
 void VeryReal::Light::SetDirection(VeryReal::Vector3 const& v) {
 	Ogre::Vector3 vec(v.GetX(), v.GetY(), v.GetZ());
 	mNode->setDirection(vec);

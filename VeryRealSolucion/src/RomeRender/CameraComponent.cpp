@@ -4,18 +4,33 @@
 #include <Ogre.h>
 #include <Vector3.h>
 #include <Vector2.h>
+#include "VariantClass.h"
 
 
 using namespace VeryReal;
 using namespace Ogre;
   
+Component* CreatorCameraComponent::CreatorSpecificComponent() {
+    CameraComponent* c = new CameraComponent();
+    std::string name;
+    Vector3 color, offset;
+    if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
+        name = std::get<std::string>(parameters_map.at("name")->GetVariant());
+    }
+    if (std::holds_alternative<Vector3>(parameters_map.at("color")->GetVariant())) {
+        color = std::get<Vector3>(parameters_map.at("color")->GetVariant());
+    }
+    if (std::holds_alternative<Vector3>(parameters_map.at("offset")->GetVariant())) {
+        offset = std::get<Vector3>(parameters_map.at("offset")->GetVariant());
+    }
+    c->InitComponent(name, color, offset);
+    return c;
+}
 CameraComponent::~CameraComponent()
-    {
+   {
        
     }
-    void CameraComponent::InitComponent(std::string name, Vector3 color, Ogre::RenderWindow* ogre_window, Ogre::SceneManager* mgr, VeryReal::Vector3 m_offset) {
-       
-
+    void CameraComponent::InitComponent(std::string name, Vector3 color, VeryReal::Vector3 offset) {
             //camara
             mNode = mgr->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
             mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
@@ -23,7 +38,8 @@ CameraComponent::~CameraComponent()
             camara = mgr->createCamera(name); // objeto y camara en si 
             camara->setNearClipDistance(1); //queremos que serenderice lo mas cerca posible desde la camara
             mNode->attachObject(camara);
-            vewport = ogre_window->addViewport(camara);
+
+            //vewport = ogre_window->addViewport(camara);
 
             //cambio de color de fondo
 
