@@ -5,8 +5,8 @@
 
 #include "Component.h"
 #include <Vector3.h>	
+#include "CreatorComponent.h"
 
- 
 namespace Ogre
 {
     class SceneNode;
@@ -17,7 +17,13 @@ namespace Ogre
 namespace  VeryReal {
     class TransformComponent;
     class Conversor;
-
+    class CreatorLightComponent :public CreatorComponent
+    {
+    public:
+        CreatorLightComponent() {}
+        virtual ~CreatorLightComponent() {}
+        Component* CreatorSpecificComponent() override;
+    };
     class Light:public Component {
     public:
         // Constructuora del componente Light

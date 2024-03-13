@@ -5,8 +5,6 @@
 #include <Vector3.h>
 #include <Vector2.h>
 #include "VariantClass.h"
-
-
 using namespace VeryReal;
 using namespace Ogre;
   
@@ -27,9 +25,9 @@ Component* CreatorCameraComponent::CreatorSpecificComponent() {
     return c;
 }
 CameraComponent::~CameraComponent()
-   {
+{
        
-    }
+}
     void CameraComponent::InitComponent(std::string name, Vector3 color, VeryReal::Vector3 offset) {
             //camara
             mNode = mgr->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
@@ -114,5 +112,4 @@ CameraComponent::~CameraComponent()
     }
 
  
-    
     
