@@ -26,6 +26,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TonInput", "projects\TonInput\TonInput.vcxproj", "{89FD502F-7C6E-44E9-9C55-C64DF8E56579}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AudioLeon_test", "projects\AudioLeon_test\AudioLeon_test.vcxproj", "{B2F9B0CB-AB2C-4FAF-86DF-B74D141CB1FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CAC0128E-E2FD-47E5-84CA-4E93E472F912} = {CAC0128E-E2FD-47E5-84CA-4E93E472F912}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GuilleElArquitecto_test", "projects\GuilleElArquitecto_test\GuilleElArquitecto_test.vcxproj", "{E951190E-0539-4947-98A1-82B06E0E177A}"
 EndProject
@@ -39,6 +42,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RomeRender_test", "projects\RomeRender_test\RomeRender_test.vcxproj", "{145997E5-E01A-44C9-8935-F6A11A1B1A10}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TonInput_test", "projects\TonInput_test\TonInput_test.vcxproj", "{11C4E1C0-738E-4AAF-918A-6DC161C04F8E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{89FD502F-7C6E-44E9-9C55-C64DF8E56579} = {89FD502F-7C6E-44E9-9C55-C64DF8E56579}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
