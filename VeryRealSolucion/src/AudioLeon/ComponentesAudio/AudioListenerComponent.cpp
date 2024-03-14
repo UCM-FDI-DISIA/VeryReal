@@ -1,6 +1,7 @@
 #include "AudioListenerComponent.h"
 #include <AudioLeon.h>
 #include <TransformComponent.h>
+#include <RigidBodyComponent.h>
 #include <Entity.h>
 #include <ErrorInformant.h>
 #include <SceneManager.h>
@@ -42,7 +43,7 @@ void AudioListenerComponent::Update(const double& dt)
 
 
 	Vector3 position = this->GetEntity()->GetComponent<TransformComponent>("transform")->GetPosition();
-	Vector3 velocity = this->GetEntity()->GetComponent<TransformComponent>("transform")->GetVelocity();
+	Vector3 velocity = this->GetEntity()->GetComponent<VeryReal::RigidBodyComponent>("rigidbody")->GetVelocity();
 	//VeryReal::Vector3 up = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->up();
 	//VeryReal::Vector3 forward = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->forward();
 

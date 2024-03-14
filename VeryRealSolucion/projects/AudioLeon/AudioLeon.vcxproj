@@ -73,7 +73,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\AudioLeon\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\AudioLeon\;$(SolutionDir)src\PedroBullet</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -94,7 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\AudioLeon;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\PedroBullet;$(SolutionDir)src\AudioLeon;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>

@@ -15,6 +15,7 @@ namespace FMOD {
 
 namespace VeryReal {
 	class TransformComponent;
+	class RigidBodyComponent;
 	class Vector3;
 
 }
@@ -245,6 +246,7 @@ class AudioLeon;
 		FMOD_RESULT result;
 		//Almacena el componente "Transform" de la entidad a la que este componente esta enlazada.
 		VeryReal::TransformComponent* transform = nullptr;
+		VeryReal::RigidBodyComponent* rigid_body = nullptr;
 	};
 
 #endif

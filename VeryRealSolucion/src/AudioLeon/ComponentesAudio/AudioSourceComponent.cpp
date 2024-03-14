@@ -1,6 +1,7 @@
 #include "AudioSourceComponent.h"
 #include <AudioLeon.h>
 #include <TransformComponent.h>
+#include <RigidBodyComponent.h>
 #include <Entity.h>
 #include <ErrorInformant.h>
 #include <SceneManager.h>
@@ -50,6 +51,7 @@ Component* CreatorAudioSource::CreatorSpecificComponent() {
         maxdistance = std::get<float>(parameters_map.at("maxdistance")->GetVariant());
     }
     a->InitComponent(name, path, onstart, groupchannel, volume, threed, loop, mindistance, maxdistance);
+    a->Start();
     return a;
 }
 bool AudioSourceComponent::InitComponent(std::string name, std::string path, bool onstart, std::string groupchannel, float volume,
@@ -217,6 +219,7 @@ bool AudioSourceComponent::PauseSound(std::string soundName, bool Pause)
 void AudioSourceComponent::Start()
 {
     transform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform");
+    rigid_body = this->GetEntity()->GetComponent<VeryReal::RigidBodyComponent>("rigidbody");
 
     if (!transform) {
         ErrorInf().showErrorMessageBox("AudioSourceComponent error", "An entity doesn't have transform component", EI_ERROR);
@@ -237,14 +240,14 @@ void AudioSourceComponent::Start()
 void AudioSourceComponent::Update(const double& dt)
 {
     if (is_three_d) {
-        Set3DSoundAtributes(sound_name, this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetPosition(), this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->GetVelocity());
+        Set3DSoundAtributes(sound_name, transform->GetPosition(), rigid_body->GetVelocity());
     }
 }
 
 void AudioSourceComponent::Play()
 {
     VeryReal::Vector3 pos = transform->GetPosition();
-    VeryReal::Vector3 vel = transform->GetVelocity();
+    VeryReal::Vector3 vel = rigid_body->GetVelocity();
     PlayAudioSource(sound_name, sound_group, &pos, &vel, volume);
     //Hacer el wrapeado aqui
 
