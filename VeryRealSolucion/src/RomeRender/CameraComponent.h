@@ -13,14 +13,12 @@ namespace Ogre
     class Viewport;
     class ColourValue;
     class RenderWindow;
-
 }
 
 namespace  VeryReal {
     class Vector3;
     class Vector2;
 
- 
     class CameraComponent : public Component {
     public:
        
@@ -29,7 +27,7 @@ namespace  VeryReal {
 
         // Inicializa el componente de cámara con un nombre, un color, una ventana de renderizado de Ogre,
         // un gestor de escena de Ogre y un desplazamiento de posición.
-        void InitComponent(std::string name, VeryReal::Vector3 color, VeryReal::Vector3 m_offset);
+        bool InitComponent(std::string name, VeryReal::Vector3 color, VeryReal::Vector3 m_offset);
 
         // Destructor de la clase CameraComponent.
         virtual ~CameraComponent();
@@ -78,10 +76,10 @@ namespace  VeryReal {
 
         
     protected:
-        Ogre::SceneNode* mNode;
-        Ogre::Camera* camara;
-        Ogre::Viewport* vewport;
-        Ogre::SceneManager* mgr;
+        Ogre::SceneNode* mNode=nullptr;
+        Ogre::Camera* camara=nullptr;
+        Ogre::Viewport* vewport=nullptr;
+        Ogre::SceneManager* mgr=nullptr;
   
     };
 

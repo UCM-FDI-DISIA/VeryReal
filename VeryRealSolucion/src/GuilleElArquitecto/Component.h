@@ -2,7 +2,6 @@
 #ifndef COMPONENT
 #define COMPONENT
 
-
 namespace VeryReal {
 	class Entity;
 	class VariantClass;	

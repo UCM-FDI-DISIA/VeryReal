@@ -2,6 +2,7 @@
 #include <ErrorInformant.h>
 #include "Creator.h"
 #include "TransformComponent.h"
+#include "CreatorTransformComponent.h"
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Entity.h"

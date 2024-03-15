@@ -66,6 +66,12 @@
     <ClCompile Include="..\..\src\RomeRender\UI\UItransformComponent.cpp">
       <Filter>Archivos de origen\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\CreatorAnimatorComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\CreatorCameraComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\RomeRender\Window.h">
@@ -109,6 +115,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\UI\UItransformComponent.h">
       <Filter>Archivos de encabezado\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\CreatorAnimatorComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\CreatorCameraComponent.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

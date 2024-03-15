@@ -3,7 +3,6 @@
 #define TRANSFORMCOMPONET
 #include "Component.h"
 #include "Vector3.h"
-#include "CreatorComponent.h"
 namespace VeryReal {
 	
 	class TransformComponent : public Component {
@@ -30,12 +29,6 @@ namespace VeryReal {
 		void Scaler(Vector3 scalerscale);
 	};
 
-	class CreatorTransformComponent :public CreatorComponent {
-	private:
-	public:
-		CreatorTransformComponent(){}
-		virtual ~CreatorTransformComponent(){}
-		Component* CreatorSpecificComponent() override;
-	};
+	
 }
 #endif

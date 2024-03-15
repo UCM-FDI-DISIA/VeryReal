@@ -7,7 +7,7 @@
 #include "RenderManager.h"
 #include <TransformComponent.h>
 #include "conversorvectores.h"
-#include "VariantClass.h"
+
 
 using namespace VeryReal;
 

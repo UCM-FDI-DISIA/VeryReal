@@ -4,7 +4,6 @@
 #include <Ogre.h>
 #include <Vector3.h>
 #include <Vector2.h>
-#include "VariantClass.h"
 #include "RenderManager.h"
 using namespace VeryReal;
 using namespace Ogre;
@@ -13,7 +12,7 @@ CameraComponent::~CameraComponent()
 {
        
 }
-    void CameraComponent::InitComponent(std::string name, Vector3 color, VeryReal::Vector3 offset) {
+    bool CameraComponent::InitComponent(std::string name, Vector3 color, VeryReal::Vector3 offset) {
         //camara
         mNode = mgr->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
         mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
@@ -26,6 +25,7 @@ CameraComponent::~CameraComponent()
         //cambio de color de fondo
 
         vewport->setBackgroundColour(Ogre::ColourValue(color.GetX(), color.GetY(),color.GetZ()));
+        return true;
 
     }
 

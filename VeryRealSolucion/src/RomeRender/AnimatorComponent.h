@@ -4,7 +4,7 @@
 #include "Component.h"
 #include <string>
 #include <unordered_map>
-#include "CreatorComponent.h"
+
 namespace Ogre
 {
 	class AnimationState;
@@ -20,14 +20,6 @@ namespace VeryReal {
 	class TransformComponent;
 	class Vector3;
 	class Vector4;
-
-	class CreatorAnimatorComponent :public CreatorComponent
-	{
-	public:
-		CreatorAnimatorComponent() {}
-		virtual ~CreatorAnimatorComponent() {}
-		Component* CreatorSpecificComponent() override;
-	};
 
 	class  AnimatorComponent : public Component
 	{

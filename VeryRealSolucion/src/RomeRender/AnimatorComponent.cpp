@@ -14,16 +14,6 @@
 using namespace VeryReal;
 using namespace std;
 
-Component* CreatorAnimatorComponent::CreatorSpecificComponent() {
-    string name;
-    AnimatorComponent* a = new AnimatorComponent();
-    if (std::holds_alternative<string>(parameters_map.at("name")->GetVariant())) {
-        name = std::get<string>(parameters_map.at("name")->GetVariant());
-    }
-    a->InitComponent(name);
-    return a;
-}
-
  AnimatorComponent::AnimatorComponent()
 {
     scene_mngr = nullptr;
