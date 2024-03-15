@@ -10,6 +10,8 @@
 #include "Component.h"
 #include "CreatorCameraComponent.h"
 #include "Vector3.h"
+#include "CreatorLightComponent.h"
+#include "CreatorMeshRenderComponent.h"
 
 
 using namespace VeryReal;
@@ -43,7 +45,7 @@ int main()
 #pragma endregion
 
 #pragma region Prueba Camara
-    VeryReal::Creator::Instance()->AddCreator("camera", new VeryReal::CreatorCameraComponent());
+   /* VeryReal::Creator::Instance()->AddCreator("camera", new VeryReal::CreatorCameraComponent());
     Creator::Instance()->GetCreator("camera")->AddParameter("name", std::string("anim"));
     Creator::Instance()->GetCreator("camera")->AddParameter("color", Vector3{100,100,100});
     Creator::Instance()->GetCreator("camera")->AddParameter("offset", Vector3{ 100,100,100 });
@@ -53,9 +55,29 @@ int main()
     s = SceneManager::Instance()->GetScene("Play");
     VeryReal::Entity* e = s->AddEntity("Player");
     Component* c = e->AddComponent("camera");
-    std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("camera") << "\n";
+    std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("camera") << "\n";*/
 
 #pragma endregion
+
+#pragma region Prueba Luz
+    VeryReal::Creator::Instance()->AddCreator("luz", new VeryReal::CreatorLightComponent());
+    Creator::Instance()->GetCreator("luz")->AddParameter("type", 8);
+    Creator::Instance()->GetCreator("luz")->AddParameter("diffusecolour", Vector3{ 100,100,100 });
+    Creator::Instance()->GetCreator("luz")->AddParameter("shadowfardist", float(2.0));
+    Creator::Instance()->GetCreator("luz")->AddParameter("shadowdist", float(2.0));
+    Creator::Instance()->GetCreator("luz")->AddParameter("ineerangle", float(2.0));
+    Creator::Instance()->GetCreator("luz")->AddParameter("outerangle", float(2.0));
+    Creator::Instance()->GetCreator("luz")->AddParameter("nearclipdist", float(2.0));
+    Creator::Instance()->GetCreator("luz")->AddParameter("shdws", true);
+
+    Scene* s = SceneManager::Instance()->AddScene("Play");
+    s = SceneManager::Instance()->GetScene("Play");
+    VeryReal::Entity* e = s->AddEntity("Luzent");
+    Component* c = e->AddComponent("luz"); 
+    std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Luzent")->HasComponent("luz") << "\n";
+
+#pragma endregion
+
    
  //  VeryReal::RenderManager::Instance()->InitManager("app");
  //  VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());

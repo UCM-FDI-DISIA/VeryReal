@@ -28,7 +28,7 @@ namespace  VeryReal {
        
         virtual void Update();
         //initcomponent de light, pone la posicion, tamaño... del modo atachado al componente a parti de su transform
-        void InitComponent(int type, VeryReal::Vector3 const& diffusecolour, float shadowfardist, float shadowdist, float ineerangle, float outerangle, float nearclipdist, bool shdws);
+        bool InitComponent(int type, VeryReal::Vector3 const& diffusecolour, float shadowfardist, float shadowdist, float ineerangle, float outerangle, float nearclipdist, bool shdws);
 
         // Gira el nodo del componente los grados dados en el vector
         // @param vector que indica la cantidad qie será pasada a grados  

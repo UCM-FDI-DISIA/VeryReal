@@ -16,6 +16,7 @@
     <ClCompile Include="..\..\src\RomeRender\conversorvectores.cpp" />
     <ClCompile Include="..\..\src\RomeRender\CreatorAnimatorComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\CreatorCameraComponent.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\CreatorLightComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\CreatorMeshRenderComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\Light.cpp" />
     <ClCompile Include="..\..\src\RomeRender\MeshRenderComponent.cpp" />
@@ -35,6 +36,7 @@
     <ClInclude Include="..\..\src\RomeRender\conversorvectores.h" />
     <ClInclude Include="..\..\src\RomeRender\CreatorAnimatorComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\CreatorCameraComponent.h" />
+    <ClInclude Include="..\..\src\RomeRender\CreatorLightComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\CreatorMeshRenderComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\Light.h" />
     <ClInclude Include="..\..\src\RomeRender\MeshRenderComponent.h" />
