@@ -13,6 +13,8 @@ extern "C"
 #include <Entity.h>
 #include <Creator.h>
 #include <TransformComponent.h>
+#include <iostream>
+//#include <sol>
 
 using namespace VeryReal;
 ScriptManager::ScriptManager()
@@ -83,14 +85,15 @@ void ScriptManager::Test(std::string namescene)
 							if (VeryReal::Creator::Instance()->GetCreator(namecomponent) != nullptr) {
 								luabridge::LuaRef parameters = component["parameters"];
 								if (parameters.isTable()) {
-									for (int k = 1; k <= parameters.length(); ++k) {
-										luabridge::LuaRef parameter = parameters[k];
-										std::cout << "Nombre parametro" << parameter["name"]<<std::endl;
-										std::cout << "Value parametro" << parameter["value"].type()<<std::endl;
-										//auto a = parameter["value"].getClassName().value();
-										//VeryReal::Creator::Instance()->GetCreator(namecomponent)->AddParameter(parameter["name"], parameter["value"].type());
+									while (lua_next(parameters, 0) != 0) {
+										std::string key = lua_tostring(parameters, -2);
+										std::string val = lua_tostring(parameters, -1);
+										std::cout << "Clave: " << key << ", Valor: " << val << std::endl;
+										//VeryReal::Creator::Instance()->GetCreator(namecomponent)->AddParameter(key, val);
+										lua_pop(component, 1);
 									}
 								}
+								else {} //Error
 								
 								VeryReal::Component* c = e->AddComponent(namecomponent);
 								
@@ -112,3 +115,4 @@ void ScriptManager::Test(std::string namescene)
 	}
 	std::cout << "Test" << "\n";
 }
+
