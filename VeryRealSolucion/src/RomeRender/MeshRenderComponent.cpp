@@ -17,16 +17,17 @@ using namespace VeryReal;
 using namespace Ogre;
 
 
-void MeshRenderComponent::InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_) {
+bool MeshRenderComponent::InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname) {
 
-   
+    mSM = VeryReal::RenderManager::Instance()->SceneManagerOgree();
+   // filesystemlayer_ = VeryReal::RenderManager::Instance()->filesystem_layer;
     material_name = matirialname;
     mStaticObject = isstatic;
     entity_name = entityname;
     mesh_name = modelname;
-    scene_node = node;
+    scene_node = VeryReal::RenderManager::Instance()->CreateNode();
     //como se deberia hacer pero que falla 
-    mSM = scenemanager;
+  
     ent_ogre = mSM->createEntity(modelname);
     scene_node->attachObject(ent_ogre);
     scene_node->setVisible(true);
@@ -42,7 +43,7 @@ void MeshRenderComponent::InitComponent(bool isstatic, std::string modelname, st
     if (material_name != "")
         ent_ogre->setMaterialName(material_name,"General");
 
-
+    return true;
 
 }
 

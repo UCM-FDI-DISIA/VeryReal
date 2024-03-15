@@ -29,7 +29,7 @@ namespace  VeryReal {
 		MeshRenderComponent() {}
 
 		// Inicializa el componente de renderizado de malla con la información proporcionada.
-		void InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname, Ogre::SceneNode* node, Ogre::SceneManager* scenemanager, Ogre::FileSystemLayer* filesystemlayer_);
+		bool InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname);
 
 		// Destructor de la clase MeshRenderComponent.
 		virtual ~MeshRenderComponent();
