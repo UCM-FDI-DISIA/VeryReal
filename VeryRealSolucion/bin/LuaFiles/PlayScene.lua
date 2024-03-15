@@ -5,31 +5,11 @@ Entities={
             {
                 name = "Transform",
                 parameters = {
-                    {
-                        name = "aux",
-                        value= "la ensaimada pepa"
-                    },
-                    {
-                        name ="position",
-                        value = {0,100,0},
-
-                    },
-                    {
-                        name ="rotation",
-                        value = {0,200,0},
-
-                    },
-                    {
-                        name="scale",
-                        value = {0,300,0}
-
-                    }
-
+                    position = 0,
+                    aux = 1,
+                    pepe = "Soy pepe"
                 }
-                
             }
         }
-        
-        
     }
 }
