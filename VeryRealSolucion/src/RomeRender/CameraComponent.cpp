@@ -8,23 +8,7 @@
 #include "RenderManager.h"
 using namespace VeryReal;
 using namespace Ogre;
-  
-Component* CreatorCameraComponent::CreatorSpecificComponent() {
-    CameraComponent* c = new CameraComponent();
-    std::string name;
-    Vector3 color, offset;
-    if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
-        name = std::get<std::string>(parameters_map.at("name")->GetVariant());
-    }
-    if (std::holds_alternative<Vector3>(parameters_map.at("color")->GetVariant())) {
-        color = std::get<Vector3>(parameters_map.at("color")->GetVariant());
-    }
-    if (std::holds_alternative<Vector3>(parameters_map.at("offset")->GetVariant())) {
-        offset = std::get<Vector3>(parameters_map.at("offset")->GetVariant());
-    }
-    c->InitComponent(name, color, offset);
-    return c;
-}
+
 CameraComponent::~CameraComponent()
 {
        

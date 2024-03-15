@@ -24,8 +24,8 @@ int main()
    VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
    VeryReal::Creator::Instance()->AddCreator("MeshRender", new VeryReal::CreatorMeshRenderComponent());
    Creator::Instance()->AddCreator("Animator", new CreatorAnimatorComponent());
-   VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
-   VeryReal::Creator::Instance()->AddCreator("Light", new VeryReal::CreatorLightComponent());
+   //VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
+   //VeryReal::Creator::Instance()->AddCreator("Light", new VeryReal::CreatorLightComponent());
    Scene* s = SceneManager::Instance()->AddScene("Play");
    s = SceneManager::Instance()->GetScene("Play");
    Entity* e = s->AddEntity("Player");

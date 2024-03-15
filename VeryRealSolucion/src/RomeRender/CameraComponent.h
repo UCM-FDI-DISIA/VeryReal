@@ -3,7 +3,7 @@
 #define CAMERACOMPONENT
 #include "Component.h"
 #include <string>
-#include "CreatorComponent.h"
+
 
 namespace Ogre
 {
@@ -20,13 +20,7 @@ namespace  VeryReal {
     class Vector3;
     class Vector2;
 
-    class CreatorCameraComponent :public CreatorComponent
-    {
-    public:
-        CreatorCameraComponent() {};
-        virtual ~CreatorCameraComponent() {};
-        Component* CreatorSpecificComponent() override;
-    };
+ 
     class CameraComponent : public Component {
     public:
        

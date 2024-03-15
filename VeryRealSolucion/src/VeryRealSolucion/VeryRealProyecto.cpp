@@ -13,7 +13,7 @@
 //dll export es una manera de que desde el juego, esa función sea visible.
 
 const int FRAME_RATE = 3;
-
+typedef bool(__cdecl* GameStartingPoint)();
 bool VeryRealProyecto::Init() {
 	SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
 	//SDL_Window* mWindow; // Ventana (temporal) para que funcione el input
@@ -23,7 +23,7 @@ bool VeryRealProyecto::Init() {
 	//VeryReal::RenderManager().Instance()->InitManager("app"); //InitManager
 	VeryReal::InputManager::Init();
 	VR().CreateCreators();
-	
+	LoadGame("Ogreman");
 
 
 	return true;
@@ -65,13 +65,19 @@ void VeryRealProyecto::CreateCreators() {
 bool VeryRealProyecto::LoadGame(std::string gameName)
 {
 	//Tengo que hacer cambios a gameName para que este sea la ruta al juego. Puede ser relativa ya que siempre sabemos donde va a estar el juego.
-	
+	gameName = "E:/TERCERANHO/PROYECTOSIII/Ogreman/OgremanSolucion/OgremanSolucion.dll";
 	std::wstring wideGameName = std::wstring(gameName.begin(), gameName.end());
 	gameDll = LoadLibrary(wideGameName.c_str());
+
 
 	if(gameDll != NULL)
 	{
 		std::cout << "Juego cargado correctamente";
+		GameStartingPoint entryPoint =
+			(GameStartingPoint)GetProcAddress(gameDll, "start");
+		if (entryPoint != NULL) {
+			return entryPoint();
+		}
 	}
 	else
 	{
