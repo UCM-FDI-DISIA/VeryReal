@@ -70,8 +70,8 @@ void MeshRenderComponent::setName(std::string name) {
 void MeshRenderComponent::setMeshName(std::string meshName) {
      mesh_name = meshName;
 }
-void setStatic(bool stat) {
-
+void MeshRenderComponent::setStatic(bool stat) {
+    mStaticObject = stat;
 }
 void MeshRenderComponent::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot) {
     conversor conve;

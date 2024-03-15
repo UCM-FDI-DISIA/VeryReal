@@ -7,6 +7,7 @@
 #include <Vector3.h>	
 
 
+#define DEBUG_TRANSFORM_ERROR "NO SE PUEDE INICIALIZAR EL COMPONENTE LIGHT DEBIDO A QUE NO TIENE EL COMPONENTE TRANSFORM\n"
 namespace Ogre
 {
     class SceneNode;
@@ -91,11 +92,11 @@ namespace  VeryReal {
         Ogre::SceneManager* mngr_=nullptr;
         TransformComponent* trans=nullptr;
         int type=0;
-        Vector3 diffusecolour;
+        Vector3 diffusecolour; //de 0 a 1
         float shadowfardist=0.25;
         float shadowdist=5;
-        float ineerangle_=45;
-        float outerangle=25;
+        float ineerangle_=45;//0 a 180
+        float outerangle=25;//0 a 180
         float nearclipdist=10;
         bool shdws=false;
     };

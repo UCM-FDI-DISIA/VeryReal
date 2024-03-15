@@ -17,7 +17,11 @@ VeryReal::RenderManager::RenderManager():window(nullptr),root(nullptr), scene_ma
 }
 VeryReal::RenderManager::~RenderManager() {
 
-    if (root == nullptr) { std::cerr << "RenderManager no ha sido inicializado\n"; return; }
+    if (root == nullptr) {
+        #ifdef DEBUG_MODE
+        cerr << DEBUG_ROOT_ERROR;
+        #endif
+        return; }
     //vuelta a la escena por defecto
     root->destroySceneManager(scene_manager);
     Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
@@ -38,11 +42,18 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
     pluginsPath = filesystem_layer->getConfigFilePath("plugins.cfg");
     if (!Ogre::FileSystemLayer::fileExists(pluginsPath))
     {
-        std::cerr << "ERROR, no se ha encontrado el archivo  plugins.cfg en la ruta: " << pluginsPath;
+        #ifdef DEBUG_MODE
+        cerr << DEBUG_PLUGINS_ERROR << pluginsPath << "\n";
+        #endif
+      
     }
     //lo pongo asi y no la rita porque en teoria va a estar al lado del .exe
     Ogre::String ogrepath = filesystem_layer->getConfigFilePath("ogre.cfg");
-
+    if (!Ogre::FileSystemLayer::fileExists(ogrepath)) {
+        #ifdef DEBUG_MODE
+                cerr << DEBUG_PLUGINS_ERROR << ogrepath << "\n";
+        #endif
+    }
     root= new Ogre::Root(pluginsPath, ogrepath);
     if (!root->restoreConfig())
     {
@@ -59,15 +70,29 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
 
     //inicializamos sdl
     if (SDL_WasInit(SDL_INIT_VIDEO))SDL_Init(SDL_INIT_VIDEO);
+    #ifdef ROME_RENDER_TEST
     SDL_Init(SDL_INIT_EVERYTHING);//mientras no esta todo bien
+    #endif
+
+   
 
 
     scene_manager = root->createSceneManager();
     render_system->_initRenderTargets();//mira esto ni idea que hace
 
 
-    window = new VeryReal::Window(root, render_system, scene_manager);
-    window->CreateWindoww();
+    window = new VeryReal::Window();
+    if (window->Init(root, render_system, scene_manager)) {
+        window->CreateWindoww();
+    }
+    else {
+        #ifdef DEBUG_MODE
+        cerr << DEBUG_WINDOW_ERROR;
+        #endif
+
+    }
+    
+ 
 
     //root->startRendering();
 

@@ -14,6 +14,7 @@ CameraComponent::~CameraComponent()
 }
     bool CameraComponent::InitComponent(std::string name, Vector3 color, VeryReal::Vector3 offset) {
         //camara
+        mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
         mNode = mgr->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
         mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
         mNode->setPosition(0, 0, 30);

@@ -1,7 +1,7 @@
 #pragma once
 #ifndef RIGIDBODYCOMPONENT
 #define RIGIDBODYCOMPONENT
-
+#define BEDUG_ERROR_TRANSFORM "NO SE HA PODIDO INICIALIZAR EL COMPONENTE RIGIDBODY DADO QUE NO CONTIENE EL COMPONENTE TRANSFORM\n"
 
 #include <memory>
 #include <Component.h>
@@ -21,7 +21,9 @@ namespace VeryReal {
     class ColliderComponent;
     class RigidBodyComponent : public Component {
     public:
-        RigidBodyComponent(PBShapes shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, PBMovementType movementType = MOVEMENT_TYPE_DYNAMIC, bool trigger = false);
+        RigidBodyComponent();
+        
+        bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, int movementType = MOVEMENT_TYPE_DYNAMIC, bool trigger = false);
         virtual ~RigidBodyComponent();
 
         // Funciones para manipular el cuerpo rígido
@@ -60,7 +62,7 @@ namespace VeryReal {
         float restitution;
         PBMovementType movementType;
         ColliderComponent* collider = nullptr;
-        void InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger);
+        bool InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger);
         btCollisionShape* CreateCollisionShape(PBShapes shapeType);
     };
 

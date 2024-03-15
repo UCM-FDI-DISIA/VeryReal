@@ -7,18 +7,33 @@
 
 using namespace VeryReal;
 
-RigidBodyComponent::RigidBodyComponent(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType, bool trigger)
-    : mass(mass), friction(friction), restitution(restitution), movementType(movementType) {
-    InitializeRigidBody(shapeType, movementType, trigger);
+RigidBodyComponent::RigidBodyComponent()
+    : mass(0), friction(0), restitution(0), movementType(MOVEMENT_TYPE_DYNAMIC), isTrigger(false) {
+    
 }
-
+bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType, bool trigger) {
+   // this->shapeType = shapeType;
+    this->mass = mass;
+    this->friction = friction;
+    this->restitution = restitution;
+    this->movementType = (PBMovementType)movementType;
+    this-> isTrigger = trigger;
+    return InitializeRigidBody((PBShapes)shapeType, this->movementType, trigger);
+}
 RigidBodyComponent::~RigidBodyComponent() {
 
 }
 
-void RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger) {
+bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger) {
     transformComponent = this->GetEntity()->GetComponent<TransformComponent>("transform");
-;
+    if (transformComponent == nullptr) {
+        #ifdef DEBUG_MODE
+                // Código específico para modo de depuración
+        cerr << BEDUG_ERROR_TRANSFORM;
+        #endif
+        return false;
+    }
+
     collisionShape.reset(CreateCollisionShape(shapeType));
     
     btVector3 localInertia(0, 0, 0);
@@ -44,7 +59,7 @@ void RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
     if (!collider)
     {
         //ERROR
-        return;
+        return false;
     }
     this->GetBulletRigidBody()->setUserPointer(collider);
 
@@ -57,7 +72,7 @@ void RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
     }
 
-    
+    return true;
 }
 
 btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType) {

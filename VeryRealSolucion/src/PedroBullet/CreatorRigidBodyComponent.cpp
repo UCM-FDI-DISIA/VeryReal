@@ -33,6 +33,7 @@ VeryReal::Component* VeryReal::CreatorRigidBodyComponent::CreatorSpecificCompone
 		trigger = false;
 	}
 
-	RigidBodyComponent* r = new RigidBodyComponent(shapeType, mass, friction, restitution, movementType, trigger);
+	RigidBodyComponent* r = new RigidBodyComponent();
+	r->InitComponent(shapeType, mass, friction, restitution, movementType, trigger);
 	return r;
 }

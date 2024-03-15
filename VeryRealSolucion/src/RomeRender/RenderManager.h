@@ -5,7 +5,10 @@
 #include "Manager.h"
 #include "Vector3.h"
 #include "string"
-
+#define DEBUG_ROOT_ERROR "OGRE NO HA SIDO INICIALIZADO CORRECTAMENTE\n"
+#define DEBUG_OGRE_ERROR "NO SE HA ENCONTRADO EL ARCHIVO ogre.cfg\n"
+#define DEBUG_PLUGINS_ERROR "NO SE HA ENCONTRADO EL ARCHIVO  plugins.cfg\n"
+#define DEBUG_WINDOW_ERROR "NO SE HA PODIDO CREAR LA VENTANA\n"
 namespace VeryReal {
 
 	class Window;

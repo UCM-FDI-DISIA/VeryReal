@@ -19,7 +19,13 @@ VeryReal::Light::~Light() {
 }
 void VeryReal::Light::InitComponent(int type, VeryReal::Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
 	if(GetEntity()->HasComponent("transform"))trans = GetEntity()->GetComponent<TransformComponent>("transform");
-	else std::cerr << "NO SE PUEDE INICIALIZAR EL COMPONENTE LIGHT DEBIDO A QUE NO TIENE EL COMPONENTE TRANSFORM\n";
+	else {
+		#ifdef DEBUG_MODE
+		std::cerr << DEBUG_TRANSFORM_ERROR;
+		#endif
+		 return;//devolverá false en este caso
+	
+	}
 	light = VeryReal::RenderManager::Instance()->SceneManagerOgree()->createLight("LuzPrincipal");
 	mNode = VeryReal::RenderManager::Instance()->CreateNode();
 	

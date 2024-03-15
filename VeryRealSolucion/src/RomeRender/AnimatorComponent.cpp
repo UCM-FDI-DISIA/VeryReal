@@ -31,12 +31,22 @@ bool AnimatorComponent::InitComponent(std::string name) {
     num_animations_active = (0);
 
     if (GetEntity()->HasComponent("transform")) transform = GetEntity()->GetComponent<TransformComponent>("transform");
-    else //throw std::exception("no existe Transform"); 
+    else {
+        #ifdef DEBUG_MODE
+        std::cerr << DEBUG_TRANSFORM_ERROR;
+        #endif
         return false;
+    }
+      
     
     if(GetEntity()->HasComponent("meshrender"))meshRender = GetEntity()->GetComponent<MeshRenderComponent>("meshrender");
-    else //throw std::exception("no existe MeshRender");
+    else {
+        #ifdef DEBUG_MODE
+        std::cerr << DEBUG_MESHRENDERER_ERROR;
+         #endif
         return false;
+    }
+      
 
     animations = std::unordered_map<std::string, Ogre::AnimationState*>();
     if (meshRender->getOgreEntity()->getAllAnimationStates() != nullptr)

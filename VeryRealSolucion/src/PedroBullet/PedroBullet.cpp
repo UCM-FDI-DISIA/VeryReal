@@ -143,7 +143,8 @@ void PedroBullet::Update(float deltaTime) {
 
 void PedroBullet::AddRigidBody(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType)
 {
-    VeryReal::RigidBodyComponent* body = new  VeryReal::RigidBodyComponent(shapeType, mass, friction, restitution, movementType);
+    VeryReal::RigidBodyComponent* body = new  VeryReal::RigidBodyComponent();
+    body->InitComponent(shapeType, mass, friction, restitution, movementType);
     //rigidbodies.push_back(body);
 }
 

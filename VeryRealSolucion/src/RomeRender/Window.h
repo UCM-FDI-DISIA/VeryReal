@@ -19,9 +19,9 @@ namespace VeryReal {
 			// <summary>
 			/// Método que inicializa los valores de la clase
 			/// </summary>
-			/// <param name="root">Raiz de ogre.</param>
 
-			Window(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager);
+			Window();
+			
 			// <summary>
 			/// Destructora.Elimina la ventana y desactiva el modulo de video de sdl
 			/// </summary>
@@ -34,7 +34,7 @@ namespace VeryReal {
 			/// </summary>
 			//<returns> un puntero a la ventana creada con sdl
 			void CreateWindoww();
-			void Init();//ira fuera
+			void Init(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager);//ira fuera
 			// <summary>
 			///Actualiza la ventana en caso de cerrarla,camviarla de tamaño y así
 			/// </summary>

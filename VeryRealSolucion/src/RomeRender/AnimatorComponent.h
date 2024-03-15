@@ -4,7 +4,7 @@
 #include "Component.h"
 #include <string>
 #include <unordered_map>
-
+#include "CreatorComponent.h"
 namespace Ogre
 {
 	class AnimationState;
