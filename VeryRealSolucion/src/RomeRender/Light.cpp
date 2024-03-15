@@ -23,7 +23,7 @@ bool Light::InitComponent(int type, Vector3 const& diffusecolour, float shadowfa
 		#ifdef DEBUG_MODE
 		std::cerr << DEBUG_TRANSFORM_ERROR;
 		#endif
-		 return;//devolverá false en este caso
+		 return false;//devolverá false en este caso
 	
 	}
 	light = VeryReal::RenderManager::Instance()->SceneManagerOgree()->createLight("LuzPrincipal");
