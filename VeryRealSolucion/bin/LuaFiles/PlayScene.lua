@@ -4,12 +4,24 @@ Entities={
         components = {
             {
                 name = "Transform",
-                parameters = {
-                    position = 0,
-                    aux = 1,
-                    pepe = "Soy pepe"
+                parameters = {                  
+                    position = {10, 5, 1},
+                    rotation ={0, 0, 0},
+                    scale = {1, 1, 1}                   
                 }
             }
+        }
+    }, 
+    {  name = "Ogreman",
+        components = {
+	        {
+                name = "Transform",
+                parameters = {
+                    position = {100, 57, 15},
+                    rotation = {90, 0, 0},
+                    scale = {1, 1, 1}
+                }
+	        }
         }
     }
 }
