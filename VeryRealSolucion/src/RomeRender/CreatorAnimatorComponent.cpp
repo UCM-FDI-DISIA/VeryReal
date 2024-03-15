@@ -10,7 +10,7 @@ Component* CreatorAnimatorComponent::CreatorSpecificComponent() {
     }
     bool b= a->InitComponent(name);
     if(!b){
-    //ERROR
+        return nullptr;
     }
     return a;
 }

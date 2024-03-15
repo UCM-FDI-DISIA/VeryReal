@@ -16,7 +16,7 @@ Component* CreatorCameraComponent::CreatorSpecificComponent() {
     }
     bool b=c->InitComponent(name, color, offset);
     if(!b){
-        //ERROR
+        return nullptr;
     }
     return c;
 }
