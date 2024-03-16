@@ -6,13 +6,17 @@
 #include "Manager.h"
 #include <string>
 struct lua_State;
-
+namespace luabridge {
+	class LuaRef;
+}
 
 class ScriptManager : public VeryReal::Manager<ScriptManager> {
 	friend Singleton<ScriptManager>;
 
 private:
 	lua_State* lua_state;
+	// Se encarga de leer los parámetros que se le pasarán a los componentes
+	void ReadParams(luabridge::LuaRef params, std::string comp);
 
 public:
 	ScriptManager();

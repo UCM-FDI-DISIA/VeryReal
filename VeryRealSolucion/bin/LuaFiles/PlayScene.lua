@@ -8,8 +8,8 @@ Entities={
                     position = {10, 5, 1},
                     rotation ={0, 0, 0},
                     scale = {1, 1, 1}                   
-                }
-            }
+                },
+            },                
         }
     }, 
     {  name = "Ogreman",
@@ -21,7 +21,16 @@ Entities={
                     rotation = {90, 0, 0},
                     scale = {1, 1, 1}
                 }
-	        }
+	        }, 
+            {
+                name = "MeshRenderComponent",
+                parameters = {                  
+                    isstatic = false,
+                    modelname = "Ogreman.mesh",
+                    entityname= "Ogreman",
+                    materialname = "Ogreman.mat"
+                }
+            }       
         }
     }
 }
