@@ -27,8 +27,7 @@ public:
 	// Compreueba error al abrir archivo
 	void Error(int status);
 	// Método para probar la creación de entidades y componentes mediante Lua
-	void Test(std::string n);
-	void TestScene();
+	void ReadScene(std::string n);
 	inline lua_State* GetLuaState() { return lua_state; }
 };
 

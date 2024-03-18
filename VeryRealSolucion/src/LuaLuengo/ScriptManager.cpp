@@ -49,12 +49,7 @@ void ScriptManager::Init(std::string p)
 	Error(script_status);
 }
 
-void ScriptManager::TestScene() {
-	Scene* scn = SceneManager::Instance()->AddScene("luaTest"); // Creación de la escena(lleva el nombre del archivo .lua)
-	std::cout << "TestScene" << "\n";
-}
-
-void ScriptManager::Test(std::string namescene)
+void ScriptManager::ReadScene(std::string namescene)
 {
 	VeryReal::Scene* scene = VeryReal::SceneManager::Instance()->AddScene(namescene); // Creación de la escena(lleva el nombre del archivo .lua)
 	std::cout << "Nombre de la escena: " << namescene << std::endl;
@@ -65,17 +60,14 @@ void ScriptManager::Test(std::string namescene)
 	if (entities.isTable()) {
 		for (int i = 1; i <= entities.length(); ++i) { // Recorremos la tabla de entidades
 			luabridge::LuaRef entity = entities[i];
-
 			if (entity.isTable()) {
 				std::string entityname = entity["name"].tostring(); 
 				std::cout << "Nombre de la entidad: " << entityname << std::endl;
 				VeryReal::Entity* e = scene->AddEntity(entityname); // Añadiendo entidades
 				luabridge::LuaRef components = entity["components"];
-
 				if (components.isTable()) {
 					for (int j = 1; j <= components.length(); ++j) { // Recorremos la tabla interior(componentes)
-						luabridge::LuaRef component = components[j];
-						
+						luabridge::LuaRef component = components[j];					
 						if (component.isTable()) {
 							std::string componentname = component["name"].tostring();
 							std::cout << "Nombre del componente: " << componentname << std::endl;
@@ -83,14 +75,13 @@ void ScriptManager::Test(std::string namescene)
 							if (VeryReal::Creator::Instance()->GetCreator(componentname) != nullptr) {
 								luabridge::LuaRef parameters = component["parameters"];
 								if (parameters.isTable()) {									
-									parameters.push(lua_state);  
-									lua_pushnil(lua_state);     
-									while (lua_next(lua_state, -2)) { 									
-										std::string paramName = lua_tostring(lua_state, -2);																				
-										ReadParams(parameters, componentname);
-										lua_pop(lua_state, 1);
+									parameters.push(lua_state); // Insertamos la tabla a la pila 
+									lua_pushnil(lua_state);   
+									while (lua_next(lua_state, -2)) { 																																							
+										ReadParams(parameters, componentname); // Llamada a la lectura de parámetros de un componente
+										lua_pop(lua_state, 1); // Sacamos el valor actual de la pila
 									}
-									lua_pop(lua_state, 1);  
+									lua_pop(lua_state, 1); // Sacamos la tabla de parámetros de la pila
 								}
 								else {
 									std::cerr << "Error: parameters no es una tabla" << std::endl;
@@ -123,7 +114,7 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
 			int value;
 			value = lua_tonumber(lua_state, -1);
 			std::cout << key + ": " << value << std::endl;
-			//VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, value);
+			VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, value);
 		}
 		else if (lua_isstring(lua_state, -1)) { // Comprobamos si el valor es un string	
 			std::string key;
@@ -131,28 +122,28 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
 			std::string value;
 			value = lua_tostring(lua_state, -1);
 			std::cout << key + ": " << value << std::endl;
-			//VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, value);
+			VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, value);
 		}
-		else if (lua_isboolean(lua_state, -1)) {
+		else if (lua_isboolean(lua_state, -1)) { // Comprobamos si el valor es un booleano
 			std::string key;
 			key = lua_tostring(params, -2);
 			bool value;
 			value = lua_toboolean(lua_state, -1);
 			std::cout << key + ": " << value << std::endl;
-			//VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, value);
+			VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, value);
 		}
 		else { // En otro caso estamos ante un vector(tabla en lua)
 			int length = luaL_len(lua_state, -1);
 			std::string key;
 			std::vector<int> values; // Vector donde iremos almacenando los valores que se meterán al vector
 			for (int k = 1; k <= length; ++k) {
-				lua_rawgeti(lua_state, -1, k);
+				lua_rawgeti(lua_state, -1, k); // Obtenemos el elemento en la posición k 
 				key = lua_tostring(params, -3);
 				if (lua_isnumber(lua_state, -1)) {
 					int value = lua_tonumber(lua_state, -1);
 					values.push_back(value);
 				}
-				lua_pop(lua_state, 1);
+				lua_pop(lua_state, 1); // Sacamos el valor actual de la pila
 			}
 			std::cout << "Key: " << key << std::endl;
 			std::cout << "( ";
