@@ -2,13 +2,15 @@
 #define INPUTMANAGER
 #pragma once
 
-#include <SDL.h>
 #include <Manager.h>
 #include "TonMapeo.h"
 #include <array>
 
-namespace VeryReal
-{
+struct _SDL_GameController;
+typedef struct _SDL_GameController SDL_GameController;
+typedef union SDL_Event SDL_Event;
+
+namespace VeryReal {
     class InputManager : public VeryReal::Manager<InputManager> {
         friend Singleton<InputManager>;
 
@@ -112,10 +114,7 @@ namespace VeryReal
     private:
 
         /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
-        InputManager() {
-            kb_state = SDL_GetKeyboardState(0);
-            ClearState(true);
-        }
+        InputManager();
 
         /// Actualiza el estado del evento de tecla presionada
         inline void OnKeyDown(const SDL_Event&) {
@@ -129,43 +128,16 @@ namespace VeryReal
 
         /// Actualiza el estado del movimiento del raton (posicion y si se esta moviendo o no)
         /// @param -> event El evento SDL que contiene informacion sobre el movimiento del raton
-        inline void OnMouseMotion(const SDL_Event& event) {
-            is_mouse_motion_event = true;
-            mouse_pos.first = event.motion.x;
-            mouse_pos.second = event.motion.y;
-        }
+        void OnMouseMotion(const SDL_Event& event);
 
         /// Actualiza el estado de los botones del raton
         /// @param event -> El evento SDL que contiene informacion sobre el boton del raton
         /// @param isDown -> True si se presiona el boton del raton, false si se suelta
-        inline void OnMouseButtonChange(const SDL_Event& event, bool isDown) {
-            is_mouse_button_event = true;
-            switch (event.button.button) {
-            case SDL_BUTTON_LEFT:
-                mb_state[TI_MOUSE_LEFT] = isDown;
-                break;
-            case SDL_BUTTON_MIDDLE:
-                mb_state[TI_MOUSE_MIDDLE] = isDown;
-                break;
-            case SDL_BUTTON_RIGHT:
-                mb_state[TI_MOUSE_RIGHT] = isDown;
-                break;
-            default:
-                break;
-            }
-        }
+        void OnMouseButtonChange(const SDL_Event& event, bool isDown);
 
         /// Maneja todos los eventos de ventana
         /// @param event -> El evento SDL que contiene informacion sobre la ventana
-        inline void HandleWindowEvent(const SDL_Event& event) {
-            switch (event.window.event) {
-            case SDL_WINDOWEVENT_CLOSE:
-                is_close_window_event = true;
-                break;
-            default:
-                break;
-            }
-        }
+        void HandleWindowEvent(const SDL_Event& event);
 
         bool is_quit = false;
         float joystick_death_zone = 0.12;

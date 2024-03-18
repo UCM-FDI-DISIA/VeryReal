@@ -5,6 +5,11 @@
 #include "InputManager.h"
 using namespace std;
 
+VeryReal::InputManager::InputManager() {
+    kb_state = SDL_GetKeyboardState(0);
+    ClearState(true);
+}
+
 void VeryReal::InputManager::ClearState(bool clearMouseButtons) {
     is_close_window_event = false;
     is_key_down_event = false;
@@ -65,6 +70,29 @@ void VeryReal::InputManager::Refresh() {
 
     while (SDL_PollEvent(&event))
         Update(event);
+}
+
+void VeryReal::InputManager::OnMouseButtonChange(const SDL_Event& event, bool isDown) {
+    is_mouse_button_event = true;
+    switch (event.button.button) {
+    case SDL_BUTTON_LEFT : mb_state [TI_MOUSE_LEFT] = isDown; break;
+    case SDL_BUTTON_MIDDLE : mb_state [TI_MOUSE_MIDDLE] = isDown; break;
+    case SDL_BUTTON_RIGHT : mb_state [TI_MOUSE_RIGHT] = isDown; break;
+    default : break;
+    }
+}
+
+void VeryReal::InputManager::HandleWindowEvent(const SDL_Event& event) {
+    switch (event.window.event) {
+    case SDL_WINDOWEVENT_CLOSE : is_close_window_event = true; break;
+    default : break;
+    }
+}
+
+void VeryReal::InputManager::OnMouseMotion(const SDL_Event& event) {
+    is_mouse_motion_event = true;
+    mouse_pos.first = event.motion.x;
+    mouse_pos.second = event.motion.y;
 }
 
 bool VeryReal::InputManager::IsGamePadButtonDown(TI_GameControllerButton button) {

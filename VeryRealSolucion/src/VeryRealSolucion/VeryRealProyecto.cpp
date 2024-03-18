@@ -4,6 +4,7 @@
 #include <Window.h>
 #include <Creator.h>
 #include "TransformComponent.h"
+#include "SDL.h"
 
 // VeryRealProyecto.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 
@@ -36,7 +37,7 @@ void VeryRealProyecto::Loop() {
 	startTime = SDL_GetTicks();
 	while (true) {
 		frameTime = SDL_GetTicks() - startTime;
-		VeryReal::InputManager::Instance()->Refresh(); // Ih se actualiza (actua como el handleEvents())
+		VeryReal::InputManager::Instance()->Refresh(); 
 		if (frameTime >= FRAME_RATE) {
 			// Fisicas
 			// Update (Componentes)

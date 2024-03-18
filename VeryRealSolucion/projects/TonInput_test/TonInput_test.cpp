@@ -21,7 +21,16 @@ int main()
 
 		VeryReal::InputManager::Instance()->Refresh(); // Ih se actualiza (actua como el handleEvents())
 
-		std::cout << VeryReal::InputManager::Instance()->IsKeyDown(TI_SCANCODE_F) << std::endl;
+		if (VeryReal::InputManager::Instance()->IsKeyDown(TI_SCANCODE_A)) 
+			std::cout << "A" << std::endl;
+        if (VeryReal::InputManager::Instance()->IsGamePadButtonDown(TI_CONTROLLER_BUTTON_A)) 
+			std::cout << "BUTTON" << std::endl;
+        if (VeryReal::InputManager::Instance()->GetJoystickAxisState(TI_CONTROLLER_AXIS_LEFTX) != 0) 
+			std::cout << VeryReal::InputManager::Instance()->GetJoystickAxisState(TI_CONTROLLER_AXIS_LEFTX) << std::endl;
+        if (VeryReal::InputManager::Instance()->GetJoystickAxisState(TI_CONTROLLER_AXIS_TRIGGERRIGHT) != 0)
+                        std::cout << VeryReal::InputManager::Instance()->GetJoystickAxisState(TI_CONTROLLER_AXIS_TRIGGERRIGHT) << std::endl;
+        if (VeryReal::InputManager::Instance()->GetMouseButtonState(TI_MOUSE_LEFT)) 
+			std::cout << "L" << std::endl;
 	}
 
     return 0;
