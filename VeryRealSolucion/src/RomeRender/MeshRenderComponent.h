@@ -53,13 +53,13 @@ namespace  VeryReal {
 		void setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot);
 
 		// Establece la posición del componente.
-		void setPosition(VeryReal::Vector3 pos);
+		void setPosition(VeryReal::Vector3 const&  pos);
 
 		// Escala la malla del componente.
-		void setScale(VeryReal::Vector3 scale);
+		void setScale(VeryReal::Vector3 const&  scale);
 
 		// Rota la malla del componente.
-		void setRotation(VeryReal::Vector3 rot);
+		void setRotation(VeryReal::Vector3 const& rot);
 
 		// Activa la malla del componente.
 		void activeMesh();

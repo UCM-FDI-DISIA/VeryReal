@@ -100,6 +100,11 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
     std::string type_name;
     std::string arch_name;
     Ogre::String ogrepath2 = filesystem_layer->getConfigFilePath("resources.cfg");
+    if (!Ogre::FileSystemLayer::fileExists(ogrepath2)) {
+        #ifdef DEBUG_MODE
+                cerr << DEBUG_RESOURCES_ERROR << ogrepath << "\n";
+        #endif
+    }
     Ogre::ConfigFile cf;
     cf.load(ogrepath2);
 

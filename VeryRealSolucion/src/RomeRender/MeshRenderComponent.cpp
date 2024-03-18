@@ -75,24 +75,27 @@ void MeshRenderComponent::setStatic(bool stat) {
     mStaticObject = stat;
 }
 void MeshRenderComponent::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot) {
-    conversor conve;
+   // conversor conve;
     
     setPosition(pos);
     setScale(scale);
     setRotation(rot);
 }
-void MeshRenderComponent::setPosition(VeryReal::Vector3 pos) {
-    conversor conve;
-   // m_scene_node->setPosition(conve.VRconversorOgre(pos));
+void MeshRenderComponent::setPosition(VeryReal::Vector3 const& pos) {
+    //conversor conve;
+    Ogre::Vector3 v(pos.GetX(), pos.GetY(), pos.GetZ());
+    scene_node->setPosition(v);
 }
-void MeshRenderComponent::setScale(VeryReal::Vector3 scale) {
-    conversor conve;
-   // m_scene_node->setScale(conve.VRconversorOgre(scale));
+void MeshRenderComponent::setScale(VeryReal::Vector3 const& scale) {
+    Ogre::Vector3 v(scale.GetX(), scale.GetY(), scale.GetZ());
+   scene_node->setScale(v);
 }
-void MeshRenderComponent::setRotation(VeryReal::Vector3 rot) {
-    conversor conve;
-   // m_scene_node->setOrientation(Ogre::Quaternion(conve.VRconversorOgre(rot)));//necesita un Quaternion
+void MeshRenderComponent::setRotation(VeryReal::Vector3 const& rot) {
+    //Ogre::Vector4 v(rot.GetA(), rot.GetB(), rot.GetG(), rot.GetR());
+    //Ogre::Quaternion quat(v); // Crear la rotación Quaternion
+    //scene_node->setOrientation(quat); // Aplicar la rotación al nodo de la escena
 }
+
 void MeshRenderComponent::activeMesh() {
     scene_node->setVisible(true);
 }

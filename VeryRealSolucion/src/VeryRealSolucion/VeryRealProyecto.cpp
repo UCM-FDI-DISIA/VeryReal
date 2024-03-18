@@ -15,13 +15,14 @@
 const int FRAME_RATE = 3;
 typedef bool(__cdecl* GameStartingPoint)();
 bool VeryRealProyecto::Init() {
-	SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL 
+	SDL_Init(SDL_INIT_EVERYTHING); // RomeRender y TonInput necesitan inicir SDL  NO ROME RENDER INICIALIZA SDL_VIDEO
 	//SDL_Window* mWindow; // Ventana (temporal) para que funcione el input
 	//mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 	//	854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 	////SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
 	//VeryReal::RenderManager().Instance()->InitManager("app"); //InitManager
 	VeryReal::InputManager::Init();
+	VeryReal::RenderManager::Init();
 	VR().CreateCreators();
 	LoadGame("Ogreman");
 
@@ -40,6 +41,7 @@ void VeryRealProyecto::Loop() {
 			// Fisicas
 			// Update (Componentes)
 			// Render
+			VeryReal::RenderManager::Instance()->Update(frameTime);
 			// Sonido
 			std::cout << frameTime << std::endl;
 			startTime = SDL_GetTicks();
@@ -59,7 +61,7 @@ void VeryRealProyecto::Delete() {
 }
 void VeryRealProyecto::CreateCreators() {
 	//VeryReal::CreatorTransformComponent* t = new VeryReal::CreatorTransformComponent();
-	VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
+	//VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
 }
 
 bool VeryRealProyecto::LoadGame(std::string gameName)
