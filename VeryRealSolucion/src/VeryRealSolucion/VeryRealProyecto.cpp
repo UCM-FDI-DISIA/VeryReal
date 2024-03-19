@@ -21,7 +21,7 @@ bool VeryRealProyecto::Init() {
 	//mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 	//	854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 	////SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
-	//VeryReal::RenderManager().Instance()->InitManager("app"); //InitManager
+	VeryReal::RenderManager().Instance()->InitManager("app"); //InitManager
 	VeryReal::InputManager::Init();
 	VeryReal::RenderManager::Init();
 	VR().CreateCreators();

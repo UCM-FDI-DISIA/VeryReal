@@ -15,17 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\LuaLuengo\LuaLuengo.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\LuaLuengo\ScriptManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\LuaLuengo\LuaLuengo.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\LuaLuengo\ScriptManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>

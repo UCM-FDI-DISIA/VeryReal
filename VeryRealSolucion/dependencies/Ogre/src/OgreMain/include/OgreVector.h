@@ -67,7 +67,7 @@ namespace Ogre
     };
     template <> struct _OgreExport VectorBase<2, Real>
     {
-        VectorBase() {}
+        VectorBase() : x(0), y(0)  {}
         VectorBase(Real _x, Real _y) : x(_x), y(_y) {}
         Real x, y;
         Real* ptr() { return &x; }
@@ -117,17 +117,19 @@ namespace Ogre
         Radian angleTo(const Vector2& other) const;
 
         // special points
+        #pragma warning(disable : 4251)
         static const Vector2 ZERO;
         static const Vector2 UNIT_X;
         static const Vector2 UNIT_Y;
         static const Vector2 NEGATIVE_UNIT_X;
         static const Vector2 NEGATIVE_UNIT_Y;
         static const Vector2 UNIT_SCALE;
+        #pragma warning(default : 4251)
     };
 
     template <> struct _OgreExport VectorBase<3, Real>
     {
-        VectorBase() {}
+        VectorBase() : x(0), y(0), z(0){} // Por defecto (warning)
         VectorBase(Real _x, Real _y, Real _z) : x(_x), y(_y), z(_z) {}
         Real x, y, z;
         Real* ptr() { return &x; }
@@ -244,6 +246,7 @@ namespace Ogre
         const Vector3& primaryAxis() const;
 
         // special points
+        #pragma warning(disable : 4251)
         static const Vector3 ZERO;
         static const Vector3 UNIT_X;
         static const Vector3 UNIT_Y;
@@ -252,11 +255,12 @@ namespace Ogre
         static const Vector3 NEGATIVE_UNIT_Y;
         static const Vector3 NEGATIVE_UNIT_Z;
         static const Vector3 UNIT_SCALE;
+        #pragma warning(default : 4251)
     };
 
     template <> struct _OgreExport VectorBase<4, Real>
     {
-        VectorBase() {}
+        VectorBase() : x(0), y(0), z(0), w(0) {} // Valores por defecto (warning)
         VectorBase(Real _x, Real _y, Real _z, Real _w) : x(_x), y(_y), z(_z), w(_w) {}
         Real x, y, z, w;
         Real* ptr() { return &x; }

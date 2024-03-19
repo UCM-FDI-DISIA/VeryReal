@@ -110,7 +110,7 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
     if (lua_isnumber(lua_state, -1)) {   // Comprobamos si el valor es un número
             key = lua_tostring(params, -2);
             int value;
-            value = lua_tonumber(lua_state, -1);
+            value = (int)lua_tonumber(lua_state, -1);
             std::cout << key + ": " << value << std::endl;
             VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, value);
     }
@@ -130,15 +130,15 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
             VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, value);
     }
     else {   // En otro caso estamos ante un vector(tabla en lua)
-        int length = luaL_len(lua_state, -1);
+        int length = (int) luaL_len(lua_state, -1);
         std::string key;
         std::vector<int> values;   // Vector donde iremos almacenando los valores que se meterán al vector
         for (int k = 1; k <= length; ++k) {
                 lua_rawgeti(lua_state, -1, k);   // Obtenemos el elemento en la posición k
                 key = lua_tostring(params, -3);
                 if (lua_isnumber(lua_state, -1)) {
-                        int value = lua_tonumber(lua_state, -1);
-                        values.push_back(value);
+                                int value = (int)lua_tonumber(lua_state, -1);
+                                values.push_back(value);
                 }
                 lua_pop(lua_state, 1);   // Sacamos el valor actual de la pila
         }
@@ -150,23 +150,23 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
         std::cout << ")";
         if (length == 2) {   // Vector2
                 Vector2 v;
-                v.SetX(values [0]);
-                v.SetY(values [1]);
+                v.SetX((float)values [0]);
+                v.SetY((float)values [1]);
                 VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, v);
         }
         else if (length == 3) {   // Vector3
                 Vector3 v;
-                v.SetX(values [0]);
-                v.SetY(values [1]);
-                v.SetZ(values [2]);
+                v.SetX((float)values [0]);
+                v.SetY((float)values [1]);
+                v.SetZ((float)values [2]);
                 VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, v);
         }
         else if (length == 4) {   // Vector4
                 Vector4 v;
-                v.SetG(values [0]);
-                v.SetR(values [1]);
-                v.SetB(values [2]);
-                v.SetA(values [3]);
+                v.SetG((float)values [0]);
+                v.SetR((float)values [1]);
+                v.SetB((float)values [2]);
+                v.SetA((float)values [3]);
                 VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, v);
         }
         std::cout << std::endl;

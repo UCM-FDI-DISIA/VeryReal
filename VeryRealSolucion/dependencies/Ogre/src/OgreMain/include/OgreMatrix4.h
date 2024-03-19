@@ -85,7 +85,7 @@ namespace Ogre
         // do not reduce storage for affine for compatibility with SSE, shader mat4 types
     public:
         /// Do <b>NOT</b> initialize for efficiency.
-        TransformBase() {}
+        TransformBase() = default;
 
         template<typename U>
         explicit TransformBase(const U* ptr) {

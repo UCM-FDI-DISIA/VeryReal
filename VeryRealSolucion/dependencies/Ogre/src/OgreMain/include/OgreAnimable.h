@@ -133,7 +133,7 @@ namespace Ogre {
 
 
     public:
-        AnimableValue(ValueType t) : mType(t) {}
+        AnimableValue(ValueType t) : mType(t), mBaseValueInt(0) {}
         virtual ~AnimableValue() {}
 
         /// Gets the value type of this animable value

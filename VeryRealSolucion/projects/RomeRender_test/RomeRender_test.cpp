@@ -70,12 +70,12 @@ int main()
     Creator::Instance()->GetCreator("luz")->AddParameter("nearclipdist", float(2.0));
     Creator::Instance()->GetCreator("luz")->AddParameter("shdws", true);
 
-    Scene* s = SceneManager::Instance()->AddScene("Play");
-    s = SceneManager::Instance()->GetScene("Play");
-    VeryReal::Entity* e = s->AddEntity("Luzent");
-    
-    Component* c = e->AddComponent("luz"); 
-    std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Luzent")->HasComponent("luz") << "\n";
+    //Scene* s = SceneManager::Instance()->AddScene("Play");
+    //s = SceneManager::Instance()->GetScene("Play");
+    //VeryReal::Entity* e = s->AddEntity("Luzent");
+    //
+    //Component* c = e->AddComponent("luz"); 
+    //std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Luzent")->HasComponent("luz") << "\n";
 
 #pragma endregion
 

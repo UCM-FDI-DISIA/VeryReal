@@ -106,7 +106,7 @@ bool VeryReal::InputManager::IsGamePadButtonDown(TI_GameControllerButton button)
 
 float VeryReal::InputManager::GetJoystickAxisState(TI_GameControllerAxis axis) {
     if (is_game_controller_connected) {
-        float axisState = SDL_GameControllerGetAxis(controller, (SDL_GameControllerAxis)axis) / 32767.0;
+        float axisState = SDL_GameControllerGetAxis(controller, (SDL_GameControllerAxis)axis) / 32767.0f;
         if (abs(axisState) > 1) axisState = round(axisState); // Corrección (los negativos llegan hasta -32768 y los positivos hasta 32767)
         else if (abs(axisState) < joystick_death_zone) axisState = 0;
         return (axisState);

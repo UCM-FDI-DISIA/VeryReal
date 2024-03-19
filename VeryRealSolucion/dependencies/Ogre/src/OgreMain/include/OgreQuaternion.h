@@ -93,8 +93,8 @@ namespace Ogre {
             this->FromAxes(akAxis);
         }
         /// Construct a quaternion from 4 manual w/x/y/z values
-        inline Quaternion(Real* valptr)
-        {
+        inline Quaternion(Real* valptr) {
+            Ogre::Quaternion::x = Ogre::Quaternion::y = Ogre::Quaternion::z = 0; // Por defecto (warning)
             memcpy(&w, valptr, sizeof(Real)*4);
         }
 

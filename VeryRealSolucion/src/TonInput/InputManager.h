@@ -140,7 +140,7 @@ namespace VeryReal {
         void HandleWindowEvent(const SDL_Event& event);
 
         bool is_quit = false;
-        float joystick_death_zone = 0.12;
+        float joystick_death_zone = 0.12f;
         bool is_game_controller_connected;
         bool is_close_window_event;
         bool is_key_up_event;

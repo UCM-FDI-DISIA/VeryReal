@@ -106,7 +106,7 @@ void AnimatorComponent::setFrameAnimation(std::string t_nameAnimation, double t_
 
 void AnimatorComponent::allAnimations(bool t_active)
 {
-    num_animations_active = t_active == true ? animations.size() : 0;
+    num_animations_active = t_active == true ? (int)animations.size() : 0;
     for (auto it = animations.begin(); it != animations.end(); it++)
     {
         it->second->setEnabled(t_active);

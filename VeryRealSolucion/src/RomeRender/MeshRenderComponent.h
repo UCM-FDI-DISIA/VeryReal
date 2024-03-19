@@ -26,7 +26,7 @@ namespace  VeryReal {
     class MeshRenderComponent : public Component {
     public:
 		// Constructor por defecto temporal sin parámetros, se espera que los creadores lo inicialicen correctamente.
-		MeshRenderComponent() {}
+		MeshRenderComponent() = default;
 
 		// Inicializa el componente de renderizado de malla con la información proporcionada.
 		bool InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname);

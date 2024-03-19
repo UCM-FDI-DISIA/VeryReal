@@ -1547,7 +1547,11 @@ namespace Ogre {
         /// The original pass which spawned this one
         Pass* originalPass;
 
-        IlluminationPass() {}
+        IlluminationPass() : stage(IlluminationStage()), 
+              pass(nullptr),              
+              destroyOnShutdown(true),    
+              originalPass(nullptr)      
+        {}
     };
 
     typedef std::vector<IlluminationPass*> IlluminationPassList;

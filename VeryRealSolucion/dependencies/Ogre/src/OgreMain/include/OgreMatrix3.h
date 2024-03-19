@@ -72,7 +72,7 @@ namespace Ogre
             @note
                 It does <b>NOT</b> initialize the matrix for efficiency.
         */
-        Matrix3 () {}
+        Matrix3() = default;
         explicit Matrix3 (const Real arr[3][3])
         {
             memcpy(m,arr,9*sizeof(Real));
