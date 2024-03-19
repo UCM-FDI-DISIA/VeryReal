@@ -73,6 +73,7 @@ int main()
     Scene* s = SceneManager::Instance()->AddScene("Play");
     s = SceneManager::Instance()->GetScene("Play");
     VeryReal::Entity* e = s->AddEntity("Luzent");
+    
     Component* c = e->AddComponent("luz"); 
     std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Luzent")->HasComponent("luz") << "\n";
 
