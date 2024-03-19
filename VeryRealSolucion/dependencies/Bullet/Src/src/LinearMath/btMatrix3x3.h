@@ -53,7 +53,7 @@ btMatrix3x3
 
 public:
 	/** @brief No initializaion constructor */
-	btMatrix3x3() {}
+	btMatrix3x3() = default;
 
 	//		explicit btMatrix3x3(const btScalar *m) { setFromOpenGLSubMatrix(m); }
 

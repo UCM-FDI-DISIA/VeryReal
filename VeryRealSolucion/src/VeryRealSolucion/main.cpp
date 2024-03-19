@@ -1,3 +1,4 @@
+#pragma once
 #include <checkML.h>
 #include "VeryRealProyecto.h"
 int main(int argc, char* argv[]) {

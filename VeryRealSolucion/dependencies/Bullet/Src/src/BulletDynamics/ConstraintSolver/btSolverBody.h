@@ -32,13 +32,10 @@ class btRigidBody;
 
 struct btSimdScalar
 {
-	SIMD_FORCE_INLINE btSimdScalar()
-	{
-	}
+	SIMD_FORCE_INLINE btSimdScalar() = default;
 
-	SIMD_FORCE_INLINE btSimdScalar(float fl)
-		: m_vec128(_mm_set1_ps(fl))
-	{
+	SIMD_FORCE_INLINE btSimdScalar(float fl) : m_vec128(_mm_set1_ps(fl)) {
+
 	}
 
 	SIMD_FORCE_INLINE btSimdScalar(__m128 v128)

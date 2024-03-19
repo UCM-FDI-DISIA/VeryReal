@@ -1,3 +1,4 @@
+#pragma once
 #include "AudioListenerComponent.h"
 #include <AudioLeon.h>
 #include <TransformComponent.h>
@@ -6,6 +7,7 @@
 #include <ErrorInformant.h>
 #include <SceneManager.h>
 #include <Vector3.h>
+#include <fmod_studio.hpp>
 
 using namespace VeryReal;
 Component* CreatorAudioListener::CreatorSpecificComponent() {
@@ -14,7 +16,7 @@ Component* CreatorAudioListener::CreatorSpecificComponent() {
 	return a;
 }
 
-AudioListenerComponent::AudioListenerComponent(){}
+AudioListenerComponent::AudioListenerComponent() : listener_index(-1) {}
 
 AudioListenerComponent::~AudioListenerComponent()
 {

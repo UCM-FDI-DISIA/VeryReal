@@ -109,7 +109,7 @@ void PedroBullet::Init() {
     broadphase = new btDbvtBroadphase();
     solver = new btSequentialImpulseConstraintSolver();
     dynamicWorld = new btDiscreteDynamicsWorld(collisionDispatcher, broadphase, solver, collisionConfig);
-    dynamicWorld->setGravity(btVector3(0, -9.8, 0));
+    dynamicWorld->setGravity(btVector3(0, (btScalar)-9.8, 0));
 
     //Variable global a la que establecemos un callback para manejar eventos de colisiones de Bullet.
     //Cuando se produce una colisión en el mundo físico de Bullet, la función callback se activa

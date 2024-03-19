@@ -57,17 +57,22 @@ protected:
 	int m_index1;
 
 public:
-	btManifoldResult()
-		:
-#ifdef DEBUG_PART_INDEX
-
-		  m_partId0(-1),
-		  m_partId1(-1),
-		  m_index0(-1),
-		  m_index1(-1)
-#endif  //DEBUG_PART_INDEX
-			  m_closestPointDistanceThreshold(0)
+	btManifoldResult() : m_body0Wrap(nullptr),
+						 m_body1Wrap(nullptr),
+						 m_manifoldPtr(nullptr),
+						 m_partId0(-1),
+						 m_partId1(-1),
+						 m_index0(-1),
+						 m_index1(-1),
+						#ifdef DEBUG_PART_INDEX
+								  m_partId0(-1),
+								  m_partId1(-1),
+								  m_index0(-1),
+								  m_index1(-1)
+						#endif  //DEBUG_PART_INDEX
+						m_closestPointDistanceThreshold(0)	
 	{
+
 	}
 
 	btManifoldResult(const btCollisionObjectWrapper* body0Wrap, const btCollisionObjectWrapper* body1Wrap);

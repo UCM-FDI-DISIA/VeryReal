@@ -36,7 +36,7 @@ btTransform
 public:
 	BT_DECLARE_ALIGNED_ALLOCATOR();
 	/**@brief No initialization constructor */
-	btTransform() {}
+	btTransform() = default;
 	/**@brief Constructor from btQuaternion (optional btVector3 )
    * @param q Rotation from quaternion 
    * @param c Translation from Vector (default 0,0,0) */

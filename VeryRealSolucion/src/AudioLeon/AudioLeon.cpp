@@ -1,3 +1,4 @@
+#pragma once
 #include "AudioLeon.h"
 #include <fmod.hpp>
 #include <fmod_errors.h>
@@ -5,6 +6,7 @@
 
 using namespace VeryReal;
 using namespace FMOD;
+
 AudioLeon::AudioLeon() {
 	result = FMOD::System_Create(&sound_system); // Create the main system object.
 	CheckFMODResult(result);
@@ -119,7 +121,7 @@ void AudioLeon::NameToLower(std::string& name) {
 }
 
 AudioLeon::~AudioLeon() {
-	for (auto s : sounds_map) {
+	for (std::pair<std::string, Sound*> s : sounds_map) {
 		result = s.second->release();
 		CheckFMODResult(result);
 	}
@@ -138,7 +140,7 @@ void AudioLeon::SystemRefresh(const double& dt) {
 }
 
 FMOD_VECTOR AudioLeon::V3ToFmodV3(VeryReal::Vector3 conversion) const {
-	FMOD_VECTOR newVector;
+    FMOD_VECTOR newVector {};
 	newVector.x = conversion.GetX(); newVector.y = conversion.GetY(); newVector.z = conversion.GetZ();
 	return newVector;
 }
@@ -175,7 +177,11 @@ void AudioLeon::RemoveListener(int index) {
 bool AudioLeon::CreateChannelGroup(std::string groupName) {
 	NameToLower(groupName);
 	const char* channelGroupName = groupName.c_str();
-	if ((int(channelGroupName[0]) > 96) && (int(channelGroupName[0]) < 122)) channelGroupName[0] - 32;
+    if ((int(channelGroupName [0]) > 96) && (int(channelGroupName [0]) < 122)) {
+       char* copyGroupName = _strdup(channelGroupName);   // Copiar la cadena original
+       channelGroupName = copyGroupName;
+       free(copyGroupName);
+    }
 	auto channelGroup = channel_group_maps.find(channelGroupName);
 	if (channelGroup == channel_group_maps.end()) {
 		FMOD::ChannelGroup* newChannelGroup;
@@ -209,6 +215,9 @@ float AudioLeon::GetGroupChannelVolume(std::string groupName) {
 		CheckFMODResult(result);
 		return volume;
 	}
+    else {
+		return -1;
+	}
 }
 
 float AudioLeon::InputSoundIntensity() {
@@ -220,7 +229,7 @@ float AudioLeon::InputSoundIntensity() {
 	int numSamples = soundLength / sizeof(short); // Numero de muestras de audio
 
 	// Obtener los datos de audio
-	short* audioData;
+	short* audioData = 0;
 	result = mic_sound->lock(0, soundLength, (void**)&audioData, nullptr, &soundLength, nullptr);
 	CheckFMODResult(result);
 
@@ -250,10 +259,7 @@ void AudioLeon::AudioSourceListenerTest()
 	AL().NameToLower(soundName);
 	FMOD::Sound* newSoundHandle;
 
-
 	this->result = AL().GetSoundSystem()->createSound(soundPath.c_str(), FMOD_3D_LINEARROLLOFF | FMOD_3D | FMOD_LOOP_NORMAL, 0, &newSoundHandle);
-
-
 
 	this->result = newSoundHandle->set3DMinMaxDistance(minDistance, maxDistance);
 
@@ -310,17 +316,3 @@ void AudioLeon::AudioSourceListenerTest()
 	AL().GetSoundSystem()->set3DListenerAttributes(0, &pos, &vel, &forward, &up);
 
 }
-
-//void AudioLeon::startRecording() {
-//	std::cout << "a";
-//	FMOD::Sound* audio;
-//	result = this->sound_system->createSound(0, FMOD_LOOP_NORMAL | FMOD_OPENUSER, 0, &audio);
-//	result = this->sound_system->recordStart(0, audio, true);
-//	std::cout << "a";
-//	std::cin.get();
-//	result = this->sound_system->recordStop(0);
-//
-//	const int fftSize = 1024;
-//	float* spectrumData = new float[fftSize];
-//	result = channel->getSpectrum(spectrumData, fftSize, 0, FMOD_DSP_FFT_WINDOW_TRIANGLE);
-//}

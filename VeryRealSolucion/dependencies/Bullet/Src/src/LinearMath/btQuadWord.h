@@ -175,10 +175,8 @@ public:
 		m_floats[3] = _w;
 	}
 	/**@brief No initialization constructor */
-	SIMD_FORCE_INLINE btQuadWord()
+	SIMD_FORCE_INLINE btQuadWord() = default; // Si lo dejais vacio poner =default, si no inicializar todo (por los warnings)
 	//	:m_floats[0](btScalar(0.)),m_floats[1](btScalar(0.)),m_floats[2](btScalar(0.)),m_floats[3](btScalar(0.))
-	{
-	}
 
 	/**@brief Three argument constructor (zeros w)
    * @param x Value of x

@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #ifndef __ENTITYCOMPONENT_AUDIOLISTENER
 #define __ENTITYCOMPONENT_AUDIOLISTENER
 
@@ -9,11 +8,9 @@ namespace FMOD {
 	class Sound;
 }
 
-namespace VeryReal
-{
+namespace VeryReal {
 	class Vector3;
 }
-
 
 	class CreatorAudioListener :public VeryReal::CreatorComponent {
 	public :

@@ -191,7 +191,7 @@ namespace Ogre
             This sets the maximum time that will be spent in @ref processMainThreadTasks() in
             a single frame. The default is 10ms.
         */
-        void setMainThreadProcessingTimeLimit(uint64 ms) { setResponseProcessingTimeLimit(ms); }
+        void setMainThreadProcessingTimeLimit(uint64 ms) { setResponseProcessingTimeLimit((unsigned long)ms); }
 
         /// @deprecated use @ref setMainThreadProcessingTimeLimit
         virtual void setResponseProcessingTimeLimit(unsigned long ms) = 0;

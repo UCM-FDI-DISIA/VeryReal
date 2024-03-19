@@ -1,4 +1,3 @@
-
 #pragma once
 #ifndef _FMOD_SOUND_MANAGER
 #define _FMOD_SOUND_MANAGER
@@ -7,22 +6,22 @@
 #include <Vector3.h>
 #include <string>
 #include <unordered_map>
-#include <fmod_studio.hpp>
-#include <fmod.hpp>
 
 namespace FMOD {
 	class Sound;
 	class ChannelGroup;
 	class Channel;
 	class System;
+
 }
 
+typedef struct FMOD_VECTOR FMOD_VECTOR;
 enum FMOD_RESULT;
-namespace VeryReal
-{
 
+namespace VeryReal {
 	typedef unsigned int FMOD_MODE;
 	typedef int CHANNEL_NUMBER;
+
 
 	//Cantidad máxima de canales que puede haber en esta configuración particular del sistema de sonido de FMOD.
 	const int MAX_CHANNELS = 100;

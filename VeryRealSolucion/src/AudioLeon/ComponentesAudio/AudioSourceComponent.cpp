@@ -1,3 +1,4 @@
+#pragma once
 #include "AudioSourceComponent.h"
 #include <AudioLeon.h>
 #include <TransformComponent.h>
@@ -6,22 +7,24 @@
 #include <ErrorInformant.h>
 #include <SceneManager.h>
 #include "VariantClass.h"
+#include <fmod_studio.hpp>
+
 using namespace VeryReal;
 using namespace std;
 
+AudioSourceComponent::AudioSourceComponent() : 
+    volume(0), speed(1), min_distance(0), max_distance(FLT_MAX), sound_channel(1), 
+    sound_group("default"), sound_path("none"), sound_name("unknown"), 
+    playing(false), loop(false), is_three_d(false), play_on_start(false), result(FMOD_OK){}
 
-AudioSourceComponent::AudioSourceComponent()
-{}
-
-AudioSourceComponent::~AudioSourceComponent()
-{
+AudioSourceComponent::~AudioSourceComponent() {
     AL().DeleteSound(sound_name);
 }
 Component* CreatorAudioSource::CreatorSpecificComponent() {
     AudioSourceComponent* a = new AudioSourceComponent;
     string name, path, groupchannel;
     bool onstart = false, threed = false, loop = false;
-    float volume = 0.1, mindistance = 1.0f, maxdistance = 60.0f;
+    float volume = 0.1f, mindistance = 1.0f, maxdistance = 60.0f;
 
     if (std::holds_alternative<string>(parameters_map.at("name")->GetVariant())) {
         name = std::get<string>(parameters_map.at("name")->GetVariant());
@@ -331,7 +334,7 @@ bool AudioSourceComponent::SetMode(FMOD_MODE newMode)
         std::cout << "loop" << " ";
 #endif
 
-    AL().CheckFMODResult(result);
+    return AL().CheckFMODResult(result);
 }
 
 void AudioSourceComponent::SetSourcePath(std::string path) {

@@ -12,7 +12,7 @@
     enum PBMovementType;
     class btCollisionShape;
     class btRigidBody;
-    class btDefaultMotionState;
+    struct btDefaultMotionState;
 
 
 namespace VeryReal {

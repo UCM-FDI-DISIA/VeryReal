@@ -1,3 +1,4 @@
+#pragma once
 #include "VeryRealProyecto.h"
 #include <InputManager.h>
 #include <RenderManager.h>

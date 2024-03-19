@@ -1,8 +1,8 @@
 #pragma once
 #include <Singleton.h>
 #include <Windows.h>		//por ahora lo dejo aqui
-
 #include <string>
+
 class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
 	friend Singleton<VeryRealProyecto>;
 public:

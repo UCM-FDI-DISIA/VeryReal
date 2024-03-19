@@ -1,7 +1,6 @@
 #ifndef RENDERMANAGER
 #define RENDERMANAGER
 
-
 #include "Manager.h"
 #include "Vector3.h"
 #include "string"
@@ -10,21 +9,18 @@
 #define DEBUG_PLUGINS_ERROR "NO SE HA ENCONTRADO EL ARCHIVO  plugins.cfg\n"
 #define DEBUG_RESOURCES_ERROR "NO SE HA ENCONTRADO EL ARCHIVO  resources.cfg\n"
 #define DEBUG_WINDOW_ERROR "NO SE HA PODIDO CREAR LA VENTANA\n"
-namespace VeryReal {
 
+namespace VeryReal {
 	class Window;
 	class Light;
 	class MeshRender;
 	class Camera;
 	class Animator;
 	class SGTechniqueResolverListener;
-
-
 }
 
 
 namespace Ogre {
-	
 	class SceneNode;
 	class Node;
 	class FileSystemLayer;
@@ -34,6 +30,7 @@ namespace Ogre {
 	class RenderWindow;
 	class ManualObject;
 	class Viewport;
+
 	namespace RTShader {
 		class ShaderGenerator;
 	}
@@ -80,8 +77,6 @@ namespace VeryReal {
 
 		// Nombre de la aplicación
 		std::string appname;
-
-		
 
 		// Administrador de escena de Ogre
 		Ogre::SceneManager* scene_manager;

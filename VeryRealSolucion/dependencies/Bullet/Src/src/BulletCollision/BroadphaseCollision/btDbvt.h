@@ -232,7 +232,7 @@ struct btDbvt
 	{
 		const btDbvtNode* a;
 		const btDbvtNode* b;
-		sStkNN() {}
+		sStkNN(): a(nullptr), b(nullptr) {}
 		sStkNN(const btDbvtNode* na, const btDbvtNode* nb) : a(na), b(nb) {}
 	};
 	struct sStkNP
@@ -246,7 +246,7 @@ struct btDbvt
 		const btDbvtNode* node;
 		int mask;
 		btScalar value;
-		sStkNPS() {}
+		sStkNPS() = default;
 		sStkNPS(const btDbvtNode* n, unsigned m, btScalar v) : node(n), mask(m), value(v) {}
 	};
 	struct sStkCLN
@@ -260,7 +260,7 @@ struct btDbvt
     {
         const btDbvntNode* a;
         const btDbvntNode* b;
-        sStknNN() {}
+        sStknNN() : a(nullptr), b(nullptr){}
         sStknNN(const btDbvntNode* na, const btDbvntNode* nb) : a(na), b(nb) {}
     };
 	// Policies/Interfaces
@@ -453,7 +453,7 @@ struct btDbvt
 	}
 	//
 private:
-	btDbvt(const btDbvt&) {}
+	btDbvt(const btDbvt&) = default;
 };
 
 //

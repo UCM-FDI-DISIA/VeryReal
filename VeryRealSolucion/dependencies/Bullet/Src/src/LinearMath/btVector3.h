@@ -114,9 +114,7 @@ public:
 
 public:
 	/**@brief No initialization constructor */
-	SIMD_FORCE_INLINE btVector3()
-	{
-	}
+	SIMD_FORCE_INLINE btVector3() = default;
 
 	/**@brief Constructor from scalars 
    * @param x X value

@@ -1,5 +1,4 @@
-// RomeRender.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-
+#pragma once
 #include <iostream>
 #include <SDL.h>
 #include "InputManager.h"
