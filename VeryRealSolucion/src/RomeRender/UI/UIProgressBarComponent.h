@@ -2,7 +2,7 @@
 #ifndef UIPROGRESSBARCOMPONENT
 #define UIPROGRESSBARCOMPONENT
 #include "Component.h"
-#include "string"
+#include <string>
 namespace OgreBites {
     class ProgressBar;
  class TrayManager;
@@ -30,7 +30,7 @@ class UIProgressbar : public Component {
    public:
     UIProgressbar();
     // Inicializa el componente
-    bool InitComponent(double prog, string nameobject, Location loc, string nameobjective, int whith, int contentwith);
+    bool InitComponent(double prog, std::string nameobject, Location loc, std::string nameobjective, int whith, int contentwith);
     // Destructor de la clase UIPROGRESSBARCOMPONENT.
     virtual ~UIProgressbar();
     void setPercentage(int percentage);

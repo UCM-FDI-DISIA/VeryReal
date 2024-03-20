@@ -8,13 +8,12 @@ UITransformComponent::UITransformComponent() {
 }
 bool UITransformComponent::InitComponent() {
     
-
+    return true;
 }
 UITransformComponent::~UITransformComponent() { }
 void UITransformComponent::Update(const double& dt) { }
 void UITransformComponent::showElement() { hidden = false; }
 void UITransformComponent::hideElement() { hidden = true; }
-bool UITransformComponent::isElementVisible() { }
 VeryReal::Vector2 UITransformComponent::getPosition() { return position; }
 void UITransformComponent::setPosition(VeryReal::Vector2 pos) { 
     position = pos; }
