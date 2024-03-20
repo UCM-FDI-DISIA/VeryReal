@@ -6,10 +6,7 @@
 #include <Vector2.h>
 namespace Ogre {
 
-    //class Overlay;
-    //class OverlayManager;
-    //class OverlayContainer;
-    //class TextAreaOverlayElement;
+   
 }
 namespace VeryReal {
    
@@ -27,16 +24,14 @@ namespace VeryReal {
         void showElement();        
         void hideElement();        
         bool isElementVisible(); 
-
-
         //no hay rotacion, se concluyo que mejor sin ella
         VeryReal::Vector2 getPosition();
         void setPosition(VeryReal::Vector2 pos);
-        VeryReal::Vector2 getScale();
-        void getScale(VeryReal::Vector2 pos);
+        VeryReal::Vector2 getSize();
+        void setSize(VeryReal::Vector2 size);
 
 
-        void setInteractive(bool isInteractive){};
+        void setInteractive(bool isInteractive);
 
         bool isHidden();
       private:
@@ -44,7 +39,7 @@ namespace VeryReal {
         VeryReal::Vector2 position;
         VeryReal::Vector2 size;
         bool hidden;
-      
+        bool interactive;
     };
 
 }
