@@ -8,9 +8,8 @@
 #include <Windows.h>
 #include <OgreRTShaderSystem.h>
 #include "Window.h"
-#include <Vector3.h>
-#include <OgreVector3.h>
 #include "SGTechniqueResolverListener.h"
+#include "conversorvectores.h"
 //mehrender, camara y eso
 VeryReal::RenderManager::RenderManager()
     : window(nullptr), root(nullptr), scene_manager(nullptr), render_system(nullptr), viewport(nullptr), filesystem_layer(nullptr) { }
@@ -155,13 +154,13 @@ Ogre::SceneNode* VeryReal::RenderManager::CreateNode(VeryReal::Vector3 vec) {
     //DA ERROR DE AMBIUEGAD CON VECTOR3 NUESTRO Y VECTOR3 OGRE NO SE
     Ogre::SceneNode* node = scene_manager->getRootSceneNode()->createChildSceneNode();
     //AQUI VA EL SET POS
-    node->setPosition({vec.GetX(), vec.GetY(), vec.GetZ()});
+    node->setPosition(VR2OgreV3(vec));
     return node;
 }
 Ogre::SceneNode* VeryReal::RenderManager::CreateChildSceneNode(Ogre::SceneNode* nod, VeryReal::Vector3 vec) {
     Ogre::SceneNode* node = scene_manager->getRootSceneNode()->createChildSceneNode();
     //AQUI VA EL SET POS
-    node->setPosition({vec.GetX(), vec.GetY(), vec.GetZ()});
+    node->setPosition(VR2OgreV3(vec));
     return node;
 }
 void VeryReal::RenderManager::DeleteNode(Ogre::SceneNode* nod) {

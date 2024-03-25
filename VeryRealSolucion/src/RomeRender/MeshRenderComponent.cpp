@@ -3,7 +3,6 @@
 #include <OgreEntity.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
-#include "Vector4.h"
 #include "RenderManager.h"
 #include "TransformComponent.h"
 #include <Ogre.h>
@@ -11,8 +10,7 @@
 #include <OgreSceneNode.h>
 #include <OgreNode.h>
 #include <OgreFileSystemLayer.h>
-#include "OgreVector3.h"
-#include "Vector3.h"
+#include "conversorvectores.h"
 using namespace VeryReal;
 using namespace Ogre;
 
@@ -83,17 +81,15 @@ void MeshRenderComponent::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 
 }
 void MeshRenderComponent::setPosition(VeryReal::Vector3 const& pos) {
     //conversor conve;
-    Ogre::Vector3 v(pos.GetX(), pos.GetY(), pos.GetZ());
-    scene_node->setPosition(v);
+    scene_node->setPosition(VR2OgreV3(pos));
 }
 void MeshRenderComponent::setScale(VeryReal::Vector3 const& scale) {
-    Ogre::Vector3 v(scale.GetX(), scale.GetY(), scale.GetZ());
-   scene_node->setScale(v);
+    scene_node->setScale(VR2OgreV3(scale));
 }
 void MeshRenderComponent::setRotation(VeryReal::Vector3 const& rot) {
-    //Ogre::Vector4 v(rot.GetA(), rot.GetB(), rot.GetG(), rot.GetR());
-    //Ogre::Quaternion quat(v); // Crear la rotación Quaternion
-    //scene_node->setOrientation(quat); // Aplicar la rotación al nodo de la escena
+    const Ogre::Vector3* aux = new Ogre::Vector3(VR2OgreV3(rot));
+    Ogre::Quaternion quat(aux); // Crear la rotación Quaternion
+    scene_node->setOrientation(quat); // Aplicar la rotación al nodo de la escena
 }
 
 void MeshRenderComponent::activeMesh() {

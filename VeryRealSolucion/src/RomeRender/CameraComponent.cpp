@@ -2,9 +2,9 @@
 #include <OgreViewport.h>
 #include <iostream>
 #include <Ogre.h>
-#include <Vector3.h>
 #include <Vector2.h>
 #include "RenderManager.h"
+#include "conversorvectores.h"
 using namespace VeryReal;
 using namespace Ogre;
 
@@ -32,8 +32,7 @@ CameraComponent::~CameraComponent()
 
     void CameraComponent::lookAt( VeryReal::Vector3 pos)
     {
-        Ogre::Vector3 p(pos.GetX(), pos.GetY(), pos.GetZ());
-        mNode->lookAt(p, Ogre::Node::TransformSpace::TS_PARENT);
+        mNode->lookAt(VR2OgreV3(pos), Ogre::Node::TransformSpace::TS_PARENT);
     }
 
     void CameraComponent::translate(float x, float y, float z)

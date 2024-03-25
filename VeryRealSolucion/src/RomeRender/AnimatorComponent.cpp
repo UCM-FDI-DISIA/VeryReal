@@ -2,15 +2,13 @@
 #include <OgreKeyFrame.h>
 #include <OgreSceneManager.h>
 #include <OgreEntity.h>
-#include <Vector3.h>
-#include <Vector4.h>
 #include <Entity.h>
 #include <OgreAnimationState.h>
 #include "RenderManager.h"
 #include "AnimatorComponent.h"
 #include "MeshRenderComponent.h"
 #include "TransformComponent.h"
-
+#include "conversorvectores.h"
 using namespace VeryReal;
 using namespace std;
 
@@ -99,9 +97,10 @@ void AnimatorComponent::setFrameAnimation(std::string t_nameAnimation, double t_
     Ogre::NodeAnimationTrack* track = animation->getNodeTrack(0);
 
     Ogre::TransformKeyFrame* kf = track->createNodeKeyFrame(Ogre::Real(t_duration));
-    kf->setTranslate(Ogre::Vector3(t_translate.GetX(), t_translate.GetY(), t_translate.GetZ()));
+   
+    kf->setTranslate(VR2OgreV3(t_translate));
     kf->setRotation(Ogre::Quaternion(t_rotacion.GetR(), t_rotacion.GetG(), t_rotacion.GetB(), t_rotacion.GetA()));
-    kf->setScale(Ogre::Vector3(t_scale.GetX(), t_scale.GetY(), t_scale.GetZ()));
+    kf->setScale(VR2OgreV3(t_scale));
 }
 
 void AnimatorComponent::allAnimations(bool t_active)

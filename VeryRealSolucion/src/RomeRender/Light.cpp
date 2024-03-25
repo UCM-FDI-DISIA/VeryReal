@@ -42,12 +42,11 @@ bool Light::InitComponent(int type, Vector3 const& diffusecolour, float shadowfa
 }
 
 void Light::Update() {
-	Ogre::Vector3 v(trans->GetPosition().GetX(), trans->GetPosition().GetY(), trans->GetPosition().GetZ());
-	mNode->setPosition(v);
+
+    mNode->setPosition(VR2OgreV3(trans->GetPosition()));
 }
 void Light::SetDirection(Vector3 const& v) {
-	Ogre::Vector3 vec(v.GetX(), v.GetY(), v.GetZ());
-	mNode->setDirection(vec);
+        mNode->setDirection(VR2OgreV3(v));
 }
 void Light::setType(int const dir) {
 	
