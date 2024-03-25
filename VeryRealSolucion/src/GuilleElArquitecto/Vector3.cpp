@@ -58,6 +58,8 @@ VeryReal::Vector3 VeryReal::Vector3::Normalize() {
 	if (m != 0)
 		return *this / Magnitude();
 	//CERROR
+
+	return Vector3(0,0,0); //warning no todas las rutas devuelven un valor
 }
 
 //para hacer Cout en la consola, ayudarnos a depurar

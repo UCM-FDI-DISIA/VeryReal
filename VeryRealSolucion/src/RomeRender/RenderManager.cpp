@@ -1,3 +1,4 @@
+#pragma once
 #pragma warning(disable : 4251)
 #include <Ogre.h>
 #include <OgreFileSystem.h>

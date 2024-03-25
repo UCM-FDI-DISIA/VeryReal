@@ -400,7 +400,7 @@ namespace Ogre {
         void setConsecutive()
         {
             rowPitch = getWidth();
-            slicePitch = getWidth()*getHeight();
+            slicePitch = (size_t)getWidth()* (size_t)getHeight();
         }
         /** Get the number of elements between one past the rightmost pixel of 
             one row and the leftmost pixel of the next row. (IE this is zero if rows

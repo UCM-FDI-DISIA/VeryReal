@@ -499,8 +499,8 @@ namespace Ogre {
             Plane mSkyPlane;
             void _updateRenderQueue(RenderQueue* queue) override;
         public:
-            SkyPlaneRenderer(SceneManager* owner) : SkyRenderer(owner), mSkyPlaneEntity(0) {}
-            SkyPlaneGenParameters mSkyPlaneGenParameters;
+            SkyPlaneRenderer(SceneManager* owner) : SkyRenderer(owner), mSkyPlaneEntity(nullptr) {}
+            SkyPlaneGenParameters mSkyPlaneGenParameters{};
             void setSkyPlane(bool enable, const Plane& plane, const String& materialName,
                              Real scale, Real tiling, uint8 renderQueue, Real bow, int xsegments,
                              int ysegments, const String& groupName);
@@ -514,7 +514,7 @@ namespace Ogre {
             void _updateRenderQueue(RenderQueue* queue) override;
         public:
             SkyBoxRenderer(SceneManager* owner) : SkyRenderer(owner) {}
-            SkyBoxGenParameters mSkyBoxGenParameters;
+            SkyBoxGenParameters mSkyBoxGenParameters{};
             void setSkyBox(bool enable, const String& materialName, Real distance,
                            uint8 renderQueue, const Quaternion& orientation,
                            const String& groupName);
@@ -533,7 +533,9 @@ namespace Ogre {
                 const String& groupName);
             void _updateRenderQueue(RenderQueue* queue) override;
         public:
-            SkyDomeRenderer(SceneManager* owner)  : SkyRenderer(owner) {}
+            SkyDomeRenderer(SceneManager* owner) : SkyRenderer(owner) {
+                std::fill(mSkyDomeEntity.begin(), mSkyDomeEntity.end(), nullptr);
+            }
             SkyDomeGenParameters mSkyDomeGenParameters;
             void setSkyDome(bool enable, const String& materialName, Real curvature, Real tiling,
                             Real distance, uint8 renderQueue, const Quaternion& orientation,

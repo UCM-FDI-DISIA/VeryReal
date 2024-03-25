@@ -116,7 +116,10 @@ namespace Ogre {
         {
         public:
             TargetOperation()
-            { 
+                : target(nullptr), currentQueueGroupID(0), visibilityMask(0xFFFFFFFF), lodBias(1.0f),
+                  onlyInitial(false), hasBeenRendered(false), findVisibleObjects(false),
+                  materialScheme(MaterialManager::DEFAULT_SCHEME_NAME), shadowsEnabled(true), alignCameraToFace(-1)
+            {
             }
             TargetOperation(RenderTarget* inTarget)
                 : target(inTarget), currentQueueGroupID(0), visibilityMask(0xFFFFFFFF), lodBias(1.0f),

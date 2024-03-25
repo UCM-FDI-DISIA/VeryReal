@@ -1,3 +1,4 @@
+#pragma once
 #pragma warning(disable : 4251)
 #include <OgreLight.h>
 #include <OgreSceneManager.h>
@@ -7,8 +8,8 @@
 #include <Entity.h>
 #include "RenderManager.h"
 #include <TransformComponent.h>
-#include "conversorvectores.h"
 #include "Light.h"
+#include "conversorvectores.h"
 
 using namespace VeryReal;
 
@@ -53,16 +54,13 @@ void Light::SetDirection(Vector3 const& v) {
 }
 
 void Light::setType(int const dir) {
-	
 	this->type = dir;
-	switch (dir)
-	{
+	switch (dir) {
 	case 0:
 		light->setType(Ogre::Light::LT_DIRECTIONAL);
 		break;
 	case 1: light->setType(Ogre::Light::LT_POINT);
 		break;
-
 	case 2:
 		light->setType(Ogre::Light::LT_RECTLIGHT);
 		break;
@@ -79,6 +77,7 @@ void Light::SetDiffuseColour(Vector3 const& color) {
 	light->setDiffuseColour(color.GetX(), color.GetY(), color.GetZ());
 	
 }
+
 void Light::SetshadowFarDistance(float distance) {
 	this->shadowfardist=distance;
 	light->setShadowFarClipDistance(distance);
@@ -88,6 +87,7 @@ void Light::SetSpotlightInnerAngle(float dist) {
 	this->ineerangle_ = dist;
 	light->setSpotlightInnerAngle(Ogre::Radian(dist));
 }
+
 void Light::SetSpotlightOuterAngle(float dist) {
 	this->outerangle = dist;
 	light->setSpotlightOuterAngle(Ogre::Radian(dist));

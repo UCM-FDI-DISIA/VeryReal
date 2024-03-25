@@ -60,20 +60,22 @@ MeshRenderComponent::~MeshRenderComponent() {
      return false;
 }
  
-
-
- void MeshRenderComponent::update() {
+void MeshRenderComponent::update() {
      if (!mStaticObject) setTransform(transform->GetPosition(), transform->GetScale(), transform->GetRotation());
 }
+
 void MeshRenderComponent::setName(std::string name) {
      entity_name = name;
 }
+
 void MeshRenderComponent::setMeshName(std::string meshName) {
      mesh_name = meshName;
 }
+
 void MeshRenderComponent::setStatic(bool stat) {
     mStaticObject = stat;
 }
+
 void MeshRenderComponent::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot) {
    // conversor conve;
     
@@ -81,13 +83,16 @@ void MeshRenderComponent::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 
     setScale(scale);
     setRotation(rot);
 }
+
 void MeshRenderComponent::setPosition(VeryReal::Vector3 const& pos) {
     //conversor conve;
     scene_node->setPosition(VR2OgreV3(pos));
 }
+
 void MeshRenderComponent::setScale(VeryReal::Vector3 const& scale) {
     scene_node->setScale(VR2OgreV3(scale));
 }
+
 void MeshRenderComponent::setRotation(VeryReal::Vector3 const& rot) {
     const Ogre::Vector3* aux = new Ogre::Vector3(VR2OgreV3(rot));
     Ogre::Quaternion quat(aux); // Crear la rotación Quaternion
@@ -97,41 +102,51 @@ void MeshRenderComponent::setRotation(VeryReal::Vector3 const& rot) {
 void MeshRenderComponent::activeMesh() {
     scene_node->setVisible(true);
 }
+
 void MeshRenderComponent::desactiveMesh() {
     scene_node->setVisible(false);
 }
+
 void MeshRenderComponent::setMaterial(std::string materialName) {
    
     material_name = materialName;
     ent_ogre->setMaterialName(materialName);
 }
+
 void MeshRenderComponent::changeMaterial(std::string t_materialName) {
     material_name = t_materialName;
     if (material_name != "")
         ent_ogre->setMaterialName(material_name);
 }
+
 void MeshRenderComponent::setRenderingDistance(float t_d) {
     ent_ogre->setRenderingDistance(t_d);
 }
+
 void MeshRenderComponent::setDebugVisibility(bool t_d) {
     ent_ogre->setDebugDisplayEnabled(t_d);
 }
+
 std::string MeshRenderComponent::getNameEntity() {
     return entity_name;
 }
+
 std::string MeshRenderComponent::getNameMesh() {
     return mesh_name;
 }
+
 Ogre::Entity* MeshRenderComponent::getOgreEntity() {
     return ent_ogre;
 }
+
 Ogre::AxisAlignedBox MeshRenderComponent::getBoundingBox() {
     return ent_ogre->getBoundingBox();
 }
+
 Ogre::SceneNode* MeshRenderComponent::getNode() {
     return scene_node;
 }
-void MeshRenderComponent::setCastShadows(bool t_shadow)
-{
+
+void MeshRenderComponent::setCastShadows(bool t_shadow) {
     ent_ogre->setCastShadows(t_shadow);
 }

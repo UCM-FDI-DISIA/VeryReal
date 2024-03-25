@@ -3,8 +3,8 @@
 using namespace VeryReal;
 using namespace std;
 
-UITransformComponent::UITransformComponent() {
-    
+UITransformComponent::UITransformComponent() { 
+    hidden = interactive = false;
 }
 bool UITransformComponent::InitComponent() {
     

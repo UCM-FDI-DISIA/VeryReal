@@ -4,9 +4,7 @@
 #include "Component.h"
 #include <string>
 
-
-namespace Ogre
-{
+namespace Ogre {
     class Camera;
     class SceneNode;
     class SceneManager;
@@ -19,9 +17,9 @@ namespace  VeryReal {
     class Vector3;
     class Vector2;
     class Entity;
+
     class CameraComponent : public Component {
     public:
-       
         // Constructor por defecto de la clase CameraComponent.
         CameraComponent() {};
 
@@ -85,7 +83,5 @@ namespace  VeryReal {
         Ogre::SceneManager* mgr=nullptr;
         VeryReal::Entity* ent = nullptr;
     };
-
-
 }
 #endif !CAMERACOMPONENT

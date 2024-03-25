@@ -2,14 +2,12 @@
 #ifndef LIGHT
 #define LIGHT
 
-
 #include "Component.h"
 #include <Vector3.h>	
 
-
 #define DEBUG_TRANSFORM_ERROR "NO SE PUEDE INICIALIZAR EL COMPONENTE LIGHT DEBIDO A QUE NO TIENE EL COMPONENTE TRANSFORM\n"
-namespace Ogre
-{
+
+namespace Ogre {
     class SceneNode;
     class SceneManager;
     class Light;
