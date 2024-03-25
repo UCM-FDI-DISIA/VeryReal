@@ -1,12 +1,17 @@
-#include "Window.h"
+#pragma warning(disable : 4251)
 #include <Ogre.h>
-#include <SDL.h>
 #include <OgreFileSystem.h>
 #include <OgreFileSystemLayer.h>
+#pragma warning(default : 4251)
+
+#include "Window.h"
+#include <SDL.h>
 #include <SDL_syswm.h>
 #include <iostream>
+
 using namespace VeryReal;
 using namespace Ogre;
+
 Window::Window():root(nullptr),render_system(nullptr),scene_manager(nullptr), name(""),config_route(""),sdl_window(nullptr),file_system_layer(nullptr),ogre_window(nullptr), window_height(0),window_width(0) {
  
 }

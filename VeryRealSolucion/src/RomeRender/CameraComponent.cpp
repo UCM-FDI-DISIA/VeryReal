@@ -1,12 +1,16 @@
-#include "CameraComponent.h"
-#include <OgreViewport.h>
-#include <iostream>
+#pragma warning(disable : 4251)
 #include <Ogre.h>
+#include <OgreViewport.h>
+#pragma warning(default : 4251)
+
+#include "CameraComponent.h"
+#include <iostream>
 #include <Vector2.h>
 #include "RenderManager.h"
 #include "conversorvectores.h"
 #include "TransformComponent.h"
 #include "Entity.h"
+
 using namespace VeryReal;
 using namespace Ogre;
 

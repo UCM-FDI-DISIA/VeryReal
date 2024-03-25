@@ -117,14 +117,12 @@ namespace Ogre
         Radian angleTo(const Vector2& other) const;
 
         // special points
-        #pragma warning(disable : 4251)
         static const Vector2 ZERO;
         static const Vector2 UNIT_X;
         static const Vector2 UNIT_Y;
         static const Vector2 NEGATIVE_UNIT_X;
         static const Vector2 NEGATIVE_UNIT_Y;
         static const Vector2 UNIT_SCALE;
-        #pragma warning(default : 4251)
     };
 
     template <> struct _OgreExport VectorBase<3, Real>
@@ -246,7 +244,6 @@ namespace Ogre
         const Vector3& primaryAxis() const;
 
         // special points
-        #pragma warning(disable : 4251)
         static const Vector3 ZERO;
         static const Vector3 UNIT_X;
         static const Vector3 UNIT_Y;
@@ -255,7 +252,6 @@ namespace Ogre
         static const Vector3 NEGATIVE_UNIT_Y;
         static const Vector3 NEGATIVE_UNIT_Z;
         static const Vector3 UNIT_SCALE;
-        #pragma warning(default : 4251)
     };
 
     template <> struct _OgreExport VectorBase<4, Real>

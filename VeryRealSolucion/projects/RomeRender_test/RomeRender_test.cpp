@@ -1,5 +1,5 @@
 // RomeRender_test.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-
+#pragma once
 #include <iostream>
 #include <RenderManager.h>
 #include "CreatorAnimatorComponent.h"
@@ -15,8 +15,7 @@
 
 
 using namespace VeryReal;
-int main()
-{
+int main() {
 #pragma region Prueba Animator->FUNCIONA
    /* VeryReal::Creator::Instance()->AddCreator("animator", new VeryReal::CreatorAnimatorComponent());
     Creator::Instance()->GetCreator("animator")->AddParameter("name", "anim");

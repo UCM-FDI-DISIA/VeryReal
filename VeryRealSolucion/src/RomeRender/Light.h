@@ -100,8 +100,6 @@ namespace  VeryReal {
         float nearclipdist=10;
         bool shdws=false;
     };
-
-
 }
 
 #endif // !LIGHT

@@ -1,14 +1,19 @@
+#pragma warning(disable : 4251)
 #include <OgreAnimation.h>
 #include <OgreKeyFrame.h>
 #include <OgreSceneManager.h>
-#include <OgreEntity.h>
-#include <Entity.h>
 #include <OgreAnimationState.h>
+#include <OgreEntity.h>
+#pragma warning(default : 4251)
+
+#include <Entity.h>
+
 #include "RenderManager.h"
 #include "AnimatorComponent.h"
 #include "MeshRenderComponent.h"
 #include "TransformComponent.h"
 #include "conversorvectores.h"
+
 using namespace VeryReal;
 using namespace std;
 
@@ -23,6 +28,7 @@ using namespace std;
 
     
 }
+
 bool AnimatorComponent::InitComponent(std::string name) {
     scene_mngr = RenderManager::Instance()->SceneManagerOgree();
     name = name;

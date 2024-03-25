@@ -1,15 +1,19 @@
-#include "RenderManager.h"
+#pragma warning(disable : 4251)
 #include <Ogre.h>
-#include <SDL.h>
 #include <OgreFileSystem.h>
 #include <OgreFileSystemLayer.h>
+#include <OgreRTShaderSystem.h>
+#pragma warning(disable : 4251)
+
+#include "RenderManager.h"
+#include <SDL.h>
 #include <SDL_syswm.h>
 #include <iostream>
 #include <Windows.h>
-#include <OgreRTShaderSystem.h>
 #include "Window.h"
 #include "SGTechniqueResolverListener.h"
 #include "conversorvectores.h"
+
 //mehrender, camara y eso
 VeryReal::RenderManager::RenderManager()
     : window(nullptr), root(nullptr), scene_manager(nullptr), render_system(nullptr), viewport(nullptr), filesystem_layer(nullptr) { }

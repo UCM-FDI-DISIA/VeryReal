@@ -5,16 +5,16 @@
 #include <string>
 #include <unordered_map>
 #include "CreatorComponent.h"
-namespace Ogre
-{
+
+namespace Ogre {
 	class AnimationState;
 	class SceneManager;
 	class Entity;
 	class Animation;
 	class KeyFrame;
 	class AnimationStateSet;
-
 }
+
 namespace VeryReal {
 	class MeshRenderComponent;
 	class TransformComponent;
@@ -54,9 +54,6 @@ namespace VeryReal {
 			MeshRenderComponent* meshRender;
 			int num_animations_active;
 			std::string name;
-
-
-
 	};
 
 }

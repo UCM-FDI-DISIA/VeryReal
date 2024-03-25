@@ -3,10 +3,10 @@
 using namespace VeryReal;
 Component* CreatorLightComponent::CreatorSpecificComponent() {
 	Light* l = new Light();
-	int type;
-	Vector3 diffusecolour;
-	float shadowfardist, shadowdist, ineerangle, outerangle, nearclipdist;
-	bool shdws;
+	int type = 0;
+	Vector3 diffusecolour (0,0,0);
+	float shadowfardist = 0, shadowdist = 0, ineerangle = 0, outerangle = 0, nearclipdist = 0;
+	bool shdws = 0;
 	if (std::holds_alternative<int>(parameters_map.at("type")->GetVariant())) {
 		type = std::get<int>(parameters_map.at("type")->GetVariant());
 	}
@@ -36,6 +36,4 @@ Component* CreatorLightComponent::CreatorSpecificComponent() {
 		return nullptr;
 	}
 	return l;
-
-
 }

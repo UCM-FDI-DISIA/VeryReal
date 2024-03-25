@@ -1,22 +1,25 @@
-#include "Light.h"
+#pragma warning(disable : 4251)
 #include <OgreLight.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
-#include <OgreVector3.h>
+#pragma warning(default : 4251)
+
 #include <Entity.h>
 #include "RenderManager.h"
 #include <TransformComponent.h>
 #include "conversorvectores.h"
-
+#include "Light.h"
 
 using namespace VeryReal;
 
 Light::Light():light(nullptr),shadowdist(10),ineerangle_(45),outerangle(90),shadowfardist(10),diffusecolour(Vector3(0,0,0)),nearclipdist(0.5),shdws(true) {
 
 }
+
 Light::~Light() {
 
 }
+
 bool Light::InitComponent(int type, Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
 	if(GetEntity()->HasComponent("transform"))trans = GetEntity()->GetComponent<TransformComponent>("transform");
 	else {
@@ -42,12 +45,13 @@ bool Light::InitComponent(int type, Vector3 const& diffusecolour, float shadowfa
 }
 
 void Light::Update() {
-
     mNode->setPosition(VR2OgreV3(trans->GetPosition()));
 }
+
 void Light::SetDirection(Vector3 const& v) {
         mNode->setDirection(VR2OgreV3(v));
 }
+
 void Light::setType(int const dir) {
 	
 	this->type = dir;

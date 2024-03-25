@@ -1,16 +1,18 @@
-#include "MeshRenderComponent.h"
-#include <OgreAxisAlignedBox.h>
+#pragma warning(disable : 4251)
 #include <OgreEntity.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
-#include "RenderManager.h"
-#include "TransformComponent.h"
-#include <Ogre.h>
-#include "conversorvectores.h"
 #include <OgreSceneNode.h>
 #include <OgreNode.h>
 #include <OgreFileSystemLayer.h>
+#include <Ogre.h>
+#pragma warning(default : 4251)
+
+#include "MeshRenderComponent.h"
+#include "RenderManager.h"
+#include "TransformComponent.h"
 #include "conversorvectores.h"
+
 using namespace VeryReal;
 using namespace Ogre;
 

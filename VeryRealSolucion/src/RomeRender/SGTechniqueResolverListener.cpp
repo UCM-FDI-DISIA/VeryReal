@@ -1,6 +1,9 @@
-#include "SGTechniqueResolverListener.h"
+#pragma warning(disable : 4251)
 #include "OgreTechnique.h"
 #include <OgreShaderGenerator.h>
+#pragma warning(default : 4251)
+
+#include "SGTechniqueResolverListener.h"
 
 namespace VeryReal
 {

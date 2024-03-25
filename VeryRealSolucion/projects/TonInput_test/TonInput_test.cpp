@@ -5,8 +5,7 @@
 #include <SDL.h>
 #undef main
 
-int main()
-{
+int main() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	SDL_Window* mWindow;
 	mWindow = SDL_CreateWindow("Very Real", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -14,11 +13,8 @@ int main()
 	SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
 
 	VeryReal::InputManager::Init();
-	std::cout << "Hello World!\n";
-	
 
 	while (true) {
-
 		VeryReal::InputManager::Instance()->Refresh(); // Ih se actualiza (actua como el handleEvents())
 
 		if (VeryReal::InputManager::Instance()->IsKeyDown(TI_SCANCODE_A)) 
