@@ -5,6 +5,8 @@
 #include <Vector2.h>
 #include "RenderManager.h"
 #include "conversorvectores.h"
+#include "TransformComponent.h"
+#include "Entity.h"
 using namespace VeryReal;
 using namespace Ogre;
 
@@ -29,7 +31,14 @@ CameraComponent::~CameraComponent()
         return true;
 
     }
+    void CameraComponent::Update(const double& dt) {
 
+        if (ent != nullptr) {
+            VeryReal::Vector3 v = ent->GetComponent<TransformComponent>("transform")->GetPosition();
+
+            translate(v.GetX(), v.GetY(), v.GetZ());
+        }
+    }
     void CameraComponent::lookAt( VeryReal::Vector3 pos)
     {
         mNode->lookAt(VR2OgreV3(pos), Ogre::Node::TransformSpace::TS_PARENT);
@@ -89,6 +98,9 @@ CameraComponent::~CameraComponent()
     Ogre::SceneNode* CameraComponent::getNode()
     {
         return mNode;
+    }
+    void CameraComponent::SetTarget(VeryReal::Entity* e) { 
+        ent = e;
     }
     void CameraComponent::active()
     {

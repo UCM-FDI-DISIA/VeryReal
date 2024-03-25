@@ -18,7 +18,7 @@ namespace Ogre
 namespace  VeryReal {
     class Vector3;
     class Vector2;
-
+    class Entity;
     class CameraComponent : public Component {
     public:
        
@@ -28,6 +28,8 @@ namespace  VeryReal {
         // Inicializa el componente de cámara con un nombre, un color, una ventana de renderizado de Ogre,
         // un gestor de escena de Ogre y un desplazamiento de posición.
         bool InitComponent(std::string name, VeryReal::Vector3 color, VeryReal::Vector3 m_offset);
+        //actualiza la posicion de la camara
+        void Update(const double& dt) override;
 
         // Destructor de la clase CameraComponent.
         virtual ~CameraComponent();
@@ -70,7 +72,8 @@ namespace  VeryReal {
 
         // Activa la camara.
         void active();
-
+        //setter para el target al que seguira la camara 
+        void SetTarget(VeryReal::Entity* e);
         // Obtiene el nodo de escena asociado a la cámara.
         Ogre::SceneNode* getNode();
 
@@ -80,7 +83,7 @@ namespace  VeryReal {
         Ogre::Camera* camara=nullptr;
         Ogre::Viewport* vewport=nullptr;
         Ogre::SceneManager* mgr=nullptr;
-  
+        VeryReal::Entity* ent = nullptr;
     };
 
 
