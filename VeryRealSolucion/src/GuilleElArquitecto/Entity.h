@@ -2,10 +2,10 @@
 #ifndef ENTITY
 #define ENTITY
 #include "Creator.h"
-
+#include "Component.h"
 namespace VeryReal {
 	using component_name = std::string;
-	class Component;
+	
 	class Entity
 	{
 	private:
@@ -27,8 +27,9 @@ namespace VeryReal {
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);
             Component* component;
-            component->SetEntity(this);
+           
             component= Creator::Instance()->CallSpecificCreator(c_name);
+            component->SetEntity(this);
 			components_map.insert({ c_name,component});
 			//quizas initcomponentpai
 			return component;
