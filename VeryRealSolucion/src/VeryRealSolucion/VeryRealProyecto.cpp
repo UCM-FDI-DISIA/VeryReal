@@ -26,7 +26,7 @@ bool VeryRealProyecto::Init() {
 	VeryReal::InputManager::Init();
 	VeryReal::RenderManager::Init();
 	VR().CreateCreators();
-	LoadGame("Ogreman");
+	LoadGame("OgremanSolucion");
 
 
 	return true;
@@ -69,7 +69,7 @@ void VeryRealProyecto::CreateCreators() {
 bool VeryRealProyecto::LoadGame(std::string gameName)
 {
 	//Tengo que hacer cambios a gameName para que este sea la ruta al juego. Puede ser relativa ya que siempre sabemos donde va a estar el juego.
-	gameName = "E:/TERCERANHO/PROYECTOSIII/Ogreman/OgremanSolucion/OgremanSolucion.dll";
+    gameName = "./" + gameName + ".dll";
 	std::wstring wideGameName = std::wstring(gameName.begin(), gameName.end());
 	gameDll = LoadLibrary(wideGameName.c_str());
 
