@@ -14,12 +14,12 @@ void VeryReal::SceneManager::Refresh() {
 	for (auto it : scenes_list)if (it->GetToEliminate())RemoveScene(it->GetName());
 }
 
-VeryReal::Scene* VeryReal::SceneManager::AddScene(scene_name name) {
+VeryReal::Scene* VeryReal::SceneManager::AddScene(scene_name name,bool active) {
 	RemoveScene(name);
 	Scene* scene = new Scene();
 	scene->SetName(name);
 	scenes_list.push_back(scene);
-	ActivationScene(name, true);
+	ActivationScene(name, active);
 	EliminationScene(name, false);
 
 	return scene;

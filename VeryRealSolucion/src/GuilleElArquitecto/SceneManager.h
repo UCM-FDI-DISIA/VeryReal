@@ -22,7 +22,7 @@ namespace VeryReal {
 		//esto elimina de manera más segura las escenas
 		void Refresh();
 
-		VeryReal::Scene* AddScene(scene_name name);
+		VeryReal::Scene* AddScene(scene_name name,bool active);
 		void RemoveScene(scene_name name);
 
 		void ActivationScene(scene_name name, bool active);
