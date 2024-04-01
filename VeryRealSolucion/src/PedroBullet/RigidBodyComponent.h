@@ -48,13 +48,13 @@ namespace VeryReal {
         void SetMovementType(PBMovementType mT);
 
         // Obtiene el btRigidBody 
-        btRigidBody* GetBulletRigidBody() const;
+        btRigidBody* GetBulletRigidBody();
 
     private:
         TransformComponent* transformComponent;
         std::unique_ptr<btCollisionShape> collisionShape;
         std::unique_ptr<btDefaultMotionState> motionState;
-        std::unique_ptr<btRigidBody> rigidBody;
+        btRigidBody* rigidBody;
 
         bool isTrigger;
         float mass;

@@ -51,7 +51,7 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
     rbInfo.m_restitution = restitution;
     rbInfo.m_friction = friction;
 
-    rigidBody.reset(new btRigidBody(rbInfo));
+    rigidBody = new btRigidBody(rbInfo);
 
     //Inicializar el componente colider
     collider = this->GetEntity()->GetComponent<ColliderComponent>("collider");
@@ -73,6 +73,10 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
     }
 
     return true;
+}
+btRigidBody* RigidBodyComponent::GetBulletRigidBody() 
+{
+    return this->rigidBody;
 }
 
 btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType) {
