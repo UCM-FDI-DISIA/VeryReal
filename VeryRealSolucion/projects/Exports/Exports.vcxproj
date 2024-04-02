@@ -16,10 +16,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Exports.h" />
+    <ClCompile Include="..\..\src\Exports\Exports.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Exports.cpp" />
+    <ClInclude Include="..\..\src\Exports\Exports.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
