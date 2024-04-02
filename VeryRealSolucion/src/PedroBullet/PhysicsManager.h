@@ -2,28 +2,37 @@
 
 #include <btBulletDynamicsCommon.h>
 #include <vector>
+#include "Manager.h"
 
-class PhysicsManager {
-public:
-    PhysicsManager();
-    ~PhysicsManager();
+namespace VeryReal {
+    class Vector3;
+}
 
-    void Initialize();  // Inicializa el mundo de Bullet y otros componentes necesarios
-    void Update(float deltaTime);  // Actualiza la simulación física
-    void Shutdown();  // Limpia y libera recursos
+namespace VeryReal {
+    class PhysicsManager : public Manager<PhysicsManager> {
+    public:
+        PhysicsManager();
+        ~PhysicsManager();
 
-    btDiscreteDynamicsWorld* GetWorld() const;  // Getter para el mundo físico
+        void Initialize();              // Inicializa el mundo de Bullet y otros componentes necesarios
+        void Update(float deltaTime);   // Actualiza la simulación física
+        void Shutdown();                // Limpia y libera recursos
 
-    // Métodos para manejar cuerpos rígidos
-    void AddRigidBody(btRigidBody* body);
-    void RemoveRigidBody(btRigidBody* body);
+        btDiscreteDynamicsWorld* GetWorld() const;   // Getter para el mundo físico
 
-private:
-    btDefaultCollisionConfiguration* collisionConfiguration;
-    btCollisionDispatcher* dispatcher;
-    btBroadphaseInterface* overlappingPairCache;
-    btSequentialImpulseConstraintSolver* solver;
-    btDiscreteDynamicsWorld* dynamicsWorld;
+        // Métodos para manejar cuerpos rígidos
+        void AddRigidBody(btRigidBody* body);
+        void RemoveRigidBody(btRigidBody* body);
 
-    // Otras variables y métodos privados si son necesarios
-};
+        btAlignedObjectArray<const btCollisionObject*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
+
+    private:
+        btDefaultCollisionConfiguration* collisionConfiguration;
+        btCollisionDispatcher* dispatcher;
+        btBroadphaseInterface* overlappingPairCache;
+        btSequentialImpulseConstraintSolver* solver;
+        btDiscreteDynamicsWorld* dynamicsWorld;
+
+        // Otras variables y métodos privados si son necesarios
+    };
+}
