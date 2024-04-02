@@ -4,6 +4,7 @@
 
 #include <Component.h>
 #include "CreatorComponent.h"
+#include "export.h"
 namespace FMOD {
 	class Sound;
 }
@@ -12,7 +13,7 @@ namespace VeryReal {
 	class Vector3;
 }
 
-	class CreatorAudioListener :public VeryReal::CreatorComponent {
+	class VERYREAL_API CreatorAudioListener :public VeryReal::CreatorComponent {
 	public :
 		CreatorAudioListener() {}
 		virtual ~CreatorAudioListener(){}

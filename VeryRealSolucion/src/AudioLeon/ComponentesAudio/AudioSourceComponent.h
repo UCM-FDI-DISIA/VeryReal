@@ -5,6 +5,7 @@
 #include <string>
 #include "CreatorComponent.h"
 #include <Component.h>
+#include "export.h"
 //#include "EntityComponent/FactoryComponent.h"
 
 namespace FMOD {
@@ -27,7 +28,7 @@ class AudioLeon;
 	
 	
 	
-	class CreatorAudioSource :public VeryReal::CreatorComponent {
+	class VERYREAL_API CreatorAudioSource :public VeryReal::CreatorComponent {
 	public:
 		CreatorAudioSource() {}
 		virtual ~CreatorAudioSource() {}

@@ -6,6 +6,7 @@
 #include <Vector3.h>
 #include <string>
 #include <unordered_map>
+#include <export.h>
 
 namespace FMOD {
 	class Sound;
@@ -39,7 +40,7 @@ namespace VeryReal {
 	Puedes acceder a Audio_Leom llamando al método AL().
 	*/
 
-	class AudioLeon : public VeryReal::Manager<AudioLeon> {
+	class VERYREAL_API AudioLeon : public VeryReal::Manager<AudioLeon> {
 		friend Singleton<AudioLeon>;
 		AudioLeon();
 		//Inicializacion de los recursos necesarios para recoger input del microfono

@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-    int t = 0;
+    /*int t = 0;
     bool Play = false;
     while ((true)) {
         VeryReal::AL().SystemRefresh(t);
@@ -20,7 +20,7 @@ int main() {
 
     }
     std::cout << "Hello World!\n";
-    return 0;
+    return 0;*/
 }
 
 // Ejecutar programa: Ctrl + F5 o menu Depurar > Iniciar sin depurar
