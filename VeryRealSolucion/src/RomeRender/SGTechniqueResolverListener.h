@@ -1,12 +1,12 @@
 #pragma warning(disable : 4251)
-#include "OgreMaterialManager.h"
-#include <OgreRTShaderSystem.h>
+
 #pragma warning(default : 4251)
 
  namespace Ogre {
      class Technique;
      class Material;
      class Renderable;
+     class MaterialManager::Listener;
      namespace RTShader {
          class ShaderGenerator;
      }
