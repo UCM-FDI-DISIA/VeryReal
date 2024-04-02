@@ -7,7 +7,7 @@ public:
     BasicPhysicsWorld();
     ~BasicPhysicsWorld();
 
-    void InitializeWorld();
+    bool InitializeWorld();
     void Update(float deltaTime);
     void Cleanup();
 

@@ -2,51 +2,85 @@
 #include "Vector3.h"
 #include "PedroBullet.h"
 #include <btBulletDynamicsCommon.h>
-
 #include <btBulletCollisionCommon.h>
+
 VeryReal::PhysicsManager::PhysicsManager()
-    : collisionConfiguration(nullptr),
-    dispatcher(nullptr),
-    overlappingPairCache(nullptr),
-    solver(nullptr),
-    dynamicsWorld(nullptr) {
+    : collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) {
     // Constructor vacío
 }
 
-void VeryReal::PhysicsManager::Initialize() {
+bool VeryReal::PhysicsManager::Initialize() {
     // Inicializar el mundo de física, configuración de colisiones, etc.
     collisionConfiguration = new btDefaultCollisionConfiguration();
+    if (!collisionConfiguration) {
+        return false;   // Falló la creación de collisionConfiguration
+    }
+
     dispatcher = new btCollisionDispatcher(collisionConfiguration);
+    if (!dispatcher) {
+        Shutdown();  
+        return false;   // Falló la creación de dispatcher
+    }
+
     overlappingPairCache = new btDbvtBroadphase();
+    if (!overlappingPairCache) {
+        Shutdown();  
+        return false;   // Falló la creación de overlappingPairCache
+    }
+
     solver = new btSequentialImpulseConstraintSolver();
+    if (!solver) {
+        Shutdown();  
+        return false;   // Falló la creación de solver
+    }
+
     dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
+    if (!dynamicsWorld) {
+        Shutdown();  
+        return false;   // Falló la creación de dynamicsWorld
+    }
 
     dynamicsWorld->setGravity(btVector3(0, -9.81f, 0));
+    return true;   // Inicialización exitosa
 }
 
 void VeryReal::PhysicsManager::Update(float deltaTime) {
-    dynamicsWorld->stepSimulation(deltaTime, 10);
+    if (dynamicsWorld) {
+        dynamicsWorld->stepSimulation(deltaTime, 10);
+    }
 }
 
 void VeryReal::PhysicsManager::Shutdown() {
     // Limpieza del mundo de física y liberación de recursos
-    delete dynamicsWorld;
-    delete solver;
-    delete overlappingPairCache;
-    delete dispatcher;
-    delete collisionConfiguration;
+    if (dynamicsWorld) {
+        delete dynamicsWorld;
+    }
+    if (solver) {
+        delete solver;
+    }
+    if (overlappingPairCache) {
+        delete overlappingPairCache;
+    }
+    if (dispatcher) {
+        delete dispatcher;
+    }
+    if (collisionConfiguration) {
+        delete collisionConfiguration;
+    }
 }
 
-btDiscreteDynamicsWorld* VeryReal::PhysicsManager::GetWorld() const {
-    return dynamicsWorld;
-}
+btDiscreteDynamicsWorld* VeryReal::PhysicsManager::GetWorld() const { return dynamicsWorld; }
 
 void VeryReal::PhysicsManager::AddRigidBody(btRigidBody* body) {
-    dynamicsWorld->addRigidBody(body);
+    if (dynamicsWorld) {
+        dynamicsWorld->addRigidBody(body);
+    }
 }
 
 void VeryReal::PhysicsManager::RemoveRigidBody(btRigidBody* body) {
-    dynamicsWorld->removeRigidBody(body);
+    if (dynamicsWorld) {
+        dynamicsWorld->removeRigidBody(body);
+    }
 }
 
 //btAlignedObjectArray<const btCollisionObject*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End) {

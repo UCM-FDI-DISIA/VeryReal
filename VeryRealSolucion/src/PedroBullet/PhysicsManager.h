@@ -24,7 +24,7 @@ namespace VeryReal {
         PhysicsManager();
         ~PhysicsManager();
 
-        void Initialize();              // Inicializa el mundo de Bullet y otros componentes necesarios
+        bool Initialize();              // Inicializa el mundo de Bullet y otros componentes necesarios
         void Update(float deltaTime);   // Actualiza la simulación física
         void Shutdown();                // Limpia y libera recursos
 

@@ -4,17 +4,39 @@ BasicPhysicsWorld::BasicPhysicsWorld()
     : dynamicsWorld(nullptr), groundBody(nullptr), fallingBody(nullptr) {
 }
 
-void BasicPhysicsWorld::InitializeWorld() {
+bool BasicPhysicsWorld::InitializeWorld() {
     btDefaultCollisionConfiguration* collisionConfiguration = new btDefaultCollisionConfiguration();
     btCollisionDispatcher* dispatcher = new btCollisionDispatcher(collisionConfiguration);
     btBroadphaseInterface* overlappingPairCache = new btDbvtBroadphase();
     btSequentialImpulseConstraintSolver* solver = new btSequentialImpulseConstraintSolver();
 
     dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
+    if (!dynamicsWorld) {
+        // Limpieza y retorno falso si la creación falló
+        delete solver;
+        delete overlappingPairCache;
+        delete dispatcher;
+        delete collisionConfiguration;
+        return false;
+    }
+
     dynamicsWorld->setGravity(btVector3(0, -10, 0));
 
     groundBody = CreateGround();
+    if (!groundBody) {
+        // Limpieza y retorno falso si la creación falló
+        Cleanup(); 
+        return false;
+    }
+
     fallingBody = CreateFallingObject();
+    if (!fallingBody) {
+        // Limpieza y retorno falso si la creación falló
+        Cleanup(); 
+        return false;
+    }
+
+    return true;   // Todo se creó correctamente
 }
 
 btRigidBody* BasicPhysicsWorld::CreateGround() {
@@ -55,5 +77,5 @@ void BasicPhysicsWorld::Cleanup() {
 }
 
 BasicPhysicsWorld::~BasicPhysicsWorld() {
-    delete dynamicsWorld;  // Asumiendo que Bullet limpia el resto internamente
+    delete dynamicsWorld;  
 }
