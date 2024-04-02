@@ -110,5 +110,8 @@
     <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\GuilleElArquitecto\export.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

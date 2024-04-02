@@ -11,46 +11,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\GuilleElArquitecto\Component.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\Creator.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorComponent.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\Entity.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\ErrorInformant.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\Manager.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\Scene.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\SceneManager.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\Singleton.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\TransformComponent.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\VariantClass.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\Vector2.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\Vector3.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\Vector4.cpp" />
+    <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
+      <Project>{e9fe864b-f16f-44b6-a10f-dad3701db44f}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Component.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Creator.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorComponent.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\ErrorInformant.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\export.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Manager.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Scene.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\SceneManager.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Singleton.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\TransformComponent.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\VariantClass.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Vector2.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Vector3.h" />
-    <ClInclude Include="..\..\src\GuilleElArquitecto\Vector4.h" />
+    <ClInclude Include="Exports.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Exports.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e9fe864b-f16f-44b6-a10f-dad3701db44f}</ProjectGuid>
-    <RootNamespace>GuilleElArquitecto</RootNamespace>
+    <ProjectGuid>{162A3583-C947-4BD7-97F8-C8436CDF2B07}</ProjectGuid>
+    <RootNamespace>AudioLeon</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -80,7 +55,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)lib\</OutDir>
+    <OutDir>$(SolutionDir)bin\</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
@@ -94,7 +69,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\AudioLeon;$(SolutionDir)src\LuaLuengo;$(SolutionDir)src\PedroBullet;$(SolutionDir)src\RomeRender;$(SolutionDir)src\TonInput;$(SolutionDir)src\GuilleElArquitecto;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -102,6 +77,10 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>fmodL_vc.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\FMOD\src\api\core\lib\x64\;$(SolutionDir)Dependencies\FMOD\src\api\studio\lib\x64\</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -111,9 +90,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\AudioLeon;$(SolutionDir)src\LuaLuengo;$(SolutionDir)src\PedroBullet;$(SolutionDir)src\RomeRender;$(SolutionDir)src\TonInput;$(SolutionDir)src\GuilleElArquitecto;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -122,6 +100,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>fmod_vc.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\FMOD\src\api\core\lib\x64\;$(SolutionDir)Dependencies\FMOD\src\api\studio\lib\x64\;</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
