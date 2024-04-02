@@ -1,12 +1,22 @@
 #pragma once
 
-#include <btBulletDynamicsCommon.h>
 #include <vector>
 #include "Manager.h"
 
 namespace VeryReal {
     class Vector3;
 }
+
+
+class btDefaultCollisionConfiguration;
+class btCollisionDispatcher;
+class btSequentialImpulseConstraintSolver;
+class btBroadphaseInterface;
+class btConstraintSolver;
+class btDynamicsWorld;
+class btCollisionObject;
+class btDiscreteDynamicsWorld;
+class btRigidBody;
 
 namespace VeryReal {
     class PhysicsManager : public Manager<PhysicsManager> {
@@ -24,7 +34,9 @@ namespace VeryReal {
         void AddRigidBody(btRigidBody* body);
         void RemoveRigidBody(btRigidBody* body);
 
-        btAlignedObjectArray<const btCollisionObject*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
+
+        //No puede devolver algo de bullet
+        //btAlignedObjectArray<const btCollisionObject*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
 
     private:
         btDefaultCollisionConfiguration* collisionConfiguration;
