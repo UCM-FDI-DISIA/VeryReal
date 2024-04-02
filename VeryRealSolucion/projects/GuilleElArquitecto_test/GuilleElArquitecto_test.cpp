@@ -20,7 +20,7 @@ int main()
  
     //prueba funcional
     VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
-    Scene* s =SceneManager::Instance()->AddScene("Play");
+    Scene* s =SceneManager::Instance()->AddScene("Play",true);
     s = SceneManager::Instance()->GetScene("Play");
     VeryReal::Entity* e = s->AddEntity("Player");
     Component* c=e->AddComponent("transform");
