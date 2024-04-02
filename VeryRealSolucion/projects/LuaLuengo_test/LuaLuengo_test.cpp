@@ -11,8 +11,8 @@
 
 
 int main()
-{
+{/*
     VeryReal::Creator::Instance()->AddCreator("Transform", new VeryReal::CreatorTransformComponent());
-    SM().Init("PlayScene");
-    SM().ReadScene("PlayScene");
+    ScriptManager::Instance()->Init("PlayScene");
+    ScriptManager::Instance()->ReadScene("PlayScene");*/
 }

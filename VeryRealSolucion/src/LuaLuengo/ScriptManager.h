@@ -31,10 +31,10 @@ public:
 	void ReadScene(std::string n);
 	inline lua_State* GetLuaState() { return lua_state; }
 };
-
-// Instancia Singleton
-// @return un puntero de la instancia
-inline ScriptManager& SM() {
-	return *ScriptManager::Instance();
-}
+//
+//// Instancia Singleton
+//// @return un puntero de la instancia
+//inline ScriptManager& SM() {
+//	return *ScriptManager::Instance();
+//}
 #endif // !_SCRIPT_MANAGER
