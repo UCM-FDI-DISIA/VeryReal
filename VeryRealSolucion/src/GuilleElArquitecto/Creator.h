@@ -25,6 +25,10 @@ namespace VeryReal {
 			return creators_map[c_name]->CreatorSpecificComponent();
 		}
 
+		inline void CallSpecificInit(creator_name c_name, Component* c) { 
+			creators_map[c_name]->SpecificInitComponent(c);
+		}
+
 		void AddCreator(const creator_name& c_name, CreatorComponent* cretorcomponent);
 		//Remueve el Componente de la Entidad en la que se encuentra
 		void RemoveCreator(creator_name c_name);

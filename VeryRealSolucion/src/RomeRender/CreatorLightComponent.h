@@ -8,6 +8,7 @@ namespace VeryReal
         CreatorLightComponent() {}
         virtual ~CreatorLightComponent() {}
         Component* CreatorSpecificComponent() override;
+        void SpecificInitComponent(Component* c) override;
     };
 
 };

@@ -1,8 +1,12 @@
 #include "CreatorCameraComponent.h"
 #include "CameraComponent.h"
 using namespace VeryReal;
-Component* CreatorCameraComponent::CreatorSpecificComponent() {
-    CameraComponent* c = new CameraComponent();
+Component* CreatorCameraComponent::CreatorSpecificComponent() { 
+    return new CameraComponent();
+}
+
+void CreatorCameraComponent::SpecificInitComponent(Component* c) {
+    CameraComponent* cam = static_cast<CameraComponent*>(c);
     std::string name;
     Vector3 color, offset;
     if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
@@ -14,9 +18,8 @@ Component* CreatorCameraComponent::CreatorSpecificComponent() {
     if (std::holds_alternative<Vector3>(parameters_map.at("offset")->GetVariant())) {
         offset = std::get<Vector3>(parameters_map.at("offset")->GetVariant());
     }
-    bool b=c->InitComponent(name, color, offset);
-    if(!b){
-        return nullptr;
+    bool b = cam->InitComponent(name, color, offset);
+    if (!b) {
+        // Gestion de error
     }
-    return c;
 }

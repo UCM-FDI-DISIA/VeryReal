@@ -21,8 +21,8 @@ using namespace VeryReal;
 class VeryReal::UiSpriteRenderer;
 
 int main() {
-    UiSpriteRenderer* prueba = new UiSpriteRenderer();
-    prueba->demo();
+    //UiSpriteRenderer* prueba = new UiSpriteRenderer();
+    //prueba->demo();
     //#pragma region Prueba Animator->FUNCIONA
 //    VeryReal::Creator::Instance()->AddCreator("animator", new VeryReal::CreatorAnimatorComponent());
 //    Creator::Instance()->GetCreator("animator")->AddParameter("name", "anim");

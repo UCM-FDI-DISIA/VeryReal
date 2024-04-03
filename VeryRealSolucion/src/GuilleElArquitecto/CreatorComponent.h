@@ -17,6 +17,7 @@ namespace VeryReal {
 		// con un template no puedes un metodo virtual
 
 		virtual Component* CreatorSpecificComponent() = 0;
+        virtual void SpecificInitComponent(Component* c) = 0;
 
 		template<typename T>
 		void AddParameter(parameters_name p_name,T p) {

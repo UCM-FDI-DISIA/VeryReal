@@ -7,6 +7,7 @@ namespace VeryReal {
 		CreatorColliderComponent(){}
 		virtual ~CreatorColliderComponent(){}
 		Component* CreatorSpecificComponent() override;
+        void SpecificInitComponent(Component* c) override;
 	};
 }
 

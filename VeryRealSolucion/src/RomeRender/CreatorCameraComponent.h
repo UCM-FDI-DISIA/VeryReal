@@ -8,6 +8,7 @@ namespace VeryReal
         CreatorCameraComponent() {};
         virtual ~CreatorCameraComponent() {};
         Component* CreatorSpecificComponent() override;
+        void SpecificInitComponent(Component* c) override;
     };
 };
 

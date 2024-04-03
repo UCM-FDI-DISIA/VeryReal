@@ -7,6 +7,7 @@ namespace VeryReal {
 		CreatorRigidBodyComponent(){}
 		virtual ~CreatorRigidBodyComponent(){}
 		Component* CreatorSpecificComponent() override;
+        void SpecificInitComponent(Component* c) override;
 	};
 }
 

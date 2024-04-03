@@ -31,6 +31,7 @@ namespace VeryReal {
            
             component= Creator::Instance()->CallSpecificCreator(c_name);
             component->SetEntity(this);
+            Creator::Instance()->CallSpecificInit(c_name, component);
 			components_map.insert({ c_name,component});
 			//quizas initcomponentpai
 			return component;
