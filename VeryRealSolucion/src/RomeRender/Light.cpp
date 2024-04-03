@@ -30,7 +30,7 @@ bool Light::InitComponent(int type, Vector3 const& diffusecolour, float shadowfa
 		 return false;//devolverá false en este caso
 	
 	}
-	light = VeryReal::RenderManager::Instance()->SceneManagerOgree()->createLight("LuzPrincipal");
+	light = VeryReal::RenderManager::Instance()->SceneManagerOgree()->createLight();
 	mNode = VeryReal::RenderManager::Instance()->CreateNode();
 	
 	SetDirection(trans->GetPosition());
