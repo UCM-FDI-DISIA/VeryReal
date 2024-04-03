@@ -3,13 +3,13 @@
 #define SCENE
 #include <unordered_map>
 #include <string>
-
+#include "export.h"
 
 using scene_name = std::string;
 using entity_name = std::string;
 namespace VeryReal {
 	class Entity;
-	class Scene
+	class VERYREAL_API Scene
 	{
 	private:
 		//Mapa de: Clave: nombre de Entidad, Valor: puntero a esa entidad

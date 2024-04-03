@@ -2,11 +2,12 @@
 #ifndef COMPONENT
 #define COMPONENT
 
+#include "export.h"
 namespace VeryReal {
 	class Entity;
 	class VariantClass;	
 
-	class Component	//CLASE ABSTRACTA
+	class VERYREAL_API Component	//CLASE ABSTRACTA
 	{
 	private:
 		bool active = true;

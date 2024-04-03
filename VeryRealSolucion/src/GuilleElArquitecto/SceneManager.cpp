@@ -1,7 +1,5 @@
 #include "SceneManager.h"
 #include "Scene.h"
-//VeryReal::SceneManager::SceneManager() {}
-//VeryReal::SceneManager::~SceneManager() {}
 using namespace std;
 
 void VeryReal::SceneManager::Update(const double& dt) {

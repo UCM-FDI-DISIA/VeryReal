@@ -8,10 +8,10 @@
 #include "Vector2.h"
 #include "Vector3.h"
 #include "Vector4.h"
-
+#include "export.h"
 
 namespace VeryReal {
-	class VariantClass
+	class VERYREAL_API VariantClass
 	{
 	private:
 		std::variant<int, float,VeryReal::Vector2, VeryReal::Vector3, VeryReal::Vector4,std::string,bool> myvariant;

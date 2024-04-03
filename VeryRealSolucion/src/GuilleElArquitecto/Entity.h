@@ -3,10 +3,11 @@
 #define ENTITY
 #include "Creator.h"
 #include "Component.h"
+#include "export.h"
 namespace VeryReal {
 	using component_name = std::string;
 	
-	class Entity
+	class VERYREAL_API Entity
 	{
 	private:
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
