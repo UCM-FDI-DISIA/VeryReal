@@ -2,7 +2,7 @@
 #ifndef SINGLETON
 #define SINGLETON
 #include <memory>
-#include "export.h"
+
 namespace VeryReal {
 	template<class T>
 class Singleton

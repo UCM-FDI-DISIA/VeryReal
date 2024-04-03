@@ -115,7 +115,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Ogre\Builds\lib\$(Configuration);$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\RelWithDebInfo</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2_test.lib;OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2_test.lib;OgreMain_d.lib;OgreOverlay_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,7 +140,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Ogre\Builds\lib\$(Configuration);$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\RelWithDebInfo</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;OgreMain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;OgreMain.lib;OgreOverlay.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

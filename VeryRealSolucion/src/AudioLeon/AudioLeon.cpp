@@ -14,7 +14,7 @@ AudioLeon::AudioLeon() {
 	result = sound_system->init(MAX_CHANNELS, FMOD_INIT_NORMAL | FMOD_INIT_3D_RIGHTHANDED, 0);    // Initialize FMOD.
 	CheckFMODResult(result);
 
-	result = sound_system->set3DSettings(0.0f, DISTANCE_FACTOR, ROLLOFF_SCALE);
+	result = sound_system->set3DSettings(DOPPLER_SCALE, DISTANCE_FACTOR, ROLLOFF_SCALE);
 	CheckFMODResult(result);
 
 	sound_system->createChannelGroup("master", &master);

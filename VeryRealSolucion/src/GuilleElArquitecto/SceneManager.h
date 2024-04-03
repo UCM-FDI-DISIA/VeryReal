@@ -4,18 +4,18 @@
 #include "Manager.h"
 #include <list>
 #include <string>
-#include "export.h"
+
 using scene_name = std::string;
 namespace VeryReal {
 	class Scene;
-	class VERYREAL_API SceneManager :public VeryReal::Manager<SceneManager>
+	class SceneManager :public VeryReal::Manager<SceneManager>
 	{
 	private:
 		//lista con todas la escenas
 		std::list<VeryReal::Scene*> scenes_list;
 	public:
         SceneManager(){};
-		virtual ~SceneManager();
+		virtual ~SceneManager(){};
 
 		void Update(const double& dt);
 		//si hay escenas que quieren ser eliminadas las removemos aquí

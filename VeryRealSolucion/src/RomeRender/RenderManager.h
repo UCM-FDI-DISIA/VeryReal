@@ -71,6 +71,7 @@ namespace VeryReal {
 		void DeleteNode(Ogre::SceneNode* nod);
 		
 		Ogre::RenderWindow* GetRenderWindow();
+        Ogre::Root* GetRenderRoot();
 		Ogre::SceneManager* SceneManagerOgree();
 		// Capa del sistema de archivos de Ogre
 		Ogre::FileSystemLayer* filesystem_layer;

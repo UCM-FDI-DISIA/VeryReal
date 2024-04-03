@@ -151,6 +151,7 @@ void VeryReal::RenderManager::UnloadShaders() {
     }
 }
 Ogre::RenderWindow* VeryReal::RenderManager::GetRenderWindow() { return window->GetOgreWindow(); }
+Ogre::Root* VeryReal::RenderManager::GetRenderRoot() { return root; }
 Ogre::SceneManager* VeryReal::RenderManager::SceneManagerOgree() { return scene_manager; }
 void VeryReal::RenderManager::Update(const double& dt) { root->renderOneFrame(); }
 
