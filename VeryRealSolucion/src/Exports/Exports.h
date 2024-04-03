@@ -2,6 +2,7 @@
 #include "export.h"
 namespace VeryReal 
 {
+	 
 //class InputManager;
 //class ScriptManager;
 //class SceneManager;

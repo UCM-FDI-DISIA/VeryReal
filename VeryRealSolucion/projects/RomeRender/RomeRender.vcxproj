@@ -101,7 +101,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;VERYREAL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Ogre\src\Components\Overlay\include;$(SolutionDir)dependencies\Ogre\src\Components\Bites\include;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include;$(SolutionDir)dependencies\Ogre\src\Components\Bites\include;$(SolutionDir)dependencies\Ogre\src\Components\Overlay\include;$(SolutionDir)dependencies\Ogre\src\Components\Bites\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -124,7 +124,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;VERYREAL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Ogre\src\Components\Overlay\include;$(SolutionDir)dependencies\Ogre\src\Components\Bites\include;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\Components\RTShaderSystem\include;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GLSupport;$(SolutionDir)dependencies\Ogre\src\RenderSystems\GL\include;$(SolutionDir)dependencies\Ogre\src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Builds\include;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0\include;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Ogre\src\Components\Bites\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
