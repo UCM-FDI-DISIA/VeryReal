@@ -66,7 +66,7 @@ int main() {
 #pragma endregion
 
 #pragma region Prueba Luz
-    VeryReal::RenderManager::Instance()->InitManager("app");
+ /*   VeryReal::RenderManager::Instance()->InitManager("app");
     VeryReal::Creator::Instance()->AddCreator("luz", new VeryReal::CreatorLightComponent());
     VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
     Creator::Instance()->GetCreator("luz")->AddParameter("type", 8);
@@ -84,24 +84,59 @@ int main() {
     
     Component* c = e->AddComponent("luz"); 
     Component* d = e->AddComponent("transform");
-    std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Luzent")->HasComponent("luz") << "\n";
+    std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Luzent")->HasComponent("luz") << "\n";*/
 
 #pragma endregion
 
    
- //  VeryReal::RenderManager::Instance()->InitManager("app");
- //  VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
- //  VeryReal::Creator::Instance()->AddCreator("MeshRender", new VeryReal::CreatorMeshRenderComponent());
- //  //Creator::Instance()->AddCreator("Animator", new CreatorAnimatorComponent());
- // /* VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
- //  VeryReal::Creator::Instance()->AddCreator("Light", new VeryReal::CreatorLightComponent());*/
- //  Scene* s = SceneManager::Instance()->AddScene("Play");
- //  s = SceneManager::Instance()->GetScene("Play");
- //  Entity* e = s->AddEntity("Player");
- // /* Entity* luz = s->AddEntity("Luz");
- //  Entity* camara = s->AddEntity("Cam");
- //  Component*cam= camara->AddComponent("Camera");*/
+   VeryReal::RenderManager::Instance()->InitManager("app");
+   VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
+   Creator::Instance()->GetCreator("transform")->AddParameter("a", 0);
+   Creator::Instance()->GetCreator("transform")->AddParameter("position", Vector3{10, 10, 10});
+   Creator::Instance()->GetCreator("transform")->AddParameter("rotation", Vector3{0, 0, 0});
+   Creator::Instance()->GetCreator("transform")->AddParameter("scale", Vector3{1, 1, 1});
 
+   VeryReal::Creator::Instance()->AddCreator("MeshRender", new VeryReal::CreatorMeshRenderComponent());
+   Creator::Instance()->GetCreator("MeshRender")->AddParameter("isstatic", 1);
+   Creator::Instance()->GetCreator("MeshRender")->AddParameter("modelname", "sinbad.mesh");
+   Creator::Instance()->GetCreator("MeshRender")->AddParameter("entityname", "sinbad");
+   Creator::Instance()->GetCreator("MeshRender")->AddParameter("materialname", "Ogre/Earring");
+   #pragma region camara
+   VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
+   Creator::Instance()->GetCreator("Camera")->AddParameter("name", std::string("anim"));
+   Creator::Instance()->GetCreator("Camera")->AddParameter("color", Vector3{100, 100, 100});
+   Creator::Instance()->GetCreator("Camera")->AddParameter("offset", Vector3{100, 100, 100});
+   #pragma endregion
+   #pragma region luz
+   VeryReal::Creator::Instance()->AddCreator("Light", new VeryReal::CreatorLightComponent());
+   Creator::Instance()->GetCreator("Light")->AddParameter("type", 8);
+   Creator::Instance()->GetCreator("Light")->AddParameter("diffusecolour", Vector3{100, 100, 100});
+   Creator::Instance()->GetCreator("Light")->AddParameter("shadowfardist", float(2.0));
+   Creator::Instance()->GetCreator("Light")->AddParameter("shadowdist", float(2.0));
+   Creator::Instance()->GetCreator("Light")->AddParameter("ineerangle", float(2.0));
+   Creator::Instance()->GetCreator("Light")->AddParameter("outerangle", float(2.0));
+   Creator::Instance()->GetCreator("Light")->AddParameter("nearclipdist", float(2.0));
+   Creator::Instance()->GetCreator("Light")->AddParameter("shdws", true);
+   #pragma endregion 
+    
+   VeryReal::Scene* s = SceneManager::Instance()->AddScene("Play",true);
+   s = SceneManager::Instance()->GetScene("Play");
+   Entity* e = s->AddEntity("Player");
+
+   Entity* luz = s->AddEntity("Luz");
+   Entity* camara = s->AddEntity("Cam");
+   Component*cam= camara->AddComponent("Camera");
+   Component* trans = luz->AddComponent("transform");
+   Component* luzcom = luz->AddComponent("Light");
+   Component* transform = e->AddComponent("transform");
+   Component* meshrenderer = e->AddComponent("MeshRender");
+
+   while (true) {
+       e->Update(0.1);
+       luz->Update(0.1);
+       camara->Update(0.2);
+
+   }
  ///* static_cast<CameraComponent*>(cam)->InitComponent("hola", Vector3(0.8, 0.3, 1), 
  //  VeryReal::RenderManager::Instance()->GetRenderWindow(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), Vector3(10, 0, 0));*/
 
