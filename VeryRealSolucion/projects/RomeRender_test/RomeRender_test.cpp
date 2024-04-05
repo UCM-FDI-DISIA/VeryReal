@@ -92,30 +92,30 @@ int main() {
    VeryReal::RenderManager::Instance()->InitManager("app");
    VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
    Creator::Instance()->GetCreator("transform")->AddParameter("a", 0);
-   Creator::Instance()->GetCreator("transform")->AddParameter("position", Vector3{10, 10, 10});
+   Creator::Instance()->GetCreator("transform")->AddParameter("position", Vector3{0, 0, 20});
    Creator::Instance()->GetCreator("transform")->AddParameter("rotation", Vector3{0, 0, 0});
    Creator::Instance()->GetCreator("transform")->AddParameter("scale", Vector3{1, 1, 1});
 
    VeryReal::Creator::Instance()->AddCreator("MeshRender", new VeryReal::CreatorMeshRenderComponent());
-   Creator::Instance()->GetCreator("MeshRender")->AddParameter("isstatic", 1);
-   Creator::Instance()->GetCreator("MeshRender")->AddParameter("modelname", "sinbad.mesh");
-   Creator::Instance()->GetCreator("MeshRender")->AddParameter("entityname", "sinbad");
-   Creator::Instance()->GetCreator("MeshRender")->AddParameter("materialname", "Ogre/Earring");
+   Creator::Instance()->GetCreator("MeshRender")->AddParameter("isstatic", true);
+   Creator::Instance()->GetCreator("MeshRender")->AddParameter("modelname", std::string("Sinbad.mesh"));
+   Creator::Instance()->GetCreator("MeshRender")->AddParameter("entityname", std::string( "sinbad"));
+   Creator::Instance()->GetCreator("MeshRender")->AddParameter("materialname", std::string(""));
    #pragma region camara
    VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
    Creator::Instance()->GetCreator("Camera")->AddParameter("name", std::string("anim"));
-   Creator::Instance()->GetCreator("Camera")->AddParameter("color", Vector3{100, 100, 100});
+   Creator::Instance()->GetCreator("Camera")->AddParameter("color", Vector3(0.8, 0.3, 1));
    Creator::Instance()->GetCreator("Camera")->AddParameter("offset", Vector3{100, 100, 100});
    #pragma endregion
    #pragma region luz
    VeryReal::Creator::Instance()->AddCreator("Light", new VeryReal::CreatorLightComponent());
-   Creator::Instance()->GetCreator("Light")->AddParameter("type", 8);
-   Creator::Instance()->GetCreator("Light")->AddParameter("diffusecolour", Vector3{100, 100, 100});
-   Creator::Instance()->GetCreator("Light")->AddParameter("shadowfardist", float(2.0));
-   Creator::Instance()->GetCreator("Light")->AddParameter("shadowdist", float(2.0));
-   Creator::Instance()->GetCreator("Light")->AddParameter("ineerangle", float(2.0));
-   Creator::Instance()->GetCreator("Light")->AddParameter("outerangle", float(2.0));
-   Creator::Instance()->GetCreator("Light")->AddParameter("nearclipdist", float(2.0));
+   Creator::Instance()->GetCreator("Light")->AddParameter("type", 1);
+   Creator::Instance()->GetCreator("Light")->AddParameter("diffusecolour", Vector3{1, 1, 1});
+   Creator::Instance()->GetCreator("Light")->AddParameter("shadowfardist", float(25.0));
+   Creator::Instance()->GetCreator("Light")->AddParameter("shadowdist", float(25.0));
+   Creator::Instance()->GetCreator("Light")->AddParameter("ineerangle", float(90.0));
+   Creator::Instance()->GetCreator("Light")->AddParameter("outerangle", float(180.0));
+   Creator::Instance()->GetCreator("Light")->AddParameter("nearclipdist", float(0.1));
    Creator::Instance()->GetCreator("Light")->AddParameter("shdws", true);
    #pragma endregion 
     
@@ -132,11 +132,11 @@ int main() {
    Component* meshrenderer = e->AddComponent("MeshRender");
 
    while (true) {
-       e->Update(0.1);
-       luz->Update(0.1);
-       camara->Update(0.2);
+       VeryReal::RenderManager::Instance()->Update(0.2);
+       s->Update(0.1);
 
    }
+  
  ///* static_cast<CameraComponent*>(cam)->InitComponent("hola", Vector3(0.8, 0.3, 1), 
  //  VeryReal::RenderManager::Instance()->GetRenderWindow(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), Vector3(10, 0, 0));*/
 

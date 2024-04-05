@@ -38,7 +38,7 @@ bool CameraComponent::InitComponent(std::string name, Vector3 color, VeryReal::V
 }
 
 void CameraComponent::Update(const double& dt) {
-
+    //seguimiento 
     if (ent != nullptr) {
         VeryReal::Vector3 v = ent->GetComponent<TransformComponent>("transform")->GetPosition();
 
