@@ -3,6 +3,7 @@
 #include "PedroBullet.h"
 #include <btBulletDynamicsCommon.h>
 #include <btBulletCollisionCommon.h>
+#include "SceneManager.h"
 
 VeryReal::PhysicsManager::PhysicsManager()
     : collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) {
@@ -83,18 +84,26 @@ void VeryReal::PhysicsManager::RemoveRigidBody(btRigidBody* body) {
     }
 }
 
-//btAlignedObjectArray<const btCollisionObject*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End) {
-//    auto bt_ray_start = PedroBullet::Instance()->V3ToBtV3(ray_Start);
-//    auto bt_ray_end = PedroBullet::Instance()->V3ToBtV3(ray_End);
-//
-//    btCollisionWorld::AllHitsRayResultCallback rayCallback(bt_ray_start, bt_ray_end);
-//    dynamicsWorld->rayTest(bt_ray_start, bt_ray_end, rayCallback);
-//    btAlignedObjectArray<const btCollisionObject*> lista_de_colisionados;
-//    if (rayCallback.hasHit()) {
-//        lista_de_colisionados = rayCallback.m_collisionObjects;
-//    }
-//    return lista_de_colisionados;
-//}
+std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End) {
+    auto bt_ray_start = PedroBullet::Instance()->V3ToBtV3(ray_Start);
+    auto bt_ray_end = PedroBullet::Instance()->V3ToBtV3(ray_End);
+    std::list<VeryReal::Entity*> l_ents_coll(0);
+
+    btCollisionWorld::AllHitsRayResultCallback rayCallback(bt_ray_start, bt_ray_end);
+    dynamicsWorld->rayTest(bt_ray_start, bt_ray_end, rayCallback);
+    btAlignedObjectArray<const btCollisionObject*> lista_de_colisionados;
+    if (rayCallback.hasHit()) {
+        lista_de_colisionados = rayCallback.m_collisionObjects;
+        for (int i = 0; i < lista_de_colisionados.size(); ++i) {
+            /*VeryReal::Scene* scene = VeryReal::SceneManager::GetScene("Play");
+            if (scene != nullptr) {
+                for ()
+                    lista_de_colisionados [i]->getCollisionShape()
+            }*/
+        }
+    }
+    return l_ents_coll;
+}
 
 VeryReal::PhysicsManager::~PhysicsManager() {
     Shutdown();  

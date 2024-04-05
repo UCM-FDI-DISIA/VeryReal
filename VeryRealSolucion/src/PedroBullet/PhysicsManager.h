@@ -2,9 +2,12 @@
 
 #include <vector>
 #include "Manager.h"
+#include <list>
 
 namespace VeryReal {
     class Vector3;
+    class Entity;
+    class SceneManager;
 }
 
 
@@ -34,9 +37,7 @@ namespace VeryReal {
         void AddRigidBody(btRigidBody* body);
         void RemoveRigidBody(btRigidBody* body);
 
-
-        //No puede devolver algo de bullet
-        //btAlignedObjectArray<const btCollisionObject*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
+        std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
 
     private:
         btDefaultCollisionConfiguration* collisionConfiguration;
