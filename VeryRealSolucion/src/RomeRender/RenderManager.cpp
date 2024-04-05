@@ -17,7 +17,7 @@
 
 //mehrender, camara y eso
 VeryReal::RenderManager::RenderManager()
-    : window(nullptr), root(nullptr), scene_manager(nullptr), render_system(nullptr), viewport(nullptr), filesystem_layer(nullptr) { }
+    : window(nullptr), root(nullptr), scene_manager(nullptr), render_system(nullptr), viewport(nullptr), filesystem_layer(nullptr), shader_generator(nullptr), material_listener(nullptr) { }
 VeryReal::RenderManager::~RenderManager() {
 
     if (root == nullptr) {

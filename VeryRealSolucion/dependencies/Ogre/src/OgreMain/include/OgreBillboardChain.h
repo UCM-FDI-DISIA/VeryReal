@@ -85,7 +85,7 @@ namespace Ogre {
         {
 
         public:
-            Element() {}
+            Element() : width(0), texCoord(0) {}
 
             Element(const Vector3& position, float width, float texCoord, const ColourValue& colour,
                     const Quaternion& orientation);

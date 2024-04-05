@@ -3,9 +3,10 @@
 #define VECTOR4
 #include <math.h>
 #include <iostream>
+#include "export.h"
 
 namespace VeryReal {
-	class Vector4
+class VERYREAL_API Vector4
 	{
 	private:
 		float r;

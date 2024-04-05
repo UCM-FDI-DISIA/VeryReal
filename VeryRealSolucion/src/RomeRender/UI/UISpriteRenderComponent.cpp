@@ -1,5 +1,7 @@
 #include "UISpriteRenderComponent.h"
 #include "../RenderManager.h"
+
+#pragma warning(disable : 4251)
 #include <OgreRoot.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
@@ -15,7 +17,7 @@
 #include <OgreMaterialManager.h>
 #include "OgreTechnique.h"
 #include "OgreRenderWindow.h"
-
+#pragma warning(default : 4251)
 
 using namespace VeryReal;
 

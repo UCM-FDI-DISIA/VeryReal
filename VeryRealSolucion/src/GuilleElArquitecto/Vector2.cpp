@@ -57,6 +57,8 @@ VeryReal::Vector2 VeryReal::Vector2::Normalize() {
 	if (m != 0)
 		return *this / Magnitude();
 	//CERROR
+	
+	return Vector2(0, 0); //warning no todas las rutas devuelven un valor
 }
 //para hacer Cout en la consola, ayudarnos a depurar
 std::ostream& operator<<(std::ostream& o, const VeryReal::Vector2& vector) {

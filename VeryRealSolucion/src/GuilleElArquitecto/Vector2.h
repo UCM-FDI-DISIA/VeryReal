@@ -3,9 +3,10 @@
 #define VECTOR2
 #include <math.h>
 #include <iostream>
+#include "export.h"
 
 namespace VeryReal {
-	class Vector2
+	class VERYREAL_API Vector2
 	{
 	private:
 		float x;

@@ -379,7 +379,7 @@ namespace Ogre {
 
         /** Gets the physical width in bytes of each row of pixels.
         */
-        size_t getRowSpan(void) const { return mWidth * mPixelSize; }
+        size_t getRowSpan(void) const { return (size_t)mWidth * (size_t)mPixelSize; }
 
         /** Returns the image format.
         */
