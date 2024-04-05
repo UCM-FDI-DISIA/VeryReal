@@ -11,7 +11,7 @@ namespace luabridge {
 	class LuaRef;
 }
 
-class ScriptManager : public VeryReal::Manager<ScriptManager> {
+class VERYREAL_API ScriptManager : public VeryReal::Manager<ScriptManager> {
 	friend Singleton<ScriptManager>;
 
 private:

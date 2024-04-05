@@ -17,7 +17,7 @@ namespace  VeryReal {
     class TransformComponent;
     class Conversor;
 
-    class Light:public Component {
+    class VERYREAL_API Light : public Component {
     public:
         // Constructuora del componente Light
         Light();

@@ -22,7 +22,7 @@ class btDiscreteDynamicsWorld;
 class btRigidBody;
 
 namespace VeryReal {
-    class PhysicsManager : public Manager<PhysicsManager> {
+class VERYREAL_API PhysicsManager : public Manager<PhysicsManager> {
     public:
         PhysicsManager();
         ~PhysicsManager();

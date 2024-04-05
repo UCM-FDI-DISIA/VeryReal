@@ -128,8 +128,5 @@
     <ClInclude Include="..\..\src\RomeRender\CreatorLightComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\RomeRender\UI\OgreBitesPrerequisites.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

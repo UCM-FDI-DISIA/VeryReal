@@ -1,7 +1,7 @@
 #pragma once
 #ifndef VRCONVERT_H
 #define VRCONVERT_H
-
+#include "export.h"
 #pragma warning(disable : 4251)
 #include <OgreVector3.h>
 #include <OgreVector4.h>

@@ -3,7 +3,7 @@
 #define COLLIDERCOMPONENT
 
 #include <Component.h>
-
+#include "export.h"
 
 //ColliderComponent es una clase cuya única función es la de llamar a los métodos pertinentes de la clase Entity y estos metodos llamarán a métodos los homonimos.
 //El proceso es:
@@ -14,7 +14,7 @@
 namespace VeryReal 
 {
 	class Entity;
-	class ColliderComponent : public VeryReal::Component
+class VERYREAL_API ColliderComponent : public VeryReal::Component
 	{
 	public:
 		ColliderComponent();

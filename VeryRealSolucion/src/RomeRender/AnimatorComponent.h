@@ -5,7 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include "CreatorComponent.h"
-
+#include "export.h"
 namespace Ogre {
 	class AnimationState;
 	class SceneManager;
@@ -21,7 +21,7 @@ namespace VeryReal {
 	class Vector3;
 	class Vector4;
 
-	class  AnimatorComponent : public Component
+	class VERYREAL_API AnimatorComponent : public Component
 	{
 
 		public:

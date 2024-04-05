@@ -18,7 +18,7 @@ namespace  VeryReal {
     class Vector2;
     class Entity;
 
-    class CameraComponent : public Component {
+    class VERYREAL_API CameraComponent : public Component {
     public:
         // Constructor por defecto de la clase CameraComponent.
         CameraComponent() {};

@@ -7,7 +7,7 @@
 #include <Component.h>
 #include "PhysicsValues.h"
 #include <Vector3.h>
-
+#include "export.h"
     enum PBShapes;
     enum PBMovementType;
     class btCollisionShape;
@@ -19,7 +19,7 @@ namespace VeryReal {
 
     class TransformComponent;
     class ColliderComponent;
-    class RigidBodyComponent : public Component {
+    class VERYREAL_API RigidBodyComponent : public Component {
     public:
         RigidBodyComponent();
         

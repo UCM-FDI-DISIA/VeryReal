@@ -21,11 +21,6 @@
     <ClCompile Include="..\..\src\PedroBullet\RigidBodyComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
-      <Project>{e9fe864b-f16f-44b6-a10f-dad3701db44f}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\..\src\PedroBullet\BasicPhysicsWorld.h" />
     <ClInclude Include="..\..\src\PedroBullet\ColliderComponent.h" />
     <ClInclude Include="..\..\src\PedroBullet\CollisionMatrix.h" />
@@ -45,7 +40,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>

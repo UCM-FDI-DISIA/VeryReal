@@ -16,11 +16,6 @@
     <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
-      <Project>{e9fe864b-f16f-44b6-a10f-dad3701db44f}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h" />
     <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.h" />
     <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.h" />
@@ -73,7 +68,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;VERYREAL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\AudioLeon\;$(SolutionDir)src\PedroBullet</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\PedroBullet</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -96,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;VERYREAL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\PedroBullet;$(SolutionDir)src\AudioLeon;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\PedroBullet;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
