@@ -241,17 +241,17 @@ void AudioSourceComponent::Start()
 }
 
 void AudioSourceComponent::Update(const double& dt)
-{
+{/*
     if (is_three_d) {
         Set3DSoundAtributes(sound_name, transform->GetPosition(), rigid_body->GetVelocity());
-    }
+    }*/
 }
 
 void AudioSourceComponent::Play()
 {
     VeryReal::Vector3 pos = transform->GetPosition();
-    VeryReal::Vector3 vel = rigid_body->GetVelocity();
-    PlayAudioSource(sound_name, sound_group, &pos, &vel, volume);
+  //  VeryReal::Vector3 vel = rigid_body->GetVelocity();
+  //  PlayAudioSource(sound_name, sound_group, &pos, &vel, volume);
     //Hacer el wrapeado aqui
 
     playing = true;

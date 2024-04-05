@@ -11,8 +11,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AudioLeon\AudioLeon.vcxproj">
+      <Project>{cac0128e-e2fd-47e5-84ca-4e93e472f912}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\GuilleElArquitecto\GuilleElArquitecto.vcxproj">
       <Project>{e9fe864b-f16f-44b6-a10f-dad3701db44f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\LuaLuengo\LuaLuengo.vcxproj">
+      <Project>{8cc5fd81-7fb6-4bbf-b68c-6db7b3eded3a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\PedroBullet\PedroBullet.vcxproj">
+      <Project>{e3d8a301-e059-4f24-ad00-ef274e8c1144}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\RomeRender\RomeRender.vcxproj">
+      <Project>{2decc6ce-fb7f-4a19-a528-abb52742ea41}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\TonInput\TonInput.vcxproj">
+      <Project>{89fd502f-7c6e-44e9-9c55-c64df8e56579}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -69,7 +84,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;VERYREAL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\AudioLeon;$(SolutionDir)src\LuaLuengo;$(SolutionDir)src\PedroBullet;$(SolutionDir)src\RomeRender;$(SolutionDir)src\TonInput;$(SolutionDir)src\GuilleElArquitecto;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
     </ClCompile>
@@ -77,7 +93,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>AudioLeon_d.lib;GuilleElArquitecto_d.lib;TonInput_d.lib;RomeRender_d.lib;LuaLuengo_d.lib;PedroBullet_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GuilleElArquitecto_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalDependencies>fmodL_vc.lib</AdditionalDependencies>
@@ -92,7 +108,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;VERYREAL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\AudioLeon;$(SolutionDir)src\LuaLuengo;$(SolutionDir)src\PedroBullet;$(SolutionDir)src\RomeRender;$(SolutionDir)src\TonInput;$(SolutionDir)src\GuilleElArquitecto;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
