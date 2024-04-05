@@ -5,7 +5,7 @@
 #include <iostream>
 #include "export.h"
 namespace VeryReal {
-	class Vector3
+	class VERYREAL_API Vector3
 	{
 	private:
 		float x;

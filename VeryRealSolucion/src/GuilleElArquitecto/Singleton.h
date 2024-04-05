@@ -36,10 +36,9 @@ class Singleton
 		}
 
 		//elimina el puntero de la instancia
-		static void Delete() {
-			if (instance_pointer.get() != nullptr)
-				delete instance_pointer.release();
-		}
+        static void Delete() {
+            instance_pointer.reset(); 
+        }
 	};
 
 	template<typename T>

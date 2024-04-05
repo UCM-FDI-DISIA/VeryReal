@@ -4,6 +4,7 @@
 #include "InputManager.h"
 using namespace std;
 
+
 VeryReal::InputManager::InputManager() {
     kb_state = SDL_GetKeyboardState(0);
     ClearState(true);

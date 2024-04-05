@@ -23,9 +23,6 @@ namespace VeryReal {
 		scene_name name;
 
 	public:
-		//Ppsibles métodos para hacer en un futuro: 
-		// ProcessNewEntities: te añade entidades a un vector y una vez finalizado el update es cuando las añade al mapa
-		//inline unordered_map<entity_name, Entity*> GetMapEntity() devuelve el mapa de entidades
 
 		Scene();
 		virtual ~Scene();

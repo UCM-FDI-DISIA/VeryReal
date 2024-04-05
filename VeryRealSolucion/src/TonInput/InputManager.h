@@ -11,7 +11,7 @@ typedef struct _SDL_GameController SDL_GameController;
 typedef union SDL_Event SDL_Event;
 
 namespace VeryReal {
-    class VERYREAL_API InputManager : public VeryReal::Manager<InputManager> {
+    class /*VERYREAL_API*/ InputManager : public VeryReal::Manager<InputManager> {
         friend Singleton<InputManager>;
 
     public:
