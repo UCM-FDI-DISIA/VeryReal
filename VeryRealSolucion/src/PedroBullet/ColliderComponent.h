@@ -14,11 +14,11 @@
 namespace VeryReal 
 {
 	class Entity;
-class VERYREAL_API ColliderComponent : public VeryReal::Component
+	class VERYREAL_API ColliderComponent : public Component
 	{
 	public:
-		ColliderComponent();
-		virtual ~ColliderComponent();
+            ColliderComponent(){};
+		virtual ~ColliderComponent(){};
 		void Init();
 		void OnCollisionEnter(Entity* other) override;
 		void OnCollisionStay(Entity* other) override;

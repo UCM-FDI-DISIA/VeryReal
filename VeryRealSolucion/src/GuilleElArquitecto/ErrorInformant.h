@@ -5,7 +5,7 @@
 #include "Singleton.h"
 #include <Windows.h>
 #include <string>
-
+#include "export.h"
 
 
 //Tipos de errores posibles
@@ -44,7 +44,7 @@ enum options {
 
 
 
-class ErrorInformant : public VeryReal::Singleton<ErrorInformant> {
+class VERYREAL_API ErrorInformant : public VeryReal::Singleton<ErrorInformant> {
 	friend Singleton<ErrorInformant>;
 
 	public:

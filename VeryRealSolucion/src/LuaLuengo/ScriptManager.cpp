@@ -14,7 +14,6 @@ extern "C"
 #include <Creator.h>
 #include <TransformComponent.h>
 #include <iostream>
-
 using namespace VeryReal;
 
 ScriptManager::ScriptManager()

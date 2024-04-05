@@ -1,6 +1,6 @@
 #pragma once
 #include "AudioListenerComponent.h"
-#include <AudioLeon.h>
+#include "..\AudioLeon.h"
 #include <TransformComponent.h>
 #include <RigidBodyComponent.h>
 #include <Entity.h>

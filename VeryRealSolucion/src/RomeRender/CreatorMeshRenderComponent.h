@@ -2,7 +2,7 @@
 #include "CreatorComponent.h"
 namespace VeryReal {
 
-	class CreatorMeshRenderComponent :public CreatorComponent
+	class VERYREAL_API CreatorMeshRenderComponent : public CreatorComponent
 	{
 	public:
 		CreatorMeshRenderComponent(){}

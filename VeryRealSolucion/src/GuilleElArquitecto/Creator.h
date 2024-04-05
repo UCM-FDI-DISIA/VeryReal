@@ -5,12 +5,12 @@
 #include "CreatorComponent.h"
 #include <unordered_map>
 #include <string>
-
+#include "export.h"
 
 namespace VeryReal {
 	using creator_name = std::string;
 
-	class Creator :public VeryReal::Singleton<Creator>
+	class VERYREAL_API Creator :public VeryReal::Singleton<Creator>
 	{
 		friend Singleton<Creator>;
 		

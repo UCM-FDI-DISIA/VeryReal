@@ -2,7 +2,7 @@
 #include "CreatorComponent.h"
 namespace VeryReal
 {
-    class CreatorLightComponent :public CreatorComponent
+class VERYREAL_API CreatorLightComponent : public CreatorComponent
     {
     public:
         CreatorLightComponent() {}

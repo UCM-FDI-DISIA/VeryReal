@@ -3,9 +3,10 @@
 #define CREATORCOMPONENT
 #include "VariantClass.h"
 #include <unordered_map>
+#include "export.h"
 namespace VeryReal {
 	class Component;
-	class CreatorComponent{
+	class VERYREAL_API CreatorComponent{
 		using parameters_name = std::string;
 	protected:
 		std::unordered_map<parameters_name, VariantClass*> parameters_map;
