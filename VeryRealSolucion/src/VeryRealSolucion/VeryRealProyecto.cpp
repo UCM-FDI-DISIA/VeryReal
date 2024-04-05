@@ -23,9 +23,9 @@ bool VeryRealProyecto::Init() {
 void VeryRealProyecto::Loop() 
 {
 	uint32_t startTime, frameTime;
-    startTime = std::chrono::duration_cast<std::chrono::duration<float>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+        startTime = (uint32_t) std::chrono::duration_cast<std::chrono::duration<float>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 	while (true) {
-        frameTime = std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() -
+        frameTime = (uint32_t) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() -
             startTime;
 	/*	VeryReal::InputManager::Instance()->Refresh(); */
 		if (frameTime >= FRAME_RATE) {
@@ -35,7 +35,7 @@ void VeryRealProyecto::Loop()
 			/*VeryReal::RenderManager::Instance()->Update(frameTime);*/
 			// Sonido
 			std::cout << frameTime << std::endl;
-            startTime =std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+            startTime = (uint32_t) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 		}
 	}
 }

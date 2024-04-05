@@ -418,7 +418,7 @@ namespace Ogre {
         */        
         bool isConsecutive() const 
         { 
-            return rowPitch == getWidth() && slicePitch == getWidth()*getHeight(); 
+            return rowPitch == getWidth() && slicePitch == (size_t)getWidth() * (size_t)getHeight(); 
         }
         /** Return the size (in bytes) this image would take if it was
             laid out consecutive in memory
