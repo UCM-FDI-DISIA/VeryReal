@@ -7,10 +7,12 @@
 
 using scene_name = std::string;
 using entity_name = std::string;
+
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
 	class Entity;
-	class VERYREAL_API Scene
-	{
+	class VERYREAL_API Scene {
 	private:
 		//Mapa de: Clave: nombre de Entidad, Valor: puntero a esa entidad
 		std::unordered_map<entity_name, Entity*> entities_map;
@@ -72,4 +74,7 @@ namespace VeryReal {
 
 	};
 }
+
+#pragma warning(default : 4251)
+
 #endif

@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include "CreatorComponent.h"
 #include "export.h"
+
 namespace Ogre {
 	class AnimationState;
 	class SceneManager;
@@ -15,15 +16,15 @@ namespace Ogre {
 	class AnimationStateSet;
 }
 
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
 	class MeshRenderComponent;
 	class TransformComponent;
 	class Vector3;
 	class Vector4;
 
-	class VERYREAL_API AnimatorComponent : public Component
-	{
-
+	class VERYREAL_API AnimatorComponent : public Component {
 		public:
 			//constructora de la clase animación que es un componente de cualquier entidad que queramos que tenga movimiento
 			AnimatorComponent();
@@ -55,6 +56,8 @@ namespace VeryReal {
 			int num_animations_active;
 			std::string name;
 	};
-
 }
+
+#pragma warning(default : 4251)
+
 #endif // !ANIMATIONCOMPONENT

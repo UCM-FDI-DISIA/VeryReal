@@ -8,15 +8,16 @@
 #include "PhysicsValues.h"
 #include <Vector3.h>
 #include "export.h"
-    enum PBShapes;
-    enum PBMovementType;
-    class btCollisionShape;
-    class btRigidBody;
-    struct btDefaultMotionState;
 
+enum PBShapes;
+enum PBMovementType;
+class btCollisionShape;
+class btRigidBody;
+struct btDefaultMotionState;
+
+#pragma warning(disable : 4251)
 
 namespace VeryReal {
-
     class TransformComponent;
     class ColliderComponent;
     class VERYREAL_API RigidBodyComponent : public Component {
@@ -65,12 +66,11 @@ namespace VeryReal {
         bool InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger);
         btCollisionShape* CreateCollisionShape(PBShapes shapeType);
     };
-
 } 
 
+#pragma warning(default : 4251)
+
 #endif 
-
-
 
 /*FALTA:
 *   - Mascara

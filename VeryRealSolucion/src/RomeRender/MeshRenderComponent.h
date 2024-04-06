@@ -18,15 +18,18 @@ namespace Ogre
 
 }
 
+#pragma warning(disable : 4251)
+
 namespace  VeryReal {
 	class TransformComponent;
 	class Vector4;
 	class Vector3;
 	class conversor;
+
     class VERYREAL_API MeshRenderComponent : public Component {
     public:
 		// Constructor por defecto temporal sin parámetros, se espera que los creadores lo inicialicen correctamente.
-		MeshRenderComponent() = default;
+		MeshRenderComponent(){};
 
 		// Inicializa el componente de renderizado de malla con la información proporcionada.
 		bool InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname);
@@ -98,19 +101,19 @@ namespace  VeryReal {
 		void setCastShadows(bool t_shadow);
 
     private:
-		bool mStaticObject;
-		std::string material_name;
-		std::string entity_name;
-		std::string mesh_name;
+		bool mStaticObject = false;
+		std::string material_name = "";
+        std::string entity_name = "";
+        std::string mesh_name = "";
 
-		VeryReal::TransformComponent* transform;
-		Ogre::Entity* ent_ogre;
-		Ogre::SceneManager* scene_mngr;
-		Ogre::SceneNode* scene_node;
-		Ogre::SceneManager* mSM;
-		
+		VeryReal::TransformComponent* transform = nullptr;
+        Ogre::Entity* ent_ogre = nullptr;
+        Ogre::SceneManager* scene_mngr = nullptr;
+        Ogre::SceneNode* scene_node = nullptr;
+        Ogre::SceneManager* mSM = nullptr;
     };
-
-
 }
+
+#pragma warning(default : 4251)
+
 #endif !MESHRENDERCOMPONENT

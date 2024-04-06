@@ -4,11 +4,13 @@
 #include "Creator.h"
 #include "Component.h"
 #include "export.h"
+
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
 	using component_name = std::string;
 	
-	class VERYREAL_API Entity
-	{
+	class VERYREAL_API Entity {
 	private:
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
 		std::unordered_map<component_name, Component*> components_map;
@@ -22,7 +24,6 @@ namespace VeryReal {
 		virtual ~Entity();
 
 		//Añade componente a la Entidad
-		
 		inline Component* AddComponent(component_name c_name) {
 			/*	T* component = new T(forward<Ts>(args)...);*/
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
@@ -36,6 +37,7 @@ namespace VeryReal {
 			//quizas initcomponentpai
 			return component;
 		}
+
 		//Remueve el Componente de la Entidad en la que se encuentra
 		void RemoveComponent(component_name c_name);
 
@@ -79,11 +81,9 @@ namespace VeryReal {
 		void OnCollisionEnter(Entity* other);
 		void OnCollisionExit(Entity* other);
 		void OnCollisionStay(Entity* other);
-
-
-
-
 	};
 }
-#endif
 
+#pragma warning(default : 4251)
+
+#endif

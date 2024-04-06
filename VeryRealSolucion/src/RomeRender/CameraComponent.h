@@ -13,6 +13,8 @@ namespace Ogre {
     class RenderWindow;
 }
 
+#pragma warning(disable : 4251)
+
 namespace  VeryReal {
     class Vector3;
     class Vector2;
@@ -84,4 +86,7 @@ namespace  VeryReal {
         VeryReal::Entity* ent = nullptr;
     };
 }
+
+#pragma warning(default : 4251)
+
 #endif !CAMERACOMPONENT

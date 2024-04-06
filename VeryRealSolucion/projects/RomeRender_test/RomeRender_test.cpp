@@ -104,7 +104,7 @@ int main() {
    #pragma region camara
    VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
    Creator::Instance()->GetCreator("Camera")->AddParameter("name", std::string("anim"));
-   Creator::Instance()->GetCreator("Camera")->AddParameter("color", Vector3(0.8, 0.3, 1));
+   Creator::Instance()->GetCreator("Camera")->AddParameter("color", Vector3(0.8f, 0.3f, 1));
    Creator::Instance()->GetCreator("Camera")->AddParameter("offset", Vector3{100, 100, 100});
    #pragma endregion
    #pragma region luz

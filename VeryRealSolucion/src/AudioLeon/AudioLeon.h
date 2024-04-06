@@ -40,6 +40,8 @@ namespace VeryReal {
 	Puedes acceder a Audio_Leom llamando al método AL().
 	*/
 
+	#pragma warning(disable : 4251)
+
 	class VERYREAL_API AudioLeon : public VeryReal::Manager<AudioLeon> {
 		friend Singleton<AudioLeon>;
 		AudioLeon();
@@ -195,12 +197,13 @@ namespace VeryReal {
 		/*void startRecording();*/
 	};
 
+	#pragma warning(default : 4251)
+
 	//Esta macro define una manera compacta de usar el singleton AudioLeon.
 	//En lugar de escribir AudioLeon::instance->method(), escribiremos AL().method()
 	inline AudioLeon& AL() {
 		return *AudioLeon::Instance();
 	}
 }
-
 
 #endif // !_FMOD_SOUND_MANAGER

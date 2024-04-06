@@ -4,6 +4,9 @@
 #include "VariantClass.h"
 #include <unordered_map>
 #include "export.h"
+
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
 	class Component;
 	class VERYREAL_API CreatorComponent{
@@ -27,20 +30,24 @@ namespace VeryReal {
 			v->SetVariant(p);
 			parameters_map.insert({ p_name ,v });
 		}
+
 		void RemoveParameter(parameters_name p_name) {
 			if (HasParameter(p_name)) {
 				delete parameters_map.at(p_name);
 				parameters_map.erase(p_name);
 			}
 		}
+
 		inline bool HasParameter(std::string s) {
 			return parameters_map.count(s);
 		}
+
 		inline VariantClass* GetParameter(parameters_name p_name) {
 			return parameters_map.at(p_name);
 		}
 	};
 }
+
+#pragma warning(default : 4251)
+
 #endif
-
-

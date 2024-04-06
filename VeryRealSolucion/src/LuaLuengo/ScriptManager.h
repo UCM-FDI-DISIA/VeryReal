@@ -5,13 +5,15 @@
 #include "Manager.h"
 #include <string>
 #include "export.h"
+
+#pragma warning(disable : 4251)
+
 struct lua_State;
 namespace luabridge {
 	class LuaRef;
 }
+
 namespace VeryReal {
-        
-		
  class VERYREAL_API ScriptManager : public VeryReal::Manager<ScriptManager> {
 	friend Singleton<ScriptManager>;
 

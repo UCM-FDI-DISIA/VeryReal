@@ -7,11 +7,12 @@
 #include <string>
 #include "export.h"
 
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
 	using creator_name = std::string;
 
-	class VERYREAL_API Creator :public VeryReal::Singleton<Creator>
-	{
+	class VERYREAL_API Creator :public VeryReal::Singleton<Creator> {
 		friend Singleton<Creator>;
 		
 	private:
@@ -62,6 +63,7 @@ namespace VeryReal {
 
 	};
 }
+
+#pragma warning(default : 4251)
+
 #endif
-
-

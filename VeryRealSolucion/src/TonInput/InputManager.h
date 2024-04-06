@@ -6,6 +6,9 @@
 #include "TonMapeo.h"
 #include <array>
 #include "export.h"
+
+#pragma warning(disable : 4251)
+
 struct _SDL_GameController;
 typedef struct _SDL_GameController SDL_GameController;
 typedef union SDL_Event SDL_Event;
@@ -154,6 +157,6 @@ namespace  VeryReal {
     };
 }
 
-
+#pragma warning(default : 4251)
 
 #endif // !InputManager

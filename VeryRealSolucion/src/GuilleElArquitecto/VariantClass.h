@@ -10,6 +10,8 @@
 #include "Vector4.h"
 #include "export.h"
 
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
 	class VERYREAL_API VariantClass
 	{
@@ -24,6 +26,6 @@ namespace VeryReal {
 	};
 }
 
+#pragma warning(default : 4251)
 
 #endif
-

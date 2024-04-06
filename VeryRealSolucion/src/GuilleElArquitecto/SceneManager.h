@@ -6,10 +6,12 @@
 #include <string>
 #include "export.h"
 using scene_name = std::string;
+
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
 	class Scene;
-	class VERYREAL_API SceneManager :public VeryReal::Manager<SceneManager>
-	{
+	class VERYREAL_API SceneManager : public VeryReal::Manager<SceneManager> {
 	private:
 		//lista con todas la escenas
 		std::list<VeryReal::Scene*> scenes_list;
@@ -32,5 +34,7 @@ namespace VeryReal {
 		bool HasScene(scene_name name);
 	};
 }
-#endif
 
+#pragma warning(default : 4251)
+
+#endif
