@@ -22,7 +22,7 @@ namespace VeryReal {
 
 	//FMOD ofrece "escuchadores" dinámicos que hacen de veces de receptores de los sonidos reproducidos por FMOD.
 	//Este componente gestiona el listener de una entidad y actualiza sus parámetros.
-	class AudioListenerComponent : public VeryReal::Component
+	class VERYREAL_API AudioListenerComponent : public VeryReal::Component
 	{
 	public:
 		//Constructora por defecto de AudioListener.

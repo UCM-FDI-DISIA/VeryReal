@@ -37,7 +37,7 @@ class AudioLeon;
 
 	//AudioSourceComponent se encarga de reproducir un archivo de audio en la escena.
 	//Los Audio_Listeners que se encuentren en rango escucharán el audio con distintas variaciones en lugar de su posición en la escena.
-	class AudioSourceComponent : public VeryReal::Component
+	class VERYREAL_API AudioSourceComponent : public VeryReal::Component
 	{
 	public:
 
