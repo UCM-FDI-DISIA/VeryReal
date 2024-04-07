@@ -36,3 +36,24 @@
 //#endif   // !UIPROGRESSBARCOMPONENT
 //
 //
+#pragma once
+#ifndef UIPROGRESSBARCOMPONENT
+#define UIPROGRESSBARCOMPONENT
+#include "Component.h"
+#include <string>
+
+namespace VeryReal {
+class UIProgressBarComponent : public Component {
+        public:
+    //constructora de la clase UiSpriteRendererComponent
+    UIProgressBarComponent();
+    // Destructor de la clase UiSpriteRendererComponent
+    virtual ~UIProgressBarComponent();
+    // Inicializa el componente
+    bool InitComponent();
+    void Update(const double& dt) override;
+
+        private:
+};
+}
+#endif   // !UIPROGRESSBARCOMPONENT

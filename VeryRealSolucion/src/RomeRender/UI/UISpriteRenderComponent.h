@@ -1,15 +1,22 @@
 #pragma once
-#ifndef UIPROGRESSBARCOMPONENT
-#define UISPRITERENDERERCOMPONENT
+#ifndef UISPRITERENDERCOMPONENT
+#define UISPRITERENDERCOMPONENT
 #include "Component.h"
 #include <string>
 
-
-
 namespace VeryReal {
     class UiSpriteRenderer : public Component {
-        public:
+      public:
+        //constructora de la clase UiSpriteRendererComponent
+        UiSpriteRenderer();
+            // Destructor de la clase UiSpriteRendererComponent
+        virtual ~UiSpriteRenderer();
+        // Inicializa el componente
+        bool InitComponent();
+        void Update(const double& dt) override;
             void demo();
+
+      private:      
     };
 }
-#endif   // !UISPRITERENDERERCOMPONENT
+#endif   // !UISPRITERENDERCOMPONENT

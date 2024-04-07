@@ -13,12 +13,14 @@ namespace VeryReal {
     class UITransformComponent : public Component {
 
       public:
-  
+        //constructora de la clase UITransformComponent
         UITransformComponent();
+        // Destructor de la clase UITransformComponent
+        virtual ~UITransformComponent();
+
         // Inicializa el componente 
         bool InitComponent();
-        // Destructor de la clase UITransformComponent.
-        virtual ~UITransformComponent();
+       
     
         void Update(const double& dt) override;
         void showElement();        
@@ -28,7 +30,6 @@ namespace VeryReal {
         void setPosition(VeryReal::Vector2 pos);
         VeryReal::Vector2 getSize();
         void setSize(VeryReal::Vector2 size);
-
 
         void setInteractive(bool isInteractive);
 

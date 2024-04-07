@@ -25,7 +25,7 @@ namespace VeryReal {
         // <summary>
         /// Destructora.Elimina la ventana y desactiva el modulo de video de sdl
         /// </summary>
-        ~Window();
+        virtual ~Window();
 
         // <summary>
         /// Método que crea la ventana inicializando el modulo de SDL.

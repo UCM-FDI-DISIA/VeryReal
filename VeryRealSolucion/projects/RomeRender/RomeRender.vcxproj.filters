@@ -75,6 +75,9 @@
     <ClCompile Include="..\..\src\RomeRender\CreatorLightComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\UI\CreatorUISpriteRenderComponent.cpp">
+      <Filter>Archivos de origen\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\RomeRender\Window.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\CreatorLightComponent.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\UI\CreatorUISpriteRenderComponent.h">
+      <Filter>Archivos de origen\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

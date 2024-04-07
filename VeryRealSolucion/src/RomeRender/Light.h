@@ -22,7 +22,7 @@ namespace  VeryReal {
         // Constructuora del componente Light
         Light();
         //destructpra del componente light
-        ~Light();
+        virtual ~Light();
        
         virtual void Update();
         //initcomponent de light, pone la posicion, tamaño... del modo atachado al componente a parti de su transform
