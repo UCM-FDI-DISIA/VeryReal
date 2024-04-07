@@ -72,8 +72,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>AudioLeon_d.lib;TonInput_d.lib;GuilleElArquitecto_d.lib;RomeRender_d.lib;LuaLuengo_d.lib;PedroBullet_d.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)bin</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -93,8 +92,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>AudioLeon.lib;TonInput.lib;GuilleElArquitecto.lib;RomeRender.lib;LuaLuengo.lib;PedroBullet.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)bin</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
