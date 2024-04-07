@@ -129,7 +129,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Ogre\Builds\lib\$(Configuration);$(SolutionDir)lib\;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Ogre\Builds\lib\$(Configuration);$(SolutionDir)lib\;$(SolutionDir)dependencies\Ogre\Builds\Dependencies\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;OgreMain.lib;$(CoreLibraryDependencies);OgreGLSupport.lib;OgreMeshLodGenerator.lib;OgreOverlay.lib;OgrePaging.lib;OgreProperty.lib;OgreRTShaderSystem.lib;RenderSystem_GL.lib;GuilleElArquitecto.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>

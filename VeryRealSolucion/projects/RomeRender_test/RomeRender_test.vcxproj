@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\RomeRender;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\RomeRender;$(SolutionDir)lib\;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -143,7 +143,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)lib;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build;$(SolutionDir)dependencies\Ogre\Builds\SDL2-2.28.0;$(SolutionDir)dependencies\Ogre\Builds\lib\$(Configuration);$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\RelWithDebInfo</AdditionalLibraryDirectories>
-      <AdditionalDependencies>RomeRender.lib;SDL2.lib;OgreMain.lib;OgreRTShaderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GuilleElArquitecto.lib;RomeRender.lib;SDL2.lib;OgreMain.lib;OgreRTShaderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

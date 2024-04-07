@@ -1,6 +1,5 @@
 #pragma once
 #include "CreatorComponent.h"
-#include "export.h"
 namespace VeryReal
 {
 class VERYREAL_API CreatorTransformComponent : public CreatorComponent {
