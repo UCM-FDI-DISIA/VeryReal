@@ -1,6 +1,5 @@
 #include "PhysicsManager.h"
 #include "Vector3.h"
-#include "PedroBullet.h"
 #include <btBulletDynamicsCommon.h>
 #include <btBulletCollisionCommon.h>
 #include "SceneManager.h"

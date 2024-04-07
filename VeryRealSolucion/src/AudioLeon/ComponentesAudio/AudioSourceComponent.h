@@ -6,7 +6,6 @@
 #include "CreatorComponent.h"
 #include <Component.h>
 #include "export.h"
-//#include "EntityComponent/FactoryComponent.h"
 
 namespace FMOD {
 	class Sound;
