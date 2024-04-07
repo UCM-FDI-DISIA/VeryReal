@@ -9,10 +9,10 @@ Component* CreatorUISpriteRenderComponent::CreatorSpecificComponent() {
 void CreatorUISpriteRenderComponent::SpecificInitComponent(Component* c) {
     UiSpriteRenderer* a = static_cast<UiSpriteRenderer*>(c);
     std::string name;
-    if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
+   /* if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
         name = std::get<std::string>(parameters_map.at("name")->GetVariant());
-    }
-    bool b = a->InitComponent(name);
+    }*/
+    bool b = a->InitComponent();
     if (!b) {
         //Gestionar error
     }
