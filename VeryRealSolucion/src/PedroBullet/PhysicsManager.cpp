@@ -3,6 +3,7 @@
 #include <btBulletDynamicsCommon.h>
 #include <btBulletCollisionCommon.h>
 #include "SceneManager.h"
+#include "PedroBullet.h"
 
 VeryReal::PhysicsManager::PhysicsManager()
     : collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) {
