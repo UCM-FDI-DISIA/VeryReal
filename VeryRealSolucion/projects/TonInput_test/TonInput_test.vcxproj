@@ -119,7 +119,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)lib;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\RelWithDebInfo\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>TonInput_d.lib;RomeRender_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TonInput_d.lib;GuilleElArquitecto_d.lib;RomeRender_d.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -138,7 +138,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)lib;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\RelWithDebInfo\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>TonInput.lib;Romerender.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TonInput.lib;GuilleElArquitecto.lib;Romerender.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

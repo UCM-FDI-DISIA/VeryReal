@@ -72,8 +72,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\;$(SolutionDir)Dependencies\Lua\Builds\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>GuilleElArquitecto_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\;$(SolutionDir)Dependencies\Lua\Builds\Debug\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>GuilleElArquitecto_d.lib;lua_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalDependencies>
@@ -99,8 +99,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\;$(SolutionDir)Dependencies\Lua\Builds\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>GuilleElArquitecto.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\;$(SolutionDir)Dependencies\Lua\Builds\Release\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>GuilleElArquitecto.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalDependencies>

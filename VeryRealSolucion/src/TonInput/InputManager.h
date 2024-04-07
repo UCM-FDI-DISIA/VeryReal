@@ -15,9 +15,11 @@ typedef union SDL_Event SDL_Event;
 
 namespace  VeryReal {
     class VERYREAL_API InputManager : public VeryReal::Manager<InputManager> {
-        friend Singleton<InputManager>;
+        
 
     public:
+        /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
+        InputManager();
         virtual ~InputManager() {}
 
         /// Limpia el estado de la entrada
@@ -116,8 +118,7 @@ namespace  VeryReal {
 
     private:
 
-        /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
-        InputManager();
+      
 
         /// Actualiza el estado del evento de tecla presionada
         inline void OnKeyDown(const SDL_Event&) {
