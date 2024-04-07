@@ -12,7 +12,7 @@ int main() {
 		854, 480, SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 	SDL_Renderer* renderer = SDL_CreateRenderer(mWindow, NULL, SDL_RENDERER_SOFTWARE);
 
-	VeryReal::InputManager::Init();
+	VeryReal::InputManager::Instance();
 
 	while (true) {
 		VeryReal::InputManager::Instance()->Refresh(); // Ih se actualiza (actua como el handleEvents())

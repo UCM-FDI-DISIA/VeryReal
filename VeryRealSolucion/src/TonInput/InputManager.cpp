@@ -2,8 +2,8 @@
 #include <iostream>
 #include <SDL.h>
 #include "InputManager.h"
+#include "Singleton.h"
 using namespace std;
-
 
 VeryReal::InputManager::InputManager() {
     kb_state = SDL_GetKeyboardState(0);
