@@ -5,7 +5,6 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VeryRealProyecto", "projects\VeryRealSolucion\VeryRealProyecto.vcxproj", "{E40852AA-0ADD-4A95-B289-FECEA8B28988}"
 	ProjectSection(ProjectDependencies) = postProject
-		{162A3583-C947-4BD7-97F8-C8436CDF2B07} = {162A3583-C947-4BD7-97F8-C8436CDF2B07}
 		{2DECC6CE-FB7F-4A19-A528-ABB52742EA41} = {2DECC6CE-FB7F-4A19-A528-ABB52742EA41}
 		{89FD502F-7C6E-44E9-9C55-C64DF8E56579} = {89FD502F-7C6E-44E9-9C55-C64DF8E56579}
 		{8CC5FD81-7FB6-4BBF-B68C-6DB7B3EDED3A} = {8CC5FD81-7FB6-4BBF-B68C-6DB7B3EDED3A}
@@ -15,16 +14,31 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VeryRealProyecto", "project
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RomeRender", "projects\RomeRender\RomeRender.vcxproj", "{2DECC6CE-FB7F-4A19-A528-ABB52742EA41}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9FE864B-F16F-44B6-A10F-DAD3701DB44F} = {E9FE864B-F16F-44B6-A10F-DAD3701DB44F}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PedroBullet", "projects\PedroBullet\PedroBullet.vcxproj", "{E3D8A301-E059-4F24-AD00-EF274E8C1144}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9FE864B-F16F-44B6-A10F-DAD3701DB44F} = {E9FE864B-F16F-44B6-A10F-DAD3701DB44F}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AudioLeon", "projects\AudioLeon\AudioLeon.vcxproj", "{CAC0128E-E2FD-47E5-84CA-4E93E472F912}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9FE864B-F16F-44B6-A10F-DAD3701DB44F} = {E9FE864B-F16F-44B6-A10F-DAD3701DB44F}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GuilleElArquitecto", "projects\GuilleElArquitecto\GuilleElArquitecto.vcxproj", "{E9FE864B-F16F-44B6-A10F-DAD3701DB44F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaLuengo", "projects\LuaLuengo\LuaLuengo.vcxproj", "{8CC5FD81-7FB6-4BBF-B68C-6DB7B3EDED3A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9FE864B-F16F-44B6-A10F-DAD3701DB44F} = {E9FE864B-F16F-44B6-A10F-DAD3701DB44F}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TonInput", "projects\TonInput\TonInput.vcxproj", "{89FD502F-7C6E-44E9-9C55-C64DF8E56579}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9FE864B-F16F-44B6-A10F-DAD3701DB44F} = {E9FE864B-F16F-44B6-A10F-DAD3701DB44F}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AudioLeon_test", "projects\AudioLeon_test\AudioLeon_test.vcxproj", "{B2F9B0CB-AB2C-4FAF-86DF-B74D141CB1FF}"
 	ProjectSection(ProjectDependencies) = postProject
