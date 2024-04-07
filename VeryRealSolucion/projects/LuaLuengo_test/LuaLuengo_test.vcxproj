@@ -127,7 +127,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib;$(SolutionDir)dependencies\Lua\Builds\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin;$(SolutionDir)dependencies\Lua\Builds\$(Configuration)\</AdditionalLibraryDirectories>
       <AdditionalDependencies>LuaLuengo_d.lib;GuilleElArquitecto_d.lib;lua_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -148,7 +148,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>LuaLuengo.lib;GuilleElArquitecto.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib;$(SolutionDir)dependencies\Lua\Builds\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin;$(SolutionDir)dependencies\Lua\Builds\$(Configuration)\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

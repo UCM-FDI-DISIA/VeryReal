@@ -121,7 +121,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin</AdditionalLibraryDirectories>
       <AdditionalDependencies>AudioLeon_d.lib;GuilleElArquitecto_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -141,7 +141,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>AudioLeon.lib;GuilleElArquitecto.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -46,6 +46,13 @@ void UiSpriteRenderer::demo() {
     camera->setAspectRatio(Ogre::Real(viewport->getActualWidth()) / Ogre::Real(viewport->getActualHeight()));
     overlay->show();
     VeryReal::RenderManager::Instance()->GetRenderRoot()->renderOneFrame();
+}
 
+UiSpriteRenderer::UiSpriteRenderer() 
+{
 
 }
+UiSpriteRenderer::~UiSpriteRenderer() { }
+
+bool UiSpriteRenderer::InitComponent() { return false; }
+void UiSpriteRenderer::Update(const double& dt) { }

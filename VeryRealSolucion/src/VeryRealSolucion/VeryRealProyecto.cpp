@@ -9,6 +9,7 @@
 
 const int FRAME_RATE = 3;
 typedef bool(__cdecl* GameStartingPoint)();
+typedef bool(__cdecl* Prueba)();
 bool VeryRealProyecto::Init() {
 	
 	//VeryReal::InputManager::Init();
@@ -66,8 +67,7 @@ bool VeryRealProyecto::LoadGame(std::string gameName)
 	if(gameDll != NULL)
 	{
 		std::cout << "Juego cargado correctamente";
-		GameStartingPoint entryPoint =
-			(GameStartingPoint)GetProcAddress(gameDll, "start");
+		Prueba entryPoint = (Prueba)GetProcAddress(gameDll, "main");
 		if (entryPoint != NULL) {
 			return entryPoint();
 		}
