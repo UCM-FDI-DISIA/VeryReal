@@ -75,7 +75,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\FMOD\src\api\studio\lib\x64\;$(SolutionDir)Dependencies\FMOD\src\api\core\lib\x64\;$(SolutionDir)lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\FMOD\src\api\studio\lib\x64\;$(SolutionDir)Dependencies\FMOD\src\api\core\lib\x64\;$(SolutionDir)bin\</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmodL_vc.lib;GuilleElArquitecto_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
@@ -101,7 +101,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>fmod_vc.lib;GuilleElArquitecto.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\;$(SolutionDir)Dependencies\FMOD\src\api\studio\lib\x64\;$(SolutionDir)Dependencies\FMOD\src\api\core\lib\x64\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\;$(SolutionDir)Dependencies\FMOD\src\api\studio\lib\x64\;$(SolutionDir)Dependencies\FMOD\src\api\core\lib\x64\</AdditionalLibraryDirectories>
     </Link>
     <Lib>
       <AdditionalDependencies>fmod_vc.lib</AdditionalDependencies>
