@@ -111,6 +111,7 @@ namespace  VeryReal {
         Ogre::SceneManager* scene_mngr = nullptr;
         Ogre::SceneNode* scene_node = nullptr;
         Ogre::SceneManager* mSM = nullptr;
+        VeryReal::Vector3 rotation;
     };
 }
 
