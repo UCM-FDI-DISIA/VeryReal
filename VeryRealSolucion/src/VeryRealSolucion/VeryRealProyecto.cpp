@@ -9,8 +9,19 @@
 #include <Window.h>
 #include <chrono>
 #include <Creator.h>
-#include "TransformComponent.h"
+#include "ComponentesAudio/AudioListenerComponent.h"
+#include "ComponentesAudio/AudioSourceComponent.h"
+#include "CreatorTransformComponent.h"
+#include "CreatorRigidBodyComponent.h"
+#include "CreatorColliderComponent.h"
+#include "CreatorMeshRenderComponent.h"
+#include "CreatorLightComponent.h"
+#include "CreatorCameraComponent.h"
+#include "CreatorAnimatorComponent.h"
 
+
+
+#include "CreatorTransformComponent.h"
 const int FRAME_RATE = 3;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
@@ -56,9 +67,17 @@ void VeryRealProyecto::Delete() {
 	//}
 }
 
-void VeryRealProyecto::CreateCreators() {
-	//VeryReal::CreatorTransformComponent* t = new VeryReal::CreatorTransformComponent();
-	//VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
+void VeryRealProyecto::CreateCreators() 
+{
+	//FALTAN LOS DOS DE SONIDO
+
+	VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
+	VeryReal::Creator::Instance()->AddCreator("rigidbody", new VeryReal::CreatorRigidBodyComponent());
+	VeryReal::Creator::Instance()->AddCreator("collider", new VeryReal::CreatorColliderComponent());
+	VeryReal::Creator::Instance()->AddCreator("meshrender", new VeryReal::CreatorMeshRenderComponent());
+	VeryReal::Creator::Instance()->AddCreator("light", new VeryReal::CreatorLightComponent());
+	VeryReal::Creator::Instance()->AddCreator("camera", new VeryReal::CreatorCameraComponent());
+	VeryReal::Creator::Instance()->AddCreator("animator", new VeryReal::CreatorAnimatorComponent());
 }
 
 bool VeryRealProyecto::LoadGame(std::string gameName) {

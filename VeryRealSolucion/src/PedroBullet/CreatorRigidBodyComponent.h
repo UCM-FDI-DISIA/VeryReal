@@ -1,7 +1,7 @@
 #pragma once
 #include "CreatorComponent.h"
 namespace VeryReal {
-	class CreatorRigidBodyComponent: public CreatorComponent
+	class VERYREAL_API CreatorRigidBodyComponent: public CreatorComponent
 	{
 	public:
 		CreatorRigidBodyComponent(){}
