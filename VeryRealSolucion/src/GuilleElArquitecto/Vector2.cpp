@@ -21,37 +21,57 @@ VeryReal::Vector2::~Vector2() {
 VeryReal::Vector2 VeryReal::Vector2::operator+(const VeryReal::Vector2& vector) {
 	return {x + vector.x,y + vector.y };
 }
-VeryReal::Vector2 VeryReal::Vector2::operator+=(const VeryReal::Vector2& vector) {
-	return { x + vector.x,y + vector.y };
+
+VeryReal::Vector2 VeryReal::Vector2::operator+=(const VeryReal::Vector2& vector) { 
+	this->SetX(x + vector.x);
+    this->SetY(y + vector.y);
+	return *this;
 }
+
 VeryReal::Vector2 VeryReal::Vector2::operator-(const VeryReal::Vector2& vector) {
 	return { x - vector.x,y - vector.y };
 }
-VeryReal::Vector2 VeryReal::Vector2::operator-=(const VeryReal::Vector2& vector) {
-	return { x + vector.x,y + vector.y };
+
+VeryReal::Vector2 VeryReal::Vector2::operator-=(const VeryReal::Vector2& vector) { 
+	this->SetX(x - vector.x);
+    this->SetY(y - vector.y);
+    return *this;
 }
+
 VeryReal::Vector2 VeryReal::Vector2::operator*(const float k) {
 	return{ x * k,y * k };
 }
-VeryReal::Vector2 VeryReal::Vector2::operator*=(const float k) {
-	return{ x * k,y * k };
+
+VeryReal::Vector2 VeryReal::Vector2::operator*=(const float k) { 
+	this->SetX(x * k);
+    this->SetY(y * k);
+    return *this;
 }
+
 VeryReal::Vector2 VeryReal::Vector2::operator/(const float k) {
 	return{ x / k,y / k };
 }
+
 VeryReal::Vector2 VeryReal::Vector2::operator/=(const float k) {
-	return{ x / k,y / k };
+    this->SetX(x / k);
+    this->SetY(y / k);
+    return *this;
 }
-VeryReal::Vector2 VeryReal::Vector2::operator=(const VeryReal::Vector2& vector) {
-	return{ x = vector.x,y = vector.y };
+
+VeryReal::Vector2 VeryReal::Vector2::operator=(const VeryReal::Vector2& vector) { 
+	this->SetX(vector.x);
+    this->SetY(vector.y);
+    return *this;
 }
 
 bool VeryReal::Vector2::operator==(const VeryReal::Vector2& vector) {
 	return(x == vector.x && y == vector.y);
 }
+
 bool VeryReal::Vector2::operator!=(const VeryReal::Vector2& vector) {
 	return(x != vector.x || y != vector.y );
 }
+
 VeryReal::Vector2 VeryReal::Vector2::Normalize() {
 	float m = Magnitude();
 	if (m != 0)
@@ -60,6 +80,7 @@ VeryReal::Vector2 VeryReal::Vector2::Normalize() {
 	
 	return Vector2(0, 0); //warning no todas las rutas devuelven un valor
 }
+
 //para hacer Cout en la consola, ayudarnos a depurar
 std::ostream& operator<<(std::ostream& o, const VeryReal::Vector2& vector) {
 	o << vector.GetX() << " , " << vector.GetY() << "\n";
