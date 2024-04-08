@@ -12,7 +12,8 @@
 #include "RenderManager.h"
 #include "TransformComponent.h"
 #include "conversorvectores.h"
-
+#include "Entity.h"
+#include "TransformComponent.h"
 using namespace VeryReal;
 using namespace Ogre;
 
@@ -39,7 +40,7 @@ bool MeshRenderComponent::InitComponent(bool isstatic, std::string modelname, st
     m_scene_node->setOrientation(t->getRotation());
     m_scene_node->attachObject(m_ent_ogre);*/
 
-
+    transform = GetEntity()->GetComponent<TransformComponent>("TransformComponent");
     if (material_name != "") ent_ogre->setMaterialName(material_name, "General");
 
     return true;
