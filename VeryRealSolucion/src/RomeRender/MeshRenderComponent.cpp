@@ -83,8 +83,8 @@ void MeshRenderComponent::setPosition(VeryReal::Vector3 const& pos) {
 void MeshRenderComponent::setScale(VeryReal::Vector3 const& scale) { scene_node->setScale(VR2OgreV3(scale)); }
 
 void MeshRenderComponent::setRotation(VeryReal::Vector3 const& rot) {
-    const Ogre::Vector3* aux = new Ogre::Vector3(VR2OgreV3(rot));
-    Ogre::Quaternion quat(aux);         // Crear la rotación Quaternion
+    const Ogre::Vector3 aux = Ogre::Vector3(VR2OgreV3(rot));
+    Ogre::Quaternion quat(&aux);         // Crear la rotación Quaternion
     scene_node->setOrientation(quat);   // Aplicar la rotación al nodo de la escena
 }
 
