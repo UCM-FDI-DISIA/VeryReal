@@ -93,12 +93,6 @@ void VeryReal::InputManager::OnMouseMotion(const SDL_Event& event) {
     is_mouse_motion_event = true;
     mouse_pos.first = event.motion.x;
     mouse_pos.second = event.motion.y;
-
-    mouse_dir = std::pair<int32_t, int32_t> (mouse_pos.first - prev_mouse_pos.first, mouse_pos.second - prev_mouse_pos.second);
-
-    prev_mouse_pos = mouse_pos;
-
-    mouse_pos = std::pair<int32_t, int32_t>(0, 0);
 }
 
 bool VeryReal::InputManager::IsGamePadButtonDown(TI_GameControllerButton button) {

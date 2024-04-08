@@ -44,8 +44,8 @@ void CameraComponent::Update(const double& dt) {
         mNode->setPosition(v.GetX(), v.GetY(), v.GetZ());
     }
 }
-
-void CameraComponent::lookAt( VeryReal::Vector3 pos) {
+void CameraComponent::lookAt( VeryReal::Vector3 pos)
+{
     mNode->lookAt(VR2OgreV3(pos), Ogre::Node::TransformSpace::TS_PARENT);
 }
 
