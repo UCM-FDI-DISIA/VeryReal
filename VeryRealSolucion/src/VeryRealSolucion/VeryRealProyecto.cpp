@@ -82,7 +82,14 @@ void VeryRealProyecto::CreateCreators()
 
 bool VeryRealProyecto::LoadGame(std::string gameName) {
 	//Tengo que hacer cambios a gameName para que este sea la ruta al juego. Puede ser relativa ya que siempre sabemos donde va a estar el juego.
-    gameName = "./" + gameName + ".dll";
+#ifdef _DEBUG
+        gameName = "./" + gameName + "_d.dll";
+#endif   // DEBUG
+
+#ifdef NDEBUG
+        gameName = "./" + gameName + ".dll";
+#endif   // NDEBUG
+    
 	std::wstring wideGameName = std::wstring(gameName.begin(), gameName.end());
 	gameDll = LoadLibrary(wideGameName.c_str());
 
