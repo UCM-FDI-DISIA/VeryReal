@@ -10,11 +10,6 @@
 #include <fmod_studio.hpp>
 
 using namespace VeryReal;
-Component* CreatorAudioListener::CreatorSpecificComponent() {
-	AudioListenerComponent* a = new AudioListenerComponent();
-	a->InitComponent();
-	return a;
-}
 
 AudioListenerComponent::AudioListenerComponent() : listener_index(-1) {}
 

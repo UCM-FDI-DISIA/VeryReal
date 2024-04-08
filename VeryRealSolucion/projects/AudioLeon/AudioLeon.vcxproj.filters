@@ -30,6 +30,12 @@
     <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioListenerComponent.cpp">
+      <Filter>Archivos de origen\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioSourceComponent.cpp">
+      <Filter>Archivos de origen\Componentes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.h">
@@ -40,6 +46,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioListenerComponent.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioSourceComponent.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
