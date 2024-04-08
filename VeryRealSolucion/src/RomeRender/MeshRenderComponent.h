@@ -41,7 +41,7 @@ namespace  VeryReal {
 		bool createMesh();
 
 		// Actualiza el componente de renderizado de malla.
-		void update();
+         virtual void Update(const double& dt);
 
 		// Establece el nombre del componente.
 		void setName(std::string name);

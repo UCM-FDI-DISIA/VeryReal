@@ -45,7 +45,7 @@ bool Light::InitComponent(int type, Vector3 const& diffusecolour, float shadowfa
 	return true;
 }
 
-void Light::Update() {
+void Light::Update(const double& dt) {
     mNode->setPosition(VR2OgreV3(trans->GetPosition()));
 }
 

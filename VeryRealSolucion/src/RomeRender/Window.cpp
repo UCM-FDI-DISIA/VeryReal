@@ -96,7 +96,7 @@ bool  Window::CreateWindoww() {
 }
 
 
-void Window::Update() {
+void Window::Update(const double& dt) {
     root->renderOneFrame();
     if (sdl_window != nullptr && ogre_window != nullptr) {
 
