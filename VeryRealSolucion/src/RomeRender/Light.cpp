@@ -22,7 +22,7 @@ Light::~Light() {
 }
 
 bool Light::InitComponent(int type, Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
-	if(GetEntity()->HasComponent("transform"))trans = GetEntity()->GetComponent<TransformComponent>("transform");
+	if(GetEntity()->HasComponent("TransformComponent"))trans = GetEntity()->GetComponent<TransformComponent>("transform");
 	else {
 		#ifdef DEBUG_MODE
 		std::cerr << DEBUG_TRANSFORM_ERROR;
