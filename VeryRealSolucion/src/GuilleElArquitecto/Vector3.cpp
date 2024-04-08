@@ -50,7 +50,7 @@ bool VeryReal::Vector3::operator==(const VeryReal::Vector3& vector) {
 	return(x == vector.x && y == vector.y && z == vector.z);
 }
 bool VeryReal::Vector3::operator!=(const VeryReal::Vector3& vector) {
-	return(x != vector.x && y != vector.y && z != vector.z);
+	return(x != vector.x || y != vector.y || z != vector.z);
 }
 
 VeryReal::Vector3 VeryReal::Vector3::Normalize() {
