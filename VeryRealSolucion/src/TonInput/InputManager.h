@@ -90,6 +90,12 @@ namespace  VeryReal {
             return mouse_pos;
         }
 
+        /// Comprueba la direccion en la que se ha movido el raton
+        /// @return Un par que contiene las coordenadas x e y de la posicion del raton
+        inline const std::pair<int32_t, int32_t>& GetMousePos() { 
+            return mouse_dir; 
+        }
+
         /// Comprueba el estado de un boton especifico del raton
         /// @param button -> El boton del raton a comprobar
         /// @return El estado del boton del raton especificado
@@ -152,6 +158,8 @@ namespace  VeryReal {
         bool is_mouse_motion_event;
         bool is_mouse_button_event;
         std::pair<int32_t, int32_t> mouse_pos;
+        std::pair<int32_t, int32_t> prev_mouse_pos;
+        std::pair<int32_t, int32_t> mouse_dir;
         std::array<bool, 3> mb_state;
         const uint8_t* kb_state;
         SDL_GameController* controller;
