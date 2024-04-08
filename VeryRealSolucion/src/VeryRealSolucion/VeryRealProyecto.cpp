@@ -15,12 +15,19 @@ const int FRAME_RATE = 3;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
 
+typedef bool(__cdecl* Start)();
+
 bool VeryRealProyecto::Init() {
 	//VeryReal::InputManager::Init();
 	//VeryReal::RenderManager::Init();
 	VR().CreateCreators();
 	LoadGame("OgremanSolucion");
-
+    Start startFunction = (Start)GetProcAddress(gameDll, "start");
+    if (startFunction != NULL) {
+        startFunction();
+    }
+    else
+        return false;
 	return true;
 }
 
