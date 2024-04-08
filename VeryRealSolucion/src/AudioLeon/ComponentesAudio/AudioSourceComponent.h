@@ -5,7 +5,6 @@
 #include <string>
 #include "CreatorComponent.h"
 #include <Component.h>
-#include "export.h"
 
 namespace FMOD {
 	class Sound;
@@ -26,13 +25,6 @@ typedef unsigned int FMOD_MODE;
 class AudioLeon;
 	
 #pragma warning(disable : 4251)
-	
-class VERYREAL_API CreatorAudioSource :public VeryReal::CreatorComponent {
-public:
-	CreatorAudioSource() {}
-	virtual ~CreatorAudioSource() {}
-	VeryReal::Component* CreatorSpecificComponent() override;
-};
 
 	//AudioSourceComponent se encarga de reproducir un archivo de audio en la escena.
 	//Los Audio_Listeners que se encuentren en rango escucharán el audio con distintas variaciones en lugar de su posición en la escena.

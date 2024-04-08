@@ -4,7 +4,6 @@
 
 #include <Component.h>
 #include "CreatorComponent.h"
-#include "export.h"
 namespace FMOD {
 	class Sound;
 }
@@ -12,13 +11,6 @@ namespace FMOD {
 namespace VeryReal {
 	class Vector3;
 }
-
-	class VERYREAL_API CreatorAudioListener :public VeryReal::CreatorComponent {
-	public :
-		CreatorAudioListener() {}
-		virtual ~CreatorAudioListener(){}
-		VeryReal::Component* CreatorSpecificComponent() override;
-	};
 
 	//FMOD ofrece "escuchadores" dinámicos que hacen de veces de receptores de los sonidos reproducidos por FMOD.
 	//Este componente gestiona el listener de una entidad y actualiza sus parámetros.

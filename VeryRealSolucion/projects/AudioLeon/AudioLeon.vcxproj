@@ -14,11 +14,15 @@
     <ClCompile Include="..\..\src\AudioLeon\AudioLeon.cpp" />
     <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.cpp" />
     <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioListenerComponent.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioSourceComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h" />
     <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.h" />
     <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.h" />
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioListenerComponent.h" />
+    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioSourceComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
