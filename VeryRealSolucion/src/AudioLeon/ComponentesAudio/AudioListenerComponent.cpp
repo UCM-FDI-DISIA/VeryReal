@@ -37,17 +37,17 @@ void AudioListenerComponent::InitComponent()
 
 void AudioListenerComponent::Update(const double& dt)
 {
-	if (!this->GetEntity()->GetComponent<TransformComponent>("transform")) {
+	if (!this->GetEntity()->GetComponent<TransformComponent>("TransformComponent")) {
 		ErrorInf().showErrorMessageBox("AudioListenerComponent error", "An entity doesn't have transform component", EI_ERROR);
 	/*	sceneManager().quit();*/
 		return;
 	}
 
 
-	Vector3 position = this->GetEntity()->GetComponent<TransformComponent>("transform")->GetPosition();
+	Vector3 position = this->GetEntity()->GetComponent<TransformComponent>("TransformComponent")->GetPosition();
 	//Vector3 velocity = this->GetEntity()->GetComponent<VeryReal::RigidBodyComponent>("rigidbody")->GetVelocity();
-	//VeryReal::Vector3 up = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->up();
-	//VeryReal::Vector3 forward = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform")->forward();
+	//VeryReal::Vector3 up = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("TransformComponent")->up();
+	//VeryReal::Vector3 forward = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("TransformComponent")->forward();
 
 	//VeryReal::Vector3 v = { (position.x - last_position.x) * float(dt),(position.y - last_position.y) * float(dt),(position.z - last_position.z) * float(dt) };
 

@@ -71,7 +71,7 @@ void VeryRealProyecto::CreateCreators()
 {
 	//FALTAN LOS DOS DE SONIDO
 
-	VeryReal::Creator::Instance()->AddCreator("transform", new VeryReal::CreatorTransformComponent());
+	VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
 	VeryReal::Creator::Instance()->AddCreator("rigidbody", new VeryReal::CreatorRigidBodyComponent());
 	VeryReal::Creator::Instance()->AddCreator("collider", new VeryReal::CreatorColliderComponent());
 	VeryReal::Creator::Instance()->AddCreator("meshrender", new VeryReal::CreatorMeshRenderComponent());

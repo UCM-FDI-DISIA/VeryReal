@@ -221,7 +221,7 @@ bool AudioSourceComponent::PauseSound(std::string soundName, bool Pause)
 
 void AudioSourceComponent::Start()
 {
-    transform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("transform");
+    transform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("TransformComponent");
     rigid_body = this->GetEntity()->GetComponent<VeryReal::RigidBodyComponent>("rigidbody");
 
     if (!transform) {

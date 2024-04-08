@@ -25,7 +25,7 @@ RigidBodyComponent::~RigidBodyComponent() {
 }
 
 bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger) {
-    transformComponent = this->GetEntity()->GetComponent<TransformComponent>("transform");
+    transformComponent = this->GetEntity()->GetComponent<TransformComponent>("TransformComponent");
     if (transformComponent == nullptr) {
         #ifdef DEBUG_MODE
                 // Código específico para modo de depuración
