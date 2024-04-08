@@ -35,7 +35,7 @@ bool VeryReal::Vector4::operator==(const VeryReal::Vector4& vector) {
 	return(r == vector.r && g == vector.g&& b == vector.b && a==vector.a) ;
 }
 bool VeryReal::Vector4::operator!=(const VeryReal::Vector4& vector) {
-	return(r != vector.r && g != vector.g && b != vector.b && a != vector.a);
+	return(r != vector.r || g != vector.g || b != vector.b || a != vector.a);
 }
 //para hacer Cout en la consola, ayudarnos a depurar
 std::ostream& operator<<(std::ostream& o, const VeryReal::Vector4& vector) {

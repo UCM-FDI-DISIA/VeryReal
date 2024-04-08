@@ -50,7 +50,7 @@ bool VeryReal::Vector2::operator==(const VeryReal::Vector2& vector) {
 	return(x == vector.x && y == vector.y);
 }
 bool VeryReal::Vector2::operator!=(const VeryReal::Vector2& vector) {
-	return(x != vector.x && y != vector.y );
+	return(x != vector.x || y != vector.y );
 }
 VeryReal::Vector2 VeryReal::Vector2::Normalize() {
 	float m = Magnitude();
