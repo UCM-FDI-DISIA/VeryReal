@@ -3,7 +3,7 @@
 #define MESHRENDERCOMPONENT
 #include "Component.h"
 #include <string>
-
+#include "Vector3.h"
 namespace Ogre
 {
 	class AxisAlignedBox;
