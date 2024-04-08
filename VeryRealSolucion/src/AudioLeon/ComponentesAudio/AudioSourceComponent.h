@@ -25,19 +25,18 @@ typedef unsigned int FMOD_MODE;
 	
 class AudioLeon;
 	
+#pragma warning(disable : 4251)
 	
-	
-	class VERYREAL_API CreatorAudioSource :public VeryReal::CreatorComponent {
-	public:
-		CreatorAudioSource() {}
-		virtual ~CreatorAudioSource() {}
-		VeryReal::Component* CreatorSpecificComponent() override;
-	};
+class VERYREAL_API CreatorAudioSource :public VeryReal::CreatorComponent {
+public:
+	CreatorAudioSource() {}
+	virtual ~CreatorAudioSource() {}
+	VeryReal::Component* CreatorSpecificComponent() override;
+};
 
 	//AudioSourceComponent se encarga de reproducir un archivo de audio en la escena.
 	//Los Audio_Listeners que se encuentren en rango escucharán el audio con distintas variaciones en lugar de su posición en la escena.
-	class VERYREAL_API AudioSourceComponent : public VeryReal::Component
-	{
+	class VERYREAL_API AudioSourceComponent : public VeryReal::Component {
 	public:
 
 		//Constructor por defecto.
@@ -249,5 +248,6 @@ class AudioLeon;
 		VeryReal::RigidBodyComponent* rigid_body = nullptr;
 	};
 
-#endif
+#pragma warning(default : 4251)
 
+#endif
