@@ -22,7 +22,7 @@
 
 
 #include "CreatorTransformComponent.h"
-const int FRAME_RATE = 3;
+const int FRAME_RATE = 0.2;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
 
