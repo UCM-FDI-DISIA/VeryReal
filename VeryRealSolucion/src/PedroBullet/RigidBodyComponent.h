@@ -51,9 +51,11 @@ namespace VeryReal {
         // Obtiene el btRigidBody 
         btRigidBody* GetBulletRigidBody();
 
+        btCollisionShape* GetCollisionShape();
+
     private:
         TransformComponent* transformComponent;
-        std::unique_ptr<btCollisionShape> collisionShape;
+        btCollisionShape* collisionShape;
         std::unique_ptr<btDefaultMotionState> motionState;
         btRigidBody* rigidBody;
 

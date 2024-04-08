@@ -34,7 +34,9 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
         return false;
     }
 
-    collisionShape.reset(CreateCollisionShape(shapeType));
+    delete collisionShape;
+    collisionShape = CreateCollisionShape(shapeType);
+    //collisionShape.reset(CreateCollisionShape(shapeType));
     
     btVector3 localInertia(0, 0, 0);
     if (mass != 0.0f) {
@@ -47,7 +49,7 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
     startTransform.setOrigin(btVector3(pos.GetX(), pos.GetY(), pos.GetZ()));
 
     motionState.reset(new btDefaultMotionState(startTransform));
-    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState.get(), collisionShape.get(), localInertia);
+    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState.get(), collisionShape, localInertia); //
     rbInfo.m_restitution = restitution;
     rbInfo.m_friction = friction;
 
@@ -77,6 +79,10 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
 btRigidBody* RigidBodyComponent::GetBulletRigidBody() 
 {
     return this->rigidBody;
+}
+
+btCollisionShape* RigidBodyComponent::GetCollisionShape() { 
+    return collisionShape;
 }
 
 btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType) {

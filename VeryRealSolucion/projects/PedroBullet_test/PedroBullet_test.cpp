@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-//#include <PhysicsManager.h>
-
+#include "PhysicsManager.h"
+#include "Vector3.h"
 
 
 //int main()
@@ -55,6 +55,9 @@ int main() {
 
     //// Limpiar al finalizar
     //PedroBullet::Instance()->Cleanup();
+    //std::cout << "Hola buenas tardes\n";
+    //VeryReal::PhysicsManager::Instance()->MakeRayCast(VeryReal::Vector3(0, 0, 0), VeryReal::Vector3(100, 0, 0));
+    
     
     return 0;
 }

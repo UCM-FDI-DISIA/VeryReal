@@ -4,45 +4,48 @@
 #include <btBulletCollisionCommon.h>
 #include "SceneManager.h"
 #include "PedroBullet.h"
+#include "Scene.h"
+#include "Entity.h"
+#include "RigidBodyComponent.h"
 
 VeryReal::PhysicsManager::PhysicsManager()
     : collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) {
-    // Constructor vacío
+    // Constructor vacï¿½o
 }
 
 bool VeryReal::PhysicsManager::Initialize() {
-    // Inicializar el mundo de física, configuración de colisiones, etc.
+    // Inicializar el mundo de fï¿½sica, configuraciï¿½n de colisiones, etc.
     collisionConfiguration = new btDefaultCollisionConfiguration();
     if (!collisionConfiguration) {
-        return false;   // Falló la creación de collisionConfiguration
+        return false;   // Fallï¿½ la creaciï¿½n de collisionConfiguration
     }
 
     dispatcher = new btCollisionDispatcher(collisionConfiguration);
     if (!dispatcher) {
         Shutdown();  
-        return false;   // Falló la creación de dispatcher
+        return false;   // Fallï¿½ la creaciï¿½n de dispatcher
     }
 
     overlappingPairCache = new btDbvtBroadphase();
     if (!overlappingPairCache) {
         Shutdown();  
-        return false;   // Falló la creación de overlappingPairCache
+        return false;   // Fallï¿½ la creaciï¿½n de overlappingPairCache
     }
 
     solver = new btSequentialImpulseConstraintSolver();
     if (!solver) {
         Shutdown();  
-        return false;   // Falló la creación de solver
+        return false;   // Fallï¿½ la creaciï¿½n de solver
     }
 
     dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
     if (!dynamicsWorld) {
         Shutdown();  
-        return false;   // Falló la creación de dynamicsWorld
+        return false;   // Fallï¿½ la creaciï¿½n de dynamicsWorld
     }
 
     dynamicsWorld->setGravity(btVector3(0, -9.81f, 0));
-    return true;   // Inicialización exitosa
+    return true;   // Inicializaciï¿½n exitosa
 }
 
 void VeryReal::PhysicsManager::Update(float deltaTime) {
@@ -52,7 +55,7 @@ void VeryReal::PhysicsManager::Update(float deltaTime) {
 }
 
 void VeryReal::PhysicsManager::Shutdown() {
-    // Limpieza del mundo de física y liberación de recursos
+    // Limpieza del mundo de fï¿½sica y liberaciï¿½n de recursos
     if (dynamicsWorld) {
         delete dynamicsWorld;
     }
@@ -94,13 +97,21 @@ std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vec
     btAlignedObjectArray<const btCollisionObject*> lista_de_colisionados;
     if (rayCallback.hasHit()) {
         lista_de_colisionados = rayCallback.m_collisionObjects;
-        for (int i = 0; i < lista_de_colisionados.size(); ++i) {
-            /*VeryReal::Scene* scene = VeryReal::SceneManager::GetScene("Play");
-            if (scene != nullptr) {
-                for ()
-                    lista_de_colisionados [i]->getCollisionShape()
-            }*/
+        VeryReal::Scene* scene = VeryReal::SceneManager::Instance()->GetScene("Play");
+        if (scene != nullptr) {
+            for (auto ent : scene->GetEntities()) {
+                if (ent.second->HasComponent("RigidBodyComponent")) {
+                    RigidBodyComponent* comp = ent.second->GetComponent<RigidBodyComponent>("RigidBodyComponent");
+                    for (int i = 0; i < lista_de_colisionados.size(); ++i) {
+                        if (lista_de_colisionados [i]->getCollisionShape() == comp->GetCollisionShape()) {
+                            l_ents_coll.push_back(ent.second);
+                        }
+                    }
+                }
+                
+            }
         }
+        
     }
     return l_ents_coll;
 }

@@ -45,6 +45,10 @@ namespace VeryReal {
 			return entities_map.at(e_name);
 		}
 
+		inline std::unordered_map<entity_name, Entity*> GetEntities() { 
+			return entities_map;
+		}
+
 		/*
 	Recorremos de primeras con un for el mapa:
 		-->Comprobamos si la entidad está activa-->hacemos su Update
