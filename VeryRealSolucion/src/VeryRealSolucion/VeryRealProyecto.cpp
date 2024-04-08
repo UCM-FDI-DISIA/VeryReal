@@ -1,7 +1,11 @@
 #pragma once
-#include "VeryRealProyecto.h"/*
+#include "VeryRealProyecto.h"
 #include <InputManager.h>
-#include <RenderManager.h>*/
+#include <RenderManager.h>
+#include <PhysicsManager.h>
+#include <AudioLeon.h>
+#include <LuaLuengo.h>
+#include "SceneManager.h"
 #include <Window.h>
 #include <chrono>
 #include <Creator.h>
@@ -28,13 +32,12 @@ void VeryRealProyecto::Loop()
 	while (true) {
         frameTime = (uint32_t) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() -
             startTime;
-	/*	VeryReal::InputManager::Instance()->Refresh(); */
+		VeryReal::InputManager::Instance()->Refresh(); 
 		if (frameTime >= FRAME_RATE) {
-			// Fisicas
-			// Update (Componentes)
-			// Render
-			/*VeryReal::RenderManager::Instance()->Update(frameTime);*/
-			// Sonido
+            VeryReal::PhysicsManager::Instance()->Update(frameTime);	
+            VeryReal::SceneManager::Instance()->Update(frameTime);
+            VeryReal::RenderManager::Instance()->Update(frameTime);
+            VeryReal::AudioLeon::Instance()->Update(frameTime);
 			std::cout << frameTime << std::endl;
             startTime = (uint32_t) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 		}
