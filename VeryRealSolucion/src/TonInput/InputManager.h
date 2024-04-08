@@ -92,7 +92,7 @@ namespace  VeryReal {
 
         /// Comprueba la direccion en la que se ha movido el raton
         /// @return Un par que contiene las coordenadas x e y de la posicion del raton
-        inline const std::pair<int32_t, int32_t>& GetMousePos() { 
+        inline const std::pair<int32_t, int32_t>& GetMouseDir() { 
             return mouse_dir; 
         }
 
