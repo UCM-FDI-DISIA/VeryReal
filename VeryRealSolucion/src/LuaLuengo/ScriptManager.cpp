@@ -43,7 +43,7 @@ void ScriptManager::Error(int status)
 
 void ScriptManager::Init(std::string p)
 {
-	std::string a = "../../bin/LuaFiles/" + p + ".lua"; // TEMPORAL!
+	std::string a = "LuaFiles/" + p + ".lua"; // TEMPORAL!
 	int script_status = luaL_dofile(lua_state, a.c_str());		
 	Error(script_status);
 }
