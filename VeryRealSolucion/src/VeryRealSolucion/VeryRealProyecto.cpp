@@ -20,7 +20,7 @@
 #include "CreatorAnimatorComponent.h"
 #include "CreatorTransformComponent.h"
 
-const int FRAME_RATE = 0.2;
+const double FRAME_RATE = 0.2;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
 
@@ -41,10 +41,10 @@ bool VeryRealProyecto::Init() {
 }
 
 void VeryRealProyecto::Loop() {
-	uint32_t startTime, frameTime;
-    startTime = (uint32_t) std::chrono::duration_cast<std::chrono::duration<float>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+	float startTime, frameTime;
+    startTime = std::chrono::duration_cast<std::chrono::duration<float>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 	while (true) {
-        frameTime = (uint32_t) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - startTime;
+        frameTime = (float) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - startTime;
 		VeryReal::InputManager::Instance()->Refresh(); 
 		if (frameTime >= FRAME_RATE) {
             VeryReal::PhysicsManager::Instance()->Update(frameTime);	
@@ -52,7 +52,7 @@ void VeryRealProyecto::Loop() {
             VeryReal::RenderManager::Instance()->Update(frameTime);
             VeryReal::AudioLeon::Instance()->Update(frameTime);
 			std::cout << frameTime << std::endl;
-            startTime = (uint32_t) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+            startTime = (float) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 		}
 	}
 }

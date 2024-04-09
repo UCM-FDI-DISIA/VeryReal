@@ -13,7 +13,7 @@ public:
 
 	bool LoadGame(std::string gameName);
 private:
-	HMODULE gameDll;
+    HMODULE gameDll = NULL;
 };
 
 inline VeryRealProyecto& VR() {
