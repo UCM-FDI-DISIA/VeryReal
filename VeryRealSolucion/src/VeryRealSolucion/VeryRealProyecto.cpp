@@ -20,7 +20,7 @@
 #include "CreatorAnimatorComponent.h"
 #include "CreatorTransformComponent.h"
 
-const double FRAME_RATE = 0.2;
+const double FRAME_RATE = 0.01;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
 

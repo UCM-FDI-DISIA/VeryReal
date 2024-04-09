@@ -43,7 +43,7 @@ namespace VeryReal {
 		bool operator!=(const Vector3& vector);
 
 		//devuelve el modulo
-		inline float Magnitude() { return sqrtf(powf(x, 2) + powf(y, 2) + powf(y, 2)); }
+		inline float Magnitude() { return sqrtf(powf(x, 2) + powf(y, 2) + powf(z, 2)); }
 		//normaliza el vector
 		Vector3 Normalize();
 	};
