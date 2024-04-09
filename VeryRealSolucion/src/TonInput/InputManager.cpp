@@ -3,11 +3,21 @@
 #include <SDL.h>
 #include "InputManager.h"
 #include "Singleton.h"
+
 using namespace std;
 
 VeryReal::InputManager::InputManager() {
     kb_state = SDL_GetKeyboardState(0);
     ClearState(true);
+}
+
+void VeryReal::InputManager::Init() { // Flags de sdl necesarias para el input de teclas y mando
+    if (!SDL_WasInit(SDL_INIT_EVENTS)) 
+        SDL_Init(SDL_INIT_EVENTS);
+    if (!SDL_WasInit(SDL_INIT_JOYSTICK)) 
+        SDL_Init(SDL_INIT_JOYSTICK);
+    if (!SDL_WasInit(SDL_INIT_GAMECONTROLLER)) 
+        SDL_Init(SDL_INIT_GAMECONTROLLER);
 }
 
 void VeryReal::InputManager::ClearState(bool clearMouseButtons) {

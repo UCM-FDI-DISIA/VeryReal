@@ -3,8 +3,8 @@
 #pragma once
 
 #include <Manager.h>
-#include "TonMapeo.h"
 #include <array>
+#include "TonMapeo.h"
 #include "export.h"
 
 #pragma warning(disable : 4251)
@@ -15,12 +15,14 @@ typedef union SDL_Event SDL_Event;
 
 namespace  VeryReal {
     class VERYREAL_API InputManager : public VeryReal::Manager<InputManager> {
-        
-
+  
     public:
         /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
         InputManager();
         virtual ~InputManager() {}
+
+        // Inicializa SDL
+        virtual void Init();
 
         /// Limpia el estado de la entrada
         void ClearState(bool clearMouseButtons = false);
@@ -117,9 +119,6 @@ namespace  VeryReal {
 
 
     private:
-
-      
-
         /// Actualiza el estado del evento de tecla presionada
         inline void OnKeyDown(const SDL_Event&) {
             is_key_down_event = true;

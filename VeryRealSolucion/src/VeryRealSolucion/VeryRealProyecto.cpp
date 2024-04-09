@@ -18,10 +18,8 @@
 #include "CreatorLightComponent.h"
 #include "CreatorCameraComponent.h"
 #include "CreatorAnimatorComponent.h"
-
-
-
 #include "CreatorTransformComponent.h"
+
 const int FRAME_RATE = 0.2;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
@@ -29,7 +27,7 @@ typedef bool(__cdecl* Prueba)();
 typedef bool(__cdecl* Start)();
 
 bool VeryRealProyecto::Init() {
-	//VeryReal::InputManager::Init();
+    VeryReal::InputManager::Instance()->Init();
 	//VeryReal::RenderManager::Init();
 	VR().CreateCreators();
 	LoadGame("OgremanSolucion");
