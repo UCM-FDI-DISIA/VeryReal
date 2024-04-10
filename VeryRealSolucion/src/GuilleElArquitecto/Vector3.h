@@ -45,7 +45,11 @@ namespace VeryReal {
 		//devuelve el modulo
 		inline float Magnitude() { return sqrtf(powf(x, 2) + powf(y, 2) + powf(z, 2)); }
 		//normaliza el vector
-		Vector3 Normalize();
+        Vector3 Normalize();
+
+		// Multiplicar vectores
+        float Dot(const VeryReal::Vector3& vector);
+        VeryReal::Vector3 Cross(const VeryReal::Vector3& vector);
 	};
 	std::ostream& operator<<(std::ostream& o, const Vector3& vec);
 }

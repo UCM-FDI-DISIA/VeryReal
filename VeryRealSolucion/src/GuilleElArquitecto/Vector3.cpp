@@ -94,3 +94,21 @@ std::ostream& operator<<(std::ostream& o, const VeryReal::Vector3& vector) {
 	o << vector.GetX() << " , " << vector.GetY() <<" , "<<vector.GetZ()<<"\n";
 	return o;
 }
+
+/// Producto escalar de dos vectores
+/// @param vector -> El otro vector a multiplicar
+/// @return Devuelve la proyección de un vector sobre el otro
+float VeryReal::Vector3::Dot(const VeryReal::Vector3& vector) { 
+	return this->x * vector.x + this->y * vector.y + this->z * vector.z; 
+}
+
+/// Producto vectorial de dos vectores
+/// @param vector -> El otro vector a multiplicar
+/// @return Devuelve un vector perpendicular a ambos vectores
+VeryReal::Vector3 VeryReal::Vector3::Cross(const VeryReal::Vector3& vector) {
+    VeryReal::Vector3 perpendicularVector = 
+	VeryReal::Vector3((this->y * vector.z - this->z * vector.y), 
+					  (this->z * vector.x - this->x * vector.z), 
+					  (this->x * vector.y - this->y * vector.x));
+    return perpendicularVector;
+}
