@@ -74,11 +74,14 @@ namespace  VeryReal {
             return is_mouse_motion_event;
         }
 
+        
+        /// Activamos el evento quit
+        /// @return True si se ha activado el evento "quit", false en caso contrario
+        inline void Quit() { is_quit = true; }
+
         /// Comprueba si se ha activado el evento "quit"
         /// @return True si se ha activado el evento "quit", false en caso contrario
-        inline bool Quit() {
-            return is_quit;
-        }
+        inline bool getQuit() { return is_quit; }
 
         /// Comprueba si el raton esta recibiendo algun evento de boton
         /// @return True si el raton esta recibiendo algun evento de boton, false en caso contrario

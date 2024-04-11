@@ -45,7 +45,8 @@ bool VeryRealProyecto::Init() {
 void VeryRealProyecto::Loop() {
 	float startTime, frameTime;
     startTime = std::chrono::duration_cast<std::chrono::duration<float>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
-	while (true) {
+    while (!VeryReal::InputManager::Instance()->getQuit())
+		{
         frameTime = (float) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - startTime;
 		VeryReal::InputManager::Instance()->Refresh(); 
 		if (frameTime >= FRAME_RATE) {
