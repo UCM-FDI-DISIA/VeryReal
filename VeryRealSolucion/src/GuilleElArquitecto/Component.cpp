@@ -1,4 +1,4 @@
 #include "Component.h"
 VeryReal::Component::~Component() {
-	delete entity;
+	//delete entity;
 }

@@ -7,7 +7,7 @@ using namespace VeryReal;
      
     //constructora de la clase UIButtomComponent
 UIButtomComponent::UIButtomComponent() { 
-      if (GetEntity()->HasComponent("UITransformComponent")) UItransofrm = GetEntity()->GetComponent<UITransformComponent>("TransformComponent");
+      if (GetEntity()->HasComponent("UITransformComponent")) UItransofrm = GetEntity()->GetComponent<UITransformComponent>();
 
 }
     // Destructor de la clase UIButtomComponent

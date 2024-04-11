@@ -10,6 +10,7 @@
 #include "conversorvectores.h"
 #include "TransformComponent.h"
 #include "Entity.h"
+#include <Vector4.h>
 
 using namespace VeryReal;
 using namespace Ogre;
@@ -47,9 +48,14 @@ void CameraComponent::Update(const double& dt) {
 void CameraComponent::lookAt( VeryReal::Vector3 pos)
 {
     mNode->lookAt(VR2OgreV3(pos), Ogre::Node::TransformSpace::TS_PARENT);
+  
 }
-
-void CameraComponent::translate(float x, float y, float z)
+VeryReal::Vector4 CameraComponent::getOrientation() { 
+  Quaternion q =  mNode->getOrientation();
+    VeryReal::Vector4 vec = VeryReal::Vector4(q.x, q.y, q.z, q.w);
+  return vec;
+}
+    void CameraComponent::translate(float x, float y, float z)
 {
     mNode->translate(x, y, z, Ogre::Node::TransformSpace::TS_LOCAL);
 }

@@ -16,6 +16,7 @@ namespace Ogre {
 #pragma warning(disable : 4251)
 
 namespace  VeryReal {
+    class Vector4;
     class Vector3;
     class Vector2;
     class Entity;
@@ -70,6 +71,7 @@ namespace  VeryReal {
         // Desactiva la cámara.
         void desactive();
 
+        VeryReal::Vector4 getOrientation();
         // Activa la camara.
         void active();
         //setter para el target al que seguira la camara 
