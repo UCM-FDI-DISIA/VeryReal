@@ -14,22 +14,25 @@ namespace luabridge {
 }
 
 namespace VeryReal {
- class VERYREAL_API ScriptManager : public VeryReal::Manager<ScriptManager> {
+	class VERYREAL_API ScriptManager : public VeryReal::Manager<ScriptManager> {
 	friend Singleton<ScriptManager>;
 
 	private:
 		lua_State* lua_state;
+
+		ScriptManager();
+		// Comprueba error al abrir archivo
+		void Error(int status);
 		// Se encarga de leer los parámetros que se le pasarán a los componentes
 		void ReadParams(luabridge::LuaRef params, std::string comp);
 
 	public:
-		ScriptManager();
+		
 		virtual ~ScriptManager();
 
 		// Abre el archivo .lua
 		void Init(std::string p);
-		// Compreueba error al abrir archivo
-		void Error(int status);
+		
 		// Método para probar la creación de entidades y componentes mediante Lua
 		void ReadScene(std::string n);
 		inline lua_State* GetLuaState() { return lua_state; }
