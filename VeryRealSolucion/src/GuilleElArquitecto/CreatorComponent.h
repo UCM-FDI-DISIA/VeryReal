@@ -15,7 +15,7 @@ namespace VeryReal {
 		std::unordered_map<parameters_name, VariantClass*> parameters_map;
 		
 	public:
-		CreatorComponent();
+                CreatorComponent(){};
 		virtual ~CreatorComponent();
 		//Tenemos que preguntar a Pedro Pablo como hacer para pasarle como argumento valores, 
 		// con un template no puedes un metodo virtual

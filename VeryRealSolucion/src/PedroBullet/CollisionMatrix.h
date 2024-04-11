@@ -6,7 +6,9 @@ class CollisionMatrix {
 public:
     static const int LAYER_COUNT = 4; // Cambia esto según la cantidad de capas que tengas
 
-    CollisionMatrix();
+    CollisionMatrix() { }
+    virtual ~CollisionMatrix(){}
+     void Init();
 
     void SetCollision(PhysicsLayer layer1, PhysicsLayer layer2, bool collides);
     bool GetCollision(PhysicsLayer layer1, PhysicsLayer layer2) const;

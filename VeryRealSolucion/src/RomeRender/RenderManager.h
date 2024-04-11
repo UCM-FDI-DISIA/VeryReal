@@ -43,10 +43,12 @@ namespace Ogre {
 namespace VeryReal {
 	// Declaración de la clase RenderManager, que hereda de Manager
 	class /*VERYREAL_API*/ RenderManager : public Manager<RenderManager> {
+               
+                
 	public: 
 		
 		// Constructor de la clase RenderManager
-		RenderManager();
+		RenderManager() { }
 
 		// Destructor virtual de la clase RenderManager
 		virtual ~RenderManager();

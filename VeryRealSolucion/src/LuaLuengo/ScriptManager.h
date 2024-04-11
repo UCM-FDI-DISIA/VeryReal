@@ -19,15 +19,14 @@ namespace VeryReal {
 
 	private:
 		lua_State* lua_state;
-
-		ScriptManager();
 		// Comprueba error al abrir archivo
 		void Error(int status);
 		// Se encarga de leer los parámetros que se le pasarán a los componentes
 		void ReadParams(luabridge::LuaRef params, std::string comp);
 
 	public:
-		
+
+        ScriptManager() { }
 		virtual ~ScriptManager();
 
 		// Abre el archivo .lua

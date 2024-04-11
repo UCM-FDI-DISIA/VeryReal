@@ -44,10 +44,8 @@ namespace VeryReal {
 
 	class VERYREAL_API AudioLeon : public VeryReal::Manager<AudioLeon> {
 		friend Singleton<AudioLeon>;
-		AudioLeon();
-        void Init();
-		//Inicializacion de los recursos necesarios para recoger input del microfono
-		void InitAudioRecording();
+
+       private:
 		//Almacena los sonidos de FMOD enlazados al nombre establecido por el usuario.
 		std::unordered_map<std::string, FMOD::Sound*> sounds_map;
 		//Almacena los sonidos dew FMOD enlazados al último canal en el que sonaron.
@@ -79,6 +77,10 @@ namespace VeryReal {
 
 		//Destructor de la clase AudioLeon. Se encarga de eliminar todo sonido creado y de liberar toda la infrestructura de FMOD.
 		~AudioLeon();
+    AudioLeon() { }
+		void Init();
+		//Inicializacion de los recursos necesarios para recoger input del microfono
+		void InitAudioRecording();
 		//Actualiza el sistema de sonido en cada bucle del juego.
 		void SystemRefresh(const double& dt);
 

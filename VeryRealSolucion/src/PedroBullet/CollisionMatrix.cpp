@@ -1,6 +1,6 @@
 #include "CollisionMatrix.h"
 
-CollisionMatrix::CollisionMatrix() {
+void CollisionMatrix::Init() {
     for (auto& row : matrix) {
         row.fill(false);
     }

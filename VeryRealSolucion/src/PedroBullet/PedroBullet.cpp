@@ -93,7 +93,7 @@ bool callBackStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
 }
 
 
-
+  PedroBullet::PedroBullet() : dynamicWorld(nullptr), collisionConfig(nullptr), collisionDispatcher(nullptr), broadphase(nullptr), solver(nullptr) { }
 // Initialize Bullet Physics
 void PedroBullet::Init()
 {

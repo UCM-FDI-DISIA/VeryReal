@@ -7,7 +7,7 @@
 #include "Scene.h"
 #include "Entity.h"
 #include "RigidBodyComponent.h"
-
+VeryReal::PhysicsManager::PhysicsManager(): collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) { }
 
 bool VeryReal::PhysicsManager::Initialize() {
     collisionConfiguration=nullptr;

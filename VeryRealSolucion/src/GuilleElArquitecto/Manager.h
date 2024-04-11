@@ -8,9 +8,8 @@ namespace VeryReal {
 	template<typename T>
     class VERYREAL_API Manager : public Singleton<T> {
 		friend Singleton<T>;
-	private:
-         Manager();
-
+	protected:
+        Manager(){};
 	public:
     
 		virtual ~Manager() {}

@@ -1,8 +1,6 @@
 #include "ColliderComponent.h"
 #include <Entity.h>
 
-
-
 void VeryReal::ColliderComponent::Init()
 {
 

@@ -15,17 +15,11 @@ extern "C"
 #include <iostream>
 using namespace VeryReal;
 
-ScriptManager::ScriptManager()
-{
-    
-}
-
 ScriptManager::~ScriptManager()
 {
 	lua_close(lua_state);
 }
 	
-
 void ScriptManager::Error(int status)
 {
 	if (status == 0) {
@@ -41,7 +35,7 @@ void ScriptManager::Init(std::string p)
 {  
     lua_state = luaL_newstate();
     luaL_openlibs(lua_state);
-	std::string a = "../../bin/LuaFiles/" + p + ".lua"; // TEMPORAL!
+	std::string a = "LuaFiles/" + p + ".lua"; // TEMPORAL!
 	int script_status = luaL_dofile(lua_state, a.c_str());		
 	Error(script_status);
 }

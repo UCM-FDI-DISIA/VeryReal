@@ -9,6 +9,8 @@ namespace VeryReal {
     private:
         //unica instancia de la clase de tipo T
         static std::unique_ptr<T> instance_pointer;
+
+    protected:
         Singleton(){};
 
     public:
@@ -26,10 +28,11 @@ namespace VeryReal {
             return instance_pointer.get();
         }
 
-        template<typename... Targs>
-        static T* Init(Targs&&... args) {
+        
+        static T* Init() {
             if (instance_pointer.get() == nullptr) {
-                instance_pointer.reset(new T(std::forward<Targs>(args)...));
+                instance_pointer.reset(new T());
+                
             }
             return instance_pointer.get();
         }

@@ -16,8 +16,6 @@
 #include "conversorvectores.h"
 #include "OgreEntity.h"
 //mehrender, camara y eso
-VeryReal::RenderManager::RenderManager()
-    : window(nullptr), root(nullptr), scene_manager(nullptr), render_system(nullptr), viewport(nullptr), filesystem_layer(nullptr), shader_generator(nullptr), material_listener(nullptr) { }
 VeryReal::RenderManager::~RenderManager() {
 
     // Desalojar todos los recursos cargados
@@ -52,6 +50,14 @@ VeryReal::RenderManager::~RenderManager() {
 
 }
 void VeryReal::RenderManager::InitManager(std::string const& name) {
+    window = nullptr;
+    root = nullptr;
+    scene_manager = nullptr;
+    render_system = nullptr;
+    viewport=nullptr;
+    filesystem_layer = nullptr;
+    shader_generator = nullptr;
+    material_listener=nullptr;
     appname = name;
     filesystem_layer = new Ogre::FileSystemLayer(appname);
     Ogre::String pluginsPath;

@@ -24,7 +24,7 @@ class btRigidBody;
 namespace VeryReal {
 class VERYREAL_API PhysicsManager : public Manager<PhysicsManager> {
     public:
-        PhysicsManager();
+    PhysicsManager();
         ~PhysicsManager();
 
         bool Initialize();              // Inicializa el mundo de Bullet y otros componentes necesarios

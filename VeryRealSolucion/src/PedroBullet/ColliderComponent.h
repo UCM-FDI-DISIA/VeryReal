@@ -17,7 +17,7 @@ namespace VeryReal
 	class VERYREAL_API ColliderComponent : public Component
 	{
 	public:
-            ColliderComponent(){};
+        ColliderComponent(){};
 		virtual ~ColliderComponent(){};
 		void Init();
 		void OnCollisionEnter(Entity* other) override;

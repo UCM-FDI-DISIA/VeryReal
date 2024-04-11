@@ -29,15 +29,15 @@ class PedroBullet : public VeryReal::Manager<PedroBullet> {
 
     friend Singleton<PedroBullet>;
 private:
-    btDiscreteDynamicsWorld* dynamicWorld;
-    btCollisionConfiguration* collisionConfig;
-    btCollisionDispatcher* collisionDispatcher;
-    btBroadphaseInterface* broadphase;
-    btSequentialImpulseConstraintSolver* solver;
-    PedroBullet();
+    btDiscreteDynamicsWorld* dynamicWorld=nullptr;
+    btCollisionConfiguration* collisionConfig=nullptr;
+    btCollisionDispatcher* collisionDispatcher = nullptr;
+    btBroadphaseInterface* broadphase = nullptr;
+    btSequentialImpulseConstraintSolver* solver = nullptr;
+   
 
 public:
-
+    PedroBullet();
     virtual void Init();
     virtual void Update(float deltaTime);
     virtual ~PedroBullet();
