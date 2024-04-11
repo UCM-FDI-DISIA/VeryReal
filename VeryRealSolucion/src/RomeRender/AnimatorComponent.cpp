@@ -35,7 +35,7 @@ bool AnimatorComponent::InitComponent(std::string name) {
     num_animations_active = (0);
     loop = false;
     active = false;
-    if (GetEntity()->HasComponent("TransformComponent")) transform = GetEntity()->GetComponent<TransformComponent>("TransformComponent");
+    if (GetEntity()->HasComponent("TransformComponent")) transform = GetEntity()->GetComponent<TransformComponent>();
     else {
         #ifdef DEBUG_MODE
         std::cerr << DEBUG_TRANSFORM_ERROR;
@@ -44,7 +44,7 @@ bool AnimatorComponent::InitComponent(std::string name) {
     }
       
     
-    if(GetEntity()->HasComponent("MeshRenderComponent"))meshRender = GetEntity()->GetComponent<MeshRenderComponent>("MeshRenderComponent");
+    if(GetEntity()->HasComponent("MeshRenderComponent"))meshRender = GetEntity()->GetComponent<MeshRenderComponent>();
     else {
         #ifdef DEBUG_MODE
         std::cerr << DEBUG_MESHRENDERER_ERROR;

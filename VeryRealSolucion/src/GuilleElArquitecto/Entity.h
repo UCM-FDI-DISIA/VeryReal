@@ -48,11 +48,12 @@ namespace VeryReal {
 
 		//Devuelve el componente especifico y si no esta devuelve nullptr
 		template<typename T>
-		inline T* GetComponent(component_name c_name) {
-			if (!HasComponent(c_name)) {
+		inline T* GetComponent() {
+            component_name n = typeid(T).name();
+			if (!HasComponent(n)) {
 				return nullptr;
 			}
-			return static_cast<T*>(components_map.at(c_name));
+			return static_cast<T*>(components_map.at(n));
 		}
 
 		//Indican si la entidad está activa o no

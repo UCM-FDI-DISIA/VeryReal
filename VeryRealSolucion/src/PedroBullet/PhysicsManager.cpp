@@ -113,7 +113,7 @@ std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vec
         if (scene != nullptr) {
             for (auto ent : scene->GetEntities()) {
                 if (ent.second->HasComponent("RigidBodyComponent")) {
-                    RigidBodyComponent* comp = ent.second->GetComponent<RigidBodyComponent>("RigidBodyComponent");
+                    RigidBodyComponent* comp = ent.second->GetComponent<RigidBodyComponent>();
                     for (int i = 0; i < lista_de_colisionados.size(); ++i) {
                         if (lista_de_colisionados [i]->getCollisionShape() == comp->GetCollisionShape()) {
                             l_ents_coll.push_back(ent.second);

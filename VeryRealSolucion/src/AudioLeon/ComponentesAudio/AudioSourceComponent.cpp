@@ -184,8 +184,8 @@ bool AudioSourceComponent::PauseSound(std::string soundName, bool Pause)
 
 void AudioSourceComponent::Start()
 {
-    transform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("TransformComponent");
-    rigid_body = this->GetEntity()->GetComponent<VeryReal::RigidBodyComponent>("rigidbody");
+    transform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>();
+    rigid_body = this->GetEntity()->GetComponent<VeryReal::RigidBodyComponent>();
 
     if (!transform) {
         ErrorInf().showErrorMessageBox("AudioSourceComponent error", "An entity doesn't have transform component", EI_ERROR);

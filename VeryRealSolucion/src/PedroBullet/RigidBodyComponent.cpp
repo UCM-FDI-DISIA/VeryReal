@@ -26,7 +26,7 @@ RigidBodyComponent::~RigidBodyComponent() {
 }
 
 bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s) {
-    transformComponent = this->GetEntity()->GetComponent<TransformComponent>("TransformComponent");
+    transformComponent = this->GetEntity()->GetComponent<TransformComponent>();
     if (transformComponent == nullptr) {
         #ifdef DEBUG_MODE
                 // Código específico para modo de depuración
@@ -57,7 +57,7 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
     rigidBody = new btRigidBody(rbInfo);
 
     //Inicializar el componente colider
-    collider = this->GetEntity()->GetComponent<ColliderComponent>("collider");
+    collider = this->GetEntity()->GetComponent<ColliderComponent>();
 
     if (!collider)
     {
