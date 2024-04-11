@@ -1,7 +1,11 @@
 #include "Scene.h"
 #include "Entity.h"
 VeryReal::Scene::Scene() {}
-VeryReal::Scene::~Scene() {}
+VeryReal::Scene::~Scene() {
+    for (auto e : entities_map) {
+        delete (e.second);
+    }
+}
 
 VeryReal::Entity* VeryReal::Scene::AddEntity(entity_name e_name) {
 	Entity* entity = new Entity();

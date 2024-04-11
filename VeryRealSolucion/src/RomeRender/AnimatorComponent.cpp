@@ -33,7 +33,8 @@ bool AnimatorComponent::InitComponent(std::string name) {
     scene_mngr = RenderManager::Instance()->SceneManagerOgree();
     name = name;
     num_animations_active = (0);
-
+    loop = false;
+    active = false;
     if (GetEntity()->HasComponent("TransformComponent")) transform = GetEntity()->GetComponent<TransformComponent>("TransformComponent");
     else {
         #ifdef DEBUG_MODE

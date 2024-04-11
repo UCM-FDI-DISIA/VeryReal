@@ -2,6 +2,15 @@
 #include "Scene.h"
 using namespace std;
 
+VeryReal::SceneManager::~SceneManager(){ 
+	
+	for (auto it : scenes_list) {
+        delete (it);
+	}
+
+};
+
+
 void VeryReal::SceneManager::Update(const double& dt) {
 	for (auto it : scenes_list) if (it->GetActive())it->Update(dt);
 	Refresh();

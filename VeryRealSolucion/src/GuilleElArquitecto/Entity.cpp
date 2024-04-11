@@ -1,7 +1,11 @@
 #include "Entity.h"
 #include "Component.h"
 VeryReal::Entity::Entity() : is_alive(true) {}
-VeryReal::Entity::~Entity() {}
+VeryReal::Entity::~Entity() {
+    for (auto c : components_map) {
+        delete (c.second);
+    }
+}
 
 void VeryReal::Entity::RemoveComponent(component_name c_name) {
 	if (HasComponent(c_name)) {

@@ -17,7 +17,7 @@ namespace VeryReal {
 		std::list<VeryReal::Scene*> scenes_list;
 	public:
         SceneManager(){};
-		virtual ~SceneManager(){};
+		virtual ~SceneManager();
 
 		void Update(const double& dt);
 		//si hay escenas que quieren ser eliminadas las removemos aquí
