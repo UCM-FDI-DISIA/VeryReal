@@ -23,9 +23,10 @@ namespace VeryReal {
     class VERYREAL_API RigidBodyComponent : public Component {
     public:
         RigidBodyComponent();
-      
+
         bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, int movementType = MOVEMENT_TYPE_DYNAMIC,
-                           bool trigger = false, Vector3 s);
+                           bool trigger = false, Vector3 s = Vector3(1, 1, 1));
+
         virtual ~RigidBodyComponent();
 
         // Funciones para manipular el cuerpo rígido
