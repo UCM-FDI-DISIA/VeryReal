@@ -34,11 +34,7 @@ private:
     btCollisionDispatcher* collisionDispatcher;
     btBroadphaseInterface* broadphase;
     btSequentialImpulseConstraintSolver* solver;
-
-
-protected:
     PedroBullet();
-
 
 public:
 

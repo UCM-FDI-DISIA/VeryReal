@@ -14,14 +14,6 @@
 #include "PhysicsValues.h"
 #include "ColliderComponent.h"
 
-// Constructor
-PedroBullet::PedroBullet() :
-    dynamicWorld(nullptr),
-    collisionConfig(nullptr),
-    collisionDispatcher(nullptr),
-    broadphase(nullptr),
-    solver(nullptr) {
-}
 
 // Destructor
 PedroBullet::~PedroBullet() {
@@ -103,7 +95,13 @@ bool callBackStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
 
 
 // Initialize Bullet Physics
-void PedroBullet::Init() {
+void PedroBullet::Init()
+{
+    dynamicWorld = nullptr;
+    collisionConfig = nullptr ;
+    collisionDispatcher = nullptr;
+    broadphase = nullptr;
+    solver = nullptr; 
     collisionConfig = new btDefaultCollisionConfiguration();
     collisionDispatcher = new btCollisionDispatcher(collisionConfig);
     broadphase = new btDbvtBroadphase();

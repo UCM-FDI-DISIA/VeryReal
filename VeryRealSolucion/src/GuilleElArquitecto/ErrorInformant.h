@@ -55,8 +55,8 @@ class VERYREAL_API ErrorInformant : public VeryReal::Singleton<ErrorInformant> {
 		/// @return options -> Opción seleccionada por el usuario en la ventana de error
 		options showErrorMessageBox(std::string ErrorName = "Unknown error", std::string ErrorMessage = "Description not avaliable", errorType ErrorType = EI_UNKNOWN, windowType = EI_W_OK);
 
-private:
-	ErrorInformant() {};
+	private:
+        ErrorInformant();
 };
 
 /// Singleton instance

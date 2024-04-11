@@ -15,8 +15,9 @@ namespace VeryReal {
 	private:
 		//lista con todas la escenas
 		std::list<VeryReal::Scene*> scenes_list;
+    SceneManager();
 	public:
-        SceneManager(){};
+              
 		virtual ~SceneManager();
 
 		void Update(const double& dt);

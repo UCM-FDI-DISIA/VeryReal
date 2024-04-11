@@ -9,9 +9,10 @@ namespace VeryReal {
     class VERYREAL_API Manager : public Singleton<T> {
 		friend Singleton<T>;
 	private:
+         Manager();
 
 	public:
-		Manager() {}
+    
 		virtual ~Manager() {}
 		virtual void Update(const double& dt) {}
 	};

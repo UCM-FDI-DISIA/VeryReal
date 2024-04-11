@@ -7,34 +7,34 @@
 using namespace VeryReal;
 using namespace FMOD;
 
-AudioLeon::AudioLeon() {
-	result = FMOD::System_Create(&sound_system); // Create the main system object.
-	CheckFMODResult(result);
+void AudioLeon::Init() {
+    result = FMOD::System_Create(&sound_system);   // Create the main system object.
+    CheckFMODResult(result);
 
-	result = sound_system->init(MAX_CHANNELS, FMOD_INIT_NORMAL | FMOD_INIT_3D_RIGHTHANDED, 0);    // Initialize FMOD.
-	CheckFMODResult(result);
+    result = sound_system->init(MAX_CHANNELS, FMOD_INIT_NORMAL | FMOD_INIT_3D_RIGHTHANDED, 0);   // Initialize FMOD.
+    CheckFMODResult(result);
 
-	result = sound_system->set3DSettings(DOPPLER_SCALE, DISTANCE_FACTOR, ROLLOFF_SCALE);
-	CheckFMODResult(result);
+    result = sound_system->set3DSettings(DOPPLER_SCALE, DISTANCE_FACTOR, ROLLOFF_SCALE);
+    CheckFMODResult(result);
 
-	sound_system->createChannelGroup("master", &master);
-	channel_group_maps["master"] = master;
-	sound_system->createChannelGroup("effects", &effects);
-	channel_group_maps["effects"] = effects;
-	sound_system->createChannelGroup("music", &music);
-	channel_group_maps["music"] = music;
+    sound_system->createChannelGroup("master", &master);
+    channel_group_maps ["master"] = master;
+    sound_system->createChannelGroup("effects", &effects);
+    channel_group_maps ["effects"] = effects;
+    sound_system->createChannelGroup("music", &music);
+    channel_group_maps ["music"] = music;
 
-	master->addGroup(effects);
-	master->addGroup(music);
+    master->addGroup(effects);
+    master->addGroup(music);
 
-	listeners = std::vector<bool>(FMOD_MAX_LISTENERS, false); // Vector used to know which listeners are being used
+    listeners = std::vector<bool>(FMOD_MAX_LISTENERS, false);   // Vector used to know which listeners are being used
 
-	channels_vector.reserve(MAX_CHANNELS);
-	for (int i = 0; i < MAX_CHANNELS; i++) {
-		channels_vector.push_back(nullptr);
-	}
-	
-	InitAudioRecording();
+    channels_vector.reserve(MAX_CHANNELS);
+    for (int i = 0; i < MAX_CHANNELS; i++) {
+        channels_vector.push_back(nullptr);
+    }
+
+    InitAudioRecording();
 }
 
 void AudioLeon::InitAudioRecording() {

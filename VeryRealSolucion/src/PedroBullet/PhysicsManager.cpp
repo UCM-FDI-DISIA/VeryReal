@@ -8,12 +8,15 @@
 #include "Entity.h"
 #include "RigidBodyComponent.h"
 
-VeryReal::PhysicsManager::PhysicsManager()
-    : collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) {
-    // Constructor vac�o
-}
 
 bool VeryReal::PhysicsManager::Initialize() {
+    collisionConfiguration=nullptr;
+
+    dispatcher = nullptr;
+    overlappingPairCache = nullptr;
+    solver=nullptr; 
+    dynamicsWorld = nullptr;
+        // Constructor vac�o
     // Inicializar el mundo de f�sica, configuraci�n de colisiones, etc.
     collisionConfiguration = new btDefaultCollisionConfiguration();
     if (!collisionConfiguration) {

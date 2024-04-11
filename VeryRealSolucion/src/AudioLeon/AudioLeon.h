@@ -45,6 +45,7 @@ namespace VeryReal {
 	class VERYREAL_API AudioLeon : public VeryReal::Manager<AudioLeon> {
 		friend Singleton<AudioLeon>;
 		AudioLeon();
+        void Init();
 		//Inicializacion de los recursos necesarios para recoger input del microfono
 		void InitAudioRecording();
 		//Almacena los sonidos de FMOD enlazados al nombre establecido por el usuario.
