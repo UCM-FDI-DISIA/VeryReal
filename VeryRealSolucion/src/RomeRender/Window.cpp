@@ -18,7 +18,14 @@ Window::Window():root(nullptr),render_system(nullptr),scene_manager(nullptr), na
 
 
 Window::~Window() {
-    if (ogre_window != nullptr) root->destroyRenderTarget(ogre_window);
+   
+    if (ogre_window != nullptr) {
+      
+
+        root->destroyRenderTarget(ogre_window);
+        ogre_window->destroy();
+        delete (ogre_window);
+    }
     if (sdl_window != nullptr) {
         SDL_DestroyWindow(sdl_window);
         SDL_VideoQuit();
@@ -33,30 +40,7 @@ bool Window::Init(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::Sce
     this->scene_manager = scene_manager;   
     return true;
 }
-void  Window::demo(){
 
-    //ESTO NO VA AQUI ES SOLO PARA LA DEMO
-    
-    //asignamos la 
-    std::string ruta = config_route + "\\..\\Assets";
-    Ogre::ResourceGroupManager::getSingleton().addResourceLocation(ruta, "FileSystem");
-    Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
-    //luz principal
-    Ogre::Light* light = scene_manager->createLight("LuzPrincipal");
-    Ogre::SceneNode* lightNode = scene_manager->getRootSceneNode()->createChildSceneNode();
-    lightNode->setPosition(-10, 0, 0);
-    lightNode->attachObject(light);
-
-   
-
-    //cargamos sinbad SOLO SE PUEDEN CARGAR .MESH
-    Ogre::Entity* ent = scene_manager->createEntity("Sinbad.mesh");
-    Ogre::SceneNode* node = scene_manager->getRootSceneNode()->createChildSceneNode();
-    node->attachObject(ent);
-    //BUCLE PARA QUE NO SE CIERRE LA VENANA SE TIENE QUE QUITAR
-    root->startRendering();
-
-}
 bool  Window::CreateWindoww() {
    
     Ogre::NameValuePairList miscParams;

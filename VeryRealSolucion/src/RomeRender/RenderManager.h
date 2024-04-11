@@ -20,7 +20,8 @@ namespace VeryReal {
 	class Camera;
 	class Animator;
 	class SGTechniqueResolverListener;
-}
+        class Entity;
+ }
 
 
 namespace Ogre {
@@ -33,7 +34,7 @@ namespace Ogre {
 	class RenderWindow;
 	class ManualObject;
 	class Viewport;
-
+    class Entity;
 	namespace RTShader {
 		class ShaderGenerator;
 	}
@@ -70,6 +71,7 @@ namespace VeryReal {
 		// Elimina un nodo de escena de Ogre
 		// @param nod Puntero al nodo de escena que se eliminará
 		void DeleteNode(Ogre::SceneNode* nod);
+        void DeleteEntity(Ogre::Entity* nod);
 		
 		Ogre::RenderWindow* GetRenderWindow();
         Ogre::Root* GetRenderRoot();

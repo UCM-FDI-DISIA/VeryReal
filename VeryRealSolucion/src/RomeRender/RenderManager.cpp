@@ -14,11 +14,23 @@
 #include "Window.h"
 #include "SGTechniqueResolverListener.h"
 #include "conversorvectores.h"
-
+#include "OgreEntity.h"
 //mehrender, camara y eso
 VeryReal::RenderManager::RenderManager()
     : window(nullptr), root(nullptr), scene_manager(nullptr), render_system(nullptr), viewport(nullptr), filesystem_layer(nullptr), shader_generator(nullptr), material_listener(nullptr) { }
 VeryReal::RenderManager::~RenderManager() {
+
+    // Desalojar todos los recursos cargados
+    Ogre::ResourceGroupManager::getSingleton().unloadUnreferencedResourcesInGroup(Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+    // Limpiar todos los materiales
+    Ogre::MaterialManager::getSingleton().removeAll();
+
+    // Limpiar todas las texturas
+    Ogre::TextureManager::getSingleton().removeAll();
+
+    // Limpiar el MeshManager
+    Ogre::MeshManager::getSingleton().removeAll();
 
     if (root == nullptr) {
 #ifdef DEBUG_MODE
@@ -29,14 +41,15 @@ VeryReal::RenderManager::~RenderManager() {
     //vuelta a la escena por defecto
     root->destroySceneManager(scene_manager);
     Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
-
+    
     UnloadShaders();
     delete (window);
     window = nullptr;
-    delete root;
+    delete (root);
     root = nullptr;
     delete filesystem_layer;
     filesystem_layer = nullptr;
+
 }
 void VeryReal::RenderManager::InitManager(std::string const& name) {
     appname = name;
@@ -175,3 +188,4 @@ void VeryReal::RenderManager::DeleteNode(Ogre::SceneNode* nod) {
 
     // delete(nod);
 }
+void VeryReal::RenderManager::DeleteEntity(Ogre::Entity* nod) { Ogre::MeshManager::getSingleton().remove(nod->getMesh()->getName()); }

@@ -49,8 +49,11 @@ bool MeshRenderComponent::InitComponent(bool isstatic, std::string modelname, st
 //destructora
 MeshRenderComponent::~MeshRenderComponent() {
     if (ent_ogre != nullptr) {
-        mSM->destroyEntity(ent_ogre);
+        ent_ogre->getParentSceneNode()->detachObject(ent_ogre);
         VeryReal::RenderManager::Instance()->DeleteNode(scene_node);
+        VeryReal::RenderManager::Instance()->DeleteEntity(ent_ogre);
+        VeryReal::RenderManager::Instance()->SceneManagerOgree()->destroyEntity(ent_ogre);
+
     }
 }
 

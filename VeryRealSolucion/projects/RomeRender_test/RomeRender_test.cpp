@@ -131,11 +131,13 @@ int main() {
    Component* transform = e->AddComponent("TransformComponent");
    Component* meshrenderer = e->AddComponent("MeshRenderComponent");
 
-   while (true) {
+   //while (true) {
        VeryReal::RenderManager::Instance()->Update(0.2);
        s->Update(0.1);
 
-   }
+  // }
+
+   delete s;
   
  ///* static_cast<CameraComponent*>(cam)->InitComponent("hola", Vector3(0.8, 0.3, 1), 
  //  VeryReal::RenderManager::Instance()->GetRenderWindow(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), Vector3(10, 0, 0));*/

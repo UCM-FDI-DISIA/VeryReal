@@ -40,7 +40,6 @@ namespace VeryReal {
         ///Actualiza la ventana en caso de cerrarla,camviarla de tamaño y así
         /// </summary>
         void Update(const double& dt);
-        void demo();
         // <summary>
         /// Método que devuelve un puntero a la ventana de sdl
         /// </summary>
