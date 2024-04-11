@@ -20,6 +20,7 @@
 #include "CreatorAnimatorComponent.h"
 #include "CreatorTransformComponent.h"
 
+
 const double FRAME_RATE = 0.01;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
@@ -27,6 +28,7 @@ typedef bool(__cdecl* Prueba)();
 typedef bool(__cdecl* Start)();
 
 bool VeryRealProyecto::Init() {
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     VeryReal::InputManager::Instance()->Init();
 	//VeryReal::RenderManager::Init();
 	VR().CreateCreators();
@@ -102,6 +104,7 @@ bool VeryRealProyecto::LoadGame(std::string gameName) {
 		std::cout << "El juego no existe";
 		return false;
 	}
+    FreeLibrary(gameDll);
 	return true;
 }
 
