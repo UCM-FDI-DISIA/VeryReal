@@ -20,16 +20,7 @@ PedroBullet::~PedroBullet() {
     
 }
 
-void PedroBullet::createGround()
-{
-    // Crear el suelo
-    btCollisionShape* groundShape = new btSphereShape(1);
-    btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, -1, 0)));
-    btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, groundMotionState, groundShape, btVector3(0, 0, 0));
-    btRigidBody* groundRigidBody = new btRigidBody(groundRigidBodyCI);
-    dynamicWorld->addRigidBody(groundRigidBody);
 
-}
 
 
 //btPersistentManifold almacena los puntos de contacto entre dos objetos y proporciona métodos para acceder a ambos cuerpos.
@@ -139,12 +130,7 @@ void PedroBullet::Update(float deltaTime) {
 }
 
 
-void PedroBullet::AddRigidBody(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType)
-{
-    VeryReal::RigidBodyComponent* body = new  VeryReal::RigidBodyComponent();
-    body->InitComponent(shapeType, mass, friction, restitution, movementType);
-    //rigidbodies.push_back(body);
-}
+
 
 
 ////Remove a rigid body from the simulation
@@ -153,10 +139,7 @@ void PedroBullet::AddRigidBody(PBShapes shapeType, float mass, float friction, f
 //  delete body;
 //}
 
-void PedroBullet::addForce(btRigidBody* body, btVector3 force)
-{
-    body->btRigidBody::applyForce(force, body->getWorldTransform().getOrigin());
-}
+
 
 void PedroBullet::Cleanup()
 {
@@ -177,11 +160,7 @@ void PedroBullet::Cleanup()
     delete collisionConfig;
 }
 
-btVector3 PedroBullet::V3ToBtV3(VeryReal::Vector3 conversion) const
-{
-    btVector3 newVector = btVector3(conversion.GetX(), conversion.GetY(), conversion.GetZ());
-    return newVector;
-}
+
 
 
 //int main() {

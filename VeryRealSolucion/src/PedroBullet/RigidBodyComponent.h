@@ -23,7 +23,9 @@ namespace VeryReal {
     class VERYREAL_API RigidBodyComponent : public Component {
     public:
         RigidBodyComponent();
-        bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, int movementType = MOVEMENT_TYPE_DYNAMIC, bool trigger = false);
+      
+        bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, int movementType = MOVEMENT_TYPE_DYNAMIC,
+                           bool trigger = false, Vector3 s);
         virtual ~RigidBodyComponent();
 
         // Funciones para manipular el cuerpo rígido
@@ -64,8 +66,8 @@ namespace VeryReal {
         float restitution;
         PBMovementType movementType;
         ColliderComponent* collider = nullptr;
-        bool InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger);
-        btCollisionShape* CreateCollisionShape(PBShapes shapeType);
+        bool InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s);
+        btCollisionShape* CreateCollisionShape(PBShapes shapeType, Vector3 s);
     };
 } 
 

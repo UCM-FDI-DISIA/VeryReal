@@ -21,6 +21,22 @@ class btCollisionObject;
 class btDiscreteDynamicsWorld;
 class btRigidBody;
 
+
+///-----///
+class btCollisionConfiguration;
+class btBroadphaseInterface;
+class btTransform;
+class btVector3;
+class btPersistentManifold;
+
+enum PBShapes;
+enum PBMovementType;
+class RigidBodyComponent;
+class ColliderComponent;
+
+
+
+
 namespace VeryReal {
 class VERYREAL_API PhysicsManager : public Manager<PhysicsManager> {
     public:
@@ -33,9 +49,14 @@ class VERYREAL_API PhysicsManager : public Manager<PhysicsManager> {
 
         btDiscreteDynamicsWorld* GetWorld() const;   // Getter para el mundo físico
 
+
         // Métodos para manejar cuerpos rígidos
-        void AddRigidBody(btRigidBody* body);
-        void RemoveRigidBody(btRigidBody* body);
+        //void AddRigidBody(btRigidBody* body);
+        //void RemoveRigidBody(btRigidBody* body);
+
+        void AddRigidBody(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType);
+
+
 
         std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
 
@@ -45,6 +66,20 @@ class VERYREAL_API PhysicsManager : public Manager<PhysicsManager> {
         btBroadphaseInterface* overlappingPairCache;
         btSequentialImpulseConstraintSolver* solver;
         btDiscreteDynamicsWorld* dynamicsWorld;
+
+
+
+        ///-------//// cosas para hacer pruebas
+        btDiscreteDynamicsWorld* dynamicWorld = nullptr;
+
+
+        void createGround();
+
+        void addForce(btRigidBody* body, btVector3 force);
+
+        void clearForces(btRigidBody* body, btVector3 force);
+
+        btVector3 V3ToBtV3(VeryReal::Vector3 conversion) const;
 
         // Otras variables y métodos privados si son necesarios
     };

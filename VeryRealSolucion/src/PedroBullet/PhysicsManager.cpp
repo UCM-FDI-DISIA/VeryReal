@@ -7,6 +7,21 @@
 #include "Scene.h"
 #include "Entity.h"
 #include "RigidBodyComponent.h"
+
+#include <iostream>
+#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>  //gestion de colisiones, gravedad...
+#include <BulletCollision/CollisionShapes/btSphereShape.h>
+#include <BulletCollision/CollisionShapes/btCylinderShape.h>
+#include <BulletCollision/CollisionShapes/btCapsuleShape.h>
+#include <BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h>
+#include <BulletCollision/BroadphaseCollision/btDbvtBroadphase.h>
+#include <BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h>
+#include <LinearMath/btDefaultMotionState.h>
+#include <LinearMath/btVector3.h>
+#include "RigidBodyComponent.h"
+#include "PhysicsValues.h"
+#include "ColliderComponent.h"
+
 VeryReal::PhysicsManager::PhysicsManager(): collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) { }
 
 bool VeryReal::PhysicsManager::Initialize() {
@@ -78,16 +93,10 @@ void VeryReal::PhysicsManager::Shutdown() {
 
 btDiscreteDynamicsWorld* VeryReal::PhysicsManager::GetWorld() const { return dynamicsWorld; }
 
-void VeryReal::PhysicsManager::AddRigidBody(btRigidBody* body) {
-    if (dynamicsWorld) {
-        dynamicsWorld->addRigidBody(body);
-    }
-}
-
-void VeryReal::PhysicsManager::RemoveRigidBody(btRigidBody* body) {
-    if (dynamicsWorld) {
-        dynamicsWorld->removeRigidBody(body);
-    }
+void VeryReal::PhysicsManager::AddRigidBody(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType) {
+    VeryReal::RigidBodyComponent* body = new VeryReal::RigidBodyComponent();
+    body->InitComponent(shapeType, mass, friction, restitution, movementType);
+    //rigidbodies.push_back(body);
 }
 
 std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End) {
@@ -121,4 +130,33 @@ std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vec
 
 VeryReal::PhysicsManager::~PhysicsManager() {
     Shutdown();  
+}
+
+
+
+///-------//// cosas para hacer pruebas
+
+
+void VeryReal::PhysicsManager::createGround() {
+    // Crear el suelo
+    btCollisionShape* groundShape = new btSphereShape(1);
+    btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, -1, 0)));
+    btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, groundMotionState, groundShape, btVector3(0, 0, 0));
+    btRigidBody* groundRigidBody = new btRigidBody(groundRigidBodyCI);
+    dynamicWorld->addRigidBody(groundRigidBody);
+}
+
+
+
+void VeryReal::PhysicsManager::addForce(btRigidBody* body, btVector3 force) {
+    body->btRigidBody::applyForce(force, body->getWorldTransform().getOrigin()); 
+}
+
+void VeryReal::PhysicsManager::clearForces(btRigidBody* body, btVector3 force) {
+    body->btRigidBody::clearForces();
+}
+
+btVector3 VeryReal::PhysicsManager::V3ToBtV3(VeryReal::Vector3 conversion) const {
+    btVector3 newVector = btVector3(conversion.GetX(), conversion.GetY(), conversion.GetZ());
+    return newVector;
 }

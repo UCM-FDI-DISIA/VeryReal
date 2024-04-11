@@ -4,6 +4,7 @@
 #include <btBulletDynamicsCommon.h>
 #include "Entity.h"
 #include "ColliderComponent.h"
+#include <Vector3.cpp>
 
 using namespace VeryReal;
 
@@ -11,20 +12,20 @@ RigidBodyComponent::RigidBodyComponent()
     : mass(0), friction(0), restitution(0), movementType(MOVEMENT_TYPE_DYNAMIC), isTrigger(false) {
     
 }
-bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType, bool trigger) {
+bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType, bool trigger, Vector3 s) {
    // this->shapeType = shapeType;
     this->mass = mass;
     this->friction = friction;
     this->restitution = restitution;
     this->movementType = (PBMovementType)movementType;
     this-> isTrigger = trigger;
-    return InitializeRigidBody((PBShapes)shapeType, this->movementType, trigger);
+    return InitializeRigidBody((PBShapes)shapeType, this->movementType, trigger, s);
 }
 RigidBodyComponent::~RigidBodyComponent() {
 
 }
 
-bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger) {
+bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s) {
     transformComponent = this->GetEntity()->GetComponent<TransformComponent>("TransformComponent");
     if (transformComponent == nullptr) {
         #ifdef DEBUG_MODE
@@ -35,7 +36,7 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
     }
 
     delete collisionShape;
-    collisionShape = CreateCollisionShape(shapeType);
+    collisionShape = CreateCollisionShape(shapeType, s);
     //collisionShape.reset(CreateCollisionShape(shapeType));
     
     btVector3 localInertia(0, 0, 0);
@@ -84,12 +85,17 @@ btRigidBody* RigidBodyComponent::GetBulletRigidBody()
 btCollisionShape* RigidBodyComponent::GetCollisionShape() { 
     return collisionShape;
 }
-
-btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType) {
+//La x es el radio en las esferas, cilindros y capsulas y la y la altura
+btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType, Vector3 s) {
     switch (shapeType) {
-    case SHAPES_BOX:
-        return new btBoxShape(btVector3(1, 1, 1)); 
-
+    case SHAPES_BOX : return new btBoxShape(btVector3(s.GetX(),s.GetY(),s.GetZ())); 
+        break;
+    case SHAPES_SPHERE : return new btSphereShape(btScalar(s.GetX())); 
+        break;
+    case SHAPES_CYLINDER : return new btCylinderShape(btVector3(s.GetX(),s.GetY(),s.GetZ())); 
+        break;
+    case SHAPES_CAPSULE : return new btCapsuleShape(btScalar(s.GetX()),btScalar(s.GetY()));
+        break;
     default:
         return nullptr;
     }
