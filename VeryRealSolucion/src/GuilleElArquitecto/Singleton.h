@@ -15,7 +15,7 @@ class Singleton
 	public:
 		VeryReal::Singleton<T>& operator=(const VeryReal::Singleton<T>& o) = delete;
 		Singleton(const VeryReal::Singleton<T>& o) = delete;
-		virtual ~Singleton() {}
+        virtual ~Singleton() { this->instance_pointer.release(); }
 
 		//devuelve la clase singelton:
 			//->Si no existe lo crea llamando a Init
@@ -36,7 +36,9 @@ class Singleton
 
 		//elimina el puntero de la instancia
         static void Delete() {
-            instance_pointer.reset(); 
+            if (instance_pointer.get() != nullptr) {
+                    instance_pointer.release();
+            }
         }
 	};
 
