@@ -49,7 +49,17 @@ namespace VeryReal {
 		//Devuelve el componente especifico y si no esta devuelve nullptr
 		template<typename T>
 		inline T* GetComponent() {
-            component_name n = typeid(T).name();
+            component_name n;
+            std::string fullName = typeid(T).name();
+
+            // Esto busca la ultima aparicion de ':' para obtener solo el nombre de la clase
+            size_t pos = fullName.find_last_of(':');
+            if (pos != std::string::npos && pos + 1 < fullName.length()) {
+                n = fullName.substr(pos + 1);
+            }
+            else {
+                n = fullName;
+            }
 			if (!HasComponent(n)) {
 				return nullptr;
 			}
