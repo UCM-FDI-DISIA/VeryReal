@@ -44,4 +44,7 @@ namespace VeryReal {
 //	return *ScriptManager::Instance();
 //}
 }
+
+#pragma warning(default : 4251)
+
 #endif // !_SCRIPT_MANAGER
