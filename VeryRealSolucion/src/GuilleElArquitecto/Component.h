@@ -15,7 +15,7 @@ namespace VeryReal {
 		
 	public:
 		Component() {}
-		virtual ~Component() {}
+		virtual ~Component();
 		virtual void Update(const double& dt) {}
 
 		//Indica si el Componente está activo o no

@@ -1,12 +1,8 @@
 #include "Creator.h"
-
-//VeryReal::Creator::Creator() {
-//
-//}
-//VeryReal::Creator::~Creator() {
-//	for (auto& c : creators_map)delete c.second;
-//	creators_map.clear();
-//}
+VeryReal::Creator::~Creator() {
+	for (auto& c : creators_map)delete c.second;
+	creators_map.clear();
+}
 void VeryReal::Creator::AddCreator(const creator_name& c_name, CreatorComponent* cretorcomponent) {
 	RemoveCreator(c_name);
 	creators_map.insert({ c_name,cretorcomponent });
