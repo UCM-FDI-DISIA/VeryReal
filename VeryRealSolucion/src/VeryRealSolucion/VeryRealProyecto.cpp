@@ -21,6 +21,9 @@
 #include "CreatorTransformComponent.h"
 
 
+#include <filesystem>
+
+
 const double FRAME_RATE = 0.01;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
@@ -32,7 +35,10 @@ bool VeryRealProyecto::Init() {
     VeryReal::InputManager::Instance()->Init();
 	//VeryReal::RenderManager::Init();
 	VR().CreateCreators();
-	LoadGame("OgremanSolucion");
+
+	std::filesystem::path path = std::filesystem::current_path().parent_path().parent_path().parent_path();
+    std::string dllName = path.filename().string() + "Solucion"; 
+	LoadGame(dllName);
     Start startFunction = (Start)GetProcAddress(gameDll, "start");
     if (startFunction != NULL) {
         startFunction();
