@@ -24,9 +24,6 @@
     <ClCompile Include="..\..\src\PedroBullet\PhysicsManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\PedroBullet\CollisionMatrix.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\PedroBullet\CreatorColliderComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -45,9 +42,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\PedroBullet\PhysicsManager.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\PedroBullet\CollisionMatrix.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\PedroBullet\CreatorColliderComponent.h">

@@ -51,10 +51,6 @@ public:
     btDiscreteDynamicsWorld* GetWorld() const;   // Getter para el mundo físico
 
 
-    // Métodos para manejar cuerpos rígidos
-    //void AddRigidBody(btRigidBody* body);
-    //void RemoveRigidBody(btRigidBody* body);
-
     void AddRigidBody(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType);
 
 
