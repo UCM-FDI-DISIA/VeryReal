@@ -2,14 +2,14 @@
 #ifndef UITRANSFORMCOMPONENT
 #define UITRANSFORMCOMPONENT
 #include "Component.h"
+#include "Vector2.h"
 #include "string"
-#include <Vector2.h>
 namespace Ogre {
 
    
 }
 namespace VeryReal {
-   
+
     class UITransformComponent : public Component {
 
       public:
@@ -19,7 +19,7 @@ namespace VeryReal {
         virtual ~UITransformComponent();
 
         // Inicializa el componente 
-        bool InitComponent(VeryReal::Vector2 position, VeryReal::Vector2 scale);
+        bool InitComponent(VeryReal::Vector2 pos, VeryReal::Vector2 scale, bool hide = false, bool interact = false);
        
     
         void Update(const double& dt) override;

@@ -1,13 +1,14 @@
-
 #include "UITransformComponent.h"
+
 using namespace VeryReal;
 using namespace std;
 
 UITransformComponent::UITransformComponent() { 
-    hidden = interactive = false;
+
 }
-bool UITransformComponent::InitComponent(VeryReal::Vector2 position, VeryReal::Vector2 scale) {
-    
+bool UITransformComponent::InitComponent(VeryReal::Vector2 pos, VeryReal::Vector2 scale, bool hide, bool interact) {
+    position = pos;
+    size = scale;
     return true;
 }
 UITransformComponent::~UITransformComponent() { }
