@@ -25,7 +25,7 @@ namespace VeryReal {
         RigidBodyComponent();
 
         bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, int movementType = MOVEMENT_TYPE_DYNAMIC,
-                           bool trigger = false, Vector3 s = Vector3(1, 1, 1));
+                           bool trigger = false, Vector3 s = Vector3(1, 1, 1), int mask = -1, int group = 1);
 
         virtual ~RigidBodyComponent();
 
@@ -55,11 +55,23 @@ namespace VeryReal {
 
         btCollisionShape* GetCollisionShape();
 
+        // Getter y Setter de mascara de colision
+        void setMask(const int n);
+        int getMask() const;
+
+        // Getter y Setter de grupo de colision
+        void setGroup(const int n);
+        int getGroup() const;
+
     private:
         TransformComponent* transformComponent;
         btCollisionShape* collisionShape;
         std::unique_ptr<btDefaultMotionState> motionState;
         btRigidBody* rigidBody;
+
+        //grupos y mascaras de colision
+        int mask;
+        int group;
 
         bool isTrigger;
         float mass;
@@ -67,7 +79,7 @@ namespace VeryReal {
         float restitution;
         PBMovementType movementType;
         ColliderComponent* collider = nullptr;
-        bool InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s);
+        bool InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int mask, int group);
         btCollisionShape* CreateCollisionShape(PBShapes shapeType, Vector3 s);
     };
 } 

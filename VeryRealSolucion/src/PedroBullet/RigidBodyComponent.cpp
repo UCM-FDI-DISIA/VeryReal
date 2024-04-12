@@ -12,20 +12,21 @@ RigidBodyComponent::RigidBodyComponent()
     : mass(0), friction(0), restitution(0), movementType(MOVEMENT_TYPE_DYNAMIC), isTrigger(false) {
     
 }
-bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType, bool trigger, Vector3 s) {
+bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType, bool trigger, Vector3 s, int m, int g) {
    // this->shapeType = shapeType;
     this->mass = mass;
     this->friction = friction;
     this->restitution = restitution;
     this->movementType = (PBMovementType)movementType;
     this-> isTrigger = trigger;
-    return InitializeRigidBody((PBShapes)shapeType, this->movementType, trigger, s);
+    return InitializeRigidBody((PBShapes)shapeType, this->movementType, trigger, s, m, g);
+    
 }
 RigidBodyComponent::~RigidBodyComponent() {
 
 }
 
-bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s) {
+bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int m, int g) {
     transformComponent = this->GetEntity()->GetComponent<TransformComponent>();
     if (transformComponent == nullptr) {
         #ifdef DEBUG_MODE
@@ -75,6 +76,10 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
     }
 
+    //mascaras de bits y grupos de colision
+    setMask(m);
+    setGroup(g);
+
     return true;
 }
 btRigidBody* RigidBodyComponent::GetBulletRigidBody() 
@@ -83,8 +88,33 @@ btRigidBody* RigidBodyComponent::GetBulletRigidBody()
 }
 
 btCollisionShape* RigidBodyComponent::GetCollisionShape() { 
-    return collisionShape;
+    return collisionShape; }
+
+
+void VeryReal::RigidBodyComponent::setMask(const int n) {
+    if (rigidBody != nullptr) {
+        mask = n;
+
+        btBroadphaseProxy* bdProxy = rigidBody->getBroadphaseProxy();
+        bdProxy->m_collisionFilterMask = n;
+    }
 }
+
+int VeryReal::RigidBodyComponent::getMask() const { return mask; }
+
+
+void VeryReal::RigidBodyComponent::setGroup(const int n) {
+
+    if (rigidBody != nullptr) {
+
+        group = n;
+        btBroadphaseProxy* bdProxy = rigidBody->getBroadphaseProxy();
+        bdProxy->m_collisionFilterGroup = n;
+    }
+}
+
+int VeryReal::RigidBodyComponent::getGroup() const { return group; }
+
 //La x es el radio en las esferas, cilindros y capsulas y la y la altura
 btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType, Vector3 s) {
     switch (shapeType) {
