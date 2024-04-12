@@ -6,7 +6,7 @@ using namespace std;
 UITransformComponent::UITransformComponent() { 
     hidden = interactive = false;
 }
-bool UITransformComponent::InitComponent() {
+bool UITransformComponent::InitComponent(VeryReal::Vector2 position, VeryReal::Vector2 scale) {
     
     return true;
 }

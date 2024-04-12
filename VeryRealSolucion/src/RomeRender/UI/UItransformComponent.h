@@ -19,7 +19,7 @@ namespace VeryReal {
         virtual ~UITransformComponent();
 
         // Inicializa el componente 
-        bool InitComponent();
+        bool InitComponent(VeryReal::Vector2 position, VeryReal::Vector2 scale);
        
     
         void Update(const double& dt) override;
