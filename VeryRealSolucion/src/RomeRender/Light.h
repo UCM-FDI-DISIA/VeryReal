@@ -82,7 +82,9 @@ namespace  VeryReal {
 
         
         /// <returns>true si las sombras están activadas, false si no.</returns>
-        bool  areShadowsActivated() const;
+        bool areShadowsActivated() const;
+
+        void setVisible(bool visibility);
 
     protected:
         Ogre::Light* light=nullptr;

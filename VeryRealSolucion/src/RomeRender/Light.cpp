@@ -130,3 +130,7 @@ float Light::getSpotlightNearClipDistance() const {
 bool Light::areShadowsActivated() const {
 	return shdws;
 }
+
+void Light::setVisible(bool visibility) { 
+	mNode->setVisible(visibility); 
+}
