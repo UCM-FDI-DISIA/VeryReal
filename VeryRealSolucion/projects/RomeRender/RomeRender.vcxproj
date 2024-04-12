@@ -28,7 +28,7 @@
     <ClCompile Include="..\..\src\RomeRender\UI\UIProgressBarComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\UISpriteRenderComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\UITextComponent.cpp" />
-    <ClCompile Include="..\..\src\RomeRender\UI\UItransformComponent.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\UI\UITransformComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -48,7 +48,7 @@
     <ClInclude Include="..\..\src\RomeRender\UI\UIProgressBarComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\UI\UISpriteRenderComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\UI\UITextComponent.h" />
-    <ClInclude Include="..\..\src\RomeRender\UI\UItransformComponent.h" />
+    <ClInclude Include="..\..\src\RomeRender\UI\UITransformComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

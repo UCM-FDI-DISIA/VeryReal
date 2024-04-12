@@ -63,7 +63,7 @@
     <ClCompile Include="..\..\src\RomeRender\UI\UITextComponent.cpp">
       <Filter>Archivos de origen\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\RomeRender\UI\UItransformComponent.cpp">
+    <ClCompile Include="..\..\src\RomeRender\UI\UITransformComponent.cpp">
       <Filter>Archivos de origen\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\RomeRender\CreatorAnimatorComponent.cpp">
@@ -119,7 +119,7 @@
     <ClInclude Include="..\..\src\RomeRender\UI\UITextComponent.h">
       <Filter>Archivos de encabezado\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\RomeRender\UI\UItransformComponent.h">
+    <ClInclude Include="..\..\src\RomeRender\UI\UITransformComponent.h">
       <Filter>Archivos de encabezado\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\CreatorAnimatorComponent.h">
