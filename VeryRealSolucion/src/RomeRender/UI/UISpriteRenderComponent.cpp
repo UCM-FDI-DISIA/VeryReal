@@ -70,5 +70,5 @@ UiSpriteRenderer::UiSpriteRenderer()
 }
 UiSpriteRenderer::~UiSpriteRenderer() { }
 
-bool UiSpriteRenderer::InitComponent() { return false; }
+bool UiSpriteRenderer::InitComponent(std::string name, std::string material, int order) { return false; }
 void UiSpriteRenderer::Update(const double& dt) { }

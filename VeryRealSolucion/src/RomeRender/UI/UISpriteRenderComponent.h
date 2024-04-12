@@ -12,7 +12,7 @@ class VERYREAL_API UiSpriteRenderer : public Component {
             // Destructor de la clase UiSpriteRendererComponent
         virtual ~UiSpriteRenderer();
         // Inicializa el componente
-        bool InitComponent();
+        bool InitComponent(std::string name, std::string material, int order);
         void Update(const double& dt) override;
             void demo();
 
