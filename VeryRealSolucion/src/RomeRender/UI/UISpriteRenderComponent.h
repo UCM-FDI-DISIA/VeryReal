@@ -5,7 +5,7 @@
 #include <string>
 
 namespace VeryReal {
-    class UiSpriteRenderer : public Component {
+class VERYREAL_API UiSpriteRenderer : public Component {
       public:
         //constructora de la clase UiSpriteRendererComponent
         UiSpriteRenderer();

@@ -1,0 +1,17 @@
+material UI/test
+{
+	technique
+	{
+		pass
+		{
+			depth_check off
+			lighting off
+			scene_blend alpha_blend
+			texture_unit 
+			{
+				texture prueba.png
+				colour_op replace
+			}
+		}
+	}
+}

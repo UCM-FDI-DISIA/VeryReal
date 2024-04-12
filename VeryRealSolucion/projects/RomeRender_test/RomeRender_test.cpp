@@ -21,8 +21,6 @@ using namespace VeryReal;
 class VeryReal::UiSpriteRenderer;
 
 int main() {
-    //UiSpriteRenderer* prueba = new UiSpriteRenderer();
-    //prueba->demo();
     //#pragma region Prueba Animator->FUNCIONA
 //    VeryReal::Creator::Instance()->AddCreator("animator", new VeryReal::CreatorAnimatorComponent());
 //    Creator::Instance()->GetCreator("animator")->AddParameter("name", "anim");
@@ -129,13 +127,15 @@ int main() {
    Component* trans = luz->AddComponent("TransformComponent");
    Component* luzcom = luz->AddComponent("Light");
    Component* transform = e->AddComponent("TransformComponent");
-   Component* meshrenderer = e->AddComponent("MeshRenderComponent");
+   //Component* meshrenderer = e->AddComponent("MeshRenderComponent");
+   UiSpriteRenderer* prueba = new UiSpriteRenderer();
+    prueba->demo();
 
-   //while (true) {
+   while (true) {
        VeryReal::RenderManager::Instance()->Update(0.2);
        s->Update(0.1);
 
-  // }
+   }
 
    delete s;
   

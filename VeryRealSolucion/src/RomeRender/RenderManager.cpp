@@ -3,6 +3,8 @@
 #include <Ogre.h>
 #include <OgreFileSystem.h>
 #include <OgreFileSystemLayer.h>
+#include <OgreOverlayManager.h>
+#include <OgreOverlaySystem.h>
 #include <OgreRTShaderSystem.h>
 #pragma warning(disable : 4251)
 
@@ -78,6 +80,9 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
     if (!root->restoreConfig()) {
         root->showConfigDialog(nullptr);
     }
+
+    overlay_system = new Ogre::OverlaySystem();
+    overlay_manager = Ogre::OverlayManager::getSingletonPtr();
     //inicializamos root pero sin ventana
     root->initialise(false);
 
@@ -135,6 +140,7 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
     }
 
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+    VeryReal::RenderManager::Instance()->SceneManagerOgree()->addRenderQueueListener(overlay_system);
 }
 
 
@@ -172,6 +178,9 @@ void VeryReal::RenderManager::UnloadShaders() {
 Ogre::RenderWindow* VeryReal::RenderManager::GetRenderWindow() { return window->GetOgreWindow(); }
 Ogre::Root* VeryReal::RenderManager::GetRenderRoot() { return root; }
 Ogre::SceneManager* VeryReal::RenderManager::SceneManagerOgree() { return scene_manager; }
+Ogre::OverlayManager* VeryReal::RenderManager::GetOverlayManager() { return overlay_manager; }
+Ogre::OverlaySystem* VeryReal::RenderManager::GetOverlaySystem() { return overlay_system; }
+void VeryReal::RenderManager::sayHola() { std::cout << "hola"; }
 void VeryReal::RenderManager::Update(const double& dt) { root->renderOneFrame(); }
 
 Ogre::SceneNode* VeryReal::RenderManager::CreateNode(VeryReal::Vector3 vec) {

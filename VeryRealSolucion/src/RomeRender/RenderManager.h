@@ -32,6 +32,8 @@ namespace Ogre {
 	class SceneManager;
 	class RenderSystem;
 	class RenderWindow;
+    class OverlayManager;
+    class OverlaySystem;
 	class ManualObject;
 	class Viewport;
     class Entity;
@@ -42,7 +44,7 @@ namespace Ogre {
 
 namespace VeryReal {
 	// Declaración de la clase RenderManager, que hereda de Manager
-	class /*VERYREAL_API*/ RenderManager : public Manager<RenderManager> {
+	class VERYREAL_API RenderManager : public Manager<RenderManager> {
                
                 
 	public: 
@@ -78,8 +80,12 @@ namespace VeryReal {
 		Ogre::RenderWindow* GetRenderWindow();
         Ogre::Root* GetRenderRoot();
 		Ogre::SceneManager* SceneManagerOgree();
+        Ogre::OverlayManager* GetOverlayManager();
+        Ogre::OverlaySystem* GetOverlaySystem();
 		// Capa del sistema de archivos de Ogre
 		Ogre::FileSystemLayer* filesystem_layer;
+
+		void sayHola();
 	protected:
 		// Puntero a la ventana de la aplicación
 		VeryReal::Window* window;
@@ -92,6 +98,12 @@ namespace VeryReal {
 
 		// Sistema de renderizado de Ogre
 		Ogre::RenderSystem* render_system;
+
+		//Manager del sistema de overlay de ogre
+		Ogre::OverlayManager* overlay_manager;
+
+		//Sistema de overlay de Ogre
+		Ogre::OverlaySystem* overlay_system;
 
 		// Ruta de configuración
 		std::string cfgPath;

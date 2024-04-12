@@ -13,6 +13,7 @@
 #include <OgreOverlayManager.h>
 #include <OgreOverlay.h>
 #include <OgreOverlaySystem.h>
+#include <OgreTextAreaOverlayElement.h>
 #include <OgreOverlayContainer.h>
 #include <OgreMaterialManager.h>
 #include "OgreTechnique.h"
@@ -23,29 +24,44 @@ using namespace VeryReal;
 
 void UiSpriteRenderer::demo() { 
 
-	VeryReal::RenderManager::Instance()->InitManager("app");
-    Ogre::OverlaySystem* overlaySystem = new Ogre::OverlaySystem();
-    Ogre::OverlayManager& overlayManager = Ogre::OverlayManager::getSingleton();
-    Ogre::Overlay* overlay = overlayManager.create("OverlaySprite");
-    Ogre::SceneManager* mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
-    Ogre::Camera* camera = mgr->createCamera("CamaraPrincipal");
-    Ogre::OverlayContainer* container = dynamic_cast<Ogre::OverlayContainer*>(overlayManager.createOverlayElement("Panel", "PanelContainer"));
-    container->setPosition(0, 0);
-    container->setDimensions(1, 1);
-    overlay->add2D(container);
-    Ogre::OverlayElement* sprite = overlayManager.createOverlayElement("Panel", "Sprite");
-    sprite->setDimensions(100, 100);             // Tamaño del sprite
-    sprite->setPosition(100, 100);               // Posición del sprite
-    sprite->setMaterialName("MaterialSprite");   // Nombre del material del sprite
-    container->addChild(sprite);
-    Ogre::MaterialPtr material =
-        Ogre::MaterialManager::getSingleton().create("MaterialSprite", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-    material->getTechnique(0)->getPass(0)->createTextureUnitState("prueba.png");
-    Ogre::Viewport* viewport = VeryReal::RenderManager::Instance()->GetRenderWindow()->addViewport(camera);
-    viewport->setBackgroundColour(Ogre::ColourValue(0.0, 0.0, 0.0));
-    camera->setAspectRatio(Ogre::Real(viewport->getActualWidth()) / Ogre::Real(viewport->getActualHeight()));
+    #pragma region Sprite
+    //Ogre::Overlay* overlay = overlayManager->create("OverlaySprite");
+    //Ogre::SceneManager* mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
+    //Ogre::OverlayContainer* sprite = dynamic_cast<Ogre::OverlayContainer*>(overlayManager->createOverlayElement("Panel", "PanelContainer"));
+    //sprite->setPosition(0, 0);
+    //sprite->setDimensions(1, 1);
+    //overlay->add2D(sprite);
+    //overlay->setZOrder(3);
+    //sprite->setMaterialName("UI/test");   // Nombre del material del sprit
+    //overlay->show();
+    #pragma endregion
+
+    #pragma region text
+
+
+    Ogre::Overlay* overlay = VeryReal::RenderManager::Instance()->GetOverlayManager()->create("Overlaytext");
+    Ogre::OverlayContainer* text_container = dynamic_cast<Ogre::OverlayContainer*>(VeryReal::RenderManager::Instance()->GetOverlayManager()->createOverlayElement("Panel", "PanelContainer"));
+    Ogre::TextAreaOverlayElement* mTextArea = static_cast<Ogre::TextAreaOverlayElement*>(VeryReal::RenderManager::Instance()->GetOverlayManager()->createOverlayElement("TextArea", "myTextTest"));
+    overlay->add2D(text_container);
+    overlay->setZOrder(3);
+    mTextArea->setMetricsMode(Ogre::GMM_RELATIVE);
+    mTextArea->setFontName("Mario");
+    mTextArea->setAlignment(Ogre::TextAreaOverlayElement::Center);
+    text_container->addChild(mTextArea);
+    
+    mTextArea->setPosition(0.4, 0.4);
+    mTextArea->setDimensions(1, 1);
+    mTextArea->setCharHeight(0.10);
+    //mTextArea->setColour(Ogre::ColourValue(1,0,0));
+    //mTextArea->setColour(Ogre::ColourValue(1,0,0));
+    //mTextArea->setColour(Ogre::ColourValue(1,0,0));
+    mTextArea->setColourTop(Ogre::ColourValue(1, 0, 0));
+    mTextArea->setColourBottom(Ogre::ColourValue(0, 0, 1));
+    mTextArea->setCaption("Ya existe texto perras.");
     overlay->show();
-    VeryReal::RenderManager::Instance()->GetRenderRoot()->renderOneFrame();
+    #pragma endregion
+
+
 }
 
 UiSpriteRenderer::UiSpriteRenderer() 

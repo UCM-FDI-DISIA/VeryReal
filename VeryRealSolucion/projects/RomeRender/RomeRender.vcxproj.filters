@@ -132,7 +132,7 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\UI\CreatorUISpriteRenderComponent.h">
-      <Filter>Archivos de origen\UI</Filter>
+      <Filter>Archivos de encabezado\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
