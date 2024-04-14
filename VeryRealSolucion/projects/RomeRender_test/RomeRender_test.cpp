@@ -18,7 +18,6 @@
 
 using namespace VeryReal;
 
-class VeryReal::UiSpriteRenderer;
 
 int main() {
     //#pragma region Prueba Animator->FUNCIONA

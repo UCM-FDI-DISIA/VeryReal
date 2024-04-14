@@ -1,6 +1,6 @@
 #pragma once
-#ifndef VECTOR2
-#define VECTOR2
+#ifndef VECTOR2VR
+#define VECTOR2VR
 #include <math.h>
 #include <iostream>
 #include "export.h"

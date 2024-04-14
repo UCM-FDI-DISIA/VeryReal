@@ -30,6 +30,7 @@ void UIButtomComponent::Update(const double& dt)  {
  //metodo que llama cuando se haga click en el boton
 void UIButtomComponent::OnButtonClick() {
     isclicked = true;
+    accion();
 }
 //metodo que compueba en todo momento las posiciones del raton 
 void UIButtomComponent::mousePosition() { 

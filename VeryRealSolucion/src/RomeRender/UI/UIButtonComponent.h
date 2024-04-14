@@ -12,6 +12,7 @@ class UITransformComponent;
         UIButtomComponent();
         // Destructor de la clase UIButtomComponent
         virtual ~UIButtomComponent();
+        virtual void accion(){};
         // Inicializa el componente
         bool InitComponent();
         void Update(const double& dt) override;
