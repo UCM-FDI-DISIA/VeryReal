@@ -21,23 +21,28 @@ Window::~Window() {
    
     if (ogre_window != nullptr) {
       
-
-        root->destroyRenderTarget(ogre_window);
-        ogre_window->destroy();
-        delete (ogre_window);
+        root->destroyRenderTarget(r);
+           
+       // ogre_window->destroy();
+       // delete (ogre_window);
+       /// ogre_window->destroy();
+        //root->destroyRenderTarget(ogre_window);
+        std::cout << "hola";
     }
     if (sdl_window != nullptr) {
         SDL_DestroyWindow(sdl_window);
         SDL_VideoQuit();
     }
-    ogre_window = nullptr;
+  //  ogre_window = nullptr;
     sdl_window = nullptr;
 }
 
 bool Window::Init(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager) {
+
     this->root = root;
     this->render_system = render_system;
     this->scene_manager = scene_manager;   
+    r = nullptr;
     return true;
 }
 
@@ -74,8 +79,9 @@ bool  Window::CreateWindoww() {
     
     miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
     //pasamos los valores a una ventana de ogre a partir de la ventana de sdl creada
-    ogre_window = root->createRenderWindow(name, window_width, window_height, false, &miscParams);//siempre funciona segun la documentacion
-   // return sdl_window;
+    ogre_window = root->createRenderWindow("name", window_width, window_height, false, &miscParams);   //siempre funciona segun la documentacion
+    r = root->getRenderTarget("name");
+   
     return true;
 }
 

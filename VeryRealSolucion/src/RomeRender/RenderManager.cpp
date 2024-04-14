@@ -20,35 +20,53 @@
 //mehrender, camara y eso
 VeryReal::RenderManager::~RenderManager() {
 
-    // Desalojar todos los recursos cargados
-    Ogre::ResourceGroupManager::getSingleton().unloadUnreferencedResourcesInGroup(Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
-    // Limpiar todos los materiales
-    Ogre::MaterialManager::getSingleton().removeAll();
 
-    // Limpiar todas las texturas
-    Ogre::TextureManager::getSingleton().removeAll();
-
-    // Limpiar el MeshManager
-    Ogre::MeshManager::getSingleton().removeAll();
-
+   
     if (root == nullptr) {
 #ifdef DEBUG_MODE
         cerr << DEBUG_ROOT_ERROR;
 #endif
         return;
     }
-    //vuelta a la escena por defecto
-    root->destroySceneManager(scene_manager);
-    Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
-    
-    UnloadShaders();
+  
+    // Desalojar todos los recursos cargados
+    //Ogre::ResourceGroupManager::getSingleton().unloadUnreferencedResourcesInGroup(Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+    //// Limpiar todos los materiales
+    //Ogre::MaterialManager::getSingleton().removeAll();
+
+    //// Limpiar todas las texturas
+    //Ogre::TextureManager::getSingleton().removeAll();
+
+    //// Limpiar el MeshManager
+    //Ogre::MeshManager::getSingleton().removeAll();
+
+    ////vuelta a la escena por defecto
+    //root->destroySceneManager(scene_manager);
+    //Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
+    //
+    //UnloadShaders();
+
+    //delete (root);
+    //root = nullptr;
+   // delete (window);
+   // root->destroyRenderTarget(
     delete (window);
+
     window = nullptr;
+    //delete filesystem_layer;
+    //filesystem_layer = nullptr;
     delete (root);
-    root = nullptr;
     delete filesystem_layer;
     filesystem_layer = nullptr;
+  //  delete window->GetOgreWindow();
+  //  mOgreWindow = nullptr;
+
+   
+    
+    
+    root = nullptr;
 
 }
 void VeryReal::RenderManager::InitManager(std::string const& name) {
@@ -92,7 +110,7 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
 
 
     //inicializamos sdl
-    if (SDL_WasInit(SDL_INIT_VIDEO)) SDL_Init(SDL_INIT_VIDEO);
+    if (!SDL_WasInit(SDL_INIT_VIDEO)) SDL_Init(SDL_INIT_VIDEO);
 #ifdef ROME_RENDER_TEST
     SDL_Init(SDL_INIT_EVERYTHING);   //mientras no esta todo bien
 #endif
@@ -182,6 +200,7 @@ Ogre::OverlayManager* VeryReal::RenderManager::GetOverlayManager() { return over
 Ogre::OverlaySystem* VeryReal::RenderManager::GetOverlaySystem() { return overlay_system; }
 void VeryReal::RenderManager::sayHola() { std::cout << "hola"; }
 void VeryReal::RenderManager::Update(const double& dt) { root->renderOneFrame(); }
+
 
 Ogre::SceneNode* VeryReal::RenderManager::CreateNode(VeryReal::Vector3 vec) {
 

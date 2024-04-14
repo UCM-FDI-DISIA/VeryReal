@@ -9,7 +9,8 @@ namespace Ogre {
 	class RenderWindow;
 	class FileSystemLayer;
 	class Root;
-}
+        class RenderTarget;
+        }
 
 #pragma warning(disable : 4251)
 
@@ -63,6 +64,7 @@ namespace VeryReal {
         SDL_Window* sdl_window;
         Ogre::FileSystemLayer* file_system_layer;
         Ogre::Root* root;
+        Ogre::RenderTarget* r;
     };
 }
 
