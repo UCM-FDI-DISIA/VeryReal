@@ -9,7 +9,7 @@ Component* CreatorUISpriteRenderComponent::CreatorSpecificComponent() {
 void CreatorUISpriteRenderComponent::SpecificInitComponent(Component* c) {
     UiSpriteRenderer* a = static_cast<UiSpriteRenderer*>(c);
     std::string name, material;
-    float zOrder;
+    int zOrder;
     if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
         name = std::get<std::string>(parameters_map.at("name")->GetVariant());
     }

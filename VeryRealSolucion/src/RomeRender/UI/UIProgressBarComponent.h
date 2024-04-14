@@ -5,7 +5,7 @@
 #include <string>
 
 namespace VeryReal {
-    class UIProgressBarComponent : public Component {
+    class VERYREAL_API UIProgressBarComponent : public Component {
       public:
         //constructora de la clase UIProgressBarComponent
         UIProgressBarComponent();

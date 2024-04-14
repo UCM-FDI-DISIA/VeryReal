@@ -4,13 +4,11 @@
 #include "Component.h"
 #include "Vector2.h"
 #include "string"
-namespace Ogre {
 
-   
-}
 namespace VeryReal {
 
-    class UITransformComponent : public Component {
+
+    class VERYREAL_API UITransformComponent : public Component {
 
       public:
         //constructora de la clase UITransformComponent
