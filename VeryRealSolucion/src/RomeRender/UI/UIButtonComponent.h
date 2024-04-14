@@ -1,17 +1,17 @@
 #pragma once
-#ifndef UIBUTTOMCOMPONENT
-#define UIBUTTOMCOMPONENT
+#ifndef UIBUTTONCOMPONENT
+#define UIBUTTONCOMPONENT
 #include "Component.h"
 #include <string>
 
 namespace VeryReal {
 class UITransformComponent;
-    class VERYREAL_API UIButtomComponent : public Component {
+    class VERYREAL_API UIButtonComponent : public Component {
      public:
         //constructora de la clase UIButtomComponent
-        UIButtomComponent();
+        UIButtonComponent();
         // Destructor de la clase UIButtomComponent
-        virtual ~UIButtomComponent();
+        virtual ~UIButtonComponent();
         virtual void accion(){};
         // Inicializa el componente
         bool InitComponent();
@@ -27,4 +27,4 @@ class UITransformComponent;
         UITransformComponent* UItransofrm;
     };
 }
-#endif   // !UIBUTTOMCOMPONENT
+#endif   // !UIBUTTONCOMPONENT

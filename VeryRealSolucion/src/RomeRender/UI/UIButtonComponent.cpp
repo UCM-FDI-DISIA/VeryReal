@@ -6,21 +6,21 @@
 using namespace VeryReal;
      
     //constructora de la clase UIButtomComponent
-UIButtomComponent::UIButtomComponent() { 
+UIButtonComponent::UIButtonComponent() { 
       if (GetEntity()->HasComponent("UITransformComponent")) UItransofrm = GetEntity()->GetComponent<UITransformComponent>();
 
 }
     // Destructor de la clase UIButtomComponent
-UIButtomComponent::~UIButtomComponent() {
+UIButtonComponent::~UIButtonComponent() {
 
 }
     // Inicializa el componente
-bool UIButtomComponent::InitComponent() { 
+bool UIButtonComponent::InitComponent() { 
 
   return true;
 }
 // 
-void UIButtomComponent::Update(const double& dt)  {
+void UIButtonComponent::Update(const double& dt) {
     //si esta oculto no se hace nada
     if (!UItransofrm->isHidden())
     mousePosition();
@@ -28,12 +28,12 @@ void UIButtomComponent::Update(const double& dt)  {
 
  
  //metodo que llama cuando se haga click en el boton
-void UIButtomComponent::OnButtonClick() {
+void UIButtonComponent::OnButtonClick() {
     isclicked = true;
     accion();
 }
 //metodo que compueba en todo momento las posiciones del raton 
-void UIButtomComponent::mousePosition() { 
+void UIButtonComponent::mousePosition() { 
     std::pair<int, int> mouseposition = InputManager::Instance()->GetMousePos();
     Vector2 positionobj = UItransofrm->getPosition();
     Vector2 dimensionobj = UItransofrm->getSize();
