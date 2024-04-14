@@ -14,3 +14,12 @@ void VeryReal::Creator::RemoveCreator(creator_name c_name) {
 		creators_map.erase(c_name);
 	}
 }
+// bool VeryReal::Creator::Init() {
+//        //VeryReal::Creator* creator = new VeryReal::Creator();
+//        //if (creator != nullptr) {
+//        //        //InitPointer(creator);
+//        //        delete creator;   // Liberar la memoria inmediatamente si la construcción fue exitosa
+//        //        return true;
+//        //}
+//        return false;   // Si el constructor devuelve nullptr, la construcción falló
+//}
