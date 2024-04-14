@@ -16,8 +16,8 @@ void CreatorUISpriteRenderComponent::SpecificInitComponent(Component* c) {
     if (std::holds_alternative<std::string>(parameters_map.at("material")->GetVariant())) {
         material = std::get<std::string>(parameters_map.at("material")->GetVariant());
     }
-    if (std::holds_alternative<float>(parameters_map.at("zOrder")->GetVariant())) {
-        zOrder = std::get<float>(parameters_map.at("zOrder")->GetVariant());
+    if (std::holds_alternative<int>(parameters_map.at("zOrder")->GetVariant())) {
+        zOrder = std::get<int>(parameters_map.at("zOrder")->GetVariant());
     }
     
     bool b = a->InitComponent(name, material, zOrder);
