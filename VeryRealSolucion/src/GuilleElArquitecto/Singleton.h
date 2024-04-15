@@ -23,7 +23,7 @@ namespace VeryReal {
 
       
         static T* Instance() {
-            if (instance_pointer.get() == nullptr) 
+            if (instance_pointer.get() == nullptr) std::cout << "NULO";
                 //return Init();
                 //assert
             return instance_pointer.get();
@@ -34,9 +34,9 @@ namespace VeryReal {
                 
             }
             return instance_pointer.get();*/
-        static void InitPointer(T** t) {
+        static void InitPointer(T* t) {
             std::cout << "pointer";
-            instance_pointer.reset(*t);
+            instance_pointer.reset(t);
         }
 
         //elimina el puntero de la instancia

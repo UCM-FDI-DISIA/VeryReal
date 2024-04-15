@@ -23,13 +23,12 @@ Creator(){};
      static bool Init() {
            VeryReal::Creator* creator = new VeryReal::Creator();
         if (creator != nullptr) {
-                InitPointer(&creator);
-            //aqui no habria que eliminar creator?
-               
+                InitPointer(creator);
+          //aqui no habria que eliminar creator?
                 return true;
         }
         return false;   // Si el constructor devuelve nullptr, la construcción falló
-     }
+    }
     virtual ~Creator();
 
     inline Component* CallSpecificCreator(creator_name c_name) { return creators_map [c_name]->CreatorSpecificComponent(); }

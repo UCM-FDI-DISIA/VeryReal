@@ -25,8 +25,7 @@ int main()
    }
    if (VeryReal::SceneManager::Init()) {
         Scene* s = VeryReal::SceneManager::Instance()->AddScene("Play", true);
-        std::cout<<VeryReal::Creator::Instance()->HasCreator("TransformComponent");
-        
+
         VeryReal::Entity* e = s->AddEntity("Player");
         Component* c = e->AddComponent("TransformComponent");
         std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("TransformComponent") << "\n";

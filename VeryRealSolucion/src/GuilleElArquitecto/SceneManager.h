@@ -21,7 +21,7 @@ namespace VeryReal {
         static bool Init() {
         VeryReal::SceneManager* sm = new VeryReal::SceneManager();
             if (sm != nullptr) {
-                InitPointer(&sm);
+                InitPointer(sm);
                 //aqui no habria que eliminar creator?
                 return true;
             }
