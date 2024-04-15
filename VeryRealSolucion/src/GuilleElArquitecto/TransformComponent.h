@@ -10,7 +10,7 @@ namespace VeryReal {
 		Vector3 position;
 		Vector3 rotation;
 		Vector3 scale;
-		int a;
+		int a = 0;
 	public:
 		TransformComponent();
 		bool InitComponent(int a,Vector3 position, Vector3 rotation, Vector3 scale);
@@ -27,7 +27,8 @@ namespace VeryReal {
 		void Translate(Vector3 translateposition);
 		void Rotate(Vector3 rotaterotation);
 		void Scaler(Vector3 scalerscale);
-	};
+        VeryReal::Vector3 getFacingDirection();
+    };
 
 	
 }

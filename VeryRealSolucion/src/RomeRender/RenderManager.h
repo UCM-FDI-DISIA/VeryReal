@@ -89,38 +89,37 @@ namespace VeryReal {
 
 	protected:
 		// Puntero a la ventana de la aplicación
-		VeryReal::Window* window;
+		VeryReal::Window* window = nullptr;
 
 		// Nombre de la aplicación
-		std::string appname;
+        std::string appname = "";
 
 		// Administrador de escena de Ogre
-		Ogre::SceneManager* scene_manager;
+		Ogre::SceneManager* scene_manager = nullptr;
 
 		// Sistema de renderizado de Ogre
-		Ogre::RenderSystem* render_system;
+		Ogre::RenderSystem* render_system = nullptr;
 
 		//Manager del sistema de overlay de ogre
-		Ogre::OverlayManager* overlay_manager;
+        Ogre::OverlayManager* overlay_manager = nullptr;
 
 		//Sistema de overlay de Ogre
-		Ogre::OverlaySystem* overlay_system;
+        Ogre::OverlaySystem* overlay_system = nullptr;
 
 		// Ruta de configuración
-		std::string cfgPath;
+        std::string cfgPath = "";
 
 		// Raíz de Ogre
-		Ogre::Root* root;
+        Ogre::Root* root = nullptr;
 
 		// Escuchador de resolución de técnicas shader_generator
-		VeryReal::SGTechniqueResolverListener* material_listener	;
+        VeryReal::SGTechniqueResolverListener* material_listener = nullptr;
 
 		// Generador de shaders RTShader
-		Ogre::RTShader::ShaderGenerator* shader_generator;
-
+        Ogre::RTShader::ShaderGenerator* shader_generator = nullptr;
 
 		// Ventana de visualización
-		Ogre::Viewport* viewport;
+        Ogre::Viewport* viewport = nullptr;
 
 		// Carga los recursos necesarios para la aplicación
 		void LoadResources();
