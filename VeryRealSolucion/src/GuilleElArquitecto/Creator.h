@@ -5,30 +5,22 @@
 #include "CreatorComponent.h"
 #include <unordered_map>
 #include <string>
+#include "export.h"
 
 #pragma warning(disable : 4251)
 
 namespace VeryReal {
 using creator_name = std::string;
 
-class  Creator : public VeryReal::Singleton<Creator> {
+class VERYREAL_API Creator : public VeryReal::Singleton<Creator> {
     friend Singleton<Creator>;
 
 private:
     std::unordered_map<creator_name, CreatorComponent*> creators_map;
-Creator(){};
+    
 
  public:
-   
-     static bool Init() {
-           VeryReal::Creator* creator = new VeryReal::Creator();
-        if (creator != nullptr) {
-                InitPointer(creator);
-          //aqui no habria que eliminar creator?
-                return true;
-        }
-        return false;   // Si el constructor devuelve nullptr, la construcción falló
-    }
+    Creator(){};
     virtual ~Creator();
 
     inline Component* CallSpecificCreator(creator_name c_name) { return creators_map [c_name]->CreatorSpecificComponent(); }

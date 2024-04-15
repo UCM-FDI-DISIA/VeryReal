@@ -3,7 +3,6 @@
 #define SINGLETON
 #include <memory>
 
-
 namespace VeryReal {
     template<class T>
     class Singleton {
@@ -21,22 +20,21 @@ namespace VeryReal {
         Singleton(const VeryReal::Singleton<T>& o) = delete;
         virtual ~Singleton() { this->instance_pointer.release(); }
 
-      
+        //devuelve la clase singelton:
+        //->Si no existe lo crea llamando a Init
+        //->Si existe lo devuelve
         static T* Instance() {
-            if (instance_pointer.get() == nullptr) std::cout << "NULO";
-                //return Init();
-                //assert
+            if (instance_pointer.get() == nullptr) return Init();
             return instance_pointer.get();
         }
 
-         /* if (instance_pointer.get() == nullptr) {
+        
+        static T* Init() {
+            if (instance_pointer.get() == nullptr) {
                 instance_pointer.reset(new T());
                 
             }
-            return instance_pointer.get();*/
-        static void InitPointer(T* t) {
-            std::cout << "pointer";
-            instance_pointer.reset(t);
+            return instance_pointer.get();
         }
 
         //elimina el puntero de la instancia

@@ -4,29 +4,20 @@
 #include "Manager.h"
 #include <list>
 #include <string>
-
+#include "export.h"
 using scene_name = std::string;
 
 #pragma warning(disable : 4251)
 
 namespace VeryReal {
 	class Scene;
-	class  SceneManager : public VeryReal::Manager<SceneManager> {
+	class VERYREAL_API SceneManager : public VeryReal::Manager<SceneManager> {
 	private:
 		//lista con todas la escenas
 		std::list<VeryReal::Scene*> scenes_list;
-		SceneManager(){};
   
 	public:
-        static bool Init() {
-        VeryReal::SceneManager* sm = new VeryReal::SceneManager();
-            if (sm != nullptr) {
-                InitPointer(sm);
-                //aqui no habria que eliminar creator?
-                return true;
-            }
-            return false;   // Si el constructor devuelve nullptr, la construcción falló
-        }
+                SceneManager(){};
 		virtual ~SceneManager();
 
 		void Update(const double& dt);
