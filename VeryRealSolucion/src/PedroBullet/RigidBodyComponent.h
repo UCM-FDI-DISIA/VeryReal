@@ -64,6 +64,8 @@ namespace VeryReal {
         int getGroup() const;
 
         void update(const double& dt);
+
+
     private:
         TransformComponent* transformComponent;
         btCollisionShape* collisionShape;

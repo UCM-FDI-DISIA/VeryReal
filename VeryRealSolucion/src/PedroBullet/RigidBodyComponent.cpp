@@ -4,7 +4,9 @@
 #include <btBulletDynamicsCommon.h>
 #include "Entity.h"
 #include "ColliderComponent.h"
+#include "PhysicsRegister.h"
 #include <Vector3.cpp>
+
 
 using namespace VeryReal;
 
@@ -80,6 +82,7 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
     setMask(m);
     setGroup(g);
 
+    //VeryReal::PhysicsRegister::RegisterRigidBody(rigidBody);
     return true;
 }
 btRigidBody* RigidBodyComponent::GetBulletRigidBody() 

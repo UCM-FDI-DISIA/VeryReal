@@ -92,11 +92,10 @@ void VeryReal::PhysicsManager::Shutdown() {
 
 btDiscreteDynamicsWorld* VeryReal::PhysicsManager::GetWorld() const { return dynamicsWorld; }
 
-void VeryReal::PhysicsManager::AddRigidBody(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType) {
-    VeryReal::RigidBodyComponent* body = new VeryReal::RigidBodyComponent();
-    body->InitComponent(shapeType, mass, friction, restitution, movementType);
-    
-    //rigidbodies.push_back(body);
+void VeryReal::PhysicsManager::AddRigidBody(btRigidBody* body) {
+    if (dynamicsWorld && body) {
+        dynamicsWorld->addRigidBody(body);
+    }
 }
 
 std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End) {
