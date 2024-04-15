@@ -167,3 +167,49 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
         values.clear();
     }
 }
+
+void ScriptManager::ReadPrefabs() {
+    std::string ent = "Prefabs";
+    luabridge::LuaRef prefabs = luabridge::getGlobal(lua_state, ent.c_str());   // Referencia a la primera tabla
+
+    if (prefabs.isTable()) {
+        for (int i = 1; i <= prefabs.length(); ++i) {   // Recorremos la tabla de entidades
+            luabridge::LuaRef prefab = prefabs[i];
+            if (prefab.isTable()) {
+                std::string prefab_name = prefab["name"].tostring();
+                std::cout << "Nombre del prefab: " << prefab_name << std::endl;
+                VeryReal::Entity* e = new Entity();   // Añadiendo entidades
+                luabridge::LuaRef components = prefab["components"];
+                if (components.isTable()) {
+                    for (int j = 1; j <= components.length(); ++j) {   // Recorremos la tabla interior(componentes)
+                        luabridge::LuaRef component = components [j];
+                        if (component.isTable()) {
+                            std::string componentname = component ["name"].tostring();
+                            std::cout << "Nombre del componente: " << componentname << std::endl;
+
+                            if (VeryReal::Creator::Instance()->GetCreator(componentname) != nullptr) {
+                                luabridge::LuaRef parameters = component ["parameters"];
+                                if (parameters.isTable()) {
+                                    parameters.push(lua_state);   // Insertamos la tabla a la pila
+                                    lua_pushnil(lua_state);
+                                    while (lua_next(lua_state, -2)) {
+                                        ReadParams(parameters, componentname);   // Llamada a la lectura de parámetros de un componente
+                                        lua_pop(lua_state, 1);   // Sacamos el valor actual de la pila
+                                    }
+                                    lua_pop(lua_state, 1);   // Sacamos la tabla de parámetros de la pila
+                                }
+                                else {
+                                    std::cerr << "Error: parameters no es una tabla" << std::endl;
+                                }
+                                VeryReal::Component* c = e->AddComponent(componentname);   // Comentar para hacer pruebas con otros tipos de datos
+                            }
+                            else {   //ERROR
+                            }
+                        }
+                    }
+                }
+                VeryReal::Creator::Instance()->AddPrefab(prefab_name, e);
+            }
+        }
+    }
+}

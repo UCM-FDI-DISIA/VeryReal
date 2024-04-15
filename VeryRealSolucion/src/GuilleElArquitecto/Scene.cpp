@@ -7,6 +7,15 @@ VeryReal::Scene::~Scene() {
     }
 }
 
+VeryReal::Entity* VeryReal::Scene::CreatePrefab(std::string prefab_name, entity_name e_name) {
+    Entity* entity = VeryReal::Creator::Instance()->GetPrefab(prefab_name);
+    if (entity != nullptr) {
+        RemoveEntity(e_name);
+        entities_map.insert({e_name, entity});
+	}
+    return entity;
+}
+
 VeryReal::Entity* VeryReal::Scene::AddEntity(entity_name e_name) {
 	Entity* entity = new Entity();
 	RemoveEntity(e_name);

@@ -31,6 +31,8 @@ namespace VeryReal {
 
 		//añade la entidad a la escena
 		Entity* AddEntity(entity_name e_name);
+
+
 		//eliminas la entidad de la escena
 		void RemoveEntity(entity_name e_name);
 
@@ -48,6 +50,9 @@ namespace VeryReal {
 		inline std::unordered_map<entity_name, Entity*> GetEntities() { 
 			return entities_map;
 		}
+		
+		// Añade el prefab a la escena
+		Entity* CreatePrefab(std::string prefab_name, entity_name e_name);
 
 		/*
 	Recorremos de primeras con un for el mapa:
