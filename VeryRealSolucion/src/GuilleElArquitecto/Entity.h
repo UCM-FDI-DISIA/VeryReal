@@ -3,14 +3,14 @@
 #define ENTITY
 #include "Creator.h"
 #include "Component.h"
-#include "export.h"
+
 
 #pragma warning(disable : 4251)
 
 namespace VeryReal {
 	using component_name = std::string;
 	
-	class VERYREAL_API Entity {
+	class  Entity {
 	private:
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
 		std::unordered_map<component_name, Component*> components_map;
@@ -29,9 +29,9 @@ namespace VeryReal {
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);
             Component* component;
-           
             component= Creator::Instance()->CallSpecificCreator(c_name);
             component->SetEntity(this);
+           
             Creator::Instance()->CallSpecificInit(c_name, component);
 			components_map.insert({ c_name,component});
 			//quizas initcomponentpai

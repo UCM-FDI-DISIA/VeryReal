@@ -2,11 +2,11 @@
 #ifndef MANAGER
 #define MANAGER
 #include "Singleton.h"
-#include "export.h"
+
 //CLASE ABSTRACTA, hereda de Singleton 
 namespace VeryReal {
 	template<typename T>
-    class VERYREAL_API Manager : public Singleton<T> {
+    class  Manager : public Singleton<T> {
 		friend Singleton<T>;
 	protected:
         Manager(){};

@@ -24,17 +24,21 @@ namespace VeryReal {
         //->Si no existe lo crea llamando a Init
         //->Si existe lo devuelve
         static T* Instance() {
-            if (instance_pointer.get() == nullptr) return Init();
-            return instance_pointer.get();
+          /*  if (instance_pointer.get() == nullptr) return Init();
+            return instance_pointer.get();*/
+            if (instance_pointer.get() != nullptr) return instance_pointer.get();
+        }
+        void hola() { std::cout << "HOLA" << std::endl;
         }
 
         
-        static T* Init() {
-            if (instance_pointer.get() == nullptr) {
+        static void InitPointer(T* t) {
+           /* if (instance_pointer.get() == nullptr) {
                 instance_pointer.reset(new T());
                 
             }
-            return instance_pointer.get();
+            return instance_pointer.get();*/
+          instance_pointer.reset(t);
         }
 
         //elimina el puntero de la instancia

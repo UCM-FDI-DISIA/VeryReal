@@ -19,11 +19,26 @@ int main()
     std::cout << "Hello World!\n";*/
  
     //prueba funcional
-    VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
+   /* VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
     Scene* s =SceneManager::Instance()->AddScene("Play",true);
     s = SceneManager::Instance()->GetScene("Play");
     VeryReal::Entity* e = s->AddEntity("Player");
     Component* c=e->AddComponent("TransformComponent");
+    std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("TransformComponent") << "\n";*/
+
+    bool t=VeryReal::Creator::Init();
+    VeryReal::SceneManager::Init();
+    if (t) {
+        std::cout << "true";
+    }
+    else {
+    
+        std::cout << "false";
+    }
+    VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
+    Scene* s = SceneManager::Instance()->AddScene("Play", true);
+    VeryReal::Entity* e = s->AddEntity("Player");
+    Component* c= e->AddComponent("TransformComponent");
     std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Player")->HasComponent("TransformComponent") << "\n";
 
 }

@@ -4,20 +4,27 @@
 #include "Manager.h"
 #include <list>
 #include <string>
-#include "export.h"
 using scene_name = std::string;
 
 #pragma warning(disable : 4251)
 
 namespace VeryReal {
 	class Scene;
-	class VERYREAL_API SceneManager : public VeryReal::Manager<SceneManager> {
+	class  SceneManager : public VeryReal::Manager<SceneManager> {
 	private:
 		//lista con todas la escenas
 		std::list<VeryReal::Scene*> scenes_list;
+		SceneManager(){};
   
 	public:
-                SceneManager(){};
+         static bool Init() { 
+         SceneManager* sm = new SceneManager();
+         if (sm != nullptr) {
+             InitPointer(sm);
+             return true;
+         }
+         return false;
+		}  
 		virtual ~SceneManager();
 
 		void Update(const double& dt);
