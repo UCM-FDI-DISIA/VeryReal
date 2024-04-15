@@ -7,9 +7,9 @@ using namespace std;
 UITransformComponent::UITransformComponent() { 
 
 }
-bool UITransformComponent::InitComponent(VeryReal::Vector2 pos, VeryReal::Vector2 scale, bool hide, bool interact) {
+bool UITransformComponent::InitComponent(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool hide, bool interact) {
     position = pos;
-    size = scale;
+    scale = sc;
     return true;
 }
 UITransformComponent::~UITransformComponent() { }
@@ -19,9 +19,13 @@ void UITransformComponent::hideElement() { hidden = true; }
 VeryReal::Vector2 UITransformComponent::getPosition() { return position; }
 void UITransformComponent::setPosition(VeryReal::Vector2 pos) { 
     position = pos; }
-VeryReal::Vector2 UITransformComponent::getSize() { return size; }
-void UITransformComponent::setSize(VeryReal::Vector2 siz) { 
-    size = siz;
+
+VeryReal::Vector2 VeryReal::UITransformComponent::getScale() { 
+    return scale; 
+}
+
+void VeryReal::UITransformComponent::setScale(VeryReal::Vector2 sc) {
+    scale = sc;
 }
 
 void UITransformComponent::setInteractive(bool inter) { 

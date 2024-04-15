@@ -82,10 +82,11 @@ namespace VeryReal {
 		Ogre::SceneManager* SceneManagerOgree();
         Ogre::OverlayManager* GetOverlayManager();
         Ogre::OverlaySystem* GetOverlaySystem();
+		VeryReal::Window* GetVRWindow();
+
 		// Capa del sistema de archivos de Ogre
 		Ogre::FileSystemLayer* filesystem_layer;
 
-		void sayHola();
 	protected:
 		// Puntero a la ventana de la aplicación
 		VeryReal::Window* window;

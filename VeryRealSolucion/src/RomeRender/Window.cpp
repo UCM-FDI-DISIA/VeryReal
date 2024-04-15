@@ -98,5 +98,10 @@ SDL_Window* Window::GetSDLWindow() {
     return sdl_window;
 }
 Ogre::RenderWindow* Window::GetOgreWindow() {
-    return ogre_window;
+    return ogre_window; }
+
+std::pair<int, int> VeryReal::Window::GetWindowHeightWidth() { 
+    int width, height;
+    SDL_GetWindowSize(sdl_window, &width, &height);
+    return std::pair<int, int>(width, height); 
 }

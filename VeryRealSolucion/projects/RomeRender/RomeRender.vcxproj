@@ -24,6 +24,7 @@
     <ClCompile Include="..\..\src\RomeRender\RomeRender.cpp" />
     <ClCompile Include="..\..\src\RomeRender\SGTechniqueResolverListener.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\CreatorUISpriteRenderComponent.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\UI\CreatorUITextComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\CreatorUITransformComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\UIButtonComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\UIProgressBarComponent.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="..\..\src\RomeRender\RenderManager.h" />
     <ClInclude Include="..\..\src\RomeRender\SGTechniqueResolverListener.h" />
     <ClInclude Include="..\..\src\RomeRender\UI\CreatorUISpriteRenderComponent.h" />
+    <ClInclude Include="..\..\src\RomeRender\UI\CreatorUITextComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\UI\CreatorUITransformComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\UI\UIButtonComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\UI\UIProgressBarComponent.h" />

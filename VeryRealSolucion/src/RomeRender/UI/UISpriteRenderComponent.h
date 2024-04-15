@@ -32,8 +32,7 @@ namespace VeryReal {
             void setZOrder(int order);
 
             //Establece la posición y escala del sprite dentro de su overlay.
-            //Establece la rotación del overlay en el que se representa
-            void setSpriteTransform(VeryReal::Vector2 pos, VeryReal::Vector2 dimension);
+            void setSpriteTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool show = true);
 
                 void demo();
 
@@ -65,6 +64,7 @@ namespace VeryReal {
               VeryReal::Vector2 position;
 
               //Escala del sprite en pantalla.
+              //Una escala de (1,1) representa que el sprite colocado en la coordenada (0,0) se ajusta a la altura y anchura de la pantalla.
               VeryReal::Vector2 scale;
 
               //Transform de UI asociado a este sprite.

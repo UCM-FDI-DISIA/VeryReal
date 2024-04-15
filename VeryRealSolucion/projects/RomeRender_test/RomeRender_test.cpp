@@ -14,6 +14,7 @@
 #include "CreatorLightComponent.h"
 #include "CreatorMeshRenderComponent.h"
 #include "UI/CreatorUISpriteRenderComponent.h"
+#include "UI/CreatorUITextComponent.h"
 #include "UI/CreatorUITransformComponent.h"
 
 
@@ -119,11 +120,30 @@ int main() {
 //    VeryReal::Creator::Instance()->AddCreator("UISpriteRenderComponent", new VeryReal::CreatorUISpriteRenderComponent());
 //    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("name", std::string("anim"));
 //    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("material", std::string("UI/test"));
-//    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("zOrder", 3);
+//    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("zOrder", 4);
+//#pragma endregion
+//#pragma region Text 1
+//    /*VeryReal::Creator::Instance()->AddCreator("UITextComponent", new VeryReal::CreatorUITextComponent());
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("name", std::string("miprimer"));
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("font", std::string("Mario"));
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("caption", std::string("Soy un test"));
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("zOrder", 3);
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("charHeight", 0.1f);
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("colorTop", VeryReal::Vector3(1,0,0));
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("colorBottom", VeryReal::Vector3(0,0,1));*/
+//#pragma endregion
+//#pragma region Text 2
+//    VeryReal::Creator::Instance()->AddCreator("UITextComponent", new VeryReal::CreatorUITextComponent());
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("name", std::string("test"));
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("font", std::string("Mario"));
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("caption", std::string("Soy un test"));
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("zOrder", 3);
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("charHeight", 0.10f);
+//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("color", VeryReal::Vector3(1, 0, 0));
 //#pragma endregion
 //#pragma region UITransform
 //    VeryReal::Creator::Instance()->AddCreator("UITransformComponent", new VeryReal::CreatorUITransformComponent());
-//    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("position", Vector2(0, 0));
+//    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("position", Vector2(0.5, 0.5));
 //    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("scale", Vector2(1, 1));
 //#pragma endregion
 //
@@ -139,6 +159,8 @@ int main() {
 //    Component* transform = e->AddComponent("TransformComponent");
 //    Component* uiTransform = e->AddComponent("UITransformComponent");
 //    Component* uiSprite = e->AddComponent("UISpriteRenderComponent");
+//    Component* uiTextMid = e->AddComponent("UITextComponent");
+//    //Component* uiTextFull = e->AddComponent("UITextComponent2");
 //    //Component* meshrenderer = e->AddComponent("MeshRenderComponent");
 //
 //    while (true) {

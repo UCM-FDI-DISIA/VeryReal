@@ -198,7 +198,7 @@ Ogre::Root* VeryReal::RenderManager::GetRenderRoot() { return root; }
 Ogre::SceneManager* VeryReal::RenderManager::SceneManagerOgree() { return scene_manager; }
 Ogre::OverlayManager* VeryReal::RenderManager::GetOverlayManager() { return overlay_manager; }
 Ogre::OverlaySystem* VeryReal::RenderManager::GetOverlaySystem() { return overlay_system; }
-void VeryReal::RenderManager::sayHola() { std::cout << "hola"; }
+VeryReal::Window* VeryReal::RenderManager::GetVRWindow() { return window; }
 void VeryReal::RenderManager::Update(const double& dt) { root->renderOneFrame(); }
 
 

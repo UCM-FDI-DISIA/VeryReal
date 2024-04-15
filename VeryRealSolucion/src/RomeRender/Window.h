@@ -52,6 +52,12 @@ namespace VeryReal {
         /// <returns>Puntero a la ventana de ogre.</returns>
         Ogre::RenderWindow* GetOgreWindow();
 
+        /// <summary>
+        /// Devuelve la altura y anchura en píxeles de la ventana de SDL;
+        /// </summary>
+        /// <returns>Dimensiones de la ventana de SDL en un pair.</returns>
+        std::pair <int,int> GetWindowHeightWidth();
+
         private:
         Ogre::SceneManager* scene_manager;
         Ogre::RenderSystem* render_system;
