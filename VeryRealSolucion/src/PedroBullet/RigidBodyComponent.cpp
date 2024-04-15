@@ -96,7 +96,7 @@ void VeryReal::RigidBodyComponent::setMask(const int n) {
         mask = n;
 
         btBroadphaseProxy* bdProxy = rigidBody->getBroadphaseProxy();
-        bdProxy->m_collisionFilterMask = n;
+        if (bdProxy != nullptr) bdProxy->m_collisionFilterMask = n;
     }
 }
 
@@ -109,11 +109,25 @@ void VeryReal::RigidBodyComponent::setGroup(const int n) {
 
         group = n;
         btBroadphaseProxy* bdProxy = rigidBody->getBroadphaseProxy();
-        bdProxy->m_collisionFilterGroup = n;
+        if (bdProxy != nullptr) bdProxy->m_collisionFilterGroup = n;
     }
 }
 
 int VeryReal::RigidBodyComponent::getGroup() const { return group; }
+
+void VeryReal::RigidBodyComponent::update(const double& dt) {
+
+
+    if (movementType == MOVEMENT_TYPE_DYNAMIC) {
+        transformComponent->SetPosition(Vector3(rigidBody->getWorldTransform().getOrigin().getX(), 
+                                                rigidBody->getWorldTransform().getOrigin().getY(),
+                                                rigidBody->getWorldTransform().getOrigin().getZ()));
+    
+        transformComponent->SetRotation(Vector3(rigidBody->getWorldTransform().getRotation().getX(),
+                                                rigidBody->getWorldTransform().getRotation().getY(),
+                                                rigidBody->getWorldTransform().getRotation().getZ()));
+    }
+}
 
 //La x es el radio en las esferas, cilindros y capsulas y la y la altura
 btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType, Vector3 s) {
