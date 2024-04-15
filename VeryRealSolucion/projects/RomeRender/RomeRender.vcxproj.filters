@@ -84,6 +84,9 @@
     <ClCompile Include="..\..\src\RomeRender\UI\CreatorUITextComponent.cpp">
       <Filter>Archivos de origen\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\UI\CreatorUIProgressBarComponent.cpp">
+      <Filter>Archivos de origen\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\RomeRender\Window.h">
@@ -144,6 +147,9 @@
       <Filter>Archivos de encabezado\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\UI\CreatorUITextComponent.h">
+      <Filter>Archivos de encabezado\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\UI\CreatorUIProgressBarComponent.h">
       <Filter>Archivos de encabezado\UI</Filter>
     </ClInclude>
   </ItemGroup>

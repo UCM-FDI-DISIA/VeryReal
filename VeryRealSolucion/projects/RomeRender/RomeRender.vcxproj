@@ -23,7 +23,6 @@
     <ClCompile Include="..\..\src\RomeRender\RenderManager.cpp" />
     <ClCompile Include="..\..\src\RomeRender\RomeRender.cpp" />
     <ClCompile Include="..\..\src\RomeRender\SGTechniqueResolverListener.cpp" />
-    <ClCompile Include="..\..\src\RomeRender\UI\CreatorUIButtonComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\CreatorUIProgressBarComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\CreatorUISpriteRenderComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\CreatorUITextComponent.cpp" />

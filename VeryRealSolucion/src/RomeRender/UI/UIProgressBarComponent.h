@@ -2,7 +2,6 @@
 #ifndef UIPROGRESSBARCOMPONENT
 #define UIPROGRESSBARCOMPONENT
 #include "Component.h"
-#include <string>
 
 namespace VeryReal {
     class VERYREAL_API UIProgressBarComponent : public Component {
