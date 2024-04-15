@@ -50,9 +50,7 @@ public:
 
     btDiscreteDynamicsWorld* GetWorld() const;   // Getter para el mundo físico
 
-
-    void AddRigidBody(PBShapes shapeType, float mass, float friction, float restitution, PBMovementType movementType);
-
+    void AddRigidBody(btRigidBody* body);
 
 
     std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);

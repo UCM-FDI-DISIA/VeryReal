@@ -15,6 +15,7 @@
     <ClCompile Include="..\..\src\PedroBullet\CreatorColliderComponent.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\PhysicsManager.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\PhysicsRegister.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\RigidBodyComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -22,6 +23,7 @@
     <ClInclude Include="..\..\src\PedroBullet\CreatorColliderComponent.h" />
     <ClInclude Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsManager.h" />
+    <ClInclude Include="..\..\src\PedroBullet\PhysicsRegister.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsValues.h" />
     <ClInclude Include="..\..\src\PedroBullet\RigidBodyComponent.h" />
   </ItemGroup>
