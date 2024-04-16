@@ -60,7 +60,7 @@ bool VeryReal::PhysicsManager::Initialize() {
         return false;   // Fall� la creaci�n de dynamicsWorld
     }
     //DESCOMENTAR PARA GAVITY ATENTOS Q POR AHORA SE LE DA A TODOS LOS OBJETOS
-    //dynamicsWorld->setGravity(btVector3(0, -9.81f, 0));
+    dynamicsWorld->setGravity(btVector3(0, 0, 0));
     return true;   // Inicializaci�n exitosa
 
 }
