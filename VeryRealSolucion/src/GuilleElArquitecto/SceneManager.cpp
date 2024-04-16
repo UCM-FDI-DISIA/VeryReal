@@ -33,7 +33,13 @@ VeryReal::Scene* VeryReal::SceneManager::AddScene(scene_name name,bool active) {
 }
 
 void VeryReal::SceneManager::RemoveScene(scene_name name) {
-	for (auto it : scenes_list) if (it->GetName() == name) scenes_list.remove(it);
+	for (auto it : scenes_list) {
+        if (it->GetName() == name) {
+            it->SetToEliminate(true);
+            it->SetActive(false);
+            scenes_list.remove(it);
+        }
+	}
 }
 
 void VeryReal::SceneManager::ActivationScene(scene_name name, bool active) {
