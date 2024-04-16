@@ -13,6 +13,6 @@
 int main()
 {
     VeryReal::Creator::Instance()->AddCreator("Transform", new VeryReal::CreatorTransformComponent());
-    VeryReal::ScriptManager::Instance()->Init("Prefabs");
+    //VeryReal::ScriptManager::Instance()->Init("Prefabs");
     VeryReal::ScriptManager::Instance()->ReadPrefabs();
 }

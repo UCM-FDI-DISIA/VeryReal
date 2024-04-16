@@ -46,11 +46,20 @@ namespace VeryReal {
 	// Declaración de la clase RenderManager, que hereda de Manager
 	class VERYREAL_API RenderManager : public Manager<RenderManager> {
                
-                
+    private:
+                RenderManager() { }
 	public: 
 		
 		// Constructor de la clase RenderManager
-		RenderManager() { }
+        public:
+    static bool Init() {
+        RenderManager* a = new RenderManager();
+        if (a != nullptr) {
+            instance_pointer.reset(a);
+            return true;
+        }
+        return false;
+    }
 
 		// Destructor virtual de la clase RenderManager
 		virtual ~RenderManager();

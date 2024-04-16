@@ -23,14 +23,23 @@ namespace VeryReal {
 		void Error(int status);
 		// Se encarga de leer los parámetros que se le pasarán a los componentes
 		void ReadParams(luabridge::LuaRef params, std::string comp);
+                ScriptManager() { }
 
 	public:
 
-        ScriptManager() { }
+      public:
+    static bool Init() {
+      ScriptManager* a = new ScriptManager();
+        if (a != nullptr) {
+            instance_pointer.reset(a);
+            return true;
+        }
+        return false;
+    }
 		virtual ~ScriptManager();
 
 		// Abre el archivo .lua
-		void Init(std::string p);
+		void InitManager(std::string p);
 		
 		// Método para probar la creación de entidades y componentes mediante Lua
 		void ReadScene(std::string n);

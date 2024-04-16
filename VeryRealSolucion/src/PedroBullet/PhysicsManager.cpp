@@ -22,7 +22,7 @@
 
 VeryReal::PhysicsManager::PhysicsManager(): collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) { }
 
-bool VeryReal::PhysicsManager::Initialize() {
+bool VeryReal::PhysicsManager::InitManager() {
     collisionConfiguration=nullptr;
 
     dispatcher = nullptr;

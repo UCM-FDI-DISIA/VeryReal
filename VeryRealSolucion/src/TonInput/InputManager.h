@@ -5,7 +5,7 @@
 #include <Manager.h>
 #include <array>
 #include "TonMapeo.h"
-#include "export.h"
+
 
 #pragma warning(disable : 4251)
 
@@ -15,15 +15,23 @@ typedef union SDL_Event SDL_Event;
 
 namespace  VeryReal {
     class VERYREAL_API InputManager : public VeryReal::Manager<InputManager> {
-   
+        private:
+        InputManager() { }
   
     public:
         /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
-InputManager() { }
-        virtual ~InputManager() {}
 
+        virtual ~InputManager() {}
+static bool Init() {
+            InputManager* a = new InputManager();
+    if (a != nullptr) {
+        instance_pointer.reset(a);
+        return true;
+    }
+    return false;
+}
         // Inicializa SDL
-        virtual void Init();
+        virtual void InitManager();
 
         /// Limpia el estado de la entrada
         void ClearState(bool clearMouseButtons = false);

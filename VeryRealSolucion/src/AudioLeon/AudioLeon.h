@@ -73,12 +73,21 @@ namespace VeryReal {
 		/// <returns>False si no se encontró el canal indicado o si hubo un error de FMOD. True si el volumen del canal se cambió con éxito.</returns>
 		bool ChangeChannelVolume(std::string channelGroupName, float volume);
 
+                    private:
+                AudioLeon() { }
 	public:
-
+                static bool Init() {
+        AudioLeon* a = new AudioLeon();
+                    if (a != nullptr) {
+                        instance_pointer.reset(a);
+                        return true;
+                    }
+                    return false;
+                }
 		//Destructor de la clase AudioLeon. Se encarga de eliminar todo sonido creado y de liberar toda la infrestructura de FMOD.
 		~AudioLeon();
-    AudioLeon() { }
-		void Init();
+ 
+		void InitManager();
 		//Inicializacion de los recursos necesarios para recoger input del microfono
 		void InitAudioRecording();
 		//Actualiza el sistema de sonido en cada bucle del juego.
