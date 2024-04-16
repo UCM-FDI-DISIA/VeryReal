@@ -6,11 +6,12 @@
 namespace VeryReal {
     template<class T>
     class Singleton {
-    private:
-        //unica instancia de la clase de tipo T
-        static std::unique_ptr<T> instance_pointer;
+  
+       
 
     protected:
+        //unica instancia de la clase de tipo T
+        static std::unique_ptr<T> instance_pointer;
         Singleton(){};
 
     public:
@@ -24,18 +25,11 @@ namespace VeryReal {
         //->Si no existe lo crea llamando a Init
         //->Si existe lo devuelve
         static T* Instance() {
-            if (instance_pointer.get() == nullptr) return Init();
+            //ASSERT
+            if (instance_pointer.get() != nullptr)    
             return instance_pointer.get();
         }
 
-        
-        static T* Init() {
-            if (instance_pointer.get() == nullptr) {
-                instance_pointer.reset(new T());
-                
-            }
-            return instance_pointer.get();
-        }
 
         //elimina el puntero de la instancia
         /* static void Delete() {

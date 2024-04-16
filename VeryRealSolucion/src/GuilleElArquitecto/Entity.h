@@ -3,7 +3,7 @@
 #define ENTITY
 #include "Creator.h"
 #include "Component.h"
-#include "export.h"
+
 
 #pragma warning(disable : 4251)
 

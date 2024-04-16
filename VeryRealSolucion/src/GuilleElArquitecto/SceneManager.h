@@ -4,7 +4,7 @@
 #include "Manager.h"
 #include <list>
 #include <string>
-#include "export.h"
+
 using scene_name = std::string;
 
 #pragma warning(disable : 4251)
@@ -15,9 +15,18 @@ namespace VeryReal {
 	private:
 		//lista con todas la escenas
 		std::list<VeryReal::Scene*> scenes_list;
+    SceneManager(){};
   
 	public:
-                SceneManager(){};
+    static bool Init() { 
+		SceneManager* a = new SceneManager();
+        if (a != nullptr) {
+                    instance_pointer.reset(a);
+					return true;
+		}
+        return false;
+
+	}
 		virtual ~SceneManager();
 
 		void Update(const double& dt);

@@ -20,9 +20,18 @@ class VERYREAL_API Creator : public VeryReal::Singleton<Creator> {
 private:
     std::unordered_map<creator_name, CreatorComponent*> creators_map;
     std::unordered_map<prefab_name, Entity*> prefabs_map;
+    Creator(){};
 
  public:
-    Creator(){};
+    static bool Init() {
+     Creator* a = new Creator();
+        if (a != nullptr) {
+            instance_pointer.reset(a);
+            return true;
+        }
+        return false;
+    }
+  
     virtual ~Creator();
 
     inline Component* CallSpecificCreator(creator_name c_name) { return creators_map [c_name]->CreatorSpecificComponent(); }
