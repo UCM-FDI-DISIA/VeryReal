@@ -11,7 +11,7 @@
 namespace VeryReal {
 using creator_name = std::string;
 
-class  Creator : public VeryReal::Singleton<Creator> {
+class VERYREAL_API Creator : public VeryReal::Singleton<Creator> {
     friend Singleton<Creator>;
 
 private:
@@ -23,7 +23,7 @@ private:
      static bool Init() { 
          Creator* creator = new Creator();
          if (creator != nullptr) {
-             InitPointer(creator);
+             instance_pointer.reset(creator);
              return true;
          }
          return false;

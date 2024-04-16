@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void VeryReal::InputManager::Init() { // Flags de sdl necesarias para el input de teclas y mando
+void VeryReal::InputManager::InitManager() { // Flags de sdl necesarias para el input de teclas y mando
     kb_state = SDL_GetKeyboardState(0);
     ClearState(true);
     if (!SDL_WasInit(SDL_INIT_EVENTS)) 

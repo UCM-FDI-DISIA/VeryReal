@@ -10,7 +10,7 @@ using scene_name = std::string;
 
 namespace VeryReal {
 	class Scene;
-	class  SceneManager : public VeryReal::Manager<SceneManager> {
+	class  VERYREAL_API SceneManager : public VeryReal::Manager<SceneManager> {
 	private:
 		//lista con todas la escenas
 		std::list<VeryReal::Scene*> scenes_list;
@@ -20,7 +20,7 @@ namespace VeryReal {
          static bool Init() { 
          SceneManager* sm = new SceneManager();
          if (sm != nullptr) {
-             InitPointer(sm);
+             instance_pointer.reset(sm);
              return true;
          }
          return false;

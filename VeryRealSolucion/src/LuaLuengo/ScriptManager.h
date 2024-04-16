@@ -1,10 +1,8 @@
 #pragma once
 #ifndef _SCRIPT_MANAGER
 #define _SCRIPT_MANAGER
-
 #include "Manager.h"
 #include <string>
-#include "export.h"
 
 #pragma warning(disable : 4251)
 
@@ -23,14 +21,22 @@ namespace VeryReal {
 		void Error(int status);
 		// Se encarga de leer los parámetros que se le pasarán a los componentes
 		void ReadParams(luabridge::LuaRef params, std::string comp);
+        ScriptManager() { }
 
 	public:
 
-        ScriptManager() { }
+        static bool Init() {
+        ScriptManager* sm = new ScriptManager();
+        if (sm != nullptr) {
+            instance_pointer.reset(sm);
+            return true;
+        }
+        return false;
+    }  
 		virtual ~ScriptManager();
 
 		// Abre el archivo .lua
-		void Init(std::string p);
+		void InitManager(std::string p);
 		
 		// Método para probar la creación de entidades y componentes mediante Lua
 		void ReadScene(std::string n);

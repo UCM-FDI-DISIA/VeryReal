@@ -4,13 +4,12 @@
 #include "Creator.h"
 #include "Component.h"
 
-
 #pragma warning(disable : 4251)
 
 namespace VeryReal {
 	using component_name = std::string;
 	
-	class  Entity {
+	class VERYREAL_API Entity {
 	private:
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
 		std::unordered_map<component_name, Component*> components_map;

@@ -5,7 +5,6 @@
 #include "Manager.h"
 #include "Vector3.h"
 #include "string"
-#include "export.h"
 
 #define DEBUG_ROOT_ERROR "OGRE NO HA SIDO INICIALIZADO CORRECTAMENTE\n"
 #define DEBUG_OGRE_ERROR "NO SE HA ENCONTRADO EL ARCHIVO ogre.cfg\n"
@@ -45,12 +44,20 @@ namespace Ogre {
 namespace VeryReal {
 	// Declaración de la clase RenderManager, que hereda de Manager
 	class VERYREAL_API RenderManager : public Manager<RenderManager> {
-               
+    private:
+        RenderManager() { }
                 
 	public: 
-		
+		 static bool Init() {
+			RenderManager* p = new RenderManager();
+			if (p != nullptr) {
+				instance_pointer.reset(p);
+				return true;
+			 }
+			return false;
+		}  
 		// Constructor de la clase RenderManager
-		RenderManager() { }
+		
 
 		// Destructor virtual de la clase RenderManager
 		virtual ~RenderManager();

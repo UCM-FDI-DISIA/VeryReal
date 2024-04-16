@@ -41,10 +41,18 @@ namespace VeryReal {
 class VERYREAL_API PhysicsManager : public Manager<PhysicsManager> {
     friend Singleton<PhysicsManager>;
 public:
-    PhysicsManager();
+    static bool Init() {
+    PhysicsManager* p = new PhysicsManager();
+        if (p != nullptr) {
+            instance_pointer.reset(p);
+            return true;
+        }
+        return false;
+    }  
+  
     virtual ~PhysicsManager();
 
-    bool Initialize();              // Inicializa el mundo de Bullet y otros componentes necesarios
+    bool InitManager();              // Inicializa el mundo de Bullet y otros componentes necesarios
     void Update(float deltaTime);   // Actualiza la simulación física
     void Shutdown();                // Limpia y libera recursos
 
@@ -58,6 +66,7 @@ public:
     std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
 
 private:
+    PhysicsManager();
     btDefaultCollisionConfiguration* collisionConfiguration;
     btCollisionDispatcher* dispatcher;
     btBroadphaseInterface* overlappingPairCache;

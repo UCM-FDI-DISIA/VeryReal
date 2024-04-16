@@ -7,11 +7,13 @@ namespace VeryReal {
     template<class T>
     class Singleton {
     private:
-        //unica instancia de la clase de tipo T
-        static std::unique_ptr<T> instance_pointer;
+      
+       
 
     protected:
         Singleton(){};
+        //unica instancia de la clase de tipo T
+        static std::unique_ptr<T> instance_pointer;
 
     public:
         // Eliminar el operador de asignación
@@ -28,8 +30,7 @@ namespace VeryReal {
             return instance_pointer.get();*/
             if (instance_pointer.get() != nullptr) return instance_pointer.get();
         }
-        void hola() { std::cout << "HOLA" << std::endl;
-        }
+        //void hola() { std::cout << "HOLA" << std::endl;}
 
         
         static void InitPointer(T* t) {
@@ -38,7 +39,7 @@ namespace VeryReal {
                 
             }
             return instance_pointer.get();*/
-          instance_pointer.reset(t);
+          
         }
 
         //elimina el puntero de la instancia

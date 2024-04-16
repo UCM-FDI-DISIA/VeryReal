@@ -15,15 +15,23 @@ typedef union SDL_Event SDL_Event;
 
 namespace  VeryReal {
     class VERYREAL_API InputManager : public VeryReal::Manager<InputManager> {
-   
+    private:
+        InputManager() { }
   
     public:
         /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
-InputManager() { }
+        static bool Init() {
+             InputManager* p = new InputManager();
+            if (p != nullptr) {
+                instance_pointer.reset(p);
+                return true;
+            }
+            return false;
+        }  
         virtual ~InputManager() {}
 
         // Inicializa SDL
-        virtual void Init();
+        virtual void InitManager();
 
         /// Limpia el estado de la entrada
         void ClearState(bool clearMouseButtons = false);

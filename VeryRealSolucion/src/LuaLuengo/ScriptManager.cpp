@@ -31,7 +31,7 @@ void ScriptManager::Error(int status)
 }
 
 
-void ScriptManager::Init(std::string p)
+void ScriptManager::InitManager(std::string p)
 {  
     lua_state = luaL_newstate();
     luaL_openlibs(lua_state);

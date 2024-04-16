@@ -2,6 +2,7 @@
 #ifndef MANAGER
 #define MANAGER
 #include "Singleton.h"
+#include "export.h"
 
 //CLASE ABSTRACTA, hereda de Singleton 
 namespace VeryReal {
