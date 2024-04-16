@@ -6,6 +6,7 @@
 #include "ColliderComponent.h"
 #include "PhysicsRegister.h"
 #include <Vector3.cpp>
+#include "PhysicsManager.h"
 
 
 using namespace VeryReal;
@@ -78,11 +79,18 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
     }
 
-    //mascaras de bits y grupos de colision
+
+    VeryReal::PhysicsManager::Instance()->AddRigidBody(rigidBody);
+
+    btBroadphaseProxy* bdProxy = rigidBody->getBroadphaseProxy();
+    if (bdProxy == nullptr) {
+        std::cerr << "Error: Broadphase proxy is null after adding the body to the world." << std::endl;
+        return false;
+    }
+
+        //mascaras de bits y grupos de colision
     setMask(m);
     setGroup(g);
-
-    //VeryReal::PhysicsRegister::RegisterRigidBody(rigidBody);
     return true;
 }
 btRigidBody* RigidBodyComponent::GetBulletRigidBody() 
@@ -118,7 +126,7 @@ void VeryReal::RigidBodyComponent::setGroup(const int n) {
 
 int VeryReal::RigidBodyComponent::getGroup() const { return group; }
 
-void VeryReal::RigidBodyComponent::update(const double& dt) {
+void VeryReal::RigidBodyComponent::Update(const double& dt) {
 
 
     if (movementType == MOVEMENT_TYPE_DYNAMIC) {

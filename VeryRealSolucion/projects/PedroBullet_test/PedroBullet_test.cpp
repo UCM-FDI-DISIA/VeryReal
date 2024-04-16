@@ -42,21 +42,21 @@
 
 
 int main() {
-    //// Inicializar el mundo de física
-    //PedroBullet::Instance()->Init();
+    // Inicializar el mundo de física
+    
 
-    //// Crear objetos y añadirlos al mundo de física
+    // Crear objetos y añadirlos al mundo de física
 
-    //// Bucle principal de la aplicación
-    //while (true) {
-    //    // Actualizar el mundo de física
-    //    PedroBullet::Instance()->Update(1.0f / 60.0f); // Ejemplo con 60Hz de frecuencia de actualización
-    //}
+    // Bucle principal de la aplicación
+    while (true) {
+        // Actualizar el mundo de física
+        
+    }
 
-    //// Limpiar al finalizar
-    //PedroBullet::Instance()->Cleanup();
-    //std::cout << "Hola buenas tardes\n";
-    //VeryReal::PhysicsManager::Instance()->MakeRayCast(VeryReal::Vector3(0, 0, 0), VeryReal::Vector3(100, 0, 0));
+    // Limpiar al finalizar
+  
+    std::cout << "Hola buenas tardes\n";
+    VeryReal::PhysicsManager::Instance()->MakeRayCast(VeryReal::Vector3(0, 0, 0), VeryReal::Vector3(100, 0, 0));
     
     
     return 0;

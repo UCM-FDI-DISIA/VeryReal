@@ -20,6 +20,7 @@ struct btDefaultMotionState;
 namespace VeryReal {
     class TransformComponent;
     class ColliderComponent;
+
     class VERYREAL_API RigidBodyComponent : public Component {
     public:
         RigidBodyComponent();
@@ -63,7 +64,7 @@ namespace VeryReal {
         void setGroup(const int n);
         int getGroup() const;
 
-        void update(const double& dt);
+        void Update(const double& dt);
 
 
     private:

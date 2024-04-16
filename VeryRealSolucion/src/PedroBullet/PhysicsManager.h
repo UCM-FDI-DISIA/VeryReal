@@ -31,7 +31,7 @@ class btPersistentManifold;
 
 enum PBShapes;
 enum PBMovementType;
-class RigidBodyComponent;
+
 class ColliderComponent;
 
 
@@ -65,7 +65,7 @@ private:
 
 
     ///-------//// cosas para hacer pruebas
-    btDiscreteDynamicsWorld* dynamicWorld = nullptr;
+    //btDiscreteDynamicsWorld* dynamicWorld = nullptr;
 
 
     void createGround();

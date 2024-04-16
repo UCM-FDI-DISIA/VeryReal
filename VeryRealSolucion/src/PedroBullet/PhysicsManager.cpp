@@ -59,8 +59,8 @@ bool VeryReal::PhysicsManager::Initialize() {
         Shutdown();  
         return false;   // Fall� la creaci�n de dynamicsWorld
     }
-
-    dynamicsWorld->setGravity(btVector3(0, -9.81f, 0));
+    //DESCOMENTAR PARA GAVITY ATENTOS Q POR AHORA SE LE DA A TODOS LOS OBJETOS
+    //dynamicsWorld->setGravity(btVector3(0, -9.81f, 0));
     return true;   // Inicializaci�n exitosa
 
 }
@@ -142,7 +142,7 @@ void VeryReal::PhysicsManager::createGround() {
     btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, -1, 0)));
     btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, groundMotionState, groundShape, btVector3(0, 0, 0));
     btRigidBody* groundRigidBody = new btRigidBody(groundRigidBodyCI);
-    dynamicWorld->addRigidBody(groundRigidBody);
+    //dynamicWorld->addRigidBody(groundRigidBody);
 }
 
 
