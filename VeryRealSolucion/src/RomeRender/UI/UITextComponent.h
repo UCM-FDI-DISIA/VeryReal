@@ -39,7 +39,7 @@ namespace VeryReal {
         void setCaption(std::string newCap);
 
         //Establece el tamaño de los carácteres en relación con el tamaño de la fuente.
-        void setCharHeight(int height);
+        void setCharHeight(float height);
 
 
         //Establece el color del texto.
@@ -57,29 +57,29 @@ namespace VeryReal {
 
       protected:
             //Referencia al Overlay de Ogre.
-            Ogre::Overlay* overlay;
+            Ogre::Overlay* overlay = nullptr;
 
             //Referencia al Overlay container de Ogre.
-            Ogre::OverlayContainer* text_container;
+            Ogre::OverlayContainer* text_container = nullptr;
 
             //Referencia a la instancia de text area donde se renderiza el texto.
-            Ogre::TextAreaOverlayElement* text_area;
+            Ogre::TextAreaOverlayElement* text_area = nullptr;
 
             //Referencia al Overlay Manager de Ogre
-            Ogre::OverlayManager* overlay_mgr;
+            Ogre::OverlayManager* overlay_mgr = nullptr;
 
             //Nombre con el que se registra la instancia de OverlayElement.
-            std::string text_name;
+            std::string text_name = "";
 
             //Nombre del font registrado en el .fontdef.
-            std::string font_name;
+            std::string font_name = "";
 
             //Orden con el que se renderizan los Overlays.
             // Cuánto más alto sea el número más prioridad de renderizado tendrá el overlay.
-            int z_order;
+            int z_order = 0;
 
             //Tamaño de los carácteres en relación con el tamaño de la fuente establecido en el .fontdef
-            float char_height;
+            float char_height = 1;
 
             //Color del texto.
             Vector3 color;
@@ -103,9 +103,7 @@ namespace VeryReal {
             VeryReal::Vector2 scale;
 
             //Transform de UI asociado a este sprite.
-            UITransformComponent* transform;
-       
+            UITransformComponent* transform = nullptr;
     };
-
 }
 #endif // UITEXTCOMPONENT

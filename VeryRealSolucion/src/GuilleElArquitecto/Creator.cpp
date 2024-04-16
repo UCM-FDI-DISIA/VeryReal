@@ -1,8 +1,11 @@
 #include "Creator.h"
+#include "Entity.h"
+
 VeryReal::Creator::~Creator() {
 	for (auto& c : creators_map)delete c.second;
 	creators_map.clear();
 }
+
 void VeryReal::Creator::AddCreator(const creator_name& c_name, CreatorComponent* cretorcomponent) {
 	RemoveCreator(c_name);
 	creators_map.insert({ c_name,cretorcomponent });
@@ -32,7 +35,6 @@ bool VeryReal::Creator::HasPrefab(prefab_name p_name) {
 }
 
 //Devuelve el creator especifico y si no esta devuelve nullptr
-
 VeryReal::Entity* VeryReal::Creator::GetPrefab(prefab_name p_name) {
     if (!HasPrefab(p_name)) {
         return nullptr;

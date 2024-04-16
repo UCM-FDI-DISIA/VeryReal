@@ -111,7 +111,7 @@ void VeryReal::UITextComponent::setCaption(std::string newCap) {
     text_area->setCaption(newCap);
 }
 
-void VeryReal::UITextComponent::setCharHeight(int height) { 
+void VeryReal::UITextComponent::setCharHeight(float height) { 
     char_height = height;
     text_area->setCharHeight(height);
 }

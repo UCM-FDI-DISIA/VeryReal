@@ -12,6 +12,8 @@ class OverlayContainer;
 class OverlayManager;
 }
 
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
     class UITransformComponent;
 
@@ -39,24 +41,24 @@ namespace VeryReal {
           protected:      
 
               //Referencia al Overlay de Ogre.
-              Ogre::Overlay* overlay;
+              Ogre::Overlay* overlay = nullptr;
 
               //Referencia al Overlay container de Ogre.
-              Ogre::OverlayContainer* sprite;
+              Ogre::OverlayContainer* sprite = nullptr;
 
               //Referencia al Overlay Manager de Ogre
-              Ogre::OverlayManager* overlay_mgr;
+              Ogre::OverlayManager* overlay_mgr = nullptr;
 
               //Nombre con el que se registra la instancia de OverlayElement.
               //(se recomienda que sea el mismo de la imagen registrada en el material)
-              std::string sprite_name;
+              std::string sprite_name = "";
 
               //Nombre del material registrado en el .material.
-              std::string material_name;
+              std::string material_name = "";
 
               //Orden con el que se renderizan los Overlays.
               // Cuánto más alto sea el número más prioridad de renderizado tendrá el overlay.
-              int z_order;
+              int z_order = 0;
 
               //Posición del sprite en la pantalla.
               // El (0,0) se encuentra en la esquina superior iozquierda de la pantalla.
@@ -68,7 +70,10 @@ namespace VeryReal {
               VeryReal::Vector2 scale;
 
               //Transform de UI asociado a este sprite.
-              UITransformComponent* transform;
+              UITransformComponent* transform = nullptr;
     };
 }
+
+#pragma warning(default : 4251)
+
 #endif   // !UISPRITERENDERCOMPONENT

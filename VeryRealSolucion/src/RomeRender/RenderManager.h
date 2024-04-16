@@ -42,8 +42,11 @@ namespace Ogre {
 	}
 }
 
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
 	// Declaración de la clase RenderManager, que hereda de Manager
+
 	class VERYREAL_API RenderManager : public Manager<RenderManager> {
                
     private:
@@ -94,7 +97,7 @@ namespace VeryReal {
 		VeryReal::Window* GetVRWindow();
 
 		// Capa del sistema de archivos de Ogre
-		Ogre::FileSystemLayer* filesystem_layer;
+		Ogre::FileSystemLayer* filesystem_layer = nullptr;
 
 	protected:
 		// Puntero a la ventana de la aplicación
@@ -140,5 +143,7 @@ namespace VeryReal {
 		void UnloadShaders();
 	};
 }
+
+#pragma warning(default : 4251)
 
 #endif // !RENDERMANAGER

@@ -66,9 +66,9 @@ void UiSpriteRenderer::demo() {
     mTextArea->setAlignment(Ogre::TextAreaOverlayElement::Center);
     text_container->addChild(mTextArea);
     
-    mTextArea->setPosition(0.4, 0.4);
+    mTextArea->setPosition((Ogre::Real)0.4, (Ogre::Real)0.4);
     mTextArea->setDimensions(1, 1);
-    mTextArea->setCharHeight(0.10);
+    mTextArea->setCharHeight((Ogre::Real)0.10);
     //mTextArea->setColour(Ogre::ColourValue(1,0,0));
     //mTextArea->setColour(Ogre::ColourValue(1,0,0));
     //mTextArea->setColour(Ogre::ColourValue(1,0,0));
@@ -77,16 +77,13 @@ void UiSpriteRenderer::demo() {
     mTextArea->setCaption("Ya existe texto perras.");
     overlay->show();
     //textname, zorder, fontname, charheight, colorvalue/colorbottom y top, caption. pos, scale y rot lo coge del transform.
-
     #pragma endregion
+}
 
+UiSpriteRenderer::UiSpriteRenderer() {
 
 }
 
-UiSpriteRenderer::UiSpriteRenderer() 
-{
-
-}
 UiSpriteRenderer::~UiSpriteRenderer() { }
 
 bool UiSpriteRenderer::InitComponent(std::string name, std::string material, int order = 0) { 
