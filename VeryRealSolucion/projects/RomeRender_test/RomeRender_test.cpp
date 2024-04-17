@@ -16,6 +16,7 @@
 #include "UI/CreatorUISpriteRenderComponent.h"
 #include "UI/CreatorUITextComponent.h"
 #include "UI/CreatorUITransformComponent.h"
+#include "UI/UIButtonComponent.h"
 
 
 using namespace VeryReal;
@@ -64,7 +65,7 @@ int main() {
 #pragma endregion
 
 #pragma region Prueba Luz
-    /*   VeryReal::RenderManager::Instance()->InitManager("app");
+ /*      VeryReal::RenderManager::Instance()->InitManager("app");
     VeryReal::Creator::Instance()->AddCreator("luz", new VeryReal::CreatorLightComponent());
     VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
     Creator::Instance()->GetCreator("luz")->AddParameter("type", 8);
@@ -87,35 +88,36 @@ int main() {
 #pragma endregion
 
 
-//    VeryReal::RenderManager::Instance()->InitManager("app");
-//    VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
-//    Creator::Instance()->GetCreator("TransformComponent")->AddParameter("a", 0);
-//    Creator::Instance()->GetCreator("TransformComponent")->AddParameter("position", Vector3{0, 0, 20});
-//    Creator::Instance()->GetCreator("TransformComponent")->AddParameter("rotation", Vector3{0, 0, 0});
-//    Creator::Instance()->GetCreator("TransformComponent")->AddParameter("scale", Vector3{1, 1, 1});
-//
-//    VeryReal::Creator::Instance()->AddCreator("MeshRenderComponent", new VeryReal::CreatorMeshRenderComponent());
-//    Creator::Instance()->GetCreator("MeshRenderComponent")->AddParameter("isstatic", true);
-//    Creator::Instance()->GetCreator("MeshRenderComponent")->AddParameter("modelname", std::string("Sinbad.mesh"));
-//    Creator::Instance()->GetCreator("MeshRenderComponent")->AddParameter("entityname", std::string("sinbad"));
-//    Creator::Instance()->GetCreator("MeshRenderComponent")->AddParameter("materialname", std::string(""));
-//#pragma region camara
-//    VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
-//    Creator::Instance()->GetCreator("Camera")->AddParameter("name", std::string("anim"));
-//    Creator::Instance()->GetCreator("Camera")->AddParameter("color", Vector3(0.8f, 0.3f, 1));
-//    Creator::Instance()->GetCreator("Camera")->AddParameter("offset", Vector3{100, 100, 100});
-//#pragma endregion
-//#pragma region luz
-//    VeryReal::Creator::Instance()->AddCreator("Light", new VeryReal::CreatorLightComponent());
-//    Creator::Instance()->GetCreator("Light")->AddParameter("type", 1);
-//    Creator::Instance()->GetCreator("Light")->AddParameter("diffusecolour", Vector3{1, 1, 1});
-//    Creator::Instance()->GetCreator("Light")->AddParameter("shadowfardist", float(25.0));
-//    Creator::Instance()->GetCreator("Light")->AddParameter("shadowdist", float(25.0));
-//    Creator::Instance()->GetCreator("Light")->AddParameter("ineerangle", float(90.0));
-//    Creator::Instance()->GetCreator("Light")->AddParameter("outerangle", float(180.0));
-//    Creator::Instance()->GetCreator("Light")->AddParameter("nearclipdist", float(0.1));
-//    Creator::Instance()->GetCreator("Light")->AddParameter("shdws", true);
-//#pragma endregion
+    VeryReal::RenderManager::Instance()->InitManager("app");
+    VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
+    Creator::Instance()->GetCreator("TransformComponent")->AddParameter("a", 0);
+    Creator::Instance()->GetCreator("TransformComponent")->AddParameter("position", Vector3{0, 0, 20});
+    Creator::Instance()->GetCreator("TransformComponent")->AddParameter("rotation", Vector3{0, 0, 0});
+    Creator::Instance()->GetCreator("TransformComponent")->AddParameter("scale", Vector3{1, 1, 1});
+
+    VeryReal::Creator::Instance()->AddCreator("MeshRenderComponent", new VeryReal::CreatorMeshRenderComponent());
+    Creator::Instance()->GetCreator("MeshRenderComponent")->AddParameter("isstatic", true);
+    Creator::Instance()->GetCreator("MeshRenderComponent")->AddParameter("modelname", std::string("Sinbad.mesh"));
+    Creator::Instance()->GetCreator("MeshRenderComponent")->AddParameter("entityname", std::string("sinbad"));
+    Creator::Instance()->GetCreator("MeshRenderComponent")->AddParameter("materialname", std::string(""));
+#pragma region camara
+    VeryReal::Creator::Instance()->AddCreator("Camera", new VeryReal::CreatorCameraComponent());
+    Creator::Instance()->GetCreator("Camera")->AddParameter("name", std::string("anim"));
+    Creator::Instance()->GetCreator("Camera")->AddParameter("color", Vector3(0.8f, 0.3f, 1));
+    Creator::Instance()->GetCreator("Camera")->AddParameter("offset", Vector3{100, 100, 100});
+#pragma endregion
+#pragma region luz
+    VeryReal::Creator::Instance()->AddCreator("Light", new VeryReal::CreatorLightComponent());
+    Creator::Instance()->GetCreator("Light")->AddParameter("type", 1);
+    Creator::Instance()->GetCreator("Light")->AddParameter("diffusecolour", Vector3{1, 1, 1});
+    Creator::Instance()->GetCreator("Light")->AddParameter("shadowfardist", float(25.0));
+    Creator::Instance()->GetCreator("Light")->AddParameter("shadowdist", float(25.0));
+    Creator::Instance()->GetCreator("Light")->AddParameter("ineerangle", float(90.0));
+    Creator::Instance()->GetCreator("Light")->AddParameter("outerangle", float(180.0));
+    Creator::Instance()->GetCreator("Light")->AddParameter("nearclipdist", float(0.1));
+    Creator::Instance()->GetCreator("Light")->AddParameter("shdws", true);
+#pragma endregion
+// 
 //#pragma region Sprite
 //    VeryReal::Creator::Instance()->AddCreator("UISpriteRenderComponent", new VeryReal::CreatorUISpriteRenderComponent());
 //    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("name", std::string("anim"));
@@ -142,33 +144,33 @@ int main() {
 //    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("color", VeryReal::Vector3(1, 0, 0));
 //#pragma endregion
 //#pragma region UITransform
-//    VeryReal::Creator::Instance()->AddCreator("UITransformComponent", new VeryReal::CreatorUITransformComponent());
-//    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("position", Vector2(0.5, 0.5));
-//    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("scale", Vector2(1, 1));
+    VeryReal::Creator::Instance()->AddCreator("UITransformComponent", new VeryReal::CreatorUITransformComponent());
+    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("position", Vector2(0.5, 0.5));
+    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("scale", Vector2(1, 1));
 //#pragma endregion
 //
-//    VeryReal::Scene* s = SceneManager::Instance()->AddScene("Play", true);
-//    s = SceneManager::Instance()->GetScene("Play");
-//    Entity* e = s->AddEntity("Player");
+    VeryReal::Scene* s = SceneManager::Instance()->AddScene("Play", true);
+    s = SceneManager::Instance()->GetScene("Play");
+    Entity* e = s->AddEntity("Player");
+
+    Entity* luz = s->AddEntity("Luz");
+    Entity* camara = s->AddEntity("Cam");
+    Component* cam = camara->AddComponent("Camera");
+    Component* trans = luz->AddComponent("TransformComponent");
+    Component* luzcom = luz->AddComponent("Light");
+    Component* transform = e->AddComponent("TransformComponent");
+    Component* uiTransform = e->AddComponent("UITransformComponent");
+    //Component* uiSprite = e->AddComponent("UISpriteRenderComponent");
+    //Component* uiTextMid = e->AddComponent("UITextComponent");
+    //Component* uiTextFull = e->AddComponent("UITextComponent2");
+    //Component* meshrenderer = e->AddComponent("MeshRenderComponent");
 //
-//    Entity* luz = s->AddEntity("Luz");
-//    Entity* camara = s->AddEntity("Cam");
-//    Component* cam = camara->AddComponent("Camera");
-//    Component* trans = luz->AddComponent("TransformComponent");
-//    Component* luzcom = luz->AddComponent("Light");
-//    Component* transform = e->AddComponent("TransformComponent");
-//    Component* uiTransform = e->AddComponent("UITransformComponent");
-//    Component* uiSprite = e->AddComponent("UISpriteRenderComponent");
-//    Component* uiTextMid = e->AddComponent("UITextComponent");
-//    //Component* uiTextFull = e->AddComponent("UITextComponent2");
-//    //Component* meshrenderer = e->AddComponent("MeshRenderComponent");
-//
-//    while (true) {
-//        VeryReal::RenderManager::Instance()->Update(0.2);
-//        s->Update(0.1);
-//    }
-//
-//    delete s;
+    while (true) {
+        VeryReal::RenderManager::Instance()->Update(0.2);
+        s->Update(0.1);
+    }
+
+  //  delete s;
 
     ///* static_cast<CameraComponent*>(cam)->InitComponent("hola", Vector3(0.8, 0.3, 1),
     //  VeryReal::RenderManager::Instance()->GetRenderWindow(), VeryReal::RenderManager::Instance()->SceneManagerOgree(), Vector3(10, 0, 0));*/

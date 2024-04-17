@@ -16,7 +16,7 @@ namespace VeryReal {
 	class VERYREAL_API VariantClass
 	{
 	private:
-		std::variant<int, float,VeryReal::Vector2, VeryReal::Vector3, VeryReal::Vector4,std::string,bool> myvariant;
+		std::variant<int, float, double,VeryReal::Vector2, VeryReal::Vector3, VeryReal::Vector4,std::string,bool> myvariant;
 		
 	public:
 		inline auto GetVariant() { return myvariant; }

@@ -1,10 +1,10 @@
 #pragma once
 #include "CreatorComponent.h"
 namespace VeryReal {
-class VERYREAL_API CreatorUIProgressBarComponent : public CreatorComponent {
+class VERYREAL_API CreatorButtonComponent : public CreatorComponent {
         public:
-    CreatorUIProgressBarComponent(){};
-    virtual ~CreatorUIProgressBarComponent(){};
+    CreatorButtonComponent(){};
+    virtual ~CreatorButtonComponent(){};
     Component* CreatorSpecificComponent() override;
     void SpecificInitComponent(Component* c) override;
 }; 
