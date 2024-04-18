@@ -1,20 +1,39 @@
-#include "CreatorUIProgressBarComponent.h"
 #include "UIProgressBarComponent.h"
+#include <string>
+#include "CreatorUIProgressBarComponent.h"
 using namespace VeryReal;
-Component* CreatorUIProgressBarComponent::CreatorSpecificComponent() { return new UIProgressBarComponent(); }
 
-void CreatorUIProgressBarComponent::SpecificInitComponent(Component* c) {
+Component* VeryReal::CreatorUIProgressBarComponent::CreatorSpecificComponent() { 
+    return new UIProgressBarComponent; 
+}
+
+void VeryReal::CreatorUIProgressBarComponent::SpecificInitComponent(Component* c) { 
     UIProgressBarComponent* progressbar = static_cast<UIProgressBarComponent*>(c);
-     double maximo, progres;
+    double maximo, progres;
+    std::string progressBarName, frameMaterial, contentMaterial;
+    int zOrder;
+
     if (std::holds_alternative<double>(parameters_map.at("maximo")->GetVariant())) {
-         maximo = std::get<double>(parameters_map.at("maximo")->GetVariant());
+        maximo = std::get<double>(parameters_map.at("maximo")->GetVariant());
     }
     if (std::holds_alternative<double>(parameters_map.at("progres")->GetVariant())) {
         progres = std::get<double>(parameters_map.at("progres")->GetVariant());
     }
-   
-    bool b = progressbar->InitComponent(maximo, progres);
+    if (std::holds_alternative<std::string>(parameters_map.at("progressBarName")->GetVariant())) {
+        progressBarName = std::get<std::string>(parameters_map.at("progressBarName")->GetVariant());
+    }
+    if (std::holds_alternative<std::string>(parameters_map.at("frameMaterial")->GetVariant())) {
+        frameMaterial = std::get<std::string>(parameters_map.at("frameMaterial")->GetVariant());
+    }
+    if (std::holds_alternative<std::string>(parameters_map.at("contentMaterial")->GetVariant())) {
+        contentMaterial = std::get<std::string>(parameters_map.at("contentMaterial")->GetVariant());
+    }
+    if (std::holds_alternative<int>(parameters_map.at("zOrder")->GetVariant())) {
+        zOrder = std::get<int>(parameters_map.at("zOrder")->GetVariant());
+    }
+
+    bool b = progressbar->InitComponent(maximo, progres, progressBarName, frameMaterial, contentMaterial, zOrder);
     if (!b) {
-        // Gestion de error
+        //Gestionar error
     }
 }

@@ -33,10 +33,8 @@ namespace VeryReal {
             //Establece el zOrder del Overlay.
             void setZOrder(int order);
 
-            //Establece la posición y escala del sprite dentro de su overlay.
+            //Establece la posiciï¿½n y escala del sprite dentro de su overlay.
             void setSpriteTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool show = true);
-
-                void demo();
 
           protected:      
 
@@ -44,12 +42,12 @@ namespace VeryReal {
               Ogre::Overlay* overlay = nullptr;
 
               //Referencia al Overlay container de Ogre.
-              Ogre::OverlayContainer* sprite = nullptr;
+              Ogre::OverlayContainer* sprite_container = nullptr;;
 
               //Referencia al Overlay Manager de Ogre
               Ogre::OverlayManager* overlay_mgr = nullptr;
 
-              //Nombre con el que se registra la instancia de OverlayElement.
+              //Nombre con el que se registra la instancia de OverlayContainer.
               //(se recomienda que sea el mismo de la imagen registrada en el material)
               std::string sprite_name = "";
 
@@ -57,10 +55,10 @@ namespace VeryReal {
               std::string material_name = "";
 
               //Orden con el que se renderizan los Overlays.
-              // Cuánto más alto sea el número más prioridad de renderizado tendrá el overlay.
+              // Cuï¿½nto mï¿½s alto sea el nï¿½mero mï¿½s prioridad de renderizado tendrï¿½ el overlay.
               int z_order = 0;
 
-              //Posición del sprite en la pantalla.
+              //Posiciï¿½n del sprite en la pantalla.
               // El (0,0) se encuentra en la esquina superior iozquierda de la pantalla.
               //La esquina inferior derecha de la pantalla representa la coordenada (1,1).
               VeryReal::Vector2 position;

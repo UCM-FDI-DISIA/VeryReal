@@ -18,7 +18,15 @@ using namespace VeryReal;
 
 VeryReal::UITextComponent::UITextComponent() { }
 
-VeryReal::UITextComponent::~UITextComponent() { }
+VeryReal::UITextComponent::~UITextComponent() {
+    overlay->remove2D(text_container);
+    text_container->removeChild(text_area->getName());
+    overlay_mgr->destroyOverlayElement(text_area);
+    overlay_mgr->destroyOverlayElement(text_container);
+    overlay_mgr->destroy(overlay);
+    text_container->cleanupDictionary();
+    text_area->cleanupDictionary();
+}
 
 bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 clr,
                                               std::string caption) {
