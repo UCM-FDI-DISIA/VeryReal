@@ -5,7 +5,7 @@
 #include <Manager.h>
 #include <array>
 #include "TonMapeo.h"
-
+#include "export.h"
 
 #pragma warning(disable : 4251)
 

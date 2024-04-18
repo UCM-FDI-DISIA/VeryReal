@@ -54,7 +54,7 @@ namespace VeryReal {
 	public: 
 		
 		// Constructor de la clase RenderManager
-        public:
+       
     static bool Init() {
         RenderManager* a = new RenderManager();
         if (a != nullptr) {

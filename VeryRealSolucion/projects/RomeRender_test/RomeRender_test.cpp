@@ -17,6 +17,8 @@
 #include "UI/CreatorUITextComponent.h"
 #include "UI/CreatorUITransformComponent.h"
 #include "UI/UIButtonComponent.h"
+#include "UI/CreatorUIButtonComponent.h"
+#include <../TonInput/InputManager.h>
 
 
 using namespace VeryReal;
@@ -27,7 +29,7 @@ int main() {
     //    Creator::Instance()->GetCreator("animator")->AddParameter("name", "anim");
     //
     //
-    //   VeryReal::RenderManager::Instance()->InitManager("app");
+   
     //  VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
     //   VeryReal::Creator::Instance()->AddCreator("MeshRenderComponent", new VeryReal::CreatorMeshRenderComponent());
     //   Creator::Instance()->AddCreator("Animator", new CreatorAnimatorComponent());
@@ -86,9 +88,12 @@ int main() {
     std::cout << SceneManager::Instance()->GetScene("Play")->GetEntity("Luzent")->HasComponent("luz") << "\n";*/
 
 #pragma endregion
-
-
-    VeryReal::RenderManager::Instance()->InitManager("app");
+    VeryReal::Creator::Init();
+    VeryReal::SceneManager::Init();
+   VeryReal::RenderManager::Init();
+    VeryReal::InputManager::Init();
+   VeryReal::RenderManager::Instance()->InitManager("app");
+    VeryReal::InputManager::Instance()->InitManager();
     VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
     Creator::Instance()->GetCreator("TransformComponent")->AddParameter("a", 0);
     Creator::Instance()->GetCreator("TransformComponent")->AddParameter("position", Vector3{0, 0, 20});
@@ -118,12 +123,15 @@ int main() {
     Creator::Instance()->GetCreator("Light")->AddParameter("shdws", true);
 #pragma endregion
 // 
-//#pragma region Sprite
-//    VeryReal::Creator::Instance()->AddCreator("UISpriteRenderComponent", new VeryReal::CreatorUISpriteRenderComponent());
-//    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("name", std::string("anim"));
-//    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("material", std::string("UI/test"));
-//    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("zOrder", 4);
-//#pragma endregion
+#pragma region Sprite
+    VeryReal::Creator::Instance()->AddCreator("UISpriteRenderComponent", new VeryReal::CreatorUISpriteRenderComponent());
+    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("name", std::string("anim"));
+    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("material", std::string("UI/test"));
+    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("zOrder", 4);
+
+
+    VeryReal::Creator::Instance()->AddCreator("UIButtonComponent", new VeryReal::CreatorButtonComponent());
+    //#pragma endregion
 //#pragma region Text 1
 //    /*VeryReal::Creator::Instance()->AddCreator("UITextComponent", new VeryReal::CreatorUITextComponent());
 //    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("name", std::string("miprimer"));
@@ -160,13 +168,15 @@ int main() {
     Component* luzcom = luz->AddComponent("Light");
     Component* transform = e->AddComponent("TransformComponent");
     Component* uiTransform = e->AddComponent("UITransformComponent");
-    //Component* uiSprite = e->AddComponent("UISpriteRenderComponent");
+    Component* uiSprite = e->AddComponent("UISpriteRenderComponent");
+    Component* uibuttom = e->AddComponent("UIButtonComponent");
     //Component* uiTextMid = e->AddComponent("UITextComponent");
     //Component* uiTextFull = e->AddComponent("UITextComponent2");
     //Component* meshrenderer = e->AddComponent("MeshRenderComponent");
 //
     while (true) {
         VeryReal::RenderManager::Instance()->Update(0.2);
+        VeryReal::InputManager::Instance()->Refresh();
         s->Update(0.1);
     }
 
