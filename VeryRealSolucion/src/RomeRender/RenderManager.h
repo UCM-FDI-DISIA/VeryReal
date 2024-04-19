@@ -6,7 +6,7 @@
 #include "Vector3.h"
 #include "string"
 #include "export.h"
-#include "SceneManager" 
+//#include "SceneManager" 
 
 #define DEBUG_ROOT_ERROR "OGRE NO HA SIDO INICIALIZADO CORRECTAMENTE\n"
 #define DEBUG_OGRE_ERROR "NO SE HA ENCONTRADO EL ARCHIVO ogre.cfg\n"
