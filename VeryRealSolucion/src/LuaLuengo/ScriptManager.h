@@ -39,7 +39,8 @@ namespace VeryReal {
 		virtual ~ScriptManager();
 
 		// Abre el archivo .lua
-		void InitManager(std::string p);
+		void InitManager();
+        void NewScene(std::string p);
 		
 		// Método para probar la creación de entidades y componentes mediante Lua
 		void ReadScene(std::string n);

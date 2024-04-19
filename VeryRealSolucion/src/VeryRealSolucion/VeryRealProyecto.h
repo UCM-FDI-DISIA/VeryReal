@@ -3,19 +3,30 @@
 #include <Windows.h>		//por ahora lo dejo aqui
 #include <string>
 
+namespace VeryReal {
 class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
-	friend Singleton<VeryRealProyecto>;
-public:
-	bool Init();
-	void Loop();
-	virtual void Delete();
-	void CreateCreators();
+    friend Singleton<VeryRealProyecto>;
 
-	bool LoadGame(std::string gameName);
-private:
+        public:
+    static bool Init() {
+        VeryRealProyecto* a = new VeryRealProyecto();
+        if (a != nullptr) {
+            instance_pointer.reset(a);
+            return true;
+            }
+    }
+    bool InitVeryReal();
+    void Loop();
+    virtual void Delete();
+    bool InitPointers();
+    bool InitManagers();
+    bool CreateCreators();
+
+    bool LoadGame(std::string gameName);
+
+        private:
     HMODULE gameDll = NULL;
 };
 
-inline VeryRealProyecto& VR() {
-	return *VeryRealProyecto::Instance();
+inline VeryRealProyecto& VR() { return *VeryRealProyecto::Instance(); }
 }
