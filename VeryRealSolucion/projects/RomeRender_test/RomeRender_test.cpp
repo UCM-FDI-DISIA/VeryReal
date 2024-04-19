@@ -14,6 +14,7 @@
 #include "CreatorLightComponent.h"
 #include "CreatorMeshRenderComponent.h"
 #include "UI/CreatorUISpriteRenderComponent.h"
+#include "UI/CreatorUIProgressBarComponent.h"
 #include "UI/CreatorUITextComponent.h"
 #include "UI/CreatorUITransformComponent.h"
 #include "UI/UIButtonComponent.h"
@@ -126,21 +127,33 @@ int main() {
 #pragma region Sprite
     VeryReal::Creator::Instance()->AddCreator("UISpriteRenderComponent", new VeryReal::CreatorUISpriteRenderComponent());
     Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("name", std::string("anim"));
-    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("material", std::string("UI/test"));
+    Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("material", std::string("UI/progresscontent"));
     Creator::Instance()->GetCreator("UISpriteRenderComponent")->AddParameter("zOrder", 4);
 
 
     VeryReal::Creator::Instance()->AddCreator("UIButtonComponent", new VeryReal::CreatorButtonComponent());
-    //#pragma endregion
+#pragma endregion
+
+#pragma region PRogressBar
+    VeryReal::Creator::Instance()->AddCreator("UIProgressBarComponent", new VeryReal::CreatorUIProgressBarComponent());
+    Creator::Instance()->GetCreator("UIProgressBarComponent")->AddParameter("maximo", double(1));
+    Creator::Instance()->GetCreator("UIProgressBarComponent")->AddParameter("progres", double(0.5));
+    Creator::Instance()->GetCreator("UIProgressBarComponent")->AddParameter("progressBarName", std::string("progresstest"));
+    Creator::Instance()->GetCreator("UIProgressBarComponent")->AddParameter("frameMaterial", std::string("UI/progressframe"));
+    Creator::Instance()->GetCreator("UIProgressBarComponent")->AddParameter("contentMaterial", std::string("UI/progresscontent"));
+    Creator::Instance()->GetCreator("UIProgressBarComponent")->AddParameter("zOrder", 7);
+
+
+#pragma endregion
 //#pragma region Text 1
-//    /*VeryReal::Creator::Instance()->AddCreator("UITextComponent", new VeryReal::CreatorUITextComponent());
-//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("name", std::string("miprimer"));
-//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("font", std::string("Mario"));
-//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("caption", std::string("Soy un test"));
-//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("zOrder", 3);
-//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("charHeight", 0.1f);
-//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("colorTop", VeryReal::Vector3(1,0,0));
-//    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("colorBottom", VeryReal::Vector3(0,0,1));*/
+   /* VeryReal::Creator::Instance()->AddCreator("UITextComponent", new VeryReal::CreatorUITextComponent());
+    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("name", std::string("miprimer"));
+    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("font", std::string("Mario"));
+    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("caption", std::string("Soy un test"));
+    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("zOrder", 3);
+    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("charHeight", 0.1f);
+    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("colorTop", VeryReal::Vector3(1,0,0));
+    Creator::Instance()->GetCreator("UITextComponent")->AddParameter("colorBottom", VeryReal::Vector3(0,0,1));*/
 //#pragma endregion
 //#pragma region Text 2
 //    VeryReal::Creator::Instance()->AddCreator("UITextComponent", new VeryReal::CreatorUITextComponent());
@@ -153,8 +166,8 @@ int main() {
 //#pragma endregion
 //#pragma region UITransform
     VeryReal::Creator::Instance()->AddCreator("UITransformComponent", new VeryReal::CreatorUITransformComponent());
-    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("position", Vector2(0.5, 0.5));
-    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("scale", Vector2(1, 1));
+    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("position", Vector2(0, 0));
+    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("scale", Vector2(0.3, 0.05));
 //#pragma endregion
 //
     VeryReal::Scene* s = SceneManager::Instance()->AddScene("Play", true);
@@ -168,8 +181,9 @@ int main() {
     Component* luzcom = luz->AddComponent("Light");
     Component* transform = e->AddComponent("TransformComponent");
     Component* uiTransform = e->AddComponent("UITransformComponent");
-    Component* uiSprite = e->AddComponent("UISpriteRenderComponent");
-    Component* uibuttom = e->AddComponent("UIButtonComponent");
+    Component* uiPRogress = e->AddComponent("UIProgressBarComponent");
+    //Component* uiSprite = e->AddComponent("UISpriteRenderComponent");
+    //Component* uibuttom = e->AddComponent("UIButtonComponent");
     //Component* uiTextMid = e->AddComponent("UITextComponent");
     //Component* uiTextFull = e->AddComponent("UITextComponent2");
     //Component* meshrenderer = e->AddComponent("MeshRenderComponent");

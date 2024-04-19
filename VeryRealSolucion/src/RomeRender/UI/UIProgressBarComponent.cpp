@@ -37,10 +37,13 @@ using namespace VeryReal;
         overlay_mgr = VeryReal::RenderManager::Instance()->GetOverlayManager();
         overlay = overlay_mgr->create(progressBarName + "Overlay");
         progress_bar_container = dynamic_cast<Ogre::OverlayContainer*>(overlay_mgr->createOverlayElement("Panel", progressBarName + "Panel"));
-        frame_element = overlay_mgr->createOverlayElement("Panel", progressBarName + "Frame");
         content_element = overlay_mgr->createOverlayElement("Panel", progressBarName + "Content");
+        content_element->setMaterialName(content_material_name);
+        progress_bar_container->addChild(content_element);
+        frame_element = overlay_mgr->createOverlayElement("Panel", progressBarName + "Frame");
+        progress_bar_container->addChild(frame_element);
+        frame_element->setMaterialName(frame_material_name);
 
-        transform = GetEntity()->GetComponent<UITransformComponent>();
 
         //if (!transform) {
         //    ErrorInf().showErrorMessageBox("UiSpriteRenderer error", "An entity doesn't have transform component", EI_ERROR);
@@ -48,17 +51,16 @@ using namespace VeryReal;
         //    return false;
         //}
 
+        transform = GetEntity()->GetComponent<UITransformComponent>();
         setProgressBarTransform(transform->getPosition(), transform->getScale());
         overlay->add2D(progress_bar_container);
         overlay->setZOrder(order);
-        frame_element->setMaterialName(frame_material_name);
-        content_element->setMaterialName(content_material_name);
         overlay->show();
         return true;
     }
     void UIProgressBarComponent::Update(const double& dt) {
-        content_element->setDimensions(progress, 1);
         setProgressBarTransform(transform->getPosition(), transform->getScale(), transform->isHidden());
+        
     }
     double UIProgressBarComponent::getProgress() { 
         return progress;
@@ -92,6 +94,8 @@ using namespace VeryReal;
         position = pos;
         progress_bar_container->setDimensions(sc.GetX(), sc.GetY());
         scale = sc;
+        content_element->setDimensions(sc.GetX() * progress, sc.GetY());
+        frame_element->setDimensions(sc.GetX() , sc.GetY());
     }
 
 

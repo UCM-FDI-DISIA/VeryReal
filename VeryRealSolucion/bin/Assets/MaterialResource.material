@@ -26,7 +26,7 @@ material UI/progressframe
 			scene_blend alpha_blend
 			texture_unit 
 			{
-				texture progrestestcontent.png
+				texture progrestestframe.png
 				colour_op replace
 			}
 		}
@@ -43,7 +43,7 @@ material UI/progresscontent
 			scene_blend alpha_blend
 			texture_unit 
 			{
-				texture progrestestframe.png
+				texture progrestestcontent.png
 				colour_op replace
 			}
 		}
