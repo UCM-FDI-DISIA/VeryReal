@@ -22,7 +22,16 @@ using namespace VeryReal;
     }
     // Destructor de la clase UIProgressBarComponent
     UIProgressBarComponent::~UIProgressBarComponent() {
-
+        overlay->remove2D(progress_bar_container);
+        progress_bar_container->removeChild(frame_element->getName());
+        progress_bar_container->removeChild(content_element->getName());
+        overlay_mgr->destroyOverlayElement(frame_element);
+        overlay_mgr->destroyOverlayElement(content_element);
+        overlay_mgr->destroyOverlayElement(progress_bar_container);
+        overlay_mgr->destroy(overlay);
+        progress_bar_container->cleanupDictionary();
+        frame_element->cleanupDictionary();
+        content_element->cleanupDictionary();
     }
     // Inicializa el componente
     bool UIProgressBarComponent::InitComponent(double maximo, double progres, std::string progressBarName,

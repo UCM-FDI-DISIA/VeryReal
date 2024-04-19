@@ -1,7 +1,7 @@
 #include "ErrorInformant.h"
 
 
-options ErrorInformant::showErrorMessageBox(std::string ErrorName, std::string ErrorMessage, errorType ErrorType, windowType WindowType) {
+VeryReal::options VeryReal::ErrorInformant::showErrorMessageBox(std::string ErrorName, std::string ErrorMessage, errorType ErrorType, windowType WindowType) {
 	
 	std::wstring wName = std::wstring(ErrorName.begin(), ErrorName.end());
 	std::wstring wMessage = std::wstring(ErrorMessage.begin(), ErrorMessage.end());

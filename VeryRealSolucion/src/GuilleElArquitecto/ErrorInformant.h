@@ -1,5 +1,5 @@
-#ifndef ERRORINFORMANT
-#define ERRORINFORMANT
+#ifndef ERRORINFORMANTVR
+#define ERRORINFORMANTVR
 #pragma once
 
 #include "Singleton.h"
@@ -8,6 +8,7 @@
 #include "export.h"
 
 
+namespace VeryReal{
 //Tipos de errores posibles
 enum errorType { 
 	EI_WARNING = MB_ICONWARNING, 
@@ -44,23 +45,23 @@ enum options {
 
 
 
-class VERYREAL_API ErrorInformant : public VeryReal::Singleton<ErrorInformant> {
-	friend Singleton<ErrorInformant>;
+    class VERYREAL_API ErrorInformant : public VeryReal::Singleton<ErrorInformant> {
+        friend Singleton<ErrorInformant>;
 
-	public:
-		/// Lanza una ventana de error informando al usuario de que algo no ha salido como se esperaba
-		/// @param ErrorName -> Nombre del error
-		/// @param ErrorMessage -> Descripcion del error ocurrido
-		/// @param ErrorType -> Tipo del error (EI_WARNING, EI_ERROR o EI_UNKNOWN)
-		/// @return options -> Opción seleccionada por el usuario en la ventana de error
-		options showErrorMessageBox(std::string ErrorName = "Unknown error", std::string ErrorMessage = "Description not avaliable", errorType ErrorType = EI_UNKNOWN, windowType = EI_W_OK);
+            public:
+        /// Lanza una ventana de error informando al usuario de que algo no ha salido como se esperaba
+        /// @param ErrorName -> Nombre del error
+        /// @param ErrorMessage -> Descripcion del error ocurrido
+        /// @param ErrorType -> Tipo del error (EI_WARNING, EI_ERROR o EI_UNKNOWN)
+        /// @return options -> Opción seleccionada por el usuario en la ventana de error
+        options showErrorMessageBox(std::string ErrorName = "Unknown error", std::string ErrorMessage = "Description not avaliable",
+                                    errorType ErrorType = EI_UNKNOWN, windowType = EI_W_OK);
 
         ErrorInformant(){};
-};
+    };
 
-/// Singleton instance
-/// @return A pointer of the instance
-inline ErrorInformant& ErrorInf() {
-	return *ErrorInformant::Instance();
+    /// Singleton instance
+    /// @return A pointer of the instance
+    inline ErrorInformant& ErrorInf() { return *ErrorInformant::Instance(); }
 }
 #endif

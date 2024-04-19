@@ -27,17 +27,20 @@ void VeryReal::UiSpriteRenderer::setZOrder(int order) {
     overlay->setZOrder(order);
 }
 
-void VeryReal::UiSpriteRenderer::setSpriteTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool show) {
+void VeryReal::UiSpriteRenderer::setVisibility(bool hide) {
+    if (!hide && !overlay->isVisible()) {
+        overlay->show(); 
+    }
+    else if (hide && overlay->isVisible()) {
+        overlay->hide();
+    }
+}
+
+void VeryReal::UiSpriteRenderer::setSpriteTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc) {
     sprite_container->setPosition(pos.GetX(), pos.GetY());
     position = pos;
     sprite_container->setDimensions(sc.GetX(), sc.GetY());
     scale = sc;
-    /*if (show) {
-        overlay->show();
-    }
-    else {
-        overlay->hide();
-    }*/
 }
 
 UiSpriteRenderer::UiSpriteRenderer() 
@@ -70,9 +73,12 @@ bool UiSpriteRenderer::InitComponent(std::string name, std::string material, int
     overlay->add2D(sprite_container);
     overlay->setZOrder(order);
     sprite_container->setMaterialName(material);   // Nombre del material del sprit
-    overlay->show();
+    bool que = transform->isHidden();
+    setVisibility(que);
     return true;
 }
 void UiSpriteRenderer::Update(const double& dt) {
-    setSpriteTransform(transform->getPosition(), transform->getScale(), transform->isHidden());
+    setSpriteTransform(transform->getPosition(), transform->getScale());
+    bool que = transform->isHidden();
+    setVisibility(que);
 }

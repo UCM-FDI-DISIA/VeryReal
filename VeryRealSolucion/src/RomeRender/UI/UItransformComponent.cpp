@@ -10,6 +10,7 @@ UITransformComponent::UITransformComponent() {
 bool UITransformComponent::InitComponent(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool hide, bool interact) {
     position = pos;
     scale = sc;
+    hidden = hide;
     return true;
 }
 UITransformComponent::~UITransformComponent() { }

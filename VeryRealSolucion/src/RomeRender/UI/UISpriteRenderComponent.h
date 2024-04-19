@@ -33,8 +33,10 @@ namespace VeryReal {
             //Establece el zOrder del Overlay.
             void setZOrder(int order);
 
+            void setVisibility(bool hide = false);
+
             //Establece la posici�n y escala del sprite dentro de su overlay.
-            void setSpriteTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool show = true);
+            void setSpriteTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc);
 
           protected:      
 
