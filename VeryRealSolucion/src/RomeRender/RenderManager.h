@@ -64,7 +64,7 @@ namespace VeryReal {
         }
         return false;
     }
-    void GetScene() { VeryReal::SceneManager::Instance()->hola(); }
+    //void GetScene() { VeryReal::SceneManager::Instance()->hola(); }
 
 		// Destructor virtual de la clase RenderManager
 		virtual ~RenderManager();
