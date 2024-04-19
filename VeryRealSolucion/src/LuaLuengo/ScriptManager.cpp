@@ -31,13 +31,16 @@ void ScriptManager::Error(int status)
 }
 
 
-void ScriptManager::InitManager(std::string p)
+void ScriptManager::InitManager()
 {  
     lua_state = luaL_newstate();
     luaL_openlibs(lua_state);
-	std::string a = "../../../bin/LuaFiles/" + p + ".lua"; // Esta ruta accede a la carpeta bin/LuaFiles del juego
-	int script_status = luaL_dofile(lua_state, a.c_str());		
-	Error(script_status);
+	
+}
+void ScriptManager::NewScene(std::string p) {
+    std::string a = "../../../bin/LuaFiles/" + p + ".lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
+    int script_status = luaL_dofile(lua_state, a.c_str());
+    Error(script_status);
 }
 
 void ScriptManager::ReadScene(std::string namescene)

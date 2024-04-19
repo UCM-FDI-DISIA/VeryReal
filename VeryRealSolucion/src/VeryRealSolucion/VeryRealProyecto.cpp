@@ -6,6 +6,7 @@
 #include <AudioLeon.h>
 #include <LuaLuengo.h>
 #include "SceneManager.h"
+#include "ScriptManager.h"
 #include <Window.h>
 #include <chrono>
 #include <Creator.h>
@@ -19,36 +20,82 @@
 #include "CreatorCameraComponent.h"
 #include "CreatorAnimatorComponent.h"
 #include "CreatorTransformComponent.h"
-
-
 #include <filesystem>
-
-
 const double FRAME_RATE = 0.01;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
 
 typedef bool(__cdecl* Start)();
-
-bool VeryRealProyecto::Init() {
+using namespace VeryReal;
+bool VeryRealProyecto::InitVeryReal() {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    VeryReal::InputManager::Instance()->Init();
-	//VeryReal::RenderManager::Init();
-	VR().CreateCreators();
+	if (!InitPointers()) return false;
+    if (!InitManagers()) return false;
+    if (!CreateCreators()) return false;
 
 	std::filesystem::path path = std::filesystem::current_path().parent_path().parent_path().parent_path();
     std::string dllName = path.filename().string() + "Solucion"; 
-	LoadGame(dllName);
-    Start startFunction = (Start)GetProcAddress(gameDll, "start");
-    if (startFunction != NULL) {
-        startFunction();
-    }
-    else
-        return false;
+	if (!LoadGame(dllName)) return false;
 	return true;
 }
+bool VeryRealProyecto::InitPointers() {
+        if (!VeryReal::InputManager::Init() || !VeryReal::RenderManager::Init() || !VeryReal::AudioLeon::Init() 
+			|| !VeryReal::ScriptManager::Init() ||!VeryReal::PhysicsManager::Init()||!VeryReal::SceneManager::Init())return false;
+        return true;
+       
+}
+bool VeryRealProyecto::InitManagers(){ 
+	VeryReal::InputManager::Instance()->InitManager();
+    VeryReal::RenderManager::Instance()->InitManager("JUEGO");
+	VeryReal::AudioLeon::Instance()->InitManager();
+    VeryReal::PhysicsManager::Instance()->InitManager();
+    VeryReal::ScriptManager::Instance()->InitManager();
+    return true;
+    
+}
+bool VeryRealProyecto::CreateCreators() {
+    //FALTAN LOS DOS DE SONIDO
+    VeryReal::Creator::Init();
+    VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
+    VeryReal::Creator::Instance()->AddCreator("rigidbody", new VeryReal::CreatorRigidBodyComponent());
+    VeryReal::Creator::Instance()->AddCreator("collider", new VeryReal::CreatorColliderComponent());
+    VeryReal::Creator::Instance()->AddCreator("MeshRenderComponent", new VeryReal::CreatorMeshRenderComponent());
+    VeryReal::Creator::Instance()->AddCreator("LightComponent", new VeryReal::CreatorLightComponent());
+    VeryReal::Creator::Instance()->AddCreator("CameraComponent", new VeryReal::CreatorCameraComponent());
+    VeryReal::Creator::Instance()->AddCreator("animator", new VeryReal::CreatorAnimatorComponent());
+    return true;
+}
+bool VeryRealProyecto::LoadGame(std::string gameName) {
+    //Tengo que hacer cambios a gameName para que este sea la ruta al juego. Puede ser relativa ya que siempre sabemos donde va a estar el juego.
+#ifdef _DEBUG
+    gameName = "./" + gameName + "_d.dll";
+#endif   // DEBUG
 
+#ifdef NDEBUG
+    gameName = "./" + gameName + ".dll";
+#endif   // NDEBUG
+
+    std::wstring wideGameName = std::wstring(gameName.begin(), gameName.end());
+    gameDll = LoadLibrary(wideGameName.c_str());
+
+    if (gameDll != NULL) {
+        std::cout << "Juego cargado correctamente";
+        Start startFunction = (Start)GetProcAddress(gameDll, "start");
+
+        if (startFunction != NULL) {
+            return startFunction();
+        }
+    }
+    else {
+        std::cout << "El juego no existe";
+
+        return false;
+    }
+    // FreeLibrary(gameDll);   //esta linea va cuando el juego termine
+    return true;
+}
 void VeryRealProyecto::Loop() {
+    
 	float startTime, frameTime;
     startTime = std::chrono::duration_cast<std::chrono::duration<float>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
     while (!VeryReal::InputManager::Instance()->getQuit())
@@ -56,16 +103,16 @@ void VeryRealProyecto::Loop() {
         frameTime = (float) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - startTime;
 		VeryReal::InputManager::Instance()->Refresh(); 
 		if (frameTime >= FRAME_RATE) {
+            Prueba entryPoint = (Prueba)GetProcAddress(gameDll, "main");
+           if (entryPoint != NULL) entryPoint();    //gestion de erro en el main del juego
             VeryReal::PhysicsManager::Instance()->Update(frameTime);	
             VeryReal::SceneManager::Instance()->Update(frameTime);
             VeryReal::RenderManager::Instance()->Update(frameTime);
             VeryReal::AudioLeon::Instance()->Update(frameTime);
-			std::cout << frameTime << std::endl;
             startTime = (float) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 		}
 	}
 }
-
 void VeryRealProyecto::Delete() {
 	//if (mWindow != nullptr) {
 	//	SDL_DestroyWindow(mWindow);
@@ -74,46 +121,6 @@ void VeryRealProyecto::Delete() {
 	//}
 }
 
-void VeryRealProyecto::CreateCreators() 
-{
-	//FALTAN LOS DOS DE SONIDO
-
-	VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
-	VeryReal::Creator::Instance()->AddCreator("rigidbody", new VeryReal::CreatorRigidBodyComponent());
-	VeryReal::Creator::Instance()->AddCreator("collider", new VeryReal::CreatorColliderComponent());
-	VeryReal::Creator::Instance()->AddCreator("meshrender", new VeryReal::CreatorMeshRenderComponent());
-	VeryReal::Creator::Instance()->AddCreator("light", new VeryReal::CreatorLightComponent());
-	VeryReal::Creator::Instance()->AddCreator("camera", new VeryReal::CreatorCameraComponent());
-	VeryReal::Creator::Instance()->AddCreator("animator", new VeryReal::CreatorAnimatorComponent());
-}
-
-bool VeryRealProyecto::LoadGame(std::string gameName) {
-	//Tengo que hacer cambios a gameName para que este sea la ruta al juego. Puede ser relativa ya que siempre sabemos donde va a estar el juego.
-#ifdef _DEBUG
-        gameName = "./" + gameName + "_d.dll";
-#endif   // DEBUG
-
-#ifdef NDEBUG
-        gameName = "./" + gameName + ".dll";
-#endif   // NDEBUG
-    
-	std::wstring wideGameName = std::wstring(gameName.begin(), gameName.end());
-	gameDll = LoadLibrary(wideGameName.c_str());
-
-	if(gameDll != NULL) {
-		std::cout << "Juego cargado correctamente";
-		Prueba entryPoint = (Prueba)GetProcAddress(gameDll, "main");
-		if (entryPoint != NULL) {
-			return entryPoint();
-		}
-	}
-	else {
-		std::cout << "El juego no existe";
-		return false;
-	}
-    FreeLibrary(gameDll);
-	return true;
-}
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
