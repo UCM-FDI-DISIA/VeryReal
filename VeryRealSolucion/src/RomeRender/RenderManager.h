@@ -6,6 +6,7 @@
 #include "Vector3.h"
 #include "string"
 #include "export.h"
+#include "SceneManager" 
 
 #define DEBUG_ROOT_ERROR "OGRE NO HA SIDO INICIALIZADO CORRECTAMENTE\n"
 #define DEBUG_OGRE_ERROR "NO SE HA ENCONTRADO EL ARCHIVO ogre.cfg\n"
@@ -63,6 +64,7 @@ namespace VeryReal {
         }
         return false;
     }
+    void GetScene() { VeryReal::SceneManager::Instance()->hola(); }
 
 		// Destructor virtual de la clase RenderManager
 		virtual ~RenderManager();

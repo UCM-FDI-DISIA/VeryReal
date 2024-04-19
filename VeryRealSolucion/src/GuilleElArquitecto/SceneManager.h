@@ -18,6 +18,7 @@ namespace VeryReal {
     SceneManager(){};
   
 	public:
+    void hola() { std::cout << "HHHHHHHHHHH"; }
     static bool Init() { 
 		SceneManager* a = new SceneManager();
         if (a != nullptr) {
