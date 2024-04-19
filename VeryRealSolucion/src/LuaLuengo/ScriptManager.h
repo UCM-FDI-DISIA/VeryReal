@@ -26,8 +26,6 @@ namespace VeryReal {
                 ScriptManager() { }
 
 	public:
-
-      public:
     static bool Init() {
       ScriptManager* a = new ScriptManager();
         if (a != nullptr) {
