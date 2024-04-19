@@ -20,11 +20,7 @@
 #include "CreatorCameraComponent.h"
 #include "CreatorAnimatorComponent.h"
 #include "CreatorTransformComponent.h"
-
-
 #include <filesystem>
-
-
 const double FRAME_RATE = 0.01;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
@@ -69,7 +65,35 @@ bool VeryRealProyecto::CreateCreators() {
     VeryReal::Creator::Instance()->AddCreator("animator", new VeryReal::CreatorAnimatorComponent());
     return true;
 }
+bool VeryRealProyecto::LoadGame(std::string gameName) {
+    //Tengo que hacer cambios a gameName para que este sea la ruta al juego. Puede ser relativa ya que siempre sabemos donde va a estar el juego.
+#ifdef _DEBUG
+    gameName = "./" + gameName + "_d.dll";
+#endif   // DEBUG
 
+#ifdef NDEBUG
+    gameName = "./" + gameName + ".dll";
+#endif   // NDEBUG
+
+    std::wstring wideGameName = std::wstring(gameName.begin(), gameName.end());
+    gameDll = LoadLibrary(wideGameName.c_str());
+
+    if (gameDll != NULL) {
+        std::cout << "Juego cargado correctamente";
+        Start startFunction = (Start)GetProcAddress(gameDll, "start");
+
+        if (startFunction != NULL) {
+            return startFunction();
+        }
+    }
+    else {
+        std::cout << "El juego no existe";
+
+        return false;
+    }
+    // FreeLibrary(gameDll);   //esta linea va cuando el juego termine
+    return true;
+}
 void VeryRealProyecto::Loop() {
     
 	float startTime, frameTime;
@@ -89,7 +113,6 @@ void VeryRealProyecto::Loop() {
 		}
 	}
 }
-
 void VeryRealProyecto::Delete() {
 	//if (mWindow != nullptr) {
 	//	SDL_DestroyWindow(mWindow);
@@ -98,37 +121,6 @@ void VeryRealProyecto::Delete() {
 	//}
 }
 
-
-
-bool VeryRealProyecto::LoadGame(std::string gameName) {
-	//Tengo que hacer cambios a gameName para que este sea la ruta al juego. Puede ser relativa ya que siempre sabemos donde va a estar el juego.
-#ifdef _DEBUG
-        gameName = "./" + gameName + "_d.dll";
-#endif   // DEBUG
-
-#ifdef NDEBUG
-        gameName = "./" + gameName + ".dll";
-#endif   // NDEBUG
-    
-	std::wstring wideGameName = std::wstring(gameName.begin(), gameName.end());
-	gameDll = LoadLibrary(wideGameName.c_str());
-
-	if(gameDll != NULL) {
-		std::cout << "Juego cargado correctamente";
-        Start startFunction = (Start)GetProcAddress(gameDll, "start");
-		
-		if (startFunction != NULL) {
-            return startFunction();
-		}
-	}
-	else {
-		std::cout << "El juego no existe";
-      
-		return false;
-	}
-       // FreeLibrary(gameDll);   //esta linea va cuando el juego termine
-	return true;
-}
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
