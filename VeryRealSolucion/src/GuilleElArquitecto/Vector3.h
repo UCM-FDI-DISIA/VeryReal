@@ -52,7 +52,7 @@ namespace VeryReal {
         VeryReal::Vector3 Cross(const VeryReal::Vector3& vector);
 
 		// Calcula la distancia entre dos vectores
-        float Distance(VeryReal::Vector3 v1, VeryReal::Vector3 v2);
+        float Distance(VeryReal::Vector3 v1);
 	};
 	std::ostream& operator<<(std::ostream& o, const Vector3& vec);
 }

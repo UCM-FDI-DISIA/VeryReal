@@ -113,6 +113,6 @@ VeryReal::Vector3 VeryReal::Vector3::Cross(const VeryReal::Vector3& vector) {
     return perpendicularVector;
 }
 
-float VeryReal::Vector3::Distance(VeryReal::Vector3 v1, VeryReal::Vector3 v2) { 
-	return abs(sqrtf(powf(v1.GetX() - v2.GetX(), 2) + powf(v1.GetY() - v2.GetY(), 2) + powf(v1.GetZ() - v2.GetZ(), 2)));
+float VeryReal::Vector3::Distance(VeryReal::Vector3 v1) { 
+	return abs(sqrtf(powf(v1.GetX() - this->GetX(), 2) + powf(v1.GetY() - this->GetY(), 2) + powf(v1.GetZ() - this->GetZ(), 2)));
 }
