@@ -19,10 +19,65 @@
 #include <LinearMath/btVector3.h>
 #include "PhysicsValues.h"
 #include "ColliderComponent.h"
-#include "PhysicsDebug.h"
 
 VeryReal::PhysicsManager::PhysicsManager(): collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) { }
 
+
+//btPersistentManifold almacena los puntos de contacto entre dos objetos y proporciona métodos para acceder a ambos cuerpos.
+void callBackEnter(btPersistentManifold* const& manifold) {
+
+    const btCollisionObject* ent1 = manifold->getBody0();
+    const btCollisionObject* ent2 = manifold->getBody1();
+
+    //Si los cuerpos NO son nullptr
+    if (ent1 && ent2) {
+
+        VeryReal::ColliderComponent* colliderEntity1 = static_cast<VeryReal::ColliderComponent*>(ent1->getUserPointer());
+        VeryReal::ColliderComponent* colliderEntity2 = static_cast<VeryReal::ColliderComponent*>(ent2->getUserPointer());
+
+        //Si tienen colliders, colisionan
+        if (colliderEntity1 && colliderEntity2) {
+            colliderEntity1->OnCollisionEnter(colliderEntity2->GetEntity());
+            colliderEntity2->OnCollisionEnter(colliderEntity1->GetEntity());
+        }
+    }
+}
+
+void callBackExit(btPersistentManifold* const& manifold) {
+
+    const btCollisionObject* ent1 = manifold->getBody0();
+    const btCollisionObject* ent2 = manifold->getBody1();
+
+    if (ent1 && ent2) {
+
+        VeryReal::ColliderComponent* colliderEntity1 = static_cast<VeryReal::ColliderComponent*>(ent1->getUserPointer());
+        VeryReal::ColliderComponent* colliderEntity2 = static_cast<VeryReal::ColliderComponent*>(ent2->getUserPointer());
+        if (colliderEntity1 && colliderEntity2) {
+            colliderEntity1->OnCollisionExit(colliderEntity2->GetEntity());
+            colliderEntity2->OnCollisionExit(colliderEntity1->GetEntity());
+        }
+    }
+}
+
+//Tiene que devolver un bool
+//Recibe los dos objetos que están colisionando
+bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
+
+    const btCollisionObject* ent1 = static_cast<btCollisionObject*>(obj1);
+    const btCollisionObject* ent2 = static_cast<btCollisionObject*>(obj2);
+
+    if (ent1 && ent2) {
+
+        VeryReal::ColliderComponent* colliderEntity1 = static_cast<VeryReal::ColliderComponent*>(ent1->getUserPointer());
+        VeryReal::ColliderComponent* colliderEntity2 = static_cast<VeryReal::ColliderComponent*>(ent2->getUserPointer());
+        if (colliderEntity1 && colliderEntity2) {
+            colliderEntity1->OnCollisionStay(colliderEntity2->GetEntity());
+            colliderEntity2->OnCollisionStay(colliderEntity1->GetEntity());
+            return true;
+        }
+    }
+    return false;
+}
 bool VeryReal::PhysicsManager::InitManager() {
     collisionConfiguration=nullptr;
 
@@ -63,7 +118,7 @@ bool VeryReal::PhysicsManager::InitManager() {
 
     gContactStartedCallback = callBackEnter;
     gContactEndedCallback = callBackExit;
-    gContactProcessedCallback = callBackStay;
+    gContactProcessedCallback = onCollisionStay;
 
 
     //DESCOMENTAR PARA GAVITY ATENTOS Q POR AHORA SE LE DA A TODOS LOS OBJETOS
@@ -167,58 +222,3 @@ btVector3 VeryReal::PhysicsManager::V3ToBtV3(VeryReal::Vector3 conversion) const
     return newVector;
 }
 
-//btPersistentManifold almacena los puntos de contacto entre dos objetos y proporciona métodos para acceder a ambos cuerpos.
-void callBackEnter(btPersistentManifold* const& manifold) {
-
-    const btCollisionObject* ent1 = manifold->getBody0();
-    const btCollisionObject* ent2 = manifold->getBody1();
-
-    //Si los cuerpos NO son nullptr
-    if (ent1 && ent2) {
-
-        VeryReal::ColliderComponent* colliderEntity1 = static_cast<VeryReal::ColliderComponent*>(ent1->getUserPointer());
-        VeryReal::ColliderComponent* colliderEntity2 = static_cast<VeryReal::ColliderComponent*>(ent2->getUserPointer());
-
-        //Si tienen colliders, colisionan
-        if (colliderEntity1 && colliderEntity2) {
-            colliderEntity1->OnCollisionEnter(colliderEntity2->GetEntity());
-            colliderEntity2->OnCollisionEnter(colliderEntity1->GetEntity());
-        }
-    }
-}
-
-void callBackExit(btPersistentManifold* const& manifold) {
-
-    const btCollisionObject* ent1 = manifold->getBody0();
-    const btCollisionObject* ent2 = manifold->getBody1();
-
-    if (ent1 && ent2) {
-
-        VeryReal::ColliderComponent* colliderEntity1 = static_cast<VeryReal::ColliderComponent*>(ent1->getUserPointer());
-        VeryReal::ColliderComponent* colliderEntity2 = static_cast<VeryReal::ColliderComponent*>(ent2->getUserPointer());
-        if (colliderEntity1 && colliderEntity2) {
-            colliderEntity1->OnCollisionExit(colliderEntity2->GetEntity());
-            colliderEntity2->OnCollisionExit(colliderEntity1->GetEntity());
-        }
-    }
-}
-
-//Tiene que devolver un bool
-//Recibe los dos objetos que están colisionando
-bool callBackStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
-
-    const btCollisionObject* ent1 = static_cast<btCollisionObject*>(obj1);
-    const btCollisionObject* ent2 = static_cast<btCollisionObject*>(obj2);
-
-    if (ent1 && ent2) {
-
-        VeryReal::ColliderComponent* colliderEntity1 = static_cast<VeryReal::ColliderComponent*>(ent1->getUserPointer());
-        VeryReal::ColliderComponent* colliderEntity2 = static_cast<VeryReal::ColliderComponent*>(ent2->getUserPointer());
-        if (colliderEntity1 && colliderEntity2) {
-            colliderEntity1->OnCollisionStay(colliderEntity2->GetEntity());
-            colliderEntity2->OnCollisionStay(colliderEntity1->GetEntity());
-            return true;
-        }
-    }
-    return false;
-}
