@@ -37,6 +37,10 @@ namespace VeryReal {
 
             //Establece la posici�n y escala del sprite dentro de su overlay.
             void setSpriteTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc);
+            //metodo que escala la imagen
+            void setScale(VeryReal::Vector2 sc);
+            //metodo que cambia la imagen de posicion
+            void setPosition(VeryReal::Vector2 pos);
 
           protected:      
 

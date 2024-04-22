@@ -42,6 +42,14 @@ void VeryReal::UiSpriteRenderer::setSpriteTransform(VeryReal::Vector2 pos, VeryR
     sprite_container->setDimensions(sc.GetX(), sc.GetY());
     scale = sc;
 }
+void VeryReal::UiSpriteRenderer::setScale(VeryReal::Vector2 sc) {
+    sprite_container->setDimensions(sc.GetX(), sc.GetY());
+    scale = sc;
+}
+void VeryReal::UiSpriteRenderer::setPosition(VeryReal::Vector2 pos) {
+    sprite_container->setPosition(pos.GetX(), pos.GetY());
+    position = pos;
+}
 
 UiSpriteRenderer::UiSpriteRenderer() 
 {
