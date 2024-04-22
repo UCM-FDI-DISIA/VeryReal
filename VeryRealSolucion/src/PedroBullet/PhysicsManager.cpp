@@ -19,6 +19,7 @@
 #include <LinearMath/btVector3.h>
 #include "PhysicsValues.h"
 #include "ColliderComponent.h"
+#include "PhysicsDebug.h"
 
 VeryReal::PhysicsManager::PhysicsManager(): collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) { }
 
@@ -59,6 +60,12 @@ bool VeryReal::PhysicsManager::InitManager() {
         Shutdown();  
         return false;   // Fall� la creaci�n de dynamicsWorld
     }
+
+    gContactStartedCallback = callBackEnter;
+    gContactEndedCallback = callBackExit;
+    gContactProcessedCallback = callBackStay;
+
+
     //DESCOMENTAR PARA GAVITY ATENTOS Q POR AHORA SE LE DA A TODOS LOS OBJETOS
     dynamicsWorld->setGravity(btVector3(0, 0, 0));
     return true;   // Inicializaci�n exitosa
