@@ -27,6 +27,19 @@ namespace VeryReal {
 		void Translate(Vector3 translateposition);
 		void Rotate(Vector3 rotaterotation);
 		void Scaler(Vector3 scalerscale);
+
+		/*
+		Vector Up del componente transform.
+		@return El valor del vector Up en el eje Y.		
+		*/
+        Vector3 up();
+
+        /*
+		Vector Forward del componente transform.
+		@return El valor en Vector3 de forward a lo largo del eje Z.
+		*/
+        Vector3 forward();
+
         VeryReal::Vector3 getFacingDirection();
     };
 

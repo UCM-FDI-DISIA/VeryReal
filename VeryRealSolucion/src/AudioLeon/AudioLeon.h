@@ -134,6 +134,9 @@ namespace VeryReal {
 		//Devuelve la referencia al vector de canales de AudioLeon.
 		std::vector<FMOD::Channel*> GetChannelsVector();
 
+		//Establece el valor para un canal.
+        void setChannelValue(int pos, FMOD::Channel* newChannel);
+
 		//Devuelve la referencia al mapa que conecta los sonidos al último canal en el que se reprodujeron.
 		std::unordered_map<FMOD::Sound*, CHANNEL_NUMBER> GetLastPlayedMap();
 

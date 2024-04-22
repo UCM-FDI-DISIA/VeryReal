@@ -23,28 +23,44 @@ void AudioListenerComponent::InitComponent()
 {
 	// Get the next available index for a listener in the sound manager
 	listener_index = AL().GetNextUsefulListenerIndex();
+    transform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>();
+    rigid_body = this->GetEntity()->GetComponent<VeryReal::RigidBodyComponent>();
+
+	if (!transform) {
+            ErrorInf().showErrorMessageBox("AudioListenerComponent error", "An entity doesn't have transform component", EI_ERROR);
+            /*	sceneManager().quit();*/
+            return;
+    }
+    if (!rigid_body) {
+        ErrorInf().showErrorMessageBox("AudioSourceComponent error", "An entity doesn't have rigid body component", EI_ERROR);
+        //sceneManager().quit();
+        return;
+    }
+
+	last_position = transform->GetPosition();
 
 #ifdef _DEBUG
 	if (listener_index == -1)
 		std::cout << "ERROR: Listeners vector is full\n";
 #endif // _DEBUG
+
+	FMOD_VECTOR pos = {0.0f, 0.0f, 0.0f};
+    FMOD_VECTOR vel = {0.0f, 0.0f, 0.0f};
+    FMOD_VECTOR forward = {0.0f, 0.0f, 1.0f};
+    FMOD_VECTOR up = {0.0f, 1.0f, 0.0f};
+
+    AL().GetSoundSystem()->set3DListenerAttributes(listener_index, &pos, &vel, &forward, &up);
 }
 
 void AudioListenerComponent::Update(const double& dt)
 {
-	if (!this->GetEntity()->GetComponent<TransformComponent>()) {
-		ErrorInf().showErrorMessageBox("AudioListenerComponent error", "An entity doesn't have transform component", EI_ERROR);
-	/*	sceneManager().quit();*/
-		return;
-	}
+	//Vector3 position = transform->GetPosition();
+ //   Vector3 velocity = rigid_body->GetVelocity();
+ //   VeryReal::Vector3 up = transform->up();
+ //   VeryReal::Vector3 forward = transform->forward();
 
-
-	Vector3 position = this->GetEntity()->GetComponent<TransformComponent>()->GetPosition();
-	//Vector3 velocity = this->GetEntity()->GetComponent<VeryReal::RigidBodyComponent>("rigidbody")->GetVelocity();
-	//VeryReal::Vector3 up = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("TransformComponent")->up();
-	//VeryReal::Vector3 forward = this->GetEntity()->GetComponent<VeryReal::TransformComponent>("TransformComponent")->forward();
-
-	//VeryReal::Vector3 v = { (position.x - last_position.x) * float(dt),(position.y - last_position.y) * float(dt),(position.z - last_position.z) * float(dt) };
+	//VeryReal::Vector3 v = {(position.GetX() - last_position.GetX()) * float(dt), (position.GetY() - last_position.GetY()) * float(dt),
+ //                          (position.GetZ() - last_position.GetZ()) * float(dt)};
 
 	//last_position = position;
 

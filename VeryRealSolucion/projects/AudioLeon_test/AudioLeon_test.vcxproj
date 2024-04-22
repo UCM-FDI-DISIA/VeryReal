@@ -103,7 +103,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)bin</AdditionalLibraryDirectories>
-      <AdditionalDependencies>AudioLeon_d.lib;GuilleElArquitecto_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>AudioLeon_d.lib;GuilleElArquitecto_d.lib;PedroBullet_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -121,7 +121,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>AudioLeon.lib;GuilleElArquitecto.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>AudioLeon.lib;GuilleElArquitecto.lib;PedroBullet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)bin</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

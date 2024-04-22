@@ -7,6 +7,7 @@
 #include "../AudioLeon/ComponentesAudio/CreatorAudioSourceComponent.h"
 #include "../AudioLeon/ComponentesAudio/CreatorAudioListenerComponent.h"
 #include "CreatorTransformComponent.h"
+#include "../PedroBullet/CreatorRigidBodyComponent.h"
 #include "Entity.h"
 #include "Component.h"
 #include "Scene.h"
@@ -28,15 +29,25 @@ int main() {
     Creator::Instance()->GetCreator("TransformComponent")->AddParameter("position", Vector3{0, 0, 20});
     Creator::Instance()->GetCreator("TransformComponent")->AddParameter("rotation", Vector3{0, 0, 0});
     Creator::Instance()->GetCreator("TransformComponent")->AddParameter("scale", Vector3{1, 1, 1});
+
+    //int shapeType, float mass, float friction, float restitution, int movementType, bool trigger
+    VeryReal::Creator::Instance()->AddCreator("RigidBodyComponent", new VeryReal::CreatorRigidBodyComponent());
+    Creator::Instance()->GetCreator("RigidBodyComponent")->AddParameter("shapeType", 1);
+    Creator::Instance()->GetCreator("RigidBodyComponent")->AddParameter("mass", float(1));
+    Creator::Instance()->GetCreator("RigidBodyComponent")->AddParameter("friction", float(0));
+    Creator::Instance()->GetCreator("RigidBodyComponent")->AddParameter("restitution", float(0));
+    Creator::Instance()->GetCreator("RigidBodyComponent")->AddParameter("movementType", int(0));
+    Creator::Instance()->GetCreator("RigidBodyComponent")->AddParameter("trigger", true);
+
     #pragma region audiosource
     VeryReal::Creator::Instance()->AddCreator("AudioSourceComponent", new VeryReal::CreatorAudioSourceComponent());
     Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("name", std::string("sonido"));
-    Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("path", std::string("sonido_jefe_merodeando2.mp3"));
-    Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("groupchannel", std::string("sonido"));
+    Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("path", std::string("musicaCircuito.mp3"));
+    Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("groupchannel", std::string("master"));
     Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("onstart", true);
     Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("loop", true);
     Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("threed", true);
-    Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("volume", 1000.f);
+    Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("volume", 1);
     Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("mindistance", 0.0f);
     Creator::Instance()->GetCreator("AudioSourceComponent")->AddParameter("maxdistance", 100000.0f);
 #pragma endregion
@@ -49,16 +60,19 @@ int main() {
     s = SceneManager::Instance()->GetScene("Play");
     Entity* e = s->AddEntity("Player");
     Component* transform = e->AddComponent("TransformComponent");
+    Component* rigid = e->AddComponent("RigidBodyComponent");
     Component* source = e->AddComponent("AudioSourceComponent");
     Component* listen = e->AddComponent("AudioListenerComponent");
 
     while ((true)) {
         VeryReal::AL().SystemRefresh(t);
         if (!Play) {
-            VeryReal::AL().AudioSourceListenerTest();
+            //VeryReal::AL().AudioSourceListenerTest();
+            std::cout << "pillado";
+            s->Update(0.1);
             Play = true;
         }
-        cout << "PRUEBA " << VeryReal::AL().InputSoundIntensity() << endl;
+        //cout << "PRUEBA " << VeryReal::AL().InputSoundIntensity() << endl;
         ++t;
 
     }

@@ -1,4 +1,7 @@
 #include "TransformComponent.h"
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 using namespace VeryReal;
 TransformComponent::TransformComponent() {
 
@@ -21,7 +24,40 @@ void TransformComponent::Rotate(VeryReal::Vector3 rotaterotation) {
 	rotation += rotaterotation;
 }
 void TransformComponent::Scaler(VeryReal::Vector3 scalerscale) {
-	scale += scalerscale;
+	scale += scalerscale; }
+
+Vector3 VeryReal::TransformComponent::up() { 
+	Vector3 upVector;
+
+	Vector3 rot_radians = rotation;
+
+	rot_radians.SetX(rotation.GetX() * M_PI / 180.0);
+	rot_radians.SetY(rotation.GetY() * M_PI / 180.0);
+	rot_radians.SetZ(rotation.GetZ() * M_PI / 180.0);
+
+	upVector.SetX(sin(rot_radians.GetX()));
+    upVector.SetY(cos(rot_radians.GetX()) * cos(rot_radians.GetZ()));
+    upVector.SetZ(cos(rot_radians.GetX()) * sin(rot_radians.GetZ()));
+
+	return upVector; 
+
+}
+
+Vector3 VeryReal::TransformComponent::forward() { 
+	Vector3 forwardVector;
+
+	Vector3 rot_radians = rotation;
+
+    rot_radians.SetX(rotation.GetX() * M_PI / 180.0);
+    rot_radians.SetY(rotation.GetY() * M_PI / 180.0);
+    rot_radians.SetZ(rotation.GetZ() * M_PI / 180.0);
+
+    forwardVector.SetX(cos(rot_radians.GetY()));
+    forwardVector.SetY(-tan(rot_radians.GetX()));
+    forwardVector.SetZ(-sin(rot_radians.GetY()));
+
+	return forwardVector; 
+
 }
 
 VeryReal::Vector3 VeryReal::TransformComponent::getFacingDirection() {

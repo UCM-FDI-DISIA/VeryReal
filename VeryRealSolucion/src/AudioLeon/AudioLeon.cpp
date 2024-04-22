@@ -103,7 +103,10 @@ std::vector<FMOD::Channel*> AudioLeon::GetChannelsVector() {
 }
 
 std::unordered_map<FMOD::Sound*, CHANNEL_NUMBER> AudioLeon::GetLastPlayedMap() {
-	return last_played_map;
+	return last_played_map; }
+
+void VeryReal::AudioLeon::setChannelValue(int pos, FMOD::Channel* newChannel) { 
+	channels_vector [pos] = newChannel;
 }
 
 bool AudioLeon::ChangeChannelVolume(std::string channelGroupName, float volume) {
@@ -255,7 +258,7 @@ void AudioLeon::AudioSourceListenerTest()
 	float minDistance = 0.1f;
 	float maxDistance = 9999;
 
-	soundPath = "Assets/" + soundPath;
+	soundPath = "Assets/SONIDOS/" + soundPath;
 	AL().NameToLower(soundName);
 	FMOD::Sound* newSoundHandle;
 

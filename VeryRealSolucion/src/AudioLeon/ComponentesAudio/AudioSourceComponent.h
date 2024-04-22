@@ -42,22 +42,14 @@ class AudioLeon;
 		/// <summary>
 		/// Crea un sonido 3D.
 		/// </summary>
-		/// <param name="soundPath">Ruta relativa al archivo de audio que será cargado en el sonido de FMOD.</param>
-		/// <param name="soundName">Nombre dado por el usuario al sonido de FMOD.</param>
-		/// <param name="minDistance">Distancia en la que el sonido no tendrá atenuación.</param>
-		/// <param name="maxDistance">Distancia en la cuál el sonido tendrá máxima atenuación.</param>
-		/// <param name="loop">Si el sonido se reproducirá en bucle o no.</param>
 		/// <returns>Devuelve true o false en función de si el sonido fue creado con éxito o no.</returns>
-		bool Create3DSound(std::string soundPath, std::string soundName, float minDistance, float maxDistance, bool loop);
+		bool Create3DSound();
 
 		/// <summary>
 		/// Crea un sonido no 3D.
 		/// </summary>
-		/// <param name="soundPath">Ruta relativa al archivo de audio que será cargado en el sonido de FMOD.</param>
-		/// <param name="soundName">Nombre dado por el usuario al sonido de FMOD.</param>
-		/// <param name="loop">Si el sonido se reproducirá en bucle o no.</param>
 		/// <returns>Devuelve true o false en función de si el sonido fue creado con éxito o no.</returns>
-		bool CreateNormalSound(std::string soundPath, std::string soundName, bool loop);
+		bool CreateNormalSound();
 
 		/// <summary>
 		/// Configuira los atributos 3D (posición y velocidad) de un sonido.
@@ -66,33 +58,30 @@ class AudioLeon;
 		/// <param name="position">El valor de la posición de la fuente de sonido.</param>
 		/// <param name="velocity"EL valor de la velocidad a la que se mueve la fuente de sonido.</param>
 		/// <returns>Devuelve true o false en función de si los atributos fueron configurados con éxito o no.</returns>
-		bool Set3DSoundAtributes(std::string soundName, VeryReal::Vector3 position, VeryReal::Vector3 velocity);
+		bool Set3DSoundAtributes(VeryReal::Vector3 position, VeryReal::Vector3 velocity);
 
 		/// <summary>
 		/// Comprueba si hay algún canal disponible para reproducir el sonido asignado al componente y se lo asigna para ser reproducido.
 		/// </summary>
-		/// <param name="soundName">El nombre del audio que será reproducido.</param>
 		/// <param name="channelGroup">EL grupo de canales desde el que se reproducirá el sonido.</param>
 		/// <param name="channelPos">La posición del canal que será usado para paneado y atenuación.</param>
 		/// <param name="channelVel">La velocidad del cana que será usado para efecto doppler.</param>
 		/// <param name="channelVolume">Volumen de reproducción del sonido.</param>
 		/// <returns>Devuelve true o false en función de si se encontró un canal para re3producir el sonido.</returns>
-		bool PlayAudioSource(std::string soundName, std::string channelGroup, VeryReal::Vector3* channelPos, VeryReal::Vector3* channelVel, float channelVolume);
+		bool PlayAudioSource(std::string channelGroup, VeryReal::Vector3* channelPos, VeryReal::Vector3* channelVel, float channelVolume);
 
 		/// <summary>
 		/// Busca un canal y en caso de que exista, para el sonido que se este reproduciendo, devolviéndolo al principio. 
 		/// </summary>
-		/// <param name="soundName">El nombre del sonido que se va a parar.</param>
 		/// <returns>Devuelve true o false en función de si el sonido fue detenido con éxito o no.</returns>
-		bool StopSound(std::string soundName);
+		bool StopSound();
 
 		/// <summary>
 		/// Busca un canal y en caso de que exista, pause el sonido que se esté reproduciendo en ese canal.
 		/// </summary>
-		/// <param name="soundName">El nombre del sonido que se va a parar.</param>
-		/// <param name="Pause"></param>
+		/// <param name="Pause">: indica si se pausa o se reactiva</param>
 		/// <returns>Devuelve true o false en función de si el sonido fue detenido con éxito o no.</returns>
-		bool PauseSound(std::string soundName, bool Pause);
+		bool PauseSound(bool Pause);
 
 		/// <summary>
 		/// Inicia el sonido con los parámetros que se hayan facilitado desde la factoría.
@@ -181,8 +170,8 @@ class AudioLeon;
 		/// <summary>
 		/// Almacena le condición de bucle del sonido de FMOD.
 		/// </summary>
-		/// <param name="loop">Devuelve true o false en función de si el sonido se reproducirá en bucle o no.</param>
-		void SetLoop(bool loop);
+		/// <param name="lop">Devuelve true o false en función de si el sonido se reproducirá en bucle o no.</param>
+		void SetLoop(bool lop);
 
 		/// <summary>
 		/// Almacena la condición de 3D del sonido de FMOD.
@@ -235,7 +224,7 @@ class AudioLeon;
 
 		//Variable de control que sirve de comprobación después de hacer uso de cualquiera de las funciones de sistema de sonido.
 		FMOD_RESULT result;
-		//Almacena el componente "Transform" de la entidad a la que este componente esta enlazada.
+		//Almacena el componente "Transform" y ·RigdBody" de la entidad a la que este componente esta enlazada.
 		VeryReal::TransformComponent* transform = nullptr;
 		VeryReal::RigidBodyComponent* rigid_body = nullptr;
 	};
