@@ -59,7 +59,7 @@ namespace VeryReal {
 		//Vector en el que se almacenan los índices disponibles para "listeners" de FMOD.
 		std::vector<bool> listeners;
 		//El sistema de audio ofrecido por FMOD.
-		FMOD::System* sound_system = nullptr;
+		FMOD::System* sound_system;
 		//Sonido recibido por el microfono
 		FMOD::Sound* mic_sound = NULL;
 		//Variable de control que sirve de comprobación después de hacer uso de cualquiera de las funciones de sistema de sonido.
@@ -73,8 +73,8 @@ namespace VeryReal {
 		/// <returns>False si no se encontró el canal indicado o si hubo un error de FMOD. True si el volumen del canal se cambió con éxito.</returns>
 		bool ChangeChannelVolume(std::string channelGroupName, float volume);
 
-                    private:
-                AudioLeon() { }
+    private:
+		AudioLeon() { }
 	public:
                 static bool Init() {
         AudioLeon* a = new AudioLeon();

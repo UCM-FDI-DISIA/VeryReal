@@ -12,6 +12,8 @@
 #include <Creator.h>
 #include "ComponentesAudio/AudioListenerComponent.h"
 #include "ComponentesAudio/AudioSourceComponent.h"
+#include "ComponentesAudio/CreatorAudioSourceComponent.h"
+#include "ComponentesAudio/CreatorAudioListenerComponent.h"
 #include "CreatorTransformComponent.h"
 #include "CreatorRigidBodyComponent.h"
 #include "CreatorColliderComponent.h"
@@ -63,6 +65,8 @@ bool VeryRealProyecto::CreateCreators() {
     VeryReal::Creator::Instance()->AddCreator("LightComponent", new VeryReal::CreatorLightComponent());
     VeryReal::Creator::Instance()->AddCreator("CameraComponent", new VeryReal::CreatorCameraComponent());
     VeryReal::Creator::Instance()->AddCreator("animator", new VeryReal::CreatorAnimatorComponent());
+    VeryReal::Creator::Instance()->AddCreator("AudioSourceComponent", new VeryReal::CreatorAudioSourceComponent());
+    VeryReal::Creator::Instance()->AddCreator("AudioListenerComponent", new VeryReal::CreatorAudioListenerComponent());
     return true;
 }
 bool VeryRealProyecto::LoadGame(std::string gameName) {
