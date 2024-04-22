@@ -168,6 +168,7 @@ int main() {
     VeryReal::Creator::Instance()->AddCreator("UITransformComponent", new VeryReal::CreatorUITransformComponent());
     Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("position", Vector2(0, 0));
     Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("scale", Vector2(0.3, 0.05));
+    Creator::Instance()->GetCreator("UITransformComponent")->AddParameter("hidden", false);
 //#pragma endregion
 //
     VeryReal::Scene* s = SceneManager::Instance()->AddScene("Play", true);
