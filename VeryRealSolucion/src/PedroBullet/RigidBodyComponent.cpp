@@ -15,14 +15,14 @@ RigidBodyComponent::RigidBodyComponent()
     : mass(0), friction(0), restitution(0), movementType(MOVEMENT_TYPE_DYNAMIC), isTrigger(false) {
     
 }
-bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType, bool trigger, Vector3 s, int m, int g) {
+bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType, bool trigger, Vector3 size, int mask, int group) {
    // this->shapeType = shapeType;
-    this->mass = mass;
+    this->mass = mass;  
     this->friction = friction;
     this->restitution = restitution;
     this->movementType = (PBMovementType)movementType;
     this-> isTrigger = trigger;
-    return InitializeRigidBody((PBShapes)shapeType, this->movementType, trigger, s, m, g);
+    return InitializeRigidBody((PBShapes)shapeType, this->movementType, trigger, size, mask, group);
     
 }
 RigidBodyComponent::~RigidBodyComponent() {
