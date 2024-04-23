@@ -1,9 +1,9 @@
 #pragma once
 #ifndef COLLIDERCOMPONENT
 #define COLLIDERCOMPONENT
-
+#include "exportPedroBullet.h"
 #include <Component.h>
-#include "export.h"
+
 
 //ColliderComponent es una clase cuya única función es la de llamar a los métodos pertinentes de la clase Entity y estos metodos llamarán a métodos los homonimos.
 //El proceso es:
@@ -14,7 +14,7 @@
 namespace VeryReal 
 {
 	class Entity;
-	class VERYREAL_API ColliderComponent : public Component
+	class VERYREAL_PEDROBULLET ColliderComponent : public Component
 	{
 	public:
         ColliderComponent(){};

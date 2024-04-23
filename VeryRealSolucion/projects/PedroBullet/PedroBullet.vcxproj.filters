@@ -50,5 +50,8 @@
     <ClInclude Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\exportPedroBullet.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

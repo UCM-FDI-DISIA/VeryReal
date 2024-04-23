@@ -1,7 +1,8 @@
 #pragma once
 #include "CreatorComponent.h"
+#include "exportPedroBullet.h"
 namespace VeryReal {
-	class VERYREAL_API CreatorRigidBodyComponent: public CreatorComponent
+	class VERYREAL_PEDROBULLET CreatorRigidBodyComponent: public CreatorComponent
 	{
 	public:
 		CreatorRigidBodyComponent(){}

@@ -6,8 +6,8 @@
 #include <memory>
 #include <Component.h>
 #include "PhysicsValues.h"
-#include <Vector3.h>
-#include "export.h"
+#include "Vector3.h"
+#include "exportPedroBullet.h"
 
 enum PBShapes;
 enum PBMovementType;
@@ -20,13 +20,13 @@ struct btDefaultMotionState;
 namespace VeryReal {
     class TransformComponent;
     class ColliderComponent;
-
-    class VERYREAL_API RigidBodyComponent : public Component {
+   
+    class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
     public:
         RigidBodyComponent();
 
         bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, int movementType = MOVEMENT_TYPE_DYNAMIC,
-                           bool trigger = false, Vector3 s = Vector3(1, 1, 1), int mask = -1, int group = 1);
+                           bool trigger = false, Vector3 s = {1,1,1}, int mask = -1, int group = 1);
 
         virtual ~RigidBodyComponent();
 

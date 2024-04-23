@@ -5,7 +5,7 @@
 #include "Entity.h"
 #include "ColliderComponent.h"
 #include "PhysicsRegister.h"
-#include <Vector3.cpp>
+
 #include "PhysicsManager.h"
 
 

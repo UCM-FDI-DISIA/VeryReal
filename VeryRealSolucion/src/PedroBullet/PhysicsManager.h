@@ -3,6 +3,7 @@
 #include <vector>
 #include "Manager.h"
 #include <list>
+#include "exportPedroBullet.h"
 
 namespace VeryReal {
     class Vector3;
@@ -38,7 +39,7 @@ class ColliderComponent;
 
 
 namespace VeryReal {
-class VERYREAL_API PhysicsManager : public Manager<PhysicsManager> {
+class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
     friend Singleton<PhysicsManager>;
 public:
    

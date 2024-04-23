@@ -1,8 +1,8 @@
 #pragma once
 #include "CreatorComponent.h"
-#include "export.h"
+#include "exportPedroBullet.h"
 namespace VeryReal {
-	class VERYREAL_API CreatorColliderComponent :public CreatorComponent
+	class VERYREAL_PEDROBULLET CreatorColliderComponent :public CreatorComponent
 	{
 	public:
 		CreatorColliderComponent(){}
