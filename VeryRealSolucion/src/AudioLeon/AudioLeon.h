@@ -184,6 +184,18 @@ namespace VeryReal {
 		/// <returns>Devuelve true o false en función de si todos los canales dejaron de reproducir o no.</returns>
 		bool StopEverySound();
 
+        /// <summary>
+        /// Para todos los canales que estén reproduciendo añgún sonido.
+        /// </summary>
+        /// <returns>Devuelve true o false en función de si todos los canales dejaron de reproducir o no.</returns>
+        bool PauseEverySound();
+
+		        /// <summary>
+        /// Para todos los canales que estén reproduciendo añgún sonido.
+        /// </summary>
+        /// <returns>Devuelve true o false en función de si todos los canales empezaron de reproducir o no.</returns>
+        bool ResumeEverySound();
+
 		/// <summary>
 		/// Libera la memoria dinámica creada durante la ejecución al crear un nuevl sonido de FMOD.
 		/// </summary>

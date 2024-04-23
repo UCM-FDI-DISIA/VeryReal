@@ -159,9 +159,23 @@ void AudioLeon::AddNewSound(std::pair<std::string, FMOD::Sound*> newSound) {
 bool AudioLeon::StopEverySound() {
 	for (auto i : channels_vector) {
 		i->stop();
+
 	}
 	return true;
 }
+bool AudioLeon::PauseEverySound() {
+	for (auto i : channels_vector) {
+        i->setPaused(true);
+	}
+	return true;
+}
+bool AudioLeon::ResumeEverySound() {
+	for (auto i : channels_vector) {
+        i->setPaused(false);
+	}
+	return true;
+}
+
 
 bool AudioLeon::DeleteSound(std::string soundName) {
 	NameToLower(soundName);
