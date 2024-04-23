@@ -9,7 +9,7 @@
 
 namespace VeryReal {
 	class Component;
-	class VERYREAL_API CreatorComponent{
+	class VERYREAL_GUILLEELARQUITECTO CreatorComponent{
 		using parameters_name = std::string;
 	protected:
 		std::unordered_map<parameters_name, VariantClass*> parameters_map;

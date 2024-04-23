@@ -45,7 +45,7 @@ enum options {
 
 
 
-    class VERYREAL_API ErrorInformant : public VeryReal::Singleton<ErrorInformant> {
+    class VERYREAL_GUILLEELARQUITECTO ErrorInformant : public VeryReal::Singleton<ErrorInformant> {
         friend Singleton<ErrorInformant>;
 
             public:

@@ -23,6 +23,7 @@
     <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.h" />
     <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioListenerComponent.h" />
     <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioSourceComponent.h" />
+    <ClInclude Include="..\..\src\AudioLeon\exportAudioLeon.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -70,7 +71,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;VERYREAL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;VERYREAL_AUDIOLEONEXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)src\PedroBullet</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -93,7 +94,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;VERYREAL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;VERYREAL_AUDIOLEONEXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\FMOD\src\api\core\inc;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)src\PedroBullet;$(SolutionDir)src\GuilleElArquitecto</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>

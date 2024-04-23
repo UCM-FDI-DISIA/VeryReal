@@ -12,7 +12,7 @@ using entity_name = std::string;
 
 namespace VeryReal {
 	class Entity;
-	class VERYREAL_API Scene {
+	class VERYREAL_GUILLEELARQUITECTO Scene {
 	private:
 		//Mapa de: Clave: nombre de Entidad, Valor: puntero a esa entidad
 		std::unordered_map<entity_name, Entity*> entities_map;

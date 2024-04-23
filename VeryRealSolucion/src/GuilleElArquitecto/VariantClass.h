@@ -13,7 +13,7 @@
 #pragma warning(disable : 4251)
 
 namespace VeryReal {
-	class VERYREAL_API VariantClass
+	class VERYREAL_GUILLEELARQUITECTO VariantClass
 	{
 	private:
 		std::variant<int, float, double,VeryReal::Vector2, VeryReal::Vector3, VeryReal::Vector4,std::string,bool> myvariant;

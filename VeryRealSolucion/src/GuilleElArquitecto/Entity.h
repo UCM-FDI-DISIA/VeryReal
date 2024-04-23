@@ -10,7 +10,7 @@
 namespace VeryReal {
 	using component_name = std::string;
 	
-	class VERYREAL_API Entity {
+	class VERYREAL_GUILLEELARQUITECTO Entity {
 	private:
 		//Mapa de Componentes: clave: nombre, valor:puntero a ese Componente
 		std::unordered_map<component_name, Component*> components_map;

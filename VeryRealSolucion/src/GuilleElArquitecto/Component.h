@@ -7,7 +7,7 @@ namespace VeryReal {
 	class Entity;
 	class VariantClass;	
 
-	class VERYREAL_API Component	//CLASE ABSTRACTA
+	class VERYREAL_GUILLEELARQUITECTO Component	//CLASE ABSTRACTA
 	{
 	private:
 		bool active = true;

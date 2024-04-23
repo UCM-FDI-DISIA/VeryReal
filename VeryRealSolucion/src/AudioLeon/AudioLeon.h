@@ -6,7 +6,7 @@
 #include <Vector3.h>
 #include <string>
 #include <unordered_map>
-#include <export.h>
+#include "exportAudioLeon.h"
 
 namespace FMOD {
 	class Sound;
@@ -42,7 +42,7 @@ namespace VeryReal {
 
 	#pragma warning(disable : 4251)
 
-	class VERYREAL_API AudioLeon : public VeryReal::Manager<AudioLeon> {
+	class  VERYREAL_AUDIOLEON  AudioLeon : public VeryReal::Manager<AudioLeon> {
 		friend Singleton<AudioLeon>;
 
        private:

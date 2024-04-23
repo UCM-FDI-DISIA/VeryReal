@@ -6,7 +6,7 @@
 #include "export.h"
 
 namespace VeryReal {
-class VERYREAL_API Vector4
+class VERYREAL_GUILLEELARQUITECTO Vector4
 	{
 	private:
 		float r;

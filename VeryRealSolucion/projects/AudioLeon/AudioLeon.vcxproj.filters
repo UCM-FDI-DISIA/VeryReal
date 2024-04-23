@@ -53,5 +53,8 @@
     <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioSourceComponent.h">
       <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\AudioLeon\exportAudioLeon.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

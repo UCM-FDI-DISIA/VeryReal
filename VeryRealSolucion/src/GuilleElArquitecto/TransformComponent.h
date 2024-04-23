@@ -5,7 +5,7 @@
 #include "Vector3.h"
 namespace VeryReal {
 	
-	class VERYREAL_API TransformComponent : public Component {
+	class VERYREAL_GUILLEELARQUITECTO TransformComponent : public Component {
 	private:
 		Vector3 position;
 		Vector3 rotation;

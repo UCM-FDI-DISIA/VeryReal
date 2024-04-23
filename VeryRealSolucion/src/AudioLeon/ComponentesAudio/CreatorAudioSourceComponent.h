@@ -1,7 +1,8 @@
 #pragma once
 #include "CreatorComponent.h"
+#include "../exportAudioLeon.h"
 namespace VeryReal {
-	class VERYREAL_API CreatorAudioSourceComponent :public CreatorComponent
+	class  VERYREAL_AUDIOLEON  CreatorAudioSourceComponent :public CreatorComponent
 	{
 	public:
         CreatorAudioSourceComponent() { }

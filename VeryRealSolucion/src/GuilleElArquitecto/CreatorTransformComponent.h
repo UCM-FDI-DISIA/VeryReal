@@ -2,7 +2,7 @@
 #include "CreatorComponent.h"
 namespace VeryReal
 {
-class VERYREAL_API CreatorTransformComponent : public CreatorComponent {
+class VERYREAL_GUILLEELARQUITECTO CreatorTransformComponent : public CreatorComponent {
 	private:
 	public:
 		CreatorTransformComponent() {}

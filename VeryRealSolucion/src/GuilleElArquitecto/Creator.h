@@ -14,7 +14,7 @@ using creator_name = std::string;
 using prefab_name = std::string;
 class Entity;
 
-class VERYREAL_API Creator : public VeryReal::Singleton<Creator> {
+class VERYREAL_GUILLEELARQUITECTO Creator : public VeryReal::Singleton<Creator> {
     friend Singleton<Creator>;
 
 private:

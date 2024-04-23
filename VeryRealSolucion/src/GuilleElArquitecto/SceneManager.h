@@ -11,7 +11,7 @@ using scene_name = std::string;
 
 namespace VeryReal {
 	class Scene;
-	class VERYREAL_API SceneManager : public VeryReal::Manager<SceneManager> {
+	class VERYREAL_GUILLEELARQUITECTO SceneManager : public VeryReal::Manager<SceneManager> {
 	private:
 		//lista con todas la escenas
 		std::list<VeryReal::Scene*> scenes_list;
