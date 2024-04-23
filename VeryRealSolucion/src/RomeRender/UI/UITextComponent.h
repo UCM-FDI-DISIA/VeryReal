@@ -5,6 +5,7 @@
 #include "string"
 #include <Vector2.h>
 #include <Vector3.h>
+#include "../exportRomeRender.h"
 namespace Ogre {
 class Overlay;
 class OverlayElement;

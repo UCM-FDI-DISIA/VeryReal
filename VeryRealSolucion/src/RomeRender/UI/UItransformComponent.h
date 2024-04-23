@@ -4,11 +4,11 @@
 #include "Component.h"
 #include "Vector2.h"
 #include "string"
-
+#include "../exportRomeRender.h"
 namespace VeryReal {
 
 
-    class VERYREAL_API UITransformComponent : public Component {
+    class VERYREAL_ROMERENDER UITransformComponent : public Component {
 
       public:
         //constructora de la clase UITransformComponent

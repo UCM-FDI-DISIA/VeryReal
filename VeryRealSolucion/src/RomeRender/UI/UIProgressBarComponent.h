@@ -4,7 +4,7 @@
 #include "Component.h"
 #include "Vector2.h"
 #include "string"
-
+#include "../exportRomeRender.h"
 namespace Ogre {
 class Overlay;
 class OverlayElement;
@@ -15,7 +15,7 @@ class OverlayManager;
 namespace VeryReal {
     class UITransformComponent;
 
-    class VERYREAL_API UIProgressBarComponent : public Component {
+    class VERYREAL_ROMERENDER UIProgressBarComponent : public Component {
       public:
         //constructora de la clase UIProgressBarComponent
         UIProgressBarComponent();

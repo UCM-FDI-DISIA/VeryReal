@@ -158,5 +158,8 @@
     <ClInclude Include="..\..\src\RomeRender\UI\CreatorUIButtonComponent.h">
       <Filter>Archivos de encabezado\UI</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\exportRomeRender.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

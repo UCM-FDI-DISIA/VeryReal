@@ -3,6 +3,7 @@
 #define CAMERACOMPONENT
 #include "Component.h"
 #include <string>
+#include "exportRomeRender.h"
 
 namespace Ogre {
     class Camera;
@@ -21,7 +22,7 @@ namespace  VeryReal {
     class Vector2;
     class Entity;
 
-    class VERYREAL_API CameraComponent : public Component {
+    class VERYREAL_ROMERENDER CameraComponent : public Component {
     public:
         // Constructor por defecto de la clase CameraComponent.
         CameraComponent() {};

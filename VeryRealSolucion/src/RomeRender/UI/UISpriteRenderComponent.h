@@ -4,6 +4,7 @@
 #include "Component.h"
 #include "Vector2.h"
 #include "string"
+#include "../exportRomeRender.h"
 
 namespace Ogre {
 class Overlay;
@@ -17,7 +18,7 @@ class OverlayManager;
 namespace VeryReal {
     class UITransformComponent;
 
-    class VERYREAL_API UiSpriteRenderer : public Component {
+    class VERYREAL_ROMERENDER UiSpriteRenderer : public Component {
           public:
             //constructora de la clase UiSpriteRendererComponent
             UiSpriteRenderer();

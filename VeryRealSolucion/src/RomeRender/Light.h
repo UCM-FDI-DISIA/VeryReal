@@ -4,6 +4,7 @@
 
 #include "Component.h"
 #include <Vector3.h>	
+#include "exportRomeRender.h"
 
 #define DEBUG_TRANSFORM_ERROR "NO SE PUEDE INICIALIZAR EL COMPONENTE LIGHT DEBIDO A QUE NO TIENE EL COMPONENTE TRANSFORM\n"
 
@@ -17,7 +18,7 @@ namespace  VeryReal {
     class TransformComponent;
     class Conversor;
 
-    class VERYREAL_API Light : public Component {
+    class VERYREAL_ROMERENDER Light : public Component {
     public:
         // Constructuora del componente Light
         Light();

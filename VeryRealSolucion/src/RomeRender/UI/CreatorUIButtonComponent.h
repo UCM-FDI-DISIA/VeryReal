@@ -1,7 +1,8 @@
 #pragma once
 #include "CreatorComponent.h"
+#include "../exportRomeRender.h"
 namespace VeryReal {
-class VERYREAL_API CreatorButtonComponent : public CreatorComponent {
+class VERYREAL_ROMERENDER CreatorButtonComponent : public CreatorComponent {
         public:
     CreatorButtonComponent(){};
     virtual ~CreatorButtonComponent(){};

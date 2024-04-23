@@ -1,8 +1,9 @@
 #pragma once
 #include "CreatorComponent.h"
+#include "../exportRomeRender.h"
 namespace VeryReal
 {
-class VERYREAL_API CreatorUITextComponent : public CreatorComponent
+class VERYREAL_ROMERENDER CreatorUITextComponent : public CreatorComponent
 	{
 	public:
 		CreatorUITextComponent() { }

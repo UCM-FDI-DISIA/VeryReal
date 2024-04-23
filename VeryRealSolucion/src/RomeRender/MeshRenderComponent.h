@@ -26,7 +26,7 @@ namespace  VeryReal {
 	class Vector3;
 	class conversor;
 
-    class VERYREAL_API MeshRenderComponent : public Component {
+    class VERYREAL_ROMERENDER MeshRenderComponent : public Component {
     public:
 		// Constructor por defecto temporal sin parámetros, se espera que los creadores lo inicialicen correctamente.
 		MeshRenderComponent(){};

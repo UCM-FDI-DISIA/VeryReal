@@ -1,8 +1,9 @@
 #pragma once
 #include "CreatorComponent.h"
+#include "../exportRomeRender.h"
 namespace VeryReal
 {
-class VERYREAL_API CreatorUIProgressBarComponent : public CreatorComponent
+class VERYREAL_ROMERENDER CreatorUIProgressBarComponent : public CreatorComponent
 	{
 	public:
         CreatorUIProgressBarComponent() { }

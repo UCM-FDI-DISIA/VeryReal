@@ -3,10 +3,11 @@
 #define UIBUTTONCOMPONENT
 #include "Component.h"
 #include <string>
+#include "../exportRomeRender.h"
 
 namespace VeryReal {
 class UITransformComponent;
-    class VERYREAL_API UIButtonComponent : public Component {
+    class VERYREAL_ROMERENDER UIButtonComponent : public Component {
      public:
         //constructora de la clase UIButtomComponent
         UIButtonComponent();

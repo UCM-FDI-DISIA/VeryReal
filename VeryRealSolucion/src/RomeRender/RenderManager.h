@@ -5,7 +5,7 @@
 #include "Manager.h"
 #include "Vector3.h"
 #include "string"
-#include "export.h"
+#include "exportRomeRender.h"
 //#include "SceneManager" 
 
 #define DEBUG_ROOT_ERROR "OGRE NO HA SIDO INICIALIZADO CORRECTAMENTE\n"
@@ -48,7 +48,7 @@ namespace Ogre {
 namespace VeryReal {
 	// Declaración de la clase RenderManager, que hereda de Manager
 
-	class VERYREAL_API RenderManager : public Manager<RenderManager> {
+	class VERYREAL_ROMERENDER RenderManager : public Manager<RenderManager> {
                
     private:
                 RenderManager() { }

@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "export.h"
+#include "exportRomeRender.h"
 struct SDL_Window;
 
 namespace Ogre {
@@ -16,7 +16,7 @@ namespace Ogre {
 
 namespace VeryReal {
 	//clase para crear una ventana en nuestro motor
-    class VERYREAL_API Window {
+    class VERYREAL_ROMERENDER Window {
             public:
         // <summary>
         /// Método que inicializa los valores de la clase

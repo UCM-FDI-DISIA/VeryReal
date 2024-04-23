@@ -5,7 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include "CreatorComponent.h"
-#include "export.h"
+#include "exportRomeRender.h"
 
 namespace Ogre {
 	class AnimationState;
@@ -24,7 +24,7 @@ namespace VeryReal {
 	class Vector3;
 	class Vector4;
 
-	class VERYREAL_API AnimatorComponent : public Component {
+	class VERYREAL_ROMERENDER AnimatorComponent : public Component {
 		public:
 			//constructora de la clase animación que es un componente de cualquier entidad que queramos que tenga movimiento
 			AnimatorComponent();
