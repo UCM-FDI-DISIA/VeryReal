@@ -4,7 +4,7 @@
 
 #include "Manager.h"
 #include <string>
-#include "export.h"
+#include "exportLuaLuengo.h"
 
 #pragma warning(disable : 4251)
 
@@ -14,7 +14,7 @@ namespace luabridge {
 }
 
 namespace VeryReal {
-	class VERYREAL_API ScriptManager : public VeryReal::Manager<ScriptManager> {
+class VERYREAL_LUALUENGO ScriptManager : public VeryReal::Manager<ScriptManager> {
 	friend Singleton<ScriptManager>;
 
 	private:
