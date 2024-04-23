@@ -11,6 +11,7 @@
 #include "TransformComponent.h"
 #include "Entity.h"
 #include <Vector4.h>
+#include "../../dependencies/Bullet/Src/src/LinearMath/btVector3.h"
 
 using namespace VeryReal;
 using namespace Ogre;
@@ -34,82 +35,81 @@ bool CameraComponent::InitComponent(std::string name, Vector3 color, VeryReal::V
 
     vewport->setBackgroundColour(Ogre::ColourValue(color.GetX(), color.GetY(),color.GetZ()));
     return true;
-
 }
 
 void CameraComponent::Update(const double& dt) {
     //seguimiento 
     if (ent != nullptr) {
         VeryReal::Vector3 v = ent->GetComponent<TransformComponent>()->GetPosition();
-
+        
         mNode->setPosition(v.GetX(), v.GetY(), v.GetZ());
+ 
+        //mNode->roll(-mNode->getOrientation().getRoll());
     }
 }
-void CameraComponent::lookAt( VeryReal::Vector3 pos)
-{
+
+void CameraComponent::lookAt( VeryReal::Vector3 pos) {
     mNode->lookAt(VR2OgreV3(pos), Ogre::Node::TransformSpace::TS_PARENT);
-  
 }
+
 VeryReal::Vector4 CameraComponent::getOrientation() { 
   Quaternion q =  mNode->getOrientation();
     VeryReal::Vector4 vec = VeryReal::Vector4(q.x, q.y, q.z, q.w);
   return vec;
 }
-    void CameraComponent::translate(float x, float y, float z)
-{
+
+void CameraComponent::translate(float x, float y, float z) {
     mNode->translate(x, y, z, Ogre::Node::TransformSpace::TS_LOCAL);
 }
 
-void CameraComponent::roll(float d)
-{
-    mNode->roll(Ogre::Degree(d));
+void CameraComponent::roll(float d) {
+    //mNode->roll(Ogre::Degree(d));
+     mNode->rotate(VeryReal::VR2OgreV3(Vector3(0, 0, 1)), Ogre::Degree(d), Ogre::Node::TS_WORLD);
 }
 
-void CameraComponent::yaw(float d)
-{
-    mNode->yaw(Ogre::Degree(d));
+void CameraComponent::yaw(float d) {
+    //mNode->yaw(Ogre::Degree(d));
+     mNode->rotate(VeryReal::VR2OgreV3(Vector3(0, 1, 0)), Ogre::Degree(d), Ogre::Node::TS_WORLD);
 }
 
-void CameraComponent::pitch(float d)
-{
-    mNode->pitch(Ogre::Degree(d));
+void CameraComponent::pitch(float d) {
+    //mNode->pitch(Ogre::Degree(d));
+     mNode->rotate(VeryReal::VR2OgreV3(Vector3(1, 0, 0)), Ogre::Degree(d), Ogre::Node::TS_WORLD);
 }
-void CameraComponent::Offset(VeryReal::Vector2 offset)
-{
+
+void CameraComponent::rotate(float d, VeryReal::Vector3 v) { 
+    mNode->rotate(VeryReal::VR2OgreV3(v), Ogre::Degree(d), Ogre::Node::TS_WORLD); 
+}
+
+void CameraComponent::Offset(VeryReal::Vector2 offset) {
     camara->setFrustumOffset(offset.GetX(), offset.GetY());
 }
-void CameraComponent::setNearClipDistance(float t_clip)
-{
+
+void CameraComponent::setNearClipDistance(float t_clip) {
     camara->setNearClipDistance(t_clip);
 }
 
-void CameraComponent::setFarClipDistance(float t_clip)
-{
+void CameraComponent::setFarClipDistance(float t_clip) {
     camara->setFarClipDistance(t_clip);
 }
 
-void CameraComponent::setViewPortBackgroundColour(Ogre::ColourValue t_vp_color)
-{
+void CameraComponent::setViewPortBackgroundColour(Ogre::ColourValue t_vp_color) {
     vewport->setBackgroundColour(t_vp_color);
 }
 
-void CameraComponent::desactiveViewport()
-{
+void CameraComponent::desactiveViewport() {
     vewport->setVisibilityMask(0);
 }
 
-void CameraComponent::activeViewport()
-{
+void CameraComponent::activeViewport() {
     vewport->setVisibilityMask(1);
 }
 
-void CameraComponent::desactive()
-{
+void CameraComponent::desactive() {
     vewport->setCamera(nullptr);
 }
 
-Ogre::SceneNode* CameraComponent::getNode()
-{
+Ogre::SceneNode* CameraComponent::getNode() {
     return mNode;
 }
 
@@ -117,7 +117,6 @@ void CameraComponent::SetTarget(VeryReal::Entity* e) {
     ent = e;
 }
 
-void CameraComponent::active()
-{
+void CameraComponent::active() {
     vewport->setCamera(camara);
 }

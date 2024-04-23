@@ -50,6 +50,8 @@ namespace  VeryReal {
         // Realiza un giro de la cámara en el eje transversal (pitch) según el ángulo especificado en grados.
         void pitch(float d);
 
+        void rotate(float d, VeryReal::Vector3 v);
+
         // Aplica un desplazamiento de posición de la cámara.
         void Offset(VeryReal::Vector2 offset);
 
