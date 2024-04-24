@@ -8,20 +8,22 @@
 #include <Entity.h>
 #include "RenderManager.h"
 #include <TransformComponent.h>
-#include "Light.h"
+#include "LightComponent.h"
 #include "conversorvectores.h"
 
 using namespace VeryReal;
 
-Light::Light():light(nullptr),shadowdist(10),ineerangle_(45),outerangle(90),shadowfardist(10),diffusecolour(Vector3(0,0,0)),nearclipdist(0.5),shdws(true) {
+LightComponent::LightComponent(): light(nullptr), shadowdist(10), ineerangle_(45), outerangle(90), shadowfardist(10), diffusecolour(Vector3(0, 0, 0)), nearclipdist(0.5),
+      shdws(true) {
 
 }
 
-Light::~Light() {
+LightComponent::~LightComponent() {
 
 }
 
-bool Light::InitComponent(int type, Vector3 const& diffusecolour, float shadowfardist,float shadowdist,float ineerangle, float outerangle, float nearclipdist, bool shdws) {
+bool LightComponent::InitComponent(int type, Vector3 const& diffusecolour, float shadowfardist, float shadowdist, float ineerangle, float outerangle,
+                                   float nearclipdist, bool shdws) {
 	if(GetEntity()->HasComponent("TransformComponent"))trans = GetEntity()->GetComponent<TransformComponent>();
 	else {
 		#ifdef DEBUG_MODE
@@ -45,15 +47,15 @@ bool Light::InitComponent(int type, Vector3 const& diffusecolour, float shadowfa
 	return true;
 }
 
-void Light::Update(const double& dt) {
+void LightComponent::Update(const double& dt) {
     mNode->setPosition(VR2OgreV3(trans->GetPosition()));
 }
 
-void Light::SetDirection(Vector3 const& v) {
+void LightComponent::SetDirection(Vector3 const& v) {
         mNode->setDirection(VR2OgreV3(v));
 }
 
-void Light::setType(int const dir) {
+void LightComponent::setType(int const dir) {
 	this->type = dir;
 	switch (dir) {
 	case 0:
@@ -72,65 +74,65 @@ void Light::setType(int const dir) {
 	}
 }
 
-void Light::SetDiffuseColour(Vector3 const& color) {
+void LightComponent::SetDiffuseColour(Vector3 const& color) {
 	this->diffusecolour = color;
 	light->setDiffuseColour(color.GetX(), color.GetY(), color.GetZ());
 	
 }
 
-void Light::SetshadowFarDistance(float distance) {
+void LightComponent::SetshadowFarDistance(float distance) {
 	this->shadowfardist=distance;
 	light->setShadowFarClipDistance(distance);
 }
 
-void Light::SetSpotlightInnerAngle(float dist) {
+void LightComponent::SetSpotlightInnerAngle(float dist) {
 	this->ineerangle_ = dist;
 	light->setSpotlightInnerAngle(Ogre::Radian(dist));
 }
 
-void Light::SetSpotlightOuterAngle(float dist) {
+void LightComponent::SetSpotlightOuterAngle(float dist) {
 	this->outerangle = dist;
 	light->setSpotlightOuterAngle(Ogre::Radian(dist));
 }
 
-void Light::SetSpotlightNearClipDistance(float dist) {
+void LightComponent::SetSpotlightNearClipDistance(float dist) {
 	this->nearclipdist = dist;
 	light->setSpotlightNearClipDistance(dist);
 }
 
-void Light::ActivateShadows(bool shdows) {
+void LightComponent::ActivateShadows(bool shdows) {
 	this->shdws = shdows;
 	light->setCastShadows(shdows);
 }
 
-int Light::getType() const {
+int LightComponent::getType() const {
 	return type;
 }
 
-Vector3 Light::getDiffuseColour() const {
+Vector3 LightComponent::getDiffuseColour() const {
 	return diffusecolour;
 }
 
-float Light::getShadowFarDistance() const {
+float LightComponent::getShadowFarDistance() const {
 	return shadowfardist;
 }
 
-float Light::getSpotlightInnerAngle() const {
+float LightComponent::getSpotlightInnerAngle() const {
 	return ineerangle_;
 }
 
-float Light::getSpotlightOuterAngle() const {
+float LightComponent::getSpotlightOuterAngle() const {
 	return outerangle;
 }
 
-float Light::getSpotlightNearClipDistance() const {
+float LightComponent::getSpotlightNearClipDistance() const {
 	return nearclipdist;
 }
 
-bool Light::areShadowsActivated() const {
+bool LightComponent::areShadowsActivated() const {
 	return shdws;
 }
 
-void Light::setVisible(bool visibility) { 
+void LightComponent::setVisible(bool visibility) { 
 	mNode->setVisible(visibility); 
 }

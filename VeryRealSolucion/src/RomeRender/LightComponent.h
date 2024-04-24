@@ -18,12 +18,12 @@ namespace  VeryReal {
     class TransformComponent;
     class Conversor;
 
-    class VERYREAL_ROMERENDER Light : public Component {
+    class VERYREAL_ROMERENDER LightComponent : public Component {
     public:
         // Constructuora del componente Light
-        Light();
+        LightComponent();
         //destructpra del componente light
-        virtual ~Light();
+        virtual ~LightComponent();
        
         virtual void Update(const double& dt);
         //initcomponent de light, pone la posicion, tamaño... del modo atachado al componente a parti de su transform
@@ -103,4 +103,4 @@ namespace  VeryReal {
     };
 }
 
-#endif // !LIGHT
+#endif // !LIGHTCOMPONENT

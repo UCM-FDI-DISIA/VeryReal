@@ -33,7 +33,7 @@
     <ClCompile Include="..\..\src\RomeRender\CameraComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\RomeRender\Light.cpp">
+    <ClCompile Include="..\..\src\RomeRender\LightComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\RomeRender\MeshRenderComponent.cpp">
@@ -101,7 +101,7 @@
     <ClInclude Include="..\..\src\RomeRender\CameraComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\RomeRender\Light.h">
+    <ClInclude Include="..\..\src\RomeRender\LightComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\MeshRenderComponent.h">

@@ -1,9 +1,7 @@
 #include "CreatorLightComponent.h"
-#include "Light.h"
+#include "LightComponent.h"
 using namespace VeryReal;
-Component* CreatorLightComponent::CreatorSpecificComponent() {
-    return new Light();
-}
+Component* CreatorLightComponent::CreatorSpecificComponent() { return new LightComponent(); }
 
 void CreatorLightComponent::SpecificInitComponent(Component* c) {
     int type = 0;
@@ -34,5 +32,6 @@ void CreatorLightComponent::SpecificInitComponent(Component* c) {
     if (std::holds_alternative<bool>(parameters_map.at("shdws")->GetVariant())) {
         shdws = std::get<bool>(parameters_map.at("shdws")->GetVariant());
     }
-    bool b = static_cast<Light*>(c)->InitComponent(type, diffusecolour, shadowfardist, shadowdist, ineerangle, outerangle, nearclipdist, shdws);
+    bool b =
+        static_cast<LightComponent*>(c)->InitComponent(type, diffusecolour, shadowfardist, shadowdist, ineerangle, outerangle, nearclipdist, shdws);
 }
