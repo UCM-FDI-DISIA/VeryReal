@@ -103,10 +103,17 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
 {
 	std::string paramName = lua_tostring(lua_state, -2);
     std::string key;
-    if (lua_isnumber(lua_state, -1)) { // Comprobamos si el valor es un número
+    if (lua_isinteger(lua_state, -1)) {   // Comprobamos si el valor es un entero
         key = lua_tostring(params, -2);
         int value;
-        value = (int)lua_tonumber(lua_state, -1);
+        value = (int)lua_tointeger(lua_state, -1);
+        std::cout << key + ": " << value << std::endl;
+        VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, value);
+    }
+    else if (lua_isnumber(lua_state, -1)) {   // Comprobamos si el valor es un float
+        key = lua_tostring(params, -2);
+        float value;
+        value = (float)lua_tonumber(lua_state, -1);
         std::cout << key + ": " << value << std::endl;
         VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, value);
     }
