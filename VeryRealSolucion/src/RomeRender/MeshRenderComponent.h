@@ -4,6 +4,7 @@
 #include "Component.h"
 #include <string>
 #include "Vector3.h"
+#include "exportRomeRender.h"
 namespace Ogre
 {
 	class AxisAlignedBox;

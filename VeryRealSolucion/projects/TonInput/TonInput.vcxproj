@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\TonInput\exportTonInput.h" />
     <ClInclude Include="..\..\src\TonInput\InputManager.h" />
     <ClInclude Include="..\..\src\TonInput\TonMapeo.h" />
   </ItemGroup>
@@ -63,7 +64,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;VERYREAL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;VERYREAL_TONINPUTEXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2\;$(SolutionDir)src\GuilleElArquitecto\;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include-config-debug\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -86,7 +87,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;VERYREAL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;VERYREAL_TONINPUTEXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include\SDL2\;$(SolutionDir)src\GuilleElArquitecto\;$(SolutionDir)dependencies\Ogre\Builds\SDL2-build\include-config-release\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

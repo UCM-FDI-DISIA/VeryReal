@@ -21,6 +21,9 @@
     <ClInclude Include="..\..\src\TonInput\InputManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\TonInput\exportTonInput.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\TonInput\InputManager.cpp">

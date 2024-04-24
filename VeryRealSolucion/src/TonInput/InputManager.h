@@ -5,7 +5,7 @@
 #include <Manager.h>
 #include <array>
 #include "TonMapeo.h"
-#include "export.h"
+#include "exportTonInput.h"
 
 #pragma warning(disable : 4251)
 
@@ -14,7 +14,7 @@ typedef struct _SDL_GameController SDL_GameController;
 typedef union SDL_Event SDL_Event;
 
 namespace  VeryReal {
-    class VERYREAL_API InputManager : public VeryReal::Manager<InputManager> {
+class VERYREAL_TONINPUT InputManager : public VeryReal::Manager<InputManager> {
         private:
         InputManager() { }
   
