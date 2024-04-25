@@ -39,8 +39,7 @@ bool VeryRealProyecto::InitVeryReal() {
     if (!InitManagers()) return false;
     if (!CreateCreators()) return false;
 
-	std::filesystem::path path = std::filesystem::current_path().parent_path().parent_path().parent_path();
-    std::string dllName = path.filename().string() + "Solucion"; 
+	std::string dllName = "Game"; 
 	if (!LoadGame(dllName)) return false;
 	return true;
 }
