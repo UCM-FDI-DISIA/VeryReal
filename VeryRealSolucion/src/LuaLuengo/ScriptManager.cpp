@@ -83,7 +83,7 @@ void ScriptManager::ReadScene(std::string namescene)
 								}
 								VeryReal::Component* c = e->AddComponent(componentname); // Comentar para hacer pruebas con otros tipos de datos
                                
-								std::cout << "Tiene componente?[1=SI, 0=NO]: " << VeryReal::SceneManager::Instance()->GetScene("PlayScene")->GetEntity(entityname)->HasComponent(componentname) << "\n";             
+							//	std::cout << "Tiene componente?[1=SI, 0=NO]: " << VeryReal::SceneManager::Instance()->GetScene("PlayScene")->GetEntity(entityname)->HasComponent(componentname) << "\n";             
 							}
 							else {//ERROR
 							}	
