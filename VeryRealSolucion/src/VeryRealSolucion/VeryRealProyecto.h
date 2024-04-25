@@ -2,7 +2,7 @@
 #include <Singleton.h>
 #include <Windows.h>		//por ahora lo dejo aqui
 #include <string>
-
+typedef void(__cdecl* MainLoop)();
 namespace VeryReal {
 class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
     friend Singleton<VeryRealProyecto>;
@@ -24,8 +24,9 @@ class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
 
     bool LoadGame(std::string gameName);
 
-        private:
+    private:
     HMODULE gameDll = NULL;
+    MainLoop gameLoop;
 };
 
 inline VeryRealProyecto& VR() { return *VeryRealProyecto::Instance(); }

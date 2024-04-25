@@ -30,8 +30,8 @@
 const double FRAME_RATE = 0.01;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
-
 typedef bool(__cdecl* Start)();
+typedef void(__cdecl* MainLoop)();
 using namespace VeryReal;
 bool VeryRealProyecto::InitVeryReal() {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -41,6 +41,8 @@ bool VeryRealProyecto::InitVeryReal() {
 
 	std::string dllName = "Game"; 
 	if (!LoadGame(dllName)) return false;
+    gameLoop  = (MainLoop)GetProcAddress(gameDll, "loop");
+    if (gameLoop == NULL) return false;    
 	return true;
 }
 bool VeryRealProyecto::InitPointers() {
@@ -102,7 +104,6 @@ bool VeryRealProyecto::LoadGame(std::string gameName) {
 
         return false;
     }
-    // FreeLibrary(gameDll);   //esta linea va cuando el juego termine
     return true;
 }
 void VeryRealProyecto::Loop() {
@@ -114,8 +115,8 @@ void VeryRealProyecto::Loop() {
         frameTime = (float) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - startTime;
 		VeryReal::InputManager::Instance()->Refresh(); 
 		if (frameTime >= FRAME_RATE) {
-            Prueba entryPoint = (Prueba)GetProcAddress(gameDll, "main");
-           if (entryPoint != NULL) entryPoint();    //gestion de erro en el main del juego
+        
+            gameLoop();   
             VeryReal::PhysicsManager::Instance()->Update(frameTime);	
             VeryReal::SceneManager::Instance()->Update(frameTime);
             VeryReal::RenderManager::Instance()->Update(frameTime);
@@ -130,6 +131,7 @@ void VeryRealProyecto::Delete() {
 	//	mWindow = nullptr;
 	//	SDL_Quit();
 	//}
+    FreeLibrary(gameDll);
 }
 
 
