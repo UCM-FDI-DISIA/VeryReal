@@ -25,6 +25,7 @@
 #include "UI/CreatorUITransformComponent.h"
 #include "UI/CreatorUITextComponent.h"
 #include "UI/CreatorUIButtonComponent.h"
+#include "UI/CreatorUIProgressBarComponent.h"
 #include <filesystem>
 const double FRAME_RATE = 0.01;
 typedef bool(__cdecl* GameStartingPoint)();
@@ -73,6 +74,7 @@ bool VeryRealProyecto::CreateCreators() {
     VeryReal::Creator::Instance()->AddCreator("UITransformComponent", new VeryReal::CreatorUITransformComponent());
     VeryReal::Creator::Instance()->AddCreator("UITextComponent", new VeryReal::CreatorUITextComponent());
     VeryReal::Creator::Instance()->AddCreator("UIButtonComponent", new VeryReal::CreatorButtonComponent());
+    VeryReal::Creator::Instance()->AddCreator("UIProgressBarComponent", new VeryReal::CreatorUIProgressBarComponent());
     return true;
 }
 bool VeryRealProyecto::LoadGame(std::string gameName) {
