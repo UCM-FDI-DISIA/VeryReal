@@ -59,17 +59,18 @@ bool VeryRealProyecto::InitManagers(){
     VeryReal::ScriptManager::Instance()->InitManager();
     return true;
     
-}
+}//AAAAAAAAAAAA
+
 bool VeryRealProyecto::CreateCreators() {
     //FALTAN LOS DOS DE SONIDO
     VeryReal::Creator::Init();
     VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
-    VeryReal::Creator::Instance()->AddCreator("rigidbody", new VeryReal::CreatorRigidBodyComponent());
-    VeryReal::Creator::Instance()->AddCreator("collider", new VeryReal::CreatorColliderComponent());
+    VeryReal::Creator::Instance()->AddCreator("RigidBodyComponent", new VeryReal::CreatorRigidBodyComponent());
+    VeryReal::Creator::Instance()->AddCreator("ColliderComponent", new VeryReal::CreatorColliderComponent());
     VeryReal::Creator::Instance()->AddCreator("MeshRenderComponent", new VeryReal::CreatorMeshRenderComponent());
     VeryReal::Creator::Instance()->AddCreator("LightComponent", new VeryReal::CreatorLightComponent());
     VeryReal::Creator::Instance()->AddCreator("CameraComponent", new VeryReal::CreatorCameraComponent());
-    VeryReal::Creator::Instance()->AddCreator("animator", new VeryReal::CreatorAnimatorComponent());
+    VeryReal::Creator::Instance()->AddCreator("AnimatorComponent", new VeryReal::CreatorAnimatorComponent());
     VeryReal::Creator::Instance()->AddCreator("AudioSourceComponent", new VeryReal::CreatorAudioSourceComponent());
     VeryReal::Creator::Instance()->AddCreator("AudioListenerComponent", new VeryReal::CreatorAudioListenerComponent());
     VeryReal::Creator::Instance()->AddCreator("UITransformComponent", new VeryReal::CreatorUITransformComponent());
