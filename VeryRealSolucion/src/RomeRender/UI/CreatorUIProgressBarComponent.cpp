@@ -13,11 +13,11 @@ void VeryReal::CreatorUIProgressBarComponent::SpecificInitComponent(Component* c
     std::string progressBarName, frameMaterial, contentMaterial;
     int zOrder;
 
-    if (std::holds_alternative<double>(parameters_map.at("maximo")->GetVariant())) {
-        maximo = std::get<double>(parameters_map.at("maximo")->GetVariant());
+    if (std::holds_alternative<float>(parameters_map.at("maximo")->GetVariant())) {
+        maximo = std::get<float>(parameters_map.at("maximo")->GetVariant());
     }
-    if (std::holds_alternative<double>(parameters_map.at("progres")->GetVariant())) {
-        progres = std::get<double>(parameters_map.at("progres")->GetVariant());
+    if (std::holds_alternative<float>(parameters_map.at("progres")->GetVariant())) {
+        progres = std::get<float>(parameters_map.at("progres")->GetVariant());
     }
     if (std::holds_alternative<std::string>(parameters_map.at("progressBarName")->GetVariant())) {
         progressBarName = std::get<std::string>(parameters_map.at("progressBarName")->GetVariant());
