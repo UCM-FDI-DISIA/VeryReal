@@ -46,7 +46,7 @@ void ScriptManager::NewScene(std::string p) {
 void ScriptManager::ReadScene(std::string namescene)
 {
 	VeryReal::Scene* scene = VeryReal::SceneManager::Instance()->AddScene(namescene,false); // Creación de la escena(lleva el nombre del archivo .lua)
- 
+    NewScene(namescene);
 	std::cout << "Nombre de la escena: " << namescene << std::endl;
 
 	std::string ent = "Entities";
