@@ -55,6 +55,9 @@ namespace VeryReal {
 	public: 
 		
 		// Constructor de la clase RenderManager
+
+		Ogre::SceneManager* getSceneManager();
+	    Ogre::ManualObject* createManualObject(Ogre::SceneNode* node);
        
     static bool Init() {
         RenderManager* a = new RenderManager();
@@ -143,6 +146,14 @@ namespace VeryReal {
 
 		// Descarga los shaders cargados previamente
 		void UnloadShaders();
+
+
+
+
+
+
+
+
 	};
 }
 

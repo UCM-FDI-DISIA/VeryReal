@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\PedroBullet\PhysicsDebug.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\PedroBullet\RigidBodyComponent.h">
@@ -51,6 +54,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\exportPedroBullet.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\PedroBullet\PhysicsDebug.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

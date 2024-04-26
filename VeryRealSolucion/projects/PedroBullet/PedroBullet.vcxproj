@@ -14,6 +14,7 @@
     <ClCompile Include="..\..\src\PedroBullet\ColliderComponent.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\CreatorColliderComponent.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.cpp" />
+    <ClCompile Include="..\..\src\PedroBullet\PhysicsDebug.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\PhysicsManager.cpp" />
     <ClCompile Include="..\..\src\PedroBullet\RigidBodyComponent.cpp" />
   </ItemGroup>
@@ -21,6 +22,7 @@
     <ClInclude Include="..\..\src\PedroBullet\ColliderComponent.h" />
     <ClInclude Include="..\..\src\PedroBullet\CreatorColliderComponent.h" />
     <ClInclude Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.h" />
+    <ClInclude Include="..\..\src\PedroBullet\PhysicsDebug.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsManager.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsValues.h" />
     <ClInclude Include="..\..\src\PedroBullet\RigidBodyComponent.h" />
@@ -74,15 +76,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;VERYREAL_PEDROBULLETEXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Bullet\Src\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)src\RomeRender;$(SolutionDir)dependencies\Ogre\src\OgreMain\include\;$(SolutionDir)dependencies\Ogre\Builds\include\;$(SolutionDir)dependencies\Ogre\Builds\SDL2-Build\include\SDL2;$(SolutionDir)dependencies\Ogre\Builds\SDL2-Build\include-config-debug\SDL2</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletFileLoader_Debug.lib;BulletInverseDynamicsUtils_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;BulletWorldImporter_Debug.lib;ConvexDecomposition_Debug.lib;GIMPACTUtils_Debug.lib;HACD_Debug.lib;LinearMath_Debug.lib;GuilleElArquitecto_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Bullet\Builds\Static\lib\Debug\;$(SolutionDir)bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletFileLoader_Debug.lib;BulletInverseDynamicsUtils_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;BulletWorldImporter_Debug.lib;ConvexDecomposition_Debug.lib;GIMPACTUtils_Debug.lib;HACD_Debug.lib;LinearMath_Debug.lib;GuilleElArquitecto_d.lib;RomeRender_d.lib;OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Bullet\Builds\Static\lib\Debug\;$(SolutionDir)bin\;$(SolutionDir)dependencies\Ogre\Builds\lib\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Lib>
       <AdditionalDependencies>Bullet3Common_Debug.lib;BulletDynamics_Debug.lib;BulletCollision_Debug.lib;LinearMath_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -99,7 +101,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;VERYREAL_PEDROBULLETEXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Bullet\Src\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)dependencies\Ogre\Builds\include\;$(SolutionDir)dependencies\Ogre\src\OgreMain\include\</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>

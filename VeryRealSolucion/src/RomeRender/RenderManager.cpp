@@ -157,6 +157,7 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
         }
     }
 
+   
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
     VeryReal::RenderManager::Instance()->SceneManagerOgree()->addRenderQueueListener(overlay_system);
 }
@@ -223,3 +224,12 @@ void VeryReal::RenderManager::DeleteNode(Ogre::SceneNode* nod) {
     // delete(nod);
 }
 void VeryReal::RenderManager::DeleteEntity(Ogre::Entity* nod) { Ogre::MeshManager::getSingleton().remove(nod->getMesh()->getName()); }
+
+
+Ogre::ManualObject* VeryReal::RenderManager::createManualObject(Ogre::SceneNode* node) {
+    Ogre::ManualObject* newManualObject = scene_manager->createManualObject();
+    node->attachObject(newManualObject);
+    return newManualObject;
+}
+
+Ogre::SceneManager* VeryReal::RenderManager::getSceneManager() { return scene_manager; }

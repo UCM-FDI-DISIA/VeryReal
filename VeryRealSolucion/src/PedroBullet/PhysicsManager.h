@@ -9,6 +9,7 @@ namespace VeryReal {
     class Vector3;
     class Entity;
     class SceneManager;
+    class DebugMode;
 }
 
 
@@ -72,7 +73,7 @@ private:
     btBroadphaseInterface* overlappingPairCache;
     btSequentialImpulseConstraintSolver* solver;
     btDiscreteDynamicsWorld* dynamicsWorld;
-
+    DebugMode* debugger;
 
 
     ///-------//// cosas para hacer pruebas
@@ -88,7 +89,7 @@ private:
     btVector3 V3ToBtV3(VeryReal::Vector3 conversion) const;
 
     // Otras variables y métodos privados si son necesarios
-    };
+   };
 }
 
 /// Singleton instance

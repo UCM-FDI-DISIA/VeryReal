@@ -19,6 +19,12 @@
 #include <LinearMath/btVector3.h>
 #include "PhysicsValues.h"
 #include "ColliderComponent.h"
+#ifdef _DEBUG
+#include "PhysicsDebug.h"
+#endif   // _DEBUG
+
+#include "RenderManager.h"
+
 
 VeryReal::PhysicsManager::PhysicsManager(): collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) { }
 
@@ -123,6 +129,17 @@ bool VeryReal::PhysicsManager::InitManager() {
 
     //DESCOMENTAR PARA GAVITY ATENTOS Q POR AHORA SE LE DA A TODOS LOS OBJETOS
     dynamicsWorld->setGravity(btVector3(0, 0, 0));
+
+
+
+
+
+
+
+   #ifdef _DEBUG
+    debugger = new DebugMode();
+    dynamicsWorld->setDebugDrawer(debugger);
+    #endif             // DEBUG
     return true;   // Inicializaci�n exitosa
 
 }
@@ -130,6 +147,9 @@ bool VeryReal::PhysicsManager::InitManager() {
 void VeryReal::PhysicsManager::Update(float deltaTime) {
     if (dynamicsWorld) {
         dynamicsWorld->stepSimulation(deltaTime, 10);
+        #ifdef DEBUG
+                dynamicsWorld->debugDrawWorld();
+        #endif   // DEBUG
     }
 }
 

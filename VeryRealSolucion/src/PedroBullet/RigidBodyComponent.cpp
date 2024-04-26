@@ -25,9 +25,7 @@ bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction
     return InitializeRigidBody((PBShapes)shapeType, this->movementType, trigger, size, mask, group);
     
 }
-RigidBodyComponent::~RigidBodyComponent() {
-
-}
+RigidBodyComponent::~RigidBodyComponent() { /* delete collisionShape;*/ }
 
 bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int m, int g) {
     transformComponent = this->GetEntity()->GetComponent<TransformComponent>();
@@ -39,7 +37,7 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
         return false;
     }
 
-    delete collisionShape;
+   
     collisionShape = CreateCollisionShape(shapeType, s);
     //collisionShape.reset(CreateCollisionShape(shapeType));
     
@@ -68,7 +66,7 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
         //ERROR
         return false;
     }
-    this->GetBulletRigidBody()->setUserPointer(collider);
+    rigidBody->setUserPointer(rigidBody);
 
     //Determinar el movement type
     SetMovementType(movementType);
