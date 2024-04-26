@@ -147,7 +147,7 @@ bool VeryReal::PhysicsManager::InitManager() {
 void VeryReal::PhysicsManager::Update(float deltaTime) {
     if (dynamicsWorld) {
         dynamicsWorld->stepSimulation(deltaTime, 10);
-        #ifdef DEBUG
+        #ifdef _DEBUG
                 dynamicsWorld->debugDrawWorld();
         #endif   // DEBUG
     }
