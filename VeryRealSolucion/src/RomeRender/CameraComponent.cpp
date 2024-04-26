@@ -20,7 +20,7 @@ CameraComponent::~CameraComponent() {
        
 }
 
-bool CameraComponent::InitComponent(std::string name, Vector3 color, VeryReal::Vector3 offset) {
+bool CameraComponent::InitComponent(std::string name, Vector4 color, VeryReal::Vector3 offset) {
     //camara
     mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
     mNode = mgr->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
@@ -33,7 +33,8 @@ bool CameraComponent::InitComponent(std::string name, Vector3 color, VeryReal::V
 
     //cambio de color de fondo
     ent = this->GetEntity();
-    vewport->setBackgroundColour(Ogre::ColourValue(color.GetX(), color.GetY(),color.GetZ()));
+
+    vewport->setBackgroundColour(Ogre::ColourValue(color.GetR(), color.GetG(), color.GetB(), color.GetA()));
     return true;
 }
 
