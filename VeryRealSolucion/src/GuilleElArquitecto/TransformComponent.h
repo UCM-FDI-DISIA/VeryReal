@@ -10,6 +10,7 @@ namespace VeryReal {
 		Vector3 position;
 		Vector3 rotation;
 		Vector3 scale;
+		Vector3 velocity;
 		int a = 0;
 	public:
 		TransformComponent();
@@ -19,10 +20,12 @@ namespace VeryReal {
 		inline Vector3 GetPosition() { return position; }
 		inline Vector3 GetRotation() { return rotation; }
 		inline Vector3 GetScale() { return scale; }
+		inline Vector3 GetVelocity() { return velocity; }
 
 		inline void SetPosition(Vector3 position) { this->position = position; }
 		inline void SetRotation(Vector3 rotation) { this->rotation = rotation; }
 		inline void SetScale(Vector3 scale) { this->scale = scale; }
+        inline void SetVelocity(Vector3 velocity) { this->velocity = velocity; }
 
 		void Translate(Vector3 translateposition);
 		void Rotate(Vector3 rotaterotation);
@@ -32,13 +35,13 @@ namespace VeryReal {
 		Vector Up del componente transform.
 		@return El valor del vector Up en el eje Y.		
 		*/
-        Vector3 up();
+        VeryReal::Vector3 up();
 
         /*
 		Vector Forward del componente transform.
 		@return El valor en Vector3 de forward a lo largo del eje Z.
 		*/
-        Vector3 forward();
+        VeryReal::Vector3 forward();
 
         VeryReal::Vector3 getFacingDirection();
     };

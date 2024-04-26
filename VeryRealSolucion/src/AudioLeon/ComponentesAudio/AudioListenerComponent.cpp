@@ -2,7 +2,6 @@
 #include "AudioListenerComponent.h"
 #include "..\AudioLeon.h"
 #include <TransformComponent.h>
-#include <RigidBodyComponent.h>
 #include <Entity.h>
 #include <ErrorInformant.h>
 #include <SceneManager.h>
@@ -24,17 +23,10 @@ void AudioListenerComponent::InitComponent()
 	// Get the next available index for a listener in the sound manager
 	listener_index = AL().GetNextUsefulListenerIndex();
     transform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>();
-    rigid_body = this->GetEntity()->GetComponent<VeryReal::RigidBodyComponent>();
-
 	if (!transform) {
             ErrorInf().showErrorMessageBox("AudioListenerComponent error", "An entity doesn't have transform component", EI_ERROR);
             /*	sceneManager().quit();*/
             return;
-    }
-    if (!rigid_body) {
-        ErrorInf().showErrorMessageBox("AudioSourceComponent error", "An entity doesn't have rigid body component", EI_ERROR);
-        //sceneManager().quit();
-        return;
     }
 
 	last_position = transform->GetPosition();
@@ -43,29 +35,28 @@ void AudioListenerComponent::InitComponent()
 	if (listener_index == -1)
 		std::cout << "ERROR: Listeners vector is full\n";
 #endif // _DEBUG
+    Vector3 position = transform->GetPosition();
+    Vector3 velocity = transform->GetVelocity();
+    VeryReal::Vector3 up = transform->up();
+    VeryReal::Vector3 forward = transform->forward();
 
-	FMOD_VECTOR pos = {0.0f, 0.0f, 0.0f};
-    FMOD_VECTOR vel = {0.0f, 0.0f, 0.0f};
-    FMOD_VECTOR forward = {0.0f, 0.0f, 1.0f};
-    FMOD_VECTOR up = {0.0f, 1.0f, 0.0f};
-
-    AL().GetSoundSystem()->set3DListenerAttributes(listener_index, &pos, &vel, &forward, &up);
+	UpdateListenersPosition(listener_index, position, forward, up, velocity);
 }
 
 void AudioListenerComponent::Update(const double& dt)
 {
-	//Vector3 position = transform->GetPosition();
- //   Vector3 velocity = rigid_body->GetVelocity();
- //   VeryReal::Vector3 up = transform->up();
- //   VeryReal::Vector3 forward = transform->forward();
+	Vector3 position = transform->GetPosition();
+    Vector3 velocity = transform->GetVelocity();
+    VeryReal::Vector3 up = transform->up();
+    VeryReal::Vector3 forward = transform->forward();
 
-	//VeryReal::Vector3 v = {(position.GetX() - last_position.GetX()) * float(dt), (position.GetY() - last_position.GetY()) * float(dt),
- //                          (position.GetZ() - last_position.GetZ()) * float(dt)};
+	VeryReal::Vector3 v = {(position.GetX() - last_position.GetX()) * float(dt), (position.GetY() - last_position.GetY()) * float(dt),
+                           (position.GetZ() - last_position.GetZ()) * float(dt)};
 
-	//last_position = position;
+	last_position = position;
 
-	//// Update the position of the audio listener in the sound manager
-	//UpdateListenersPosition(listener_index, position, forward, up, v);
+	// Update the position of the audio listener in the sound manager
+	UpdateListenersPosition(listener_index, position, forward, up, v);
 }
 
 void AudioListenerComponent::UpdateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel)

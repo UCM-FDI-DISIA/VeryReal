@@ -2,7 +2,6 @@
 #include "AudioSourceComponent.h"
 #include "..\AudioLeon.h"
 #include <TransformComponent.h>
-#include <RigidBodyComponent.h>
 #include <Entity.h>
 #include <ErrorInformant.h>
 #include <SceneManager.h>
@@ -190,15 +189,9 @@ bool AudioSourceComponent::PauseSound(bool Pause)
 void AudioSourceComponent::Start()
 {
     transform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>();
-    rigid_body = this->GetEntity()->GetComponent<VeryReal::RigidBodyComponent>();
 
     if (!transform) {
         ErrorInf().showErrorMessageBox("AudioSourceComponent error", "An entity doesn't have transform component", EI_ERROR);
-        //sceneManager().quit();
-        return;
-    }
-    if (!rigid_body) {
-        ErrorInf().showErrorMessageBox("AudioSourceComponent error", "An entity doesn't have rigid body component", EI_ERROR);
         //sceneManager().quit();
         return;
     }
@@ -215,18 +208,16 @@ void AudioSourceComponent::Start()
 
 void AudioSourceComponent::Update(const double& dt)
 {
-    /*if (is_three_d) {
-        Set3DSoundAtributes(transform->GetPosition(), rigid_body->GetVelocity());
-    }*/
+    if (is_three_d) {
+        Set3DSoundAtributes(transform->GetPosition(), transform->GetVelocity());
+    }
 }
 
 void AudioSourceComponent::Play()
 {
     VeryReal::Vector3 pos = transform->GetPosition();
-    VeryReal::Vector3 vel = rigid_body->GetVelocity();
-    VeryReal::Vector3 p = {0.0f, 0.0f, 0.0f};
-    VeryReal::Vector3 v = {0.0f, 0.0f, 0.0f};
-    PlayAudioSource(sound_group, &p, &v, volume);
+    VeryReal::Vector3 vel = transform->GetVelocity();
+    PlayAudioSource(sound_group, &pos, &vel, volume);
 
     playing = true;
 }

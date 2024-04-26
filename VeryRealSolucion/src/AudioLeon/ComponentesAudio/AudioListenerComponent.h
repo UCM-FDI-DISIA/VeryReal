@@ -13,7 +13,6 @@ namespace FMOD {
 namespace VeryReal {
 	class Vector3;
 	class TransformComponent;
-	class RigidBodyComponent;
 }
 
 	//FMOD ofrece "escuchadores" dinámicos que hacen de veces de receptores de los sonidos reproducidos por FMOD.
@@ -52,7 +51,6 @@ namespace VeryReal {
 		int listener_index;
         //Almacena el componente "Transform" y "RigidBody" de la entidad a la que este componente esta enlazada.
         VeryReal::TransformComponent* transform = nullptr;
-		VeryReal::RigidBodyComponent* rigid_body = nullptr;
 	};
 
 

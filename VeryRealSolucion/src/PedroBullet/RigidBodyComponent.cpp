@@ -137,6 +137,9 @@ void VeryReal::RigidBodyComponent::Update(const double& dt) {
         transformComponent->SetRotation(Vector3(rigidBody->getWorldTransform().getRotation().getX(),
                                                 rigidBody->getWorldTransform().getRotation().getY(),
                                                 rigidBody->getWorldTransform().getRotation().getZ()));
+        transformComponent->SetVelocity(Vector3(rigidBody->getLinearVelocity().getX(),
+                                                rigidBody->getLinearVelocity().getY(),
+                                                rigidBody->getLinearVelocity().getZ())
     }
 }
 
