@@ -21,9 +21,8 @@
 #include "ColliderComponent.h"
 #ifdef _DEBUG
 #include "PhysicsDebug.h"
-#endif   // _DEBUG
-
 #include "RenderManager.h"
+#endif   // _DEBUG
 
 
 VeryReal::PhysicsManager::PhysicsManager(): collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) { }

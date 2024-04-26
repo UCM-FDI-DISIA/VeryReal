@@ -73,8 +73,9 @@ private:
     btBroadphaseInterface* overlappingPairCache;
     btSequentialImpulseConstraintSolver* solver;
     btDiscreteDynamicsWorld* dynamicsWorld;
+    #ifdef _DEBUG
     DebugMode* debugger;
-
+    #endif
 
     ///-------//// cosas para hacer pruebas
     //btDiscreteDynamicsWorld* dynamicWorld = nullptr;

@@ -32,7 +32,7 @@ bool CameraComponent::InitComponent(std::string name, Vector3 color, VeryReal::V
     vewport = RenderManager::Instance()->GetRenderWindow()->addViewport(camara);
 
     //cambio de color de fondo
-
+    ent = this->GetEntity();
     vewport->setBackgroundColour(Ogre::ColourValue(color.GetX(), color.GetY(),color.GetZ()));
     return true;
 }
