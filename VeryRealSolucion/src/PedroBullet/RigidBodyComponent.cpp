@@ -5,6 +5,7 @@
 #include "Entity.h"
 #include "ColliderComponent.h"
 #include "PhysicsRegister.h"
+
 #include "PhysicsManager.h"
 
 
@@ -14,8 +15,7 @@ RigidBodyComponent::RigidBodyComponent()
     : mass(0), friction(0), restitution(0), movementType(MOVEMENT_TYPE_DYNAMIC), isTrigger(false) {
     
 }
-bool RigidBodyComponent::InitComponent(int shapeType = SHAPES_BOX, float mass = 0, float friction = 0, float restitution = 0.0f, int movementType = 0, 
-    bool trigger = false, Vector3 size = Vector3(1,1,1), int mask = 0, int group = 0) {
+bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType, bool trigger, Vector3 size, int mask, int group) {
    // this->shapeType = shapeType;
     this->mass = mass;  
     this->friction = friction;
@@ -233,3 +233,5 @@ void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT)
     if (mT == MOVEMENT_TYPE_KINEMATIC)
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
 }
+
+
