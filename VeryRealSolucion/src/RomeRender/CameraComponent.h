@@ -29,7 +29,7 @@ namespace  VeryReal {
 
         // Inicializa el componente de cámara con un nombre, un color, una ventana de renderizado de Ogre,
         // un gestor de escena de Ogre y un desplazamiento de posición.
-        bool InitComponent(std::string name, VeryReal::Vector4 color, VeryReal::Vector3 m_offset);
+        bool InitComponent(std::string name, VeryReal::Vector3 color, float alfa, VeryReal::Vector3 m_offset);
         //actualiza la posicion de la camara
         void Update(const double& dt) override;
 

@@ -20,21 +20,21 @@ CameraComponent::~CameraComponent() {
        
 }
 
-bool CameraComponent::InitComponent(std::string name, Vector4 color, VeryReal::Vector3 offset) {
+bool CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset) {
     //camara
     mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
-    mNode = mgr->getRootSceneNode()->createChildSceneNode(); //nodo  de la camara
+    mNode = mgr->getRootSceneNode()->createChildSceneNode();   //nodo  de la camara
     mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
     mNode->setPosition(0, 0, 30);
-    camara = mgr->createCamera(name); // objeto y camara en si 
-    camara->setNearClipDistance(1); //queremos que serenderice lo mas cerca posible desde la camara
+    camara = mgr->createCamera(name);   // objeto y camara en si
+    camara->setNearClipDistance(1);     //queremos que serenderice lo mas cerca posible desde la camara
     mNode->attachObject(camara);
     vewport = RenderManager::Instance()->GetRenderWindow()->addViewport(camara);
 
     //cambio de color de fondo
     ent = this->GetEntity();
-
-    vewport->setBackgroundColour(Ogre::ColourValue(color.GetR(), color.GetG(), color.GetB(), color.GetA()));
+    Ogre::ColourValue* v = new ColourValue(color.GetX(), color.GetY(), color.GetZ(), alfa);
+    vewport->setBackgroundColour(*v);
     return true;
 }
 
