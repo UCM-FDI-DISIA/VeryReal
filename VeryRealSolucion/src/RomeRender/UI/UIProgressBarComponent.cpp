@@ -16,23 +16,25 @@
 
 using namespace VeryReal;
 
-    //constructora de la clase UIProgressBarComponent
-    UIProgressBarComponent::UIProgressBarComponent() {
+//constructora de la clase UIProgressBarComponent
+UIProgressBarComponent::UIProgressBarComponent() {
 
-    }
-    // Destructor de la clase UIProgressBarComponent
-    UIProgressBarComponent::~UIProgressBarComponent() {
-        overlay->remove2D(progress_bar_container);
-        progress_bar_container->removeChild(frame_element->getName());
-        progress_bar_container->removeChild(content_element->getName());
-        overlay_mgr->destroyOverlayElement(frame_element);
-        overlay_mgr->destroyOverlayElement(content_element);
-        overlay_mgr->destroyOverlayElement(progress_bar_container);
-        overlay_mgr->destroy(overlay);
-        progress_bar_container->cleanupDictionary();
-        frame_element->cleanupDictionary();
-        content_element->cleanupDictionary();
-    }
+}
+
+// Destructor de la clase UIProgressBarComponent
+UIProgressBarComponent::~UIProgressBarComponent() {
+    overlay->remove2D(progress_bar_container);
+    progress_bar_container->removeChild(frame_element->getName());
+    progress_bar_container->removeChild(content_element->getName());
+    overlay_mgr->destroyOverlayElement(frame_element);
+    overlay_mgr->destroyOverlayElement(content_element);
+    overlay_mgr->destroyOverlayElement(progress_bar_container);
+    overlay_mgr->destroy(overlay);
+    progress_bar_container->cleanupDictionary();
+    frame_element->cleanupDictionary();
+    content_element->cleanupDictionary();
+}
+
     // Inicializa el componente
     bool UIProgressBarComponent::InitComponent(double maximo, double progres, std::string progressBarName,
                                                std::string frameMaterial, std::string contentMaterial, int order) { 
@@ -53,7 +55,6 @@ using namespace VeryReal;
         progress_bar_container->addChild(frame_element);
         frame_element->setMaterialName(frame_material_name);
 
-
         //if (!transform) {
         //    ErrorInf().showErrorMessageBox("UiSpriteRenderer error", "An entity doesn't have transform component", EI_ERROR);
         //    //sceneManager().quit();
@@ -67,20 +68,24 @@ using namespace VeryReal;
         overlay->show();
         return true;
     }
+
     void UIProgressBarComponent::Update(const double& dt) {
-        setProgressBarTransform(transform->getPosition(), transform->getScale(), transform->isHidden());
-        
+        setProgressBarTransform(transform->getPosition(), transform->getScale(), transform->isHidden()); 
     }
+
     double UIProgressBarComponent::getProgress() { 
         return progress;
     }
+
     void UIProgressBarComponent::setProgress(double progres) {
         if (progress > max_progress) return;
         progress = progres;
     }
+
     double UIProgressBarComponent::getMaximun() { 
         return max_progress;
     }
+
     void UIProgressBarComponent::setMaximun(double maximo) { max_progress = maximo; }
 
     void VeryReal::UIProgressBarComponent::setFrameMaterialName(std::string materialName) {
@@ -102,10 +107,7 @@ using namespace VeryReal;
         progress_bar_container->setPosition(pos.GetX(), pos.GetY());
         position = pos;
         progress_bar_container->setDimensions(sc.GetX(), sc.GetY());
-        scale = sc;
-        content_element->setDimensions(sc.GetX() * progress, sc.GetY());
-        frame_element->setDimensions(sc.GetX() , sc.GetY());
+        scale = sc; 
+        content_element->setDimensions((Ogre::Real)sc.GetX() * progress, (Ogre::Real)sc.GetY());
+        frame_element->setDimensions((Ogre::Real)sc.GetX(), (Ogre::Real)sc.GetY());
     }
-
-
-  

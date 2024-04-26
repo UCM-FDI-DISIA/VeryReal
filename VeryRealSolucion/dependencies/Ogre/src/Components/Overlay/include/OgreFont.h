@@ -59,8 +59,7 @@ namespace Ogre
 
 
     /// Information about the position and size of a glyph in a texture
-    struct GlyphInfo
-    {
+    struct GlyphInfo {
         typedef uint32 CodePoint;
         typedef FloatRect UVRect;
 

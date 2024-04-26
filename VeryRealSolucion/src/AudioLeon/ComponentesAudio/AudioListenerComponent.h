@@ -5,6 +5,7 @@
 #include <Component.h>
 #include "CreatorComponent.h"
 #include "../exportAudioLeon.h"
+
 namespace FMOD {
 	class Sound;
 }
@@ -17,8 +18,7 @@ namespace VeryReal {
 
 	//FMOD ofrece "escuchadores" dinámicos que hacen de veces de receptores de los sonidos reproducidos por FMOD.
 	//Este componente gestiona el listener de una entidad y actualiza sus parámetros.
-	class  VERYREAL_AUDIOLEON  AudioListenerComponent : public VeryReal::Component
-	{
+	class  VERYREAL_AUDIOLEON  AudioListenerComponent : public VeryReal::Component {
 	public:
 		//Constructora por defecto de AudioListener.
 		AudioListenerComponent();

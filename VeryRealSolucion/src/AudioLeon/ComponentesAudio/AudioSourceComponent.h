@@ -6,17 +6,15 @@
 #include "CreatorComponent.h"
 #include <Component.h>
 #include "../exportAudioLeon.h"
+
 namespace FMOD {
 	class Sound;
 }
-
-
 
 namespace VeryReal {
 	class TransformComponent;
 	class RigidBodyComponent;
 	class Vector3;
-
 }
 
 enum FMOD_RESULT;
@@ -36,7 +34,7 @@ class AudioLeon;
 		//Destructora que se encarga de eliminar la memoria dinámica del sonido concreto.
 		~AudioSourceComponent();
 		bool InitComponent(std::string name, std::string path, bool onstart=false, std::string groupchannel="master", float volume=0.1,
-			bool threed=false, bool loop=false, float mindistance=1.0f, float maxdistance=60.0f);
+		bool threed=false, bool loop=false, float mindistance=1.0f, float maxdistance=60.0f);
 
 
 		/// <summary>
@@ -214,13 +212,13 @@ class AudioLeon;
 		//El nombre dado por el usuario al sonido de FMOD.
 		std::string sound_name;
 		//Si el sonido esta siendo reproducido o no.
-		bool playing;
+		bool playing = true;
 		//Si el sonido se reproducirá en bucle o no.
-		bool loop;
+		bool loop = false;
 		//Si el sonido es 3D o no.
-		bool is_three_d;
+		bool is_three_d = false;
 		//Si el sonido se reproducirá de inicio o no.
-		bool play_on_start;
+		bool play_on_start = true;
 
 		//Variable de control que sirve de comprobación después de hacer uso de cualquiera de las funciones de sistema de sonido.
 		FMOD_RESULT result;

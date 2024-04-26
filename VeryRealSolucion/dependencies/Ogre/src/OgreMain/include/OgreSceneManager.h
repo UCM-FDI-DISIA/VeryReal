@@ -450,14 +450,14 @@ namespace Ogre {
         SceneNodeList mSceneNodes;
 
         /// Camera in progress
-        Camera* mCameraInProgress;
+        Camera* mCameraInProgress = nullptr;
 
     private:
         /// additional map to speed up lookup by name
         std::map<String, SceneNode*> mNamedNodes;
 
         /// Current Viewport
-        Viewport* mCurrentViewport;
+        Viewport* mCurrentViewport = nullptr;
 
         /// Root scene node
         std::unique_ptr<SceneNode> mSceneRoot;
@@ -495,7 +495,7 @@ namespace Ogre {
 
         class SkyPlaneRenderer : public SkyRenderer
         {
-            Entity* mSkyPlaneEntity;
+            Entity* mSkyPlaneEntity = nullptr;
             Plane mSkyPlane;
             void _updateRenderQueue(RenderQueue* queue) override;
         public:

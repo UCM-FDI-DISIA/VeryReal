@@ -3,12 +3,10 @@
 #include "../exportAudioLeon.h"
 namespace VeryReal {
 class  VERYREAL_AUDIOLEON  CreatorAudioListenerComponent : public CreatorComponent {
-        public:
+    public:
     CreatorAudioListenerComponent() { }
     virtual ~CreatorAudioListenerComponent() { }
     Component* CreatorSpecificComponent() override;
     void SpecificInitComponent(Component* c) override;
 };
 }
-
-

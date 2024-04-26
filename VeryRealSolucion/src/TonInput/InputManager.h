@@ -156,16 +156,16 @@ static bool Init() {
 
         bool is_quit = false;
         float joystick_death_zone = 0.12f;
-        bool is_game_controller_connected;
-        bool is_close_window_event;
-        bool is_key_up_event;
-        bool is_key_down_event;
-        bool is_mouse_motion_event;
-        bool is_mouse_button_event;
+        bool is_game_controller_connected = false;
+        bool is_close_window_event = false;
+        bool is_key_up_event = false;
+        bool is_key_down_event = false;
+        bool is_mouse_motion_event = false;
+        bool is_mouse_button_event = false;
         std::pair<int32_t, int32_t> mouse_pos;
-        std::array<bool, 3> mb_state;
-        const uint8_t* kb_state;
-        SDL_GameController* controller;
+        std::array<bool, 3> mb_state = {false, false, false};
+        const uint8_t* kb_state = nullptr;
+        SDL_GameController* controller = nullptr;
     };
 }
 

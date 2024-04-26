@@ -3,17 +3,21 @@
 #include <Windows.h>		//por ahora lo dejo aqui
 #include <string>
 typedef void(__cdecl* MainLoop)();
+
 namespace VeryReal {
 class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
     friend Singleton<VeryRealProyecto>;
 
-        public:
+    public:
     static bool Init() {
         VeryRealProyecto* a = new VeryRealProyecto();
         if (a != nullptr) {
             instance_pointer.reset(a);
             return true;
-            }
+        }
+        else {
+            return false;
+        }
     }
     bool InitVeryReal();
     void Loop();
@@ -26,7 +30,7 @@ class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
 
     private:
     HMODULE gameDll = NULL;
-    MainLoop gameLoop;
+    MainLoop gameLoop = NULL;
 };
 
 inline VeryRealProyecto& VR() { return *VeryRealProyecto::Instance(); }

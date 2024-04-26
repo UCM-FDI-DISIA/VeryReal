@@ -55,15 +55,15 @@ namespace VeryReal {
 		//Almacena los canales de FMOD.
 		std::vector<FMOD::Channel*> channels_vector;
 		//Grupos de canales predeterminados ofrecidos por Auido_Leon
-		FMOD::ChannelGroup* effects, * music, * master;
+        FMOD::ChannelGroup *effects = nullptr, *music = nullptr, *master = nullptr;
 		//Vector en el que se almacenan los índices disponibles para "listeners" de FMOD.
 		std::vector<bool> listeners;
 		//El sistema de audio ofrecido por FMOD.
-		FMOD::System* sound_system;
+        FMOD::System* sound_system = nullptr;
 		//Sonido recibido por el microfono
-		FMOD::Sound* mic_sound = NULL;
+		FMOD::Sound* mic_sound = nullptr;
 		//Variable de control que sirve de comprobación después de hacer uso de cualquiera de las funciones de sistema de sonido.
-		FMOD_RESULT result;
+        FMOD_RESULT result;
 
 		/// <summary>
 		/// Cambia el volumen de un canal determinado.
@@ -76,14 +76,14 @@ namespace VeryReal {
     private:
 		AudioLeon() { }
 	public:
-                static bool Init() {
-        AudioLeon* a = new AudioLeon();
-                    if (a != nullptr) {
-                        instance_pointer.reset(a);
-                        return true;
-                    }
-                    return false;
-                }
+        static bool Init() {
+			AudioLeon* a = new AudioLeon();
+            if (a != nullptr) {
+                instance_pointer.reset(a);
+                return true;
+            }
+            return false;
+		}
 		//Destructor de la clase AudioLeon. Se encarga de eliminar todo sonido creado y de liberar toda la infrestructura de FMOD.
 		~AudioLeon();
  

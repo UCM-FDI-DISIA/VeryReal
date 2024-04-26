@@ -18,7 +18,7 @@ class VERYREAL_LUALUENGO ScriptManager : public VeryReal::Manager<ScriptManager>
 	friend Singleton<ScriptManager>;
 
 	private:
-		lua_State* lua_state;
+		lua_State* lua_state = nullptr;
 		// Comprueba error al abrir archivo
 		void Error(int status);
 		// Se encarga de leer los parámetros que se le pasarán a los componentes

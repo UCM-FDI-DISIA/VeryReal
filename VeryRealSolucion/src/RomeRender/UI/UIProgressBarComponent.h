@@ -12,6 +12,8 @@ class OverlayContainer;
 class OverlayManager;
 }
 
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
     class UITransformComponent;
 
@@ -46,19 +48,19 @@ namespace VeryReal {
 
       private:
         //Referencia al Overlay de Ogre.
-        Ogre::Overlay* overlay;
+        Ogre::Overlay* overlay = nullptr;
 
         //Referencia al Overlay Manager de Ogre
-        Ogre::OverlayManager* overlay_mgr;
+        Ogre::OverlayManager* overlay_mgr = nullptr;
 
         //Referencia al Overlay container de Ogre.
-        Ogre::OverlayContainer* progress_bar_container;
+        Ogre::OverlayContainer* progress_bar_container = nullptr;
 
         //Referencia al Overlay element de Ogre del marco de la progress bar. 
-        Ogre::OverlayElement* frame_element;
+        Ogre::OverlayElement* frame_element = nullptr;
 
         //Referencia al Overlay element de Ogre del contenido de la progress bar. 
-        Ogre::OverlayElement* content_element;
+        Ogre::OverlayElement* content_element = nullptr;
 
         //Nombre con el que se registra la instancia de OverlayContainer.
         //(se recomienda que sea el mismo de la imagen registrada en el material)
@@ -72,7 +74,7 @@ namespace VeryReal {
 
         //Orden con el que se renderizan los Overlays.
         // Cu�nto m�s alto sea el n�mero m�s prioridad de renderizado tendr� el overlay.
-        int z_order;
+        int z_order = 0;
 
         //Posici�n del sprite en la pantalla.
         // El (0,0) se encuentra en la esquina superior iozquierda de la pantalla.
@@ -84,10 +86,13 @@ namespace VeryReal {
         VeryReal::Vector2 scale;
 
         //Transform de UI asociado a este sprite.
-        UITransformComponent* transform;
+        UITransformComponent* transform = nullptr;
         //PRogress va de 0 a 1
         double max_progress = 1;
         double progress = 0;
     };
 }
+
+#pragma warning(default : 4251)
+
 #endif   // !UIPROGRESSBARCOMPONENT

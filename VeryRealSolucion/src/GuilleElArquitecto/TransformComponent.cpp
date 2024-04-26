@@ -31,9 +31,9 @@ Vector3 VeryReal::TransformComponent::up() {
 
 	Vector3 rot_radians = rotation;
 
-	rot_radians.SetX(rotation.GetX() * M_PI / 180.0);
-	rot_radians.SetY(rotation.GetY() * M_PI / 180.0);
-	rot_radians.SetZ(rotation.GetZ() * M_PI / 180.0);
+	rot_radians.SetX(rotation.GetX() * (float)M_PI / 180.0f);
+    rot_radians.SetY(rotation.GetY() * (float)M_PI / 180.0f);
+    rot_radians.SetZ(rotation.GetZ() * (float)M_PI / 180.0f);
 
 	upVector.SetX(sin(rot_radians.GetX()));
     upVector.SetY(cos(rot_radians.GetX()) * cos(rot_radians.GetZ()));
@@ -48,9 +48,9 @@ Vector3 VeryReal::TransformComponent::forward() {
 
 	Vector3 rot_radians = rotation;
 
-    rot_radians.SetX(rotation.GetX() * M_PI / 180.0);
-    rot_radians.SetY(rotation.GetY() * M_PI / 180.0);
-    rot_radians.SetZ(rotation.GetZ() * M_PI / 180.0);
+    rot_radians.SetX(rotation.GetX() * (float)M_PI / 180.0f);
+    rot_radians.SetY(rotation.GetY() * (float)M_PI / 180.0f);
+    rot_radians.SetZ(rotation.GetZ() * (float)M_PI / 180.0f);
 
     forwardVector.SetX(cos(rot_radians.GetY()));
     forwardVector.SetY(-tan(rot_radians.GetX()));

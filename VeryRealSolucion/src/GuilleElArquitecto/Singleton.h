@@ -2,13 +2,12 @@
 #ifndef SINGLETON
 #define SINGLETON
 #include <memory>
+#include <cassert>
 
 namespace VeryReal {
     template<class T>
     class Singleton {
   
-       
-
     protected:
         //unica instancia de la clase de tipo T
         static std::unique_ptr<T> instance_pointer;
@@ -25,18 +24,17 @@ namespace VeryReal {
         //->Si no existe lo crea llamando a Init
         //->Si existe lo devuelve
         static T* Instance() {
-            //ASSERT
-            if (instance_pointer.get() != nullptr)    
+            assert(instance_pointer.get() != nullptr);
             return instance_pointer.get();
         }
 
 
         //elimina el puntero de la instancia
         /* static void Delete() {
-                if (instance_pointer.get() != nullptr) {
-                        instance_pointer.release();
-                }
-            }*/
+            if (instance_pointer.get() != nullptr) {
+                instance_pointer.release();
+            }
+        }*/
     };
 
     // Inicializar la instancia estática a nullptr
