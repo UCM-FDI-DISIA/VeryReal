@@ -1,11 +1,11 @@
 #pragma once
 #include "AudioListenerComponent.h"
-#include "..\AudioLeon.h"
+#include "AudioLeon.h"
 #include <TransformComponent.h>
 #include <Entity.h>
 #include <ErrorInformant.h>
 #include <SceneManager.h>
-#include <Vector3.h>
+
 #include <fmod_studio.hpp>
 
 using namespace VeryReal;

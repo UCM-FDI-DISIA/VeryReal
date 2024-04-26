@@ -10,10 +10,9 @@
 #include <Window.h>
 #include <chrono>
 #include <Creator.h>
-#include "ComponentesAudio/AudioListenerComponent.h"
-#include "ComponentesAudio/AudioSourceComponent.h"
-#include "ComponentesAudio/CreatorAudioSourceComponent.h"
-#include "ComponentesAudio/CreatorAudioListenerComponent.h"
+
+#include "CreatorAudioSourceComponent.h"
+#include "CreatorAudioListenerComponent.h"
 #include "CreatorTransformComponent.h"
 #include "CreatorRigidBodyComponent.h"
 #include "CreatorColliderComponent.h"

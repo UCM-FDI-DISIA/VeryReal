@@ -24,37 +24,37 @@
     <ClCompile Include="..\..\src\AudioLeon\AudioLeon.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.cpp">
+    <ClCompile Include="..\..\src\AudioLeon\AudioListenerComponent.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.cpp">
+    <ClCompile Include="..\..\src\AudioLeon\AudioSourceComponent.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioListenerComponent.cpp">
+    <ClCompile Include="..\..\src\AudioLeon\CreatorAudioListenerComponent.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioSourceComponent.cpp">
+    <ClCompile Include="..\..\src\AudioLeon\CreatorAudioSourceComponent.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.h">
-      <Filter>Archivos de encabezado\Componentes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.h">
-      <Filter>Archivos de encabezado\Componentes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioListenerComponent.h">
-      <Filter>Archivos de encabezado\Componentes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioSourceComponent.h">
-      <Filter>Archivos de encabezado\Componentes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\AudioLeon\exportAudioLeon.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AudioLeon\AudioListenerComponent.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AudioLeon\AudioSourceComponent.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AudioLeon\CreatorAudioListenerComponent.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AudioLeon\CreatorAudioSourceComponent.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,17 +12,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\AudioLeon\AudioLeon.cpp" />
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.cpp" />
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.cpp" />
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioListenerComponent.cpp" />
-    <ClCompile Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioSourceComponent.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\AudioListenerComponent.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\AudioSourceComponent.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\CreatorAudioListenerComponent.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\CreatorAudioSourceComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h" />
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioListenerComponent.h" />
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\AudioSourceComponent.h" />
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioListenerComponent.h" />
-    <ClInclude Include="..\..\src\AudioLeon\ComponentesAudio\CreatorAudioSourceComponent.h" />
+    <ClInclude Include="..\..\src\AudioLeon\AudioListenerComponent.h" />
+    <ClInclude Include="..\..\src\AudioLeon\AudioSourceComponent.h" />
+    <ClInclude Include="..\..\src\AudioLeon\CreatorAudioListenerComponent.h" />
+    <ClInclude Include="..\..\src\AudioLeon\CreatorAudioSourceComponent.h" />
     <ClInclude Include="..\..\src\AudioLeon\exportAudioLeon.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -96,7 +96,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;VERYREAL_AUDIOLEONEXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>+</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\GuilleElArquitecto;$(SolutionDir)dependencies\FMOD\src\api\studio\inc;$(SolutionDir)dependencies\FMOD\src\api\core\inc</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>

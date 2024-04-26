@@ -3,9 +3,8 @@
 #define __ENTITYCOMPONENT_AUDIOSOURCE
 
 #include <string>
-#include "CreatorComponent.h"
 #include <Component.h>
-#include "../exportAudioLeon.h"
+#include "exportAudioLeon.h"
 
 namespace FMOD {
 	class Sound;
@@ -14,12 +13,13 @@ namespace FMOD {
 namespace VeryReal {
 	class TransformComponent;
 	class Vector3;
-}
+    class AudioLeon;
+  }
 
 enum FMOD_RESULT;
 typedef unsigned int FMOD_MODE;
 	
-class AudioLeon;
+
 	
 #pragma warning(disable : 4251)
 
