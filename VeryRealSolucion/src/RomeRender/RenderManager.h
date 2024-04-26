@@ -58,6 +58,7 @@ namespace VeryReal {
 
 		Ogre::SceneManager* getSceneManager();
 	    Ogre::ManualObject* createManualObject(Ogre::SceneNode* node);
+		void destroyManualObject(Ogre::ManualObject* const object);
        
     static bool Init() {
         RenderManager* a = new RenderManager();

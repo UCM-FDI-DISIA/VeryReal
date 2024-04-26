@@ -77,9 +77,9 @@ int VeryReal::DebugMode::getDebugMode() const { return mDebugModes; }
 
 void VeryReal::DebugMode::clearLines() {
     auto g = VeryReal::RenderManager::Instance();
-    //for (std::list<Ogre::ManualObject*>::iterator it = lines.begin(); it != lines.end();) {
-    //   /* g->destroyManualObject(*it);*/
-    // /*   it = lines.erase(it);*/
-    //}
+    for (std::list<Ogre::ManualObject*>::iterator it = lines.begin(); it != lines.end();) {
+          g->destroyManualObject(*it);
+          it = lines.erase(it);
+    }
 }
 #endif   // DEBUG

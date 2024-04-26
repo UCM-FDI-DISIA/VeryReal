@@ -233,3 +233,5 @@ Ogre::ManualObject* VeryReal::RenderManager::createManualObject(Ogre::SceneNode*
 }
 
 Ogre::SceneManager* VeryReal::RenderManager::getSceneManager() { return scene_manager; }
+
+void VeryReal::RenderManager::destroyManualObject(Ogre::ManualObject* const object) { scene_manager->destroyManualObject(object); }
