@@ -4,8 +4,8 @@
 #include <iostream>
 #include <AudioLeon.h>
 #include "Creator.h"
-#include "../AudioLeon/ComponentesAudio/CreatorAudioSourceComponent.h"
-#include "../AudioLeon/ComponentesAudio/CreatorAudioListenerComponent.h"
+#include "../AudioLeon/CreatorAudioSourceComponent.h"
+#include "../AudioLeon/CreatorAudioListenerComponent.h"
 #include "CreatorTransformComponent.h"
 #include "../PedroBullet/CreatorRigidBodyComponent.h"
 #include "Entity.h"
