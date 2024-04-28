@@ -135,12 +135,12 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
     else { // En otro caso estamos ante un vector(tabla en lua)
         int length = (int) luaL_len(lua_state, -1);
         std::string key;
-        std::vector<int> values; // Vector donde iremos almacenando los valores que se meterán al vector
+        std::vector<float> values; // Vector donde iremos almacenando los valores que se meterán al vector
         for (int k = 1; k <= length; ++k) {
             lua_rawgeti(lua_state, -1, k); // Obtenemos el elemento en la posición k
             key = lua_tostring(params, -3);
             if (lua_isnumber(lua_state, -1)) {
-                int value = (int)lua_tonumber(lua_state, -1);
+                float value = (float)lua_tonumber(lua_state, -1);
                 values.push_back(value);
             }
             lua_pop(lua_state, 1); // Sacamos el valor actual de la pila
