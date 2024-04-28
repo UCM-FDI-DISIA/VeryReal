@@ -108,6 +108,6 @@ UIProgressBarComponent::~UIProgressBarComponent() {
         position = pos;
         progress_bar_container->setDimensions(sc.GetX(), sc.GetY());
         scale = sc; 
-        content_element->setDimensions((Ogre::Real)sc.GetX() * progress, (Ogre::Real)sc.GetY());
+        content_element->setDimensions((Ogre::Real)sc.GetX() * (Ogre::Real)progress, (Ogre::Real)sc.GetY());
         frame_element->setDimensions((Ogre::Real)sc.GetX(), (Ogre::Real)sc.GetY());
     }

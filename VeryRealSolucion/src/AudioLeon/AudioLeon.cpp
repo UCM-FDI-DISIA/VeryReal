@@ -7,6 +7,8 @@
 using namespace VeryReal;
 using namespace FMOD;
 
+AudioLeon::AudioLeon() { result = FMOD_OK; }
+
 void AudioLeon::InitManager() {
     result = FMOD::System_Create(&sound_system);   // Create the main system object.
     CheckFMODResult(result);

@@ -26,40 +26,44 @@
 #include "UI/CreatorUIButtonComponent.h"
 #include "UI/CreatorUIProgressBarComponent.h"
 #include <filesystem>
-const double FRAME_RATE = 0.01;
+
+const float FRAME_RATE = 1.0f / 60.0f; 
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
 typedef bool(__cdecl* Start)();
 typedef void(__cdecl* MainLoop)();
 using namespace VeryReal;
+using namespace std;
+
 bool VeryRealProyecto::InitVeryReal() {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	if (!InitPointers()) return false;
+    if (!InitPointers()) return false;
     if (!InitManagers()) return false;
     if (!CreateCreators()) return false;
 
-	std::string dllName = "Game"; 
-	if (!LoadGame(dllName)) return false;
-    
-    gameLoop  = (MainLoop)GetProcAddress(gameDll, "loop");
-    if (gameLoop == NULL) return false;    
-	return true;
+    std::string dllName = "Game";
+    if (!LoadGame(dllName)) return false;
+
+    gameLoop = (MainLoop)GetProcAddress(gameDll, "loop");
+    if (gameLoop == NULL) return false;
+    return true;
 }
+
 bool VeryRealProyecto::InitPointers() {
-        if (!VeryReal::InputManager::Init() || !VeryReal::RenderManager::Init() || !VeryReal::AudioLeon::Init() 
-			|| !VeryReal::ScriptManager::Init() ||!VeryReal::PhysicsManager::Init()||!VeryReal::SceneManager::Init())return false;
-        return true;
-       
+    if (!VeryReal::InputManager::Init() || !VeryReal::RenderManager::Init() || !VeryReal::AudioLeon::Init() || !VeryReal::ScriptManager::Init() ||
+        !VeryReal::PhysicsManager::Init() || !VeryReal::SceneManager::Init())
+        return false;
+    return true;
 }
-bool VeryRealProyecto::InitManagers(){ 
-	VeryReal::InputManager::Instance()->InitManager();
+
+bool VeryRealProyecto::InitManagers() {
+    VeryReal::InputManager::Instance()->InitManager();
     VeryReal::RenderManager::Instance()->InitManager("JUEGO");
-	VeryReal::AudioLeon::Instance()->InitManager();
+    VeryReal::AudioLeon::Instance()->InitManager();
     VeryReal::PhysicsManager::Instance()->InitManager();
     VeryReal::ScriptManager::Instance()->InitManager();
     return true;
-    
-}//AAAAAAAAAAAA
+}
 
 bool VeryRealProyecto::CreateCreators() {
     //FALTAN LOS DOS DE SONIDO
@@ -79,6 +83,7 @@ bool VeryRealProyecto::CreateCreators() {
     VeryReal::Creator::Instance()->AddCreator("UIProgressBarComponent", new VeryReal::CreatorUIProgressBarComponent());
     return true;
 }
+
 bool VeryRealProyecto::LoadGame(std::string gameName) {
     //Tengo que hacer cambios a gameName para que este sea la ruta al juego. Puede ser relativa ya que siempre sabemos donde va a estar el juego.
 #ifdef _DEBUG
@@ -102,36 +107,36 @@ bool VeryRealProyecto::LoadGame(std::string gameName) {
     }
     else {
         std::cout << "El juego no existe";
-
         return false;
     }
     return true;
 }
+
 void VeryRealProyecto::Loop() {
-    
-	float startTime, frameTime;
-    startTime = std::chrono::duration_cast<std::chrono::duration<float>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
-    while (!VeryReal::InputManager::Instance()->getQuit())
-		{
-        frameTime = (float) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - startTime;
-		VeryReal::InputManager::Instance()->Refresh(); 
-		if (frameTime >= FRAME_RATE) {
-        
-            gameLoop();   
-            VeryReal::PhysicsManager::Instance()->Update(frameTime);	
+    auto startTime = std::chrono::high_resolution_clock::now();
+    while (!VeryReal::InputManager::Instance()->getQuit()) {
+        auto currentTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<float> elapsedTime = currentTime - startTime;
+        float frameTime = elapsedTime.count();
+        cout << frameTime << endl;
+        VeryReal::InputManager::Instance()->Refresh();
+        if (elapsedTime.count() >= FRAME_RATE) {
+            gameLoop();
+            VeryReal::PhysicsManager::Instance()->Update(frameTime);
             VeryReal::SceneManager::Instance()->Update(frameTime);
             VeryReal::RenderManager::Instance()->Update(frameTime);
             VeryReal::AudioLeon::Instance()->Update(frameTime);
-            frameTime = (float) std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
-		}
-	}
+            startTime = currentTime;
+        }
+    }
 }
+
 void VeryRealProyecto::Delete() {
-	//if (mWindow != nullptr) {
-	//	SDL_DestroyWindow(mWindow);
-	//	mWindow = nullptr;
-	//	SDL_Quit();
-	//}
+    //if (mWindow != nullptr) {
+    //	SDL_DestroyWindow(mWindow);
+    //	mWindow = nullptr;
+    //	SDL_Quit();
+    //}
     FreeLibrary(gameDll);
 }
 
@@ -139,7 +144,7 @@ void VeryRealProyecto::Delete() {
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
 
-// Sugerencias para primeros pasos: 
+// Sugerencias para primeros pasos:
 //   1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
 //   2. Use la ventana de Team Explorer para conectar con el control de código fuente
 //   3. Use la ventana de salida para ver la salida de compilación y otros mensajes

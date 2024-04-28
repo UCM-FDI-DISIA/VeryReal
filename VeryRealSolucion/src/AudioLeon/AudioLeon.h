@@ -74,7 +74,7 @@ namespace VeryReal {
 		bool ChangeChannelVolume(std::string channelGroupName, float volume);
 
     private:
-		AudioLeon() { }
+        AudioLeon();
 	public:
         static bool Init() {
 			AudioLeon* a = new AudioLeon();
