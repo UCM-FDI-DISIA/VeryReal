@@ -37,7 +37,7 @@ void VeryReal::Entity::OnCollisionEnter(Entity* other)
 {
 	for(auto& c :components_map)
 	{
-		if(c.second->GetActive() && c.first != "collider")
+		if(c.second->GetActive() && c.first != "ColliderComponent")
 			c.second->OnCollisionEnter(other);
 	}
 }
@@ -45,7 +45,7 @@ void VeryReal::Entity::OnCollisionExit(Entity* other)
 {
 	for (auto& c : components_map)
 	{
-		if (c.second->GetActive() && c.first != "collider")
+		if (c.second->GetActive() && c.first != "ColliderComponent")
 			c.second->OnCollisionExit(other);
 	}
 }
@@ -53,7 +53,7 @@ void VeryReal::Entity::OnCollisionStay(Entity* other)
 {
 	for (auto& c : components_map)
 	{
-		if (c.second->GetActive() && c.first != "collider")
+		if (c.second->GetActive() && c.first != "ColliderComponent")
 			c.second->OnCollisionStay(other);
 	}
 }

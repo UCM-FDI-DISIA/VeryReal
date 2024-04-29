@@ -66,6 +66,7 @@ namespace VeryReal {
 
         void Update(const double& dt);
 
+        void Decelerate(float percent);
 
     private:
         TransformComponent* transformComponent;

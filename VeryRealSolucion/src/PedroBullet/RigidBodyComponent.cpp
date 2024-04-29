@@ -66,7 +66,7 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
         //ERROR
         return false;
     }
-    rigidBody->setUserPointer(rigidBody);
+    rigidBody->setUserPointer(this);
 
     //Determinar el movement type
     SetMovementType(movementType);
@@ -233,3 +233,15 @@ void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT)
 }
 
 
+
+void VeryReal::RigidBodyComponent::Decelerate(float percent) {
+    // Calcular la fuerza de fricción opuesta a la dirección de movimiento
+ 
+    if ((-rigidBody->getLinearVelocity() * percent).fuzzyZero()) {
+        return;
+    }
+
+    btVector3 frictionForce = -rigidBody->getLinearVelocity().normalized() * percent;
+    // Aplicar la fuerza de fricción al cuerpo rígido
+    rigidBody->applyCentralForce(frictionForce);
+}
