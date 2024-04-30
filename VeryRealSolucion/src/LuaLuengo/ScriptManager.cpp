@@ -166,10 +166,10 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
         }
         else if (length == 4) { // Vector4
             Vector4 v;
-            v.SetG((float)values [0]);
-            v.SetR((float)values [1]);
-            v.SetB((float)values [2]);
-            v.SetA((float)values [3]);
+            v.SetX((float)values [0]);
+            v.SetY((float)values [1]);
+            v.SetZ((float)values [2]);
+            v.SetW((float)values [3]);
             VeryReal::Creator::Instance()->GetCreator(comp)->AddParameter(key, v);
         }
         std::cout << std::endl;

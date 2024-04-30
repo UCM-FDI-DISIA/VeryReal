@@ -22,11 +22,8 @@ namespace VeryReal {
         return VeryReal::Vector3(vogre.x, vogre.y, vogre.z); 
     }
 
-    Ogre::Vector4 VR2OgreV4(VeryReal::Vector4 vveryreal) { 
-        return Ogre::Vector4(vveryreal.GetR(), vveryreal.GetG(), vveryreal.GetB(), vveryreal.GetA()); 
+    Ogre::Quaternion VR2OgreQuaternion(VeryReal::Vector4 vveryreal) { 
+        return Ogre::Quaternion(vveryreal.GetX(), vveryreal.GetY(), vveryreal.GetZ(), vveryreal.GetW()); 
     }
 
-    VeryReal::Vector4 Ogre2VRV4(Ogre::Vector4 vogre) { 
-        return VeryReal::Vector4(vogre.x, vogre.y, vogre.z, vogre.w); 
-    }
 }

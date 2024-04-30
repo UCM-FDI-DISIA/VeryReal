@@ -75,7 +75,7 @@ void MeshRenderComponent::setMeshName(std::string meshName) { mesh_name = meshNa
 
 void MeshRenderComponent::setStatic(bool stat) { mStaticObject = stat; }
 
-void MeshRenderComponent::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot) {
+void MeshRenderComponent::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector4 rot) {
     // conversor conve;
 
     setPosition(pos);
@@ -90,17 +90,10 @@ void MeshRenderComponent::setPosition(VeryReal::Vector3 const& pos) {
 
 void MeshRenderComponent::setScale(VeryReal::Vector3 const& scale) { scene_node->setScale(VR2OgreV3(scale)); }
 
-void MeshRenderComponent::setRotation(VeryReal::Vector3 const& rot) {
+void MeshRenderComponent::setRotation(VeryReal::Vector4 const& rot) {
 
-    Ogre::Quaternion rotation = scene_node->getOrientation();
-    Radian MEVUELO = Radian(rot.GetX());
-    if (this->rotation.GetX() != rot.GetX() || this->rotation.GetY() != rot.GetY() ||this->rotation.GetZ() != rot.GetZ()) {
-        scene_node->pitch(Degree(rot.GetX()));
-        scene_node->yaw(Degree(rot.GetY()));
-        scene_node->roll(Degree(rot.GetZ()));
-      
-        this->rotation = rot;
-    }
+   scene_node->setOrientation(VR2OgreQuaternion(rot));
+   this->rotation = rot;
 }
 
 void MeshRenderComponent::activeMesh() { scene_node->setVisible(true); }

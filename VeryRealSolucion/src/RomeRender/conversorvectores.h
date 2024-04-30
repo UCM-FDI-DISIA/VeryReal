@@ -16,8 +16,7 @@ namespace VeryReal {
     VeryReal::Vector2 Ogre2VRV2(Ogre::Vector2 vogre);
 	Ogre::Vector3 VR2OgreV3(VeryReal::Vector3 vveryreal);
 	VeryReal::Vector3 Ogre2VRV3(Ogre::Vector3 vogre);
-	Ogre::Vector4 VR2OgreV4(VeryReal::Vector4 vveryreal);
-	VeryReal::Vector4 Ogre2VRV4(Ogre::Vector4 vogre);
+	Ogre::Quaternion VR2OgreQuaternion(VeryReal::Vector4 vveryreal);
 }
 
 #endif   // VRCONVERT_H

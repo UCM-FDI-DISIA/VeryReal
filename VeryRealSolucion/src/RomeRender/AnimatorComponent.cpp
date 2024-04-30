@@ -106,7 +106,7 @@ void AnimatorComponent::setFrameAnimation(std::string t_nameAnimation, double t_
     Ogre::TransformKeyFrame* kf = track->createNodeKeyFrame(Ogre::Real(t_duration));
    
     kf->setTranslate(VR2OgreV3(t_translate));
-    kf->setRotation(Ogre::Quaternion(t_rotacion.GetR(), t_rotacion.GetG(), t_rotacion.GetB(), t_rotacion.GetA()));
+    kf->setRotation(Ogre::Quaternion(t_rotacion.GetX(), t_rotacion.GetY(), t_rotacion.GetZ(), t_rotacion.GetW()));
     kf->setScale(VR2OgreV3(t_scale));
 }
 

@@ -4,6 +4,7 @@
 #include "Component.h"
 #include <string>
 #include "Vector3.h"
+#include "Vector4.h"
 #include "exportRomeRender.h"
 namespace Ogre
 {
@@ -54,7 +55,7 @@ namespace  VeryReal {
 		VERYREAL_ROMERENDER void setStatic(bool stat);
 
 		// Establece la transformación del componente (posición, escala y rotación).
-		VERYREAL_ROMERENDER void setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot);
+		VERYREAL_ROMERENDER void setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector4 rot);
 
 		// Establece la posición del componente.
 		VERYREAL_ROMERENDER void setPosition(VeryReal::Vector3 const& pos);
@@ -63,7 +64,7 @@ namespace  VeryReal {
 		VERYREAL_ROMERENDER void setScale(VeryReal::Vector3 const& scale);
 
 		// Rota la malla del componente.
-		VERYREAL_ROMERENDER void setRotation(VeryReal::Vector3 const& rot);
+		VERYREAL_ROMERENDER void setRotation(VeryReal::Vector4 const& rot);
 
 		// Activa la malla del componente.
 		VERYREAL_ROMERENDER void activeMesh();
@@ -112,7 +113,7 @@ namespace  VeryReal {
         Ogre::SceneManager* scene_mngr = nullptr;
         Ogre::SceneNode* scene_node = nullptr;
         Ogre::SceneManager* mSM = nullptr;
-        VeryReal::Vector3 rotation;
+        VeryReal::Vector4 rotation;
     };
 }
 

@@ -3,12 +3,13 @@
 #define TRANSFORMCOMPONET
 #include "Component.h"
 #include "Vector3.h"
+#include "Vector4.h"
 
 namespace VeryReal {
 	class VERYREAL_GUILLEELARQUITECTO TransformComponent : public Component {
 	private:
 		Vector3 position;
-		Vector3 rotation;
+		Vector4 rotation;
 		Vector3 scale;
 		Vector3 velocity;
 		int a = 0;
@@ -18,12 +19,12 @@ namespace VeryReal {
 		virtual ~TransformComponent();
 
 		inline Vector3 GetPosition() { return position; }
-		inline Vector3 GetRotation() { return rotation; }
+		inline Vector4 GetRotation() { return rotation; }
 		inline Vector3 GetScale() { return scale; }
 		inline Vector3 GetVelocity() { return velocity; }
 
 		inline void SetPosition(Vector3 position) { this->position = position; }
-		inline void SetRotation(Vector3 rotation) { this->rotation = rotation; }
+		inline void SetRotation(Vector4 rotation) { this->rotation = rotation; }
 		inline void SetScale(Vector3 scale) { this->scale = scale; }
         inline void SetVelocity(Vector3 velocity) { this->velocity = velocity; }
 

@@ -168,7 +168,7 @@ Vector3 RigidBodyComponent::GetVelocity() const {
 }
 
 void VeryReal::RigidBodyComponent::SetRotation(const VeryReal::Vector4& rotation) { 
-    rigidBody->getWorldTransform().setRotation(btQuaternion(rotation.GetA(), rotation.GetB(), rotation.GetG(), rotation.GetR()));
+    rigidBody->getWorldTransform().setRotation(btQuaternion(rotation.GetX(), rotation.GetY(), rotation.GetZ(), rotation.GetW()));
 }
 void VeryReal::RigidBodyComponent::Rotate(const Vector3& axis, int degrees) {
     // Convertir grados a radianes

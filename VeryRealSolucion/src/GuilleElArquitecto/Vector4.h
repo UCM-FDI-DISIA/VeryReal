@@ -3,41 +3,59 @@
 #define VECTOR4VR
 #include <math.h>
 #include <iostream>
+#define _USE_MATH_DEFINES
 #include "export.h"
 
 namespace VeryReal {
-class VERYREAL_GUILLEELARQUITECTO Vector4
-	{
-	private:
-		float r;
-		float g;
-		float b;
-		float a;
-	public:
-		//MIRAR CONVERSION A VECTORES DE LIBRERIAS OGRE, STD, FMOD, BULLET
-		Vector4();
-		Vector4(float r, float g, float b, float a);
-		Vector4(const VeryReal::Vector4& vector);
+class Vector3;
+class VERYREAL_GUILLEELARQUITECTO Vector4 {
+        private:
+    //Variables Vector 4
+    float x;
+    float y;
+    float z;
+    float w;
 
-		virtual ~Vector4();
+        public:
+    //MIRAR CONVERSION A VECTORES DE LIBRERIAS OGRE, STD, FMOD, BULLET
+    Vector4();
+    Vector4(float a, float b, float c, float d, bool isColor = true);
+    Vector4(const VeryReal::Vector4& vector, bool isColor = true);
+    Vector4(float a, float b, float c);
+    Vector4(const VeryReal::Vector3& v_);
 
-		inline void SetR(float r) { this->r = r; }
-		inline void SetG(float g) { this->g = g; }
-		inline void SetB(float b) { this->b = b; }
-		inline void SetA(float a) { this->a = a; }
-		inline void SetVector(float r, float g, float b, float a) { this->r = r; this->g = g; this->b = b; this->a = a; }
-		inline void SetVector(const Vector4& vector) { r = vector.r; g = vector.g; b = vector.b; a = vector.a; }
+    virtual ~Vector4();
 
-		inline float GetR()const { return r; }
-		inline float GetG()const { return g; }
-		inline float GetB()const { return b; }
-		inline float GetA()const { return a; }
-		inline VeryReal::Vector4 GetVector() { return { r,g,b,a }; }
+    inline void SetX(float x) { this->x = x; }
+    inline void SetY(float y) { this->y = y; }
+    inline void SetZ(float z) { this->z = z; }
+    inline void SetW(float w) { this->w = z; }
+    inline void SetVector(float x, float y, float z, float w) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->w = w;
+    }
+    inline void SetVector(const Vector4& vector) {
+        x = vector.x;
+        y = vector.y;
+        z = vector.z;
+        w = vector.w;
+    }
 
-		VeryReal::Vector4 operator=(const VeryReal::Vector4& vector);
-		bool operator==(const VeryReal::Vector4& vector);
-		bool operator!=(const VeryReal::Vector4& vector);
-	};
-	std::ostream& operator<<(std::ostream& o, const VeryReal::Vector4& vec);
+    inline float GetX() const { return x; }
+    inline float GetY() const { return y; }
+    inline float GetZ() const { return z; }
+    inline float GetW() const { return w; }
+    inline VeryReal::Vector4 GetVector() { return {x, y, z, w}; }
+
+    VeryReal::Vector4 operator+=(const Vector4& vector);
+    VeryReal::Vector4 operator=(const VeryReal::Vector4& vector);
+    bool operator==(const VeryReal::Vector4& vector);
+    bool operator!=(const VeryReal::Vector4& vector);
+
+    VeryReal::Vector3 toEuler();
+};
+std::ostream& operator<<(std::ostream& o, const VeryReal::Vector4& vec);
 }
 #endif

@@ -27,36 +27,38 @@ void TransformComponent::Scaler(VeryReal::Vector3 scalerscale) {
 	scale += scalerscale; }
 
 Vector3 VeryReal::TransformComponent::up() { 
-	Vector3 upVector;
+	Vector3 rot = rotation.toEuler();
 
-	Vector3 rot_radians = rotation;
+    Vector3 upVector;
 
-	rot_radians.SetX(rotation.GetX() * (float)M_PI / 180.0f);
-    rot_radians.SetY(rotation.GetY() * (float)M_PI / 180.0f);
-    rot_radians.SetZ(rotation.GetZ() * (float)M_PI / 180.0f);
+    Vector3 vector_radians = rot;
+    vector_radians.SetX(rot.GetX() * M_PI / 180.0);
+    vector_radians.SetY(rot.GetY() * M_PI / 180.0);
+    vector_radians.SetZ(rot.GetZ() * M_PI / 180.0);
 
-	upVector.SetX(sin(rot_radians.GetX()));
-    upVector.SetY(cos(rot_radians.GetX()) * cos(rot_radians.GetZ()));
-    upVector.SetZ(cos(rot_radians.GetX()) * sin(rot_radians.GetZ()));
+    upVector.SetX(sin(vector_radians.GetX()));
+    upVector.SetY(cos(vector_radians.GetX()) * cos(vector_radians.GetZ()));
+    upVector.SetZ(cos(vector_radians.GetX()) * sin(vector_radians.GetZ()));
 
-	return upVector; 
+    return upVector;
 
 }
 
 Vector3 VeryReal::TransformComponent::forward() { 
-	Vector3 forwardVector;
+	Vector3 rot = rotation.toEuler();
 
-	Vector3 rot_radians = rotation;
+    Vector3 forwardVector;
 
-    rot_radians.SetX(rotation.GetX() * (float)M_PI / 180.0f);
-    rot_radians.SetY(rotation.GetY() * (float)M_PI / 180.0f);
-    rot_radians.SetZ(rotation.GetZ() * (float)M_PI / 180.0f);
+    Vector3 vector_radians = rot;
+    vector_radians.SetX(rot.GetX() * M_PI / 180.0);
+    vector_radians.SetY(rot.GetY() * M_PI / 180.0);
+    vector_radians.SetZ(rot.GetZ() * M_PI / 180.0);
 
-    forwardVector.SetX(cos(rot_radians.GetY()));
-    forwardVector.SetY(-tan(rot_radians.GetX()));
-    forwardVector.SetZ(-sin(rot_radians.GetY()));
+    forwardVector.SetX(cos(vector_radians.GetY()));
+    forwardVector.SetY(-tan(vector_radians.GetX()));
+    forwardVector.SetZ(-sin(vector_radians.GetY()));
 
-	return forwardVector; 
+    return forwardVector;
 
 }
 
