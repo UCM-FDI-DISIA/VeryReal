@@ -12,17 +12,17 @@ void VeryReal::CreatorMeshRenderComponent::SpecificInitComponent(Component* c) {
 
 #pragma region ModelName
 
-    if (parameters_map.find("color") != parameters_map.end()) {
-        if (std::holds_alternative<std::string>(parameters_map.at("color")->GetVariant())) {
-            modelname = std::get<std::string>(parameters_map.at("color")->GetVariant());
+    if (parameters_map.find("modelname") != parameters_map.end()) {
+        if (std::holds_alternative<std::string>(parameters_map.at("modelname")->GetVariant())) {
+            modelname = std::get<std::string>(parameters_map.at("modelname")->GetVariant());
         }
         else {
-            std::cout << "No se ha especificado ningun valor para color este sera seteado por defecto" << std::endl;
+            std::cout << "No se ha especificado ningun valor para modelname este sera seteado por defecto" << std::endl;
             modelname = " ";
         }
     }
     else {
-        std::cout << "No existe ningun parametro color este sera seteado por defecto" << std::endl;
+        std::cout << "No existe ningun parametro modelname este sera seteado por defecto" << std::endl;
         modelname = " ";
     }
 #pragma endregion
