@@ -48,7 +48,7 @@ namespace Ogre {
 namespace VeryReal {
 	// Declaración de la clase RenderManager, que hereda de Manager
 
-	class VERYREAL_ROMERENDER RenderManager : public Manager<RenderManager> {
+	class RenderManager : public Manager<RenderManager> {
                
     private:
                 RenderManager() { }
@@ -56,30 +56,30 @@ namespace VeryReal {
 		
 		// Constructor de la clase RenderManager
 
-		Ogre::SceneManager* getSceneManager();
-	    Ogre::ManualObject* createManualObject(Ogre::SceneNode* node);
-		void destroyManualObject(Ogre::ManualObject* const object);
+		VERYREAL_ROMERENDER Ogre::SceneManager* getSceneManager();
+        VERYREAL_ROMERENDER Ogre::ManualObject*  createManualObject(Ogre::SceneNode* node);
+        VERYREAL_ROMERENDER void destroyManualObject(Ogre::ManualObject* const object);
        
-    static bool Init() {
-        RenderManager* a = new RenderManager();
-        if (a != nullptr) {
-            instance_pointer.reset(a);
-            return true;
-        }
-        return false;
-    }
+		static bool Init() {
+			RenderManager* a = new RenderManager();
+			if (a != nullptr) {
+				instance_pointer.reset(a);
+				return true;
+			}
+			return false;
+		}
     //void GetScene() { VeryReal::SceneManager::Instance()->hola(); }
 
 		// Destructor virtual de la clase RenderManager
-		virtual ~RenderManager();
+       VERYREAL_ROMERENDER virtual ~RenderManager();
 
 		// Inicializa el administrador de renderizado con el nombre proporcionado
 		// @param name Nombre de la aplicación
-		virtual void InitManager(std::string const& name);
+        VERYREAL_ROMERENDER virtual void  InitManager(std::string const& name);
 
 		// Actualiza el administrador de renderizado con el paso de tiempo proporcionado
 		// @param dt Paso de tiempo desde la última actualización
-		virtual void Update(const double& dt);
+        VERYREAL_ROMERENDER virtual void Update(const double& dt);
 
 		// Crea un nodo de escena en Ogre y devuelve un puntero a él
 		// @return Puntero al nodo de escena creado
@@ -140,13 +140,13 @@ namespace VeryReal {
         Ogre::Viewport* viewport = nullptr;
 
 		// Carga los recursos necesarios para la aplicación
-		void LoadResources();
+        void VERYREAL_ROMERENDER LoadResources();
 
 		// Carga los shaders necesarios para la aplicación
-		void LoadShaders();
+        void VERYREAL_ROMERENDER LoadShaders();
 
 		// Descarga los shaders cargados previamente
-		void UnloadShaders();
+        void VERYREAL_ROMERENDER UnloadShaders();
 
 
 

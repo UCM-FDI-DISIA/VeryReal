@@ -22,63 +22,63 @@ namespace  VeryReal {
     class Vector2;
     class Entity;
 
-    class VERYREAL_ROMERENDER CameraComponent : public Component {
+    class  CameraComponent : public Component {
     public:
         // Constructor por defecto de la clase CameraComponent.
-        CameraComponent() {};
+VERYREAL_ROMERENDER CameraComponent(){};
 
         // Inicializa el componente de cámara con un nombre, un color, una ventana de renderizado de Ogre,
         // un gestor de escena de Ogre y un desplazamiento de posición.
-        bool InitComponent(std::string name, VeryReal::Vector3 color, float alfa, VeryReal::Vector3 m_offset);
+VERYREAL_ROMERENDER bool InitComponent(std::string name, VeryReal::Vector3 color, float alfa, VeryReal::Vector3 m_offset);
         //actualiza la posicion de la camara
-        void Update(const double& dt) override;
+VERYREAL_ROMERENDER void Update(const double& dt) override;
 
         // Destructor de la clase CameraComponent.
-        virtual ~CameraComponent();
+VERYREAL_ROMERENDER virtual ~CameraComponent();
 
         // Apunta la cámara hacia una posición específica.
-        void lookAt(Vector3 pos);
+VERYREAL_ROMERENDER void lookAt(Vector3 pos);
 
         // Realiza una translación de la cámara según los valores de desplazamiento especificados en los ejes x, y y z.
-        void translate(float x, float y, float z);
+VERYREAL_ROMERENDER void translate(float x, float y, float z);
 
         // Realiza un giro de la cámara según el ángulo especificado en grados.
-        void roll(float d);
+VERYREAL_ROMERENDER void roll(float d);
 
         // Realiza un giro de la cámara en el eje de dirección (yaw) según el ángulo especificado en grados.
-        void yaw(float d);
+VERYREAL_ROMERENDER void yaw(float d);
 
         // Realiza un giro de la cámara en el eje transversal (pitch) según el ángulo especificado en grados.
-        void pitch(float d);
+VERYREAL_ROMERENDER void pitch(float d);
 
-        void rotate(float d, VeryReal::Vector3 v);
+      VERYREAL_ROMERENDER void rotate(float d, VeryReal::Vector3 v);
 
         // Aplica un desplazamiento de posición de la cámara.
-        void Offset(VeryReal::Vector2 offset);
+      VERYREAL_ROMERENDER void Offset(VeryReal::Vector2 offset);
 
         // Establece la distancia del plano de recorte cercano de la cámara.
-        void setNearClipDistance(float t_clip);
+      VERYREAL_ROMERENDER void setNearClipDistance(float t_clip);
 
         // Establece la distancia del plano de recorte lejano de la cámara.
-        void setFarClipDistance(float t_clip);
+      VERYREAL_ROMERENDER void setFarClipDistance(float t_clip);
 
         // Establece el color de fondo del puerto de vista de la cámara.
-        void setViewPortBackgroundColour(Ogre::ColourValue color);
+       void setViewPortBackgroundColour(Ogre::ColourValue color);
 
         // Desactiva el puerto de vista de la cámara.
-        void desactiveViewport();
+       VERYREAL_ROMERENDER void desactiveViewport();
 
         // Activa el puerto de vista de la cámara.
-        void activeViewport();
+       VERYREAL_ROMERENDER void activeViewport();
 
         // Desactiva la cámara.
-        void desactive();
+       VERYREAL_ROMERENDER void desactive();
 
-        VeryReal::Vector4 getOrientation();
+       VERYREAL_ROMERENDER VeryReal::Vector4 getOrientation();
         // Activa la camara.
-        void active();
+       VERYREAL_ROMERENDER void active();
         //setter para el target al que seguira la camara 
-        void SetTarget(VeryReal::Entity* e);
+      VERYREAL_ROMERENDER void SetTarget(VeryReal::Entity* e);
         // Obtiene el nodo de escena asociado a la cámara.
         Ogre::SceneNode* getNode();
 

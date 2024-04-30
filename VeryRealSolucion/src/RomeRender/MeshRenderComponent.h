@@ -27,67 +27,67 @@ namespace  VeryReal {
 	class Vector3;
 	class conversor;
 
-    class VERYREAL_ROMERENDER MeshRenderComponent : public Component {
+    class  MeshRenderComponent : public Component {
     public:
 		// Constructor por defecto temporal sin parámetros, se espera que los creadores lo inicialicen correctamente.
-		MeshRenderComponent(){};
+		VERYREAL_ROMERENDER MeshRenderComponent(){};
 
 		// Inicializa el componente de renderizado de malla con la información proporcionada.
-		bool InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname);
+		VERYREAL_ROMERENDER bool InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname);
 
 		// Destructor de la clase MeshRenderComponent.
-		virtual ~MeshRenderComponent();
+		VERYREAL_ROMERENDER virtual ~MeshRenderComponent();
 
 		// Crea la malla para el componente de renderizado.
-		bool createMesh();
+		VERYREAL_ROMERENDER bool createMesh();
 
 		// Actualiza el componente de renderizado de malla.
-         virtual void Update(const double& dt);
+		VERYREAL_ROMERENDER virtual void Update(const double& dt);
 
 		// Establece el nombre del componente.
-		void setName(std::string name);
+		VERYREAL_ROMERENDER void setName(std::string name);
 
 		// Establece el nombre de la malla del componente.
-		void setMeshName(std::string meshName);
+		VERYREAL_ROMERENDER void setMeshName(std::string meshName);
 
 		// Establece si el componente es estático o no.
-		void setStatic(bool stat);
+		VERYREAL_ROMERENDER void setStatic(bool stat);
 
 		// Establece la transformación del componente (posición, escala y rotación).
-		void setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot);
+		VERYREAL_ROMERENDER void setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector3 rot);
 
 		// Establece la posición del componente.
-		void setPosition(VeryReal::Vector3 const&  pos);
+		VERYREAL_ROMERENDER void setPosition(VeryReal::Vector3 const& pos);
 
 		// Escala la malla del componente.
-		void setScale(VeryReal::Vector3 const&  scale);
+		VERYREAL_ROMERENDER void setScale(VeryReal::Vector3 const& scale);
 
 		// Rota la malla del componente.
-		void setRotation(VeryReal::Vector3 const& rot);
+		VERYREAL_ROMERENDER void setRotation(VeryReal::Vector3 const& rot);
 
 		// Activa la malla del componente.
-		void activeMesh();
+		VERYREAL_ROMERENDER void activeMesh();
 
 		// Desactiva la malla del componente.
-		void desactiveMesh();
+		VERYREAL_ROMERENDER void desactiveMesh();
 
 		// Establece el nombre del material para la malla del componente.
-		void setMaterial(std::string materialName);
+		VERYREAL_ROMERENDER void setMaterial(std::string materialName);
 
 		// Cambia el material de la malla del componente.
-		void changeMaterial(std::string t_materialName);
+		VERYREAL_ROMERENDER void changeMaterial(std::string t_materialName);
 
 		// Establece la distancia de renderizado del componente.
-		void setRenderingDistance(float t_d);
+		VERYREAL_ROMERENDER void setRenderingDistance(float t_d);
 
 		// Establece la visibilidad del modo de depuración del componente.
-		void setDebugVisibility(bool t_b);
+		VERYREAL_ROMERENDER void setDebugVisibility(bool t_b);
 
 		// Obtiene el nombre de la entidad asociada al componente.
-		std::string getNameEntity();
+		VERYREAL_ROMERENDER std::string getNameEntity();
 
 		// Obtiene el nombre de la malla asociada al componente.
-		std::string getNameMesh();
+		VERYREAL_ROMERENDER std::string getNameMesh();
 
 		// Obtiene la entidad de Ogre asociada al componente.
 		Ogre::Entity* getOgreEntity();
@@ -99,7 +99,7 @@ namespace  VeryReal {
 		Ogre::SceneNode* getNode();
 
 		// Establece si el componente debe arrojar sombras o no.
-		void setCastShadows(bool t_shadow);
+	   VERYREAL_ROMERENDER void setCastShadows(bool t_shadow);
 
     private:
 		bool mStaticObject = false;

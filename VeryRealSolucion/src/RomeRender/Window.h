@@ -16,17 +16,17 @@ namespace Ogre {
 
 namespace VeryReal {
 	//clase para crear una ventana en nuestro motor
-    class VERYREAL_ROMERENDER Window {
+    class Window {
             public:
         // <summary>
         /// Método que inicializa los valores de la clase
         /// </summary>
-        Window();
+        VERYREAL_ROMERENDER Window();
 
         // <summary>
         /// Destructora.Elimina la ventana y desactiva el modulo de video de sdl
         /// </summary>
-        virtual ~Window();
+        virtual VERYREAL_ROMERENDER ~Window();
 
         // <summary>
         /// Método que crea la ventana inicializando el modulo de SDL.
@@ -34,13 +34,13 @@ namespace VeryReal {
         /// Por ahora se cargan aqui los plguings de renderizado de ogre (no irán aqui en un futuro)
         /// </summary>
         //<returns> un puntero a la ventana creada con sdl
-        bool CreateWindoww();
-        bool Init(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager);   //ira fuera
+        bool VERYREAL_ROMERENDER CreateWindoww();
+        bool  Init(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager);   //ira fuera
         
         // <summary>
         ///Actualiza la ventana en caso de cerrarla,camviarla de tamaño y así
         /// </summary>
-        void Update(const double& dt);
+        void VERYREAL_ROMERENDER Update(const double& dt);
         // <summary>
         /// Método que devuelve un puntero a la ventana de sdl
         /// </summary>
@@ -56,7 +56,7 @@ namespace VeryReal {
         /// Devuelve la altura y anchura en píxeles de la ventana de SDL;
         /// </summary>
         /// <returns>Dimensiones de la ventana de SDL en un pair.</returns>
-        std::pair <int,int> GetWindowHeightWidth();
+        std::pair<int, int> VERYREAL_ROMERENDER  GetWindowHeightWidth();
 
         private:
         Ogre::SceneManager* scene_manager;
