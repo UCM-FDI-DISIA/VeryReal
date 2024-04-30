@@ -19,8 +19,8 @@ class VERYREAL_GUILLEELARQUITECTO Vector4 {
         public:
     //MIRAR CONVERSION A VECTORES DE LIBRERIAS OGRE, STD, FMOD, BULLET
     Vector4();
-    Vector4(float a, float b, float c, float d, bool isColor = true);
-    Vector4(const VeryReal::Vector4& vector, bool isColor = true);
+    Vector4(float a, float b, float c, float d, bool isColor = false);
+    Vector4(const VeryReal::Vector4& vector, bool isColor = false);
     Vector4(float a, float b, float c);
     Vector4(const VeryReal::Vector3& v_);
 
