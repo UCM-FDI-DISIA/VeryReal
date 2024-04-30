@@ -7,7 +7,6 @@
 #include "PhysicsRegister.h"
 
 #include "PhysicsManager.h"
-#include <SDL_stdinc.h>
 
 
 using namespace VeryReal;
@@ -130,7 +129,10 @@ void RigidBodyComponent::Update(const double& dt) {
         // Establecer la posición actual del transformComponent usando la posición del objeto físico
         transformComponent->SetPosition(Vector3(rigidBody->getWorldTransform().getOrigin().getX(), rigidBody->getWorldTransform().getOrigin().getY(),
                                                 rigidBody->getWorldTransform().getOrigin().getZ()));
-
+        transformComponent->SetRotation(Vector4(rigidBody->getWorldTransform().getRotation().getX(),
+                                                rigidBody->getWorldTransform().getRotation().getY(),
+                                                rigidBody->getWorldTransform().getRotation().getZ(),
+                                                rigidBody->getWorldTransform().getRotation().getW()));
         // Establecer la velocidad actual del transformComponent usando la velocidad lineal del objeto físico
         transformComponent->SetVelocity(
             Vector3(rigidBody->getLinearVelocity().getX(), rigidBody->getLinearVelocity().getY(), rigidBody->getLinearVelocity().getZ()));
