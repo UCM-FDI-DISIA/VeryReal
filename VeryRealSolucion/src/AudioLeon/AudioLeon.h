@@ -76,7 +76,7 @@ namespace VeryReal {
     private:
                 VERYREAL_AUDIOLEON AudioLeon();
 	public:
-        VERYREAL_AUDIOLEON static bool Init() {
+        static bool Init() {
 			AudioLeon* a = new AudioLeon();
             if (a != nullptr) {
                 instance_pointer.reset(a);

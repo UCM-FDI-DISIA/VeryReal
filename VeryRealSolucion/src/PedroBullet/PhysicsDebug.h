@@ -30,8 +30,8 @@ class DebugMode : public btIDebugDraw, public Ogre::FrameListener {
         protected:
  
         public:
-    DebugMode();
-    ~DebugMode();
+    VERYREAL_PEDROBULLET DebugMode();
+    VERYREAL_PEDROBULLET ~DebugMode();
     /// <summary>
     /// Método para dibujar las lineas de los cuerpos fisicos
     /// </summary>
@@ -41,11 +41,11 @@ class DebugMode : public btIDebugDraw, public Ogre::FrameListener {
     /// Método para representar los puntos de choque de dos cuerpos fisicos
     /// </summary>
     virtual void drawContactPoint(const btVector3& PointOnB, const btVector3& normalOnB, btScalar distance, int lifeTime, const btVector3& color);
-    virtual void reportErrorWarning(const char* warningString);
+    VERYREAL_PEDROBULLET virtual void reportErrorWarning(const char* warningString);
     virtual void draw3dText(const btVector3& location, const char* textString);
-    virtual void setDebugMode(int debugMode);
-    virtual int getDebugMode() const;
-    void clearLines() override;
+    VERYREAL_PEDROBULLET virtual void setDebugMode(int debugMode);
+    VERYREAL_PEDROBULLET virtual int getDebugMode() const;
+    VERYREAL_PEDROBULLET void clearLines() override;
 };
 }
 #endif   // DebugDrawer_h__

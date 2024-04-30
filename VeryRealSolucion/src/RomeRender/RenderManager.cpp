@@ -159,7 +159,7 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
 
    
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
-    VeryReal::RenderManager::Instance()->SceneManagerOgree()->addRenderQueueListener(overlay_system);
+    SceneManagerOgree()->addRenderQueueListener(overlay_system);
 }
 
 

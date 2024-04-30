@@ -95,8 +95,13 @@ namespace VeryReal {
 		void DeleteNode(Ogre::SceneNode* nod);
         void DeleteEntity(Ogre::Entity* nod);
 		
+
+		/// <summary>
+		/// ESTO ESTA MAL LINEA ROJA HAY QUE QUITAR ESTE EXPORT Y SEGURAMENTE CREARSE LA CLASE NODE
+		/// </summary>
+		/// <returns></returns>
 		Ogre::RenderWindow* GetRenderWindow();
-        Ogre::Root* GetRenderRoot();
+        VERYREAL_ROMERENDER Ogre::Root* GetRenderRoot();
 		Ogre::SceneManager* SceneManagerOgree();
         Ogre::OverlayManager* GetOverlayManager();
         Ogre::OverlaySystem* GetOverlaySystem();
