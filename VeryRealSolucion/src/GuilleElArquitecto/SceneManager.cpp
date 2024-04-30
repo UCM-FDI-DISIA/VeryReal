@@ -70,3 +70,7 @@ bool VeryReal::SceneManager::HasScene(scene_name name) {
 	for (auto c : scenes_list) if (c->GetName() == name)return true;
 	return false;
 }
+
+VeryReal::Scene* VeryReal::SceneManager::GetActiveScene() {
+	for (auto it : scenes_list) if (it->GetActive()) return it;
+}

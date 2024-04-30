@@ -198,7 +198,7 @@ std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vec
     btAlignedObjectArray<const btCollisionObject*> lista_de_colisionados;
     if (rayCallback.hasHit()) {
         lista_de_colisionados = rayCallback.m_collisionObjects;
-        VeryReal::Scene* scene = VeryReal::SceneManager::Instance()->GetScene("Play");
+        VeryReal::Scene* scene = VeryReal::SceneManager::Instance()->GetActiveScene();
         if (scene != nullptr) {
             for (auto ent : scene->GetEntities()) {
                 if (ent.second->HasComponent("RigidBodyComponent")) {

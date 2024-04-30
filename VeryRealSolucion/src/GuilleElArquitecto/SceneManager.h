@@ -43,6 +43,8 @@ namespace VeryReal {
 		//si existe la escen la devuleve si no devuelve nullptr
 		Scene* GetScene(scene_name name);
 		bool HasScene(scene_name name);
+
+		Scene* GetActiveScene();
 	};
 }
 
