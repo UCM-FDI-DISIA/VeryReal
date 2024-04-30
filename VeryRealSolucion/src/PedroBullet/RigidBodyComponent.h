@@ -7,6 +7,7 @@
 #include <Component.h>
 #include "PhysicsValues.h"
 #include "Vector3.h"
+#include "Vector4.h"
 #include "exportPedroBullet.h"
 
 enum PBShapes;
@@ -34,6 +35,11 @@ namespace VeryReal {
         void SetVelocityLinear(const Vector3& velocity);
         void SetVelocityAngular(const Vector3& velocity);
         Vector3 GetVelocity() const;
+
+        void SetRotation(const Vector4& rotation);
+        void Rotate(const Vector3& axis, int degree);
+        Vector4 GetRotation();
+
         void AddImpulse(const Vector3& impulse);
         void AddTorque(const Vector3& torque);
 

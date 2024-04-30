@@ -170,6 +170,43 @@ Vector3 RigidBodyComponent::GetVelocity() const {
     return Vector3(vel.x(), vel.y(), vel.z());
 }
 
+void VeryReal::RigidBodyComponent::SetRotation(const VeryReal::Vector4& rotation) { 
+    rigidBody->getWorldTransform().setRotation(btQuaternion(rotation.GetA(), rotation.GetB(), rotation.GetG(), rotation.GetR()));
+}
+void VeryReal::RigidBodyComponent::Rotate(const Vector3& axis, int degrees) {
+    // Convertir grados a radianes
+    float radians = degrees * 3.14159 / 180.0;
+
+    // Calcular el cuaternión de rotación
+    btQuaternion rotationQuat;
+    if (axis.GetX() == 1) rotationQuat.setRotation(btVector3(1, 0, 0), radians);
+    else if (axis.GetY() == 1)
+        rotationQuat.setRotation(btVector3(0, 1, 0), radians);
+    else if (axis.GetZ() == 1)
+        rotationQuat.setRotation(btVector3(0, 0, 1), radians);
+    else {
+        // Si el eje no es válido, salir del método
+        return;
+    }
+
+    // Obtener el cuaternión actual del objeto
+    btTransform currentTransform = rigidBody->getWorldTransform();
+    btQuaternion currentRotation = currentTransform.getRotation();
+
+    // Aplicar la rotación
+    btQuaternion newRotation = rotationQuat * currentRotation;
+    currentTransform.setRotation(newRotation);
+
+    // Establecer la nueva transformación en el objeto
+    rigidBody->setWorldTransform(currentTransform);
+}
+
+VeryReal::Vector4 VeryReal::RigidBodyComponent::GetRotation()
+{ 
+    return Vector4(rigidBody->getWorldTransform().getRotation().getX(), rigidBody->getWorldTransform().getRotation().getY(),
+                   rigidBody->getWorldTransform().getRotation().getZ(), rigidBody->getWorldTransform().getRotation().getW());
+}
+
 void RigidBodyComponent::AddImpulse(const Vector3& impulse){
 
     rigidBody->applyCentralImpulse(btVector3(impulse.GetX(), impulse.GetY(), impulse.GetZ()));
