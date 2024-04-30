@@ -262,10 +262,14 @@ float VeryReal::RigidBodyComponent::GetRestitution()
 
 void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT)
 {
-    if(mT == MOVEMENT_TYPE_DYNAMIC)
+    if (mT == MOVEMENT_TYPE_DYNAMIC) {
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_DYNAMIC_OBJECT);
-    if (mT == MOVEMENT_TYPE_STATIC)
+        rigidBody->setAngularFactor(btVector3(0, 0, 0)); 
+    }
+    if (mT == MOVEMENT_TYPE_STATIC) {
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
+        rigidBody->setLinearFactor(btVector3(0, 0, 0));
+    }
     if (mT == MOVEMENT_TYPE_KINEMATIC)
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
 }
@@ -273,13 +277,13 @@ void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT)
 
 
 void VeryReal::RigidBodyComponent::Decelerate(float percent) {
-    // Calcular la fuerza de fricción opuesta a la dirección de movimiento
+    //// Calcular la fuerza de fricción opuesta a la dirección de movimiento
  
-    if ((-rigidBody->getLinearVelocity() * percent).fuzzyZero()) {
-        return;
-    }
+    //if ((-rigidBody->getLinearVelocity() * percent).fuzzyZero()) {
+    //    return;
+    //}
 
-    btVector3 frictionForce = -rigidBody->getLinearVelocity().normalized() * percent;
-    // Aplicar la fuerza de fricción al cuerpo rígido
-    rigidBody->applyCentralForce(frictionForce);
+    //btVector3 frictionForce = -rigidBody->getLinearVelocity().normalized() * percent;
+    //// Aplicar la fuerza de fricción al cuerpo rígido
+    //rigidBody->applyCentralForce(frictionForce);
 }
