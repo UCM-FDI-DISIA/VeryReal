@@ -11,10 +11,10 @@ VeryReal::Vector4::Vector4(float a, float b, float c, float d, bool isColor) {
         if (x < 0 || y < 0 || z < 0 || w < 0 || x > 255 || y > 255 || z > 255 || w > 1) {
             //CERROR
         }
-        this->x = x;
-        this->y = y;
-        this->z = z;
-        this->w = w;
+        this->x = a;
+        this->y = b;
+        this->z = c;
+        this->w = d;
     }
     else {
         this->x = a;
@@ -28,16 +28,16 @@ VeryReal::Vector4::Vector4(const VeryReal::Vector4& vector, bool isColor) {
         if (vector.x < 0 || vector.y < 0 || vector.z < 0 || vector.w < 0 || vector.x > 255 || vector.y > 255 || vector.z > 255 || vector.w > 1) {
             //CERROR
         }
-        x = vector.x;
-        y = vector.y;
-        z = vector.z;
-        w = vector.w;
+        x = vector.GetX();
+        y = vector.GetY();
+        z = vector.GetZ();
+        w = vector.GetW();
     }
     else {
-        x = vector.x;
-        y = vector.y;
-        z = vector.z;
-        w = vector.w;
+        x = vector.GetX();
+        y = vector.GetY();
+        z = vector.GetZ();
+        w = vector.GetW();
     }
 }
 

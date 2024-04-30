@@ -64,13 +64,15 @@ Vector3 VeryReal::TransformComponent::forward() {
 
 VeryReal::Vector3 VeryReal::TransformComponent::getFacingDirection() {
         // Convertir de grados a radianes
-        float radY = rotation.GetY() * 3.14159f / 180.0f;
+        Vector3 rot = rotation.toEuler();
+        float radY = rot.GetY() * 3.14159f / 180.0f;
 
         // Direccion por defecto (mirando hacia el fondo)
         VeryReal::Vector3 direction(0, 0, -1);
 
         // Aplicar rotacion alrededor del eje Y
-        VeryReal::Vector3 rotatedDirection(direction.GetX() * cos(radY) - direction.GetZ() * sin(radY), direction.GetY(),
+        VeryReal::Vector3 rotatedDirection(direction.GetX() * cos(radY) - direction.GetZ() * sin(radY), 
+                                           direction.GetY(),
                                            direction.GetX() * sin(radY) + direction.GetZ() * cos(radY));
 
         return rotatedDirection.Normalize();

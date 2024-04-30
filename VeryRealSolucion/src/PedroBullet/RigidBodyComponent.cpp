@@ -173,20 +173,13 @@ void VeryReal::RigidBodyComponent::SetRotation(const VeryReal::Vector4& rotation
     rigidBody->getWorldTransform().setRotation(btQuaternion(rotation.GetX(), rotation.GetY(), rotation.GetZ(), rotation.GetW()));
 }
 void VeryReal::RigidBodyComponent::Rotate(const Vector3& axis, int degrees) {
-    // Convertir grados a radianes
-    float radians = degrees * 3.14159 / 180.0;
+    
+    float radians = degrees * (M_PI / 180.0);
+    float fHalfAngle(0.5 * radians);
+    float fSin = sin(fHalfAngle);
 
     // Calcular el cuaternión de rotación
-    btQuaternion rotationQuat;
-    if (axis.GetX() == 1) rotationQuat.setRotation(btVector3(1, 0, 0), radians);
-    else if (axis.GetY() == 1)
-        rotationQuat.setRotation(btVector3(0, 1, 0), radians);
-    else if (axis.GetZ() == 1)
-        rotationQuat.setRotation(btVector3(0, 0, 1), radians);
-    else {
-        // Si el eje no es válido, salir del método
-        return;
-    }
+    btQuaternion rotationQuat(fSin * axis.GetX(), fSin * axis.GetY(), fSin * axis.GetZ(), cos(fHalfAngle));
 
     // Obtener el cuaternión actual del objeto
     btTransform currentTransform = rigidBody->getWorldTransform();
