@@ -14,16 +14,16 @@ namespace luabridge {
 }
 
 namespace VeryReal {
-class  ScriptManager : public VeryReal::Manager<ScriptManager> {
+class VERYREAL_LUALUENGO ScriptManager : public VeryReal::Manager<ScriptManager> {
 	friend Singleton<ScriptManager>;
 
 	private:
 		lua_State* lua_state = nullptr;
 		// Comprueba error al abrir archivo
-                VERYREAL_LUALUENGO void Error(int status);
+                 void Error(int status);
 		// Se encarga de leer los parámetros que se le pasarán a los componentes
 		void ReadParams(luabridge::LuaRef params, std::string comp);
-                VERYREAL_LUALUENGO  ScriptManager() { }
+                  ScriptManager() { }
 
 	public:
     static bool Init() {
@@ -34,15 +34,15 @@ class  ScriptManager : public VeryReal::Manager<ScriptManager> {
         }
         return false;
     }
-    VERYREAL_LUALUENGO virtual ~ScriptManager();
+     virtual ~ScriptManager();
 
 		// Abre el archivo .lua
-    VERYREAL_LUALUENGO void InitManager();
-    VERYREAL_LUALUENGO void NewScene(std::string p);
+     void InitManager();
+     void NewScene(std::string p);
 		
 		// Método para probar la creación de entidades y componentes mediante Lua
-    VERYREAL_LUALUENGO void ReadScene(std::string n);
-    VERYREAL_LUALUENGO void ReadPrefabs();
+     void ReadScene(std::string n);
+     void ReadPrefabs();
 		inline lua_State* GetLuaState() { return lua_state; }
 };
 //
