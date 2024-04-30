@@ -7,6 +7,7 @@
 #include "PhysicsRegister.h"
 
 #include "PhysicsManager.h"
+#include <SDL_stdinc.h>
 
 
 using namespace VeryReal;
@@ -126,23 +127,16 @@ int VeryReal::RigidBodyComponent::getGroup() const { return group; }
 
 void RigidBodyComponent::Update(const double& dt) {
     if (movementType == MOVEMENT_TYPE_DYNAMIC) {
+        // Establecer la posición actual del transformComponent usando la posición del objeto físico
         transformComponent->SetPosition(Vector3(rigidBody->getWorldTransform().getOrigin().getX(), rigidBody->getWorldTransform().getOrigin().getY(),
                                                 rigidBody->getWorldTransform().getOrigin().getZ()));
 
-        transformComponent->SetRotation(Vector3(rigidBody->getWorldTransform().getRotation().getX(),
-                                                rigidBody->getWorldTransform().getRotation().getY(),
-                                                rigidBody->getWorldTransform().getRotation().getZ()));
-
-        btQuaternion newRotation = rigidBody->getWorldTransform().getRotation();
-        btVector3 euler;
-        newRotation.getEulerZYX(euler [2], euler [1], euler [0]);
-        Vector3 rotationInDegrees(euler [0] * 180.0 / 3.14159, euler [1] * 180.0 / 3.14159, euler [2] * 180.0 / 3.14159);
-        transformComponent->SetRotation(rotationInDegrees);
-
+        // Establecer la velocidad actual del transformComponent usando la velocidad lineal del objeto físico
         transformComponent->SetVelocity(
             Vector3(rigidBody->getLinearVelocity().getX(), rigidBody->getLinearVelocity().getY(), rigidBody->getLinearVelocity().getZ()));
     }
 }
+
 
 //La x es el radio en las esferas, cilindros y capsulas y la y la altura
 btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType, Vector3 s) {
@@ -161,8 +155,8 @@ btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType, V
 }
 
 void RigidBodyComponent::SetVelocityLinear(const Vector3& velocity) {
-    rigidBody->setLinearVelocity(btVector3(velocity.GetX(), velocity.GetY(),
-                                           velocity.GetZ()));
+    rigidBody->setLinearVelocity(btVector3(velocity.GetX() + rigidBody->getLinearVelocity().x(), velocity.GetY() + rigidBody->getLinearVelocity().y(),
+                                           velocity.GetZ() + rigidBody->getLinearVelocity().z()));
 }
 void RigidBodyComponent::SetVelocityAngular(const Vector3& velocity) {
     rigidBody->setAngularVelocity(btVector3(velocity.GetX(), velocity.GetY(), velocity.GetZ()));
@@ -209,6 +203,22 @@ VeryReal::Vector4 VeryReal::RigidBodyComponent::GetRotation()
     return Vector4(rigidBody->getWorldTransform().getRotation().getX(), rigidBody->getWorldTransform().getRotation().getY(),
                    rigidBody->getWorldTransform().getRotation().getZ(), rigidBody->getWorldTransform().getRotation().getW());
 }
+
+//Vector3 RigidBodyComponent::QuaternionToEuler(const btQuaternion& q) const{
+//    // Convertir el cuaternión a ángulos de Euler
+//
+//    float roll = atan2(2.0 * (q.getW() * q.getX() + q.getY() * q.getZ()), 1.0 - 2.0 * (q.getX() * q.getX() + q.getY() * q.getY()));
+//    float pitch = asin(2.0 * (q.getW() * q.getY() - q.getZ() * q.getX()));
+//    float yaw = atan2(2.0 * (q.getW() * q.getZ() + q.getX() * q.getY()), 1.0 - 2.0 * (q.getY() * q.getY() + q.getZ() * q.getZ()));
+//
+//    // Convertir de radianes a grados
+//    roll *= 180.0 / M_PI;
+//    pitch *= 180.0 / M_PI;
+//    yaw *= 180.0 / M_PI;
+//
+//    return Vector3(roll, pitch, yaw);
+//}
+
 
 void RigidBodyComponent::AddImpulse(const Vector3& impulse){
 
@@ -265,28 +275,26 @@ float VeryReal::RigidBodyComponent::GetRestitution()
 
 void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT)
 {
-    if (mT == MOVEMENT_TYPE_DYNAMIC) {
+    if(mT == MOVEMENT_TYPE_DYNAMIC)
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_DYNAMIC_OBJECT);
-        rigidBody->setAngularFactor(btVector3(0, 0, 0));
-    }
-    if (mT == MOVEMENT_TYPE_STATIC) {
+    if (mT == MOVEMENT_TYPE_STATIC)
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
-        rigidBody->setLinearFactor(btVector3(0, 0, 0));
-        rigidBody->setAngularFactor(btVector3(0, 0, 0));
-    }
-    if (mT == MOVEMENT_TYPE_KINEMATIC) rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
+    if (mT == MOVEMENT_TYPE_KINEMATIC)
+        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
 }
 
 
 
 void VeryReal::RigidBodyComponent::Decelerate(float percent) {
-    //// Calcular la fuerza de fricción opuesta a la dirección de movimiento
+    // Calcular la fuerza de fricción opuesta a la dirección de movimiento
  
-    //if ((-rigidBody->getLinearVelocity() * percent).fuzzyZero()) {
-    //    return;
-    //}
+    if ((-rigidBody->getLinearVelocity() * percent).fuzzyZero()) {
+        return;
+    }
 
-    //btVector3 frictionForce = -rigidBody->getLinearVelocity().normalized() * percent;
-    //// Aplicar la fuerza de fricción al cuerpo rígido
-    //rigidBody->applyCentralForce(frictionForce);
+    btVector3 frictionForce = -rigidBody->getLinearVelocity().normalized() * percent;
+    // Aplicar la fuerza de fricción al cuerpo rígido
+    rigidBody->applyCentralForce(frictionForce);
 }
+
+
