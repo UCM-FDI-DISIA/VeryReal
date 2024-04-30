@@ -26,7 +26,7 @@ class  ScriptManager : public VeryReal::Manager<ScriptManager> {
                 VERYREAL_LUALUENGO  ScriptManager() { }
 
 	public:
-    VERYREAL_LUALUENGO static bool Init() {
+    static bool Init() {
       ScriptManager* a = new ScriptManager();
         if (a != nullptr) {
             instance_pointer.reset(a);

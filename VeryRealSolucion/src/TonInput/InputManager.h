@@ -14,14 +14,14 @@ typedef struct _SDL_GameController SDL_GameController;
 typedef union SDL_Event SDL_Event;
 
 namespace  VeryReal {
-class InputManager : public VeryReal::Manager<InputManager> {
+class VERYREAL_TONINPUT InputManager : public VeryReal::Manager<InputManager> {
         private:
-    VERYREAL_TONINPUT InputManager() { }
+     InputManager() { }
   
     public:
         /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
 
-    VERYREAL_TONINPUT virtual ~InputManager() { }
+     virtual ~InputManager() { }
      static bool Init() {
                 InputManager* a = new InputManager();
         if (a != nullptr) {

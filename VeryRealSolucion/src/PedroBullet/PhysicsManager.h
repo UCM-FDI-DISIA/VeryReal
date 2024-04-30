@@ -40,14 +40,14 @@ class ColliderComponent;
 
 
 namespace VeryReal {
-class  PhysicsManager : public Manager<PhysicsManager> {
+class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
     friend Singleton<PhysicsManager>;
 public:
    
-   VERYREAL_PEDROBULLET virtual ~PhysicsManager();
+    virtual ~PhysicsManager();
 
 
-VERYREAL_PEDROBULLET static bool Init() {
+ static bool Init() {
         PhysicsManager* a = new PhysicsManager();
     if (a != nullptr) {
         instance_pointer.reset(a);
@@ -55,19 +55,19 @@ VERYREAL_PEDROBULLET static bool Init() {
     }
     return false;
 }
-VERYREAL_PEDROBULLET bool InitManager();   // Inicializa el mundo de Bullet y otros componentes necesarios
-VERYREAL_PEDROBULLET void Update(float deltaTime);   // Actualiza la simulación física
-VERYREAL_PEDROBULLET void Shutdown();                // Limpia y libera recursos
+ bool InitManager();   // Inicializa el mundo de Bullet y otros componentes necesarios
+ void Update(float deltaTime);   // Actualiza la simulación física
+ void Shutdown();                // Limpia y libera recursos
 
     btDiscreteDynamicsWorld* GetWorld() const;   // Getter para el mundo físico
 
     void AddRigidBody(btRigidBody* body);
 
 
-   VERYREAL_PEDROBULLET std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
+    std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
 
 private:
-    VERYREAL_PEDROBULLET PhysicsManager();
+     PhysicsManager();
     btDefaultCollisionConfiguration* collisionConfiguration;
     btCollisionDispatcher* dispatcher;
     btBroadphaseInterface* overlappingPairCache;
@@ -81,7 +81,7 @@ private:
     //btDiscreteDynamicsWorld* dynamicWorld = nullptr;
 
 
-   VERYREAL_PEDROBULLET void createGround();
+    void createGround();
 
     void addForce(btRigidBody* body, btVector3 force);
 
