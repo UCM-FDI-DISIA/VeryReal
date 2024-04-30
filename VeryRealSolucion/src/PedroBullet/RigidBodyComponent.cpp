@@ -124,26 +124,23 @@ void VeryReal::RigidBodyComponent::setGroup(const int n) {
 
 int VeryReal::RigidBodyComponent::getGroup() const { return group; }
 
-void VeryReal::RigidBodyComponent::Update(const double& dt) {
-
-
+void RigidBodyComponent::Update(const double& dt) {
     if (movementType == MOVEMENT_TYPE_DYNAMIC) {
-        transformComponent->SetPosition(Vector3(rigidBody->getWorldTransform().getOrigin().getX(), 
-                                                rigidBody->getWorldTransform().getOrigin().getY(),
+        transformComponent->SetPosition(Vector3(rigidBody->getWorldTransform().getOrigin().getX(), rigidBody->getWorldTransform().getOrigin().getY(),
                                                 rigidBody->getWorldTransform().getOrigin().getZ()));
-    
-        transformComponent->SetVelocity(Vector3(rigidBody->getLinearVelocity().getX(),
-                                                rigidBody->getLinearVelocity().getY(),
-                                                rigidBody->getLinearVelocity().getZ()));
+
         transformComponent->SetRotation(Vector3(rigidBody->getWorldTransform().getRotation().getX(),
                                                 rigidBody->getWorldTransform().getRotation().getY(),
                                                 rigidBody->getWorldTransform().getRotation().getZ()));
 
         btQuaternion newRotation = rigidBody->getWorldTransform().getRotation();
         btVector3 euler;
-        newRotation.getEulerZYX(euler[2], euler[1], euler[0]);
+        newRotation.getEulerZYX(euler [2], euler [1], euler [0]);
         Vector3 rotationInDegrees(euler [0] * 180.0 / 3.14159, euler [1] * 180.0 / 3.14159, euler [2] * 180.0 / 3.14159);
         transformComponent->SetRotation(rotationInDegrees);
+
+        transformComponent->SetVelocity(
+            Vector3(rigidBody->getLinearVelocity().getX(), rigidBody->getLinearVelocity().getY(), rigidBody->getLinearVelocity().getZ()));
     }
 }
 
