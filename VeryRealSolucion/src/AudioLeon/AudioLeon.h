@@ -42,7 +42,7 @@ namespace VeryReal {
 
 	#pragma warning(disable : 4251)
 
-	class  VERYREAL_AUDIOLEON  AudioLeon : public VeryReal::Manager<AudioLeon> {
+	class  AudioLeon : public VeryReal::Manager<AudioLeon> {
 		friend Singleton<AudioLeon>;
 
        private:
@@ -74,9 +74,9 @@ namespace VeryReal {
 		bool ChangeChannelVolume(std::string channelGroupName, float volume);
 
     private:
-        AudioLeon();
+                VERYREAL_AUDIOLEON AudioLeon();
 	public:
-        static bool Init() {
+        VERYREAL_AUDIOLEON static bool Init() {
 			AudioLeon* a = new AudioLeon();
             if (a != nullptr) {
                 instance_pointer.reset(a);
@@ -85,13 +85,13 @@ namespace VeryReal {
             return false;
 		}
 		//Destructor de la clase AudioLeon. Se encarga de eliminar todo sonido creado y de liberar toda la infrestructura de FMOD.
-		~AudioLeon();
+        VERYREAL_AUDIOLEON ~AudioLeon();
  
-		void InitManager();
+		VERYREAL_AUDIOLEON void InitManager();
 		//Inicializacion de los recursos necesarios para recoger input del microfono
-		void InitAudioRecording();
+        VERYREAL_AUDIOLEON void InitAudioRecording();
 		//Actualiza el sistema de sonido en cada bucle del juego.
-		void SystemRefresh(const double& dt);
+         VERYREAL_AUDIOLEON void SystemRefresh(const double& dt);
 
 		//Convierte un Vector3 propio del motor a un FMOD_VECTOR
 		FMOD_VECTOR V3ToFmodV3(VeryReal::Vector3 conversion) const;
@@ -105,7 +105,7 @@ namespace VeryReal {
 		/// Pone todas las letras del nombre de un sonido en minúscula.
 		/// </summary>
 		/// <param name="name">El nombre del sonido que se cambia.</param>
-		void NameToLower(std::string& name);
+        VERYREAL_AUDIOLEON void NameToLower(std::string& name);
 
 		/// <summary>
 		/// Compureba si el resultado de cualquiera de las funciones de FMOD se han completado con éxito.
@@ -141,7 +141,7 @@ namespace VeryReal {
 		std::unordered_map<FMOD::Sound*, CHANNEL_NUMBER> GetLastPlayedMap();
 
 		//Añade un nuevo sonido al mapa de sonidos.
-		void AddNewSound(std::pair<std::string, FMOD::Sound*> newSound);
+        void AddNewSound(std::pair<std::string, FMOD::Sound*> newSound);
 
 		/// <summary>
 		/// Extrae un canal de FMOD del mapa de canales a través del nombre de sonido que se está reproduciendo en dicho canal.
@@ -155,7 +155,7 @@ namespace VeryReal {
 		/// </summary>
 		/// <param name="groupName">El nombre del grupo de canales que se quiere crear.</param>
 		/// <returns>Devuelve true o false si el grupo de canales fue creado con éxito o no.</returns>
-		bool CreateChannelGroup(std::string groupName);
+         VERYREAL_AUDIOLEON bool CreateChannelGroup(std::string groupName);
 
 		/// <summary>
 		/// Cambia el volumen de un grupo de canales.
@@ -163,57 +163,57 @@ namespace VeryReal {
 		/// <param name="groupName">El nombre del grupo de canales.</param>
 		/// <param name="newVolume">El nuevo valor del volumen.</param>
 		/// <returns>Devuelve true o false en función de si el volumen fue cambiado con éxito o no.</returns>
-		bool SetGroupChannelVolume(std::string groupName, float newVolume);
+         VERYREAL_AUDIOLEON bool SetGroupChannelVolume(std::string groupName, float newVolume);
 
 		/// <summary>
 		/// Comprueba el volumen de un grupo de canales concreto.
 		/// </summary>
 		/// <param name="groupName">El nombre del grupo de canales que se va a comprobar.</param>
 		/// <returns>Devuelve el valor del volumen del grupo de canales.</returns>
-		float GetGroupChannelVolume(std::string groupName);
+         VERYREAL_AUDIOLEON float GetGroupChannelVolume(std::string groupName);
 
 		/// Obtiene la intensidad del sonido recibido por el microfono
 		/// @return Intensidad del sonido (en un rango de 0 a 1)
-		float InputSoundIntensity();
+         VERYREAL_AUDIOLEON float InputSoundIntensity();
 
-		void AudioSourceListenerTest();
+		 VERYREAL_AUDIOLEON void AudioSourceListenerTest();
 
 		/// <summary>
 		/// Para todos los canales que estén reproduciendo añgún sonido.
 		/// </summary>
 		/// <returns>Devuelve true o false en función de si todos los canales dejaron de reproducir o no.</returns>
-		bool StopEverySound();
+        VERYREAL_AUDIOLEON bool StopEverySound();
 
         /// <summary>
         /// Para todos los canales que estén reproduciendo añgún sonido.
         /// </summary>
         /// <returns>Devuelve true o false en función de si todos los canales dejaron de reproducir o no.</returns>
-        bool PauseEverySound();
+        VERYREAL_AUDIOLEON bool PauseEverySound();
 
 		        /// <summary>
         /// Para todos los canales que estén reproduciendo añgún sonido.
         /// </summary>
         /// <returns>Devuelve true o false en función de si todos los canales empezaron de reproducir o no.</returns>
-        bool ResumeEverySound();
+        VERYREAL_AUDIOLEON bool ResumeEverySound();
 
 		/// <summary>
 		/// Libera la memoria dinámica creada durante la ejecución al crear un nuevl sonido de FMOD.
 		/// </summary>
 		/// <param name="soundName">EL nombre del sonido que va a ser eliminado.</param>
 		/// <returns>Devuelve true o false en función de si el sonido fue eliminado con éxito o no.</returns>
-		bool DeleteSound(std::string soundName);
+        VERYREAL_AUDIOLEON bool DeleteSound(std::string soundName);
 
 		/// <summary>
 		/// Elimina un listener del vector de listeners y resetea sus valores.
 		/// </summary>
 		/// <param name="index">El índice del listener a resetear.</param>
-		void RemoveListener(int index);
+        VERYREAL_AUDIOLEON void RemoveListener(int index);
 
 		/// <summary>
 		/// Selecciona un listener nuevo para configurarlo.
 		/// </summary>
 		/// <returns>Devuelve el índice del listener configurado o -1 si no se pudo configurar con éxito.</returns>
-		inline int GetNextUsefulListenerIndex() {
+        VERYREAL_AUDIOLEON inline int GetNextUsefulListenerIndex() {
 			for (int i = 0; i < listeners.size(); i++) {
 				if (!listeners[i])
 					listeners[i] = true;

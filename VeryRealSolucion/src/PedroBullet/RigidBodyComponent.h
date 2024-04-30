@@ -22,38 +22,39 @@ namespace VeryReal {
     class TransformComponent;
     class ColliderComponent;
    
-    class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
+    class  RigidBodyComponent : public Component {
     public:
-        RigidBodyComponent();
+        VERYREAL_PEDROBULLET RigidBodyComponent();
 
-        bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, int movementType = MOVEMENT_TYPE_DYNAMIC,
+        VERYREAL_PEDROBULLET bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f,
+                                                int movementType = MOVEMENT_TYPE_DYNAMIC,
                            bool trigger = false, Vector3 s = {1,1,1}, int mask = -1, int group = 1);
 
-        virtual ~RigidBodyComponent();
+         VERYREAL_PEDROBULLET virtual ~RigidBodyComponent();
 
         // Funciones para manipular el cuerpo rígido
-        void SetVelocityLinear(const Vector3& velocity);
-        void SetVelocityAngular(const Vector3& velocity);
-        Vector3 GetVelocity() const;
+        VERYREAL_PEDROBULLET void SetVelocityLinear(const Vector3& velocity);
+        VERYREAL_PEDROBULLET void SetVelocityAngular(const Vector3& velocity);
+        VERYREAL_PEDROBULLET Vector3 GetVelocity() const;
 
-        void SetRotation(const Vector4& rotation);
-        void Rotate(const Vector3& axis, int degree);
-        Vector4 GetRotation();
+        VERYREAL_PEDROBULLET void SetRotation(const Vector4& rotation);
+        VERYREAL_PEDROBULLET void Rotate(const Vector3& axis, int degree);
+        VERYREAL_PEDROBULLET Vector4 GetRotation();
 
-        void AddImpulse(const Vector3& impulse);
-        void AddTorque(const Vector3& torque);
+        VERYREAL_PEDROBULLET void AddImpulse(const Vector3& impulse);
+        VERYREAL_PEDROBULLET void AddTorque(const Vector3& torque);
 
-        void SetActiveTrigger(bool b);
-        bool GetActiveTrigger();
+        VERYREAL_PEDROBULLET void SetActiveTrigger(bool b);
+        VERYREAL_PEDROBULLET bool GetActiveTrigger();
 
-        void SetMass(float n);
-        float GetMass();
+         VERYREAL_PEDROBULLET void SetMass(float n);
+        VERYREAL_PEDROBULLET float GetMass();
 
-        void SetFriction(float n);
-        float GetFriction();
+         VERYREAL_PEDROBULLET void SetFriction(float n);
+         VERYREAL_PEDROBULLET float GetFriction();
 
-        void SetRestitution(float n);
-        float GetRestitution();
+        VERYREAL_PEDROBULLET void SetRestitution(float n);
+        VERYREAL_PEDROBULLET float GetRestitution();
 
         void SetMovementType(PBMovementType mT);
 
@@ -63,16 +64,16 @@ namespace VeryReal {
         btCollisionShape* GetCollisionShape();
 
         // Getter y Setter de mascara de colision
-        void setMask(const int n);
-        int getMask() const;
+        VERYREAL_PEDROBULLET void setMask(const int n);
+        VERYREAL_PEDROBULLET int getMask() const;
 
         // Getter y Setter de grupo de colision
-        void setGroup(const int n);
-        int getGroup() const;
+        VERYREAL_PEDROBULLET void setGroup(const int n);
+        VERYREAL_PEDROBULLET int getGroup() const;
 
-        void Update(const double& dt);
+        VERYREAL_PEDROBULLET void Update(const double& dt);
 
-        void Decelerate(float percent);
+        VERYREAL_PEDROBULLET void Decelerate(float percent);
 
     private:
         TransformComponent* transformComponent;
@@ -98,9 +99,3 @@ namespace VeryReal {
 #pragma warning(default : 4251)
 
 #endif 
-
-/*FALTA:
-*   - Mascara
-*   - Capa
-*   - Convertir en trigger(medio hecho pero falta)
-*/
