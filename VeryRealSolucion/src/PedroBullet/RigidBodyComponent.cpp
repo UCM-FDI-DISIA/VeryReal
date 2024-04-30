@@ -267,14 +267,14 @@ void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT)
 {
     if (mT == MOVEMENT_TYPE_DYNAMIC) {
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_DYNAMIC_OBJECT);
-        rigidBody->setAngularFactor(btVector3(0, 0, 0)); 
+        rigidBody->setAngularFactor(btVector3(0, 0, 0));
     }
     if (mT == MOVEMENT_TYPE_STATIC) {
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
         rigidBody->setLinearFactor(btVector3(0, 0, 0));
+        rigidBody->setAngularFactor(btVector3(0, 0, 0));
     }
-    if (mT == MOVEMENT_TYPE_KINEMATIC)
-        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
+    if (mT == MOVEMENT_TYPE_KINEMATIC) rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
 }
 
 
