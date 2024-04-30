@@ -136,7 +136,7 @@ bool VeryReal::PhysicsManager::InitManager() {
 
 
     //DESCOMENTAR PARA GAVITY ATENTOS Q POR AHORA SE LE DA A TODOS LOS OBJETOS
-    dynamicsWorld->setGravity(btVector3(0, 0, 0));
+    dynamicsWorld->setGravity(btVector3(0, -9.8, 0));
 
 
 
