@@ -22,7 +22,7 @@ class InputManager : public VeryReal::Manager<InputManager> {
         /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
 
     VERYREAL_TONINPUT virtual ~InputManager() { }
-    VERYREAL_TONINPUT static bool Init() {
+     static bool Init() {
                 InputManager* a = new InputManager();
         if (a != nullptr) {
             instance_pointer.reset(a);
