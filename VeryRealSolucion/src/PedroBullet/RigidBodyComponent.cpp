@@ -161,8 +161,8 @@ btCollisionShape* RigidBodyComponent::CreateCollisionShape(PBShapes shapeType, V
 }
 
 void RigidBodyComponent::SetVelocityLinear(const Vector3& velocity) {
-    rigidBody->setLinearVelocity(btVector3(velocity.GetX() + rigidBody->getLinearVelocity().x(), velocity.GetY() + rigidBody->getLinearVelocity().y(),
-                                           velocity.GetZ() + rigidBody->getLinearVelocity().z()));
+    rigidBody->setLinearVelocity(btVector3(velocity.GetX(), velocity.GetY(),
+                                           velocity.GetZ()));
 }
 void RigidBodyComponent::SetVelocityAngular(const Vector3& velocity) {
     rigidBody->setAngularVelocity(btVector3(velocity.GetX(), velocity.GetY(), velocity.GetZ()));
