@@ -64,7 +64,7 @@ VERYREAL_PEDROBULLET void Shutdown();                // Limpia y libera recursos
     void AddRigidBody(btRigidBody* body);
 
 
-    std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
+   VERYREAL_PEDROBULLET std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
 
 private:
     VERYREAL_PEDROBULLET PhysicsManager();
