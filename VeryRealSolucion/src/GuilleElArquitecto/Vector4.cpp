@@ -25,7 +25,7 @@ VeryReal::Vector4::Vector4(float a, float b, float c, float d, bool isColor) {
 }
 VeryReal::Vector4::Vector4(const VeryReal::Vector4& vector, bool isColor) {
     if (isColor) {
-        if (vector.x < 0 || vector.y < 0 || vector.z < 0 || vector.w < 0 || vector.x > 255 || vector.y > 255 || vector.z > 255 || vector.w > 1) {
+        if (vector.GetX() < 0 || vector.GetY() < 0 || vector.GetZ() < 0 || vector.GetW() < 0 || vector.GetX() > 255 || vector.GetY() > 255 || vector.GetZ() > 255 || vector.GetW() > 1) {
             //CERROR
         }
         x = vector.GetX();
@@ -73,18 +73,18 @@ VeryReal::Vector4::Vector4(const VeryReal::Vector3& v_) {
 
 VeryReal::Vector4::~Vector4() { }
 VeryReal::Vector4 VeryReal::Vector4::operator+=(const Vector4& vector) {
-    this->SetX(x + vector.x);
-    this->SetY(y + vector.y);
-    this->SetZ(z + vector.z);
-    this->SetW(w + vector.w);
+    this->SetX(x + vector.GetX());
+    this->SetY(y + vector.GetY());
+    this->SetZ(z + vector.GetZ());
+    this->SetW(w + vector.GetW());
     return *this;
 }
 
-VeryReal::Vector4 VeryReal::Vector4::operator=(const VeryReal::Vector4& vector) { return {x = vector.x, y = vector.y, z = vector.z, w = vector.w}; }
+VeryReal::Vector4 VeryReal::Vector4::operator=(const VeryReal::Vector4& vector) { return {x = vector.GetX(), y = vector.GetY(), z = vector.GetZ(), w = vector.GetW()}; }
 
-bool VeryReal::Vector4::operator==(const VeryReal::Vector4& vector) { return (x == vector.x && y == vector.y && z == vector.z && w == vector.w); }
+bool VeryReal::Vector4::operator==(const VeryReal::Vector4& vector) { return (x == vector.GetX() && y == vector.GetY() && z == vector.GetZ() && w == vector.GetW()); }
 
-bool VeryReal::Vector4::operator!=(const VeryReal::Vector4& vector) { return (x != vector.x || y != vector.y || z != vector.z || w != vector.w); }
+bool VeryReal::Vector4::operator!=(const VeryReal::Vector4& vector) { return (x != vector.GetX() || y != vector.GetY() || z != vector.GetZ() || w != vector.GetW()); }
 
 VeryReal::Vector3 VeryReal::Vector4::toEuler() { 
     double roll = atan2(2.0 * (y * w + x * z), 1.0 - 2.0 * (y * y + x * x));
