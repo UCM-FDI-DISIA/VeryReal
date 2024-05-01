@@ -77,7 +77,7 @@ void AnimatorComponent::Update(const double& dt)
     {
         if (it->second->getEnabled())
         {
-            it->second->addTime((Ogre::Real)( 0.001));
+            it->second->addTime((Ogre::Real)(dt));
             num++;
         }
         it++;
