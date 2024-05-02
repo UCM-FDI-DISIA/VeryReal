@@ -1,31 +1,50 @@
 #pragma once
 #include "VeryRealProyecto.h"
-#include <InputManager.h>
-#include <RenderManager.h>
-#include <PhysicsManager.h>
-#include <AudioManager.h>
-#include <LuaLuengo.h>
-#include "SceneManager.h"
-#include "ScriptManager.h"
 #include <Window.h>
 #include <chrono>
-#include <Creator.h>
+#include <filesystem>
 
+
+#pragma region LUA LUENGO
+#include <LuaLuengo.h>
+//creators de Lua:
+#include "SceneManager.h"
+#include "ScriptManager.h"
+#pragma endregion
+#pragma region AUDIO LEON
+#include <AudioManager.h>
+//creators de Audio:
 #include "CreatorAudioSourceComponent.h"
 #include "CreatorAudioListenerComponent.h"
+#pragma endregion
+#pragma region TONINPUT
+#include <InputManager.h>
+#pragma endregion
+#pragma region GUILLERMO EL ARQUITECTO
+#include <Creator.h>
 #include "CreatorTransformComponent.h"
+#pragma endregion
+#pragma region PEDROBULLET
+#include <PhysicsManager.h>
+//creators de Fisica:
 #include "CreatorRigidBodyComponent.h"
 #include "CreatorColliderComponent.h"
-#include "CreatorMeshRenderComponent.h"
-#include "CreatorLightComponent.h"
-#include "CreatorCameraComponent.h"
-#include "CreatorAnimatorComponent.h"
-#include "CreatorTransformComponent.h"
-#include "UI/CreatorUITransformComponent.h"
-#include "UI/CreatorUITextComponent.h"
+#pragma endregion
+#pragma region ROMERENDER
+#include <RenderManager.h>
+//creators de UI Render:
 #include "UI/CreatorUIButtonComponent.h"
 #include "UI/CreatorUIProgressBarComponent.h"
-#include <filesystem>
+#include "UI/CreatorUISpriteRenderComponent.h"
+#include "UI/CreatorUITextComponent.h"
+#include "UI/CreatorUITransformComponent.h"
+//creators de Render:
+#include "CreatorAnimatorComponent.h"
+#include "CreatorCameraComponent.h"
+#include "CreatorLightComponent.h"
+#include "CreatorMeshRenderComponent.h"
+#pragma endregion
+
 
 const float FRAME_RATE = 1.0f / 60.0f; 
 typedef bool(__cdecl* GameStartingPoint)();
@@ -79,6 +98,7 @@ bool VeryRealProyecto::CreateCreators() {
     VeryReal::Creator::Instance()->AddCreator("AudioListenerComponent", new VeryReal::CreatorAudioListenerComponent());
     VeryReal::Creator::Instance()->AddCreator("UITransformComponent", new VeryReal::CreatorUITransformComponent());
     VeryReal::Creator::Instance()->AddCreator("UITextComponent", new VeryReal::CreatorUITextComponent());
+    VeryReal::Creator::Instance()->AddCreator("UISpriteRenderComponent", new VeryReal::CreatorUISpriteRenderComponent());
     VeryReal::Creator::Instance()->AddCreator("UIButtonComponent", new VeryReal::CreatorButtonComponent());
     VeryReal::Creator::Instance()->AddCreator("UIProgressBarComponent", new VeryReal::CreatorUIProgressBarComponent());
     return true;
