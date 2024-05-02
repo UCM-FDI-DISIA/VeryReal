@@ -52,10 +52,7 @@ namespace VeryReal {
          inline lua_State* GetLuaState() { return lua_state; }
          void ReadFunction();
 
-         template <class T>
-         void ExposeFunctionsToLua(std::string name, T FunctionToAdd) { 
-             luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
-         }
+         void ExposeFunctionsToLua(std::string name, const std::function<void()> FunctionToAdd);
 
          static void Prueba();
     };
