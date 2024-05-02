@@ -3,7 +3,7 @@
 #include <InputManager.h>
 #include <RenderManager.h>
 #include <PhysicsManager.h>
-#include <AudioLeon.h>
+#include <AudioManager.h>
 #include <LuaLuengo.h>
 #include "SceneManager.h"
 #include "ScriptManager.h"
@@ -50,7 +50,7 @@ bool VeryRealProyecto::InitVeryReal() {
 }
 
 bool VeryRealProyecto::InitPointers() {
-    if (!VeryReal::InputManager::Init() || !VeryReal::RenderManager::Init() || !VeryReal::AudioLeon::Init() || !VeryReal::ScriptManager::Init() ||
+    if (!VeryReal::InputManager::Init() || !VeryReal::RenderManager::Init() || !VeryReal::AudioManager::Init() || !VeryReal::ScriptManager::Init() ||
         !VeryReal::PhysicsManager::Init() || !VeryReal::SceneManager::Init())
         return false;
     return true;
@@ -59,7 +59,7 @@ bool VeryRealProyecto::InitPointers() {
 bool VeryRealProyecto::InitManagers() {
     VeryReal::InputManager::Instance()->InitManager();
     VeryReal::RenderManager::Instance()->InitManager("JUEGO");
-    VeryReal::AudioLeon::Instance()->InitManager();
+    VeryReal::AudioManager::Instance()->InitManager();
     VeryReal::PhysicsManager::Instance()->InitManager();
     VeryReal::ScriptManager::Instance()->InitManager();
     return true;
@@ -125,7 +125,7 @@ void VeryRealProyecto::Loop() {
             VeryReal::PhysicsManager::Instance()->Update(frameTime);
             VeryReal::SceneManager::Instance()->Update(frameTime);
             VeryReal::RenderManager::Instance()->Update(frameTime);
-            VeryReal::AudioLeon::Instance()->Update(frameTime);
+            VeryReal::AudioManager::Instance()->Update(frameTime);
             startTime = currentTime;
         }
     }

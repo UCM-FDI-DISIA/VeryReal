@@ -35,15 +35,15 @@ namespace VeryReal {
 	//Pitch base de un sonido. Determina el pitch "normal" de un sonido cuando el emisor esta parado.
 	const float BASE_PITCH = 1.0f;
 
-	/* AudioLeon ofrece un sistema de creación, almacenaje y borrado de sonidos.
+	/* AudioManager ofrece un sistema de creación, almacenaje y borrado de sonidos.
 	así como toda el esqueleto interno de funcionamiento de FMOD.
-	Puedes acceder a Audio_Leom llamando al método AL().
+	Puedes acceder a AudioManager llamando al método AM().
 	*/
 
 	#pragma warning(disable : 4251)
 
-	class VERYREAL_AUDIOLEON AudioLeon : public VeryReal::Manager<AudioLeon> {
-		friend Singleton<AudioLeon>;
+	class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
+		friend Singleton<AudioManager>;
 
        private:
 		//Almacena los sonidos de FMOD enlazados al nombre establecido por el usuario.
@@ -74,18 +74,18 @@ namespace VeryReal {
 		bool ChangeChannelVolume(std::string channelGroupName, float volume);
 
     private:
-                 AudioLeon();
+                 AudioManager();
 	public:
         static bool Init() {
-			AudioLeon* a = new AudioLeon();
+			AudioManager* a = new AudioManager();
             if (a != nullptr) {
                 instance_pointer.reset(a);
                 return true;
             }
             return false;
 		}
-		//Destructor de la clase AudioLeon. Se encarga de eliminar todo sonido creado y de liberar toda la infrestructura de FMOD.
-         ~AudioLeon();
+		//Destructor de la clase AudioManager. Se encarga de eliminar todo sonido creado y de liberar toda la infrestructura de FMOD.
+         ~AudioManager();
  
 		 void InitManager();
 		//Inicializacion de los recursos necesarios para recoger input del microfono
@@ -131,7 +131,7 @@ namespace VeryReal {
 		/// <returns>Devuelve el grupo concreto que se buscaba o "nullptr" si no se encontró ningún grupo con ese nombre.</returns>
 		FMOD::ChannelGroup* GetGroupChannel(std::string channelGroupName);
 
-		//Devuelve la referencia al vector de canales de AudioLeon.
+		//Devuelve la referencia al vector de canales de AudioManager.
 		std::vector<FMOD::Channel*> GetChannelsVector();
 
 		//Establece el valor para un canal.
@@ -226,10 +226,10 @@ namespace VeryReal {
 
 	#pragma warning(default : 4251)
 
-	//Esta macro define una manera compacta de usar el singleton AudioLeon.
-	//En lugar de escribir AudioLeon::instance->method(), escribiremos AL().method()
-	inline AudioLeon& AL() {
-		return *AudioLeon::Instance();
+	//Esta macro define una manera compacta de usar el singleton AudioManager.
+	//En lugar de escribir AudioManager::instance->method(), escribiremos AM().method()
+	inline AudioManager& AM() {
+		return *AudioManager::Instance();
 	}
 }
 

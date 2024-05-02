@@ -21,7 +21,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\AudioLeon\AudioLeon.cpp">
+    <ClCompile Include="..\..\src\AudioLeon\AudioManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\AudioLeon\AudioListenerComponent.cpp">
@@ -38,7 +38,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h">
+    <ClInclude Include="..\..\src\AudioLeon\AudioManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\AudioLeon\exportAudioLeon.h">

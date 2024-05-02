@@ -13,7 +13,7 @@ namespace FMOD {
 namespace VeryReal {
 	class TransformComponent;
 	class Vector3;
-    class AudioLeon;
+    class AudioManager;
   }
 
 enum FMOD_RESULT;

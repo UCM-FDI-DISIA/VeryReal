@@ -11,14 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\AudioLeon\AudioLeon.cpp" />
+    <ClCompile Include="..\..\src\AudioLeon\AudioManager.cpp" />
     <ClCompile Include="..\..\src\AudioLeon\AudioListenerComponent.cpp" />
     <ClCompile Include="..\..\src\AudioLeon\AudioSourceComponent.cpp" />
     <ClCompile Include="..\..\src\AudioLeon\CreatorAudioListenerComponent.cpp" />
     <ClCompile Include="..\..\src\AudioLeon\CreatorAudioSourceComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\AudioLeon\AudioLeon.h" />
+    <ClInclude Include="..\..\src\AudioLeon\AudioManager.h" />
     <ClInclude Include="..\..\src\AudioLeon\AudioListenerComponent.h" />
     <ClInclude Include="..\..\src\AudioLeon\AudioSourceComponent.h" />
     <ClInclude Include="..\..\src\AudioLeon\CreatorAudioListenerComponent.h" />
