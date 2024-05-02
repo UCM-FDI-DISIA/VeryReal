@@ -179,6 +179,10 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
 }
 
 void ScriptManager::ReadPrefabs() {
+    std::string a = "../../../bin/LuaFiles/Prefabs.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
+    int script_status = luaL_dofile(lua_state, a.c_str());
+    Error(script_status);
+
     std::string ent = "Prefabs";
     luabridge::LuaRef prefabs = luabridge::getGlobal(lua_state, ent.c_str());   // Referencia a la primera tabla
 
@@ -224,28 +228,24 @@ void ScriptManager::ReadPrefabs() {
     }
 }
 
-
-void ScriptManager::ExposeFunctionsVoidToLua(std::string name, std::function<void()> FunctionToAdd) {
-    luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
+void ScriptManager::ReadFunction(std::string name, int n) {
     std::string s = "../../../bin/LuaFiles/Functions.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
     int script_status = luaL_dofile(lua_state, s.c_str());
     Error(script_status);
 
-    // Usar LuaBridge para llamar a la función Lua desde C++
     lua_getglobal(lua_state, name.c_str());
+    luabridge::push(lua_state, n);
+    luabridge::push(lua_state, n);
     lua_pcall(lua_state, 2, 1, 0);
+
+    auto resultLua = luabridge::Stack<int>::get(lua_state, -1);
     lua_pop(lua_state, 1);
+}
+
+void ScriptManager::ExposeFunctionsVoidToLua(std::string name, std::function<void()> FunctionToAdd) {
+    luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
 }
 
 void ScriptManager::ExposeFunctionsVoidIntToLua(std::string name, int i, std::function<void(int)> FunctionToAdd) {
     luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
-    std::string s = "../../../bin/LuaFiles/Functions.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
-    int script_status = luaL_dofile(lua_state, s.c_str());
-    Error(script_status);
-
-    // Usar LuaBridge para llamar a la función Lua desde C++
-    lua_getglobal(lua_state, name.c_str());
-    luabridge::push(lua_state, i);
-    lua_pcall(lua_state, 2, 1, 0);
-    lua_pop(lua_state, 1);
 }
