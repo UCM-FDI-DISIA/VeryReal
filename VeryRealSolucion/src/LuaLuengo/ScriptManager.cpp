@@ -225,8 +225,8 @@ void ScriptManager::ReadPrefabs() {
 }
 
 void ScriptManager::ReadFunction() {
-    std::string a = "../../../bin/LuaFiles/Functions.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
-    int script_status = luaL_dofile(lua_state, a.c_str());
+    std::string s = "../../../bin/LuaFiles/Functions.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
+    int script_status = luaL_dofile(lua_state, s.c_str());
     Error(script_status);
 
     // Usar LuaBridge para llamar a la función Lua desde C++
