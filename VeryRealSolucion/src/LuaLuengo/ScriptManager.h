@@ -54,8 +54,10 @@ namespace VeryReal {
 
          template <class T>
          void ExposeFunctionsToLua(std::string name, T FunctionToAdd) { 
-             luabridge::getGlobalNamespace(lua_state).addFunction(name, FunctionToAdd);
+             luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
          }
+
+         static void Prueba();
     };
 }
 

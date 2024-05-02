@@ -228,6 +228,7 @@ void ScriptManager::ReadFunction() {
     int script_status = luaL_dofile(lua_state, s.c_str());
     Error(script_status);
 
+    ExposeFunctionsToLua("Probar", Prueba);
     // Usar LuaBridge para llamar a la función Lua desde C++
     lua_getglobal(lua_state, "sum");
     int a = 5;
@@ -245,3 +246,5 @@ void ScriptManager::ReadFunction() {
 
     std::cout << "Result: " << result << std::endl;
 }
+
+void ScriptManager::Prueba() { std::cout << "Prueba"; }
