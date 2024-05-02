@@ -38,7 +38,7 @@ void callBackEnter(btPersistentManifold* const& manifold) {
     if (ent1 && ent2) {
 
         VeryReal::RigidBodyComponent* rigidBody1 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
-        VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
+        VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent2->getUserPointer());
 
         VeryReal::ColliderComponent* colliderEntity1 = rigidBody1->GetEntity()->GetComponent<VeryReal::ColliderComponent>();
         VeryReal::ColliderComponent* colliderEntity2 = rigidBody2->GetEntity()->GetComponent<VeryReal::ColliderComponent>();
@@ -58,7 +58,7 @@ void callBackExit(btPersistentManifold* const& manifold) {
     if (ent1 && ent2) {
 
         VeryReal::RigidBodyComponent* rigidBody1 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
-        VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
+        VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent2->getUserPointer());
 
         VeryReal::ColliderComponent* colliderEntity1 = rigidBody1->GetEntity()->GetComponent<VeryReal::ColliderComponent>();
         VeryReal::ColliderComponent* colliderEntity2 = rigidBody2->GetEntity()->GetComponent<VeryReal::ColliderComponent>();
@@ -80,7 +80,7 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     if (ent1 && ent2) {
 
         VeryReal::RigidBodyComponent* rigidBody1 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
-        VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
+        VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent2->getUserPointer());
 
         VeryReal::ColliderComponent* colliderEntity1 = rigidBody1->GetEntity()->GetComponent<VeryReal::ColliderComponent>();
         VeryReal::ColliderComponent* colliderEntity2 = rigidBody2->GetEntity()->GetComponent<VeryReal::ColliderComponent>();

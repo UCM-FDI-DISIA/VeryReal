@@ -138,7 +138,7 @@ void VeryRealProyecto::Loop() {
         auto currentTime = std::chrono::high_resolution_clock::now();
         std::chrono::duration<float> elapsedTime = currentTime - startTime;
         float frameTime = elapsedTime.count();
-        cout << frameTime << endl;
+
         VeryReal::InputManager::Instance()->Refresh();
         if (elapsedTime.count() >= FRAME_RATE) {
             gameLoop();
