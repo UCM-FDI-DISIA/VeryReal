@@ -5,15 +5,6 @@ void VeryReal::ColliderComponent::Init()
 {
 
 }
-void VeryReal::ColliderComponent::OnCollisionEnter(Entity* entity)
-{
-	entity->OnCollisionEnter(entity);
-}
-void VeryReal::ColliderComponent::OnCollisionExit(Entity* entity)
-{
-	entity->OnCollisionExit(entity);
-}
-void VeryReal::ColliderComponent::OnCollisionStay(Entity* entity)
-{
-	entity->OnCollisionStay(entity);
-}
+void VeryReal::ColliderComponent::OnCollisionEnter(Entity* entity){ this->GetEntity()->OnCollisionEnter(entity); }
+void VeryReal::ColliderComponent::OnCollisionExit(Entity* entity){ this->GetEntity()->OnCollisionExit(entity); }
+void VeryReal::ColliderComponent::OnCollisionStay(Entity* entity){ this->GetEntity()->OnCollisionStay(entity); }
