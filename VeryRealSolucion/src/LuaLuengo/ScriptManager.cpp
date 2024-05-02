@@ -224,36 +224,28 @@ void ScriptManager::ReadPrefabs() {
     }
 }
 
-void ScriptManager::ReadFunction() {
+
+void ScriptManager::ExposeFunctionsVoidToLua(std::string name, std::function<void()> FunctionToAdd) {
+    luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
     std::string s = "../../../bin/LuaFiles/Functions.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
     int script_status = luaL_dofile(lua_state, s.c_str());
     Error(script_status);
 
-    ExposeFunctionsToLua("Probar", Prueba);
     // Usar LuaBridge para llamar a la función Lua desde C++
-    lua_getglobal(lua_state, "sum");
-    int a = 5;
-    int b = 3;
-    luabridge::push(lua_state, a);
-    luabridge::push(lua_state, b);
+    lua_getglobal(lua_state, name.c_str());
     lua_pcall(lua_state, 2, 1, 0);
-
-    // Obtener el resultado de la llamada
-    //luabridge::LuaRef result(luabridge::LuaState(lua_state), -1);
-    //int sum_result = result.cast<int>();
-    auto resultLua = luabridge::Stack<int>::get(lua_state, -1);
-    int result = resultLua.value();
     lua_pop(lua_state, 1);
-
-    std::cout << "Result: " << result << std::endl;
 }
 
-void ScriptManager::ExposeFunctionsVoidToLua(std::string name, std::function<void()> FunctionToAdd) {
+void ScriptManager::ExposeFunctionsVoidIntToLua(std::string name, int i, std::function<void(int)> FunctionToAdd) {
     luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
-}
+    std::string s = "../../../bin/LuaFiles/Functions.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
+    int script_status = luaL_dofile(lua_state, s.c_str());
+    Error(script_status);
 
-void ScriptManager::ExposeFunctionsVoidIntToLua(std::string name, std::function<void(int)> FunctionToAdd) {
-    luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
+    // Usar LuaBridge para llamar a la función Lua desde C++
+    lua_getglobal(lua_state, name.c_str());
+    luabridge::push(lua_state, i);
+    lua_pcall(lua_state, 2, 1, 0);
+    lua_pop(lua_state, 1);
 }
-
-void ScriptManager::Prueba() { std::cout << "Prueba"; }

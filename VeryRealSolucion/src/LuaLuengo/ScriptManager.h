@@ -50,12 +50,9 @@ namespace VeryReal {
          void ReadScene(std::string n,bool active);
          void ReadPrefabs();
          inline lua_State* GetLuaState() { return lua_state; }
-         void ReadFunction();
 
          void ExposeFunctionsVoidToLua(std::string name, const std::function<void()> FunctionToAdd);
-         void ExposeFunctionsVoidIntToLua(std::string name, const std::function<void(int)> FunctionToAdd);
-
-         static void Prueba();
+         void ExposeFunctionsVoidIntToLua(std::string name, int i, const std::function<void(int)> FunctionToAdd);
     };
 }
 
