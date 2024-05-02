@@ -52,7 +52,8 @@ namespace VeryReal {
          inline lua_State* GetLuaState() { return lua_state; }
          void ReadFunction();
 
-         void ExposeFunctionsToLua(std::string name, const std::function<void()> FunctionToAdd);
+         void ExposeFunctionsVoidToLua(std::string name, const std::function<void()> FunctionToAdd);
+         void ExposeFunctionsVoidIntToLua(std::string name, const std::function<void(int)> FunctionToAdd);
 
          static void Prueba();
     };

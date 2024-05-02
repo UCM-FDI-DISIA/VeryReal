@@ -248,7 +248,11 @@ void ScriptManager::ReadFunction() {
     std::cout << "Result: " << result << std::endl;
 }
 
-void ScriptManager::ExposeFunctionsToLua(std::string name, std::function<void()> FunctionToAdd) {
+void ScriptManager::ExposeFunctionsVoidToLua(std::string name, std::function<void()> FunctionToAdd) {
+    luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
+}
+
+void ScriptManager::ExposeFunctionsVoidIntToLua(std::string name, std::function<void(int)> FunctionToAdd) {
     luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
 }
 
