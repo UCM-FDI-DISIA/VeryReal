@@ -246,6 +246,6 @@ void ScriptManager::ExposeFunctionsVoidToLua(std::string name, std::function<voi
     luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
 }
 
-void ScriptManager::ExposeFunctionsVoidIntToLua(std::string name, int i, std::function<void(int)> FunctionToAdd) {
+void ScriptManager::ExposeFunctionsVoidIntToLua(std::string name, std::function<void(int)> FunctionToAdd) {
     luabridge::getGlobalNamespace(lua_state).addFunction(name.c_str(), FunctionToAdd);
 }
