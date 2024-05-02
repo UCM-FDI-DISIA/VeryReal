@@ -20,90 +20,86 @@ class btBulletDynamicsCommon;
 #pragma warning(disable : 4251)
 
 namespace VeryReal {
-    class TransformComponent;
-    class ColliderComponent;
-   
-    class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
-    public:
-        RigidBodyComponent();
+class TransformComponent;
+class ColliderComponent;
 
-        bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, int movementType = MOVEMENT_TYPE_DYNAMIC,
-                           bool trigger = false, Vector3 s = {1,1,1}, int mask = -1, int group = 1);
+class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
+        public:
+    RigidBodyComponent();
 
-        virtual ~RigidBodyComponent();
+    bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, int movementType = MOVEMENT_TYPE_DYNAMIC,
+                       bool trigger = false, Vector3 s = {1, 1, 1}, int mask = -1, int group = 1);
 
-        // Funciones para manipular el cuerpo rígido
-        void SetVelocityLinear(const Vector3& velocity);
-        void SetVelocityAngular(const Vector3& velocity);
-        Vector3 GetVelocity() const;
+    virtual ~RigidBodyComponent();
 
-        void SetRotation(const VeryReal::Vector4& rotation);
-        void Rotate(const Vector3& axis, int degree);
-        Vector4 GetRotation();
+    // Funciones para manipular el rigidbody
+    void SetPosition(const Vector3& position);
+    Vector3 GetPosition() const;
+    void SetVelocityLinear(const Vector3& velocity);
+    void SetVelocityAngular(const Vector3& velocity);
+    Vector3 GetVelocity() const;
 
-        //Vector3 QuaternionToEuler(const btQuaternion& q) const;
+    void SetRotation(const VeryReal::Vector4& rotation);
+    void Rotate(const Vector3& axis, int degree);
+    Vector4 GetRotation();
 
-        void AddImpulse(const Vector3& impulse);
-        void AddTorque(const Vector3& torque);
+    //Vector3 QuaternionToEuler(const btQuaternion& q) const;
 
-        void SetActiveTrigger(bool b);
-        bool GetActiveTrigger();
+    void AddImpulse(const Vector3& impulse);
+    void AddTorque(const Vector3& torque);
 
-        void SetMass(float n);
-        float GetMass();
+    void SetActiveTrigger(bool b);
+    bool GetActiveTrigger();
 
-        void SetFriction(float n);
-        float GetFriction();
+    void SetMass(float n);
+    float GetMass();
 
-        void SetRestitution(float n);
-        float GetRestitution();
+    void SetFriction(float n);
+    float GetFriction();
 
-        void SetMovementType(PBMovementType mT);
+    void SetRestitution(float n);
+    float GetRestitution();
 
-        // Obtiene el btRigidBody 
-        btRigidBody* GetBulletRigidBody();
+    void SetMovementType(PBMovementType mT);
 
-        btCollisionShape* GetCollisionShape();
+    // Obtiene el btRigidBody
+    btRigidBody* GetBulletRigidBody();
 
-        // Getter y Setter de mascara de colision
-        void setMask(const int n);
-        int getMask() const;
+    btCollisionShape* GetCollisionShape();
 
-        // Getter y Setter de grupo de colision
-        void setGroup(const int n);
-        int getGroup() const;
+    // Getter y Setter de mascara de colision
+    void setMask(const int n);
+    int getMask() const;
 
-        void Update(const double& dt);
+    // Getter y Setter de grupo de colision
+    void setGroup(const int n);
+    int getGroup() const;
 
-        void Decelerate(float percent);
+    void Update(const double& dt);
 
-    private:
-        TransformComponent* transformComponent;
-        btCollisionShape* collisionShape;
-        std::unique_ptr<btDefaultMotionState> motionState;
-        btRigidBody* rigidBody;
+    void Decelerate(float percent);
 
-        //grupos y mascaras de colision
-        int mask;
-        int group;
+        private:
+    TransformComponent* transformComponent = nullptr;
+    btCollisionShape* collisionShape = nullptr;
+    btRigidBody* rigidBody = nullptr;
+    std::unique_ptr<btDefaultMotionState> motionState;
 
-        bool isTrigger;
-        float mass;
-        float friction;
-        float restitution;
-        PBMovementType movementType;
-        ColliderComponent* collider = nullptr;
-        bool InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int mask, int group);
-        btCollisionShape* CreateCollisionShape(PBShapes shapeType, Vector3 s);
-    };
-} 
+    //grupos y mascaras de colision
+    int mask = 0;
+    int group = 0;
+
+    bool isTrigger = false;
+    float mass = 1;
+    float friction = 0;
+    float restitution = 0;
+    PBMovementType movementType;
+    ColliderComponent* collider = nullptr;
+    bool InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int mask, int group);
+    btCollisionShape* CreateCollisionShape(PBShapes shapeType, Vector3 s);
+};
+}
 
 #pragma warning(default : 4251)
 
-#endif 
-
-/*FALTA:
-*   - Mascara
-*   - Capa
-*   - Convertir en trigger(medio hecho pero falta)
-*/
+#endif
