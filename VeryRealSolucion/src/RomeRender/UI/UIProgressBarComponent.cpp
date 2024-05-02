@@ -56,7 +56,7 @@ UIProgressBarComponent::~UIProgressBarComponent() {
         frame_element->setMaterialName(frame_material_name);
 
         //if (!transform) {
-        //    ErrorInf().showErrorMessageBox("UISpriteRenderer error", "An entity doesn't have transform component", EI_ERROR);
+        //    ErrorInf().showErrorMessageBox("UISpriteRendererComponent error", "An entity doesn't have transform component", EI_ERROR);
         //    //sceneManager().quit();
         //    return false;
         //}
