@@ -74,7 +74,6 @@ VERYREAL_ROMERENDER void pitch(float d);
         // Desactiva la cámara.
        VERYREAL_ROMERENDER void desactive();
 
-       VERYREAL_ROMERENDER VeryReal::Vector4 getOrientation();
         // Activa la camara.
        VERYREAL_ROMERENDER void active();
         //setter para el target al que seguira la camara 

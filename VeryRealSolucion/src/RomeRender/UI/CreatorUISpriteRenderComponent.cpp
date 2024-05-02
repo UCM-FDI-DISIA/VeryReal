@@ -2,10 +2,10 @@
 #include "UISpriteRenderComponent.h"
 #include <string>
 using namespace VeryReal;
-Component* CreatorUISpriteRenderComponent::CreatorSpecificComponent() { return new UiSpriteRenderer(); }
+Component* CreatorUISpriteRenderComponent::CreatorSpecificComponent() { return new UISpriteRenderer(); }
 
 void CreatorUISpriteRenderComponent::SpecificInitComponent(Component* c) {
-    UiSpriteRenderer* a = static_cast<UiSpriteRenderer*>(c);
+    UISpriteRenderer* a = static_cast<UISpriteRenderer*>(c);
     std::string name, material;
     int zOrder;
 #pragma region Material

@@ -43,7 +43,7 @@ bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font
     transform = GetEntity()->GetComponent<UITransformComponent>();
 
     //if (!transform) {
-    //    ErrorInf().showErrorMessageBox("UiSpriteRenderer error", "An entity doesn't have transform component", EI_ERROR);
+    //    ErrorInf().showErrorMessageBox("UISpriteRenderer error", "An entity doesn't have transform component", EI_ERROR);
     //    //sceneManager().quit();
     //    return false;
     //}
@@ -79,7 +79,7 @@ bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font
     transform = GetEntity()->GetComponent<UITransformComponent>();
 
     //if (!transform) {
-    //    ErrorInf().showErrorMessageBox("UiSpriteRenderer error", "An entity doesn't have transform component", EI_ERROR);
+    //    ErrorInf().showErrorMessageBox("UISpriteRenderer error", "An entity doesn't have transform component", EI_ERROR);
     //    //sceneManager().quit();
     //    return false;
     //}

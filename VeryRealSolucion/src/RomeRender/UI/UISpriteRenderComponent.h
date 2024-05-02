@@ -18,12 +18,12 @@ class OverlayManager;
 namespace VeryReal {
     class UITransformComponent;
 
-    class VERYREAL_ROMERENDER UiSpriteRenderer : public Component {
+    class VERYREAL_ROMERENDER UISpriteRenderer : public Component {
           public:
-            //constructora de la clase UiSpriteRendererComponent
-            UiSpriteRenderer();
-                // Destructor de la clase UiSpriteRendererComponent
-            virtual ~UiSpriteRenderer();
+            //constructora de la clase UISpriteRendererComponent
+            UISpriteRenderer();
+                // Destructor de la clase UISpriteRendererComponent
+            virtual ~UISpriteRenderer();
             // Inicializa el componente
             bool InitComponent(std::string name, std::string material, int order);
             void Update(const double& dt) override;

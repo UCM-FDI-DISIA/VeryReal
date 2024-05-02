@@ -17,17 +17,17 @@
 
 using namespace VeryReal;
 
-void VeryReal::UiSpriteRenderer::setMaterialName(std::string materialName) {
+void VeryReal::UISpriteRenderer::setMaterialName(std::string materialName) {
     material_name = materialName;
     sprite_container->setMaterialName(materialName);
 }
 
-void VeryReal::UiSpriteRenderer::setZOrder(int order) { 
+void VeryReal::UISpriteRenderer::setZOrder(int order) { 
     z_order = order; 
     overlay->setZOrder(order);
 }
 
-void VeryReal::UiSpriteRenderer::setVisibility(bool hide) {
+void VeryReal::UISpriteRenderer::setVisibility(bool hide) {
     if (!hide && !overlay->isVisible()) {
         overlay->show(); 
     }
@@ -36,33 +36,33 @@ void VeryReal::UiSpriteRenderer::setVisibility(bool hide) {
     }
 }
 
-void VeryReal::UiSpriteRenderer::setSpriteTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc) {
+void VeryReal::UISpriteRenderer::setSpriteTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc) {
     sprite_container->setPosition(pos.GetX(), pos.GetY());
     position = pos;
     sprite_container->setDimensions(sc.GetX(), sc.GetY());
     scale = sc;
 }
-void VeryReal::UiSpriteRenderer::setScale(VeryReal::Vector2 sc) {
+void VeryReal::UISpriteRenderer::setScale(VeryReal::Vector2 sc) {
     sprite_container->setDimensions(sc.GetX(), sc.GetY());
     scale = sc;
 }
-void VeryReal::UiSpriteRenderer::setPosition(VeryReal::Vector2 pos) {
+void VeryReal::UISpriteRenderer::setPosition(VeryReal::Vector2 pos) {
     sprite_container->setPosition(pos.GetX(), pos.GetY());
     position = pos;
 }
 
-UiSpriteRenderer::UiSpriteRenderer() 
+UISpriteRenderer::UISpriteRenderer() 
 {
 
 }
-UiSpriteRenderer::~UiSpriteRenderer() { 
+UISpriteRenderer::~UISpriteRenderer() { 
     overlay->remove2D(sprite_container);
     overlay_mgr->destroyOverlayElement(sprite_container);
     overlay_mgr->destroy(overlay);
     sprite_container->cleanupDictionary();
 }
 
-bool UiSpriteRenderer::InitComponent(std::string name, std::string material, int order = 0) { 
+bool UISpriteRenderer::InitComponent(std::string name, std::string material, int order = 0) { 
     sprite_name = name;
     material_name = material;
     z_order = order;
@@ -72,7 +72,7 @@ bool UiSpriteRenderer::InitComponent(std::string name, std::string material, int
     transform = GetEntity()->GetComponent<UITransformComponent>();
 
     //if (!transform) {
-    //    ErrorInf().showErrorMessageBox("UiSpriteRenderer error", "An entity doesn't have transform component", EI_ERROR);
+    //    ErrorInf().showErrorMessageBox("UISpriteRenderer error", "An entity doesn't have transform component", EI_ERROR);
     //    //sceneManager().quit();
     //    return false;
     //}
@@ -85,7 +85,7 @@ bool UiSpriteRenderer::InitComponent(std::string name, std::string material, int
     setVisibility(que);
     return true;
 }
-void UiSpriteRenderer::Update(const double& dt) {
+void UISpriteRenderer::Update(const double& dt) {
     setSpriteTransform(transform->getPosition(), transform->getScale());
     bool que = transform->isHidden();
     setVisibility(que);
