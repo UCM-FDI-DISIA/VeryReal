@@ -223,3 +223,26 @@ void ScriptManager::ReadPrefabs() {
         }
     }
 }
+
+void ScriptManager::ReadFunction() {
+    std::string a = "../../../bin/LuaFiles/Functions.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
+    int script_status = luaL_dofile(lua_state, a.c_str());
+    Error(script_status);
+
+    // Usar LuaBridge para llamar a la función Lua desde C++
+    lua_getglobal(lua_state, "sum");
+    int a = 5;
+    int b = 3;
+    luabridge::push(lua_state, a);
+    luabridge::push(lua_state, b);
+    lua_pcall(lua_state, 2, 1, 0);
+
+    // Obtener el resultado de la llamada
+    //luabridge::LuaRef result(luabridge::LuaState(lua_state), -1);
+    //int sum_result = result.cast<int>();
+    auto resultLua = luabridge::Stack<int>::get(lua_state, -1);
+    int result = resultLua.value();
+    lua_pop(lua_state, 1);
+
+    std::cout << "Result: " << result << std::endl;
+}
