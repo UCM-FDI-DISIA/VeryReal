@@ -47,7 +47,7 @@ namespace VeryReal {
          void NewScene(std::string p);
 		
 		    // Método para probar la creación de entidades y componentes mediante Lua
-         void ReadScene(std::string n);
+         void ReadScene(std::string n,bool active);
          void ReadPrefabs();
          inline lua_State* GetLuaState() { return lua_state; }
          void ReadFunction();

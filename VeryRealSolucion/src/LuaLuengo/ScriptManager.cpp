@@ -42,9 +42,10 @@ void ScriptManager::NewScene(std::string p) {
     Error(script_status);
 }
 
-void ScriptManager::ReadScene(std::string namescene)
+void ScriptManager::ReadScene(std::string namescene,bool active)
 {
-	VeryReal::Scene* scene = VeryReal::SceneManager::Instance()->AddScene(namescene,false); // Creación de la escena(lleva el nombre del archivo .lua)
+    VeryReal::Scene* scene =
+        VeryReal::SceneManager::Instance()->AddScene(namescene, active);   // Creación de la escena(lleva el nombre del archivo .lua)
     NewScene(namescene);
 	std::cout << "Nombre de la escena: " << namescene << std::endl;
 
