@@ -100,7 +100,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\;$(SolutionDir)Dependencies\Lua\Builds\Release\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\;$(SolutionDir)dependencies\Lua\Builds\Release\</AdditionalLibraryDirectories>
       <AdditionalDependencies>GuilleElArquitecto.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
