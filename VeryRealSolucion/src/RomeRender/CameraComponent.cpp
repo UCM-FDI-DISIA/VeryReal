@@ -107,7 +107,22 @@ void CameraComponent::desactive() {
 }
 
 Ogre::SceneNode* CameraComponent::getNode() {
-    return mNode;
+    return mNode; }
+
+VeryReal::Vector3 CameraComponent::ScreenToWorldPoint(const VeryReal::Vector2& screenPoint) {
+
+
+    // Obtener el rayo desde la cámara hacia el viewport
+    Ogre::Ray ray = camara->getCameraToViewportRay(screenPoint.GetX(), screenPoint.GetY());
+
+    Ogre::Vector3 origin = ray.getOrigin();
+    Ogre::Vector3 direction = ray.getDirection();
+
+    float distance = 1000.0;   // Distancia a la que queremos calcular el punto
+    Ogre::Vector3 worldPoint = origin + direction * distance;
+
+    return Vector3(worldPoint.x, worldPoint.y, worldPoint.z);
+
 }
 
 void CameraComponent::SetTarget(VeryReal::Entity* e) { 
