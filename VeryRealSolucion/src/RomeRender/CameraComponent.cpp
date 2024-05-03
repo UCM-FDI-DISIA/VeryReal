@@ -20,7 +20,7 @@ CameraComponent::~CameraComponent() {
        
 }
 
-bool CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset) {
+bool CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset, int zOrder) {
     //camara
     mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
     mNode = mgr->getRootSceneNode()->createChildSceneNode();   //nodo  de la camara
@@ -29,7 +29,7 @@ bool CameraComponent::InitComponent(std::string name, Vector3 color, float alfa,
     camara = mgr->createCamera(name);   // objeto y camara en si
     camara->setNearClipDistance(1);     //queremos que serenderice lo mas cerca posible desde la camara
     mNode->attachObject(camara);
-    vewport = RenderManager::Instance()->GetRenderWindow()->addViewport(camara);
+    vewport = RenderManager::Instance()->GetRenderWindow()->addViewport(camara, zOrder);
 
     //cambio de color de fondo
     ent = this->GetEntity();

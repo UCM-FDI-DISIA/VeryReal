@@ -9,6 +9,7 @@ void CreatorCameraComponent::SpecificInitComponent(Component* c) {
     Vector3 offset;
     Vector3 color;
     float alfa = 0;
+    int zOrder;
 
 #pragma region Name
 
@@ -78,7 +79,22 @@ void CreatorCameraComponent::SpecificInitComponent(Component* c) {
     }
 #pragma endregion
 
+#pragma region zOrder
 
+    if (parameters_map.find("zOrder") != parameters_map.end()) {
+        if (std::holds_alternative<int>(parameters_map.at("zOrder")->GetVariant())) {
+            zOrder = std::get<int>(parameters_map.at("zOrder")->GetVariant());
+        }
+        else {
+            std::cout << "No se ha especificado ningun valor para zOrder este sera seteado por defecto" << std::endl;
+            zOrder = 0;
+        }
+    }
+    else {
+        std::cout << "No existe ningun parametro zOrder este sera seteado por defecto" << std::endl;
+        zOrder = 0;
+    }
+#pragma endregion
     /* if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
         name = std::get<std::string>(parameters_map.at("name")->GetVariant());
     }
@@ -91,7 +107,7 @@ void CreatorCameraComponent::SpecificInitComponent(Component* c) {
     if (std::holds_alternative<Vector3>(parameters_map.at("offset")->GetVariant())) {
         offset = std::get<Vector3>(parameters_map.at("offset")->GetVariant());
     }*/
-    bool b = cam->InitComponent(name, color, alfa, offset);
+    bool b = cam->InitComponent(name, color, alfa, offset, zOrder);
     if (!b) {
         // Gestion de error
     }
