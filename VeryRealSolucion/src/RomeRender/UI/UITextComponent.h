@@ -16,7 +16,7 @@ class OverlayManager;
 namespace VeryReal {
     class UITransformComponent;
 
-    class UITextComponent : public Component {
+    class VERYREAL_ROMERENDER UITextComponent : public Component {
 
       public:
         //constructora de la clase UITransformComponent
