@@ -6,10 +6,10 @@
 #include "exportPedroBullet.h"
 
 namespace VeryReal {
-    class Vector3;
-    class Entity;
-    class SceneManager;
-    class DebugMode;
+class Vector3;
+class Entity;
+class SceneManager;
+class DebugMode;
 }
 
 
@@ -37,45 +37,42 @@ enum PBMovementType;
 class ColliderComponent;
 
 
-
-
 namespace VeryReal {
 class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
     friend Singleton<PhysicsManager>;
-public:
-   
+
+        public:
     virtual ~PhysicsManager();
 
-
- static bool Init() {
+    static bool Init() {
         PhysicsManager* a = new PhysicsManager();
-    if (a != nullptr) {
-        instance_pointer.reset(a);
-        return true;
+        if (a != nullptr) {
+            instance_pointer.reset(a);
+            return true;
+        }
+        return false;
     }
-    return false;
-}
- bool InitManager();   // Inicializa el mundo de Bullet y otros componentes necesarios
- void Update(float deltaTime);   // Actualiza la simulación física
- void Shutdown();                // Limpia y libera recursos
+    bool InitManager();             // Inicializa el mundo de Bullet y otros componentes necesarios
+    void Update(float deltaTime);   // Actualiza la simulación física
+    void Shutdown();                // Limpia y libera recursos
 
     btDiscreteDynamicsWorld* GetWorld() const;   // Getter para el mundo físico
 
     void AddRigidBody(btRigidBody* body);
-
+    void SetWorldGravity(VeryReal::Vector3 g);
 
     std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
 
-private:
-     PhysicsManager();
-    btDefaultCollisionConfiguration* collisionConfiguration;
-    btCollisionDispatcher* dispatcher;
-    btBroadphaseInterface* overlappingPairCache;
-    btSequentialImpulseConstraintSolver* solver;
-    btDiscreteDynamicsWorld* dynamicsWorld;
-    #ifdef _DEBUG
-    DebugMode* debugger;
-    #endif
+        private:
+    PhysicsManager();
+    btDefaultCollisionConfiguration* collisionConfiguration = nullptr;
+    btCollisionDispatcher* dispatcher = nullptr;
+    btBroadphaseInterface* overlappingPairCache = nullptr;
+    btSequentialImpulseConstraintSolver* solver = nullptr;
+    btDiscreteDynamicsWorld* dynamicsWorld = nullptr;
+#ifdef _DEBUG
+    DebugMode* debugger = nullptr;
+#endif
 
     ///-------//// cosas para hacer pruebas
     //btDiscreteDynamicsWorld* dynamicWorld = nullptr;
@@ -90,10 +87,9 @@ private:
     btVector3 V3ToBtV3(VeryReal::Vector3 conversion) const;
 
     // Otras variables y métodos privados si son necesarios
-   };
+};
 }
 
 /// Singleton instance
 /// @return A pointer of the instance
-inline VeryReal::PhysicsManager& PM() { 
-    return *VeryReal::PhysicsManager::Instance(); }
+inline VeryReal::PhysicsManager& PM() { return *VeryReal::PhysicsManager::Instance(); }

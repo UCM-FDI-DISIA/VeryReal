@@ -8,7 +8,7 @@
 #include "RigidBodyComponent.h"
 
 #include <iostream>
-#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>  //gestion de colisiones, gravedad...
+#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>   //gestion de colisiones, gravedad...
 #include <BulletCollision/CollisionShapes/btSphereShape.h>
 #include <BulletCollision/CollisionShapes/btCylinderShape.h>
 #include <BulletCollision/CollisionShapes/btCapsuleShape.h>
@@ -24,19 +24,17 @@
 #include "RenderManager.h"
 #endif   // _DEBUG
 
-
-VeryReal::PhysicsManager::PhysicsManager(): collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) { }
-
+VeryReal::PhysicsManager::PhysicsManager()
+    : collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr) { }
 
 //btPersistentManifold almacena los puntos de contacto entre dos objetos y proporciona métodos para acceder a ambos cuerpos.
 void callBackEnter(btPersistentManifold* const& manifold) {
 
-      const btCollisionObject* ent1 = manifold->getBody0();
+    const btCollisionObject* ent1 = manifold->getBody0();
     const btCollisionObject* ent2 = manifold->getBody1();
 
     //Si los cuerpos NO son nullptr
     if (ent1 && ent2) {
-
         VeryReal::RigidBodyComponent* rigidBody1 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
         VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent2->getUserPointer());
 
@@ -51,12 +49,10 @@ void callBackEnter(btPersistentManifold* const& manifold) {
 }
 
 void callBackExit(btPersistentManifold* const& manifold) {
-
     const btCollisionObject* ent1 = manifold->getBody0();
     const btCollisionObject* ent2 = manifold->getBody1();
 
     if (ent1 && ent2) {
-
         VeryReal::RigidBodyComponent* rigidBody1 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
         VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent2->getUserPointer());
 
@@ -78,7 +74,6 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     const btCollisionObject* ent2 = static_cast<btCollisionObject*>(obj2);
 
     if (ent1 && ent2) {
-
         VeryReal::RigidBodyComponent* rigidBody1 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
         VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent2->getUserPointer());
 
@@ -92,14 +87,15 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     }
     return false;
 }
+
 bool VeryReal::PhysicsManager::InitManager() {
-    collisionConfiguration=nullptr;
+    collisionConfiguration = nullptr;
 
     dispatcher = nullptr;
     overlappingPairCache = nullptr;
-    solver=nullptr; 
+    solver = nullptr;
     dynamicsWorld = nullptr;
-        // Constructor vac�o
+    // Constructor vac�o
     // Inicializar el mundo de f�sica, configuraci�n de colisiones, etc.
     collisionConfiguration = new btDefaultCollisionConfiguration();
     if (!collisionConfiguration) {
@@ -108,25 +104,25 @@ bool VeryReal::PhysicsManager::InitManager() {
 
     dispatcher = new btCollisionDispatcher(collisionConfiguration);
     if (!dispatcher) {
-        Shutdown();  
+        Shutdown();
         return false;   // Fall� la creaci�n de dispatcher
     }
 
     overlappingPairCache = new btDbvtBroadphase();
     if (!overlappingPairCache) {
-        Shutdown();  
+        Shutdown();
         return false;   // Fall� la creaci�n de overlappingPairCache
     }
 
     solver = new btSequentialImpulseConstraintSolver();
     if (!solver) {
-        Shutdown();  
+        Shutdown();
         return false;   // Fall� la creaci�n de solver
     }
 
     dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
     if (!dynamicsWorld) {
-        Shutdown();  
+        Shutdown();
         return false;   // Fall� la creaci�n de dynamicsWorld
     }
 
@@ -139,25 +135,19 @@ bool VeryReal::PhysicsManager::InitManager() {
     dynamicsWorld->setGravity(btVector3(0, -9.8, 0));
 
 
-
-
-
-
-
-   #ifdef _DEBUG
+#ifdef _DEBUG
     debugger = new DebugMode();
     dynamicsWorld->setDebugDrawer(debugger);
-    #endif             // DEBUG
+#endif             // DEBUG
     return true;   // Inicializaci�n exitosa
-
 }
 
 void VeryReal::PhysicsManager::Update(float deltaTime) {
     if (dynamicsWorld) {
         dynamicsWorld->stepSimulation(deltaTime, 10);
-        #ifdef _DEBUG
-                dynamicsWorld->debugDrawWorld();
-        #endif   // DEBUG
+#ifdef _DEBUG
+        dynamicsWorld->debugDrawWorld();
+#endif   // DEBUG
     }
 }
 
@@ -188,6 +178,8 @@ void VeryReal::PhysicsManager::AddRigidBody(btRigidBody* body) {
     }
 }
 
+void VeryReal::PhysicsManager::SetWorldGravity(VeryReal::Vector3 g) { dynamicsWorld->setGravity({g.GetX(), g.GetY(), g.GetZ()}); }
+
 std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End) {
     auto bt_ray_start = VeryReal::PhysicsManager::Instance()->V3ToBtV3(ray_Start);
     auto bt_ray_end = VeryReal::PhysicsManager::Instance()->V3ToBtV3(ray_End);
@@ -209,22 +201,15 @@ std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vec
                         }
                     }
                 }
-                
             }
         }
-        
     }
     return l_ents_coll;
 }
 
-VeryReal::PhysicsManager::~PhysicsManager() {
-    Shutdown();  
-}
-
-
+VeryReal::PhysicsManager::~PhysicsManager() { Shutdown(); }
 
 ///-------//// cosas para hacer pruebas
-
 
 void VeryReal::PhysicsManager::createGround() {
     // Crear el suelo
@@ -235,18 +220,13 @@ void VeryReal::PhysicsManager::createGround() {
     //dynamicWorld->addRigidBody(groundRigidBody);
 }
 
-
-
 void VeryReal::PhysicsManager::addForce(btRigidBody* body, btVector3 force) {
-    body->btRigidBody::applyForce(force, body->getWorldTransform().getOrigin()); 
+    body->btRigidBody::applyForce(force, body->getWorldTransform().getOrigin());
 }
 
-void VeryReal::PhysicsManager::clearForces(btRigidBody* body, btVector3 force) {
-    body->btRigidBody::clearForces();
-}
+void VeryReal::PhysicsManager::clearForces(btRigidBody* body, btVector3 force) { body->btRigidBody::clearForces(); }
 
 btVector3 VeryReal::PhysicsManager::V3ToBtV3(VeryReal::Vector3 conversion) const {
     btVector3 newVector = btVector3(conversion.GetX(), conversion.GetY(), conversion.GetZ());
     return newVector;
 }
-
