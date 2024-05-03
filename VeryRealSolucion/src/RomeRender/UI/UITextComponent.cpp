@@ -36,10 +36,10 @@ bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font
     char_height = height;
     color = clr;
     text_caption = caption;
-
+    overlay_mgr = VeryReal::RenderManager::Instance()->GetOverlayManager();
     overlay = VeryReal::RenderManager::Instance()->GetOverlayManager()->create(name + "Overlay");
-    text_container = dynamic_cast<Ogre::OverlayContainer*>(VeryReal::RenderManager::Instance()->GetOverlayManager()->createOverlayElement("Panel", name + "Panel"));
-    text_area = static_cast<Ogre::TextAreaOverlayElement*>(VeryReal::RenderManager::Instance()->GetOverlayManager()->createOverlayElement("TextArea", name + "Text"));
+    text_container = dynamic_cast<Ogre::OverlayContainer*>(overlay_mgr->createOverlayElement("Panel", name + "Panel"));
+    text_area = static_cast<Ogre::TextAreaOverlayElement*>(overlay_mgr->createOverlayElement("TextArea", name + "Text"));
     transform = GetEntity()->GetComponent<UITransformComponent>();
 
     //if (!transform) {
