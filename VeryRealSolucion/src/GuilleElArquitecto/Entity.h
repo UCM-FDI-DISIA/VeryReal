@@ -21,7 +21,9 @@ namespace VeryReal {
 		bool is_alive;
 	public:
 		Entity();
+		Entity(const Entity& other);
 		virtual ~Entity();
+
 
 		//Añade componente a la Entidad
 		inline Component* AddComponent(component_name c_name) {

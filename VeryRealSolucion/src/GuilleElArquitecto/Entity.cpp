@@ -1,6 +1,14 @@
 #include "Entity.h"
 #include "Component.h"
 VeryReal::Entity::Entity() : is_alive(true) {}
+
+
+VeryReal::Entity::Entity(const Entity& other) : is_alive(true) {
+    for (auto c : other.components_map) {
+        this->AddComponent(c.first);
+    }
+}
+
 VeryReal::Entity::~Entity() {
     for (auto c : components_map) {
         delete (c.second);

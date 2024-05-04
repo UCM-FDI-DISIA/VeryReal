@@ -8,7 +8,9 @@ VeryReal::Scene::~Scene() {
 }
 
 VeryReal::Entity* VeryReal::Scene::CreatePrefab(std::string prefab_name, entity_name e_name) {
-    Entity* entity = VeryReal::Creator::Instance()->GetPrefab(prefab_name);
+    Entity* entity_prefab = VeryReal::Creator::Instance()->GetPrefab(prefab_name);
+    Entity* entity = new Entity(*entity_prefab);
+	
     if (entity != nullptr) {
         RemoveEntity(e_name);
         entities_map.insert({e_name, entity});
