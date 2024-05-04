@@ -19,7 +19,6 @@ using namespace Ogre;
 
 
 bool MeshRenderComponent::InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname) {
-
     mSM = VeryReal::RenderManager::Instance()->SceneManagerOgree();
     // filesystemlayer_ = VeryReal::RenderManager::Instance()->filesystem_layer;
     material_name = matirialname;
@@ -53,7 +52,6 @@ MeshRenderComponent::~MeshRenderComponent() {
         VeryReal::RenderManager::Instance()->DeleteNode(scene_node);
         VeryReal::RenderManager::Instance()->DeleteEntity(ent_ogre);
         VeryReal::RenderManager::Instance()->SceneManagerOgree()->destroyEntity(ent_ogre);
-
     }
 }
 
@@ -65,15 +63,20 @@ bool MeshRenderComponent::createMesh() {
     return false;
 }
 
- void MeshRenderComponent::Update(const double& dt) {
+void MeshRenderComponent::Update(const double& dt) {
     if (!mStaticObject) setTransform(transform->GetPosition(), transform->GetScale(), transform->GetRotation());
 }
 
+std::string MeshRenderComponent::getMaterialName() { return material_name; }
+
 void MeshRenderComponent::setName(std::string name) { entity_name = name; }
+std::string MeshRenderComponent::getName() { return entity_name; }
 
 void MeshRenderComponent::setMeshName(std::string meshName) { mesh_name = meshName; }
+std::string MeshRenderComponent::getMeshName() { return mesh_name; }
 
 void MeshRenderComponent::setStatic(bool stat) { mStaticObject = stat; }
+bool MeshRenderComponent::getStatic() { return stat; }
 
 void MeshRenderComponent::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector4 rot) {
     // conversor conve;
@@ -92,8 +95,8 @@ void MeshRenderComponent::setScale(VeryReal::Vector3 const& scale) { scene_node-
 
 void MeshRenderComponent::setRotation(VeryReal::Vector4 const& rot) {
 
-   scene_node->setOrientation(VR2OgreQuaternion(rot));
-   this->rotation = rot;
+    scene_node->setOrientation(VR2OgreQuaternion(rot));
+    this->rotation = rot;
 }
 
 void MeshRenderComponent::activeMesh() { scene_node->setVisible(true); }
