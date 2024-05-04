@@ -38,6 +38,8 @@ private:
 
     inline void CallSpecificInit(creator_name c_name, Component* c) { creators_map [c_name]->SpecificInitComponent(c); }
 
+    inline void CallSpecificInitByCopy(creator_name c_name, Component* c, Component* other) { creators_map [c_name]->SpecificInitComponentByCopy(c, other); }
+
     void AddCreator(const creator_name& c_name, CreatorComponent* cretorcomponent);
 
     //Remueve el Creador del mapa de creadores

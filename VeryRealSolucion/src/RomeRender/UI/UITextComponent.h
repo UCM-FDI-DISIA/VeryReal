@@ -55,6 +55,15 @@ namespace VeryReal {
         //Establece la posición y escala del sprite dentro de su overlay.
         void setTextTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool show = true);
 
+        inline std::string GetTextName() { return text_name; }
+        inline std::string GetFontName() { return font_name; }
+        inline int GetZOrder() { return z_order; }
+        inline float GetCharHeight() { return char_height; }
+        inline Vector3 GetColor() { return color; }
+        inline Vector3 GetColorTop() { return color_top; }
+        inline Vector3 GetColorBottom() { return color_bottom; }
+        inline std::string GetTextCaption() { return text_caption; }
+        inline bool GetNormalOrTopBottom() { return normal_or_topbottom; }
 
       protected:
             //Referencia al Overlay de Ogre.
@@ -90,6 +99,8 @@ namespace VeryReal {
 
             //Color de la parte inferior del texto.
             Vector3 color_bottom;
+
+            bool normal_or_topbottom;
 
             //Texto que será renderizado.
             std::string text_caption;

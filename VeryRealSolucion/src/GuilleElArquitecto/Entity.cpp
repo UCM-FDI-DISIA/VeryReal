@@ -5,7 +5,7 @@ VeryReal::Entity::Entity() : is_alive(true) {}
 
 VeryReal::Entity::Entity(const Entity& other) : is_alive(true) {
     for (auto c : other.components_map) {
-        this->AddComponent(c.first);
+        this->AddComponentByCopy(c.first, c.second);
     }
 }
 

@@ -10,10 +10,10 @@ TransformComponent::TransformComponent() {
 TransformComponent::~TransformComponent() {
 
 }
-bool TransformComponent::InitComponent(int a,Vector3 position, Vector3 rotation, Vector3 scale) {
-	this->a = a;
+bool TransformComponent::InitComponent(Vector3 position, Vector3 rotation, Vector3 scale) {
 	this->position = position;
 	this->rotation = Vector4(rotation);
+    this->rotationInit = rotation;
 	this->scale = scale;
 	return true;
 }

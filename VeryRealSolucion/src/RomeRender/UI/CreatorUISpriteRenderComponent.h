@@ -10,6 +10,7 @@ class VERYREAL_ROMERENDER CreatorUISpriteRenderComponent : public CreatorCompone
     virtual ~CreatorUISpriteRenderComponent() { }
 		Component* CreatorSpecificComponent() override;
         void SpecificInitComponent(Component* c) override;
+        void SpecificInitComponentByCopy(Component* c, Component* other) override;
 	};
 };
 

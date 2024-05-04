@@ -10,6 +10,7 @@ class VERYREAL_ROMERENDER CreatorUITextComponent : public CreatorComponent
 		virtual ~CreatorUITextComponent() { }
 		Component* CreatorSpecificComponent() override;
         void SpecificInitComponent(Component* c) override;
+        void SpecificInitComponentByCopy(Component* c, Component* other) override;
 
 	};
 };

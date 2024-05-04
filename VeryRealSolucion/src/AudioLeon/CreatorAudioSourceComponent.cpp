@@ -156,3 +156,14 @@ void VeryReal::CreatorAudioSourceComponent::SpecificInitComponent(Component* c) 
     static_cast<AudioSourceComponent*>(c)->InitComponent(name, path, onstart, groupchannel, volume, threed, loop, mindistance, maxdistance);
     static_cast<AudioSourceComponent*>(c)->Start();
 }
+
+void VeryReal::CreatorAudioSourceComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+    string name, path, groupchannel;
+    bool onstart = false, threed = false, loop = false;
+    float volume = 0.1f, mindistance = 1.0f, maxdistance = 60.0f;
+    AudioSourceComponent* audio = static_cast<AudioSourceComponent*>(c);
+    AudioSourceComponent* copia = static_cast<AudioSourceComponent*>(other);
+    audio->InitComponent(copia->GetSoundName(), copia->GetSoundPath(), copia->GetPlayOnStart(), copia->GetSoundGroup(), copia->GetVolume(),
+                         copia->GetIsThreeD(), copia->GetIsLoop(), copia->GetMinDistance(), copia->GetMaxDistance());
+    audio->Start();
+}

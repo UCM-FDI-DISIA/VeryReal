@@ -32,3 +32,7 @@ void CreatorAnimatorComponent::SpecificInitComponent(Component* c) {
         //Gestionar error
     }
 }
+
+void CreatorAnimatorComponent::SpecificInitComponentByCopy(Component* c, Component* other) { 
+
+}

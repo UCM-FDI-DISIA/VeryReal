@@ -165,3 +165,7 @@ void CreatorLightComponent::SpecificInitComponent(Component* c) {
     bool b =
         static_cast<LightComponent*>(c)->InitComponent(type, diffusecolour, shadowfardist, shadowdist, ineerangle, outerangle, nearclipdist, shdws);
 }
+
+void CreatorLightComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+
+}

@@ -139,3 +139,14 @@ void VeryReal::CreatorUIProgressBarComponent::SpecificInitComponent(Component* c
         //Gestionar error
     }
 }
+
+void VeryReal::CreatorUIProgressBarComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+    UIProgressBarComponent* progressbar = static_cast<UIProgressBarComponent*>(c);
+    UIProgressBarComponent* copia = static_cast<UIProgressBarComponent*>(other);
+
+    bool b = progressbar->InitComponent(copia->getMaximun(), copia->getProgress(), copia->GetProgressBarName(), copia->GetFrameMaterialName(),
+                                        copia->GetContententMaterialName(), copia->GetZOrder());
+    if (!b) {
+        //Gestionar error
+    }
+}

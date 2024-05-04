@@ -9,6 +9,7 @@ namespace VeryReal {
 		virtual ~CreatorAudioSourceComponent() { }
 		Component* CreatorSpecificComponent() override;
         void SpecificInitComponent(Component* c) override;
+        void SpecificInitComponentByCopy(Component* c, Component* other) override;
 	};
 }
 

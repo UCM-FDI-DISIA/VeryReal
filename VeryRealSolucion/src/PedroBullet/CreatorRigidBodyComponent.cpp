@@ -168,6 +168,17 @@ void CreatorRigidBodyComponent::SpecificInitComponent(Component* c) {
         // Gestionar error
     }
 }
+
+void CreatorRigidBodyComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+    RigidBodyComponent* r = static_cast<RigidBodyComponent*>(c);
+    RigidBodyComponent* copia = static_cast<RigidBodyComponent*>(other);
+
+    bool b = r->InitComponent(copia->getShapeTypeVar(), copia->GetMass(), copia->GetFriction(), copia->GetRestitution(), copia->GetMovementType(),
+                              copia->GetIsTrigger(), copia->GetSizeVar(), copia->getMask(), copia->getGroup());
+    if (!b) {
+        // Gestionar error
+    }
+}
 //mascara y grupo-------
 //grupos: 1, 2, 4, 8, 16
 //mascara: suma de los grupos que colisionan. ej:3 colisiona con el grupo 1 y 2.

@@ -72,7 +72,17 @@ void CreatorTransformComponent::SpecificInitComponent(Component* c) {
         scale = Vector3(1, 1, 1);
     }
 #pragma endregion
-    bool b = t->InitComponent(a, position, rotation, scale);
+    bool b = t->InitComponent(position, rotation, scale);
+    if (!b) {
+    }   //FALTA GESTION DE ERRORES
+}
+
+void CreatorTransformComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+    Vector3 position, rotation, scale;
+    int a = 0;
+    TransformComponent* t = static_cast<TransformComponent*>(c);
+    TransformComponent* copia = static_cast<TransformComponent*>(other);
+    bool b = t->InitComponent(copia->GetPosition(), copia->GetRotationInit(), copia->GetScale());
     if (!b) {
     }   //FALTA GESTION DE ERRORES
 }

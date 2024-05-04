@@ -10,6 +10,7 @@ namespace VeryReal {
 		virtual ~CreatorMeshRenderComponent(){}
 		Component* CreatorSpecificComponent() override;
         void SpecificInitComponent(Component* c) override;
+       void SpecificInitComponentByCopy(Component* c, Component* other) override;
 	};
 }
 

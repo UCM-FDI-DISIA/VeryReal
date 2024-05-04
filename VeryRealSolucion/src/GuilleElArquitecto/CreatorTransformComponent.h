@@ -9,6 +9,7 @@ class VERYREAL_GUILLEELARQUITECTO CreatorTransformComponent : public CreatorComp
 		virtual ~CreatorTransformComponent() {}
 		Component* CreatorSpecificComponent() override;
         void SpecificInitComponent(Component* c) override;
+        void SpecificInitComponentByCopy(Component* c, Component* other) override;
 	};
 };
 

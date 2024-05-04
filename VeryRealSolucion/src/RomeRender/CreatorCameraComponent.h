@@ -10,6 +10,7 @@ class VERYREAL_ROMERENDER CreatorCameraComponent : public CreatorComponent
         virtual ~CreatorCameraComponent() {};
         Component* CreatorSpecificComponent() override;
         void SpecificInitComponent(Component* c) override;
+        void SpecificInitComponentByCopy(Component* c, Component* other) override;
     };
 };
 

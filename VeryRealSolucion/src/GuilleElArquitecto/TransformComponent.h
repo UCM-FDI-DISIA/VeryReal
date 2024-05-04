@@ -9,17 +9,18 @@ namespace VeryReal {
 	class VERYREAL_GUILLEELARQUITECTO TransformComponent : public Component {
 	private:
 		Vector3 position;
+		Vector3 rotationInit;
 		Vector4 rotation;
 		Vector3 scale;
 		Vector3 velocity;
-		int a = 0;
 	public:
 		TransformComponent();
-		bool InitComponent(int a,Vector3 position, Vector3 rotation, Vector3 scale);
+		bool InitComponent(Vector3 position, Vector3 rotation, Vector3 scale);
 		virtual ~TransformComponent();
 
 		inline Vector3 GetPosition() { return position; }
 		inline Vector4 GetRotation() { return rotation; }
+        inline Vector3 GetRotationInit() { return rotationInit; }
 		inline Vector3 GetScale() { return scale; }
 		inline Vector3 GetVelocity() { return velocity; }
 

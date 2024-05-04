@@ -95,3 +95,6 @@ void VeryReal::CreatorMeshRenderComponent::SpecificInitComponent(Component* c) {
         // Gestion error
     }
 }
+void VeryReal::CreatorMeshRenderComponent::SpecificInitComponentByCopy(VeryReal::Component* c, VeryReal::Component* other) {
+
+}

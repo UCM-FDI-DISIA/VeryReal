@@ -8,5 +8,6 @@ class  VERYREAL_AUDIOLEON  CreatorAudioListenerComponent : public CreatorCompone
     virtual ~CreatorAudioListenerComponent() { }
     Component* CreatorSpecificComponent() override;
     void SpecificInitComponent(Component* c) override;
+    void SpecificInitComponentByCopy(Component* c, Component* other) override;
 };
 }

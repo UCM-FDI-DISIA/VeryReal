@@ -73,3 +73,13 @@ void CreatorUISpriteRenderComponent::SpecificInitComponent(Component* c) {
         //Gestionar error
     }
 }
+
+void CreatorUISpriteRenderComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+    UISpriteRendererComponent* a = static_cast<UISpriteRendererComponent*>(c);
+    UISpriteRendererComponent* copia = static_cast<UISpriteRendererComponent*>(other);
+
+    bool b = a->InitComponent(copia->GetSpriteName(), copia->GetMaterialName(), copia->GetZOrder());
+    if (!b) {
+        //Gestionar error
+    }
+}

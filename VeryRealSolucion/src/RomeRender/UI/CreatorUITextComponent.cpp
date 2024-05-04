@@ -132,3 +132,22 @@ void CreatorUITextComponent::SpecificInitComponent(Component* c) {
         //Gestionar error
     }
 }
+
+void CreatorUITextComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+    UITextComponent* a = static_cast<UITextComponent*>(c);
+    UITextComponent* copia = static_cast<UITextComponent*>(other);
+
+    bool b;
+    if (copia->GetNormalOrTopBottom()) {
+        b = a->InitComponent(copia->GetTextName(), copia->GetFontName(), copia->GetZOrder(), copia->GetCharHeight(), copia->GetColor(), 
+            copia->GetTextCaption());
+    }
+    else {
+        b = a->InitComponent(copia->GetTextName(), copia->GetFontName(), copia->GetZOrder(), copia->GetCharHeight(), copia->GetColorBottom(),
+            copia->GetColorTop(), copia->GetTextCaption());
+    }
+
+    if (!b) {
+        //Gestionar error
+    }
+}

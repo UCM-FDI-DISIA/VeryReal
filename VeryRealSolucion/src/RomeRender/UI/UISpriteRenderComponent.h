@@ -43,6 +43,11 @@ namespace VeryReal {
             //metodo que cambia la imagen de posicion
             void setPosition(VeryReal::Vector2 pos);
 
+            inline std::string GetSpriteName() { return sprite_name; }
+            inline std::string GetMaterialName() { return material_name; }
+            inline int GetZOrder() { return z_order; }
+
+
           protected:      
 
               //Referencia al Overlay de Ogre.

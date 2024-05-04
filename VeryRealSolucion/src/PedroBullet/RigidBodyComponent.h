@@ -61,6 +61,7 @@ class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
     float GetRestitution();
 
     void SetMovementType(PBMovementType mT);
+    inline int GetMovementType() { return movementType; }
 
     // Obtiene el btRigidBody
     btRigidBody* GetBulletRigidBody();
@@ -79,12 +80,17 @@ class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
 
     void Decelerate(float percent);
 
+    inline int getShapeTypeVar() { return shape_type_var; }
+    inline bool GetIsTrigger() { return isTrigger; }
+    inline Vector3 GetSizeVar() { return size_var; }
+
         private:
     TransformComponent* transformComponent = nullptr;
     btCollisionShape* collisionShape = nullptr;
     btRigidBody* rigidBody = nullptr;
     std::unique_ptr<btDefaultMotionState> motionState;
 
+    int shape_type_var = 0;
     //grupos y mascaras de colision
     int mask = 0;
     int group = 0;
@@ -93,6 +99,7 @@ class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
     float mass = 1;
     float friction = 0;
     float restitution = 0;
+    Vector3 size_var;
     PBMovementType movementType;
     ColliderComponent* collider = nullptr;
     bool InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int mask, int group);

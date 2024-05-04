@@ -12,3 +12,14 @@ void CreatorButtonComponent::SpecificInitComponent(Component* c) {
         // Gestion de error
     }
 }
+
+void CreatorButtonComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+    UIButtonComponent* progressbar = static_cast<UIButtonComponent*>(c);
+    UIButtonComponent* copia = static_cast<UIButtonComponent*>(other);
+
+    // Pillar las variables de la copia si se necesitasen
+    bool b = progressbar->InitComponent();
+    if (!b) {
+        // Gestion de error
+    }
+}

@@ -190,6 +190,15 @@ typedef unsigned int FMOD_MODE;
 		//Devuelve el valor de volumen almacenado en este componente.
 		float GetVolume();
 
+		inline std::string GetSoundName() { return sound_name; }
+        inline std::string GetSoundPath() { return sound_path; }
+        inline bool GetPlayOnStart() { return play_on_start; }
+        inline std::string GetSoundGroup() { return sound_group; }
+        inline bool GetIsThreeD() { return is_three_d; }
+        inline bool GetIsLoop() { return loop; }
+        inline float GetMinDistance() { return min_distance; }
+        inline float GetMaxDistance() { return max_distance; }
+
 
 	private:
 		//El volumen del sonido.

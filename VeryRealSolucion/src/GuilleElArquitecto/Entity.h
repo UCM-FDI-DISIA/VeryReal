@@ -27,7 +27,6 @@ namespace VeryReal {
 
 		//Añade componente a la Entidad
 		inline Component* AddComponent(component_name c_name) {
-			/*	T* component = new T(forward<Ts>(args)...);*/
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);
             Component* component;
@@ -39,6 +38,20 @@ namespace VeryReal {
 			//quizas initcomponentpai
 			return component;
 		}
+
+		//Añade componente a la Entidad
+        inline Component* AddComponentByCopy(component_name c_name, Component* other) {
+            //si quieres añadir de nuevo un componente ya existente, lo sobrescribe
+            RemoveComponent(c_name);
+
+            Component* component;
+            component = Creator::Instance()->CallSpecificCreator(c_name);
+            component->SetEntity(this);
+            Creator::Instance()->CallSpecificInitByCopy(c_name, component, other);
+
+            components_map.insert({c_name, component});
+            return component;
+        }
 
 		//Remueve el Componente de la Entidad en la que se encuentra
 		void RemoveComponent(component_name c_name);

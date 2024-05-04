@@ -13,12 +13,13 @@ RigidBodyComponent::RigidBodyComponent() : mass(0), friction(0), restitution(0),
 
 bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType, bool trigger, Vector3 size,
                                        int mask, int group) {
-    // this->shapeType = shapeType;
+    this->shape_type_var = shapeType;
     this->mass = mass;
     this->friction = friction;
     this->restitution = restitution;
     this->movementType = (PBMovementType)movementType;
     this->isTrigger = trigger;
+    this->size_var = size;
     return InitializeRigidBody((PBShapes)shapeType, this->movementType, trigger, size, mask, group);
 }
 
@@ -244,6 +245,7 @@ void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT) {
     if (mT == MOVEMENT_TYPE_DYNAMIC) rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_DYNAMIC_OBJECT);
     if (mT == MOVEMENT_TYPE_STATIC) rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
     if (mT == MOVEMENT_TYPE_KINEMATIC) rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
+    movementType = mT;
 }
 
 void VeryReal::RigidBodyComponent::Decelerate(float percent) {

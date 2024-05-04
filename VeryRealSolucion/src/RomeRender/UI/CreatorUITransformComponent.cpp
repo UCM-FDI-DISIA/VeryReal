@@ -74,3 +74,7 @@ void CreatorUITransformComponent::SpecificInitComponent(Component* c) {
         //Gestionar error
     }
 }
+
+void CreatorUITransformComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+    
+}

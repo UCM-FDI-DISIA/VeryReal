@@ -30,6 +30,7 @@ VeryReal::UITextComponent::~UITextComponent() {
 
 bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 clr,
                                               std::string caption) {
+    normal_or_topbottom = true;
     text_name = name;
     font_name = font;
     z_order = order;
@@ -65,6 +66,7 @@ bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font
 
 bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 bottomcolor,
                                               VeryReal::Vector3 topcolor, std::string caption) {
+    normal_or_topbottom = false;
     text_name = name;
     font_name = font;
     z_order = order;

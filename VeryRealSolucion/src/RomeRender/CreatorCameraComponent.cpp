@@ -112,3 +112,7 @@ void CreatorCameraComponent::SpecificInitComponent(Component* c) {
         // Gestion de error
     }
 }
+
+void CreatorCameraComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+
+}

@@ -46,6 +46,11 @@ namespace VeryReal {
         //Establece la posici�n y escala de la progress bar dentro de su overlay.
         void setProgressBarTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool show = true);
 
+        inline std::string GetProgressBarName() { return progress_bar_name; }
+        inline std::string GetFrameMaterialName() { return frame_material_name; }
+        inline std::string GetContententMaterialName() { return content_material_name; }
+        inline int GetZOrder() { return z_order; }
+
       private:
         //Referencia al Overlay de Ogre.
         Ogre::Overlay* overlay = nullptr;
