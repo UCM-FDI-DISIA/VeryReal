@@ -242,8 +242,18 @@ void VeryReal::RigidBodyComponent::SetRestitution(float n) { restitution = n; }
 float VeryReal::RigidBodyComponent::GetRestitution() { return restitution; }
 
 void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT) {
-    if (mT == MOVEMENT_TYPE_DYNAMIC) rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_DYNAMIC_OBJECT);
-    if (mT == MOVEMENT_TYPE_STATIC) rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
+    if (mT == MOVEMENT_TYPE_DYNAMIC) 
+    {
+        rigidBody->setAngularFactor(btVector3(0, 0, 0));
+        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_DYNAMIC_OBJECT);
+    }
+    if (mT == MOVEMENT_TYPE_STATIC) 
+    {
+
+        rigidBody->setAngularFactor(btVector3(0, 0, 0));
+        rigidBody->setLinearFactor(btVector3(0, 0, 0));
+        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
+    }
     if (mT == MOVEMENT_TYPE_KINEMATIC) rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
     movementType = mT;
 }
