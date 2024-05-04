@@ -223,7 +223,9 @@ void VeryReal::RenderManager::DeleteNode(Ogre::SceneNode* nod) {
 
     // delete(nod);
 }
-void VeryReal::RenderManager::DeleteEntity(Ogre::Entity* nod) { Ogre::MeshManager::getSingleton().remove(nod->getMesh()->getName()); }
+void VeryReal::RenderManager::DeleteEntity(Ogre::Entity* nod) {
+    //Ogre::MeshManager::getSingleton().remove(nod->getMesh()->getName());
+}
 
 
 Ogre::ManualObject* VeryReal::RenderManager::createManualObject(Ogre::SceneNode* node) {
