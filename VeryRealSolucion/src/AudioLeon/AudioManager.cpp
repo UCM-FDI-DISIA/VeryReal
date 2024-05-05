@@ -13,7 +13,7 @@ void AudioManager::InitManager() {
     result = FMOD::System_Create(&sound_system);   // Create the main system object.
     CheckFMODResult(result);
 
-    result = sound_system->init(MAX_CHANNELS, FMOD_INIT_NORMAL | FMOD_INIT_3D_RIGHTHANDED, 0);   // Initialize FMOD.
+    result = sound_system->init(MAX_CHANNELS, FMOD_INIT_3D_RIGHTHANDED, 0);   // Initialize FMOD.
     CheckFMODResult(result);
 
     result = sound_system->set3DSettings(DOPPLER_SCALE, DISTANCE_FACTOR, ROLLOFF_SCALE);
@@ -33,7 +33,7 @@ void AudioManager::InitManager() {
 
     channels_vector.reserve(MAX_CHANNELS);
     for (int i = 0; i < MAX_CHANNELS; i++) {
-        channels_vector.push_back(nullptr);
+        channels_vector.push_back(0);
     }
 
     InitAudioRecording();
@@ -133,7 +133,7 @@ AudioManager::~AudioManager() {
     CheckFMODResult(result);
 }
 
-void AudioManager::SystemRefresh(const double& dt) {
+void AudioManager::Update(const double& dt) {
     result = sound_system->update();
     CheckFMODResult(result);
 }

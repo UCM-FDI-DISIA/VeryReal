@@ -92,7 +92,7 @@ class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
     //Inicializacion de los recursos necesarios para recoger input del microfono
     void InitAudioRecording();
     //Actualiza el sistema de sonido en cada bucle del juego.
-    void SystemRefresh(const double& dt);
+    void Update(const double& dt);
 
     //Convierte un Vector3 propio del motor a un FMOD_VECTOR
     FMOD_VECTOR V3ToFmodV3(VeryReal::Vector3 conversion) const;

@@ -51,7 +51,7 @@ bool AudioSourceComponent::Create3DSound() {
     if (AM().CheckFMODResult(this->result)) {
         std::pair<std::string, FMOD::Sound*> newSound(sound_name, newSoundHandle);
         AM().AddNewSound(newSound);
-
+        SetMinMaxDistance(min_distance, max_distance);
 #ifdef _DEBUG
         std::cout << "Sound created."
                   << "\n";
@@ -80,6 +80,7 @@ bool AudioSourceComponent::CreateNormalSound() {
     if (AM().CheckFMODResult(this->result)) {
         std::pair<std::string, FMOD::Sound*> newSound(sound_name, newSoundHandle);
         AM().AddNewSound(newSound);
+        SetMinMaxDistance(min_distance, max_distance);
 #ifdef _DEBUG
         std::cout << "Sound created."
                   << "\n";
