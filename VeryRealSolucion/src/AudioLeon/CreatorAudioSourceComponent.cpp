@@ -49,12 +49,12 @@ void VeryReal::CreatorAudioSourceComponent::SpecificInitComponent(Component* c) 
         }
         else {
             std::cout << "No se ha especificado ningun valor para groupchannel este sera seteado por defecto" << std::endl;
-            groupchannel = "Default";
+            groupchannel = "effects";
         }
     }
     else {
         std::cout << "No existe ningun parametro groupchannel este sera seteado por defecto" << std::endl;
-        groupchannel = "Default";
+        groupchannel = "effects";
     }
 #pragma endregion
 #pragma region OnStart
