@@ -245,6 +245,7 @@ void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT) {
     if (mT == MOVEMENT_TYPE_DYNAMIC) 
     {
         rigidBody->setAngularFactor(btVector3(0, 0, 0));
+        rigidBody->setActivationState(4);
         rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_DYNAMIC_OBJECT);
     }
     if (mT == MOVEMENT_TYPE_STATIC) 
