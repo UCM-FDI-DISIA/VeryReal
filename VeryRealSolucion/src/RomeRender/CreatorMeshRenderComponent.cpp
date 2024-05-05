@@ -100,7 +100,7 @@ void VeryReal::CreatorMeshRenderComponent::SpecificInitComponentByCopy(VeryReal:
     MeshRenderComponent* a = static_cast<MeshRenderComponent*>(c);
     MeshRenderComponent* copia = static_cast<MeshRenderComponent*>(other);
 
-    bool isstatic = copia->getStatic();
+    bool isstatic = false;
     std::string modelname = copia->getMeshName(), entityname = copia->getNameEntity(), materialname = copia->getMaterialName();
 
     bool b = a->InitComponent(isstatic, modelname, entityname, materialname);
