@@ -142,7 +142,7 @@ void VeryReal::UITextComponent::setBottomColor(VeryReal::Vector3 newColor) {
 }
 
 void VeryReal::UITextComponent::setTextTransform(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool show) {
-    text_area->setPosition(pos.GetX(), pos.GetY());
+    text_area->setPosition(pos.GetX() + text_offset, pos.GetY());
     position = pos;
     text_area->setDimensions(sc.GetX(), sc.GetY());
     scale = sc;

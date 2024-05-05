@@ -116,6 +116,9 @@ namespace VeryReal {
 
             //Transform de UI asociado a este sprite.
             UITransformComponent* transform = nullptr;
+
+            // Offset para ajustar el texto
+            float text_offset = 0.1;
     };
 }
 #endif // UITEXTCOMPONENT
