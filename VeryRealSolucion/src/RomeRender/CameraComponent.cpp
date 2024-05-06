@@ -23,6 +23,7 @@ CameraComponent::~CameraComponent() {
 bool CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset, int zOrder,VeryReal::Vector3 position) {
     //camara
     mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
+    this->offset = offset;
     mNode = mgr->getRootSceneNode()->createChildSceneNode();   //nodo  de la camara
     mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
     mNode->setPosition(position.GetX() + offset.GetX(), position.GetY() + offset.GetY(), position.GetZ() +offset.GetZ());
@@ -43,8 +44,7 @@ void CameraComponent::Update(const double& dt) {
     if (ent != nullptr) {
         VeryReal::Vector3 v = ent->GetComponent<TransformComponent>()->GetPosition();
         
-        mNode->setPosition(v.GetX(), v.GetY(), v.GetZ());
- 
+       mNode->setPosition(v.GetX() + this->offset.GetX(), v.GetY() + this->offset.GetY(), v.GetZ() + this->offset.GetZ());
         //mNode->roll(-mNode->getOrientation().getRoll());
     }
 }

@@ -49,7 +49,8 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
     btTransform startTransform;
     startTransform.setIdentity();
     startTransform.setOrigin(btVector3(pos.GetX(), pos.GetY(), pos.GetZ()));
-
+    startTransform.setRotation(btQuaternion(transformComponent->GetRotation().GetX(), transformComponent->GetRotation().GetY(),
+                                            transformComponent->GetRotation().GetZ(), transformComponent->GetRotation().GetW()));
     motionState.reset(new btDefaultMotionState(startTransform));
     btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState.get(), collisionShape, localInertia);   //
     rbInfo.m_restitution = restitution;

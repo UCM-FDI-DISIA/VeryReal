@@ -4,6 +4,7 @@
 #include "Component.h"
 #include <string>
 #include "exportRomeRender.h"
+#include "Vector3.h"
 
 namespace Ogre {
 class Camera;
@@ -92,6 +93,7 @@ class CameraComponent : public Component {
     Ogre::Viewport* vewport = nullptr;
     Ogre::SceneManager* mgr = nullptr;
     VeryReal::Entity* ent = nullptr;
+    VeryReal::Vector3 offset;
 };
 }
 
