@@ -62,6 +62,9 @@ class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
     void SetWorldGravity(VeryReal::Vector3 g);
     
     std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
+    #ifdef _DEBUG
+        inline void SeeDebugColliders(bool newValue) { seeObjects = newValue; }
+    #endif
 
         private:
     PhysicsManager();
@@ -73,7 +76,7 @@ class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
 #ifdef _DEBUG
     DebugMode* debugger = nullptr;
     bool seeObjects = true;
-    inline void SeeDebugColliders(bool newValue) { seeObjects = newValue; }
+
 #endif
 
     ///-------//// cosas para hacer pruebas
