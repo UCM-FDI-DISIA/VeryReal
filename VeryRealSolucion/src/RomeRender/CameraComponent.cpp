@@ -11,7 +11,6 @@
 #include "TransformComponent.h"
 #include "Entity.h"
 #include <Vector4.h>
-#include "../../dependencies/Bullet/Src/src/LinearMath/btVector3.h"
 
 using namespace VeryReal;
 using namespace Ogre;
