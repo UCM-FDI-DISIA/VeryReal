@@ -4,8 +4,16 @@ VeryReal::Entity::Entity() : is_alive(true) {}
 
 
 VeryReal::Entity::Entity(const Entity& other) : is_alive(true) {
-    for (auto c : other.components_map) {
-        this->AddComponentByCopy(c.first, c.second);
+    int i = 1;
+    for (auto it = other.components_map.begin(); it != other.components_map.end();) {
+        if ((*it).second->GetOrden() == i) {
+            this->AddComponentByCopy((*it).first, (*it).second);
+            it = other.components_map.begin();
+            ++i;
+        }
+        else {
+            ++it;
+        }
     }
 }
 

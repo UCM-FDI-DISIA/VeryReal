@@ -12,6 +12,9 @@ namespace VeryReal {
 	private:
 		bool active = true;
 		VeryReal::Entity* entity = nullptr;
+
+	protected: 
+		int orden;
 		
 	public:
 		Component() {}
@@ -25,6 +28,8 @@ namespace VeryReal {
 		//El componente necesita saber cual es su entidad, para acceder a otros componentes de esta
 		inline void SetEntity(VeryReal::Entity* entity) { this->entity = entity; }
 		inline VeryReal::Entity* GetEntity() { return entity; }
+		inline int GetOrden() { return orden; }
+		inline void SetOrden(int ord) { orden = ord; }
 
 		virtual void OnCollisionEnter(Entity* other) {};
 		virtual void OnCollisionStay(Entity* other) {};

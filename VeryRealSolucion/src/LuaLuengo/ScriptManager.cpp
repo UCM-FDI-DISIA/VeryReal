@@ -81,7 +81,7 @@ void ScriptManager::ReadScene(std::string namescene,bool active)
 								else {   
 									std::cerr << "Error: parameters no es una tabla" << std::endl;   
 								}
-								VeryReal::Component* c = e->AddComponent(componentname); // Comentar para hacer pruebas con otros tipos de datos
+								VeryReal::Component* c = e->AddComponent(componentname, j); // Comentar para hacer pruebas con otros tipos de datos
                                
 							//	std::cout << "Tiene componente?[1=SI, 0=NO]: " << VeryReal::SceneManager::Instance()->GetScene("PlayScene")->GetEntity(entityname)->HasComponent(componentname) << "\n";             
 							}
@@ -179,7 +179,7 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
 }
 
 void ScriptManager::ReadPrefabs() {
-    std::string a = "../../../bin/LuaFiles/Prefabs.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
+    std::string a = "LuaFiles/Prefabs.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
     int script_status = luaL_dofile(lua_state, a.c_str());
     Error(script_status);
 
@@ -215,7 +215,7 @@ void ScriptManager::ReadPrefabs() {
                                 else {
                                     std::cerr << "Error: parameters no es una tabla" << std::endl;
                                 }
-                                VeryReal::Component* c = e->AddComponent(componentname);   // Comentar para hacer pruebas con otros tipos de datos
+                                VeryReal::Component* c = e->AddComponent(componentname, j);   // Comentar para hacer pruebas con otros tipos de datos
                             }
                             else {   //ERROR
                             }
