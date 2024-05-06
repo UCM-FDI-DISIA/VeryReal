@@ -20,12 +20,12 @@ CameraComponent::~CameraComponent() {
        
 }
 
-bool CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset, int zOrder) {
+bool CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset, int zOrder,VeryReal::Vector3 position) {
     //camara
     mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
     mNode = mgr->getRootSceneNode()->createChildSceneNode();   //nodo  de la camara
     mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-    mNode->setPosition(0, 0, 30);
+    mNode->setPosition(position.GetX() + offset.GetX(), position.GetY() + offset.GetY(), position.GetZ() +offset.GetZ());
     camara = mgr->createCamera(name);   // objeto y camara en si
     camara->setNearClipDistance(1);     //queremos que serenderice lo mas cerca posible desde la camara
     mNode->attachObject(camara);

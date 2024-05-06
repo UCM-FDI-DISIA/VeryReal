@@ -8,6 +8,7 @@ void CreatorCameraComponent::SpecificInitComponent(Component* c) {
     std::string name;
     Vector3 offset;
     Vector3 color;
+    Vector3 position;
     float alfa = 0;
     int zOrder;
 
@@ -42,6 +43,23 @@ void CreatorCameraComponent::SpecificInitComponent(Component* c) {
     else {
         std::cout << "No existe ningun parametro color este sera seteado por defecto" << std::endl;
         color = Vector3(0, 0, 0);
+    }
+#pragma endregion
+
+ #pragma region Position
+
+    if (parameters_map.find("position") != parameters_map.end()) {
+        if (std::holds_alternative<Vector3>(parameters_map.at("position")->GetVariant())) {
+            position = std::get<Vector3>(parameters_map.at("position")->GetVariant());
+        }
+        else {
+            std::cout << "No se ha especificado ningun valor para position este sera seteado por defecto" << std::endl;
+            position = Vector3(0, 0, 0);
+        }
+    }
+    else {
+        std::cout << "No existe ningun parametro position este sera seteado por defecto" << std::endl;
+        position = Vector3(0, 0, 0);
     }
 #pragma endregion
 
@@ -95,19 +113,8 @@ void CreatorCameraComponent::SpecificInitComponent(Component* c) {
         zOrder = 0;
     }
 #pragma endregion
-    /* if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
-        name = std::get<std::string>(parameters_map.at("name")->GetVariant());
-    }
-    if (std::holds_alternative<Vector3>(parameters_map.at("color")->GetVariant())) {
-        color = std::get<Vector3>(parameters_map.at("color")->GetVariant());
-    }
-    if (std::holds_alternative<float>(parameters_map.at("alfa")->GetVariant())) {
-        alfa = std::get<float>(parameters_map.at("alfa")->GetVariant());
-    }
-    if (std::holds_alternative<Vector3>(parameters_map.at("offset")->GetVariant())) {
-        offset = std::get<Vector3>(parameters_map.at("offset")->GetVariant());
-    }*/
-    bool b = cam->InitComponent(name, color, alfa, offset, zOrder);
+
+    bool b = cam->InitComponent(name, color, alfa, offset, zOrder,position);
     if (!b) {
         // Gestion de error
     }
