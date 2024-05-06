@@ -23,7 +23,7 @@ LightComponent::~LightComponent() {
 }
 
 bool LightComponent::InitComponent(int type, Vector3 const& diffusecolour, float shadowfardist, float shadowdist, float ineerangle, float outerangle,
-                                   float nearclipdist, bool shdws) {
+                                   float nearclipdist, bool shdws, float intensity) {
 	if(GetEntity()->HasComponent("TransformComponent"))trans = GetEntity()->GetComponent<TransformComponent>();
 	else {
 		#ifdef DEBUG_MODE
@@ -44,6 +44,7 @@ bool LightComponent::InitComponent(int type, Vector3 const& diffusecolour, float
 	SetSpotlightNearClipDistance(nearclipdist);
 	ActivateShadows(shdws);
 	mNode->attachObject(light);
+    light->setPowerScale(Ogre::Real(intensity));
 	return true;
 }
 
