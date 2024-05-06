@@ -59,9 +59,11 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
 
     //Inicializar el componente colider
     collider = this->GetEntity()->GetComponent<ColliderComponent>();
-
-    if (!collider) {   //ERROR
-        return false;
+    if (!collider) 
+    {
+        #ifdef _DEBUG
+                std::cout << "No se ha incluido collider, la comprobacion de las colisiones se omitira" << std::endl;
+        #endif   // DEBUG
     }
     rigidBody->setUserPointer(this);
 
