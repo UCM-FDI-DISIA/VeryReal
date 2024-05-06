@@ -179,6 +179,12 @@ void VeryReal::PhysicsManager::AddRigidBody(btRigidBody* body) {
     }
 }
 
+void VeryReal::PhysicsManager::DeleteRigidBody(btRigidBody* body) {
+    if (dynamicsWorld && body) {
+        dynamicsWorld->removeRigidBody(body);
+    }
+}
+
 void VeryReal::PhysicsManager::SetWorldGravity(VeryReal::Vector3 g) { dynamicsWorld->setGravity({g.GetX(), g.GetY(), g.GetZ()}); }
 
 std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End) {

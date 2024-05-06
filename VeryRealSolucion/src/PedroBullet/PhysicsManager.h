@@ -59,6 +59,7 @@ class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
     btDiscreteDynamicsWorld* GetWorld() const;   // Getter para el mundo físico
 
     void AddRigidBody(btRigidBody* body);
+    void DeleteRigidBody(btRigidBody* body);
     void SetWorldGravity(VeryReal::Vector3 g);
     
     std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);

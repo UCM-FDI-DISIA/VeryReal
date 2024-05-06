@@ -23,7 +23,13 @@ bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction
     return InitializeRigidBody((PBShapes)shapeType, this->movementType, trigger, size, mask, group);
 }
 
-RigidBodyComponent::~RigidBodyComponent() { /* delete collisionShape;*/
+RigidBodyComponent::~RigidBodyComponent() {
+    transformComponent = nullptr;
+    collider = nullptr;
+    delete collisionShape;
+    rigidBody->setMotionState(nullptr);
+    VeryReal::PhysicsManager::Instance()->DeleteRigidBody(rigidBody);
+    delete rigidBody;
 }
 
 bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int m, int g) {
