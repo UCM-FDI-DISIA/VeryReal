@@ -146,7 +146,8 @@ void VeryReal::PhysicsManager::Update(float deltaTime) {
     if (dynamicsWorld) {
         dynamicsWorld->stepSimulation(deltaTime, 10);
 #ifdef _DEBUG
-        dynamicsWorld->debugDrawWorld();
+        if (seeObjects)
+            dynamicsWorld->debugDrawWorld();
 #endif   // DEBUG
     }
 }

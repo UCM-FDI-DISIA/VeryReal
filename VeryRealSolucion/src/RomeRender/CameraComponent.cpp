@@ -44,8 +44,8 @@ void CameraComponent::Update(const double& dt) {
     if (ent != nullptr) {
         VeryReal::Vector3 v = ent->GetComponent<TransformComponent>()->GetPosition();
         
-       mNode->setPosition(v.GetX() + this->offset.GetX(), v.GetY() + this->offset.GetY(), v.GetZ() + this->offset.GetZ());
-        //mNode->roll(-mNode->getOrientation().getRoll());
+        mNode->setPosition(v.GetX() + this->offset.GetX(), v.GetY() + this->offset.GetY(), v.GetZ() + this->offset.GetZ());
+       
     }
 }
 
