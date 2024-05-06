@@ -193,10 +193,10 @@ std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vec
         lista_de_colisionados = rayCallback.m_collisionObjects;
         VeryReal::Scene* scene = VeryReal::SceneManager::Instance()->GetActiveScene();
         if (scene != nullptr) {
-            for (auto ent : scene->GetEntities()) {
-                if (ent.second->HasComponent("RigidBodyComponent")) {
-                    RigidBodyComponent* comp = ent.second->GetComponent<RigidBodyComponent>();
-                    for (int i = 0; i < lista_de_colisionados.size(); ++i) {
+            for (int i = 0; i < lista_de_colisionados.size(); ++i) {
+                for (auto ent : scene->GetEntities()) {
+                    if (ent.second->HasComponent("RigidBodyComponent")) {
+                        RigidBodyComponent* comp = ent.second->GetComponent<RigidBodyComponent>();
                         if (lista_de_colisionados [i]->getCollisionShape() == comp->GetCollisionShape()) {
                             l_ents_coll.push_back(ent.second);
                         }
