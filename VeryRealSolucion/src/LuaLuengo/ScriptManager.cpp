@@ -39,7 +39,7 @@ void ScriptManager::InitManager()
 void ScriptManager::NewScene(std::string p) {
     /*std::string a = "LuaFiles/" + p + ".lua";*/   // Esta ruta accede a la carpeta bin/LuaFiles del juego
     //DE MOMENTO LO DEJO ASÍ POR COMODIDAD PARA TERMINAR EL LUA DE  LOS JUEGOS, LUEGO SE CAMBIA A LA LINEA DE ARRIBA
-    std::string a = "../../../bin/LuaFiles" + p + ".lua";
+    std::string a = "../../../bin/LuaFiles/" + p + ".lua";
     int script_status = luaL_dofile(lua_state, a.c_str());
     Error(script_status);
 }
