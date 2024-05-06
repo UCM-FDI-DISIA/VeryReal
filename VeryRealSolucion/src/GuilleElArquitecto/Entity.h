@@ -26,12 +26,13 @@ namespace VeryReal {
 
 
 		//Añade componente a la Entidad
-		inline Component* AddComponent(component_name c_name) {
+		inline Component* AddComponent(component_name c_name, int ord) {
 			//si quieres añadir de nuevo un componente ya existente, lo sobrescribe
 			RemoveComponent(c_name);
             Component* component;
            
             component= Creator::Instance()->CallSpecificCreator(c_name);
+            component->SetOrden(ord);
             component->SetEntity(this);
             Creator::Instance()->CallSpecificInit(c_name, component);
 			components_map.insert({ c_name,component});
@@ -46,6 +47,7 @@ namespace VeryReal {
 
             Component* component;
             component = Creator::Instance()->CallSpecificCreator(c_name);
+            component->SetOrden(other->GetOrden());
             component->SetEntity(this);
             Creator::Instance()->CallSpecificInitByCopy(c_name, component, other);
 
