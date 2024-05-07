@@ -19,13 +19,11 @@ namespace VeryReal {
         // Eliminar el constructor de copia
         Singleton(const VeryReal::Singleton<T>& o) = delete;
         virtual ~Singleton() {
-            virtual ~Singleton() {
-                if (instance_pointer.get() != nullptr) {
-                    instance_pointer.release();
-                    instance_pointer = nullptr;
-                }
+            if (instance_pointer.get() != nullptr) {
+                instance_pointer.release();
+                instance_pointer = nullptr;
             }
-        }
+        }    
 
         //devuelve la clase singelton:
         //->Si no existe lo crea llamando a Init
