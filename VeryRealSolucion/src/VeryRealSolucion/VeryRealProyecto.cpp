@@ -23,6 +23,7 @@
 #pragma region GUILLERMO EL ARQUITECTO
 #include <Creator.h>
 #include "CreatorTransformComponent.h"
+#include <ErrorInformant.h>
 #pragma endregion
 #pragma region PEDROBULLET
 #include <PhysicsManager.h>
@@ -81,6 +82,10 @@ SetUpMessage VeryRealProyecto::InitVeryReal()
 
 SetUpMessage VeryRealProyecto::InitPointers() {
     // Para cada manager comprobamos los errores de inicializacion
+    SetUpMessage ErrorInformantmessage = VeryReal::ErrorInformant::Init();
+    if (!ErrorInformantmessage.first) {
+        return ErrorInformantmessage;
+    }
     SetUpMessage inputManagerMessage = VeryReal::InputManager::Init();
     if (!inputManagerMessage.first) 
     {
@@ -116,6 +121,7 @@ SetUpMessage VeryRealProyecto::InitPointers() {
     if (!creatorMessage.first) {
         return creatorMessage;
     }
+   
   
     return {true, "Managers pointers where succesfully created"};
 }

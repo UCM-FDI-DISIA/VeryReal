@@ -35,8 +35,8 @@ namespace VeryReal {
             component->SetOrden(ord);
             component->SetEntity(this);
             auto initComponent = Creator::Instance()->CallSpecificInit(c_name, component);
+            if (!initComponent.first) return initComponent;
 			components_map.insert({ c_name,component});
-			//quizas initcomponentpai
 			return initComponent;
 		}
 

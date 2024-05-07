@@ -48,6 +48,8 @@ enum options {
     class VERYREAL_GUILLEELARQUITECTO ErrorInformant : public VeryReal::Singleton<ErrorInformant> {
         friend Singleton<ErrorInformant>;
 
+            private:
+        ErrorInformant(){};
             public:
         /// Lanza una ventana de error informando al usuario de que algo no ha salido como se esperaba
         /// @param ErrorName -> Nombre del error
@@ -57,7 +59,16 @@ enum options {
         options showErrorMessageBox(std::string ErrorName = "Unknown error", std::string ErrorMessage = "Description not avaliable",
                                     errorType ErrorType = EI_UNKNOWN, windowType = EI_W_OK);
 
-        ErrorInformant(){};
+       
+        static std::pair<bool, std::string> Init() {
+            ErrorInformant* a = new ErrorInformant();
+            if (a != nullptr) {
+                instance_pointer.reset(a);
+                return {true, "ErrorInformant pointer sucesfully initialized"};
+            }
+            return {false, "ErrorInformant pointer a problem while it was initializing"};
+        }
+        virtual ~ErrorInformant();
     };
 
     /// Singleton instance

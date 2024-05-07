@@ -9,3 +9,4 @@ VeryReal::options VeryReal::ErrorInformant::showErrorMessageBox(std::string Erro
 	//return (options)MessageBox(NULL, wMessage.c_str(), wName.c_str(), ErrorType | WindowType); // MB_ABORTRETRYIGNORE
         return (options)MessageBox(NULL, NULL, NULL,NULL);
 }
+VeryReal::ErrorInformant::~ErrorInformant() { }
