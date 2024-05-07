@@ -28,8 +28,8 @@ VeryReal::UITextComponent::~UITextComponent() {
     text_area->cleanupDictionary();
 }
 
-bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 clr,
-                                              std::string caption) {
+std::pair<bool, std::string> VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height,
+                                                                      VeryReal::Vector3 clr, std::string caption) {
     normal_or_topbottom = true;
     text_name = name;
     font_name = font;
@@ -61,11 +61,12 @@ bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font
     text_area->setCaption(caption);
     overlay->show();
 
-    return true;
+    return {true, "UITextComponent initialized"};
 }
 
-bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 bottomcolor,
-                                              VeryReal::Vector3 topcolor, std::string caption) {
+std::pair<bool, std::string> VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height,
+                                                                      VeryReal::Vector3 bottomcolor, VeryReal::Vector3 topcolor,
+                                                                      std::string caption) {
     normal_or_topbottom = false;
     text_name = name;
     font_name = font;
@@ -99,20 +100,18 @@ bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font
     text_area->setCaption(caption);
     overlay->show();
 
-    return true;
+    return {true, "UITextComponent initialized"};
 }
 
-void VeryReal::UITextComponent::Update(const double& dt) { 
-    setTextTransform(transform->getPosition(), transform->getScale(), transform->isHidden()); 
-}
+void VeryReal::UITextComponent::Update(const double& dt) { setTextTransform(transform->getPosition(), transform->getScale(), transform->isHidden()); }
 
-void VeryReal::UITextComponent::setFontName(std::string fontName) { 
+void VeryReal::UITextComponent::setFontName(std::string fontName) {
     font_name = fontName;
     text_area->setMaterialName(fontName);
 }
 
-void VeryReal::UITextComponent::setZOrder(int order) { 
-    z_order = order; 
+void VeryReal::UITextComponent::setZOrder(int order) {
+    z_order = order;
     overlay->setZOrder(order);
 }
 
@@ -121,7 +120,7 @@ void VeryReal::UITextComponent::setCaption(std::string newCap) {
     text_area->setCaption(newCap);
 }
 
-void VeryReal::UITextComponent::setCharHeight(float height) { 
+void VeryReal::UITextComponent::setCharHeight(float height) {
     char_height = height;
     text_area->setCharHeight(height);
 }
@@ -131,7 +130,7 @@ void VeryReal::UITextComponent::setColor(VeryReal::Vector3 newColor) {
     text_area->setColour(Ogre::ColourValue(newColor.GetX(), newColor.GetY(), newColor.GetZ()));
 }
 
-void VeryReal::UITextComponent::setTopColor(VeryReal::Vector3 newColor) { 
+void VeryReal::UITextComponent::setTopColor(VeryReal::Vector3 newColor) {
     color_top = newColor;
     text_area->setColourTop(Ogre::ColourValue(newColor.GetX(), newColor.GetY(), newColor.GetZ()));
 }
