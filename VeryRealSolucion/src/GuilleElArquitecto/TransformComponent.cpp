@@ -3,6 +3,7 @@
 #include <math.h>
 
 using namespace VeryReal;
+
 TransformComponent::TransformComponent() {
 
 }
@@ -10,6 +11,7 @@ TransformComponent::TransformComponent() {
 TransformComponent::~TransformComponent() {
 
 }
+
 std::pair<bool, std::string> TransformComponent::InitComponent(Vector3 position, Vector3 rotation, Vector3 scale) {
     this->position = position;
     this->rotation = Vector4(rotation);
@@ -25,7 +27,8 @@ void TransformComponent::Rotate(VeryReal::Vector3 rotaterotation) {
     rotation += Vector4(rotaterotation);
 }
 void TransformComponent::Scaler(VeryReal::Vector3 scalerscale) {
-	scale += scalerscale; }
+	scale += scalerscale; 
+}
 
 Vector3 VeryReal::TransformComponent::up() { 
 	Vector3 rot = rotation.toEuler();
@@ -42,7 +45,6 @@ Vector3 VeryReal::TransformComponent::up() {
     upVector.SetZ(cos(vector_radians.GetX()) * sin(vector_radians.GetZ()));
 
     return upVector;
-
 }
 
 VeryReal::Vector3 VeryReal::TransformComponent::getFacingDirection() {
@@ -60,4 +62,3 @@ VeryReal::Vector3 VeryReal::TransformComponent::getFacingDirection() {
 
         return rotatedDirection.Normalize();
 }
-

@@ -14,8 +14,8 @@ std::pair<bool, std::string> VeryReal::CreatorMeshRenderComponent::SpecificInitC
 #pragma region ModelName
 
     if (parameters_map.find("modelname") != parameters_map.end()) {
-        if (std::holds_alternative<std::string>(parameters_map.at("modelname")->GetVariant())) {
-            modelname = std::get<std::string>(parameters_map.at("modelname")->GetVariant());
+        if (std::holds_alternative<std::string>(parameters_map.at("modelname").GetVariant())) {
+            modelname = std::get<std::string>(parameters_map.at("modelname").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para modelname este sera seteado por defecto" << std::endl;
@@ -31,8 +31,8 @@ std::pair<bool, std::string> VeryReal::CreatorMeshRenderComponent::SpecificInitC
 #pragma region EntityName
 
     if (parameters_map.find("entityname") != parameters_map.end()) {
-        if (std::holds_alternative<std::string>(parameters_map.at("entityname")->GetVariant())) {
-            entityname = std::get<std::string>(parameters_map.at("entityname")->GetVariant());
+        if (std::holds_alternative<std::string>(parameters_map.at("entityname").GetVariant())) {
+            entityname = std::get<std::string>(parameters_map.at("entityname").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para entityname este sera seteado por defecto" << std::endl;
@@ -47,8 +47,8 @@ std::pair<bool, std::string> VeryReal::CreatorMeshRenderComponent::SpecificInitC
 
 #pragma region MaterialName
     if (parameters_map.find("materialname") != parameters_map.end()) {
-        if (std::holds_alternative<std::string>(parameters_map.at("materialname")->GetVariant())) {
-            materialname = std::get<std::string>(parameters_map.at("materialname")->GetVariant());
+        if (std::holds_alternative<std::string>(parameters_map.at("materialname").GetVariant())) {
+            materialname = std::get<std::string>(parameters_map.at("materialname").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para materialname este sera seteado por defecto" << std::endl;
@@ -63,8 +63,8 @@ std::pair<bool, std::string> VeryReal::CreatorMeshRenderComponent::SpecificInitC
 
 #pragma region IsStatic
     if (parameters_map.find("isstatic") != parameters_map.end()) {
-        if (std::holds_alternative<bool>(parameters_map.at("isstatic")->GetVariant())) {
-            isstatic = std::get<bool>(parameters_map.at("isstatic")->GetVariant());
+        if (std::holds_alternative<bool>(parameters_map.at("isstatic").GetVariant())) {
+            isstatic = std::get<bool>(parameters_map.at("isstatic").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para isstatic este sera seteado por defecto" << std::endl;
@@ -78,17 +78,17 @@ std::pair<bool, std::string> VeryReal::CreatorMeshRenderComponent::SpecificInitC
 #pragma endregion
 
 
-    /* if (std::holds_alternative<std::string>(parameters_map.at("modelname")->GetVariant())) {
-        modelname = std::get<std::string>(parameters_map.at("modelname")->GetVariant());
+    /* if (std::holds_alternative<std::string>(parameters_map.at("modelname").GetVariant())) {
+        modelname = std::get<std::string>(parameters_map.at("modelname").GetVariant());
     }
-    if (std::holds_alternative<std::string>(parameters_map.at("entityname")->GetVariant())) {
-        entityname = std::get<std::string>(parameters_map.at("entityname")->GetVariant());
+    if (std::holds_alternative<std::string>(parameters_map.at("entityname").GetVariant())) {
+        entityname = std::get<std::string>(parameters_map.at("entityname").GetVariant());
     }
-    if (std::holds_alternative<std::string>(parameters_map.at("materialname")->GetVariant())) {
-        materialname = std::get<std::string>(parameters_map.at("materialname")->GetVariant());
+    if (std::holds_alternative<std::string>(parameters_map.at("materialname").GetVariant())) {
+        materialname = std::get<std::string>(parameters_map.at("materialname").GetVariant());
     }
-    if (std::holds_alternative<bool>(parameters_map.at("isstatic")->GetVariant())) {
-        isstatic = std::get<bool>(parameters_map.at("isstatic")->GetVariant());
+    if (std::holds_alternative<bool>(parameters_map.at("isstatic").GetVariant())) {
+        isstatic = std::get<bool>(parameters_map.at("isstatic").GetVariant());
     }*/
 
     return m->InitComponent(isstatic, modelname, entityname, materialname);

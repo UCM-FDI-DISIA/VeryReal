@@ -14,8 +14,8 @@ std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Com
 #pragma region ShapeType
 
     if (parameters_map.find("shapeType") != parameters_map.end()) {
-        if (std::holds_alternative<int>(parameters_map.at("shapeType")->GetVariant())) {
-            shapeType = std::get<int>(parameters_map.at("shapeType")->GetVariant());
+        if (std::holds_alternative<int>(parameters_map.at("shapeType").GetVariant())) {
+            shapeType = std::get<int>(parameters_map.at("shapeType").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para shapeType este sera seteado por defecto" << std::endl;
@@ -30,8 +30,8 @@ std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Com
 #pragma region MovementType
 
     if (parameters_map.find("movementType") != parameters_map.end()) {
-        if (std::holds_alternative<int>(parameters_map.at("movementType")->GetVariant())) {
-            movementType = std::get<int>(parameters_map.at("movementType")->GetVariant());
+        if (std::holds_alternative<int>(parameters_map.at("movementType").GetVariant())) {
+            movementType = std::get<int>(parameters_map.at("movementType").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para movementType este sera seteado por defecto" << std::endl;
@@ -46,8 +46,8 @@ std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Com
 #pragma region Mass
 
     if (parameters_map.find("mass") != parameters_map.end()) {
-        if (std::holds_alternative<float>(parameters_map.at("mass")->GetVariant())) {
-            mass = std::get<float>(parameters_map.at("mass")->GetVariant());
+        if (std::holds_alternative<float>(parameters_map.at("mass").GetVariant())) {
+            mass = std::get<float>(parameters_map.at("mass").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para mass este sera seteado por defecto" << std::endl;
@@ -62,8 +62,8 @@ std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Com
 #pragma region Friction
 
     if (parameters_map.find("friction") != parameters_map.end()) {
-        if (std::holds_alternative<float>(parameters_map.at("friction")->GetVariant())) {
-            friction = std::get<float>(parameters_map.at("friction")->GetVariant());
+        if (std::holds_alternative<float>(parameters_map.at("friction").GetVariant())) {
+            friction = std::get<float>(parameters_map.at("friction").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para friction este sera seteado por defecto" << std::endl;
@@ -78,8 +78,8 @@ std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Com
 #pragma region Restitution
 
     if (parameters_map.find("restitution") != parameters_map.end()) {
-        if (std::holds_alternative<float>(parameters_map.at("restitution")->GetVariant())) {
-            restitution = std::get<float>(parameters_map.at("restitution")->GetVariant());
+        if (std::holds_alternative<float>(parameters_map.at("restitution").GetVariant())) {
+            restitution = std::get<float>(parameters_map.at("restitution").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para restitution este sera seteado por defecto" << std::endl;
@@ -94,8 +94,8 @@ std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Com
 #pragma region Trigger
 
     if (parameters_map.find("trigger") != parameters_map.end()) {
-        if (std::holds_alternative<bool>(parameters_map.at("trigger")->GetVariant())) {
-            trigger = std::get<bool>(parameters_map.at("trigger")->GetVariant());
+        if (std::holds_alternative<bool>(parameters_map.at("trigger").GetVariant())) {
+            trigger = std::get<bool>(parameters_map.at("trigger").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para trigger este sera seteado por defecto" << std::endl;
@@ -110,8 +110,8 @@ std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Com
 #pragma region Size
 
     if (parameters_map.find("size") != parameters_map.end()) {
-        if (std::holds_alternative<Vector3>(parameters_map.at("size")->GetVariant())) {
-            size = std::get<Vector3>(parameters_map.at("size")->GetVariant());
+        if (std::holds_alternative<Vector3>(parameters_map.at("size").GetVariant())) {
+            size = std::get<Vector3>(parameters_map.at("size").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para size este sera seteado por defecto" << std::endl;
@@ -126,8 +126,8 @@ std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Com
 #pragma region Mask
 
     if (parameters_map.find("mask") != parameters_map.end()) {
-        if (std::holds_alternative<int>(parameters_map.at("mask")->GetVariant())) {
-            mask = std::get<int>(parameters_map.at("mask")->GetVariant());
+        if (std::holds_alternative<int>(parameters_map.at("mask").GetVariant())) {
+            mask = std::get<int>(parameters_map.at("mask").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para mask este sera seteado por defecto" << std::endl;
@@ -142,8 +142,8 @@ std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Com
 #pragma region Group
 
     if (parameters_map.find("group") != parameters_map.end()) {
-        if (std::holds_alternative<int>(parameters_map.at("group")->GetVariant())) {
-            group = std::get<int>(parameters_map.at("group")->GetVariant());
+        if (std::holds_alternative<int>(parameters_map.at("group").GetVariant())) {
+            group = std::get<int>(parameters_map.at("group").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para group este sera seteado por defecto" << std::endl;

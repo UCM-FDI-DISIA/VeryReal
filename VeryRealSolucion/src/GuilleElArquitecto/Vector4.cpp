@@ -50,10 +50,10 @@ VeryReal::Vector4::Vector4(float a, float b, float c) {
     double cr = cos(a * (float)M_PI / 180.0 / 2.0);
     double sr = sin(a * (float)M_PI / 180.0 / 2.0);
 
-    w = cy * cp * cr + sy * sp * sr;
-    x = cy * cp * sr - sy * sp * cr;
-    y = sy * cp * sr + cy * sp * cr;
-    z = sy * cp * cr - cy * sp * sr;
+    w = (float)(cy * cp * cr + sy * sp * sr);
+    x = (float)(cy * cp * sr - sy * sp * cr);
+    y = (float)(sy * cp * sr + cy * sp * cr);
+    z = (float)(sy * cp * cr - cy * sp * sr);
 }
 
 VeryReal::Vector4::Vector4(const VeryReal::Vector3& v_) {
@@ -65,10 +65,10 @@ VeryReal::Vector4::Vector4(const VeryReal::Vector3& v_) {
     double cr = cos(v_.GetX() * (float)M_PI / 180.0 / 2.0);
     double sr = sin(v_.GetX() * (float)M_PI / 180.0 / 2.0);
 
-    w = cy * cp * cr + sy * sp * sr;
-    x = cy * cp * sr - sy * sp * cr;
-    y = sy * cp * sr + cy * sp * cr;
-    z = sy * cp * cr - cy * sp * sr;
+    w = (float)(cy * cp * cr + sy * sp * sr);
+    x = (float)(cy * cp * sr - sy * sp * cr);
+    y = (float)(sy * cp * sr + cy * sp * cr);
+    z = (float)(sy * cp * cr - cy * sp * sr);
 }
 
 VeryReal::Vector4::~Vector4() { }

@@ -15,8 +15,8 @@ std::pair<bool,std::string> VeryReal::CreatorUIProgressBarComponent::SpecificIni
 #pragma region Maximo
 
     if (parameters_map.find("maximo") != parameters_map.end()) {
-        if (std::holds_alternative<float>(parameters_map.at("maximo")->GetVariant())) {
-            maximo = std::get<float>(parameters_map.at("maximo")->GetVariant());
+        if (std::holds_alternative<float>(parameters_map.at("maximo").GetVariant())) {
+            maximo = std::get<float>(parameters_map.at("maximo").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para maximo este sera seteado por defecto" << std::endl;
@@ -32,8 +32,8 @@ std::pair<bool,std::string> VeryReal::CreatorUIProgressBarComponent::SpecificIni
 #pragma region Progres
 
     if (parameters_map.find("progres") != parameters_map.end()) {
-        if (std::holds_alternative<float>(parameters_map.at("progres")->GetVariant())) {
-            progres = std::get<float>(parameters_map.at("progres")->GetVariant());
+        if (std::holds_alternative<float>(parameters_map.at("progres").GetVariant())) {
+            progres = std::get<float>(parameters_map.at("progres").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para progres este sera seteado por defecto" << std::endl;
@@ -49,8 +49,8 @@ std::pair<bool,std::string> VeryReal::CreatorUIProgressBarComponent::SpecificIni
 #pragma region ProgressBarName
 
     if (parameters_map.find("progressBarName") != parameters_map.end()) {
-        if (std::holds_alternative<std::string>(parameters_map.at("progressBarName")->GetVariant())) {
-            progressBarName = std::get<std::string>(parameters_map.at("progressBarName")->GetVariant());
+        if (std::holds_alternative<std::string>(parameters_map.at("progressBarName").GetVariant())) {
+            progressBarName = std::get<std::string>(parameters_map.at("progressBarName").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para progressBarName este sera seteado por defecto" << std::endl;
@@ -66,8 +66,8 @@ std::pair<bool,std::string> VeryReal::CreatorUIProgressBarComponent::SpecificIni
 #pragma region FrameMaterial
 
     if (parameters_map.find("frameMaterial") != parameters_map.end()) {
-        if (std::holds_alternative<std::string>(parameters_map.at("frameMaterial")->GetVariant())) {
-            frameMaterial = std::get<std::string>(parameters_map.at("frameMaterial")->GetVariant());
+        if (std::holds_alternative<std::string>(parameters_map.at("frameMaterial").GetVariant())) {
+            frameMaterial = std::get<std::string>(parameters_map.at("frameMaterial").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para frameMaterial este sera seteado por defecto" << std::endl;
@@ -83,8 +83,8 @@ std::pair<bool,std::string> VeryReal::CreatorUIProgressBarComponent::SpecificIni
 #pragma region ContentMaterial
 
     if (parameters_map.find("contentMaterial") != parameters_map.end()) {
-        if (std::holds_alternative<std::string>(parameters_map.at("contentMaterial")->GetVariant())) {
-            contentMaterial = std::get<std::string>(parameters_map.at("contentMaterial")->GetVariant());
+        if (std::holds_alternative<std::string>(parameters_map.at("contentMaterial").GetVariant())) {
+            contentMaterial = std::get<std::string>(parameters_map.at("contentMaterial").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para contentMaterial este sera seteado por defecto" << std::endl;
@@ -100,8 +100,8 @@ std::pair<bool,std::string> VeryReal::CreatorUIProgressBarComponent::SpecificIni
 #pragma region zOrder
 
     if (parameters_map.find("zOrder") != parameters_map.end()) {
-        if (std::holds_alternative<int>(parameters_map.at("zOrder")->GetVariant())) {
-            zOrder = std::get<int>(parameters_map.at("zOrder")->GetVariant());
+        if (std::holds_alternative<int>(parameters_map.at("zOrder").GetVariant())) {
+            zOrder = std::get<int>(parameters_map.at("zOrder").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para zOrder este sera seteado por defecto" << std::endl;

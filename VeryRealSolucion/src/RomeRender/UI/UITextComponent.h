@@ -124,7 +124,7 @@ namespace VeryReal {
             UITransformComponent* transform = nullptr;
 
             // Offset para ajustar el texto
-            float text_offset = 0.1;
+            float text_offset = 0.1f;
     };
 }
 

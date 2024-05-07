@@ -12,7 +12,7 @@ namespace VeryReal {
 	class VERYREAL_GUILLEELARQUITECTO CreatorComponent{
 		using parameters_name = std::string;
 	protected:
-		std::unordered_map<parameters_name, VariantClass*> parameters_map;
+		std::unordered_map<parameters_name, VariantClass> parameters_map;
 		
 	public:
         CreatorComponent(){};
@@ -23,22 +23,18 @@ namespace VeryReal {
 
 		template<typename T>
 		void AddParameter(parameters_name p_name,T p) {
-			VariantClass* v = new  VariantClass();
-			v->SetVariant(p);
-            if (HasParameter(p_name) )
-			{
+			VariantClass v;
+			v.SetVariant(p);
+            if (HasParameter(p_name) ) {
 				parameters_map.at(p_name) = v;
 			}
-			else
-			{
+			else {
 				parameters_map.insert({p_name, v});
 			}
-		
 		}
 
 		void RemoveParameter(parameters_name p_name) {
 			if (HasParameter(p_name)) {
-				delete parameters_map.at(p_name);
 				parameters_map.erase(p_name);
 			}
 		}
@@ -48,7 +44,7 @@ namespace VeryReal {
 		}
 
 		inline VariantClass* GetParameter(parameters_name p_name) {
-			return parameters_map.at(p_name);
+			return &parameters_map.at(p_name);
 		}
 	};
 }

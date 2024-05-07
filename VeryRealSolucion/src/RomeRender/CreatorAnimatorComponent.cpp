@@ -11,8 +11,8 @@ std::pair<bool,std::string> CreatorAnimatorComponent::SpecificInitComponent(Comp
 #pragma region Name
 
     if (parameters_map.find("name") != parameters_map.end()) {
-        if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
-            name = std::get<std::string>(parameters_map.at("name")->GetVariant());
+        if (std::holds_alternative<std::string>(parameters_map.at("name").GetVariant())) {
+            name = std::get<std::string>(parameters_map.at("name").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para name este sera seteado por defecto" << std::endl;

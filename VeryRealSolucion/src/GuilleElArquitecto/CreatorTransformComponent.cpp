@@ -12,8 +12,8 @@ std::pair<bool, std::string> CreatorTransformComponent::SpecificInitComponent(Co
 #pragma region Position
 
     if (parameters_map.find("position") != parameters_map.end()) {
-        if (std::holds_alternative<Vector3>(parameters_map.at("position")->GetVariant())) {
-            position = std::get<Vector3>(parameters_map.at("position")->GetVariant());
+        if (std::holds_alternative<Vector3>(parameters_map.at("position").GetVariant())) {
+            position = std::get<Vector3>(parameters_map.at("position").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para position este sera seteado por defecto" << std::endl;
@@ -28,8 +28,8 @@ std::pair<bool, std::string> CreatorTransformComponent::SpecificInitComponent(Co
 #pragma region Rotation
 
     if (parameters_map.find("rotation") != parameters_map.end()) {
-        if (std::holds_alternative<Vector3>(parameters_map.at("rotation")->GetVariant())) {
-            rotation = std::get<Vector3>(parameters_map.at("rotation")->GetVariant());
+        if (std::holds_alternative<Vector3>(parameters_map.at("rotation").GetVariant())) {
+            rotation = std::get<Vector3>(parameters_map.at("rotation").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para rotation este sera seteado por defecto" << std::endl;
@@ -44,8 +44,8 @@ std::pair<bool, std::string> CreatorTransformComponent::SpecificInitComponent(Co
 #pragma region Scale
 
     if (parameters_map.find("scale") != parameters_map.end()) {
-        if (std::holds_alternative<Vector3>(parameters_map.at("scale")->GetVariant())) {
-            scale = std::get<Vector3>(parameters_map.at("scale")->GetVariant());
+        if (std::holds_alternative<Vector3>(parameters_map.at("scale").GetVariant())) {
+            scale = std::get<Vector3>(parameters_map.at("scale").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para scale este sera seteado por defecto" << std::endl;

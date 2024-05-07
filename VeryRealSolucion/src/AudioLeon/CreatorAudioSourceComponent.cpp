@@ -12,8 +12,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
 #pragma region Name
 
     if (parameters_map.find("name") != parameters_map.end()) {
-        if (std::holds_alternative<string>(parameters_map.at("name")->GetVariant())) {
-            name = std::get<string>(parameters_map.at("name")->GetVariant());
+        if (std::holds_alternative<string>(parameters_map.at("name").GetVariant())) {
+            name = std::get<string>(parameters_map.at("name").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para name este sera seteado por defecto" << std::endl;
@@ -28,8 +28,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
 #pragma region Path
 
     if (parameters_map.find("path") != parameters_map.end()) {
-        if (std::holds_alternative<string>(parameters_map.at("path")->GetVariant())) {
-            path = std::get<string>(parameters_map.at("path")->GetVariant());
+        if (std::holds_alternative<string>(parameters_map.at("path").GetVariant())) {
+            path = std::get<string>(parameters_map.at("path").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para path este sera seteado por defecto" << std::endl;
@@ -44,8 +44,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
 #pragma region GroupChannel
 
     if (parameters_map.find("groupchannel") != parameters_map.end()) {
-        if (std::holds_alternative<string>(parameters_map.at("groupchannel")->GetVariant())) {
-            groupchannel = std::get<string>(parameters_map.at("groupchannel")->GetVariant());
+        if (std::holds_alternative<string>(parameters_map.at("groupchannel").GetVariant())) {
+            groupchannel = std::get<string>(parameters_map.at("groupchannel").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para groupchannel este sera seteado por defecto" << std::endl;
@@ -60,8 +60,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
 #pragma region OnStart
 
     if (parameters_map.find("onstart") != parameters_map.end()) {
-        if (std::holds_alternative<bool>(parameters_map.at("onstart")->GetVariant())) {
-            onstart = std::get<bool>(parameters_map.at("onstart")->GetVariant());
+        if (std::holds_alternative<bool>(parameters_map.at("onstart").GetVariant())) {
+            onstart = std::get<bool>(parameters_map.at("onstart").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para onstart este sera seteado por defecto" << std::endl;
@@ -76,8 +76,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
 #pragma region Loop
 
     if (parameters_map.find("loop") != parameters_map.end()) {
-        if (std::holds_alternative<bool>(parameters_map.at("loop")->GetVariant())) {
-            loop = std::get<bool>(parameters_map.at("loop")->GetVariant());
+        if (std::holds_alternative<bool>(parameters_map.at("loop").GetVariant())) {
+            loop = std::get<bool>(parameters_map.at("loop").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para loop este sera seteado por defecto" << std::endl;
@@ -92,8 +92,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
 #pragma region Threed
 
     if (parameters_map.find("threed") != parameters_map.end()) {
-        if (std::holds_alternative<bool>(parameters_map.at("threed")->GetVariant())) {
-            threed = std::get<bool>(parameters_map.at("threed")->GetVariant());
+        if (std::holds_alternative<bool>(parameters_map.at("threed").GetVariant())) {
+            threed = std::get<bool>(parameters_map.at("threed").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para threed este sera seteado por defecto" << std::endl;
@@ -108,8 +108,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
 #pragma region Volume
 
     if (parameters_map.find("volume") != parameters_map.end()) {
-        if (std::holds_alternative<float>(parameters_map.at("volume")->GetVariant())) {
-            volume = std::get<float>(parameters_map.at("volume")->GetVariant());
+        if (std::holds_alternative<float>(parameters_map.at("volume").GetVariant())) {
+            volume = std::get<float>(parameters_map.at("volume").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para volume este sera seteado por defecto" << std::endl;
@@ -124,8 +124,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
 #pragma region MinDistance
 
     if (parameters_map.find("mindistance") != parameters_map.end()) {
-        if (std::holds_alternative<float>(parameters_map.at("mindistance")->GetVariant())) {
-            mindistance = std::get<float>(parameters_map.at("mindistance")->GetVariant());
+        if (std::holds_alternative<float>(parameters_map.at("mindistance").GetVariant())) {
+            mindistance = std::get<float>(parameters_map.at("mindistance").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para mindistance este sera seteado por defecto" << std::endl;
@@ -140,8 +140,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
 #pragma region MaxDistance
 
     if (parameters_map.find("maxdistance") != parameters_map.end()) {
-        if (std::holds_alternative<float>(parameters_map.at("maxdistance")->GetVariant())) {
-            maxdistance = std::get<float>(parameters_map.at("maxdistance")->GetVariant());
+        if (std::holds_alternative<float>(parameters_map.at("maxdistance").GetVariant())) {
+            maxdistance = std::get<float>(parameters_map.at("maxdistance").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para maxdistance este sera seteado por defecto" << std::endl;

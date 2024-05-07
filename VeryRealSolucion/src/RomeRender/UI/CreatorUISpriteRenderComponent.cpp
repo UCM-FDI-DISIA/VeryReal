@@ -11,8 +11,8 @@ std::pair<bool,std::string> CreatorUISpriteRenderComponent::SpecificInitComponen
 #pragma region Material
 
     if (parameters_map.find("material") != parameters_map.end()) {
-        if (std::holds_alternative<std::string>(parameters_map.at("material")->GetVariant())) {
-            material = std::get<std::string>(parameters_map.at("material")->GetVariant());
+        if (std::holds_alternative<std::string>(parameters_map.at("material").GetVariant())) {
+            material = std::get<std::string>(parameters_map.at("material").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para material este sera seteado por defecto" << std::endl;
@@ -28,8 +28,8 @@ std::pair<bool,std::string> CreatorUISpriteRenderComponent::SpecificInitComponen
 #pragma region Name
 
     if (parameters_map.find("name") != parameters_map.end()) {
-        if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
-            name = std::get<std::string>(parameters_map.at("name")->GetVariant());
+        if (std::holds_alternative<std::string>(parameters_map.at("name").GetVariant())) {
+            name = std::get<std::string>(parameters_map.at("name").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para name este sera seteado por defecto" << std::endl;
@@ -45,8 +45,8 @@ std::pair<bool,std::string> CreatorUISpriteRenderComponent::SpecificInitComponen
 #pragma region zOrder
 
     if (parameters_map.find("zOrder") != parameters_map.end()) {
-        if (std::holds_alternative<int>(parameters_map.at("zOrder")->GetVariant())) {
-            zOrder = std::get<int>(parameters_map.at("zOrder")->GetVariant());
+        if (std::holds_alternative<int>(parameters_map.at("zOrder").GetVariant())) {
+            zOrder = std::get<int>(parameters_map.at("zOrder").GetVariant());
         }
         else {
             std::cout << "No se ha especificado ningun valor para zOrder este sera seteado por defecto" << std::endl;
