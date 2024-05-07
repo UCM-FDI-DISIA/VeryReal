@@ -19,14 +19,14 @@ ScriptManager::~ScriptManager()
 	lua_close(lua_state);
 }
 	
-void ScriptManager::Error(int status)
-{
+std::pair<bool, std::string> ScriptManager::Error(int status) {
 	if (status == 0) {
-		return;
+        return {true, "The .lua file was loaded"};
 	}
-	std::cerr << "[LUA ERROR] " << lua_tostring(lua_state, -1) << std::endl;
-
+    
+    std::string message = "[LUA ERROR]" + *(lua_tostring(lua_state, -1)); 
 	lua_pop(lua_state, 1);
+    return {false, message};
 }
 
 
@@ -36,18 +36,19 @@ void ScriptManager::InitManager()
     luaL_openlibs(lua_state);
 	
 }
-void ScriptManager::NewScene(std::string p) {
+std::pair<bool, std::string> ScriptManager::NewScene(std::string p) {
     /*std::string a = "LuaFiles/" + p + ".lua";*/   // Esta ruta accede a la carpeta bin/LuaFiles del juego
     //DE MOMENTO LO DEJO ASÍ POR COMODIDAD PARA TERMINAR EL LUA DE  LOS JUEGOS, LUEGO SE CAMBIA A LA LINEA DE ARRIBA
     std::string a = "../../../bin/LuaFiles/" + p + ".lua";
     int script_status = luaL_dofile(lua_state, a.c_str());
-    Error(script_status);
+    return Error(script_status);
 }
 
  std::pair<bool, std::string> ScriptManager::ReadScene(std::string namescene, bool active) {
     VeryReal::Scene* scene =
         VeryReal::SceneManager::Instance()->AddScene(namescene, active);   // Creación de la escena(lleva el nombre del archivo .lua)
-    NewScene(namescene);
+    auto loadedScene = NewScene(namescene);
+    if (!loadedScene.first) return loadedScene;
 	std::cout << "Nombre de la escena: " << namescene << std::endl;
 
 	std::string ent = "Entities";
@@ -80,7 +81,7 @@ void ScriptManager::NewScene(std::string p) {
 									lua_pop(lua_state, 1); // Sacamos la tabla de parámetros de la pila
 								}
 								else {   
-									std::cerr << "Error: parameters no es una tabla" << std::endl;   
+								    return {false, "There was no parameters table for " + componentname + "in the Entity named" + entityname};
 								}
 								auto addedComponent =  e->AddComponent(componentname, j); // Comentar para hacer pruebas con otros tipos de datos       
                                 if (!addedComponent.first)
@@ -96,8 +97,12 @@ void ScriptManager::NewScene(std::string p) {
 				}
 			}
 		}
-	}
-        return {true, "The scene was read without any problem"};
+    }
+    else 
+    {
+        return {false, "There was no Entities table in the .lua file"};
+    }
+    return {true, "The scene was read without any problem"};
  }
 
 
@@ -216,7 +221,7 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
                                     lua_pop(lua_state, 1);   // Sacamos la tabla de parámetros de la pila
                                 }
                                 else {
-                                    std::cerr << "Error: parameters no es una tabla" << std::endl;
+                                    return {false, "Error: parameters no es una tabla"};
                                 }
                                 auto addedComponent = e->AddComponent(componentname, j);   // Comentar para hacer pruebas con otros tipos de datos
                                 if (!addedComponent.first) return addedComponent;

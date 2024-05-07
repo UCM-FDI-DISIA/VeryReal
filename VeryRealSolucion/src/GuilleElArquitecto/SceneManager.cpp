@@ -17,11 +17,6 @@ void VeryReal::SceneManager::Update(const double& dt) {
 }
 
 void VeryReal::SceneManager::Refresh() {
-    /*  for (auto it : scenes_list)
-        if (it->GetToEliminate()) {
-            RemoveScene(it);
-        }*/
-
     auto it = scenes_list.begin();
     while (it != scenes_list.end()) {
         if ((*it)->GetToEliminate()) {

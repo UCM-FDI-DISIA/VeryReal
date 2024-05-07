@@ -26,7 +26,7 @@ namespace VeryReal {
 	    private:
 		    lua_State* lua_state = nullptr;
 		    // Comprueba error al abrir archivo
-                     void Error(int status);
+            std::pair<bool,std::string>Error(int status);
 		    // Se encarga de leer los parámetros que se le pasarán a los componentes
 		    void ReadParams(luabridge::LuaRef params, std::string comp);
                       ScriptManager() { }
@@ -44,7 +44,7 @@ namespace VeryReal {
 
 		    // Abre el archivo .lua
          void InitManager();
-         void NewScene(std::string p);
+         std::pair<bool,std::string> NewScene(std::string p);
 		
 		    // Método para probar la creación de entidades y componentes mediante Lua
          std::pair<bool,std::string> ReadScene(std::string n,bool active);
