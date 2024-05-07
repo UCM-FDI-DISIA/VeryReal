@@ -6,6 +6,7 @@
 #include <Vector2.h>
 #include <Vector3.h>
 #include "../exportRomeRender.h"
+
 namespace Ogre {
 class Overlay;
 class OverlayElement;
@@ -13,6 +14,9 @@ class OverlayContainer;
 class TextAreaOverlayElement;
 class OverlayManager;
 }
+
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
     class UITransformComponent;
 
@@ -121,4 +125,7 @@ namespace VeryReal {
             float text_offset = 0.1;
     };
 }
+
+#pragma warning(default : 4251)
+
 #endif // UITEXTCOMPONENT

@@ -1,7 +1,3 @@
-#pragma warning(disable : 4251)
-
-#pragma warning(default : 4251)
-
  namespace Ogre {
      class Technique;
      class Material;
@@ -36,6 +32,6 @@ namespace VeryReal {
         bool beforeIlluminationPassesCleared(Ogre::Technique* tech) override;
 
     protected:
-        Ogre::RTShader::ShaderGenerator* mShaderGenerator;
+        Ogre::RTShader::ShaderGenerator* mShaderGenerator = nullptr;
     };
 } 

@@ -5,9 +5,10 @@
 #include "Vector2.h"
 #include "string"
 #include "../exportRomeRender.h"
+
+#pragma warning(disable : 4251)
+
 namespace VeryReal {
-
-
     class VERYREAL_ROMERENDER UITransformComponent : public Component {
 
       public:
@@ -36,16 +37,16 @@ namespace VeryReal {
         void setInteractive(bool isInteractive);
 
         bool isHidden();
-      private:
 
+      private:
         VeryReal::Vector2 position;
-        //Multiplicador de las dimensiones del Overlay Element en concreto.
-        VeryReal::Vector2 scale;
-        
+        VeryReal::Vector2 scale; //Multiplicador de las dimensiones del Overlay Element en concreto.
+     
         bool hidden;
         bool interactive;
     };
-
 }
-#endif   // !UITRANSFORMCOMPONENT
 
+#pragma warning(default : 4251)
+
+#endif   // !UITRANSFORMCOMPONENT

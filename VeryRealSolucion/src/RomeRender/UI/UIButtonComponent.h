@@ -25,7 +25,7 @@ class UITransformComponent;
         //metodo que combrueba su el raton esta dentro del boton y tambien si esta haciendo click
         bool isclicked = false;
         bool overbuttom = false;
-        UITransformComponent* UItransform;
+        UITransformComponent* UItransform = nullptr;
     };
 }
 #endif   // !UIBUTTONCOMPONENT

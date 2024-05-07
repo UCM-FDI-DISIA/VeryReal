@@ -59,19 +59,19 @@ namespace VeryReal {
         std::pair<int, int> VERYREAL_ROMERENDER  GetWindowHeightWidth();
 
         private:
-        Ogre::SceneManager* scene_manager;
-        Ogre::RenderSystem* render_system;
-        Ogre::RenderWindow* ogre_window;
+        Ogre::SceneManager* scene_manager = nullptr;
+        Ogre::RenderSystem* render_system = nullptr;
+        Ogre::RenderWindow* ogre_window = nullptr;
         std::string config_route;
         std::string name;
         // Ventana
         int window_width;
         int window_height;
-        SDL_Window* sdl_window;
-        Ogre::FileSystemLayer* file_system_layer;
-        Ogre::Root* root;
-        Ogre::RenderTarget* r;
+        SDL_Window* sdl_window = nullptr;
+        Ogre::FileSystemLayer* file_system_layer = nullptr;
+        Ogre::Root* root = nullptr;
+        Ogre::RenderTarget* r = nullptr;
     };
 }
 
-#pragma warning(disable : 4251)
+#pragma warning(default : 4251)

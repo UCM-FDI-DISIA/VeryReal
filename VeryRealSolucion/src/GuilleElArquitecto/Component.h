@@ -14,7 +14,7 @@ namespace VeryReal {
 		VeryReal::Entity* entity = nullptr;
 
 	protected: 
-		int orden;
+		int orden = 0;
 		
 	public:
 		Component() {}
