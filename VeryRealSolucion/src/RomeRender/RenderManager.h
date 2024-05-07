@@ -24,7 +24,6 @@ namespace VeryReal {
         class Entity;
  }
 
-
 namespace Ogre {
 	class SceneNode;
 	class Node;
@@ -55,7 +54,6 @@ namespace VeryReal {
 	public: 
 		
 		// Constructor de la clase RenderManager
-
 		 Ogre::SceneManager* getSceneManager();
          Ogre::ManualObject*  createManualObject(Ogre::SceneNode* node);
          void destroyManualObject(Ogre::ManualObject* const object);
@@ -146,20 +144,6 @@ namespace VeryReal {
 
 		// Carga los recursos necesarios para la aplicación
         void  LoadResources();
-
-		// Carga los shaders necesarios para la aplicación
-        void  LoadShaders();
-
-		// Descarga los shaders cargados previamente
-        void  UnloadShaders();
-
-
-
-
-
-
-
-
 	};
 }
 
