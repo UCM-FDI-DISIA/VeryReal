@@ -13,7 +13,7 @@ class UITransformComponent;
         UIButtonComponent();
         // Destructor de la clase UIButtomComponent
         virtual ~UIButtonComponent();
-        virtual void accion(){};
+        virtual void Action(){};
         // Inicializa el componente
         std::pair<bool, std::string> InitComponent();
         void Update(const double& dt) override;
