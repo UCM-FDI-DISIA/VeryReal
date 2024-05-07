@@ -34,7 +34,7 @@ void UIButtonComponent::Update(const double& dt) {
 void UIButtonComponent::OnButtonClick() {
     isclicked = true;
     std::cout << "se pulsa" << std::endl;
-    accion();
+    Action();
     isclicked = false;
 }
 //metodo que compueba en todo momento las posiciones del raton 
