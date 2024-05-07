@@ -21,51 +21,41 @@
 VeryReal::RenderManager::~RenderManager() {
 
 
-
-   
     if (root == nullptr) {
 #ifdef DEBUG_MODE
         cerr << DEBUG_ROOT_ERROR;
 #endif
         return;
     }
-  
-    // Desalojar todos los recursos cargados
-    //Ogre::ResourceGroupManager::getSingleton().unloadUnreferencedResourcesInGroup(Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
+    if (scene_manager != nullptr) {
+
+        root->destroySceneManager(scene_manager);
+    }
     //// Limpiar todos los materiales
-    //Ogre::MaterialManager::getSingleton().removeAll();
+    Ogre::MaterialManager::getSingleton().removeAll();
 
     //// Limpiar todas las texturas
-    //Ogre::TextureManager::getSingleton().removeAll();
+    Ogre::TextureManager::getSingleton().removeAll();
 
     //// Limpiar el MeshManager
-    //Ogre::MeshManager::getSingleton().removeAll();
+    Ogre::MeshManager::getSingleton().removeAll();
 
-    ////vuelta a la escena por defecto
-    //root->destroySceneManager(scene_manager);
-    //Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
-    //
-    //UnloadShaders();
-
-    //delete (root);
-    //root = nullptr;
-   // delete (window);
-   // root->destroyRenderTarget(
     delete (window);
 
     window = nullptr;
     //delete filesystem_layer;
     //filesystem_layer = nullptr;
+    delete (overlay_system);
+    root->shutdown();
+    root->unloadPlugin("plugins.cfg");
     delete (root);
     delete filesystem_layer;
     filesystem_layer = nullptr;
-  //  delete window->GetOgreWindow();
-  //  mOgreWindow = nullptr;
+    //  delete window->GetOgreWindow();
+    //  mOgreWindow = nullptr;
 
-   
-    
-    
+
     root = nullptr;
 
 }
@@ -77,8 +67,6 @@ std::pair<bool, std::string> VeryReal::RenderManager::InitManager(std::string co
     render_system = nullptr;
     viewport=nullptr;
     filesystem_layer = nullptr;
-    shader_generator = nullptr;
-    material_listener=nullptr;
     appname = name;
     filesystem_layer = new Ogre::FileSystemLayer(appname);
     Ogre::String pluginsPath;

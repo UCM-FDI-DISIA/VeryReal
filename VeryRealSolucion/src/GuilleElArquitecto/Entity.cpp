@@ -21,6 +21,7 @@ VeryReal::Entity::~Entity() {
     for (auto c : components_map) {
         delete (c.second);
     }
+    components_map.clear();
 }
 
 void VeryReal::Entity::RemoveComponent(component_name c_name) {

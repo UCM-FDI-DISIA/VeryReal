@@ -93,7 +93,7 @@ class CameraComponent : public Component {
     Ogre::SceneManager* mgr = nullptr;
     VeryReal::Entity* ent = nullptr;
     VeryReal::Vector3 offset;
-
+    Ogre::ColourValue* v;
    private:
     // Establece el color de fondo del puerto de vista de la cámara.
     void setViewPortBackgroundColour(Ogre::ColourValue color);

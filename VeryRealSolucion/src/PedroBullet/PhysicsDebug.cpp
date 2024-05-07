@@ -14,7 +14,11 @@ VeryReal::DebugMode::DebugMode() {
     mDebugModes = (DebugDrawModes)DBG_DrawWireframe;
 }
 
-VeryReal::DebugMode::~DebugMode() { }
+VeryReal::DebugMode::~DebugMode() 
+{ 
+    MaterialManager::getSingleton().remove(mtl);
+    clearLines();
+}
 
 void VeryReal::DebugMode::drawLine(const btVector3& from, const btVector3& to, const btVector3& color) {
     auto g = VeryReal::RenderManager::Instance();

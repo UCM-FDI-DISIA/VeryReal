@@ -202,7 +202,13 @@ std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vec
     return l_ents_coll;
 }
 
-VeryReal::PhysicsManager::~PhysicsManager() { Shutdown(); }
+VeryReal::PhysicsManager::~PhysicsManager()
+{
+    Shutdown(); 
+    #ifdef _DEBUG
+    delete debugger;
+    #endif   // _DEBUG
+}
 
 void VeryReal::PhysicsManager::addForce(btRigidBody* body, btVector3 force) {
     body->btRigidBody::applyForce(force, body->getWorldTransform().getOrigin());

@@ -37,9 +37,6 @@ namespace Ogre {
 	class ManualObject;
 	class Viewport;
     class Entity;
-	namespace RTShader {
-		class ShaderGenerator;
-	}
 }
 
 #pragma warning(disable : 4251)
@@ -132,12 +129,6 @@ namespace VeryReal {
 
 		// Raíz de Ogre
         Ogre::Root* root = nullptr;
-
-		// Escuchador de resolución de técnicas shader_generator
-        VeryReal::SGTechniqueResolverListener* material_listener = nullptr;
-
-		// Generador de shaders RTShader
-        Ogre::RTShader::ShaderGenerator* shader_generator = nullptr;
 
 		// Ventana de visualización
         Ogre::Viewport* viewport = nullptr;

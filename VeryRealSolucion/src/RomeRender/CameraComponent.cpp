@@ -15,8 +15,9 @@
 using namespace VeryReal;
 using namespace Ogre;
 
-CameraComponent::~CameraComponent() {
-       
+CameraComponent::~CameraComponent()
+{
+    delete v; 
 }
 
 std::pair<bool, std::string> CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset, int zOrder,
@@ -34,7 +35,7 @@ std::pair<bool, std::string> CameraComponent::InitComponent(std::string name, Ve
 
     //cambio de color de fondo
     ent = this->GetEntity();
-    Ogre::ColourValue* v = new ColourValue(color.GetX(), color.GetY(), color.GetZ(), alfa);
+    v = new ColourValue(color.GetX(), color.GetY(), color.GetZ(), alfa);
     vewport->setBackgroundColour(*v);
     return {true, "CameraComponent initialized"};
 }
