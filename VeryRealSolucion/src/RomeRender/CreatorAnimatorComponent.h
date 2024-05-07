@@ -10,7 +10,7 @@ class VERYREAL_ROMERENDER CreatorAnimatorComponent : public CreatorComponent
 		virtual ~CreatorAnimatorComponent() {}
 		Component* CreatorSpecificComponent() override;
         void SpecificInitComponent(Component* c) override;
-                void SpecificInitComponentByCopy(Component* c, Component* other) override;
+        void SpecificInitComponentByCopy(Component* c, Component* other) override;
 	};
 };
 

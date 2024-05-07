@@ -22,11 +22,7 @@ class btDynamicsWorld;
 class btCollisionObject;
 class btDiscreteDynamicsWorld;
 class btRigidBody;
-
-
-///-----///
 class btCollisionConfiguration;
-class btBroadphaseInterface;
 class btTransform;
 class btVector3;
 class btPersistentManifold;
@@ -41,7 +37,7 @@ namespace VeryReal {
 class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
     friend Singleton<PhysicsManager>;
 
-        public:
+  public:
     virtual ~PhysicsManager();
 
     static bool Init() {
@@ -67,7 +63,7 @@ class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
         inline void SeeDebugColliders(bool newValue) { seeObjects = newValue; }
     #endif
 
-        private:
+   private:
     PhysicsManager();
     btDefaultCollisionConfiguration* collisionConfiguration = nullptr;
     btCollisionDispatcher* dispatcher = nullptr;

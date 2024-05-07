@@ -45,7 +45,7 @@ const float BASE_PITCH = 1.0f;
 class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
     friend Singleton<AudioManager>;
 
-        private:
+   private:
     //Almacena los sonidos de FMOD enlazados al nombre establecido por el usuario.
     std::unordered_map<std::string, FMOD::Sound*> sounds_map;
     //Almacena los sonidos dew FMOD enlazados al último canal en el que sonaron.
@@ -73,10 +73,9 @@ class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
     /// <returns>False si no se encontró el canal indicado o si hubo un error de FMOD. True si el volumen del canal se cambió con éxito.</returns>
     bool ChangeChannelVolume(std::string channelGroupName, float volume);
 
-        private:
     AudioManager();
 
-        public:
+  public:
     static bool Init() {
         AudioManager* a = new AudioManager();
         if (a != nullptr) {

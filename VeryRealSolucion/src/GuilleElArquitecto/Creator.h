@@ -34,10 +34,13 @@ private:
   
     virtual ~Creator();
 
+    //llamada a la constructora de cada creator (deben estar vacias)
     inline Component* CallSpecificCreator(creator_name c_name) { return creators_map [c_name]->CreatorSpecificComponent(); }
 
+    //llamada a los init de cada creator, aqui va el paso de parametros
     inline void CallSpecificInit(creator_name c_name, Component* c) { creators_map [c_name]->SpecificInitComponent(c); }
 
+    //metodo creado para la generacion de prefabs
     inline void CallSpecificInitByCopy(creator_name c_name, Component* c, Component* other) { creators_map [c_name]->SpecificInitComponentByCopy(c, other); }
 
     void AddCreator(const creator_name& c_name, CreatorComponent* cretorcomponent);
@@ -58,7 +61,7 @@ private:
 
     // Añade un prefab a el mapa de prefbas
     void AddPrefab(prefab_name p_name, Entity* ent);
-
+    //elimina un prefab del mapa de prefabs
     void RemovePrefab(prefab_name p_name);
 
     //Indica si el prefab existe
@@ -67,15 +70,7 @@ private:
     //Devuelve el prefab especifico y si no esta devuelve nullptr
     Entity* GetPrefab(prefab_name p_name);
 
-    //ESTO NO VA AQUÍ, ES UN ESQUEMA PARA ENTENDER DESPUÉS COMO LLERA LUA Y A QUÉ TENDREMOS QUE LLAMAR!!!!
-    //IMPORTANTE
-    void LUARead() {
-        std::string namecomponent, position, rotation, scale;
-        Vector3 p, r, s;
-        if (HasCreator(namecomponent)) {
-            GetCreator(namecomponent)->AddParameter(position, p);
-        }
-    }
+   
 };
 }
 

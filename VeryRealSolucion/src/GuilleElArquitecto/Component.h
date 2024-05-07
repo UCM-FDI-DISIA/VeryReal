@@ -34,11 +34,6 @@ namespace VeryReal {
 		virtual void OnCollisionEnter(Entity* other) {};
 		virtual void OnCollisionStay(Entity* other) {};
 		virtual void OnCollisionExit(Entity* other) {};
-
-		
-		//Damos nombre a nuestro componente
-		/*inline void SetName(component_name name) { this->name = name; }
-		inline component_name GetName() { return name; }*/
 	};
 }
 #endif

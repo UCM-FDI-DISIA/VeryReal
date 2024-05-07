@@ -39,12 +39,6 @@ namespace VeryReal {
 		*/
         VeryReal::Vector3 up();
 
-        /*
-		Vector Forward del componente transform.
-		@return El valor en Vector3 de forward a lo largo del eje Z.
-		*/
-        VeryReal::Vector3 forward();
-
         VeryReal::Vector3 getFacingDirection();
     };
 

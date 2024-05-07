@@ -38,7 +38,7 @@ void AudioListenerComponent::InitComponent()
     Vector3 position = transform->GetPosition();
     Vector3 velocity = transform->GetVelocity();
     VeryReal::Vector3 up = transform->up();
-    VeryReal::Vector3 forward = transform->forward();
+    VeryReal::Vector3 forward = transform->getFacingDirection();
 
 	UpdateListenersPosition(listener_index, position, forward, up, velocity);
 }
@@ -48,7 +48,7 @@ void AudioListenerComponent::Update(const double& dt)
 	Vector3 position = transform->GetPosition();
     Vector3 velocity = transform->GetVelocity();
     VeryReal::Vector3 up = transform->up();
-    VeryReal::Vector3 forward = transform->forward();
+    VeryReal::Vector3 forward = transform->getFacingDirection();
 
 	VeryReal::Vector3 v = {(position.GetX() - last_position.GetX()) * float(dt), (position.GetY() - last_position.GetY()) * float(dt),
                            (position.GetZ() - last_position.GetZ()) * float(dt)};

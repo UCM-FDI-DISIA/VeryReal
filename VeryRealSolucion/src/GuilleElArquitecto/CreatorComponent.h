@@ -16,17 +16,13 @@ namespace VeryReal {
 		
 	public:
         CreatorComponent(){};
-		virtual ~CreatorComponent();
-		//Tenemos que preguntar a Pedro Pablo como hacer para pasarle como argumento valores, 
-		// con un template no puedes un metodo virtual
-
+    virtual ~CreatorComponent();
 		virtual Component* CreatorSpecificComponent() = 0;
         virtual void SpecificInitComponent(Component* c) = 0;
         virtual void SpecificInitComponentByCopy(Component* c, Component* other) = 0;
 
 		template<typename T>
 		void AddParameter(parameters_name p_name,T p) {
-			/*RemoveParameter(p_name);*/
 			VariantClass* v = new  VariantClass();
 			v->SetVariant(p);
             if (HasParameter(p_name) )

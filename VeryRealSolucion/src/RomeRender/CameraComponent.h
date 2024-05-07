@@ -64,8 +64,6 @@ class CameraComponent : public Component {
     // Establece la distancia del plano de recorte lejano de la cámara.
     VERYREAL_ROMERENDER void setFarClipDistance(float t_clip);
 
-    // Establece el color de fondo del puerto de vista de la cámara.
-    void setViewPortBackgroundColour(Ogre::ColourValue color);
 
     // Desactiva el puerto de vista de la cámara.
     VERYREAL_ROMERENDER void desactiveViewport();
@@ -87,13 +85,17 @@ class CameraComponent : public Component {
     VERYREAL_ROMERENDER VeryReal::Vector3 ScreenToWorldPoint(const VeryReal::Vector2& screenPoint);
 
 
-        protected:
+   protected:
     Ogre::SceneNode* mNode = nullptr;
     Ogre::Camera* camara = nullptr;
     Ogre::Viewport* vewport = nullptr;
     Ogre::SceneManager* mgr = nullptr;
     VeryReal::Entity* ent = nullptr;
     VeryReal::Vector3 offset;
+
+   private:
+    // Establece el color de fondo del puerto de vista de la cámara.
+    void setViewPortBackgroundColour(Ogre::ColourValue color);
 };
 }
 

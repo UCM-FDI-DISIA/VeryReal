@@ -7,7 +7,7 @@
 #include <btBulletCollisionCommon.h>
 #include <Ogre.h>
 /// <summary>
-/// Struct para guardar los puntos de cintacto entre bodies
+/// Struct para guardar los puntos de contacto entre bodies
 /// </summary>
 
 
@@ -26,12 +26,12 @@ class DebugMode : public btIDebugDraw, public Ogre::FrameListener {
     std::list<Ogre::ManualObject*> lines;
     Ogre::MaterialPtr mtl;
 
-
-        protected:
+    public:
+    DebugMode();
+    ~DebugMode();
+     protected:
  
-        public:
-     DebugMode();
-     ~DebugMode();
+
     /// <summary>
     /// Método para dibujar las lineas de los cuerpos fisicos
     /// </summary>

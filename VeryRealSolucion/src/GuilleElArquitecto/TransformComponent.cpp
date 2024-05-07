@@ -44,24 +44,6 @@ Vector3 VeryReal::TransformComponent::up() {
 
 }
 
-Vector3 VeryReal::TransformComponent::forward() { 
-	Vector3 rot = rotation.toEuler();
-
-    Vector3 forwardVector;
-
-    Vector3 vector_radians = rot;
-    vector_radians.SetX(rot.GetX() * M_PI / 180.0);
-    vector_radians.SetY(rot.GetY() * M_PI / 180.0);
-    vector_radians.SetZ(rot.GetZ() * M_PI / 180.0);
-
-    forwardVector.SetX(cos(vector_radians.GetY()));
-    forwardVector.SetY(-tan(vector_radians.GetX()));
-    forwardVector.SetZ(-sin(vector_radians.GetY()));
-
-    return forwardVector;
-
-}
-
 VeryReal::Vector3 VeryReal::TransformComponent::getFacingDirection() {
         // Convertir de grados a radianes
         Vector3 rot = rotation.toEuler();

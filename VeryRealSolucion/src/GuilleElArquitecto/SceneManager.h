@@ -30,7 +30,6 @@ class VERYREAL_GUILLEELARQUITECTO SceneManager : public VeryReal::Manager<SceneM
 
     void Update(const double& dt);
     //si hay escenas que quieren ser eliminadas las removemos aquí
-    //esto elimina de manera más segura las escenas
     void Refresh();
 
     VeryReal::Scene* AddScene(scene_name name, bool active);

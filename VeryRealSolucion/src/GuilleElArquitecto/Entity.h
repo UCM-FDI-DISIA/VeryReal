@@ -102,9 +102,7 @@ namespace VeryReal {
 		void Update(const double& dt);
 		void Refresh();
 
-		//Indica el nombre de la Entidad
-		//inline void SetName(entity_name name) { this->name = name; }
-		//inline entity_name GetName() { return name; }
+
 
 		void OnCollisionEnter(Entity* other);
 		void OnCollisionExit(Entity* other);

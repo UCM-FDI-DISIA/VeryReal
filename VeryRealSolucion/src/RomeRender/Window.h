@@ -35,7 +35,7 @@ namespace VeryReal {
         /// </summary>
         //<returns> un puntero a la ventana creada con sdl
         bool VERYREAL_ROMERENDER CreateWindoww();
-        bool  Init(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager);   //ira fuera
+        bool  Init(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager); 
         
         // <summary>
         ///Actualiza la ventana en caso de cerrarla,camviarla de tamaño y así
