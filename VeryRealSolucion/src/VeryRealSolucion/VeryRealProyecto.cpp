@@ -47,18 +47,17 @@
 #pragma endregion
 
 
-const float FRAME_RATE = 1.0f / 60.0f; 
+const float FRAME_RATE = 1.0f / 60.0f;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
-typedef std::pair<bool,std::string>(__cdecl* Start)();
+typedef std::pair<bool, std::string>(__cdecl* Start)();
 typedef void(__cdecl* MainLoop)(float dt);
 using namespace VeryReal;
 using namespace std;
-using SetUpMessage = std::pair<bool,std::string>;
-SetUpMessage VeryRealProyecto::InitVeryReal() 
-{
+using SetUpMessage = std::pair<bool, std::string>;
+SetUpMessage VeryRealProyecto::InitVeryReal() {
     auto initPointers = InitPointers();
-    if (!initPointers.first){
+    if (!initPointers.first) {
         return initPointers;
     }
 
@@ -87,8 +86,7 @@ SetUpMessage VeryRealProyecto::InitPointers() {
         return ErrorInformantmessage;
     }
     SetUpMessage inputManagerMessage = VeryReal::InputManager::Init();
-    if (!inputManagerMessage.first) 
-    {
+    if (!inputManagerMessage.first) {
         return inputManagerMessage;
     }
 
@@ -121,8 +119,8 @@ SetUpMessage VeryRealProyecto::InitPointers() {
     if (!creatorMessage.first) {
         return creatorMessage;
     }
-   
-  
+
+
     return {true, "Managers pointers where succesfully created"};
 }
 
@@ -151,8 +149,7 @@ SetUpMessage VeryRealProyecto::InitManagers() {
     return {true, "All managers were succesfully initialized"};
 }
 
-void VeryRealProyecto::CreateCreators() 
-{
+void VeryRealProyecto::CreateCreators() {
     VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
     VeryReal::Creator::Instance()->AddCreator("RigidBodyComponent", new VeryReal::CreatorRigidBodyComponent());
     VeryReal::Creator::Instance()->AddCreator("ColliderComponent", new VeryReal::CreatorColliderComponent());
@@ -216,14 +213,15 @@ void VeryRealProyecto::Loop() {
 }
 
 void VeryRealProyecto::Delete() {
-    //if (mWindow != nullptr) {
-    //	SDL_DestroyWindow(mWindow);
-    //	mWindow = nullptr;
-    //	SDL_Quit();
-    //}
+    delete (VeryReal::SceneManager::Instance());
+    delete (VeryReal::InputManager::Instance());
+    delete (VeryReal::ScriptManager::Instance());
+    delete (VeryReal::PhysicsManager::Instance());
+    delete (VeryReal::RenderManager::Instance());
+    delete (VeryReal::AudioManager::Instance());
+    delete (VeryReal::Creator::Instance());
     FreeLibrary(gameDll);
 }
-
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración

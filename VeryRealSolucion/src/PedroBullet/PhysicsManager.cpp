@@ -7,23 +7,11 @@
 #include "Entity.h"
 #include "RigidBodyComponent.h"
 
-#include <iostream>
-#include <BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h>   //gestion de colisiones, gravedad...
-#include <BulletCollision/CollisionShapes/btSphereShape.h>
-#include <BulletCollision/CollisionShapes/btCylinderShape.h>
-#include <BulletCollision/CollisionShapes/btCapsuleShape.h>
-#include <BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h>
-#include <BulletCollision/BroadphaseCollision/btDbvtBroadphase.h>
-#include <BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h>
-#include <LinearMath/btDefaultMotionState.h>
-#include <LinearMath/btVector3.h>
-#include "PhysicsValues.h"
 #include "ColliderComponent.h"
+
 #ifdef _DEBUG
 #include "PhysicsDebug.h"
 #include "RenderManager.h"
-
-
 #endif   // _DEBUG
 
 VeryReal::PhysicsManager::PhysicsManager()
