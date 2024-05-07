@@ -2,7 +2,7 @@
 #include <Singleton.h>
 #include <Windows.h>		//por ahora lo dejo aqui
 #include <string>
-typedef void(__cdecl* MainLoop)();
+typedef void(__cdecl* MainLoop)(float dt);
 
 namespace VeryReal {
 class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {

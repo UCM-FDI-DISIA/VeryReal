@@ -50,7 +50,7 @@ const float FRAME_RATE = 1.0f / 60.0f;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
 typedef bool(__cdecl* Start)();
-typedef void(__cdecl* MainLoop)();
+typedef void(__cdecl* MainLoop)(float dt);
 using namespace VeryReal;
 using namespace std;
 
@@ -140,8 +140,8 @@ void VeryRealProyecto::Loop() {
         float frameTime = elapsedTime.count();
 
         VeryReal::InputManager::Instance()->Refresh();
-        if (elapsedTime.count() >= FRAME_RATE) {
-            gameLoop();
+        if (frameTime >= FRAME_RATE) {
+            gameLoop(frameTime);
             VeryReal::PhysicsManager::Instance()->Update(frameTime);
             VeryReal::SceneManager::Instance()->Update(frameTime);
             VeryReal::RenderManager::Instance()->Update(frameTime);
