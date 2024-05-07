@@ -32,13 +32,13 @@ namespace VeryReal {
                       ScriptManager() { }
 
 	    public:
-        static bool Init() {
+        static std::pair<bool,std::string> Init() {
           ScriptManager* a = new ScriptManager();
             if (a != nullptr) {
                 instance_pointer.reset(a);
-                return true;
+                return {true, "ScriptManager pointer sucesfully initialized"};
             }
-            return false;
+            return {false, "ScriptManager pointer had a problem while it was initializing"};
         }
          virtual ~ScriptManager();
 
@@ -47,8 +47,8 @@ namespace VeryReal {
          void NewScene(std::string p);
 		
 		    // Método para probar la creación de entidades y componentes mediante Lua
-         void ReadScene(std::string n,bool active);
-         void ReadPrefabs();
+         std::pair<bool,std::string> ReadScene(std::string n,bool active);
+         std::pair<bool,std::string> ReadPrefabs();
          void ReadFunction(std::string name, int n);
          inline lua_State* GetLuaState() { return lua_state; }
 

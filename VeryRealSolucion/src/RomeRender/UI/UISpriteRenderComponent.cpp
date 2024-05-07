@@ -62,7 +62,7 @@ UISpriteRendererComponent::~UISpriteRendererComponent() {
     sprite_container->cleanupDictionary();
 }
 
-bool UISpriteRendererComponent::InitComponent(std::string name, std::string material, int order = 0) { 
+std::pair<bool, std::string> UISpriteRendererComponent::InitComponent(std::string name, std::string material, int order = 0) { 
     sprite_name = name;
     material_name = material;
     z_order = order;
@@ -71,19 +71,13 @@ bool UISpriteRendererComponent::InitComponent(std::string name, std::string mate
     sprite_container = dynamic_cast<Ogre::OverlayContainer*>(overlay_mgr->createOverlayElement("Panel", name + "Panel"));
     transform = GetEntity()->GetComponent<UITransformComponent>();
 
-    //if (!transform) {
-    //    ErrorInf().showErrorMessageBox("UISpriteRendererComponent error", "An entity doesn't have transform component", EI_ERROR);
-    //    //sceneManager().quit();
-    //    return false;
-    //}
-
     setSpriteTransform(transform->getPosition(), transform->getScale());
     overlay->add2D(sprite_container);
     overlay->setZOrder(order);
     sprite_container->setMaterialName(material);   // Nombre del material del sprit
     bool que = transform->isHidden();
     setVisibility(que);
-    return true;
+    return { true, "UISpriteRendererComponent"};
 }
 void UISpriteRendererComponent::Update(const double& dt) {
     setSpriteTransform(transform->getPosition(), transform->getScale());

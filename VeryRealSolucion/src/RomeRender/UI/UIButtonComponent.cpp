@@ -17,9 +17,10 @@ UIButtonComponent::~UIButtonComponent() {
 
 }
     // Inicializa el componente
-bool UIButtonComponent::InitComponent() { 
-       if (GetEntity()->HasComponent("UITransformComponent")) UItransform = GetEntity()->GetComponent<UITransformComponent>();
-  return true;
+std::pair<bool, std::string> UIButtonComponent::InitComponent() {
+    if (!GetEntity()->HasComponent("UITransformComponent")) return {false, "There is no UITransformComponent attached to the UIButtonComponent "};
+    UItransform = GetEntity()->GetComponent<UITransformComponent>();
+    return {true, "UIButtonComponent initialized"};
 }
 // 
 void UIButtonComponent::Update(const double& dt) {

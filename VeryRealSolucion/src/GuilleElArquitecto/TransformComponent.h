@@ -15,7 +15,7 @@ namespace VeryReal {
 		Vector3 velocity;
 	public:
 		TransformComponent();
-		bool InitComponent(Vector3 position, Vector3 rotation, Vector3 scale);
+		std::pair<bool, std::string> InitComponent(Vector3 position, Vector3 rotation, Vector3 scale);
 		virtual ~TransformComponent();
 
 		inline Vector3 GetPosition() { return position; }

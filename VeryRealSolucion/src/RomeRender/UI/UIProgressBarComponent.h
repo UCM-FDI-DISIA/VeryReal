@@ -24,7 +24,7 @@ namespace VeryReal {
         // Destructor de la clase UIProgressBarComponent
         virtual ~UIProgressBarComponent();
         // Inicializa el componente
-        bool InitComponent(double maximo, double progres, std::string progressBarName, std::string frameMaterial, std::string contentMaterial,
+        std::pair<bool,std::string> InitComponent(double maximo, double progres, std::string progressBarName, std::string frameMaterial, std::string contentMaterial,
                            int order = 0);
         void Update(const double& dt) override;
 

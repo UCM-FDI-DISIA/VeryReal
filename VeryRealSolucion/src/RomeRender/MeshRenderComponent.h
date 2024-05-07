@@ -33,7 +33,8 @@ class MeshRenderComponent : public Component {
     VERYREAL_ROMERENDER MeshRenderComponent(){};
 
     // Inicializa el componente de renderizado de malla con la información proporcionada.
-    VERYREAL_ROMERENDER bool InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname);
+    VERYREAL_ROMERENDER
+    std::pair<bool, std::string> InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname);
 
     // Destructor de la clase MeshRenderComponent.
     VERYREAL_ROMERENDER virtual ~MeshRenderComponent();

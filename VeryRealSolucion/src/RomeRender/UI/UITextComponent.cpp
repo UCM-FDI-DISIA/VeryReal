@@ -28,8 +28,8 @@ VeryReal::UITextComponent::~UITextComponent() {
     text_area->cleanupDictionary();
 }
 
-bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 clr,
-                                              std::string caption) {
+std::pair<bool, std::string> VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height,
+                                                                      VeryReal::Vector3 clr, std::string caption) {
     normal_or_topbottom = true;
     text_name = name;
     font_name = font;
@@ -43,11 +43,6 @@ bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font
     text_area = static_cast<Ogre::TextAreaOverlayElement*>(overlay_mgr->createOverlayElement("TextArea", name + "Text"));
     transform = GetEntity()->GetComponent<UITransformComponent>();
 
-    //if (!transform) {
-    //    ErrorInf().showErrorMessageBox("UISpriteRendererComponent error", "An entity doesn't have transform component", EI_ERROR);
-    //    //sceneManager().quit();
-    //    return false;
-    //}
 
     setTextTransform(transform->getPosition(), transform->getScale(), transform->isHidden());
     overlay->add2D(text_container);
@@ -61,10 +56,11 @@ bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font
     text_area->setCaption(caption);
     overlay->show();
 
-    return true;
+    return {true, "UITextComponent initialized"};
 }
 
-bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 bottomcolor,
+std::pair<bool, std::string> VeryReal::UITextComponent::InitComponent(std::string name, std::string font, int order, float height,
+                                                                      VeryReal::Vector3 bottomcolor,
                                               VeryReal::Vector3 topcolor, std::string caption) {
     normal_or_topbottom = false;
     text_name = name;
@@ -99,7 +95,7 @@ bool VeryReal::UITextComponent::InitComponent(std::string name, std::string font
     text_area->setCaption(caption);
     overlay->show();
 
-    return true;
+    return {true, "UITextComponent initialized"};
 }
 
 void VeryReal::UITextComponent::Update(const double& dt) { 

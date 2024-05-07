@@ -18,13 +18,13 @@ class VERYREAL_GUILLEELARQUITECTO SceneManager : public VeryReal::Manager<SceneM
     SceneManager(){};
 
         public:
-    static bool Init() {
+    static std::pair<bool,std::string> Init() {
         SceneManager* a = new SceneManager();
         if (a != nullptr) {
             instance_pointer.reset(a);
-            return true;
+            return {true, "SceneManager pointer sucesfully initialized"};
         }
-        return false;
+        return {false, "SceneManager pointer a problem while it was initializing"};
     }
     virtual ~SceneManager();
 

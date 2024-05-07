@@ -18,8 +18,8 @@ namespace VeryReal {
         CreatorComponent(){};
     virtual ~CreatorComponent();
 		virtual Component* CreatorSpecificComponent() = 0;
-        virtual void SpecificInitComponent(Component* c) = 0;
-        virtual void SpecificInitComponentByCopy(Component* c, Component* other) = 0;
+        virtual std::pair<bool,std::string> SpecificInitComponent(Component* c) = 0;
+        virtual std::pair<bool, std::string> SpecificInitComponentByCopy(Component* c, Component* other) = 0;
 
 		template<typename T>
 		void AddParameter(parameters_name p_name,T p) {

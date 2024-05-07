@@ -4,7 +4,7 @@
 using namespace VeryReal;
 Component* CreatorUISpriteRenderComponent::CreatorSpecificComponent() { return new UISpriteRendererComponent(); }
 
-void CreatorUISpriteRenderComponent::SpecificInitComponent(Component* c) {
+std::pair<bool,std::string> CreatorUISpriteRenderComponent::SpecificInitComponent(Component* c) {
     UISpriteRendererComponent* a = static_cast<UISpriteRendererComponent*>(c);
     std::string name, material;
     int zOrder;
@@ -58,28 +58,12 @@ void CreatorUISpriteRenderComponent::SpecificInitComponent(Component* c) {
         zOrder = 0;
     }
 #pragma endregion
-    /*   if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
-        name = std::get<std::string>(parameters_map.at("name")->GetVariant());
-    }
-    if (std::holds_alternative<std::string>(parameters_map.at("material")->GetVariant())) {
-        material = std::get<std::string>(parameters_map.at("material")->GetVariant());
-    }
-    if (std::holds_alternative<int>(parameters_map.at("zOrder")->GetVariant())) {
-        zOrder = std::get<int>(parameters_map.at("zOrder")->GetVariant());
-    }
-    */
-    bool b = a->InitComponent(name, material, zOrder);
-    if (!b) {
-        //Gestionar error
-    }
+    return a->InitComponent(name, material, zOrder);
 }
 
-void CreatorUISpriteRenderComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+std::pair<bool, std::string> CreatorUISpriteRenderComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
     UISpriteRendererComponent* a = static_cast<UISpriteRendererComponent*>(c);
     UISpriteRendererComponent* copia = static_cast<UISpriteRendererComponent*>(other);
 
-    bool b = a->InitComponent(copia->GetSpriteName(), copia->GetMaterialName(), copia->GetZOrder());
-    if (!b) {
-        //Gestionar error
-    }
+    return a->InitComponent(copia->GetSpriteName(), copia->GetMaterialName(), copia->GetZOrder());
 }

@@ -23,13 +23,13 @@ private:
     Creator(){};
 
  public:
-    static bool Init() {
+    static std::pair<bool,std::string> Init() {
      Creator* a = new Creator();
         if (a != nullptr) {
             instance_pointer.reset(a);
-            return true;
+            return {true, "Creator pointer sucesfully initialized"};
         }
-        return false;
+        return {false, "Creator pointer had a problem while it was initializing"};
     }
   
     virtual ~Creator();
@@ -37,11 +37,11 @@ private:
     //llamada a la constructora de cada creator (deben estar vacias)
     inline Component* CallSpecificCreator(creator_name c_name) { return creators_map [c_name]->CreatorSpecificComponent(); }
 
-    //llamada a los init de cada creator, aqui va el paso de parametros
-    inline void CallSpecificInit(creator_name c_name, Component* c) { creators_map [c_name]->SpecificInitComponent(c); }
+    inline std::pair<bool, std::string> CallSpecificInit(creator_name c_name, Component* c) { return creators_map [c_name]->SpecificInitComponent(c); }
 
-    //metodo creado para la generacion de prefabs
-    inline void CallSpecificInitByCopy(creator_name c_name, Component* c, Component* other) { creators_map [c_name]->SpecificInitComponentByCopy(c, other); }
+    inline std::pair<bool, std::string> CallSpecificInitByCopy(creator_name c_name, Component* c, Component* other) {
+        return creators_map [c_name]->SpecificInitComponentByCopy(c, other);
+    }
 
     void AddCreator(const creator_name& c_name, CreatorComponent* cretorcomponent);
 
@@ -59,7 +59,7 @@ private:
         return creators_map.at(c_name);
     }
 
-    // Añade un prefab a el mapa de prefbas
+    // Aï¿½ade un prefab a el mapa de prefbas
     void AddPrefab(prefab_name p_name, Entity* ent);
     //elimina un prefab del mapa de prefabs
     void RemovePrefab(prefab_name p_name);

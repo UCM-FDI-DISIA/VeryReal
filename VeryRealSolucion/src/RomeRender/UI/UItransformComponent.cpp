@@ -7,13 +7,13 @@ using namespace std;
 UITransformComponent::UITransformComponent() { 
 
 }
-bool UITransformComponent::InitComponent(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool hide, bool interact) {
+std::pair<bool, std::string> UITransformComponent::InitComponent(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool hide, bool interact) {
     position = pos;
     scale = sc;
     hidden = hide;
-    return true;
+    return {true, "UITransformComponent initialized"};
 }
-UITransformComponent::~UITransformComponent() { }
+    UITransformComponent::~UITransformComponent() { }
 void UITransformComponent::Update(const double& dt) { }
 void UITransformComponent::showElement() { hidden = false; }
 void UITransformComponent::hideElement() { hidden = true; }

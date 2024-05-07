@@ -16,18 +16,28 @@ AudioSourceComponent::AudioSourceComponent()
       sound_name("unknown"), playing(false), loop(false), is_three_d(false), play_on_start(false), result(FMOD_OK) { }
 
 AudioSourceComponent::~AudioSourceComponent() { AM().DeleteSound(sound_name); }
-bool AudioSourceComponent::InitComponent(std::string name, std::string path, bool onstart, std::string groupchannel, float volume, bool threed,
+std::pair<bool, std::string> AudioSourceComponent::InitComponent(std::string name, std::string path, bool onstart, std::string groupchannel,
+                                                                 float volume, bool threed,
                                          bool loop, float mindistance, float maxdistance) {
 
     SetSourceName(name);
     SetSourcePath(path);
     SetPlayOnStart(onstart);
     SetGroupChannelName(groupchannel);
-    SetVolume(volume);
+    auto trySetVolume = SetVolume(volume);
+    if (!trySetVolume.first) 
+    {
+        return trySetVolume;
+    }
     SetIsThreeD(threed);
     SetLoop(loop);
-    SetMinMaxDistance(mindistance, maxdistance);
-    return true;
+    auto trySetDistance = SetMinMaxDistance(mindistance, maxdistance);
+
+    if (!trySetDistance.first)
+    {
+        return trySetDistance;
+    }
+    return {true, "AudioSourceComponent sucessfully initialized"};
 }
 bool AudioSourceComponent::Create3DSound() {
     std::string soundPath = "Assets/SONIDOS/" + sound_path;
@@ -182,13 +192,11 @@ bool AudioSourceComponent::PauseSound(bool Pause) {
     }
 }
 
-void AudioSourceComponent::Start() {
+std::pair<bool, std::string> AudioSourceComponent::Start() {
     transform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>();
 
     if (!transform) {
-        ErrorInf().showErrorMessageBox("AudioSourceComponent error", "An entity doesn't have transform component", EI_ERROR);
-        //sceneManager().quit();
-        return;
+        return { false, "AudioSourceComponent error. An entity doesn't have transform component"};
     }
 
     // Create a 3D sound or a normal sound
@@ -197,6 +205,8 @@ void AudioSourceComponent::Start() {
         CreateNormalSound();
 
     if (play_on_start) Play();
+
+    return { true, "AudioSource started" };
 }
 
 void AudioSourceComponent::Update(const double& dt) {
@@ -221,16 +231,16 @@ void AudioSourceComponent::Resume() { PauseSound(false); }
 
 bool AudioSourceComponent::IsPlaying() { return playing; }
 
-bool AudioSourceComponent::SetVolume(float value) {
+std::pair<bool, std::string> AudioSourceComponent::SetVolume(float value) {
     volume = value;
     AM().NameToLower(sound_name);
     FMOD::Channel* channel = AM().GetChannel(sound_name);
     if (channel != nullptr) {
         result = channel->setVolume(value);
-        return AM().CheckFMODResult(result);
+        return {AM().CheckFMODResult(result), "Volume setted correctly"};
     }
     else {
-        return false;
+        return {false, "The channel from this AudioSource is not valid: Sound name is: " + sound_name};
     }
 }
 
@@ -245,17 +255,16 @@ bool AudioSourceComponent::SetSpeed(float newSpeed) {
     return AM().CheckFMODResult(this->result);
 }
 
-bool AudioSourceComponent::SetMinMaxDistance(float minDistance, float maxDistance) {
+std::pair<bool, std::string> AudioSourceComponent::SetMinMaxDistance(float minDistance, float maxDistance) {
     min_distance = minDistance * DISTANCE_FACTOR;
     max_distance = maxDistance * DISTANCE_FACTOR;
 
     AM().NameToLower(sound_name);
     auto soundHandle = AM().GetSound(sound_name);
-    if (soundHandle == nullptr) return false;
+    if (soundHandle == nullptr) return {false, "Sound was not found"};
     soundHandle->set3DMinMaxDistance(min_distance, max_distance);
-    return true;
+    return {true, "Distances set sucessfully"};
 }
-
 bool AudioSourceComponent::SetMode(FMOD_MODE newMode) {
     AM().NameToLower(sound_name);
     FMOD::Sound* soundHandle = AM().GetSound(sound_name);

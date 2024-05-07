@@ -19,16 +19,19 @@ class VERYREAL_TONINPUT InputManager : public VeryReal::Manager<InputManager> {
     InputManager() { }
   
     public:
-    /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
-    virtual ~InputManager() { }
-    static bool Init() {
-        InputManager* a = new InputManager();
+        /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
+
+     virtual ~InputManager() { }
+     static std::pair<bool,std::string> Init() {
+                InputManager* a = new InputManager();
         if (a != nullptr) {
             instance_pointer.reset(a);
-            return true;
+            return {true, "InputManager pointer sucesfully initialized"};
         }
-        return false;
-    }
+        return {false, "InputManager pointer had a problem while it was initializing"};
+     }
+        // Inicializa SDL
+     virtual std::pair<bool,std::string> InitManager();
 
     /// Inicializa SDL
     virtual void InitManager();

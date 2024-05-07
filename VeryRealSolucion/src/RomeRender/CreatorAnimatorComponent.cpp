@@ -4,7 +4,7 @@
 using namespace VeryReal;
 Component* CreatorAnimatorComponent::CreatorSpecificComponent() { return new AnimatorComponent(); }
 
-void CreatorAnimatorComponent::SpecificInitComponent(Component* c) {
+std::pair<bool,std::string> CreatorAnimatorComponent::SpecificInitComponent(Component* c) {
     AnimatorComponent* a = static_cast<AnimatorComponent*>(c);
     std::string name;
 
@@ -24,15 +24,7 @@ void CreatorAnimatorComponent::SpecificInitComponent(Component* c) {
         name = " ";
     }
 #pragma endregion
-    /*  if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
-        name = std::get<std::string>(parameters_map.at("name")->GetVariant());
-    }*/
-    bool b = a->InitComponent(name);
-    if (!b) {
-        //Gestionar error
-    }
+  
+    return a->InitComponent(name);
 }
-
-void CreatorAnimatorComponent::SpecificInitComponentByCopy(Component* c, Component* other) { 
-
-}
+std::pair<bool,std::string> CreatorAnimatorComponent::SpecificInitComponentByCopy(Component* c, Component* other) { return {true, ""}; }

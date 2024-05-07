@@ -18,22 +18,18 @@ AudioListenerComponent::~AudioListenerComponent()
 	UpdateListenersPosition(listener_index, { 999999,999999,999999 }, { 0,0,0 }, { 0,0,0 }, { 0,0,0 });
 }
 
-void AudioListenerComponent::InitComponent()
-{
+std::pair<bool, std::string> AudioListenerComponent::InitComponent() {
 	// Get the next available index for a listener in the sound manager
 	listener_index = AM().GetNextUsefulListenerIndex();
     transform = this->GetEntity()->GetComponent<VeryReal::TransformComponent>();
-	if (!transform) {
-            ErrorInf().showErrorMessageBox("AudioListenerComponent error", "An entity doesn't have transform component", EI_ERROR);
-            /*	sceneManager().quit();*/
-            return;
-    }
-
+    if (!transform) 
+	{
+        return {false, "An entity doesn't have a transform component"};
+	}
 	last_position = transform->GetPosition();
 
 #ifdef _DEBUG
-	if (listener_index == -1)
-		std::cout << "ERROR: Listeners vector is full\n";
+	if (listener_index == -1) return {false, "ERROR: Listeners vector is full"};
 #endif // _DEBUG
     Vector3 position = transform->GetPosition();
     Vector3 velocity = transform->GetVelocity();
@@ -41,6 +37,7 @@ void AudioListenerComponent::InitComponent()
     VeryReal::Vector3 forward = transform->getFacingDirection();
 
 	UpdateListenersPosition(listener_index, position, forward, up, velocity);
+    return {true, "AudioListener initialized"};
 }
 
 void AudioListenerComponent::Update(const double& dt)

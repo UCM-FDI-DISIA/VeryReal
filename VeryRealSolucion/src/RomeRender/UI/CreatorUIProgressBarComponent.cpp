@@ -5,7 +5,7 @@ using namespace VeryReal;
 
 Component* VeryReal::CreatorUIProgressBarComponent::CreatorSpecificComponent() { return new UIProgressBarComponent; }
 
-void VeryReal::CreatorUIProgressBarComponent::SpecificInitComponent(Component* c) {
+std::pair<bool,std::string> VeryReal::CreatorUIProgressBarComponent::SpecificInitComponent(Component* c) {
     UIProgressBarComponent* progressbar = static_cast<UIProgressBarComponent*>(c);
     double maximo, progres;
     std::string progressBarName, frameMaterial, contentMaterial;
@@ -113,40 +113,13 @@ void VeryReal::CreatorUIProgressBarComponent::SpecificInitComponent(Component* c
         zOrder = 0;
     }
 #pragma endregion
-
-
-    /*  if (std::holds_alternative<float>(parameters_map.at("maximo")->GetVariant())) {
-        maximo = std::get<float>(parameters_map.at("maximo")->GetVariant());
-    }
-    if (std::holds_alternative<float>(parameters_map.at("progres")->GetVariant())) {
-        progres = std::get<float>(parameters_map.at("progres")->GetVariant());
-    }
-    if (std::holds_alternative<std::string>(parameters_map.at("progressBarName")->GetVariant())) {
-        progressBarName = std::get<std::string>(parameters_map.at("progressBarName")->GetVariant());
-    }
-    if (std::holds_alternative<std::string>(parameters_map.at("frameMaterial")->GetVariant())) {
-        frameMaterial = std::get<std::string>(parameters_map.at("frameMaterial")->GetVariant());
-    }
-    if (std::holds_alternative<std::string>(parameters_map.at("contentMaterial")->GetVariant())) {
-        contentMaterial = std::get<std::string>(parameters_map.at("contentMaterial")->GetVariant());
-    }
-    if (std::holds_alternative<int>(parameters_map.at("zOrder")->GetVariant())) {
-        zOrder = std::get<int>(parameters_map.at("zOrder")->GetVariant());
-    }*/
-
-    bool b = progressbar->InitComponent(maximo, progres, progressBarName, frameMaterial, contentMaterial, zOrder);
-    if (!b) {
-        //Gestionar error
-    }
+    return progressbar->InitComponent(maximo, progres, progressBarName, frameMaterial, contentMaterial, zOrder);
 }
 
-void VeryReal::CreatorUIProgressBarComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+std::pair<bool, std::string> VeryReal::CreatorUIProgressBarComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
     UIProgressBarComponent* progressbar = static_cast<UIProgressBarComponent*>(c);
     UIProgressBarComponent* copia = static_cast<UIProgressBarComponent*>(other);
 
-    bool b = progressbar->InitComponent(copia->getMaximun(), copia->getProgress(), copia->GetProgressBarName(), copia->GetFrameMaterialName(),
+    return progressbar->InitComponent(copia->getMaximun(), copia->getProgress(), copia->GetProgressBarName(), copia->GetFrameMaterialName(),
                                         copia->GetContententMaterialName(), copia->GetZOrder());
-    if (!b) {
-        //Gestionar error
-    }
 }

@@ -25,7 +25,7 @@ namespace VeryReal {
                 // Destructor de la clase UISpriteRendererComponentComponent
       virtual ~UISpriteRendererComponent();
             // Inicializa el componente
-            bool InitComponent(std::string name, std::string material, int order);
+            std::pair<bool, std::string> InitComponent(std::string name, std::string material, int order);
             void Update(const double& dt) override;
 
             //Establece el nombre del material registrado con el sprite.

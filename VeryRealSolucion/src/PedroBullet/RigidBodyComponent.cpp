@@ -11,7 +11,8 @@ using namespace VeryReal;
 
 RigidBodyComponent::RigidBodyComponent() : mass(0), friction(0), restitution(0), movementType(MOVEMENT_TYPE_DYNAMIC), isTrigger(false) { }
 
-bool RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType, bool trigger, Vector3 size,
+std::pair<bool, std::string> RigidBodyComponent::InitComponent(int shapeType, float mass, float friction, float restitution, int movementType,
+                                                               bool trigger, Vector3 size,
                                        int mask, int group) {
     this->shape_type_var = shapeType;
     this->mass = mass;
@@ -32,20 +33,15 @@ RigidBodyComponent::~RigidBodyComponent() {
     delete rigidBody;
 }
 
-bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int m, int g) {
+std::pair<bool, std::string> RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int m,
+                                                                     int g) {
     transformComponent = this->GetEntity()->GetComponent<TransformComponent>();
     if (transformComponent == nullptr) {
-#ifdef DEBUG_MODE
-        // Código específico para modo de depuración
-        cerr << BEDUG_ERROR_TRANSFORM;
-#endif
-        return false;
+        return {false, "There is no TransformComponent attached to the RigidBodyComponent"};
     }
 
 
     collisionShape = CreateCollisionShape(shapeType, s);
-    //collisionShape.reset(CreateCollisionShape(shapeType));
-
     btVector3 localInertia(0, 0, 0);
     if (mass != 0.0f) {
         collisionShape->calculateLocalInertia(mass, localInertia);
@@ -58,7 +54,7 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
     startTransform.setRotation(btQuaternion(transformComponent->GetRotation().GetX(), transformComponent->GetRotation().GetY(),
                                             transformComponent->GetRotation().GetZ(), transformComponent->GetRotation().GetW()));
     motionState.reset(new btDefaultMotionState(startTransform));
-    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState.get(), collisionShape, localInertia);   //
+    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState.get(), collisionShape, localInertia);
     rbInfo.m_restitution = restitution;
     rbInfo.m_friction = friction;
 
@@ -66,11 +62,10 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
 
     //Inicializar el componente colider
     collider = this->GetEntity()->GetComponent<ColliderComponent>();
-    if (!collider) 
-    {
-        #ifdef _DEBUG
-                std::cout << "No se ha incluido collider, la comprobacion de las colisiones se omitira" << std::endl;
-        #endif   // DEBUG
+    if (!collider) {
+#ifdef _DEBUG
+        std::cout << "No se ha incluido collider, la comprobacion de las colisiones se omitira" << std::endl;
+#endif   // DEBUG
     }
     rigidBody->setUserPointer(this);
 
@@ -86,14 +81,13 @@ bool RigidBodyComponent::InitializeRigidBody(PBShapes shapeType, PBMovementType 
 
     btBroadphaseProxy* bdProxy = rigidBody->getBroadphaseProxy();
     if (bdProxy == nullptr) {
-        std::cerr << "Error: Broadphase proxy is null after adding the body to the world." << std::endl;
-        return false;
+        return {false, "Error: Broadphase proxy is null after adding the body to the world."};
     }
 
     //Mascaras y grupos de colision
     setMask(m);
     setGroup(g);
-    return true;
+    return {true, "RigidBody was succesfully initialized"};
 }
 
 btRigidBody* RigidBodyComponent::GetBulletRigidBody() { return this->rigidBody; }
@@ -202,20 +196,6 @@ VeryReal::Vector4 VeryReal::RigidBodyComponent::GetRotation() {
                    rigidBody->getWorldTransform().getRotation().getZ(), rigidBody->getWorldTransform().getRotation().getW());
 }
 
-//Vector3 RigidBodyComponent::QuaternionToEuler(const btQuaternion& q) const{
-//    // Convertir el cuaternión a ángulos de Euler
-//
-//    float roll = atan2(2.0 * (q.getW() * q.getX() + q.getY() * q.getZ()), 1.0 - 2.0 * (q.getX() * q.getX() + q.getY() * q.getY()));
-//    float pitch = asin(2.0 * (q.getW() * q.getY() - q.getZ() * q.getX()));
-//    float yaw = atan2(2.0 * (q.getW() * q.getZ() + q.getX() * q.getY()), 1.0 - 2.0 * (q.getY() * q.getY() + q.getZ() * q.getZ()));
-//
-//    // Convertir de radianes a grados
-//    roll *= 180.0 / M_PI;
-//    pitch *= 180.0 / M_PI;
-//    yaw *= 180.0 / M_PI;
-//
-//    return Vector3(roll, pitch, yaw);
-//}
 
 void RigidBodyComponent::AddImpulse(const Vector3& impulse) {
     rigidBody->applyCentralImpulse(btVector3(impulse.GetX(), impulse.GetY(), impulse.GetZ()));
@@ -223,7 +203,7 @@ void RigidBodyComponent::AddImpulse(const Vector3& impulse) {
 
 void RigidBodyComponent::AddTorque(const Vector3& torque) {
 
-    rigidBody->applyTorqueImpulse(btVector3(torque.GetX(), torque.GetY(), torque.GetZ()));   // poner una de las tres..........................
+    rigidBody->applyTorqueImpulse(btVector3(torque.GetX(), torque.GetY(), torque.GetZ()));   
 }
 
 void RigidBodyComponent::SetActiveTrigger(bool b) {
@@ -268,13 +248,3 @@ void VeryReal::RigidBodyComponent::SetMovementType(PBMovementType mT) {
     movementType = mT;
 }
 
-void VeryReal::RigidBodyComponent::Decelerate(float percent) {
-    // Calcular la fuerza de fricción opuesta a la dirección de movimiento
-    if ((-rigidBody->getLinearVelocity() * percent).fuzzyZero()) {
-        return;
-    }
-
-    btVector3 frictionForce = -rigidBody->getLinearVelocity().normalized() * percent;
-    // Aplicar la fuerza de fricción al cuerpo rígido
-    rigidBody->applyCentralForce(frictionForce);
-}

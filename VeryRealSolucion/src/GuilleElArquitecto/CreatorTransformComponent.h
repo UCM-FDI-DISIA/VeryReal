@@ -8,8 +8,8 @@ class VERYREAL_GUILLEELARQUITECTO CreatorTransformComponent : public CreatorComp
 		CreatorTransformComponent() {}
 		virtual ~CreatorTransformComponent() {}
 		Component* CreatorSpecificComponent() override;
-        void SpecificInitComponent(Component* c) override;
-        void SpecificInitComponentByCopy(Component* c, Component* other) override;
+        std::pair<bool, std::string> SpecificInitComponent(Component* c) override;
+        std::pair<bool, std::string> SpecificInitComponentByCopy(Component* c, Component* other) override;
 	};
 };
 

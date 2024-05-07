@@ -19,14 +19,14 @@ class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
             return false;
         }
     }
-    bool InitVeryReal();
+    std::pair<bool,std::string> InitVeryReal();
     void Loop();
     virtual void Delete();
-    bool InitPointers();
-    bool InitManagers();
-    bool CreateCreators();
+    std::pair<bool,std::string> InitPointers();
+    std::pair<bool, std::string> InitManagers();
+    void CreateCreators();
 
-    bool LoadGame(std::string gameName);
+    std::pair<bool,std::string> LoadGame(std::string gameName);
 
     private:
     HMODULE gameDll = NULL;

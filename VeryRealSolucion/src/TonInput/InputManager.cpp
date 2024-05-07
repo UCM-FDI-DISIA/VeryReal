@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void VeryReal::InputManager::InitManager() {   // Flags de sdl necesarias para el input de teclas y mando
+std::pair<bool, std::string> VeryReal::InputManager::InitManager() {   // Flags de sdl necesarias para el input de teclas y mando
     kb_state = SDL_GetKeyboardState(0);
     ClearState(true);
     if (!SDL_WasInit(SDL_INIT_EVENTS)) 
@@ -15,6 +15,8 @@ void VeryReal::InputManager::InitManager() {   // Flags de sdl necesarias para e
         SDL_Init(SDL_INIT_JOYSTICK);
     if (!SDL_WasInit(SDL_INIT_GAMECONTROLLER)) 
         SDL_Init(SDL_INIT_GAMECONTROLLER);
+
+    return {true, "InputManager sucesfully initialized"};
 }
 
 void VeryReal::InputManager::ClearState(bool clearMouseButtons) {

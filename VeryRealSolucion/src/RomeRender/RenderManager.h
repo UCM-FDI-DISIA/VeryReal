@@ -60,13 +60,13 @@ namespace VeryReal {
          Ogre::ManualObject*  createManualObject(Ogre::SceneNode* node);
          void destroyManualObject(Ogre::ManualObject* const object);
        
-		static bool Init() {
+		static std::pair<bool,std::string> Init() {
 			RenderManager* a = new RenderManager();
 			if (a != nullptr) {
 				instance_pointer.reset(a);
-				return true;
+				return {true, "RenderManager pointer sucesfully initialized"};
 			}
-			return false;
+			return {false, "RenderManager pointer had a problem while it was initializing"};
 		}
     //void GetScene() { VeryReal::SceneManager::Instance()->hola(); }
 
@@ -75,7 +75,7 @@ namespace VeryReal {
 
 		// Inicializa el administrador de renderizado con el nombre proporcionado
 		// @param name Nombre de la aplicación
-         virtual void  InitManager(std::string const& name);
+        virtual std::pair<bool, std::string> InitManager(std::string const& name);
 
 		// Actualiza el administrador de renderizado con el paso de tiempo proporcionado
 		// @param dt Paso de tiempo desde la última actualización

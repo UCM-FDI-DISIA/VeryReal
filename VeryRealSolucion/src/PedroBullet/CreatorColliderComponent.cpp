@@ -5,10 +5,8 @@ Component* CreatorColliderComponent::CreatorSpecificComponent() {
 	return new ColliderComponent();
 }
 
-void CreatorColliderComponent::SpecificInitComponent(Component* c) {
-	// Asignar parametros y mas cosas del init
-}
+ std::pair<bool, std::string> CreatorColliderComponent::SpecificInitComponent(Component* c) { return {true, "ColliderComponent initialized"}; }
 
-void CreatorColliderComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
-    // Asignar parametros y mas cosas del init por copia
-}
+ std::pair<bool, std::string> CreatorColliderComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+     return {true, "ColliderComponent initialized"};
+ }

@@ -29,7 +29,7 @@ namespace VeryReal {
 			//constructora de la clase animación que es un componente de cualquier entidad que queramos que tenga movimiento
 			AnimatorComponent();
 			// Inicializa el componente con un nombre, un gestor de escena, y las componentes de transformación y renderizado de malla.
-			bool InitComponent( std::string name);
+			std::pair<bool,std::string> InitComponent( std::string name);
 			// Destructor de la clase AnimatorComponent.
 			virtual ~AnimatorComponent(); 
 			// Crea una animación con el nombre y la duración especificados.

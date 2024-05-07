@@ -36,7 +36,7 @@ UIProgressBarComponent::~UIProgressBarComponent() {
 }
 
     // Inicializa el componente
-    bool UIProgressBarComponent::InitComponent(double maximo, double progres, std::string progressBarName,
+std::pair<bool, std::string> UIProgressBarComponent::InitComponent(double maximo, double progres, std::string progressBarName,
                                                std::string frameMaterial, std::string contentMaterial, int order) { 
         max_progress = maximo;
         progress = progres;
@@ -54,19 +54,12 @@ UIProgressBarComponent::~UIProgressBarComponent() {
         frame_element = overlay_mgr->createOverlayElement("Panel", progressBarName + "Frame");
         progress_bar_container->addChild(frame_element);
         frame_element->setMaterialName(frame_material_name);
-
-        //if (!transform) {
-        //    ErrorInf().showErrorMessageBox("UISpriteRendererComponent error", "An entity doesn't have transform component", EI_ERROR);
-        //    //sceneManager().quit();
-        //    return false;
-        //}
-
         transform = GetEntity()->GetComponent<UITransformComponent>();
         setProgressBarTransform(transform->getPosition(), transform->getScale());
         overlay->add2D(progress_bar_container);
         overlay->setZOrder(order);
         overlay->show();
-        return true;
+        return {true, "UIProgressBarComponent initialized"};
     }
 
     void UIProgressBarComponent::Update(const double& dt) {

@@ -29,48 +29,38 @@ using namespace std;
     
 }
 
-bool AnimatorComponent::InitComponent(std::string name) {
+std::pair<bool, std::string> AnimatorComponent::InitComponent(std::string name) {
     scene_mngr = RenderManager::Instance()->SceneManagerOgree();
     name = name;
     num_animations_active = (0);
     loop = false;
     active = false;
-    if (GetEntity()->HasComponent("TransformComponent")) transform = GetEntity()->GetComponent<TransformComponent>();
+    if (!GetEntity()->HasComponent("TransformComponent")) return {false, "There was no TransformComponent attached to the AnimatorComponent"};
+    transform = GetEntity()->GetComponent<TransformComponent>();
+
+
+    if (GetEntity()->HasComponent("MeshRenderComponent")) meshRender = GetEntity()->GetComponent<MeshRenderComponent>();
     else {
-        #ifdef DEBUG_MODE
-        std::cerr << DEBUG_TRANSFORM_ERROR;
-        #endif
-        return false;
+        return {false, "There was no MeshRenderComponent attached to the AnimatorComponent"};
     }
-      
-    
-    if(GetEntity()->HasComponent("MeshRenderComponent"))meshRender = GetEntity()->GetComponent<MeshRenderComponent>();
-    else {
-        #ifdef DEBUG_MODE
-        std::cerr << DEBUG_MESHRENDERER_ERROR;
-         #endif
-        return false;
-    }
-      
+
 
     animations = std::unordered_map<std::string, Ogre::AnimationState*>();
     if (meshRender->getOgreEntity()->getAllAnimationStates() != nullptr)
-        if (meshRender->getOgreEntity()->getAllAnimationStates() != nullptr)
-        {
+        if (meshRender->getOgreEntity()->getAllAnimationStates() != nullptr) {
             Ogre::AnimationStateMap mapa = meshRender->getOgreEntity()->getAllAnimationStates()->getAnimationStates();
-            for (auto it = mapa.begin(); it != mapa.end(); it++)
-            {
-                animations.insert({ it->first, it->second });
+            for (auto it = mapa.begin(); it != mapa.end(); it++) {
+                animations.insert({it->first, it->second});
             }
         }
-    return true;
+    return {true, "AnimatorComponent initialized"};
 }
 AnimatorComponent::~AnimatorComponent()
 {
+
 }
 void AnimatorComponent::Update(const double& dt)
 {
-   
     int num = 0;
     auto it = animations.begin();
     while (num != num_animations_active)

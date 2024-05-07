@@ -18,7 +18,7 @@ namespace VeryReal {
         virtual ~UITransformComponent();
 
         // Inicializa el componente 
-        bool InitComponent(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool hide = false, bool interact = false);
+        std::pair<bool, std::string> InitComponent(VeryReal::Vector2 pos, VeryReal::Vector2 sc, bool hide = false, bool interact = false);
        
     
         void Update(const double& dt) override;

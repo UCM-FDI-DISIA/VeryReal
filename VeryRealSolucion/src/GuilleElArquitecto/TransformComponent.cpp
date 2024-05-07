@@ -10,13 +10,14 @@ TransformComponent::TransformComponent() {
 TransformComponent::~TransformComponent() {
 
 }
-bool TransformComponent::InitComponent(Vector3 position, Vector3 rotation, Vector3 scale) {
-	this->position = position;
-	this->rotation = Vector4(rotation);
+std::pair<bool, std::string> TransformComponent::InitComponent(Vector3 position, Vector3 rotation, Vector3 scale) {
+    this->position = position;
+    this->rotation = Vector4(rotation);
     this->rotationInit = rotation;
-	this->scale = scale;
-	return true;
+    this->scale = scale;
+    return {true, "TransformComponent initialized"};
 }
+
 void TransformComponent::Translate(VeryReal::Vector3 translateposition) {
 	position += translateposition;
 }

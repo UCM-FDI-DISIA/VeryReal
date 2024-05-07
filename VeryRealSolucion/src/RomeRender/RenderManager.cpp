@@ -69,7 +69,29 @@ VeryReal::RenderManager::~RenderManager() {
     root = nullptr;
 
 }
-void VeryReal::RenderManager::InitManager(std::string const& name) {
+std::pair<bool, std::string> VeryReal::RenderManager::InitManager(std::string const& name) 
+{
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
+
     window = nullptr;
     root = nullptr;
     scene_manager = nullptr;
@@ -160,6 +182,7 @@ void VeryReal::RenderManager::InitManager(std::string const& name) {
    
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
     SceneManagerOgree()->addRenderQueueListener(overlay_system);
+    return {true, "Render sucesfully initialized"};
 }
 
 

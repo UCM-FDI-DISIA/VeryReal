@@ -22,15 +22,13 @@ LightComponent::~LightComponent() {
 
 }
 
-bool LightComponent::InitComponent(int type, Vector3 const& diffusecolour, float shadowfardist, float shadowdist, float ineerangle, float outerangle,
+
+std::pair<bool, std::string> LightComponent::InitComponent(int type, Vector3 const& diffusecolour, float shadowfardist, float shadowdist,
+                                                           float ineerangle, float outerangle,
                                    float nearclipdist, bool shdws, float intensity) {
 	if(GetEntity()->HasComponent("TransformComponent"))trans = GetEntity()->GetComponent<TransformComponent>();
 	else {
-		#ifdef DEBUG_MODE
-		std::cerr << DEBUG_TRANSFORM_ERROR;
-		#endif
-		 return false;//devolverá false en este caso
-	
+            return {false, "There was no TransformComponent attached to the object with LightComponent"};
 	}
 	light = VeryReal::RenderManager::Instance()->SceneManagerOgree()->createLight();
 	mNode = VeryReal::RenderManager::Instance()->CreateNode();
@@ -45,7 +43,7 @@ bool LightComponent::InitComponent(int type, Vector3 const& diffusecolour, float
 	ActivateShadows(shdws);
 	mNode->attachObject(light);
     light->setPowerScale(Ogre::Real(intensity));
-	return true;
+    return {true, "LightComponent initialized"};
 }
 
 void LightComponent::Update(const double& dt) {

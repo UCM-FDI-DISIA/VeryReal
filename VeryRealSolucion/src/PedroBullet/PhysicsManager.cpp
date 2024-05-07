@@ -22,6 +22,8 @@
 #ifdef _DEBUG
 #include "PhysicsDebug.h"
 #include "RenderManager.h"
+
+
 #endif   // _DEBUG
 
 VeryReal::PhysicsManager::PhysicsManager()
@@ -88,7 +90,7 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     return false;
 }
 
-bool VeryReal::PhysicsManager::InitManager() {
+ std::pair<bool, std::string> VeryReal::PhysicsManager::InitManager() {
     collisionConfiguration = nullptr;
 
     dispatcher = nullptr;
@@ -99,31 +101,31 @@ bool VeryReal::PhysicsManager::InitManager() {
     // Inicializar el mundo de f�sica, configuraci�n de colisiones, etc.
     collisionConfiguration = new btDefaultCollisionConfiguration();
     if (!collisionConfiguration) {
-        return false;   // Fall� la creaci�n de collisionConfiguration
+        return {false, ""};   // Fall� la creaci�n de collisionConfiguration
     }
 
     dispatcher = new btCollisionDispatcher(collisionConfiguration);
     if (!dispatcher) {
-        Shutdown();
-        return false;   // Fall� la creaci�n de dispatcher
+       
+        return {false, ""};   // Fall� la creaci�n de dispatcher
     }
 
     overlappingPairCache = new btDbvtBroadphase();
     if (!overlappingPairCache) {
-        Shutdown();
-        return false;   // Fall� la creaci�n de overlappingPairCache
+        
+        return {false, ""};   // Fall� la creaci�n de overlappingPairCache
     }
 
     solver = new btSequentialImpulseConstraintSolver();
     if (!solver) {
-        Shutdown();
-        return false;   // Fall� la creaci�n de solver
+      
+        return {false, ""};   // Fall� la creaci�n de solver
     }
 
     dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
     if (!dynamicsWorld) {
-        Shutdown();
-        return false;   // Fall� la creaci�n de dynamicsWorld
+
+        return {false, ""};   // Fall� la creaci�n de dynamicsWorld
     }
 
     gContactStartedCallback = callBackEnter;
@@ -139,8 +141,9 @@ bool VeryReal::PhysicsManager::InitManager() {
     debugger = new DebugMode();
     dynamicsWorld->setDebugDrawer(debugger);
 #endif             // DEBUG
-    return true;   // Inicializaci�n exitosa
-}
+
+    return {true, "PhysicsManager sucesfully initialized"};
+ }
 
 void VeryReal::PhysicsManager::Update(float deltaTime) {
     if (dynamicsWorld) {
@@ -152,7 +155,8 @@ void VeryReal::PhysicsManager::Update(float deltaTime) {
     }
 }
 
-void VeryReal::PhysicsManager::Shutdown() {
+void VeryReal::PhysicsManager::Shutdown()
+{
     // Limpieza del mundo de f�sica y liberaci�n de recursos
     if (dynamicsWorld) {
         delete dynamicsWorld;
@@ -169,7 +173,7 @@ void VeryReal::PhysicsManager::Shutdown() {
     if (collisionConfiguration) {
         delete collisionConfiguration;
     }
-}
+ }
 
 btDiscreteDynamicsWorld* VeryReal::PhysicsManager::GetWorld() const { return dynamicsWorld; }
 

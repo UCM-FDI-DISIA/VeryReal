@@ -15,7 +15,7 @@ class UITransformComponent;
         virtual ~UIButtonComponent();
         virtual void accion(){};
         // Inicializa el componente
-        bool InitComponent();
+        std::pair<bool, std::string> InitComponent();
         void Update(const double& dt) override;
 
      private:

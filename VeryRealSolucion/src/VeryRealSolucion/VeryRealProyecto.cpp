@@ -53,40 +53,100 @@ typedef bool(__cdecl* Start)();
 typedef void(__cdecl* MainLoop)(float dt);
 using namespace VeryReal;
 using namespace std;
+using SetUpMessage = std::pair<bool,std::string>;
+SetUpMessage VeryRealProyecto::InitVeryReal() 
+{
+    auto initPointers = InitPointers();
+    if (!initPointers.first){
+        return initPointers;
+    }
 
-bool VeryRealProyecto::InitVeryReal() {
-    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    if (!InitPointers()) return false;
-    if (!InitManagers()) return false;
-    if (!CreateCreators()) return false;
+    auto initManagers = InitManagers();
+    if (!initManagers.first) {
+        return initManagers;
+    }
+
+    CreateCreators();
 
     std::string dllName = "Game";
-    if (!LoadGame(dllName)) return false;
 
+    auto loadGame = LoadGame(dllName);
+    if (!loadGame.first) {
+        return loadGame;
+    }
     gameLoop = (MainLoop)GetProcAddress(gameDll, "loop");
-    if (gameLoop == NULL) return false;
-    return true;
+    if (gameLoop == NULL) return {false, "There wasn't a method called loop in your loaded game DLL "};
+    return {true, "The engine is ready to start the game!"};
 }
 
-bool VeryRealProyecto::InitPointers() {
-    if (!VeryReal::InputManager::Init() || !VeryReal::RenderManager::Init() || !VeryReal::AudioManager::Init() || !VeryReal::ScriptManager::Init() ||
-        !VeryReal::PhysicsManager::Init() || !VeryReal::SceneManager::Init())
-        return false;
-    return true;
+SetUpMessage VeryRealProyecto::InitPointers() {
+    // Para cada manager comprobamos los errores de inicializacion
+    SetUpMessage inputManagerMessage = VeryReal::InputManager::Init();
+    if (!inputManagerMessage.first) 
+    {
+        return inputManagerMessage;
+    }
+
+    SetUpMessage renderManagerMessage = VeryReal::RenderManager::Init();
+    if (!renderManagerMessage.first) {
+        return renderManagerMessage;
+    }
+
+    SetUpMessage audioManagerMessage = VeryReal::AudioManager::Init();
+    if (!audioManagerMessage.first) {
+        return audioManagerMessage;
+    }
+
+    SetUpMessage scriptManagerMessage = VeryReal::ScriptManager::Init();
+    if (!scriptManagerMessage.first) {
+        return scriptManagerMessage;
+    }
+
+    SetUpMessage physicManagerMessage = VeryReal::PhysicsManager::Init();
+    if (!physicManagerMessage.first) {
+        return physicManagerMessage;
+    }
+
+    SetUpMessage sceneManagerMessage = VeryReal::SceneManager::Init();
+    if (!sceneManagerMessage.first) {
+        return sceneManagerMessage;
+    }
+
+    SetUpMessage creatorMessage = VeryReal::Creator::Init();
+    if (!creatorMessage.first) {
+        return creatorMessage;
+    }
+  
+    return {true, "Managers pointers where succesfully created"};
 }
 
-bool VeryRealProyecto::InitManagers() {
-    VeryReal::InputManager::Instance()->InitManager();
-    VeryReal::RenderManager::Instance()->InitManager("JUEGO");
-    VeryReal::AudioManager::Instance()->InitManager();
-    VeryReal::PhysicsManager::Instance()->InitManager();
+SetUpMessage VeryRealProyecto::InitManagers() {
+    SetUpMessage inputManagerInitMessage = VeryReal::InputManager::Instance()->InitManager();
+    if (!inputManagerInitMessage.first) {
+        return inputManagerInitMessage;
+    }
+
+    SetUpMessage renderManagerInitMessage = VeryReal::RenderManager::Instance()->InitManager("JUEGO");
+    if (!renderManagerInitMessage.first) {
+        return renderManagerInitMessage;
+    }
+
+    SetUpMessage audioManagerInitMessage = VeryReal::AudioManager::Instance()->InitManager();
+    if (!audioManagerInitMessage.first) {
+        return audioManagerInitMessage;
+    }
+
+    SetUpMessage physicsManagerInitMessage = VeryReal::PhysicsManager::Instance()->InitManager();
+    if (!physicsManagerInitMessage.first) {
+        return physicsManagerInitMessage;
+    }
+
     VeryReal::ScriptManager::Instance()->InitManager();
-    return true;
+    return {true, "All managers were succesfully initialized"};
 }
 
-bool VeryRealProyecto::CreateCreators() {
-    //FALTAN LOS DOS DE SONIDO
-    VeryReal::Creator::Init();
+void VeryRealProyecto::CreateCreators() 
+{
     VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
     VeryReal::Creator::Instance()->AddCreator("RigidBodyComponent", new VeryReal::CreatorRigidBodyComponent());
     VeryReal::Creator::Instance()->AddCreator("ColliderComponent", new VeryReal::CreatorColliderComponent());
@@ -101,10 +161,9 @@ bool VeryRealProyecto::CreateCreators() {
     VeryReal::Creator::Instance()->AddCreator("UISpriteRendererComponent", new VeryReal::CreatorUISpriteRenderComponent());
     VeryReal::Creator::Instance()->AddCreator("UIButtonComponent", new VeryReal::CreatorButtonComponent());
     VeryReal::Creator::Instance()->AddCreator("UIProgressBarComponent", new VeryReal::CreatorUIProgressBarComponent());
-    return true;
 }
 
-bool VeryRealProyecto::LoadGame(std::string gameName) {
+SetUpMessage VeryRealProyecto::LoadGame(std::string gameName) {
     //Tengo que hacer cambios a gameName para que este sea la ruta al juego. Puede ser relativa ya que siempre sabemos donde va a estar el juego.
 #ifdef _DEBUG
     gameName = "./" + gameName + "_d.dll";
@@ -119,19 +178,17 @@ bool VeryRealProyecto::LoadGame(std::string gameName) {
 
     if (gameDll != NULL) {
         std::cout << "Juego cargado correctamente";
-        Start startFunction = (Start)GetProcAddress(gameDll, "start");
+        /*    Start startFunction = (Start)GetProcAddress(gameDll, "start");
 
         if (startFunction != NULL) {
             return startFunction();
-        }
+        }*/
     }
     else {
-        std::cout << "El juego no existe";
-        return false;
+        return {false, "El juego no existe"};
     }
-    return true;
+    return {true, "Game was loaded!"};
 }
-
 void VeryRealProyecto::Loop() {
     auto startTime = std::chrono::high_resolution_clock::now();
     while (!VeryReal::InputManager::Instance()->getQuit()) {

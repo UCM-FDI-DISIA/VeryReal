@@ -31,7 +31,8 @@ class CameraComponent : public Component {
 
     // Inicializa el componente de cámara con un nombre, un color, una ventana de renderizado de Ogre,
     // un gestor de escena de Ogre y un desplazamiento de posición.
-    VERYREAL_ROMERENDER bool InitComponent(std::string name, VeryReal::Vector3 color, float alfa, VeryReal::Vector3 m_offset, int zOrder,VeryReal::Vector3 position);
+    VERYREAL_ROMERENDER std::pair<bool, std::string> InitComponent(std::string name, VeryReal::Vector3 color, float alfa, VeryReal::Vector3 m_offset,
+                                                                   int zOrder, VeryReal::Vector3 position);
     //actualiza la posicion de la camara
     VERYREAL_ROMERENDER void Update(const double& dt) override;
 

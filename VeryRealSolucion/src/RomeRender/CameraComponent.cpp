@@ -19,13 +19,14 @@ CameraComponent::~CameraComponent() {
        
 }
 
-bool CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset, int zOrder,VeryReal::Vector3 position) {
+std::pair<bool, std::string> CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset, int zOrder,
+                                                            VeryReal::Vector3 position) {
     //camara
     mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
     this->offset = offset;
     mNode = mgr->getRootSceneNode()->createChildSceneNode();   //nodo  de la camara
     mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-    mNode->setPosition(position.GetX() + offset.GetX(), position.GetY() + offset.GetY(), position.GetZ() +offset.GetZ());
+    mNode->setPosition(position.GetX() + offset.GetX(), position.GetY() + offset.GetY(), position.GetZ() + offset.GetZ());
     camara = mgr->createCamera(name);   // objeto y camara en si
     camara->setNearClipDistance(1);     //queremos que serenderice lo mas cerca posible desde la camara
     mNode->attachObject(camara);
@@ -35,7 +36,7 @@ bool CameraComponent::InitComponent(std::string name, Vector3 color, float alfa,
     ent = this->GetEntity();
     Ogre::ColourValue* v = new ColourValue(color.GetX(), color.GetY(), color.GetZ(), alfa);
     vewport->setBackgroundColour(*v);
-    return true;
+    return {true, "CameraComponent initialized"};
 }
 
 void CameraComponent::Update(const double& dt) {

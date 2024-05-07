@@ -3,7 +3,7 @@
 using namespace VeryReal;
 Component* CreatorCameraComponent::CreatorSpecificComponent() { return new CameraComponent(); }
 
-void CreatorCameraComponent::SpecificInitComponent(Component* c) {
+std::pair<bool, std::string> CreatorCameraComponent::SpecificInitComponent(Component* c) {
     CameraComponent* cam = static_cast<CameraComponent*>(c);
     std::string name;
     Vector3 offset;
@@ -114,12 +114,8 @@ void CreatorCameraComponent::SpecificInitComponent(Component* c) {
     }
 #pragma endregion
 
-    bool b = cam->InitComponent(name, color, alfa, offset, zOrder,position);
-    if (!b) {
-        // Gestion de error
-    }
+    return cam->InitComponent(name, color, alfa, offset, zOrder,position);
 }
 
-void CreatorCameraComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
-
-}
+std::pair<bool, std::string> CreatorCameraComponent::SpecificInitComponentByCopy(Component* c, Component* other) 
+{ return {true, ""}; }

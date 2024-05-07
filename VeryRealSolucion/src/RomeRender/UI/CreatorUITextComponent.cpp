@@ -4,7 +4,7 @@
 using namespace VeryReal;
 Component* CreatorUITextComponent::CreatorSpecificComponent() { return new UITextComponent(); }
 
-void CreatorUITextComponent::SpecificInitComponent(Component* c) {
+std::pair<bool,std::string> CreatorUITextComponent::SpecificInitComponent(Component* c) {
     UITextComponent* a = static_cast<UITextComponent*>(c);
     std::string name, font, caption;
     int zOrder;
@@ -95,28 +95,11 @@ void CreatorUITextComponent::SpecificInitComponent(Component* c) {
         charHeight = 0;
     }
 #pragma endregion
-    /*  if (std::holds_alternative<std::string>(parameters_map.at("name")->GetVariant())) {
-        name = std::get<std::string>(parameters_map.at("name")->GetVariant());
-    }
-    if (std::holds_alternative<std::string>(parameters_map.at("font")->GetVariant())) {
-        font = std::get<std::string>(parameters_map.at("font")->GetVariant());
-    }
-    if (std::holds_alternative<std::string>(parameters_map.at("caption")->GetVariant())) {
-        caption = std::get<std::string>(parameters_map.at("caption")->GetVariant());
-    }
-    if (std::holds_alternative<int>(parameters_map.at("zOrder")->GetVariant())) {
-        zOrder = std::get<int>(parameters_map.at("zOrder")->GetVariant());
-    }
-    if (std::holds_alternative<float>(parameters_map.at("charHeight")->GetVariant())) {
-        charHeight = std::get<float>(parameters_map.at("charHeight")->GetVariant());
-    }
-    */
-    bool b;
     if (parameters_map.find("color") != parameters_map.end()) {
         if (std::holds_alternative<VeryReal::Vector3>(parameters_map.at("color")->GetVariant())) {
             color = std::get<VeryReal::Vector3>(parameters_map.at("color")->GetVariant());
         }
-        b = a->InitComponent(name, font, zOrder, charHeight, color, caption);
+        return a->InitComponent(name, font, zOrder, charHeight, color, caption);
     }
     else {
         if (std::holds_alternative<VeryReal::Vector3>(parameters_map.at("colorTop")->GetVariant())) {
@@ -125,29 +108,21 @@ void CreatorUITextComponent::SpecificInitComponent(Component* c) {
         if (std::holds_alternative<VeryReal::Vector3>(parameters_map.at("colorBottom")->GetVariant())) {
             colorBottom = std::get<VeryReal::Vector3>(parameters_map.at("colorBottom")->GetVariant());
         }
-        b = a->InitComponent(name, font, zOrder, charHeight, colorBottom, colorTop, caption);
-    }
-
-    if (!b) {
-        //Gestionar error
+        return a->InitComponent(name, font, zOrder, charHeight, colorBottom, colorTop, caption);
     }
 }
 
-void CreatorUITextComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+std::pair<bool,std::string> CreatorUITextComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
     UITextComponent* a = static_cast<UITextComponent*>(c);
     UITextComponent* copia = static_cast<UITextComponent*>(other);
 
     bool b;
     if (copia->GetNormalOrTopBottom()) {
-        b = a->InitComponent(copia->GetTextName(), copia->GetFontName(), copia->GetZOrder(), copia->GetCharHeight(), copia->GetColor(), 
+        return a->InitComponent(copia->GetTextName(), copia->GetFontName(), copia->GetZOrder(), copia->GetCharHeight(), copia->GetColor(), 
             copia->GetTextCaption());
     }
     else {
-        b = a->InitComponent(copia->GetTextName(), copia->GetFontName(), copia->GetZOrder(), copia->GetCharHeight(), copia->GetColorBottom(),
+        return a->InitComponent(copia->GetTextName(), copia->GetFontName(), copia->GetZOrder(), copia->GetCharHeight(), copia->GetColorBottom(),
             copia->GetColorTop(), copia->GetTextCaption());
-    }
-
-    if (!b) {
-        //Gestionar error
     }
 }

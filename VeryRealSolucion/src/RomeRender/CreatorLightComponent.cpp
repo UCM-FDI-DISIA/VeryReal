@@ -3,7 +3,7 @@
 using namespace VeryReal;
 Component* CreatorLightComponent::CreatorSpecificComponent() { return new LightComponent(); }
 
-void CreatorLightComponent::SpecificInitComponent(Component* c) {
+std::pair<bool,std::string> CreatorLightComponent::SpecificInitComponent(Component* c) {
     int type = 0;
     Vector3 diffusecolour(0, 0, 0);
     float shadowfardist = 0, shadowdist = 0, ineerangle = 0, outerangle = 0, nearclipdist = 0, intensity = 0;
@@ -152,13 +152,8 @@ void CreatorLightComponent::SpecificInitComponent(Component* c) {
         intensity = 1.0;
     }
 #pragma endregion
-
-
-    
-    bool b =
-        static_cast<LightComponent*>(c)->InitComponent(type, diffusecolour, shadowfardist, shadowdist, ineerangle, outerangle, nearclipdist, shdws, intensity);
+       return static_cast<LightComponent*>(c)->InitComponent(type, diffusecolour, shadowfardist, shadowdist, ineerangle, outerangle, nearclipdist, shdws, intensity);
 }
 
-void CreatorLightComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
 
-}
+std::pair<bool, std::string> CreatorLightComponent::SpecificInitComponentByCopy(Component* c, Component* other) { return {true, ""}; }

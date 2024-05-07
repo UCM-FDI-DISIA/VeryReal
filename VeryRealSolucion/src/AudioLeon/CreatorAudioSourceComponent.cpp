@@ -5,7 +5,7 @@ using namespace std;
 
 Component* VeryReal::CreatorAudioSourceComponent::CreatorSpecificComponent() { return new AudioSourceComponent(); }
 
-void VeryReal::CreatorAudioSourceComponent::SpecificInitComponent(Component* c) {
+std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInitComponent(Component* c) {
     string name, path, groupchannel;
     bool onstart = false, threed = false, loop = false;
     float volume = 0.1f, mindistance = 1.0f, maxdistance = 60.0f;
@@ -153,17 +153,22 @@ void VeryReal::CreatorAudioSourceComponent::SpecificInitComponent(Component* c) 
         maxdistance = 1.0f;
     }
 #pragma endregion
-    static_cast<AudioSourceComponent*>(c)->InitComponent(name, path, onstart, groupchannel, volume, threed, loop, mindistance, maxdistance);
-    static_cast<AudioSourceComponent*>(c)->Start();
+    auto initComponent =
+        static_cast<AudioSourceComponent*>(c)->InitComponent(name, path, onstart, groupchannel, volume, threed, loop, mindistance, maxdistance);
+    if (!initComponent.first) return initComponent;
+    auto startComponent = static_cast<AudioSourceComponent*>(c)->Start();
+    if (!startComponent.first) return startComponent;
 }
-
-void VeryReal::CreatorAudioSourceComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
     string name, path, groupchannel;
     bool onstart = false, threed = false, loop = false;
     float volume = 0.1f, mindistance = 1.0f, maxdistance = 60.0f;
     AudioSourceComponent* audio = static_cast<AudioSourceComponent*>(c);
     AudioSourceComponent* copia = static_cast<AudioSourceComponent*>(other);
-    audio->InitComponent(copia->GetSoundName(), copia->GetSoundPath(), copia->GetPlayOnStart(), copia->GetSoundGroup(), copia->GetVolume(),
+    auto initComponent = audio->InitComponent(copia->GetSoundName(), copia->GetSoundPath(), copia->GetPlayOnStart(), copia->GetSoundGroup(), copia->GetVolume(),
                          copia->GetIsThreeD(), copia->GetIsLoop(), copia->GetMinDistance(), copia->GetMaxDistance());
-    audio->Start();
+    if (!initComponent.first) return initComponent;
+    auto startComponent = audio->Start();
+    if (!startComponent.first) return startComponent;
+ 
 }

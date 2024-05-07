@@ -4,7 +4,8 @@
 
 VeryReal::Component* VeryReal::CreatorMeshRenderComponent::CreatorSpecificComponent() { return new MeshRenderComponent(); }
 
-void VeryReal::CreatorMeshRenderComponent::SpecificInitComponent(Component* c) {
+
+std::pair<bool, std::string> VeryReal::CreatorMeshRenderComponent::SpecificInitComponent(Component* c) {
     MeshRenderComponent* m = static_cast<MeshRenderComponent*>(c);
     bool isstatic;
     std::string modelname, entityname, materialname;
@@ -90,21 +91,16 @@ void VeryReal::CreatorMeshRenderComponent::SpecificInitComponent(Component* c) {
         isstatic = std::get<bool>(parameters_map.at("isstatic")->GetVariant());
     }*/
 
-    bool b = m->InitComponent(isstatic, modelname, entityname, materialname);
-    if (!b) {
-        // Gestion error
-    }
+    return m->InitComponent(isstatic, modelname, entityname, materialname);
 }
 
-void VeryReal::CreatorMeshRenderComponent::SpecificInitComponentByCopy(VeryReal::Component* c, VeryReal::Component* other) {
+
+std::pair<bool, std::string> VeryReal::CreatorMeshRenderComponent::SpecificInitComponentByCopy(VeryReal::Component* c, VeryReal::Component* other) {
     MeshRenderComponent* a = static_cast<MeshRenderComponent*>(c);
     MeshRenderComponent* copia = static_cast<MeshRenderComponent*>(other);
 
     bool isstatic = false;
     std::string modelname = copia->getMeshName(), entityname = copia->getNameEntity(), materialname = copia->getMaterialName();
 
-    bool b = a->InitComponent(isstatic, modelname, entityname, materialname);
-    if (!b) {
-        // Gestion error
-    }
+    return a->InitComponent(isstatic, modelname, entityname, materialname);
 }

@@ -4,7 +4,7 @@
 #include "Manager.h"
 #include <list>
 #include "exportPedroBullet.h"
-
+#include <string>
 namespace VeryReal {
 class Vector3;
 class Entity;
@@ -40,15 +40,15 @@ class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
   public:
     virtual ~PhysicsManager();
 
-    static bool Init() {
+    static std::pair<bool, std::string> Init() {
         PhysicsManager* a = new PhysicsManager();
         if (a != nullptr) {
             instance_pointer.reset(a);
-            return true;
+            return {true, "PhysicsManager pointer sucesfully initialized"};
         }
-        return false;
+        return {false, "PhysicsManager pointer had a problem while it was initializing"};
     }
-    bool InitManager();             // Inicializa el mundo de Bullet y otros componentes necesarios
+    std::pair<bool, std::string> InitManager();   // Inicializa el mundo de Bullet y otros componentes necesarios
     void Update(float deltaTime);   // Actualiza la simulación física
     void Shutdown();                // Limpia y libera recursos
 

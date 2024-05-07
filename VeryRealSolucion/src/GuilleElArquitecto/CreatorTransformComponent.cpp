@@ -4,26 +4,11 @@ using namespace VeryReal;
 
 Component* CreatorTransformComponent::CreatorSpecificComponent() { return new TransformComponent(); }
 
-void CreatorTransformComponent::SpecificInitComponent(Component* c) {
+std::pair<bool, std::string> CreatorTransformComponent::SpecificInitComponent(Component* c) {
     Vector3 position, rotation, scale;
     int a = 0;
     TransformComponent* t = static_cast<TransformComponent*>(c);
-//#pragma region Aux
-//
-//        if (parameters_map.find("aux") != parameters_map.end()) {
-//            if (std::holds_alternative<int>(parameters_map.at("aux")->GetVariant())) {
-//                a = std::get<int>(parameters_map.at("aux")->GetVariant());
-//            }
-//            else {
-//                std::cout << "No se ha especificado ningun valor para aux este sera seteado por defecto" << std::endl;
-//                a = 0;
-//            }
-//        }
-//        else {
-//            std::cout << "No existe ningun parametro aux este sera seteado por defecto" << std::endl;
-//            a = 0;
-//        }
-//#pragma endregion
+
 #pragma region Position
 
     if (parameters_map.find("position") != parameters_map.end()) {
@@ -72,17 +57,13 @@ void CreatorTransformComponent::SpecificInitComponent(Component* c) {
         scale = Vector3(1, 1, 1);
     }
 #pragma endregion
-    bool b = t->InitComponent(position, rotation, scale);
-    if (!b) {
-    }   //FALTA GESTION DE ERRORES
+    return t->InitComponent(position, rotation, scale); 
 }
 
-void CreatorTransformComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
+std::pair<bool, std::string> CreatorTransformComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
     Vector3 position, rotation, scale;
     int a = 0;
     TransformComponent* t = static_cast<TransformComponent*>(c);
     TransformComponent* copia = static_cast<TransformComponent*>(other);
-    bool b = t->InitComponent(copia->GetPosition(), copia->GetRotationInit(), copia->GetScale());
-    if (!b) {
-    }   //FALTA GESTION DE ERRORES
+    return t->InitComponent(copia->GetPosition(), copia->GetRotationInit(), copia->GetScale());
 }

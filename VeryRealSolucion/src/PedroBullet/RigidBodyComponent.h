@@ -27,7 +27,8 @@ class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
         public:
     RigidBodyComponent();
 
-    bool InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, int movementType = MOVEMENT_TYPE_DYNAMIC,
+    std::pair<bool, std::string> InitComponent(int shapeType, float mass, float friction = 0.5f, float restitution = 0.0f,
+                                               int movementType = MOVEMENT_TYPE_DYNAMIC,
                        bool trigger = false, Vector3 s = {1, 1, 1}, int mask = -1, int group = 1);
 
     virtual ~RigidBodyComponent();
@@ -78,8 +79,6 @@ class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
 
     void Update(const double& dt);
 
-    void Decelerate(float percent);
-
     inline int getShapeTypeVar() { return shape_type_var; }
     inline bool GetIsTrigger() { return isTrigger; }
     inline Vector3 GetSizeVar() { return size_var; }
@@ -102,7 +101,7 @@ class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
     Vector3 size_var;
     PBMovementType movementType;
     ColliderComponent* collider = nullptr;
-    bool InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int mask, int group);
+    std::pair<bool, std::string> InitializeRigidBody(PBShapes shapeType, PBMovementType movementType, bool trigger, Vector3 s, int mask, int group);
     btCollisionShape* CreateCollisionShape(PBShapes shapeType, Vector3 s);
 };
 }

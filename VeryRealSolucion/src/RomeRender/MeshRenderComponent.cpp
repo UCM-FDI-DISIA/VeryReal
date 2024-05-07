@@ -18,7 +18,9 @@ using namespace VeryReal;
 using namespace Ogre;
 
 
-bool MeshRenderComponent::InitComponent(bool isstatic, std::string modelname, std::string entityname, std::string matirialname) {
+
+std::pair<bool, std::string> MeshRenderComponent::InitComponent(bool isstatic, std::string modelname, std::string entityname,
+                                                                std::string matirialname) {
     mSM = VeryReal::RenderManager::Instance()->SceneManagerOgree();
     // filesystemlayer_ = VeryReal::RenderManager::Instance()->filesystem_layer;
     material_name = matirialname;
@@ -42,7 +44,7 @@ bool MeshRenderComponent::InitComponent(bool isstatic, std::string modelname, st
     transform = GetEntity()->GetComponent<TransformComponent>();
     if (material_name != "") ent_ogre->setMaterialName(material_name, "General");
 
-    return true;
+    return {true, "MeshRenderComponent initialized"};
 }
 
 //destructora

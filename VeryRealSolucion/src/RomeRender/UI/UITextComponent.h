@@ -29,8 +29,10 @@ namespace VeryReal {
         virtual ~UITextComponent();
 
         // Inicializa el componente
-        bool InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 clr, std::string caption);
-        bool InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 bottomcolor, VeryReal::Vector3 topcolor, std::string caption);
+        std::pair<bool, std::string> InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 clr,
+                                                   std::string caption);
+        std::pair<bool, std::string> InitComponent(std::string name, std::string font, int order, float height, VeryReal::Vector3 bottomcolor,
+                                                   VeryReal::Vector3 topcolor, std::string caption);
 
         void Update(const double& dt) override;
 
