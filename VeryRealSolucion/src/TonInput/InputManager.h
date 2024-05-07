@@ -34,7 +34,7 @@ class VERYREAL_TONINPUT InputManager : public VeryReal::Manager<InputManager> {
      virtual std::pair<bool,std::string> InitManager();
 
     /// Inicializa SDL
-    virtual void InitManager();
+    virtual std::pair<bool, std::string> InitManager();
 
     /// Limpia el estado de la entrada
     void ClearState(bool clearMouseButtons = false);
