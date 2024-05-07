@@ -5,14 +5,6 @@ Component* CreatorRigidBodyComponent::CreatorSpecificComponent() { return new Ri
 
 std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Component* c) {
     RigidBodyComponent* r = static_cast<RigidBodyComponent*>(c);
-
-
-    /*RigidBodyComponent(PBShapes shapeType, float mass, float friction = 0.5f, float restitution = 0.0f, 
-		PBMovementType movementType = MOVEMENT_TYPE_DYNAMIC, bool trigger = false);*/
-
-    //recibir la forma, quizas formas de objetos tienen que ir en aquitectura básica, hablar con el grupo
-    //mirar movimiento tambien
-    //de momento estas dos lineas temporales para que no de error hasta que lo hablemos
     int shapeType;
     int movementType;
     float mass, friction, restitution;

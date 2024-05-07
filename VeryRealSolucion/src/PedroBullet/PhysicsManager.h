@@ -75,19 +75,12 @@ class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
     bool seeObjects = true;
 
 #endif
-
-    ///-------//// cosas para hacer pruebas
-    //btDiscreteDynamicsWorld* dynamicWorld = nullptr;
-
-    void createGround();
-
     void addForce(btRigidBody* body, btVector3 force);
 
     void clearForces(btRigidBody* body, btVector3 force);
 
     btVector3 V3ToBtV3(VeryReal::Vector3 conversion) const;
 
-    // Otras variables y métodos privados si son necesarios
 };
 }
 

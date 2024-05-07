@@ -6,9 +6,7 @@
 #include <vector>
 #include <btBulletCollisionCommon.h>
 #include <Ogre.h>
-/// <summary>
-/// Struct para guardar los puntos de contacto entre bodies
-/// </summary>
+
 
 
 struct ContactPoint {
@@ -32,14 +30,8 @@ class DebugMode : public btIDebugDraw, public Ogre::FrameListener {
      protected:
  
 
-    /// <summary>
-    /// Método para dibujar las lineas de los cuerpos fisicos
-    /// </summary>
      virtual void drawLine(const btVector3& from, const btVector3& to, const btVector3& color);
-   
-    /// <summary>
-    /// Método para representar los puntos de choque de dos cuerpos fisicos
-    /// </summary>
+
      virtual void drawContactPoint(const btVector3& PointOnB, const btVector3& normalOnB, btScalar distance, int lifeTime, const btVector3& color);
      virtual void reportErrorWarning(const char* warningString);
      virtual void draw3dText(const btVector3& location, const char* textString);
@@ -48,6 +40,6 @@ class DebugMode : public btIDebugDraw, public Ogre::FrameListener {
      void clearLines() override;
 };
 }
-#endif   // DebugDrawer_h__
+#endif   
 
 #endif //Debug

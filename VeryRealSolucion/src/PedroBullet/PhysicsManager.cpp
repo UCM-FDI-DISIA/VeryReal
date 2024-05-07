@@ -101,31 +101,31 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     // Inicializar el mundo de f�sica, configuraci�n de colisiones, etc.
     collisionConfiguration = new btDefaultCollisionConfiguration();
     if (!collisionConfiguration) {
-        return {false, ""};   // Fall� la creaci�n de collisionConfiguration
+        return {false, "There were mistakes creating btDefaultCollisionConfiguration"};   // Fall� la creaci�n de collisionConfiguration
     }
 
     dispatcher = new btCollisionDispatcher(collisionConfiguration);
     if (!dispatcher) {
        
-        return {false, ""};   // Fall� la creaci�n de dispatcher
+        return {false, "There were mistakes creating btCollisionDispatcher"};   // Fall� la creaci�n de dispatcher
     }
 
     overlappingPairCache = new btDbvtBroadphase();
     if (!overlappingPairCache) {
         
-        return {false, ""};   // Fall� la creaci�n de overlappingPairCache
+        return {false, "There were mistakes creating btDbvtBroadphase"};   // Fall� la creaci�n de overlappingPairCache
     }
 
     solver = new btSequentialImpulseConstraintSolver();
     if (!solver) {
       
-        return {false, ""};   // Fall� la creaci�n de solver
+        return {false, "There were mistakes creating btSequentialImpulseConstraintSolver"};   // Fall� la creaci�n de solver
     }
 
     dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
     if (!dynamicsWorld) {
 
-        return {false, ""};   // Fall� la creaci�n de dynamicsWorld
+        return {false, "There were mistakes creating btDiscreteDynamicsWorld"};   // Fall� la creaci�n de dynamicsWorld
     }
 
     gContactStartedCallback = callBackEnter;
@@ -219,17 +219,6 @@ std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vec
 }
 
 VeryReal::PhysicsManager::~PhysicsManager() { Shutdown(); }
-
-///-------//// cosas para hacer pruebas
-
-void VeryReal::PhysicsManager::createGround() {
-    // Crear el suelo
-    btCollisionShape* groundShape = new btSphereShape(1);
-    btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, -1, 0)));
-    btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, groundMotionState, groundShape, btVector3(0, 0, 0));
-    btRigidBody* groundRigidBody = new btRigidBody(groundRigidBodyCI);
-    //dynamicWorld->addRigidBody(groundRigidBody);
-}
 
 void VeryReal::PhysicsManager::addForce(btRigidBody* body, btVector3 force) {
     body->btRigidBody::applyForce(force, body->getWorldTransform().getOrigin());

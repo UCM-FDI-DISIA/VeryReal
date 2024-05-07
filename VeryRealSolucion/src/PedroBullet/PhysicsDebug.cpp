@@ -8,34 +8,10 @@ using namespace Ogre;
 
 VeryReal::DebugMode::DebugMode() {
     node = VeryReal::RenderManager::Instance()->getSceneManager()->getRootSceneNode();
-    node->setVisible(true);
-    //mLines = VeryReal::RenderManager::Instance()->createManualObject("physics lines");
-    //assert(mLines);
-    //mTriangles = VeryReal::RenderManager::Instance()->createManualObject("physics triangles");
-    //assert(mTriangles);
-    //mLines->setDynamic(true);
-    //mTriangles->setDynamic(true);
-
-  
+    node->setVisible(true);  
     mtl = MaterialManager::getSingleton().create("RedMaterial", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
     mtl->setDiffuse(Ogre::ColourValue::Red);
-    
-    //mLines->begin(matName, RenderOperation::OT_LINE_LIST);
-    //mLines->position(Ogre::Vector3::ZERO);
-    //mLines->colour(ColourValue::Red);
-    //mLines->position(Ogre::Vector3::ZERO);
-    //mLines->colour(ColourValue::Red);
-
-    //mTriangles->begin(matName, RenderOperation::OT_TRIANGLE_LIST);
-    //mTriangles->position(Ogre::Vector3::ZERO);
-    //mTriangles->colour(ColourValue::Red);
-    //mTriangles->position(Ogre::Vector3::ZERO);
-    //mTriangles->colour(ColourValue::Red);
-    //mTriangles->position(Ogre::Vector3::ZERO);
-    //mTriangles->colour(ColourValue::Red);
-
     mDebugModes = (DebugDrawModes)DBG_DrawWireframe;
-  /*  Root::getSingleton().addFrameListener(this);*/
 }
 
 VeryReal::DebugMode::~DebugMode() { }
