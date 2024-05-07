@@ -19,6 +19,18 @@ std::pair<bool, std::string> VeryReal::InputManager::InitManager() {   // Flags 
     return {true, "InputManager sucesfully initialized"};
 }
 
+VeryReal::InputManager::~InputManager() {
+    if (SDL_WasInit(SDL_INIT_GAMECONTROLLER)) {
+        SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
+    }
+    if (SDL_WasInit(SDL_INIT_JOYSTICK)) {
+        SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
+    }
+    if (SDL_WasInit(SDL_INIT_EVENTS)) {
+        SDL_QuitSubSystem(SDL_INIT_EVENTS);
+    }
+}
+
 void VeryReal::InputManager::ClearState(bool clearMouseButtons) {
     is_close_window_event = false;
     is_key_down_event = false;

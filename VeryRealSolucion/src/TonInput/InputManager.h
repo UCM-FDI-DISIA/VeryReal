@@ -16,7 +16,7 @@ typedef union SDL_Event SDL_Event;
 namespace  VeryReal {
 class VERYREAL_TONINPUT InputManager : public VeryReal::Manager<InputManager> {
     private:
-    InputManager() { }
+    InputManager();
   
     public:
         /// Inicializa el sistema de entrada (llamado solo una vez como parte de Singleton)
