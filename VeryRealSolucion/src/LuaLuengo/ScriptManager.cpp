@@ -221,7 +221,7 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
                                     lua_pop(lua_state, 1);   // Sacamos la tabla de parámetros de la pila
                                 }
                                 else {
-                                    return {false, "Error: parameters no es una tabla"};
+                                    return {false, "There was no parameters table for " + componentname + "in the Entity named" +prefab_name};
                                 }
                                 auto addedComponent = e->AddComponent(componentname, j);   // Comentar para hacer pruebas con otros tipos de datos
                                 if (!addedComponent.first) return addedComponent;
@@ -237,7 +237,11 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
             }
         }
     }
-}
+    else {
+        return {false, "There was no Prefabs table in the .lua file"};
+    }
+    return {true, "The prefabs were read without any problem"};
+ }
 
 void ScriptManager::ReadFunction(std::string name, int n) {
     std::string s = "../../../bin/LuaFiles/Functions.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
