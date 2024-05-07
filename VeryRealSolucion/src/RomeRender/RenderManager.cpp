@@ -71,27 +71,6 @@ VeryReal::RenderManager::~RenderManager() {
 }
 std::pair<bool, std::string> VeryReal::RenderManager::InitManager(std::string const& name) 
 {
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-
     window = nullptr;
     root = nullptr;
     scene_manager = nullptr;
@@ -105,16 +84,12 @@ std::pair<bool, std::string> VeryReal::RenderManager::InitManager(std::string co
     Ogre::String pluginsPath;
     pluginsPath = filesystem_layer->getConfigFilePath("plugins.cfg");
     if (!Ogre::FileSystemLayer::fileExists(pluginsPath)) {
-#ifdef DEBUG_MODE
-        cerr << DEBUG_PLUGINS_ERROR << pluginsPath << "\n";
-#endif
+        return {false, "The file to get the plugins from was not found"};
     }
     //lo pongo asi y no la rita porque en teoria va a estar al lado del .exe
     Ogre::String ogrepath = filesystem_layer->getConfigFilePath("ogre.cfg");
     if (!Ogre::FileSystemLayer::fileExists(ogrepath)) {
-#ifdef DEBUG_MODE
-        cerr << DEBUG_PLUGINS_ERROR << ogrepath << "\n";
-#endif
+        return {false, "The file to get the Ogre config from was not found"};
     }
     root = new Ogre::Root(pluginsPath, ogrepath);
     if (!root->restoreConfig()) {
@@ -133,10 +108,6 @@ std::pair<bool, std::string> VeryReal::RenderManager::InitManager(std::string co
 
     //inicializamos sdl
     if (!SDL_WasInit(SDL_INIT_VIDEO)) SDL_Init(SDL_INIT_VIDEO);
-#ifdef ROME_RENDER_TEST
-    SDL_Init(SDL_INIT_EVERYTHING);   //mientras no esta todo bien
-#endif
-
 
     scene_manager = root->createSceneManager();
     render_system->_initRenderTargets();   //mira esto ni idea que hace
@@ -144,12 +115,11 @@ std::pair<bool, std::string> VeryReal::RenderManager::InitManager(std::string co
 
     window = new VeryReal::Window();
     if (window->Init(root, render_system, scene_manager)) {
-        window->CreateWindoww();
+        auto createWindow = window->CreateWindoww();
+        if (!createWindow.first) return createWindow;
     }
     else {
-#ifdef DEBUG_MODE
-        cerr << DEBUG_WINDOW_ERROR;
-#endif
+        return {false, "The window couldn't init"};
     }
 
 
@@ -160,9 +130,7 @@ std::pair<bool, std::string> VeryReal::RenderManager::InitManager(std::string co
     std::string arch_name;
     Ogre::String ogrepath2 = filesystem_layer->getConfigFilePath("resources.cfg");
     if (!Ogre::FileSystemLayer::fileExists(ogrepath2)) {
-#ifdef DEBUG_MODE
-        cerr << DEBUG_RESOURCES_ERROR << ogrepath << "\n";
-#endif
+        return {false, "The path to get the resources wasn't found"};
     }
     Ogre::ConfigFile cf;    
     cf.load(ogrepath2);

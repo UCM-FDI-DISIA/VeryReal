@@ -12,35 +12,6 @@ AudioManager::AudioManager() { result = FMOD_OK; }
 std::pair<bool, std::string> AudioManager::InitManager() {
 
 
-
-    
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-    //MIRAR ERRORES Y DEVOLVER {false, "Mensaje Error"};
-
-
-
-
-
-
-
     result = FMOD::System_Create(&sound_system);   // Create the main system object.
     CheckFMODResult(result);
 

@@ -34,7 +34,7 @@ namespace VeryReal {
         /// Por ahora se cargan aqui los plguings de renderizado de ogre (no irán aqui en un futuro)
         /// </summary>
         //<returns> un puntero a la ventana creada con sdl
-        bool VERYREAL_ROMERENDER CreateWindoww();
+        std::pair<bool,std::string> VERYREAL_ROMERENDER CreateWindoww();
         bool  Init(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::SceneManager* scene_manager); 
         
         // <summary>

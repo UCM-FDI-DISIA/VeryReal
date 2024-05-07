@@ -97,43 +97,40 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     overlappingPairCache = nullptr;
     solver = nullptr;
     dynamicsWorld = nullptr;
-    // Constructor vac�o
-    // Inicializar el mundo de f�sica, configuraci�n de colisiones, etc.
+
     collisionConfiguration = new btDefaultCollisionConfiguration();
     if (!collisionConfiguration) {
-        return {false, "There were mistakes creating btDefaultCollisionConfiguration"};   // Fall� la creaci�n de collisionConfiguration
+        return {false, "There were mistakes creating btDefaultCollisionConfiguration"}; 
     }
 
     dispatcher = new btCollisionDispatcher(collisionConfiguration);
     if (!dispatcher) {
        
-        return {false, "There were mistakes creating btCollisionDispatcher"};   // Fall� la creaci�n de dispatcher
+        return {false, "There were mistakes creating btCollisionDispatcher"};   
     }
 
     overlappingPairCache = new btDbvtBroadphase();
     if (!overlappingPairCache) {
         
-        return {false, "There were mistakes creating btDbvtBroadphase"};   // Fall� la creaci�n de overlappingPairCache
+        return {false, "There were mistakes creating btDbvtBroadphase"};  
     }
 
     solver = new btSequentialImpulseConstraintSolver();
     if (!solver) {
       
-        return {false, "There were mistakes creating btSequentialImpulseConstraintSolver"};   // Fall� la creaci�n de solver
+        return {false, "There were mistakes creating btSequentialImpulseConstraintSolver"};  
     }
 
     dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
     if (!dynamicsWorld) {
 
-        return {false, "There were mistakes creating btDiscreteDynamicsWorld"};   // Fall� la creaci�n de dynamicsWorld
+        return {false, "There were mistakes creating btDiscreteDynamicsWorld"};   
     }
 
     gContactStartedCallback = callBackEnter;
     gContactEndedCallback = callBackExit;
     gContactProcessedCallback = onCollisionStay;
 
-
-    //DESCOMENTAR PARA GAVITY ATENTOS Q POR AHORA SE LE DA A TODOS LOS OBJETOS
     dynamicsWorld->setGravity(btVector3(0, -9.8, 0));
 
 
@@ -157,7 +154,6 @@ void VeryReal::PhysicsManager::Update(float deltaTime) {
 
 void VeryReal::PhysicsManager::Shutdown()
 {
-    // Limpieza del mundo de f�sica y liberaci�n de recursos
     if (dynamicsWorld) {
         delete dynamicsWorld;
     }

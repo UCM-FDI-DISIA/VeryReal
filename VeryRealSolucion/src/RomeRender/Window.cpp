@@ -46,43 +46,38 @@ bool Window::Init(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::Sce
     return true;
 }
 
-bool  Window::CreateWindoww() {
-   
+std::pair<bool, std::string> Window::CreateWindoww() {
+
     Ogre::NameValuePairList miscParams;
     Ogre::ConfigOptionMap ropts = render_system->getConfigOptions();
     //cogemos un modo de configuracion (solo ese modo tiene alto y ancho?)
-    std::istringstream mode(ropts["Video Mode"].currentValue);
+    std::istringstream mode(ropts ["Video Mode"].currentValue);
     Ogre::String token;
     mode >> window_width;
     mode >> token;
     mode >> window_height;
-    miscParams["FSAA"] = ropts["FSAA"].currentValue;
-    miscParams["gamma"] = ropts["sRGB Gamma Conversion"].currentValue;
-    miscParams["vsync"] = ropts["VSync"].currentValue;
+    miscParams ["FSAA"] = ropts ["FSAA"].currentValue;
+    miscParams ["gamma"] = ropts ["sRGB Gamma Conversion"].currentValue;
+    miscParams ["vsync"] = ropts ["VSync"].currentValue;
     Uint32 flags = SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI;
     //si es pantalla completa se pone entero (porque no tiene los datos puestos?)
 
-    if (ropts["Full Screen"].currentValue == "Yes") flags = SDL_WINDOW_FULLSCREEN | SDL_WINDOW_ALLOW_HIGHDPI;
+    if (ropts ["Full Screen"].currentValue == "Yes") flags = SDL_WINDOW_FULLSCREEN | SDL_WINDOW_ALLOW_HIGHDPI;
     //cramos una ventana de SDL
-    sdl_window = SDL_CreateWindow(
-        name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_width, window_height, flags);
-    if (sdl_window == NULL) {
-        #ifdef DEBUG_MODE
-        cerr << DEBUG_CREATEWINDOW_ERROR;
-        #endif
+    sdl_window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_width, window_height, flags);
+    if (sdl_window == NULL) return {false, "While creating window SDL window was null"};
 
-        return false;
-    }
     SDL_SysWMinfo wmInfo;
     SDL_VERSION(&wmInfo.version);
-    SDL_GetWindowWMInfo(sdl_window, &wmInfo);//obtenemos la info de la ventana que acabamos de cerar con sdl para ahora pasarsela a ogre como ventana externa 
-    
-    miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
+    SDL_GetWindowWMInfo(sdl_window,
+                        &wmInfo);   //obtenemos la info de la ventana que acabamos de cerar con sdl para ahora pasarsela a ogre como ventana externa
+
+    miscParams ["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
     //pasamos los valores a una ventana de ogre a partir de la ventana de sdl creada
     ogre_window = root->createRenderWindow("name", window_width, window_height, false, &miscParams);   //siempre funciona segun la documentacion
     r = root->getRenderTarget("name");
-   
-    return true;
+
+    return {true, "Window was sucesfully created"};
 }
 
 
