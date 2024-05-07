@@ -21,9 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\RomeRender\RomeRender.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\RomeRender\Window.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
