@@ -49,7 +49,7 @@
 const float FRAME_RATE = 1.0f / 60.0f; 
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
-typedef bool(__cdecl* Start)();
+typedef std::pair<bool,std::string>(__cdecl* Start)();
 typedef void(__cdecl* MainLoop)(float dt);
 using namespace VeryReal;
 using namespace std;
@@ -178,11 +178,12 @@ SetUpMessage VeryRealProyecto::LoadGame(std::string gameName) {
 
     if (gameDll != NULL) {
         std::cout << "Juego cargado correctamente";
-        /*    Start startFunction = (Start)GetProcAddress(gameDll, "start");
+        Start startFunction = (Start)GetProcAddress(gameDll, "start");
 
         if (startFunction != NULL) {
-            return startFunction();
-        }*/
+            std::pair<bool, std::string> inicioJuego = startFunction();
+            if (!inicioJuego.first) return inicioJuego;
+        }
     }
     else {
         return {false, "El juego no existe"};
