@@ -116,7 +116,6 @@ std::pair<bool,std::string> CreatorUITextComponent::SpecificInitComponentByCopy(
     UITextComponent* a = static_cast<UITextComponent*>(c);
     UITextComponent* copia = static_cast<UITextComponent*>(other);
 
-    bool b;
     if (copia->GetNormalOrTopBottom()) {
         return a->InitComponent(copia->GetTextName(), copia->GetFontName(), copia->GetZOrder(), copia->GetCharHeight(), copia->GetColor(), 
             copia->GetTextCaption());

@@ -119,7 +119,7 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     gContactEndedCallback = callBackExit;
     gContactProcessedCallback = onCollisionStay;
 
-    dynamicsWorld->setGravity(btVector3(0, -9.8, 0));
+    dynamicsWorld->setGravity(btVector3(0, (btScalar)(-9.8), 0));
 
 
 #ifdef _DEBUG

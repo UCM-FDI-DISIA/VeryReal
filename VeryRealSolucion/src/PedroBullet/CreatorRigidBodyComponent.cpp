@@ -67,7 +67,7 @@ std::pair<bool,std::string> CreatorRigidBodyComponent::SpecificInitComponent(Com
         }
         else {
             std::cout << "No se ha especificado ningun valor para friction este sera seteado por defecto" << std::endl;
-            friction = 0.1;
+            friction = 0.1f;
         }
     }
     else {

@@ -16,6 +16,8 @@ subject to the following restrictions:
 #ifndef BT_TRIANGLE_INDEX_VERTEX_ARRAY_H
 #define BT_TRIANGLE_INDEX_VERTEX_ARRAY_H
 
+#pragma warning(disable : 26495)
+
 #include "btStridingMeshInterface.h"
 #include "LinearMath/btAlignedObjectArray.h"
 #include "LinearMath/btScalar.h"
@@ -124,5 +126,7 @@ public:
 	virtual void setPremadeAabb(const btVector3& aabbMin, const btVector3& aabbMax) const;
 	virtual void getPremadeAabb(btVector3 * aabbMin, btVector3 * aabbMax) const;
 };
+
+#pragma warning(default : 26495)
 
 #endif  //BT_TRIANGLE_INDEX_VERTEX_ARRAY_H

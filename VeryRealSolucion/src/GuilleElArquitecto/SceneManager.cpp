@@ -75,4 +75,6 @@ bool VeryReal::SceneManager::HasScene(scene_name name) {
 VeryReal::Scene* VeryReal::SceneManager::GetActiveScene() {
     for (auto it : scenes_list)
         if (it->GetActive()) return it;
+
+    return nullptr; // Si no hay ninguna escena activa en la lista
 }

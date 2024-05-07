@@ -36,9 +36,9 @@ Vector3 VeryReal::TransformComponent::up() {
     Vector3 upVector;
 
     Vector3 vector_radians = rot;
-    vector_radians.SetX(rot.GetX() * M_PI / 180.0);
-    vector_radians.SetY(rot.GetY() * M_PI / 180.0);
-    vector_radians.SetZ(rot.GetZ() * M_PI / 180.0);
+    vector_radians.SetX((float)(rot.GetX() * M_PI / 180.0));
+    vector_radians.SetY((float)(rot.GetY() * M_PI / 180.0));
+    vector_radians.SetZ((float)(rot.GetZ() * M_PI / 180.0));
 
     upVector.SetX(sin(vector_radians.GetX()));
     upVector.SetY(cos(vector_radians.GetX()) * cos(vector_radians.GetZ()));

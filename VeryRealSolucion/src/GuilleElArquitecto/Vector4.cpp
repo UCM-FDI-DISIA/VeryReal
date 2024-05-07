@@ -92,9 +92,9 @@ VeryReal::Vector3 VeryReal::Vector4::toEuler() {
     double yaw = atan2(2.0 * (z * w + x * y), 1.0 - 2.0 * (z * z + x * x));
 
     Vector3 angles;
-    angles.SetY(roll * 180.0 / (float)M_PI);
-    angles.SetZ(pitch * 180.0 / (float)M_PI);
-    angles.SetX(yaw * 180.0 / (float)M_PI);
+    angles.SetY((float)(roll * 180.0 / M_PI));
+    angles.SetZ((float)(pitch * 180.0 / M_PI));
+    angles.SetX((float)(yaw * 180.0 / M_PI));
 
     return angles;
 }

@@ -16,6 +16,8 @@ subject to the following restrictions:
 #ifndef BT_DISCRETE_COLLISION_DETECTOR1_INTERFACE_H
 #define BT_DISCRETE_COLLISION_DETECTOR1_INTERFACE_H
 
+#pragma warning(disable : 26495)
+
 #include "LinearMath/btTransform.h"
 #include "LinearMath/btVector3.h"
 
@@ -81,5 +83,7 @@ public:
 		}
 	}
 };
+
+#pragma warning(default : 26495)
 
 #endif  //BT_DISCRETE_COLLISION_DETECTOR1_INTERFACE_H

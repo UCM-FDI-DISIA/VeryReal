@@ -78,7 +78,7 @@ void MeshRenderComponent::setMeshName(std::string meshName) { mesh_name = meshNa
 std::string MeshRenderComponent::getMeshName() { return mesh_name; }
 
 void MeshRenderComponent::setStatic(bool stat) { mStaticObject = stat; }
-bool MeshRenderComponent::getStatic() { return stat; }
+bool MeshRenderComponent::getStatic() { return mStaticObject; }
 
 void MeshRenderComponent::setTransform(VeryReal::Vector3 pos, VeryReal::Vector3 scale, VeryReal::Vector4 rot) {
     // conversor conve;

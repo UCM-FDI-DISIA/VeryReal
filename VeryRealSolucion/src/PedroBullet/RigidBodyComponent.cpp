@@ -170,8 +170,8 @@ void VeryReal::RigidBodyComponent::SetRotation(const VeryReal::Vector4& rotation
 }
 
 void VeryReal::RigidBodyComponent::Rotate(const Vector3& axis, int degrees) {
-    float radians = degrees * (M_PI / 180.0);
-    float fHalfAngle(0.5 * radians);
+    float radians = (float)(degrees * (M_PI / 180.0));
+    float fHalfAngle(0.5f * radians);
     float fSin = sin(fHalfAngle);
 
     // Calcular el cuaternión de rotación

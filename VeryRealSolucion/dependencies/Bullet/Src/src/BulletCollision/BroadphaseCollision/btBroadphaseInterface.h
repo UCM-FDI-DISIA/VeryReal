@@ -16,6 +16,8 @@ subject to the following restrictions:
 #ifndef BT_BROADPHASE_INTERFACE_H
 #define BT_BROADPHASE_INTERFACE_H
 
+
+
 struct btDispatcherInfo;
 class btDispatcher;
 #include "btBroadphaseProxy.h"
@@ -27,6 +29,8 @@ struct btBroadphaseAabbCallback
 	virtual ~btBroadphaseAabbCallback() {}
 	virtual bool process(const btBroadphaseProxy* proxy) = 0;
 };
+
+#pragma warning(disable : 26495)
 
 struct btBroadphaseRayCallback : public btBroadphaseAabbCallback
 {
@@ -75,5 +79,7 @@ public:
 
 	virtual void printStats() = 0;
 };
+
+#pragma warning(default : 26495)
 
 #endif  //BT_BROADPHASE_INTERFACE_H

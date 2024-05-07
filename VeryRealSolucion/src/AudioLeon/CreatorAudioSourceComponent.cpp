@@ -9,8 +9,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
     string name, path, groupchannel;
     bool onstart = false, threed = false, loop = false;
     float volume = 0.1f, mindistance = 1.0f, maxdistance = 60.0f;
-#pragma region Name
 
+#pragma region Name
     if (parameters_map.find("name") != parameters_map.end()) {
         if (std::holds_alternative<string>(parameters_map.at("name").GetVariant())) {
             name = std::get<string>(parameters_map.at("name").GetVariant());
@@ -25,8 +25,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
         name = " ";
     }
 #pragma endregion
-#pragma region Path
 
+#pragma region Path
     if (parameters_map.find("path") != parameters_map.end()) {
         if (std::holds_alternative<string>(parameters_map.at("path").GetVariant())) {
             path = std::get<string>(parameters_map.at("path").GetVariant());
@@ -41,8 +41,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
         name = " ";
     }
 #pragma endregion
-#pragma region GroupChannel
 
+#pragma region GroupChannel
     if (parameters_map.find("groupchannel") != parameters_map.end()) {
         if (std::holds_alternative<string>(parameters_map.at("groupchannel").GetVariant())) {
             groupchannel = std::get<string>(parameters_map.at("groupchannel").GetVariant());
@@ -57,8 +57,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
         groupchannel = "effects";
     }
 #pragma endregion
-#pragma region OnStart
 
+#pragma region OnStart
     if (parameters_map.find("onstart") != parameters_map.end()) {
         if (std::holds_alternative<bool>(parameters_map.at("onstart").GetVariant())) {
             onstart = std::get<bool>(parameters_map.at("onstart").GetVariant());
@@ -73,8 +73,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
         onstart = true;
     }
 #pragma endregion
-#pragma region Loop
 
+#pragma region Loop
     if (parameters_map.find("loop") != parameters_map.end()) {
         if (std::holds_alternative<bool>(parameters_map.at("loop").GetVariant())) {
             loop = std::get<bool>(parameters_map.at("loop").GetVariant());
@@ -89,8 +89,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
         loop = false;
     }
 #pragma endregion
-#pragma region Threed
 
+#pragma region Threed
     if (parameters_map.find("threed") != parameters_map.end()) {
         if (std::holds_alternative<bool>(parameters_map.at("threed").GetVariant())) {
             threed = std::get<bool>(parameters_map.at("threed").GetVariant());
@@ -105,8 +105,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
         threed = false;
     }
 #pragma endregion
-#pragma region Volume
 
+#pragma region Volume
     if (parameters_map.find("volume") != parameters_map.end()) {
         if (std::holds_alternative<float>(parameters_map.at("volume").GetVariant())) {
             volume = std::get<float>(parameters_map.at("volume").GetVariant());
@@ -121,8 +121,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
         volume = 1.0f;
     }
 #pragma endregion
-#pragma region MinDistance
 
+#pragma region MinDistance
     if (parameters_map.find("mindistance") != parameters_map.end()) {
         if (std::holds_alternative<float>(parameters_map.at("mindistance").GetVariant())) {
             mindistance = std::get<float>(parameters_map.at("mindistance").GetVariant());
@@ -137,8 +137,8 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
         mindistance = 1.0f;
     }
 #pragma endregion
-#pragma region MaxDistance
 
+#pragma region MaxDistance
     if (parameters_map.find("maxdistance") != parameters_map.end()) {
         if (std::holds_alternative<float>(parameters_map.at("maxdistance").GetVariant())) {
             maxdistance = std::get<float>(parameters_map.at("maxdistance").GetVariant());
@@ -153,12 +153,15 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
         maxdistance = 1.0f;
     }
 #pragma endregion
-    auto initComponent =
-        static_cast<AudioSourceComponent*>(c)->InitComponent(name, path, onstart, groupchannel, volume, threed, loop, mindistance, maxdistance);
+
+    auto initComponent = static_cast<AudioSourceComponent*>(c)->InitComponent(name, path, onstart, groupchannel, volume, threed, loop, mindistance, maxdistance);
     if (!initComponent.first) return initComponent;
     auto startComponent = static_cast<AudioSourceComponent*>(c)->Start();
     if (!startComponent.first) return startComponent;
+
+    return {true, "AudioSourceComponent sucessfully initialized"};
 }
+
 std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInitComponentByCopy(Component* c, Component* other) {
     string name, path, groupchannel;
     bool onstart = false, threed = false, loop = false;
@@ -170,5 +173,6 @@ std::pair<bool, std::string> VeryReal::CreatorAudioSourceComponent::SpecificInit
     if (!initComponent.first) return initComponent;
     auto startComponent = audio->Start();
     if (!startComponent.first) return startComponent;
- 
+
+    return {true, "AudioSourceComponent sucessfully initialized"};
 }

@@ -536,7 +536,7 @@ namespace Ogre {
             SkyDomeRenderer(SceneManager* owner) : SkyRenderer(owner) {
                 std::fill(mSkyDomeEntity.begin(), mSkyDomeEntity.end(), nullptr);
             }
-            SkyDomeGenParameters mSkyDomeGenParameters;
+            SkyDomeGenParameters mSkyDomeGenParameters{};
             void setSkyDome(bool enable, const String& materialName, Real curvature, Real tiling,
                             Real distance, uint8 renderQueue, const Quaternion& orientation,
                             int xsegments, int ysegments, int ysegments_keep,

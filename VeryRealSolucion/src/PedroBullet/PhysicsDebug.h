@@ -1,13 +1,12 @@
-
 #ifdef _DEBUG
-
 #ifndef PHYSICSDEBUG
 #define PHYSICSDEBUG
 #include <vector>
 #include <btBulletCollisionCommon.h>
+
+#pragma warning(disable : 4251)
 #include <Ogre.h>
-
-
+#pragma warning(default : 4251)
 
 struct ContactPoint {
     Ogre::Vector3 from;
@@ -15,21 +14,20 @@ struct ContactPoint {
     Ogre::ColourValue color;
     size_t dieTime;
 };
-namespace VeryReal {
 
+namespace VeryReal {
 class DebugMode : public btIDebugDraw, public Ogre::FrameListener {
-        private:
+    private:
     DebugDrawModes mDebugModes;
-    Ogre::SceneNode* node;
+    Ogre::SceneNode* node = nullptr;
     std::list<Ogre::ManualObject*> lines;
     Ogre::MaterialPtr mtl;
 
     public:
     DebugMode();
     ~DebugMode();
-     protected:
- 
 
+    protected:
      virtual void drawLine(const btVector3& from, const btVector3& to, const btVector3& color);
 
      virtual void drawContactPoint(const btVector3& PointOnB, const btVector3& normalOnB, btScalar distance, int lifeTime, const btVector3& color);

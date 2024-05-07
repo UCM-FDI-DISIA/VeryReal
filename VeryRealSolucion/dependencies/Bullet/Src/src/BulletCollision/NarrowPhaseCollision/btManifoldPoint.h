@@ -16,6 +16,8 @@ subject to the following restrictions:
 #ifndef BT_MANIFOLD_CONTACT_POINT_H
 #define BT_MANIFOLD_CONTACT_POINT_H
 
+#pragma warning(disable : 26495)
+
 #include "LinearMath/btVector3.h"
 #include "LinearMath/btTransformUtil.h"
 
@@ -178,5 +180,7 @@ public:
 		return m_appliedImpulse;
 	}
 };
+
+#pragma warning(default : 26495)
 
 #endif  //BT_MANIFOLD_CONTACT_POINT_H

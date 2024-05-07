@@ -16,6 +16,8 @@ subject to the following restrictions:
 #ifndef BT_JACOBIAN_ENTRY_H
 #define BT_JACOBIAN_ENTRY_H
 
+#pragma warning(disable : 26495)
+
 #include "LinearMath/btMatrix3x3.h"
 
 //notes:
@@ -146,5 +148,7 @@ public:
 	//Optimization: can be stored in the w/last component of one of the vectors
 	btScalar m_Adiag;
 };
+
+#pragma warning(default : 26495)
 
 #endif  //BT_JACOBIAN_ENTRY_H

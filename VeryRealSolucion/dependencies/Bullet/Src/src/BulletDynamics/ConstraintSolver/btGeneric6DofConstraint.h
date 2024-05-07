@@ -26,6 +26,8 @@ http://gimpact.sf.net
 #ifndef BT_GENERIC_6DOF_CONSTRAINT_H
 #define BT_GENERIC_6DOF_CONSTRAINT_H
 
+#pragma warning(disable : 26495)
+
 #include "LinearMath/btVector3.h"
 #include "btJacobianEntry.h"
 #include "btTypedConstraint.h"
@@ -611,5 +613,7 @@ SIMD_FORCE_INLINE const char* btGeneric6DofConstraint::serialize(void* dataBuffe
 
 	return btGeneric6DofConstraintDataName;
 }
+
+#pragma warning(default : 26495)
 
 #endif  //BT_GENERIC_6DOF_CONSTRAINT_H

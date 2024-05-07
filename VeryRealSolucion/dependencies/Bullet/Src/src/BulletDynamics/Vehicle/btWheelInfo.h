@@ -11,6 +11,8 @@
 #ifndef BT_WHEEL_INFO_H
 #define BT_WHEEL_INFO_H
 
+#pragma warning(disable : 26495)
+
 #include "LinearMath/btVector3.h"
 #include "LinearMath/btTransform.h"
 
@@ -112,5 +114,7 @@ struct btWheelInfo
 	btScalar m_wheelsSuspensionForce;
 	btScalar m_skidInfo;
 };
+
+#pragma warning(default : 26495)
 
 #endif  //BT_WHEEL_INFO_H

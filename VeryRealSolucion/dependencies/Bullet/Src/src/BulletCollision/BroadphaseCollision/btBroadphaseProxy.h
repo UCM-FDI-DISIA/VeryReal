@@ -16,6 +16,8 @@ subject to the following restrictions:
 #ifndef BT_BROADPHASE_PROXY_H
 #define BT_BROADPHASE_PROXY_H
 
+#pragma warning(disable : 26495)
+
 #include "LinearMath/btScalar.h"  //for SIMD_FORCE_INLINE
 #include "LinearMath/btVector3.h"
 #include "LinearMath/btAlignedAllocator.h"
@@ -244,5 +246,7 @@ SIMD_FORCE_INLINE bool operator==(const btBroadphasePair& a, const btBroadphaseP
 {
 	return (a.m_pProxy0 == b.m_pProxy0) && (a.m_pProxy1 == b.m_pProxy1);
 }
+
+#pragma warning(default : 26495)
 
 #endif  //BT_BROADPHASE_PROXY_H

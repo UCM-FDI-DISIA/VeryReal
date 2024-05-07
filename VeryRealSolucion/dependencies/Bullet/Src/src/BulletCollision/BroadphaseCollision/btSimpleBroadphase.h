@@ -18,6 +18,8 @@ subject to the following restrictions:
 
 #include "btOverlappingPairCache.h"
 
+#pragma warning(disable : 26495)
+
 struct btSimpleBroadphaseProxy : public btBroadphaseProxy
 {
 	int m_nextFree;
@@ -35,6 +37,8 @@ struct btSimpleBroadphaseProxy : public btBroadphaseProxy
 	SIMD_FORCE_INLINE void SetNextFree(int next) { m_nextFree = next; }
 	SIMD_FORCE_INLINE int GetNextFree() const { return m_nextFree; }
 };
+
+#pragma warning(default : 26495)
 
 ///The SimpleBroadphase is just a unit-test for btAxisSweep3, bt32BitAxisSweep3, or btDbvtBroadphase, so use those classes instead.
 ///It is a brute force aabb culling broadphase based on O(n^2) aabb checks

@@ -249,11 +249,11 @@ void ScriptManager::ReadFunction(std::string name, int n) {
     Error(script_status);
 
     lua_getglobal(lua_state, name.c_str());
-    luabridge::push(lua_state, n);
-    luabridge::push(lua_state, n);
+    luabridge::Result resultLua = luabridge::push(lua_state, n);
+    resultLua = luabridge::push(lua_state, n);
     lua_pcall(lua_state, 2, 1, 0);
 
-    auto resultLua = luabridge::Stack<int>::get(lua_state, -1);
+    auto resultLua2 = luabridge::Stack<int>::get(lua_state, -1);
     lua_pop(lua_state, 1);
 }
 

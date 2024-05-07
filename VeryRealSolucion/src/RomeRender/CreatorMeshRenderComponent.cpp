@@ -99,8 +99,8 @@ std::pair<bool, std::string> VeryReal::CreatorMeshRenderComponent::SpecificInitC
     MeshRenderComponent* a = static_cast<MeshRenderComponent*>(c);
     MeshRenderComponent* copia = static_cast<MeshRenderComponent*>(other);
 
-    bool isstatic = false;
+    bool isStatic = copia->getStatic();
     std::string modelname = copia->getMeshName(), entityname = copia->getNameEntity(), materialname = copia->getMaterialName();
 
-    return a->InitComponent(isstatic, modelname, entityname, materialname);
+    return a->InitComponent(isStatic, modelname, entityname, materialname);
 }

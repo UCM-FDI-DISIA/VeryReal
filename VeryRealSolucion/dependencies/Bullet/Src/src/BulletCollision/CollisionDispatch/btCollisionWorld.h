@@ -69,6 +69,8 @@ subject to the following restrictions:
 #ifndef BT_COLLISION_WORLD_H
 #define BT_COLLISION_WORLD_H
 
+#pragma warning(disable : 26495)
+
 class btCollisionShape;
 class btConvexShape;
 class btBroadphaseInterface;
@@ -509,5 +511,7 @@ public:
 	///Preliminary serialization test for Bullet 2.76. Loading those files requires a separate parser (Bullet/Demos/SerializeDemo)
 	virtual void serialize(btSerializer* serializer);
 };
+
+#pragma warning(default : 26495)
 
 #endif  //BT_COLLISION_WORLD_H
