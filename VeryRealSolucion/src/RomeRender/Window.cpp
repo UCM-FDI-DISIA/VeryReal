@@ -16,18 +16,14 @@ Window::Window():root(nullptr),render_system(nullptr),scene_manager(nullptr), na
  
 }
 
-
 Window::~Window() {
-   
     if (ogre_window != nullptr) {
-      
         root->destroyRenderTarget(r);
            
        // ogre_window->destroy();
        // delete (ogre_window);
        /// ogre_window->destroy();
         //root->destroyRenderTarget(ogre_window);
-        std::cout << "hola";
     }
     if (sdl_window != nullptr) {
         SDL_DestroyWindow(sdl_window);

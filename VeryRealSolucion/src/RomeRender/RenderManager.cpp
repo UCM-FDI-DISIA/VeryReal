@@ -160,31 +160,7 @@ void VeryReal::RenderManager::LoadResources() {
                                                                    true);
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
-void VeryReal::RenderManager::LoadShaders() {
-    if (Ogre::RTShader::ShaderGenerator::initialize()) {
 
-        shader_generator = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
-        shader_generator->addSceneManager(scene_manager);
-
-        material_listener = new VeryReal::SGTechniqueResolverListener(shader_generator);
-        Ogre::MaterialManager::getSingleton().addListener(material_listener);
-    }
-}
-void VeryReal::RenderManager::UnloadShaders() {
-
-    if (material_listener != nullptr) {
-        //  Ogre::MaterialManager::getSingleton().removeListener(material_listener);
-        delete material_listener;
-        material_listener = nullptr;
-    }
-
-    // Destroy RTShader system.
-    if (shader_generator != nullptr) {
-
-        Ogre::RTShader::ShaderGenerator::destroy();
-        shader_generator = nullptr;
-    }
-}
 Ogre::RenderWindow* VeryReal::RenderManager::GetRenderWindow() { return window->GetOgreWindow(); }
 Ogre::Root* VeryReal::RenderManager::GetRenderRoot() { return root; }
 Ogre::SceneManager* VeryReal::RenderManager::SceneManagerOgree() { return scene_manager; }
