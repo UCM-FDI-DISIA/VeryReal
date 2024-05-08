@@ -1,33 +1,32 @@
 #pragma warning(disable : 4251)
-#include <Ogre.h>
+#include <OgreRoot.h>
 #include <OgreFileSystem.h>
 #include <OgreFileSystemLayer.h>
 #pragma warning(default : 4251)
 
 #include "Window.h"
 #include <SDL.h>
+#include <SDL_video.h>
 #include <SDL_syswm.h>
 #include <iostream>
 
 using namespace VeryReal;
 using namespace Ogre;
 
-Window::Window():root(nullptr),render_system(nullptr),scene_manager(nullptr), name(""),config_route(""),sdl_window(nullptr),file_system_layer(nullptr),ogre_window(nullptr), window_height(0),window_width(0) {
+Window::Window():root(nullptr),render_system(nullptr),scene_manager(nullptr), name(""),config_route(""),sdl_window(nullptr),ogre_window(nullptr), 
+window_height(0),window_width(0) {
  
 }
 
 Window::~Window() {
     if (ogre_window != nullptr) {
-        root->destroyRenderTarget(r);
+        root->destroyRenderTarget(root->getRenderTarget("name"));
            
-       // ogre_window->destroy();
-       // delete (ogre_window);
-       /// ogre_window->destroy();
-        //root->destroyRenderTarget(ogre_window);
     }
     if (sdl_window != nullptr) {
         SDL_DestroyWindow(sdl_window);
-        SDL_VideoQuit();
+        SDL_QuitSubSystem(SDL_INIT_EVERYTHING);
+        SDL_Quit();  
     }
   //  ogre_window = nullptr;
     sdl_window = nullptr;
@@ -38,7 +37,6 @@ bool Window::Init(Ogre::Root* root, Ogre::RenderSystem* render_system, Ogre::Sce
     this->root = root;
     this->render_system = render_system;
     this->scene_manager = scene_manager;   
-    r = nullptr;
     return true;
 }
 
@@ -71,7 +69,6 @@ std::pair<bool, std::string> Window::CreateWindoww() {
     miscParams ["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
     //pasamos los valores a una ventana de ogre a partir de la ventana de sdl creada
     ogre_window = root->createRenderWindow("name", window_width, window_height, false, &miscParams);   //siempre funciona segun la documentacion
-    r = root->getRenderTarget("name");
 
     return {true, "Window was sucesfully created"};
 }

@@ -68,9 +68,8 @@ namespace VeryReal {
         int window_width;
         int window_height;
         SDL_Window* sdl_window = nullptr;
-        Ogre::FileSystemLayer* file_system_layer = nullptr;
+      //  Ogre::FileSystemLayer* file_system_layer = nullptr;
         Ogre::Root* root = nullptr;
-        Ogre::RenderTarget* r = nullptr;
     };
 }
 

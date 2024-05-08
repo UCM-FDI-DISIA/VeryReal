@@ -40,23 +40,26 @@ VeryReal::RenderManager::~RenderManager() {
 
     //// Limpiar el MeshManager
     Ogre::MeshManager::getSingleton().removeAll();
-
-    delete (window);
-
-    window = nullptr;
+   
     //delete filesystem_layer;
-    //filesystem_layer = nullptr;
-    delete (overlay_system);
     root->shutdown();
     root->unloadPlugin("plugins.cfg");
-    delete (root);
+   
+
+
+     delete (window);
+    window = nullptr;
+
+
+     delete (overlay_system);
+    overlay_system = nullptr;
+     delete (root);
+    root = nullptr;
     delete filesystem_layer;
     filesystem_layer = nullptr;
-    //  delete window->GetOgreWindow();
-    //  mOgreWindow = nullptr;
 
 
-    root = nullptr;
+    
 
 }
 std::pair<bool, std::string> VeryReal::RenderManager::InitManager(std::string const& name) 
