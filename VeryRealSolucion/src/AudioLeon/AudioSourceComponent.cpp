@@ -175,7 +175,6 @@ std::pair<bool, std::string> AudioSourceComponent::Play() {
 
 std::pair<bool, std::string> AudioSourceComponent::StopSound() {
     AM().NameToLower(sound_name);
-    bool isPaused;
     FMOD::Channel* channel = AM().GetChannel(sound_name);
     if (channel != nullptr) {
         channel->stop();
