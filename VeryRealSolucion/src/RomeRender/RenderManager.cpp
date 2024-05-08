@@ -59,7 +59,7 @@ VeryReal::RenderManager::~RenderManager() {
     filesystem_layer = nullptr;
 
 
-    
+    SDL_QuitSubSystem(SDL_INIT_VIDEO);
 
 }
 std::pair<bool, std::string> VeryReal::RenderManager::InitManager(std::string const& name) 
@@ -98,7 +98,7 @@ std::pair<bool, std::string> VeryReal::RenderManager::InitManager(std::string co
 
 
     //inicializamos sdl
-    if (!SDL_WasInit(SDL_INIT_VIDEO)) SDL_Init(SDL_INIT_VIDEO);
+    SDL_InitSubSystem(SDL_INIT_VIDEO);
 
     scene_manager = root->createSceneManager();
     render_system->_initRenderTargets();   //mira esto ni idea que hace

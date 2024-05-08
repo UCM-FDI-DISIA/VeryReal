@@ -28,5 +28,7 @@ int main(int argc, char* argv []) {
         std::cout << "Game ended sucesfully";
         VeryReal::VR().Delete();
     }
+    delete VeryReal::VR().Instance();
+    delete VeryReal::ErrorInformant::Instance();
     return 1;
 }
