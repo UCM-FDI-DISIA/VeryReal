@@ -5,6 +5,8 @@
 #include <list>
 #include "exportPedroBullet.h"
 #include <string>
+#include <vector>
+#include <queue>
 namespace VeryReal {
 class Vector3;
 class Entity;
@@ -34,6 +36,17 @@ class ColliderComponent;
 
 
 namespace VeryReal {
+    struct RaycastColision {
+    Entity* ent;
+        float dist;
+
+};
+    struct CompareMyStruct {
+        bool operator()(const RaycastColision& a, const RaycastColision& b) const {
+            return a.dist > b.dist;   // Orden ascendente basado en la distancia
+        }
+    };
+
 class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
     friend Singleton<PhysicsManager>;
 
@@ -58,7 +71,8 @@ class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
     void DeleteRigidBody(btRigidBody* body);
     void SetWorldGravity(VeryReal::Vector3 g);
     
-    std::list<VeryReal::Entity*> MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End);
+   std::priority_queue<RaycastColision, std::vector<RaycastColision>, CompareMyStruct> MakeRayCast(VeryReal::Vector3 ray_Start,
+                                                                                                    VeryReal::Vector3 ray_End);
     #ifdef _DEBUG
         inline void SeeDebugColliders(bool newValue) { seeObjects = newValue; }
     #endif

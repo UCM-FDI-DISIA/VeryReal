@@ -12,6 +12,7 @@
 #ifdef _DEBUG
 #include "PhysicsDebug.h"
 #include "RenderManager.h"
+
 #endif   // _DEBUG
 
 VeryReal::PhysicsManager::PhysicsManager()
@@ -175,10 +176,18 @@ void VeryReal::PhysicsManager::DeleteRigidBody(btRigidBody* body) {
 
 void VeryReal::PhysicsManager::SetWorldGravity(VeryReal::Vector3 g) { dynamicsWorld->setGravity({g.GetX(), g.GetY(), g.GetZ()}); }
 
-std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vector3 ray_Start, VeryReal::Vector3 ray_End) {
+
+std::priority_queue<VeryReal::RaycastColision, std::vector<VeryReal::RaycastColision>, VeryReal::CompareMyStruct>
+VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vector3 ray_Start,
+                                                                                                            VeryReal::Vector3 ray_End) {
+
+
     auto bt_ray_start = VeryReal::PhysicsManager::Instance()->V3ToBtV3(ray_Start);
     auto bt_ray_end = VeryReal::PhysicsManager::Instance()->V3ToBtV3(ray_End);
     std::list<VeryReal::Entity*> l_ents_coll(0);
+
+  std::priority_queue<VeryReal::RaycastColision, std::vector<VeryReal::RaycastColision>, VeryReal::CompareMyStruct> queue;
+
 
     btCollisionWorld::AllHitsRayResultCallback rayCallback(bt_ray_start, bt_ray_end);
     dynamicsWorld->rayTest(bt_ray_start, bt_ray_end, rayCallback);
@@ -192,16 +201,21 @@ std::list<VeryReal::Entity*> VeryReal::PhysicsManager::MakeRayCast(VeryReal::Vec
                     if (ent.second->HasComponent("RigidBodyComponent")) {
                         RigidBodyComponent* comp = ent.second->GetComponent<RigidBodyComponent>();
                         if (lista_de_colisionados [i]->getCollisionShape() == comp->GetCollisionShape()) {
+
                             l_ents_coll.push_back(ent.second);
+                            VeryReal::RaycastColision nodo_dist{ent.second, (comp->GetPosition() - ray_Start).Magnitude()};
+
+                            queue.push(nodo_dist);
                         }
                     }
                 }
             }
         }
     }
-    return l_ents_coll;
-}
 
+
+    return queue;
+}
 VeryReal::PhysicsManager::~PhysicsManager()
 {
     Shutdown(); 
