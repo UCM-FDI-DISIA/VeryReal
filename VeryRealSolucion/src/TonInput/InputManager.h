@@ -23,12 +23,17 @@ class VERYREAL_TONINPUT InputManager : public VeryReal::Manager<InputManager> {
 
      virtual ~InputManager();
      static std::pair<bool,std::string> Init() {
-                InputManager* a = new InputManager();
-        if (a != nullptr) {
+         InputManager* a = new InputManager();
+        if (a != nullptr) { //nos creamos el puntero
             instance_pointer.reset(a);
+            std::pair<bool, std::string>r =  a->InitManager(); //inicializamos el manager
+            if (!r.first ) {
+                delete a; //el init manager da error pero se tiene que destruir memoria
+                return {false, "InputManager pointer had a problem while it was initializing"};
+            }
             return {true, "InputManager pointer sucesfully initialized"};
         }
-        return {false, "InputManager pointer had a problem while it was initializing"};
+        return {false, "InputManager pointer had a problem while it was initializing"}; //si el puntero no se crea error
      }
         // Inicializa SDL
      virtual std::pair<bool,std::string> InitManager();

@@ -59,11 +59,15 @@ namespace VeryReal {
 			RenderManager* a = new RenderManager();
 			if (a != nullptr) {
 				instance_pointer.reset(a);
+                std::pair<bool, std::string> r = a->InitManager("JUEGO");   //inicializamos el manager
+				if (!r.first) {
+					delete a;   //el init manager da error pero se tiene que destruir memoria
+                   return {false, "pointer had a problem while it was initializing"};
+				}
 				return {true, "RenderManager pointer sucesfully initialized"};
 			}
 			return {false, "RenderManager pointer had a problem while it was initializing"};
 		}
-    //void GetScene() { VeryReal::SceneManager::Instance()->hola(); }
 
 		// Destructor virtual de la clase RenderManager
         virtual ~RenderManager();

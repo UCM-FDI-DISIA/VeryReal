@@ -57,6 +57,11 @@ class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
         PhysicsManager* a = new PhysicsManager();
         if (a != nullptr) {
             instance_pointer.reset(a);
+            std::pair<bool, std::string> r = a->InitManager();   //inicializamos el manager
+            if (!r.first) {
+                delete a;   //el init manager da error pero se tiene que destruir memoria
+                return {false, "PhysicsManager pointer had a problem while it was initializing"};
+            }
             return {true, "PhysicsManager pointer sucesfully initialized"};
         }
         return {false, "PhysicsManager pointer had a problem while it was initializing"};

@@ -80,12 +80,17 @@ class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
         AudioManager* a = new AudioManager();
         if (a != nullptr) {
             instance_pointer.reset(a);
+            std::pair<bool, std::string> r = a->InitManager();   //inicializamos el manager
+            if (!r.first) {
+                delete a;   //el init manager da error pero se tiene que destruir memoria
+                return {false, "AudioManager pointer had a problem while it was initializing"};
+            }
             return {true, "AudioManager pointer sucesfully initialized"};
         }
         return {false, "AudioManager pointer had a problem while it was initializing"};
     }
     //Destructor de la clase AudioManager. Se encarga de eliminar todo sonido creado y de liberar toda la infrestructura de FMOD.
-    ~AudioManager();
+    virtual ~AudioManager();
 
     std::pair<bool, std::string> InitManager();
     //Inicializacion de los recursos necesarios para recoger input del microfono
