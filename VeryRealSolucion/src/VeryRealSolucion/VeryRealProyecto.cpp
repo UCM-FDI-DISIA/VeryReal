@@ -220,12 +220,13 @@ void VeryRealProyecto::Loop() {
 
 void VeryRealProyecto::Delete() {
     delete (VeryReal::SceneManager::Instance());
-    delete (VeryReal::InputManager::Instance());
     delete (VeryReal::ScriptManager::Instance());
     delete (VeryReal::PhysicsManager::Instance());
-    delete (VeryReal::RenderManager::Instance());
     delete (VeryReal::AudioManager::Instance());
     delete (VeryReal::Creator::Instance());
+    delete (VeryReal::InputManager::Instance());
+    delete (VeryReal::RenderManager::Instance());
+    delete (VeryReal::ErrorManager::Instance());
     FreeLibrary(gameDll);
 }
 

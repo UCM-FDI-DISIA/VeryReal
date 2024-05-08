@@ -25,8 +25,6 @@ Window::~Window() {
     }
     if (sdl_window != nullptr) {
         SDL_DestroyWindow(sdl_window);
-        SDL_QuitSubSystem(SDL_INIT_EVERYTHING);
-        SDL_Quit();  
     }
   //  ogre_window = nullptr;
     sdl_window = nullptr;
@@ -56,7 +54,6 @@ std::pair<bool, std::string> Window::CreateWindoww() {
     Uint32 flags = SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI;
     //si es pantalla completa se pone entero (porque no tiene los datos puestos?)
 
-    if (ropts ["Full Screen"].currentValue == "Yes") flags = SDL_WINDOW_FULLSCREEN | SDL_WINDOW_ALLOW_HIGHDPI;
     //cramos una ventana de SDL
     sdl_window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_width, window_height, flags);
     if (sdl_window == NULL) return {false, "While creating window SDL window was null"};
