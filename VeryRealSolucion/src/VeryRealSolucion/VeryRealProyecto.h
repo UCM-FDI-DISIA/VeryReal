@@ -28,12 +28,10 @@ class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
 
     std::pair<bool,std::string> LoadGame(std::string gameName);
 
-    std::pair<bool, std::string> getExecutionError() { return executionError; }
 
     private:
     HMODULE gameDll = NULL;
     MainLoop gameLoop = NULL;
-    std::pair<bool, std::string> executionError;
 };
 
 inline VeryRealProyecto& VR() { return *VeryRealProyecto::Instance(); }

@@ -24,6 +24,7 @@
 #include <Creator.h>
 #include "CreatorTransformComponent.h"
 #include <ErrorInformant.h>
+#include <ErrorManager.h>
 #pragma endregion
 #pragma region PEDROBULLET
 #include <PhysicsManager.h>
@@ -115,6 +116,11 @@ SetUpMessage VeryRealProyecto::InitPointers() {
         return sceneManagerMessage;
     }
 
+    SetUpMessage errorManagerMessage = VeryReal::ErrorManager::Init();
+    if (!errorManagerMessage.first) {
+        return errorManagerMessage;
+    }
+
     SetUpMessage creatorMessage = VeryReal::Creator::Init();
     if (!creatorMessage.first) {
         return creatorMessage;
@@ -195,7 +201,7 @@ SetUpMessage VeryRealProyecto::LoadGame(std::string gameName) {
 }
 void VeryRealProyecto::Loop() {
     auto startTime = std::chrono::high_resolution_clock::now();
-    while (!VeryReal::InputManager::Instance()->getQuit() || !getExecutionError().first) {
+    while (!VeryReal::InputManager::Instance()->getQuit() && VeryReal::ErrorManager::Instance()->getError().first) {
         auto currentTime = std::chrono::high_resolution_clock::now();
         std::chrono::duration<float> elapsedTime = currentTime - startTime;
         float frameTime = elapsedTime.count();

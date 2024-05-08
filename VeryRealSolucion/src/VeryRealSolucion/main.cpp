@@ -3,8 +3,9 @@
 #include <cerrno>
 #include <iostream>
 #include "ErrorInformant.h"
+#include "ErrorManager.h"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv []) {
     if (VeryReal::VeryRealProyecto::Init()) {
         auto veryRealInit = VeryReal::VR().InitVeryReal();
         //Error de carga inicial / motor
@@ -17,9 +18,8 @@ int main(int argc, char* argv[]) {
         VeryReal::VR().Loop();
 
         //Error de ejecucion en el bucle
-        auto veryRealLoopEnded = VeryReal::VR().getExecutionError();
-        if (!veryRealLoopEnded.first) 
-        {
+        auto veryRealLoopEnded = VeryReal::ErrorManager::Instance()->getError();
+        if (!veryRealLoopEnded.first) {
             std::string p = veryRealLoopEnded.second;
             VeryReal::ErrorInformant::Instance()->showErrorMessageBox(p, p, VeryReal::EI_ERROR, VeryReal::EI_W_OK);
             VeryReal::VR().Delete();
@@ -27,6 +27,6 @@ int main(int argc, char* argv[]) {
         }
         std::cout << "Game ended sucesfully";
         VeryReal::VR().Delete();
-	}
-	return 1;
+    }
+    return 1;
 }
