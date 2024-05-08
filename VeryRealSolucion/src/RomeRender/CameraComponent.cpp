@@ -17,6 +17,7 @@ using namespace Ogre;
 
 CameraComponent::~CameraComponent()
 {
+    VeryReal::RenderManager::Instance()->DeleteNode(mNode);
     delete v; 
 }
 

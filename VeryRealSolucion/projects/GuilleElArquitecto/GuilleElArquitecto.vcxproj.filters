@@ -63,6 +63,9 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\CreatorTransformComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\GuilleElArquitecto\ErrorManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\GuilleElArquitecto\Entity.h">
@@ -111,6 +114,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GuilleElArquitecto\export.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GuilleElArquitecto\ErrorManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

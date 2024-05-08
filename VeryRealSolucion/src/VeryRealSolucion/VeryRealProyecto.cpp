@@ -195,7 +195,7 @@ SetUpMessage VeryRealProyecto::LoadGame(std::string gameName) {
 }
 void VeryRealProyecto::Loop() {
     auto startTime = std::chrono::high_resolution_clock::now();
-    while (!VeryReal::InputManager::Instance()->getQuit()) {
+    while (!VeryReal::InputManager::Instance()->getQuit() || !getExecutionError().first) {
         auto currentTime = std::chrono::high_resolution_clock::now();
         std::chrono::duration<float> elapsedTime = currentTime - startTime;
         float frameTime = elapsedTime.count();
