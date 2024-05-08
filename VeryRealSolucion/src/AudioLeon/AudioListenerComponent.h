@@ -9,6 +9,8 @@ namespace FMOD {
 	class Sound;
 }
 
+enum FMOD_RESULT;
+
  namespace VeryReal {
     class TransformComponent;
     //FMOD ofrece "escuchadores" din�micos que hacen de veces de receptores de los sonidos reproducidos por FMOD.
@@ -36,7 +38,8 @@ namespace FMOD {
         /// <param name="listenerFW">Vector forward a establecer del listener.</param>
         /// <param name="listenerUP">Vector up a establecer del listener.</param>
         /// <param name="listenerVel">Vector de velocidad a establecer del listener.</param>
-        void UpdateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP,
+        std::pair<bool, std::string> UpdateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW,
+                                                             VeryReal::Vector3 listenerUP,
                                      VeryReal::Vector3 listenerVel = {0, 0, 0});
 
     private:
@@ -49,6 +52,8 @@ namespace FMOD {
         //Almacena el componente "Transform" y "RigidBody" de la entidad a la que este componente esta enlazada.
         VeryReal::TransformComponent* transform = nullptr;
 
+        //Variable de control que sirve de comprobaci�n despu�s de hacer uso de cualquiera de las funciones de sistema de sonido.
+        FMOD_RESULT result;
     };
  }
 	

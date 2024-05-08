@@ -71,7 +71,7 @@ class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
     /// <param name="channelGroupName">El canal en concreto del cu�l se va acambiar el volumen.</param>
     /// <param name="volume">EL nuevo valor de volumen que se le dar� al canal.</param>
     /// <returns>False si no se encontr� el canal indicado o si hubo un error de FMOD. True si el volumen del canal se cambi� con �xito.</returns>
-    bool ChangeChannelVolume(std::string channelGroupName, float volume);
+    std::pair<bool, std::string> ChangeChannelVolume(std::string channelGroupName, float volume);
 
     AudioManager();
 
@@ -89,7 +89,7 @@ class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
 
     std::pair<bool, std::string> InitManager();
     //Inicializacion de los recursos necesarios para recoger input del microfono
-    void InitAudioRecording();
+    std::pair<bool, std::string> InitAudioRecording();
     //Actualiza el sistema de sonido en cada bucle del juego.
     void Update(const double& dt);
 
@@ -112,7 +112,7 @@ class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
     /// </summary>
     /// <param name="FMODResult">El resultado a comprobar.</param>
     /// <returns>Devuelve true o false si el resultado es exitoso o no.</returns>
-    bool CheckFMODResult(FMOD_RESULT FMODResult);
+    std::pair<bool, std::string> CheckFMODResult(FMOD_RESULT FMODResult);
 
     /// <summary>
     /// Extrae un sonido de FMOD del mapa de sonidos a trav�s del sonido que le di� el usuario.
@@ -157,7 +157,7 @@ class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
     /// </summary>
     /// <param name="groupName">El nombre del grupo de canales que se quiere crear.</param>
     /// <returns>Devuelve true o false si el grupo de canales fue creado con �xito o no.</returns>
-    bool CreateChannelGroup(std::string groupName);
+    std::pair<bool, std::string> CreateChannelGroup(std::string groupName);
 
     /// <summary>
     /// Cambia el volumen de un grupo de canales.
@@ -165,14 +165,14 @@ class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
     /// <param name="groupName">El nombre del grupo de canales.</param>
     /// <param name="newVolume">El nuevo valor del volumen.</param>
     /// <returns>Devuelve true o false en funci�n de si el volumen fue cambiado con �xito o no.</returns>
-    bool SetGroupChannelVolume(std::string groupName, float newVolume);
+    std::pair<bool, std::string> SetGroupChannelVolume(std::string groupName, float newVolume);
 
     /// <summary>
     /// Comprueba el volumen de un grupo de canales concreto.
     /// </summary>
     /// <param name="groupName">El nombre del grupo de canales que se va a comprobar.</param>
     /// <returns>Devuelve el valor del volumen del grupo de canales.</returns>
-    float GetGroupChannelVolume(std::string groupName);
+    std::pair<bool, std::string> GetGroupChannelVolume(std::string groupName, float& volume);
 
     /// Obtiene la intensidad del sonido recibido por el microfono
     /// @return Intensidad del sonido (en un rango de 0 a 1)
@@ -182,26 +182,26 @@ class VERYREAL_AUDIOLEON AudioManager : public VeryReal::Manager<AudioManager> {
     /// Para todos los canales que est�n reproduciendo a�g�n sonido.
     /// </summary>
     /// <returns>Devuelve true o false en funci�n de si todos los canales dejaron de reproducir o no.</returns>
-    bool StopEverySound();
+    std::pair<bool, std::string> StopEverySound();
 
     /// <summary>
     /// Para todos los canales que est�n reproduciendo a�g�n sonido.
     /// </summary>
     /// <returns>Devuelve true o false en funci�n de si todos los canales dejaron de reproducir o no.</returns>
-    bool PauseEverySound();
+    std::pair<bool, std::string> PauseEverySound();
 
     /// <summary>
     /// Para todos los canales que est�n reproduciendo a�g�n sonido.
     /// </summary>
     /// <returns>Devuelve true o false en funci�n de si todos los canales empezaron de reproducir o no.</returns>
-    bool ResumeEverySound();
+    std::pair<bool, std::string> ResumeEverySound();
 
     /// <summary>
     /// Libera la memoria din�mica creada durante la ejecuci�n al crear un nuevl sonido de FMOD.
     /// </summary>
     /// <param name="soundName">EL nombre del sonido que va a ser eliminado.</param>
     /// <returns>Devuelve true o false en funci�n de si el sonido fue eliminado con �xito o no.</returns>
-    bool DeleteSound(std::string soundName);
+    std::pair<bool, std::string> DeleteSound(std::string soundName);
 
     /// <summary>
     /// Elimina un listener del vector de listeners y resetea sus valores.

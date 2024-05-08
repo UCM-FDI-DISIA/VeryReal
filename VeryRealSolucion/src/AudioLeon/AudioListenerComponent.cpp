@@ -40,24 +40,27 @@ std::pair<bool, std::string> AudioListenerComponent::InitComponent() {
     return {true, "AudioListener initialized"};
 }
 
-void AudioListenerComponent::Update(const double& dt)
-{
-	Vector3 position = transform->GetPosition();
+void AudioListenerComponent::Update(const double& dt) {
+    Vector3 position = transform->GetPosition();
     Vector3 velocity = transform->GetVelocity();
     VeryReal::Vector3 up = transform->up();
     VeryReal::Vector3 forward = transform->getFacingDirection();
 
-	VeryReal::Vector3 v = {(position.GetX() - last_position.GetX()) * float(dt), (position.GetY() - last_position.GetY()) * float(dt),
+    VeryReal::Vector3 v = {(position.GetX() - last_position.GetX()) * float(dt), (position.GetY() - last_position.GetY()) * float(dt),
                            (position.GetZ() - last_position.GetZ()) * float(dt)};
 
-	last_position = position;
+    last_position = position;
 
-	// Update the position of the audio listener in the sound manager
-	UpdateListenersPosition(listener_index, position, forward, up, v);
+    // Update the position of the audio listener in the sound manager
+    auto tryUpdate = UpdateListenersPosition(listener_index, position, forward, up, v);
+    if (!tryUpdate.first) std::cout << tryUpdate.second << std::endl;
 }
 
-void AudioListenerComponent::UpdateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW, VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel)
-{
+std::pair<bool, std::string> AudioListenerComponent::UpdateListenersPosition(int index, VeryReal::Vector3 listenerPos, VeryReal::Vector3 listenerFW,
+                                                                             VeryReal::Vector3 listenerUP, VeryReal::Vector3 listenerVel) {
 	FMOD_VECTOR pos = AM().V3ToFmodV3(listenerPos), fw = AM().V3ToFmodV3(listenerFW), up = AM().V3ToFmodV3(listenerUP), vel = AM().V3ToFmodV3(listenerVel);
-	AM().GetSoundSystem()->set3DListenerAttributes(index, &pos, &vel, &fw, &up);
+	this->result = AM().GetSoundSystem()->set3DListenerAttributes(index, &pos, &vel, &fw, &up);
+    auto trySetListenerAtributes = AM().CheckFMODResult(this->result);
+	if(!trySetListenerAtributes.first) return trySetListenerAtributes;
+    return {true, "3D listener " + std::to_string(index) + " atributes set succesfully. "};
 }

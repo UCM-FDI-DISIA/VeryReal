@@ -41,13 +41,13 @@ namespace VeryReal{
             /// Crea un sonido 3D.
             /// </summary>
             /// <returns>Devuelve true o false en funci�n de si el sonido fue creado con �xito o no.</returns>
-            bool Create3DSound();
+            std::pair<bool, std::string> Create3DSound();
 
             /// <summary>
             /// Crea un sonido no 3D.
             /// </summary>
             /// <returns>Devuelve true o false en funci�n de si el sonido fue creado con �xito o no.</returns>
-            bool CreateNormalSound();
+            std::pair<bool, std::string> CreateNormalSound();
 
             /// <summary>
             /// Configuira los atributos 3D (posici�n y velocidad) de un sonido.
@@ -56,30 +56,31 @@ namespace VeryReal{
             /// <param name="position">El valor de la posici�n de la fuente de sonido.</param>
             /// <param name="velocity"EL valor de la velocidad a la que se mueve la fuente de sonido.</param>
             /// <returns>Devuelve true o false en funci�n de si los atributos fueron configurados con �xito o no.</returns>
-            bool Set3DSoundAtributes(VeryReal::Vector3 position, VeryReal::Vector3 velocity);
+            std::pair<bool, std::string> Set3DSoundAtributes(VeryReal::Vector3 position, VeryReal::Vector3 velocity);
 
             /// <summary>
             /// Comprueba si hay alg�n canal disponible para reproducir el sonido asignado al componente y se lo asigna para ser reproducido.
+            /// Le da play al sonido del AudioSourceComponent.
             /// </summary>
             /// <param name="channelGroup">EL grupo de canales desde el que se reproducir� el sonido.</param>
             /// <param name="channelPos">La posici�n del canal que ser� usado para paneado y atenuaci�n.</param>
             /// <param name="channelVel">La velocidad del cana que ser� usado para efecto doppler.</param>
             /// <param name="channelVolume">Volumen de reproducci�n del sonido.</param>
             /// <returns>Devuelve true o false en funci�n de si se encontr� un canal para re3producir el sonido.</returns>
-            bool PlayAudioSource(std::string channelGroup, VeryReal::Vector3* channelPos, VeryReal::Vector3* channelVel, float channelVolume);
+            std::pair<bool, std::string> Play();
 
             /// <summary>
             /// Busca un canal y en caso de que exista, para el sonido que se este reproduciendo, devolvi�ndolo al principio.
             /// </summary>
             /// <returns>Devuelve true o false en funci�n de si el sonido fue detenido con �xito o no.</returns>
-            bool StopSound();
+            std::pair<bool, std::string> StopSound();
 
             /// <summary>
             /// Busca un canal y en caso de que exista, pause el sonido que se est� reproduciendo en ese canal.
             /// </summary>
             /// <param name="Pause">: indica si se pausa o se reactiva</param>
             /// <returns>Devuelve true o false en funci�n de si el sonido fue detenido con �xito o no.</returns>
-            bool PauseSound(bool Pause);
+            std::pair<bool, std::string> PauseSound(bool Pause);
 
         /// <summary>
         /// Inicia el sonido con los par�metros que se hayan facilitado desde la factor�a.
@@ -92,10 +93,6 @@ namespace VeryReal{
             /// <param name="dt">El delta time que se encarga de sincronizar las actualizaciones.</param>
             virtual void Update(const double& dt);
 
-            /// <summary>
-            /// Le da play al sonido del AudioSourceComponent.
-            /// </summary>
-            void Play();
 
             /// <summary>
             /// Detiene por completo el sonido del AudioSourceComponent.
@@ -130,7 +127,7 @@ namespace VeryReal{
             /// </summary>
             /// <param name="newSpeed"></param>
             /// <returns></returns>
-            bool SetSpeed(float newSpeed);
+            std::pair<bool, std::string> SetSpeed(float newSpeed);
 
         /// <summary>
         /// Establece una nueva configuraci�n para la atenuaci�n m�nima y m�xima que sufrir�a un sonido por distancia.
@@ -234,7 +231,7 @@ namespace VeryReal{
             /// </summary>
             /// <param name="newMode">Nueva flag que indica el modo a establecer.</param>
             /// <returns>Devuelve true o false en funci�n de si el nuevo modo de reproducci�n fue establecido con �xito o no.</returns>
-            bool SetMode(FMOD_MODE newMode);
+            std::pair<bool, std::string> SetMode(FMOD_MODE newMode);
     };
 }
 
