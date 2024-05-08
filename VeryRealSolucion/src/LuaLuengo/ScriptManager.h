@@ -36,6 +36,11 @@ namespace VeryReal {
           ScriptManager* a = new ScriptManager();
             if (a != nullptr) {
                 instance_pointer.reset(a);
+                std::pair<bool, std::string> r = a->InitManager();   //inicializamos el manager
+                if (!r.first) {
+                    delete a;   //el init manager da error pero se tiene que destruir memoria
+                    return {false, "ScriptManager pointer had a problem while it was initializing"};
+                }
                 return {true, "ScriptManager pointer sucesfully initialized"};
             }
             return {false, "ScriptManager pointer had a problem while it was initializing"};
@@ -43,7 +48,7 @@ namespace VeryReal {
          virtual ~ScriptManager();
 
 		    // Abre el archivo .lua
-         void InitManager();
+         std::pair<bool, std::string> InitManager();
          std::pair<bool,std::string> NewScene(std::string p);
 		
 		    // Método para probar la creación de entidades y componentes mediante Lua

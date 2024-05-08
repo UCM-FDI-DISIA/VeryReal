@@ -86,6 +86,11 @@ SetUpMessage VeryRealProyecto::InitPointers() {
     if (!ErrorInformantmessage.first) {
         return ErrorInformantmessage;
     }
+    SetUpMessage creatorMessage = VeryReal::Creator::Init();
+    if (!creatorMessage.first) {
+        return creatorMessage;
+    }
+
     SetUpMessage inputManagerMessage = VeryReal::InputManager::Init();
     if (!inputManagerMessage.first) {
         return inputManagerMessage;
@@ -121,37 +126,33 @@ SetUpMessage VeryRealProyecto::InitPointers() {
         return errorManagerMessage;
     }
 
-    SetUpMessage creatorMessage = VeryReal::Creator::Init();
-    if (!creatorMessage.first) {
-        return creatorMessage;
-    }
-
+    
 
     return {true, "Managers pointers where succesfully created"};
 }
 
 SetUpMessage VeryRealProyecto::InitManagers() {
-    SetUpMessage inputManagerInitMessage = VeryReal::InputManager::Instance()->InitManager();
+   /* SetUpMessage inputManagerInitMessage = VeryReal::InputManager::Instance()->InitManager();
     if (!inputManagerInitMessage.first) {
         return inputManagerInitMessage;
-    }
+    }*/
 
-    SetUpMessage renderManagerInitMessage = VeryReal::RenderManager::Instance()->InitManager("JUEGO");
-    if (!renderManagerInitMessage.first) {
-        return renderManagerInitMessage;
-    }
+    //SetUpMessage renderManagerInitMessage = VeryReal::RenderManager::Instance()->InitManager("JUEGO");
+    //if (!renderManagerInitMessage.first) {
+    //    return renderManagerInitMessage;
+    //}
 
-    SetUpMessage audioManagerInitMessage = VeryReal::AudioManager::Instance()->InitManager();
-    if (!audioManagerInitMessage.first) {
-        return audioManagerInitMessage;
-    }
+    //SetUpMessage audioManagerInitMessage = VeryReal::AudioManager::Instance()->InitManager();
+    //if (!audioManagerInitMessage.first) {
+    //    return audioManagerInitMessage;
+    //}
 
-    SetUpMessage physicsManagerInitMessage = VeryReal::PhysicsManager::Instance()->InitManager();
-    if (!physicsManagerInitMessage.first) {
-        return physicsManagerInitMessage;
-    }
+    //SetUpMessage physicsManagerInitMessage = VeryReal::PhysicsManager::Instance()->InitManager();
+    //if (!physicsManagerInitMessage.first) {
+    //    return physicsManagerInitMessage;
+    ////}
 
-    VeryReal::ScriptManager::Instance()->InitManager();
+    //VeryReal::ScriptManager::Instance()->InitManager();
     return {true, "All managers were succesfully initialized"};
 }
 

@@ -30,11 +30,10 @@ std::pair<bool, std::string> ScriptManager::Error(int status) {
 }
 
 
-void ScriptManager::InitManager()
-{  
+std::pair<bool, std::string> ScriptManager::InitManager() {  
     lua_state = luaL_newstate();
     luaL_openlibs(lua_state);
-	
+    return {true, "Script Manger Success"};
 }
 std::pair<bool, std::string> ScriptManager::NewScene(std::string p) {
     /*std::string a = "LuaFiles/" + p + ".lua";*/   // Esta ruta accede a la carpeta bin/LuaFiles del juego
