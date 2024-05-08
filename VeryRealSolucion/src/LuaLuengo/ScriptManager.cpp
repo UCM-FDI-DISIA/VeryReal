@@ -187,7 +187,9 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
 }
 
  std::pair<bool, std::string> ScriptManager::ReadPrefabs() {
-    std::string a = "LuaFiles/Prefabs.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
+    /*std::string a = "LuaFiles/" + p + ".lua";*/   // Esta ruta accede a la carpeta bin/LuaFiles del juego
+    //DE MOMENTO LO DEJO ASÍ POR COMODIDAD PARA TERMINAR EL LUA DE  LOS JUEGOS, LUEGO SE CAMBIA A LA LINEA DE ARRIBA
+    std::string a = "../../../bin/LuaFiles/Prefabs.lua";
     int script_status = luaL_dofile(lua_state, a.c_str());
     Error(script_status);
 
