@@ -29,6 +29,7 @@ VeryReal::InputManager::~InputManager() {
     if (SDL_WasInit(SDL_INIT_EVENTS)) {
         SDL_QuitSubSystem(SDL_INIT_EVENTS);
     }
+    SDL_Quit();
 }
 
 void VeryReal::InputManager::ClearState(bool clearMouseButtons) {
