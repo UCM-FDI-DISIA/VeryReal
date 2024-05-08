@@ -4,6 +4,8 @@
 VeryReal::Creator::~Creator() {
 	for (auto& c : creators_map)delete c.second;
 	creators_map.clear();
+    for (auto& c : prefabs_map)delete c.second;
+    prefabs_map.clear();
 }
 
 void VeryReal::Creator::AddCreator(const creator_name& c_name, CreatorComponent* cretorcomponent) {

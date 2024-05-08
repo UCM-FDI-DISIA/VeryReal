@@ -6,7 +6,7 @@
 #include "Scene.h"
 #include "Entity.h"
 #include "RigidBodyComponent.h"
-
+#include "TransformComponent.h"
 #include "ColliderComponent.h"
 
 #ifdef _DEBUG
@@ -47,13 +47,21 @@ void callBackExit(btPersistentManifold* const& manifold) {
         VeryReal::RigidBodyComponent* rigidBody1 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
         VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent2->getUserPointer());
 
-        VeryReal::ColliderComponent* colliderEntity1 = rigidBody1->GetEntity()->GetComponent<VeryReal::ColliderComponent>();
-        VeryReal::ColliderComponent* colliderEntity2 = rigidBody2->GetEntity()->GetComponent<VeryReal::ColliderComponent>();
-        if (colliderEntity1 && colliderEntity2) {
+        VeryReal::TransformComponent* transform1 = rigidBody1->GetEntity()->GetComponent<VeryReal::TransformComponent>();
+        VeryReal::TransformComponent* transform2 = rigidBody2->GetEntity()->GetComponent<VeryReal::TransformComponent>();
 
-            colliderEntity1->OnCollisionExit(colliderEntity2->GetEntity());
-            colliderEntity2->OnCollisionExit(colliderEntity1->GetEntity());
+        if (rigidBody1->GetEntity()->GetComponent<VeryReal::TransformComponent>() != NULL &&
+            rigidBody2->GetEntity()->GetComponent<VeryReal::TransformComponent>() != NULL)
+        {
+            VeryReal::ColliderComponent* colliderEntity1 = rigidBody1->returnColider();
+            VeryReal::ColliderComponent* colliderEntity2 = rigidBody2->returnColider();
+            if (colliderEntity1 != NULL && colliderEntity2 != NULL) {
+
+                colliderEntity1->OnCollisionExit(colliderEntity2->GetEntity());
+                colliderEntity2->OnCollisionExit(colliderEntity1->GetEntity());
+            }
         }
+
     }
 }
 

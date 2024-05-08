@@ -45,7 +45,9 @@ class VERYREAL_PEDROBULLET RigidBodyComponent : public Component {
     Vector4 GetRotation();
 
     //Vector3 QuaternionToEuler(const btQuaternion& q) const;
-
+    ColliderComponent* returnColider()
+    { return collider;
+    }
     void AddImpulse(const Vector3& impulse);
     void AddTorque(const Vector3& torque);
 

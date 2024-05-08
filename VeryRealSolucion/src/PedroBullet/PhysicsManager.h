@@ -33,7 +33,7 @@ enum PBShapes;
 enum PBMovementType;
 
 class ColliderComponent;
-
+class TransformComponent;
 
 namespace VeryReal {
     struct RaycastColision {

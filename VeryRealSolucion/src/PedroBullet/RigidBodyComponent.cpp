@@ -25,6 +25,7 @@ std::pair<bool, std::string> RigidBodyComponent::InitComponent(int shapeType, fl
 RigidBodyComponent::~RigidBodyComponent() {
     transformComponent = nullptr;
     collider = nullptr;
+    delete collider;
     delete collisionShape;
     rigidBody->setMotionState(nullptr);
     VeryReal::PhysicsManager::Instance()->DeleteRigidBody(rigidBody);
