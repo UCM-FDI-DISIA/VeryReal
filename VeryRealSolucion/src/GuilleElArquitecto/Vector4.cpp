@@ -100,7 +100,7 @@ VeryReal::Vector3 VeryReal::Vector4::toEuler() {
     return angles;
 }
 
-//para hacer Cout en la consola, ayudarnos a depurar
+
 std::ostream& VeryReal::operator<<(std::ostream& o, const VeryReal::Vector4& vec) {
     o << vec.GetX() << " , " << vec.GetY() << " , " << vec.GetZ() << " , " << vec.GetW() << "\n";
     return o;
