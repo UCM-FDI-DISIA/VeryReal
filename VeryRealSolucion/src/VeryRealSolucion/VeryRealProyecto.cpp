@@ -63,11 +63,6 @@ SetUpMessage VeryRealProyecto::InitVeryReal() {
         return initPointers;
     }
 
-    auto initManagers = InitManagers();
-    if (!initManagers.first) {
-        return initManagers;
-    }
-
     CreateCreators();
 
     std::string dllName = "Game";
@@ -165,32 +160,6 @@ SetUpMessage VeryRealProyecto::InitPointers() {
 
     return {true, "Managers pointers where succesfully created"};
 }
-
-SetUpMessage VeryRealProyecto::InitManagers() {
-   /* SetUpMessage inputManagerInitMessage = VeryReal::InputManager::Instance()->InitManager();
-    if (!inputManagerInitMessage.first) {
-        return inputManagerInitMessage;
-    }*/
-
-    //SetUpMessage renderManagerInitMessage = VeryReal::RenderManager::Instance()->InitManager("JUEGO");
-    //if (!renderManagerInitMessage.first) {
-    //    return renderManagerInitMessage;
-    //}
-
-    //SetUpMessage audioManagerInitMessage = VeryReal::AudioManager::Instance()->InitManager();
-    //if (!audioManagerInitMessage.first) {
-    //    return audioManagerInitMessage;
-    //}
-
-    //SetUpMessage physicsManagerInitMessage = VeryReal::PhysicsManager::Instance()->InitManager();
-    //if (!physicsManagerInitMessage.first) {
-    //    return physicsManagerInitMessage;
-    ////}
-
-    //VeryReal::ScriptManager::Instance()->InitManager();
-    return {true, "All managers were succesfully initialized"};
-}
-
 void VeryRealProyecto::CreateCreators() {
     VeryReal::Creator::Instance()->AddCreator("TransformComponent", new VeryReal::CreatorTransformComponent());
     VeryReal::Creator::Instance()->AddCreator("RigidBodyComponent", new VeryReal::CreatorRigidBodyComponent());

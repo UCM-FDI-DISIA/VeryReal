@@ -23,7 +23,6 @@ class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
     void Loop();
     virtual void Delete();
     std::pair<bool,std::string> InitPointers();
-    std::pair<bool, std::string> InitManagers();
     void CreateCreators();
 
     std::pair<bool,std::string> LoadGame(std::string gameName);
