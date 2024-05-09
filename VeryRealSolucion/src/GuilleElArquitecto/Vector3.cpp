@@ -26,10 +26,10 @@ VeryReal::Vector3 VeryReal::Vector3::operator+(const VeryReal::Vector3& vector) 
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator+=(const VeryReal::Vector3& vector) {
-        this->SetX(x + vector.x);
-        this->SetY(y + vector.y);
-        this->SetZ(z + vector.z);
-        return *this;
+    this->SetX(x + vector.x);
+    this->SetY(y + vector.y);
+    this->SetZ(z + vector.z);
+    return *this;
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator-(const VeryReal::Vector3& vector) {
@@ -37,10 +37,10 @@ VeryReal::Vector3 VeryReal::Vector3::operator-(const VeryReal::Vector3& vector) 
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator-=(const VeryReal::Vector3& vector) {
-        this->SetX(x - vector.x);
-        this->SetY(y - vector.y);
-        this->SetZ(z - vector.z);
-        return *this;
+    this->SetX(x - vector.x);
+    this->SetY(y - vector.y);
+    this->SetZ(z - vector.z);
+    return *this;
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator*(const float k) {
@@ -48,10 +48,10 @@ VeryReal::Vector3 VeryReal::Vector3::operator*(const float k) {
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator*=(const float k) {
-        this->SetX(x * k);
-        this->SetY(y * k);
-        this->SetZ(z * k);
-        return *this;
+    this->SetX(x * k);
+    this->SetY(y * k);
+    this->SetZ(z * k);
+    return *this;
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator/(const float k) {
@@ -59,17 +59,17 @@ VeryReal::Vector3 VeryReal::Vector3::operator/(const float k) {
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator/=(const float k) {
-        this->SetX(x / k);
-        this->SetY(y / k);
-        this->SetZ(z / k);
-        return *this;
+    this->SetX(x / k);
+    this->SetY(y / k);
+    this->SetZ(z / k);
+    return *this;
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator=(const VeryReal::Vector3& vector) {
-        this->SetX(vector.x);
-        this->SetY(vector.y);
-        this->SetZ(vector.z);
-        return *this;
+    this->SetX(vector.x);
+    this->SetY(vector.y);
+    this->SetZ(vector.z);
+    return *this;
 }
 
 bool VeryReal::Vector3::operator==(const VeryReal::Vector3& vector) {
@@ -84,12 +84,11 @@ VeryReal::Vector3 VeryReal::Vector3::Normalize() {
 	float m = Magnitude();
 	if (m != 0)
 		return *this / Magnitude();
-	//CERROR
 
-	return Vector3(0,0,0); //warning no todas las rutas devuelven un valor
+	return Vector3(0,0,0); 
 }
 
-//para hacer Cout en la consola, ayudarnos a depurar
+
 std::ostream& operator<<(std::ostream& o, const VeryReal::Vector3& vector) {
 	o << vector.GetX() << " , " << vector.GetY() <<" , "<<vector.GetZ()<<"\n";
 	return o;
@@ -113,6 +112,9 @@ VeryReal::Vector3 VeryReal::Vector3::Cross(const VeryReal::Vector3& vector) {
     return perpendicularVector;
 }
 
+/// Distancia entre dos vectores
+/// @param vector -> El otro vector 
+/// @return Devuelve el valor de la distancia
 float VeryReal::Vector3::Distance(VeryReal::Vector3 v1) { 
 	return abs(sqrtf(powf(v1.GetX() - this->GetX(), 2) + powf(v1.GetY() - this->GetY(), 2) + powf(v1.GetZ() - this->GetZ(), 2)));
 }

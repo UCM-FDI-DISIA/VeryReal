@@ -38,9 +38,7 @@ std::pair<bool, std::string> ScriptManager::InitManager() {
     return {true, "Script Manger Success"};
 }
 std::pair<bool, std::string> ScriptManager::NewScene(std::string p) {
-    /*std::string a = "LuaFiles/" + p + ".lua";*/   // Esta ruta accede a la carpeta bin/LuaFiles del juego
-    //DE MOMENTO LO DEJO ASÍ POR COMODIDAD PARA TERMINAR EL LUA DE  LOS JUEGOS, LUEGO SE CAMBIA A LA LINEA DE ARRIBA
-    std::string a = "../../../bin/LuaFiles/" + p + ".lua";
+    std::string a = "LuaFiles/" + p + ".lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
     int script_status = luaL_dofile(lua_state, a.c_str());
     return Error(script_status);
 }
@@ -188,9 +186,9 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
 }
 
  std::pair<bool, std::string> ScriptManager::ReadPrefabs() {
-    /*std::string a = "LuaFiles/" + p + ".lua";*/   // Esta ruta accede a la carpeta bin/LuaFiles del juego
-    //DE MOMENTO LO DEJO ASÍ POR COMODIDAD PARA TERMINAR EL LUA DE  LOS JUEGOS, LUEGO SE CAMBIA A LA LINEA DE ARRIBA
-    std::string a = "../../../bin/LuaFiles/Prefabs.lua";
+    std::string prefab = "Prefabs";
+    std::string a = "LuaFiles/" + prefab + ".lua";
+ 
     int script_status = luaL_dofile(lua_state, a.c_str());
     Error(script_status);
 
@@ -247,7 +245,8 @@ void ScriptManager::ReadParams(luabridge::LuaRef params, std::string comp)
  }
 
 void ScriptManager::ReadFunction(std::string name, int n) {
-    std::string s = "../../../bin/LuaFiles/Functions.lua";   // Esta ruta accede a la carpeta bin/LuaFiles del juego
+    std::string functions = "Functions";
+    std::string s = "LuaFiles/" + functions + ".lua";
     int script_status = luaL_dofile(lua_state, s.c_str());
     Error(script_status);
 

@@ -12,6 +12,11 @@
 
 #pragma warning(disable : 4251)
 
+/*
+	Clase encargada de almacenar un valor que puede ser de varios tipos.
+	Esta clase es usada a la hora de añadir parametros a nuestro componente.
+*/
+
 namespace VeryReal {
 	class VERYREAL_GUILLEELARQUITECTO VariantClass
 	{

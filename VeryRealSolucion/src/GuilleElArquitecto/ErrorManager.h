@@ -7,6 +7,12 @@
 
 using scene_name = std::string;
 
+/*
+    Manager encargado de gestionar los errores ya sean de inicializacion o de ejecucion.
+    Para ello debemos hacer una llamada a su instancia y usar el metodo canBeError(posible_error)
+
+    En caso de que sea un error, al terminar el bucle de juego actual se procedera a dar por finalizada la ejecucion y a llamar a las destructoras pertinentes.
+*/
 #pragma warning(disable : 4251)
 
 namespace VeryReal {

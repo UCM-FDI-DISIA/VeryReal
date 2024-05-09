@@ -14,6 +14,11 @@ namespace luabridge {
 	class LuaRef;
 }
 
+
+
+/*
+    Manager encargado de leer los datos de las entidades/componentes a traves de un fichero de formato .lua
+*/
 namespace VeryReal {
     class VERYREAL_LUALUENGO ScriptManager : public VeryReal::Manager<ScriptManager> {
 	    friend Singleton<ScriptManager>;

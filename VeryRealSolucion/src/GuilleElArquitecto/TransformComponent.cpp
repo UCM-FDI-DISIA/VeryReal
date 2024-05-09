@@ -4,13 +4,9 @@
 
 using namespace VeryReal;
 
-TransformComponent::TransformComponent() {
+TransformComponent::TransformComponent() {}
 
-}
-
-TransformComponent::~TransformComponent() {
-
-}
+TransformComponent::~TransformComponent() {}
 
 std::pair<bool, std::string> TransformComponent::InitComponent(Vector3 position, Vector3 rotation, Vector3 scale) {
     this->position = position;
@@ -48,17 +44,17 @@ Vector3 VeryReal::TransformComponent::up() {
 }
 
 VeryReal::Vector3 VeryReal::TransformComponent::getFacingDirection() {
-        // Convertir de grados a radianes
-        Vector3 rot = rotation.toEuler();
-        float radY = rot.GetY() * 3.14159f / 180.0f;
+     
+    Vector3 rot = rotation.toEuler();
+        
+    float radY = rot.GetY() * M_PI / 180.0f;
 
-        // Direccion por defecto (mirando hacia el fondo)
-        VeryReal::Vector3 direction(0, 0, -1);
+     
+    VeryReal::Vector3 direction(0, 0, -1);
 
-        // Aplicar rotacion alrededor del eje Y
-        VeryReal::Vector3 rotatedDirection(direction.GetX() * cos(radY) - direction.GetZ() * sin(radY), 
-                                           direction.GetY(),
-                                           direction.GetX() * sin(radY) + direction.GetZ() * cos(radY));
+    VeryReal::Vector3 rotatedDirection(direction.GetX() * cos(radY) - direction.GetZ() * sin(radY), 
+                                        direction.GetY(),
+                                        direction.GetX() * sin(radY) + direction.GetZ() * cos(radY));
 
-        return rotatedDirection.Normalize();
+    return rotatedDirection.Normalize();
 }

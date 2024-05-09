@@ -31,6 +31,7 @@ void callBackEnter(btPersistentManifold* const& manifold) {
 
         VeryReal::ColliderComponent* colliderEntity1 = rigidBody1->GetEntity()->GetComponent<VeryReal::ColliderComponent>();
         VeryReal::ColliderComponent* colliderEntity2 = rigidBody2->GetEntity()->GetComponent<VeryReal::ColliderComponent>();
+
         //Si tienen colliders, colisionan
         if (colliderEntity1 && colliderEntity2) {
             colliderEntity1->OnCollisionEnter(colliderEntity2->GetEntity());

@@ -13,7 +13,13 @@ namespace VeryReal {
 using creator_name = std::string;
 using prefab_name = std::string;
 class Entity;
+/*
+    Creator es un singleton que se usara para guardar todos los creators de cada componente tanto del motor como del juego.
+    Para ello primero llamara a la constructora del componente especificado la cual estara vacia, y luego llamara a su InitComponent
+    el cual recibira los parametros pertinentes a traves del CreatorComponent especifico. Estos parametros son leidos de archivos .lua por el ScriptManager (metodo ReadScene).
 
+    Creator devuelve en sus metodos Init un pair que sera el encargado de gestionar que no ha habido ningun error en la lectura de datos.
+*/
 class VERYREAL_GUILLEELARQUITECTO Creator : public VeryReal::Singleton<Creator> {
     friend Singleton<Creator>;
 
@@ -61,6 +67,7 @@ private:
 
     // A�ade un prefab a el mapa de prefbas
     void AddPrefab(prefab_name p_name, Entity* ent);
+
     //elimina un prefab del mapa de prefabs
     void RemovePrefab(prefab_name p_name);
 

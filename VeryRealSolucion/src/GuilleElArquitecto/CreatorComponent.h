@@ -6,7 +6,9 @@
 #include "export.h"
 
 #pragma warning(disable : 4251)
-
+/*
+	Clase abstracta de la que deben heredar los Creators de todos los componentes y la cual se encarga de crear el puntero (vacio) del componente y de llamar a su metodo InitComponent
+*/
 namespace VeryReal {
 	class Component;
 	class VERYREAL_GUILLEELARQUITECTO CreatorComponent{
