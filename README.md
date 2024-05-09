@@ -125,14 +125,11 @@ Esta variable funciona como una variable de error estatica (sin serla) y sera co
 
 ## Estructura del Motor:
 Contamos con 1 solución con varios Proyectos en ella. Estos están definidos uno por cada módulo o parte diferenciada en el motor:
-
 <br>
 
 ### AudioLeon
 Audio leon es el proyecto encargado de la  parte de sonidos. Utiliza como libreria FMOD
 <br>
-
-
 
 ### GuilleElArquitecto
 
@@ -142,7 +139,7 @@ A la hora de diseñar nuestra arquitectura tomamos dos decisiones importantes:
   2. El resto de módulos de nuestro motor dependerían de GuilleElArquitecto
 Para realizar este proyecto hemos desarrollado esta serie de clases
 
-### Component:
+#### Component:
 Esta clase base sirve como modelo a todos los Componentes. Todos estos heredarán de esta clase para seguir con nuestra arquitectura por medio de Entidades y Componentes
 
 #### Creator: 
