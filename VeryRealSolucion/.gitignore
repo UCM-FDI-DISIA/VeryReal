@@ -42,8 +42,7 @@ Builds/
 [Ll]ib/
 
 # Excepciones
-![Bb]in/[Aa]ssets/
-![Bb]in/[Ll]ua[Ff]iles/
+![Bb]in/logo.png
 ![Dd]ependencies/FMOD/[Ss]rc/api/*/[Ll]ib/
 ![Bb]in/ogre.cfg
 ![Bb]in/plugins.cfg

@@ -79,7 +79,7 @@ funcionalidades:
         -AnimatorComponent: Componente que se enacarga del cargado y uso de animaciones, además de su gestión.
 
         -CameraComponent: Componente que añade una camará al escenario, también funciona como wrapper de la cámara de ogre.
-
+        
         -MeshRendererComponent: Componente encargado del renderizados de los .mesh y materiales de las entidades.
 
 
