@@ -54,10 +54,10 @@ En este apartado vamos a especificar como debe estar preparado el directorio del
 - updateSubmodule.bat
 
 A continuacion explicaremos el uso de cada elemento:
-```bash
-  /bin: directorio en el que se encuentran los modulos del motor exportados como DLL necesarios para el desarrollo del videojuego a la vez que modulos externos y el ejecutable generado.
+
+>/bin: directorio en el que se encuentran los modulos del motor exportados como DLL necesarios para el desarrollo del videojuego a la vez que modulos externos y el ejecutable generado.
   Este directorio se generara automaticamente al ejecutar el All.bat
-```
+```bash
 En bin necesitaremos dos directorios: Assets y LuaFiles.
 
 En LuaFiles guardaremos nuestros .lua y en Assets los elementos externos a usar.
@@ -65,6 +65,7 @@ En LuaFiles guardaremos nuestros .lua y en Assets los elementos externos a usar.
 Tambien deberemos crearnos un resources.cfg donde indicaremos las rutas donde se encontraran nuestros assets.
 
 En el caso de la carpeta de elementos sonoros, esta se llamara "Sonidos"
+```
 >/projects: aqui encontraremos el .vcxproj a la vez que sus archivos consiguientes.
 
 
