@@ -122,9 +122,7 @@ std::pair<bool, std::string> AudioSourceComponent::Play() {
     if (reproChannel == nullptr) {
         for (int i = 0; i < AM().GetChannelsVector().size(); i++) {
             bool IsPlaying;
-            this->result = AM().GetChannelsVector() [i]->isPlaying(&IsPlaying);
-            auto tryGetIsPlaying = AM().CheckFMODResult(this->result);
-            if (!tryGetIsPlaying.first) return tryGetIsPlaying;
+            AM().GetChannelsVector() [i]->isPlaying(&IsPlaying);
 
             if (IsPlaying) continue;
 
