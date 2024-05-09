@@ -1,5 +1,5 @@
 # MOTOR VERYREAL - Proyecto 3
-![Logo](VeryRealSolucion\bin\logo.png)
+![Logo](logo.png)
 
 
 ## Autores
@@ -17,7 +17,7 @@
 <br>
 
 ## Guia de estilos
- Nuestra quia de estilos se muestra al completo en el pdf: [Guia_de_Estilos.pdf](VeryRealSolucion\bin\Guia_de_Estilo.pdf)
+ Nuestra quia de estilos se muestra al completo en el pdf: [Guia_de_Estilos.pdf](Guia_de_Estilo.pdf)
 
 
 ## Compilación del motor
