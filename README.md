@@ -37,6 +37,81 @@ Descarga las  dependencias
 ```bash
  All.bat
 ```
+##  Desarrollo de un videojuego con VeryReal
+
+### Directorio de nuestro videojuego
+
+En este apartado vamos a especificar como debe estar preparado el directorio del videojuego que use VeryReal.En la carpeta raiz vamos a encontrar:
+- /bin
+- /projects
+- /src
+- /temp
+- /VeryReal
+- .gitignore
+- .gitmodules
+- All.bat
+- Nombre_Juego.sln
+- updateSubmodule.bat
+
+A continuacion explicaremos el uso de cada elemento:
+```bash
+  /bin: directorio en el que se encuentran los modulos del motor exportados como DLL necesarios para el desarrollo del videojuego a la vez que modulos externos y el ejecutable generado.
+  Este directorio se generara automaticamente al ejecutar el All.bat
+```
+En bin necesitaremos dos directorios: Assets y LuaFiles.
+
+En LuaFiles guardaremos nuestros .lua y en Assets los elementos externos a usar.
+
+Tambien deberemos crearnos un resources.cfg donde indicaremos las rutas donde se encontraran nuestros assets.
+
+En el caso de la carpeta de elementos sonoros, esta se llamara "Sonidos"
+```bash
+  /projects: aqui encontraremos el .vcxproj a la vez que sus archivos consiguientes.
+```
+```bash
+  /src: carpeta en la que añadiremos todo lo necesario en el desarrollo desde componentes, la propia solucion o el archivo con el que exportamos las clases necesarias.
+```
+```bash
+  /temp: sera el destino de todos nuestros archivos intermedios.
+```
+```bash
+  .gitignore: archivo generado por GitHub que nos ayudara a no subir contenido no deseado (como temp o el propio .vs).
+```
+```bash
+  .gitmodule: archivo generado por GitHub designa VeryReal como un submodulo.
+```
+```bash
+  All.bat: elemento cuya funcion es iniciar el motor por primera vez, descargando las dependencias de nuestro motor y compilandolo, copiando su carpeta bin en nuestro directorio y por ultimo compilando nuestra solucion.
+```
+```bash
+  Nuevo_Juego.sln: solucion de Visual Studio.
+```
+
+### Implementacion con VeryReal
+
+A la hora de desarrollar un videojuego con VeryReal hay que tener varias cosas en mente.
+La primera es que en el archivo main que se cree debemos exportar una funcion `start` que devuelva `std::pair<bool,std::string>`.
+  
+Esta funcion `start` debe:
+- Devolver como valor la lectura de la primera escena de nuestro juego.
+- Inicializar los creators de los componentes que nos hayamos creado.
+
+A esto podriamos sumarle la funcionalidad adicional que deseemos.
+
+Otra cosa a tener en mente es que el bucle de juego esta ya implementado en nuestro motor, por lo que como desarrollador solo tienes que preocuparte de crear componentes y añadirlos a sus entidades en un .lua.
+
+
+Para usar los Managers pertinentes, haremos su include y los llamaremos de la siguiente manera: `VeryReal::ManagerName::Instance()`.
+
+## Manejo de errores
+
+Para manejar errores hemos optado por una opcion que hace que todas las llamadas propicias a dar errores, como la inicializacion de los Managers o Componentes devuelvan un `std::pair<bool,std::string>`.
+La primera parte del pair indicara si se ha producido un error siendo false cuando ocurre y true cuando no.
+La segunda parte se trata de un mensaje que, en caso de que hayamos topado con un error, se imprimira a traves de una ventana creada en el momento.
+
+Para poder llegar a metodos de los juegos a los que no tenemos accesos desde el motor (todos excepto start), creamos ErrorManager el cual contiene una variable que nos indicara si ha habido o no error.
+Esta variable funciona como una variable de error estatica (sin serla) y sera comprobada en cada bucle y en caso de que haya error saldremos de el y procederemos a terminar con la ejecucion de nuestro juego.
+
 
 ## Estructura del Motor:
 Contamos con 1 solución con varios Proyectos en ella. Estos están definidos uno por cada módulo o parte diferenciada en el motor:
