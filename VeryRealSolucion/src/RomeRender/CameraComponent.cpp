@@ -25,7 +25,9 @@ std::pair<bool, std::string> CameraComponent::InitComponent(std::string name, Ve
                                                             VeryReal::Vector3 position) {
     //camara
     mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
+    if (mgr == nullptr) return {false, "SceneManager was null, ERROR from InitComponent CameraComponent"};
     this->offset = offset;
+    
     mNode = mgr->getRootSceneNode()->createChildSceneNode();   //nodo  de la camara
     mNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
     mNode->setPosition(position.GetX() + offset.GetX(), position.GetY() + offset.GetY(), position.GetZ() + offset.GetZ());
