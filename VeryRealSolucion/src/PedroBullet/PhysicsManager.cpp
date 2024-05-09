@@ -39,32 +39,6 @@ void callBackEnter(btPersistentManifold* const& manifold) {
     }
 }
 
-void callBackExit(btPersistentManifold* const& manifold) {
-   /* const btCollisionObject* ent1 = manifold->getBody0();
-    const btCollisionObject* ent2 = manifold->getBody1();
-
-    if (ent1 && ent2) {
-        VeryReal::RigidBodyComponent* rigidBody1 = static_cast<VeryReal::RigidBodyComponent*>(ent1->getUserPointer());
-        VeryReal::RigidBodyComponent* rigidBody2 = static_cast<VeryReal::RigidBodyComponent*>(ent2->getUserPointer());
-
-        VeryReal::TransformComponent* transform1 = rigidBody1->GetEntity()->GetComponent<VeryReal::TransformComponent>();
-        VeryReal::TransformComponent* transform2 = rigidBody2->GetEntity()->GetComponent<VeryReal::TransformComponent>();
-
-        if (rigidBody1->GetEntity()->GetComponent<VeryReal::TransformComponent>() != NULL &&
-            rigidBody2->GetEntity()->GetComponent<VeryReal::TransformComponent>() != NULL)
-        {
-            VeryReal::ColliderComponent* colliderEntity1 = rigidBody1->returnColider();
-            VeryReal::ColliderComponent* colliderEntity2 = rigidBody2->returnColider();
-            if (colliderEntity1 != NULL && colliderEntity2 != NULL) {
-
-                colliderEntity1->OnCollisionExit(colliderEntity2->GetEntity());
-                colliderEntity2->OnCollisionExit(colliderEntity1->GetEntity());
-            }
-        }
-
-    }*/
-}
-
 //Tiene que devolver un bool
 //Recibe los dos objetos que están colisionando
 bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
@@ -125,7 +99,6 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     }
 
     gContactStartedCallback = callBackEnter;
-    gContactEndedCallback = callBackExit;
     gContactProcessedCallback = onCollisionStay;
 
     dynamicsWorld->setGravity(btVector3(0, (btScalar)(-9.8), 0));

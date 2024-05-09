@@ -59,6 +59,7 @@ using SetUpMessage = std::pair<bool, std::string>;
 SetUpMessage VeryRealProyecto::InitVeryReal() {
     auto initPointers = InitPointers();
     if (!initPointers.first) {
+        this->managerInitializeError = true;
         return initPointers;
     }
 
@@ -81,47 +82,82 @@ SetUpMessage VeryRealProyecto::InitVeryReal() {
 
 SetUpMessage VeryRealProyecto::InitPointers() {
     // Para cada manager comprobamos los errores de inicializacion
+
     SetUpMessage ErrorInformantmessage = VeryReal::ErrorInformant::Init();
     if (!ErrorInformantmessage.first) {
         return ErrorInformantmessage;
     }
     SetUpMessage creatorMessage = VeryReal::Creator::Init();
     if (!creatorMessage.first) {
+
         return creatorMessage;
     }
 
     SetUpMessage inputManagerMessage = VeryReal::InputManager::Init();
     if (!inputManagerMessage.first) {
+
+        delete VeryReal::Creator::Instance();
         return inputManagerMessage;
     }
 
     SetUpMessage renderManagerMessage = VeryReal::RenderManager::Init();
     if (!renderManagerMessage.first) {
+
+
+        delete VeryReal::InputManager::Instance();
+        delete VeryReal::Creator::Instance();
         return renderManagerMessage;
     }
 
     SetUpMessage audioManagerMessage = VeryReal::AudioManager::Init();
     if (!audioManagerMessage.first) {
+
+
+        delete VeryReal::RenderManager::Instance();
+        delete VeryReal::InputManager::Instance();
+        delete VeryReal::Creator::Instance();
         return audioManagerMessage;
     }
 
     SetUpMessage scriptManagerMessage = VeryReal::ScriptManager::Init();
     if (!scriptManagerMessage.first) {
+
+
+        delete VeryReal::RenderManager::Instance();
+        delete VeryReal::InputManager::Instance();
+        delete VeryReal::Creator::Instance();
         return scriptManagerMessage;
     }
 
     SetUpMessage physicManagerMessage = VeryReal::PhysicsManager::Init();
     if (!physicManagerMessage.first) {
+        delete VeryReal::ScriptManager::Instance();
+        delete VeryReal::RenderManager::Instance();
+        delete VeryReal::InputManager::Instance();
+        delete VeryReal::Creator::Instance();
         return physicManagerMessage;
     }
 
     SetUpMessage sceneManagerMessage = VeryReal::SceneManager::Init();
     if (!sceneManagerMessage.first) {
+
+        delete VeryReal::PhysicsManager::Instance();
+        delete VeryReal::ScriptManager::Instance();
+        delete VeryReal::RenderManager::Instance();
+        delete VeryReal::InputManager::Instance();
+        delete VeryReal::Creator::Instance();
         return sceneManagerMessage;
     }
 
     SetUpMessage errorManagerMessage = VeryReal::ErrorManager::Init();
     if (!errorManagerMessage.first) {
+
+        delete VeryReal::SceneManager::Instance();
+        delete VeryReal::PhysicsManager::Instance();
+        delete VeryReal::ScriptManager::Instance();
+        delete VeryReal::RenderManager::Instance();
+        delete VeryReal::InputManager::Instance();
+        delete VeryReal::Creator::Instance();
         return errorManagerMessage;
     }
 

@@ -32,6 +32,7 @@ class VeryRealProyecto : public VeryReal::Singleton<VeryRealProyecto> {
     private:
     HMODULE gameDll = NULL;
     MainLoop gameLoop = NULL;
+    bool managerInitializeError = false;
 };
 
 inline VeryRealProyecto& VR() { return *VeryRealProyecto::Instance(); }
