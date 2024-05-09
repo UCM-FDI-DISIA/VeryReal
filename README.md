@@ -136,12 +136,62 @@ Audio leon es el proyecto encargado de la  parte de sonidos. Utiliza como librer
 
 ### GuilleElArquitecto
 
-Guille el  arquitecto es el proyecto encargado en definir toda nuestra arquitectura básica. Sin tener dependencia de ningún modulo. 
-<br>
-.
-.
-.
+Guille el  arquitecto es el proyecto encargado en definir toda nuestra arquitectura básica. Nuestra Arquitectura se basa en entidades y componentes creados con Factorías o Builders.
+A la hora de diseñar nuestra arquitectura tomamos dos decisiones importantes: 
+  1. Nuestro módulo GuilleElArquitecto no iba a depender de ningún otro módulo ni ninguna librería
+  2. El resto de módulos de nuestro motor dependerían de GuilleElArquitecto
+Para realizar este proyecto hemos desarrollado esta serie de clases
 
+### Component:
+Esta clase base sirve como modelo a todos los Componentes. Todos estos heredarán de esta clase para seguir con nuestra arquitectura por medio de Entidades y Componentes
+
+#### Creator: 
+Es una clase que hace la función de Gestor de Factorías o Builders. Esta hereda de nuestro Singleton y uenta con dos mapas desordenados:
+  · Mapa con los diferentes creators component, explicada a continuación esta clase. Este mapa tiene como clave una cadena de caracteres con el nombre del creador del componente y un puntero a este. Está hecho de esta manera para poder llamar a los creadores que necesitamos cuando queremos por medio de la carga de datos.
+  · Mapa con las entidades prefabs cargadas mediante Lua. Con clave el nombre de la entidad y argumento puntero a esta.
+Esta clase gestiona todos las factorías creadoras del juego y del motor.
+
+#### CreatorComponente:
+De esta clase heredarán cada uno de las factorías de los Componentes.
+Tiene métodos creados específicamente para recibir datos, crear el componente especificado e inicializarlo
+  . Cuenta con un mapa con clave un nombre de un parámetro y argumento una clase creada por nosotros del tipo VariantClass. Esto fue una decisión tomada para solucionar el problema de la diversidad de parámetros que pueden recibir cada Componente
+
+#### CreatorTransformComponent y Transform Component
+Hemos decidido hacer este Componente en el motor, ya que casi al 100% todas las entidades que vas a querer crear en un juego van a tener un Transform. De esta manera no estás haciendo cosas del juego en el motor, ya que es algo genérico, que queremos que independientemente del juego que hagas, tengas disponible un Transform aportado por nosotros y no tengas que creartelo tú en tu juego.
+Nuestro Transform cuenta con:
+  - Vector posicion
+  - Vectores de rotación: inicial y actual
+  - Vector escala
+  - Vector velocidad
+
+#### Entity
+Clase base de la Entidad. Cuenta con un mapa desordenado con los Componente y métodos que gestionan este mapa: añadir, borrar, modificar...  Además de una lista de componenntes para remover. Esto está hecho de esta manera para gestionar la eliminación de componentes en tiempo de actualización y no provocar fallos.
+
+#### ErrorInformant y ErrorManager
+Estas clases, ambas Singleton, se encargan de la gestión de errores de todo el motor y del juego. Provocan la salida "elegante" del programa por medio de la creación de una ventana emergente. Además hemos gestionado de manera ascendente la detección de errores. De esta forma si falla un componente específico en su creación, inicialización, etc; este error irá escalando capas hasta llegar a la más superficial y generar la ventana de error. Y así con cualquier error posible.
+
+#### Export
+En esta archivo de encabezado simplemente tenemos definido los condicionales de definiciones de macros de este módulo. Esto nos sirve para exportar o importar este módulo.
+
+#### Manager
+Clase que hereda de Singleton, abstracta, y de la que heredarán cualquier gestor o manager que queramos crearnos.
+
+#### Scene
+Clase básica de Escena. Cuenta con la misma metodología que he ido siguiendo. La creación de un mapa desordenado de entidades y una lista para gestionar las eliminaciones de estas. El mapa anterior recogerá todas la entidadas creadas en juego y motor y por medio de la escena las gestionaremos con métodos básicos como añadir, remover, actualizar...
+
+#### SceneManager
+Como su nombre indica es una clase que hereda de Manager y trata de gestionar, por medio de una lista, las escenas. Esta hecho de forma que solo se renderice 1 escena, la que encargues de poner como activa. Tiene métodos de gestión de esta lista
+
+#### Singleton
+Es nuestra plantilla básica del patrón de diseño que restringe la creación a un único objeto
+
+#### VariantClass
+Esta clase cuenta con una variable de tipo variant en la cuál hemos definido los posibles valores que puede recibir un componente en su creadora. Como he nombrado antes en el CreatorComponent
+
+#### Vectores
+Hemos definido nuestros propios Vectores de nuestro motor. Estos irán acompañados, en otros módulos, de conversores a otro tipo de vectores que quizás necesitamos en ellos con respecto a ciertas librerías como FMOD en AudioLeon u Ogre en RomeRender.
+
+<br>
 
 ### LuaLuengo
 LuaLuengo es el módulo encargado de la comunicación entre Lua y nuestro motor. En su script principal, el ScriptManager, se gestionan las siguientes tareas:
