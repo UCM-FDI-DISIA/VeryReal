@@ -35,12 +35,13 @@ std::pair<bool, std::string> AnimatorComponent::InitComponent(std::string name) 
     num_animations_active = (0);
     loop = false;
     active = false;
-    if (!GetEntity()->HasComponent("TransformComponent")) return {false, "There was no TransformComponent attached to the AnimatorComponent"};
     transform = GetEntity()->GetComponent<TransformComponent>();
+    if (transform ==nullptr) return {false, "There was no TransformComponent attached to the AnimatorComponent"};
+   
 
-
-    if (GetEntity()->HasComponent("MeshRenderComponent")) meshRender = GetEntity()->GetComponent<MeshRenderComponent>();
-    else {
+    meshRender = GetEntity()->GetComponent<MeshRenderComponent>();
+    if (meshRender==nullptr) 
+   {
         return {false, "There was no MeshRenderComponent attached to the AnimatorComponent"};
     }
 
