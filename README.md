@@ -152,42 +152,42 @@ Guille el  arquitecto es el proyecto encargado en definir toda nuestra arquitect
 
 
 ### RomeRender
-RomeRender es el proyecto encargado de toda la parte de renderizado del motor (3D como 2D), esto lo hace mediante Ogre. Para ello esta formado por una serie de clases que tienen las siguientes
+RomeRender es el proyecto encargado de toda la parte de renderizado del motor (3D y 2D), esto lo hace mediante Ogre. Para ello esta formado por una serie de clases que tienen las siguientes
 funcionalidades:
 
-        -AnimatorComponent: Componente que se enacarga del cargado y uso de animaciones, además de su gestión.
-        Para guardar las animaciones se utiliza un unordered_map que nos  permite guardarlas, actualizarlas y borrarlas eficazmente.
+- AnimatorComponent: Componente que se encarga del cargado y uso de animaciones, ademas de su gestion.
+Para guardar las animaciones se utiliza un unordered_map que nos permite guardarlas, actualizarlas y borrarlas eficazmente.
 
-        -CameraComponent: Componente que añade una camará al escenario, a su vez funciona como wrapper de la cámara de ogre. Tiene funcionalidades como: 
-                - pitch
-                - roll
-                - desactivate
-                - setviewportbackground
+- CameraComponent: Componente que añade una camara al escenario, a su vez funciona como wrapper de la camara de Ogre. Tiene funcionalidades como: 
+  - pitch
+  - roll
+  - desactivate
+  - setviewportbackground
 
-        - conversorvectores: puesto que utilizamos nuestros propios vectores, los de ogre deben quedar ocultos para el resto de proyectos. Para facilitar la tarea de conversiones hemos creado unos métodos dentro del namespace de VeryReal que nos facilitan esa conversió. 
+- conversorvectores: puesto que utilizamos nuestros propios vectores, los de Ogre deben quedar ocultos para el resto de proyectos. Para facilitar la tarea de conversiones hemos creado unos metodos dentro del namespace de VeryReal que nos facilitan esa conversion. 
         
-        - RenderManager: Manager que se encarga de la inicialización de Ogre a partir de los archivos .cfgs, también se encarga del renderizado de cada frame en su Update y de la carga de
-        shaders y recursos. Para finalizar, se encarga de la creación de nodos para dar al usuario una interfaz desde la que gestionar estos.
+- RenderManager: Manager que se encarga de la inicializacion de Ogre a partir de los archivos .cfg, tambien del renderizado de cada frame en su Update y de la carga de
+  shaders y recursos. Para finalizar, se encarga de la creacion de nodos para dar al usuario una interfaz desde la que gestionar estos.
 
-        - Window: Clase creada para gestionar la funcionalidad de la pantalla, esta es creada con SDL externamente y pasada a Ogre como ventana externa.
+- Window: Clase creada para gestionar la funcionalidad de la pantalla, esta es creada con SDL externamente y pasada a Ogre como ventana externa.
 
-        -LightComponet: Componente que funciona como wrapper de la luz de ogre.
+- LightComponent: Componente que funciona como wrapper de la luz de Ogre.
 
-         -MeshRenderComponent: Componente encargada de crear el .mesh de cada entidad asi como de asignar su material. 
+- MeshRenderComponent: Componente encargado de crear el .mesh de cada entidad asi como de asignar su material. 
 
-        - exportRomeRender: metodo para exportar unicamente el modulo de render.
+- exportRomeRender: metodo para exportar unicamente el modulo de render.
 
-  UI:
+UI:
 
-        - UIButtomComponent: clase base de boton, que detecta cuando el ratón está dentro de su transform y llama a una funcion si se pincha sobre ella. La funcion Action() esta vacia ya que cada boton tiene que tener una fucionalidad distinta
+- UIButtomComponent: clase base de boton, que detecta cuando el raton esta dentro de su transform y llama a una funcion si se pincha sobre ella. La funcion Action() esta vacia ya que cada boton tiene que   tener una fucionalidad distinta.
 
-        - UIProgressBar: clase que nos permite crear una barra de carga por medio de overlay element.
+- UIProgressBar: clase que nos permite crear una barra de carga por medio de overlay element.
 
-        -UISpriteRenderComponent: Este componente renderiza imagenes 2D segun el transform que tenga 
+- UISpriteRenderComponent: este componente renderiza imagenes 2D segun el transform que tenga. 
 
-        -UITextComponent: Permite poder escribir textos en pantalla asi como cargar distintas fuentes de letra.
+- UITextComponent: permite poder escribir textos en pantalla asi como cargar distintas fuentes de letra.
 
-        -UITransformComponent: Componente que sirve para indicar la posicion y escala de un objeto. Cogiendo posiciones entre 0 y 1 
+- UITransformComponent: componente que sirve para indicar la posicion y escala de un objeto. Cogiendo posiciones entre 0 y 1. 
  
 <br>
 
@@ -202,8 +202,7 @@ TonInput es el proyecto encargado del input del motor a través de SDL. Para ell
 
         - TonMapeo: clase que contiene enums para el parseo entre variables de SDL y nuestras propias variables.
 
-
-
+A la hora de desarrollar, usaremos el InputManager haciendo su llamada `VeryReal::InputManager::Instance()` para luego utilizar sus metodos.
 <br>
 
 
