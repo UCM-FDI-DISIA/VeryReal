@@ -156,6 +156,8 @@ Clases:
 - ColliderComponent: componente que se encarga de llamar al callback de colisiones, solo es necesario meterlo si se pretende llamar a alguna funcionalidad al colisionar.
 
 - RigidBodyComponent: componente que contiene un elemento rigidbody de Bullet, un componente ColliderComponent del motor, y todas las variables necesarias para simular un objeto fisico. Tambien contiene la mascara y grupo de la entidad para la comprobación de colisiones usando mascaras de bits.
+
+- PhysicsDebug: objeto que utiliza el PhysicsManager en modo Debug para renderizar los RigidBody.
 <br>
 
 
@@ -198,9 +200,6 @@ UI:
 - UITransformComponent: componente que sirve para indicar la posicion y escala de un objeto. Cogiendo posiciones entre 0 y 1. 
  
 <br>
-
-<br>
-
 
 ### TonInput <br>
 
