@@ -24,19 +24,11 @@ std::pair<bool, std::string> AudioSourceComponent::InitComponent(std::string nam
     SetSourcePath(path);
     SetPlayOnStart(onstart);
     SetGroupChannelName(groupchannel);
-    auto trySetVolume = SetVolume(volume);
-    if (!trySetVolume.first) 
-    {
-        return trySetVolume;
-    }
+    SetVolumeValue(volume);
     SetIsThreeD(threed);
     SetLoop(loop);
-    auto trySetDistance = SetMinMaxDistance(mindistance, maxdistance);
+    SetMinMaxDistanceValue(mindistance, maxdistance);
 
-    if (!trySetDistance.first)
-    {
-        return trySetDistance;
-    }
     return {true, "AudioSourceComponent sucessfully initialized"};
 }
 std::pair<bool, std::string> AudioSourceComponent::Create3DSound() {
@@ -260,6 +252,8 @@ std::pair<bool, std::string> AudioSourceComponent::SetVolume(float value) {
     }
 }
 
+void VeryReal::AudioSourceComponent::SetVolumeValue(float value) { volume = value; }
+
 std::pair<bool, std::string> AudioSourceComponent::SetSpeed(float newSpeed) {
     speed = newSpeed;
     AM().NameToLower(sound_name);
@@ -285,6 +279,10 @@ std::pair<bool, std::string> AudioSourceComponent::SetMinMaxDistance(float minDi
     auto trySetMinMaxDistance = AM().CheckFMODResult(this->result);
     if (!trySetMinMaxDistance.first) return trySetMinMaxDistance;
     return {true, "Minimum and maximum rolloff distances set sucessfully"};
+}
+void VeryReal::AudioSourceComponent::SetMinMaxDistanceValue(float minDistance, float maxDistance) { 
+    min_distance = minDistance * DISTANCE_FACTOR;
+    max_distance = maxDistance * DISTANCE_FACTOR;
 }
 std::pair<bool, std::string> AudioSourceComponent::SetMode(FMOD_MODE newMode) {
     AM().NameToLower(sound_name);

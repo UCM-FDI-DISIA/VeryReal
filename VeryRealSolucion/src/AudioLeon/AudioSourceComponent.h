@@ -122,6 +122,8 @@ namespace VeryReal{
         /// <returns>Devuelve true o false en funci�n de si se ha cambiado el volumen con �xito o no.</returns>
         std::pair<bool, std::string> SetVolume(float value);
 
+        void SetVolumeValue(float value);
+
             /// <summary>
             /// Establece la velocidad a la que un sonido ser� reproducido.
             /// </summary>
@@ -137,7 +139,7 @@ namespace VeryReal{
         /// <returns>Devuelve true o false en funci�n de si las nuevas configuraciones para la atenuaci�n fueron o no establecidas.</returns>
         std::pair<bool, std::string> SetMinMaxDistance(float minDistance, float maxDistance);
 
-      
+        void SetMinMaxDistanceValue(float minDistance, float maxDistance);
 
             /// <summary>
             /// Almacena la ruta relativa del archivo de audio.
