@@ -6,7 +6,7 @@
 
 using namespace Ogre;
 
-VeryReal::DebugMode::DebugMode() {
+VeryReal::PhysicsDebug::PhysicsDebug() {
     node = VeryReal::RenderManager::Instance()->getSceneManager()->getRootSceneNode();
     node->setVisible(true);  
     mtl = MaterialManager::getSingleton().create("RedMaterial", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
@@ -14,13 +14,13 @@ VeryReal::DebugMode::DebugMode() {
     mDebugModes = (DebugDrawModes)DBG_DrawWireframe;
 }
 
-VeryReal::DebugMode::~DebugMode() 
+VeryReal::PhysicsDebug::~PhysicsDebug() 
 { 
     MaterialManager::getSingleton().remove(mtl);
     clearLines();
 }
 
-void VeryReal::DebugMode::drawLine(const btVector3& from, const btVector3& to, const btVector3& color) {
+void VeryReal::PhysicsDebug::drawLine(const btVector3& from, const btVector3& to, const btVector3& color) {
     auto g = VeryReal::RenderManager::Instance();
     
     Ogre::ManualObject* line = g->createManualObject(node);
@@ -33,7 +33,7 @@ void VeryReal::DebugMode::drawLine(const btVector3& from, const btVector3& to, c
     lines.push_back(line);
 }
 
-void VeryReal::DebugMode::drawContactPoint(const btVector3& PointOnB, const btVector3& normalOnB, btScalar distance, int lifeTime,
+void VeryReal::PhysicsDebug::drawContactPoint(const btVector3& PointOnB, const btVector3& normalOnB, btScalar distance, int lifeTime,
                                            const btVector3& color) {
     auto g = VeryReal::RenderManager::Instance();
     Ogre::ManualObject* line = g->createManualObject(node);
@@ -47,15 +47,15 @@ void VeryReal::DebugMode::drawContactPoint(const btVector3& PointOnB, const btVe
     lines.push_back(line);
 }
 
-void VeryReal::DebugMode::reportErrorWarning(const char* warningString) { LogManager::getSingleton().getDefaultLog()->logMessage(warningString); }
+void VeryReal::PhysicsDebug::reportErrorWarning(const char* warningString) { LogManager::getSingleton().getDefaultLog()->logMessage(warningString); }
 
-void VeryReal::DebugMode::draw3dText(const btVector3& location, const char* textString) { }
+void VeryReal::PhysicsDebug::draw3dText(const btVector3& location, const char* textString) { }
 
-void VeryReal::DebugMode::setDebugMode(int debugMode) { mDebugModes = (DebugDrawModes)debugMode; }
+void VeryReal::PhysicsDebug::setDebugMode(int debugMode) { mDebugModes = (DebugDrawModes)debugMode; }
 
-int VeryReal::DebugMode::getDebugMode() const { return mDebugModes; }
+int VeryReal::PhysicsDebug::getDebugMode() const { return mDebugModes; }
 
-void VeryReal::DebugMode::clearLines() {
+void VeryReal::PhysicsDebug::clearLines() {
     auto g = VeryReal::RenderManager::Instance();
     for (std::list<Ogre::ManualObject*>::iterator it = lines.begin(); it != lines.end();) {
           g->destroyManualObject(*it);

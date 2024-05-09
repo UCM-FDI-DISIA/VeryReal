@@ -53,10 +53,10 @@
     <ClInclude Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\RomeRender\exportPedroBullet.h">
+    <ClInclude Include="..\..\src\PedroBullet\PhysicsDebug.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\PedroBullet\PhysicsDebug.h">
+    <ClInclude Include="..\..\src\PedroBullet\exportPedroBullet.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

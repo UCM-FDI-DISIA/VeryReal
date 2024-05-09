@@ -47,7 +47,7 @@ VeryReal::Vector3 VeryReal::TransformComponent::getFacingDirection() {
      
     Vector3 rot = rotation.toEuler();
         
-    float radY = rot.GetY() * M_PI / 180.0f;
+    float radY = rot.GetY() * 3.14159f / 180.0f;
 
      
     VeryReal::Vector3 direction(0, 0, -1);

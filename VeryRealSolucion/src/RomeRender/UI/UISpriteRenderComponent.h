@@ -21,9 +21,9 @@ namespace VeryReal {
     class VERYREAL_ROMERENDER UISpriteRendererComponent : public Component {
           public:
             //constructora de la clase UISpriteRendererComponentComponent
-      UISpriteRendererComponent();
-                // Destructor de la clase UISpriteRendererComponentComponent
-      virtual ~UISpriteRendererComponent();
+            UISpriteRendererComponent();
+            // Destructor de la clase UISpriteRendererComponentComponent
+            virtual ~UISpriteRendererComponent();
             // Inicializa el componente
             std::pair<bool, std::string> InitComponent(std::string name, std::string material, int order);
             void Update(const double& dt) override;

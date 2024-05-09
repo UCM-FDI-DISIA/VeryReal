@@ -106,7 +106,7 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
 
 
 #ifdef _DEBUG
-    debugger = new DebugMode();
+    debugger = new PhysicsDebug();
     dynamicsWorld->setDebugDrawer(debugger);
 #endif             // DEBUG
 

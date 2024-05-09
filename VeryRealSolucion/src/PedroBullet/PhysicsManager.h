@@ -11,7 +11,7 @@ namespace VeryReal {
 class Vector3;
 class Entity;
 class SceneManager;
-class DebugMode;
+class PhysicsDebug;
 }
 
 
@@ -90,7 +90,7 @@ class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
     btSequentialImpulseConstraintSolver* solver = nullptr;
     btDiscreteDynamicsWorld* dynamicsWorld = nullptr;
 #ifdef _DEBUG
-    DebugMode* debugger = nullptr;
+    PhysicsDebug* debugger = nullptr;
     bool seeObjects = true;
 
 #endif
