@@ -65,27 +65,36 @@ En LuaFiles guardaremos nuestros .lua y en Assets los elementos externos a usar.
 Tambien deberemos crearnos un resources.cfg donde indicaremos las rutas donde se encontraran nuestros assets.
 
 En el caso de la carpeta de elementos sonoros, esta se llamara "Sonidos"
+>/projects: aqui encontraremos el .vcxproj a la vez que sus archivos consiguientes.
+
+
+>/src: carpeta en la que añadiremos todo lo necesario en el desarrollo desde componentes, la propia solucion o el archivo con el que exportamos las clases necesarias.
+
+
+>/temp: sera el destino de todos nuestros archivos intermedios.
+
+
+>.gitignore: archivo generado por GitHub que nos ayudara a no subir contenido no deseado (como temp o el propio .vs).
+
+
+>.gitmodule: archivo generado por GitHub designa VeryReal como un submodulo.
+
+
+>All.bat: elemento cuya funcion es iniciar el motor por primera vez, descargando las dependencias de nuestro motor y compilandolo, copiando su carpeta bin en nuestro directorio y por ultimo compilando nuestra solucion.
+El codigo proporcionado para el All.bat es el siguiente:
 ```bash
-  /projects: aqui encontraremos el .vcxproj a la vez que sus archivos consiguientes.
+cd VeryReal\VeryRealSolucion\dependencies\cMake
+call All.bat
+cd VeryReal\VeryRealSolucion
+xcopy bin .\..\..\bin\ /s /e
+
+cd ..\..\
+msbuild "OvejaVeganaSolucion.sln" /p:configuration=Debug /p:Platform=x64 /p:PlatformToolset=v143
+msbuild "OvejaVeganaSolucion.sln" /p:configuration=Release /p:Platform=x64 /p:PlatformToolset=v143
 ```
-```bash
-  /src: carpeta en la que añadiremos todo lo necesario en el desarrollo desde componentes, la propia solucion o el archivo con el que exportamos las clases necesarias.
-```
-```bash
-  /temp: sera el destino de todos nuestros archivos intermedios.
-```
-```bash
-  .gitignore: archivo generado por GitHub que nos ayudara a no subir contenido no deseado (como temp o el propio .vs).
-```
-```bash
-  .gitmodule: archivo generado por GitHub designa VeryReal como un submodulo.
-```
-```bash
-  All.bat: elemento cuya funcion es iniciar el motor por primera vez, descargando las dependencias de nuestro motor y compilandolo, copiando su carpeta bin en nuestro directorio y por ultimo compilando nuestra solucion.
-```
-```bash
-  Nuevo_Juego.sln: solucion de Visual Studio.
-```
+
+>Nuevo_Juego.sln: solucion de Visual Studio.
+
 
 ### Implementacion con VeryReal
 
