@@ -26,10 +26,10 @@ VeryReal::Vector3 VeryReal::Vector3::operator+(const VeryReal::Vector3& vector) 
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator+=(const VeryReal::Vector3& vector) {
-        this->SetX(x + vector.x);
-        this->SetY(y + vector.y);
-        this->SetZ(z + vector.z);
-        return *this;
+    this->SetX(x + vector.x);
+    this->SetY(y + vector.y);
+    this->SetZ(z + vector.z);
+    return *this;
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator-(const VeryReal::Vector3& vector) {
@@ -37,10 +37,10 @@ VeryReal::Vector3 VeryReal::Vector3::operator-(const VeryReal::Vector3& vector) 
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator-=(const VeryReal::Vector3& vector) {
-        this->SetX(x - vector.x);
-        this->SetY(y - vector.y);
-        this->SetZ(z - vector.z);
-        return *this;
+    this->SetX(x - vector.x);
+    this->SetY(y - vector.y);
+    this->SetZ(z - vector.z);
+    return *this;
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator*(const float k) {
@@ -48,10 +48,10 @@ VeryReal::Vector3 VeryReal::Vector3::operator*(const float k) {
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator*=(const float k) {
-        this->SetX(x * k);
-        this->SetY(y * k);
-        this->SetZ(z * k);
-        return *this;
+    this->SetX(x * k);
+    this->SetY(y * k);
+    this->SetZ(z * k);
+    return *this;
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator/(const float k) {
@@ -59,17 +59,17 @@ VeryReal::Vector3 VeryReal::Vector3::operator/(const float k) {
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator/=(const float k) {
-        this->SetX(x / k);
-        this->SetY(y / k);
-        this->SetZ(z / k);
-        return *this;
+    this->SetX(x / k);
+    this->SetY(y / k);
+    this->SetZ(z / k);
+    return *this;
 }
 
 VeryReal::Vector3 VeryReal::Vector3::operator=(const VeryReal::Vector3& vector) {
-        this->SetX(vector.x);
-        this->SetY(vector.y);
-        this->SetZ(vector.z);
-        return *this;
+    this->SetX(vector.x);
+    this->SetY(vector.y);
+    this->SetZ(vector.z);
+    return *this;
 }
 
 bool VeryReal::Vector3::operator==(const VeryReal::Vector3& vector) {

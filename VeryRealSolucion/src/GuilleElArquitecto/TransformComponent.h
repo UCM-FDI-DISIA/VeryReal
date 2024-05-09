@@ -28,15 +28,13 @@ namespace VeryReal {
 		inline void SetRotation(Vector4 rotation) { this->rotation = rotation; }
 		inline void SetScale(Vector3 scale) { this->scale = scale; }
         inline void SetVelocity(Vector3 velocity) { this->velocity = velocity; }
-
+		
 		void Translate(Vector3 translateposition);
 		void Rotate(Vector3 rotaterotation);
 		void Scaler(Vector3 scalerscale);
 
-		/*
-		Vector Up del componente transform.
-		@return El valor del vector Up en el eje Y.		
-		*/
+
+		// Devuelve el valor del vector Up en el eje Y
         VeryReal::Vector3 up();
 
         VeryReal::Vector3 getFacingDirection();

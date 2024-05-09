@@ -177,21 +177,32 @@ namespace VeryReal{
             /// <param name="playOnStart">Si el sonido debe ser reproducido en cuanto sea posible o no.</param>
             void SetPlayOnStart(bool playOnStart);
 
-            /**
-		    * Get the volume of the audio.
-		    * @return The current volume value.
-		    */
-
+           
             //Devuelve el valor de volumen almacenado en este componente.
             float GetVolume();
 
+            //Devuelve el nombre del sonido asociado al AudioSourceComponent.
             inline std::string GetSoundName() { return sound_name; }
+
+            //Devuelve la ruta del sonido asociado al AudioSourceComponent.
             inline std::string GetSoundPath() { return sound_path; }
+
+            //Devuelve un bool que indica si el sonido debe iniciarse al inicializarse
             inline bool GetPlayOnStart() { return play_on_start; }
+
+            //Devuelve el nombre del grupo al que pertence el sonido
             inline std::string GetSoundGroup() { return sound_group; }
+
+            //Devuelve si el sonido es 3D o no
             inline bool GetIsThreeD() { return is_three_d; }
+
+            //Indica si el sonido esta configurado para ser reproducido en bucle o no
             inline bool GetIsLoop() { return loop; }
+
+            //Devuelve el valor asociado a la minima distancia de escucha
             inline float GetMinDistance() { return min_distance; }
+            
+            //Devuelve el valor asociado a la maxima distancia de escucha
             inline float GetMaxDistance() { return max_distance; }
 
 

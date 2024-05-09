@@ -21,19 +21,24 @@ namespace VeryReal {
 		virtual ~Component();
 		virtual void Update(const double& dt) {}
 
-		//Indica si el Componente está activo o no
+		// Indica si el Componente está activo o no
 		inline void SetActive(bool active) { this->active = active; }
+
+		// Devuelve un valor que indica si el componente esta o no activo
 		inline bool GetActive() { return active; }
 
 		//El componente necesita saber cual es su entidad, para acceder a otros componentes de esta
 		inline void SetEntity(VeryReal::Entity* entity) { this->entity = entity; }
+
+		//Devuelve la entidad que contiene el componente
 		inline VeryReal::Entity* GetEntity() { return entity; }
+
+
 		inline int GetOrden() { return orden; }
 		inline void SetOrden(int ord) { orden = ord; }
 
 		virtual void OnCollisionEnter(Entity* other) {};
 		virtual void OnCollisionStay(Entity* other) {};
-		virtual void OnCollisionExit(Entity* other) {};
 	};
 }
 #endif

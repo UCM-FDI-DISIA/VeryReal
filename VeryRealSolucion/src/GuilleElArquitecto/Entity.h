@@ -105,7 +105,6 @@ namespace VeryReal {
 
 
 		void OnCollisionEnter(Entity* other);
-		void OnCollisionExit(Entity* other);
 		void OnCollisionStay(Entity* other);
 	};
 }

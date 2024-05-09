@@ -1,5 +1,6 @@
 #include "Vector4.h"
 #include "Vector3.h"
+#include "ErrorManager.h"
 VeryReal::Vector4::Vector4() {
     x = 0;
     y = 0;
@@ -9,7 +10,7 @@ VeryReal::Vector4::Vector4() {
 VeryReal::Vector4::Vector4(float a, float b, float c, float d, bool isColor) {
     if (isColor) {
         if (x < 0 || y < 0 || z < 0 || w < 0 || x > 255 || y > 255 || z > 255 || w > 1) {
-            //CERROR
+            VeryReal::ErrorManager::Instance()->canBeError({false, "There was a color with an incorrect format"});
         }
         this->x = a;
         this->y = b;
@@ -26,7 +27,7 @@ VeryReal::Vector4::Vector4(float a, float b, float c, float d, bool isColor) {
 VeryReal::Vector4::Vector4(const VeryReal::Vector4& vector, bool isColor) {
     if (isColor) {
         if (vector.GetX() < 0 || vector.GetY() < 0 || vector.GetZ() < 0 || vector.GetW() < 0 || vector.GetX() > 255 || vector.GetY() > 255 || vector.GetZ() > 255 || vector.GetW() > 1) {
-            //CERROR
+            VeryReal::ErrorManager::Instance()->canBeError({false, "There was a color with an incorrect format"});
         }
         x = vector.GetX();
         y = vector.GetY();
