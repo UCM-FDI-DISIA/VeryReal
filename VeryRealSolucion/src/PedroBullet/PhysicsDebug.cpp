@@ -24,7 +24,7 @@ void VeryReal::PhysicsDebug::drawLine(const btVector3& from, const btVector3& to
     auto g = VeryReal::RenderManager::Instance();
     
     Ogre::ManualObject* line = g->createManualObject(node);
-    line->begin("Sinbad/Gold", Ogre::RenderOperation::OT_LINE_LIST);
+    line->begin("RedMaterial", Ogre::RenderOperation::OT_LINE_LIST);
     line->position(from.x(), from.y(), from.z());
     line->position(to.x(), to.y(), to.z());
     line->colour(color.x(), color.y(), color.z());
