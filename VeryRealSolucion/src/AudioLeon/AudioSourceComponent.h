@@ -102,12 +102,12 @@ namespace VeryReal{
             /// <summary>
             /// Para el sonido del AudioSourceComponent.
             /// </summary>
-            void Pause();
+            std::pair<bool, std::string> Pause();
 
             /// <summary>
             /// Vuelve a reproducir un sonido desde donde se paus�.
             /// </summary>
-            void Resume();
+            std::pair<bool, std::string> Resume();
 
             /// <summary>
             /// Chequea si un audio esta siendo reproducido o no.
