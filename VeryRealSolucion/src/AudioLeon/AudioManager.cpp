@@ -92,9 +92,6 @@ std::pair<bool, std::string> AudioManager::InitAudioRecording() {
 
 std::pair<bool, std::string> AudioManager::CheckFMODResult(FMOD_RESULT FMODResult) {
     if (FMODResult != FMOD_OK) {
-#ifdef _DEBUG
-        printf("FMOD error! (%d) %s\n", FMODResult, FMOD_ErrorString(FMODResult));
-#endif
         return {false, FMOD_ErrorString(FMODResult)};
     }
     return {true, FMOD_ErrorString(FMODResult)};

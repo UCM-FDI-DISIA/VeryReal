@@ -48,19 +48,20 @@ std::pair<bool, std::string> AudioSourceComponent::Create3DSound() {
     auto tryCreate3DSound = AM().CheckFMODResult(this->result);
     if (!tryCreate3DSound.first) return tryCreate3DSound;
 
-    auto trySetMinMaxDistance = SetMinMaxDistance(min_distance, max_distance);
-    if (trySetMinMaxDistance.first) {
         std::pair<std::string, FMOD::Sound*> newSound(sound_name, newSoundHandle);
         AM().AddNewSound(newSound);
+    auto trySetMinMaxDistance = SetMinMaxDistance(min_distance, max_distance);
+        if (!trySetMinMaxDistance.first) return trySetMinMaxDistance;
+
+        if (!play_on_start && loop) {
+            this->Play();
+            this->Pause();
+        }
 #ifdef _DEBUG
         std::cout << "Sound created."
                   << "\n";
 #endif   // DEBUG
         return {true, sound_name + " AudioSource sucessfully created."};
-    }
-    else {
-        return trySetMinMaxDistance;
-    }
 }
 
 std::pair<bool, std::string> AudioSourceComponent::CreateNormalSound() {
@@ -81,6 +82,11 @@ std::pair<bool, std::string> AudioSourceComponent::CreateNormalSound() {
     if (tryCreate2Dsound.first) {
         std::pair<std::string, FMOD::Sound*> newSound(sound_name, newSoundHandle);
         AM().AddNewSound(newSound);
+
+        if (!play_on_start && loop) {
+            this->Play();
+            this->Pause();
+        }
 #ifdef _DEBUG
         std::cout << "Sound created."
                   << "\n";
@@ -187,6 +193,9 @@ std::pair<bool, std::string> AudioSourceComponent::PauseSound(bool Pause) {
         if (!(isPaused && Pause)) {
             channel->setPaused(Pause);
         }
+        if (!Pause) {
+            channel->setPosition(0, FMOD_TIMEUNIT_MS);
+        }
         return {true, sound_name + " AudioSource sucessfully paused"};
     }
     else {
@@ -229,9 +238,15 @@ void AudioSourceComponent::Update(const double& dt) {
 
 void AudioSourceComponent::Stop() { StopSound(); }
 
-void AudioSourceComponent::Pause() { PauseSound(true); }
+std::pair<bool, std::string> AudioSourceComponent::Pause() { 
+    PauseSound(true); 
+    return {true, ""};
+}
 
-void AudioSourceComponent::Resume() { PauseSound(false); }
+std::pair<bool, std::string> AudioSourceComponent::Resume() { 
+    PauseSound(false); 
+    return {true, ""};
+}
 
 bool AudioSourceComponent::IsPlaying() { return playing; }
 
