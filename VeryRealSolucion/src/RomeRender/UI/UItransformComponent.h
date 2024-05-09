@@ -24,7 +24,6 @@ namespace VeryReal {
         void Update(const double& dt) override;
         void showElement();        
         void hideElement();        
-        //no hay rotacion, se concluyo que mejor sin ella
 
         VeryReal::Vector2 getPosition();
         void setPosition(VeryReal::Vector2 pos);

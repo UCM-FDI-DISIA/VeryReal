@@ -22,11 +22,11 @@
     <ClInclude Include="..\..\src\PedroBullet\ColliderComponent.h" />
     <ClInclude Include="..\..\src\PedroBullet\CreatorColliderComponent.h" />
     <ClInclude Include="..\..\src\PedroBullet\CreatorRigidBodyComponent.h" />
+    <ClInclude Include="..\..\src\PedroBullet\exportPedroBullet.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsDebug.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsManager.h" />
     <ClInclude Include="..\..\src\PedroBullet\PhysicsValues.h" />
     <ClInclude Include="..\..\src\PedroBullet\RigidBodyComponent.h" />
-    <ClInclude Include="..\..\src\RomeRender\exportPedroBullet.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

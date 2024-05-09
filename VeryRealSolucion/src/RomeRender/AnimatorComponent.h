@@ -36,7 +36,7 @@ namespace VeryReal {
 			void createAnimation(std::string t_name, double t_duration);
 			// Establece los fotogramas clave de una animación con la transformación especificada.
 			void setFrameAnimation(std::string t_nameAnimation, double t_duration,
-				Vector3 t_translate, Vector4 t_rotacion, Vector3 t_scale);
+			Vector3 t_translate, Vector4 t_rotacion, Vector3 t_scale);
 			// Activa o desactiva una animación según el nombre y el comportamiento de bucle.
 			void setAnimation(std::string t_name, bool t_active, bool t_loop);
 			// Activa o desactiva todas las animaciones.
