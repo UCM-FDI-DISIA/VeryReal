@@ -18,7 +18,6 @@
     <ClCompile Include="..\..\src\GuilleElArquitecto\Entity.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\ErrorInformant.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\ErrorManager.cpp" />
-    <ClCompile Include="..\..\src\GuilleElArquitecto\GuilleElArquitecto.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Manager.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\Scene.cpp" />
     <ClCompile Include="..\..\src\GuilleElArquitecto\SceneManager.cpp" />

@@ -144,6 +144,10 @@ Guille el  arquitecto es el proyecto encargado en definir toda nuestra arquitect
 
 
 ### LuaLuengo
+LuaLuengo es el módulo encargado de la comunicación entre Lua y nuestro motor. En su script principal, el ScriptManager, se gestionan las siguientes tareas:
+        - Lectura de archivos .lua como tabla de entidades, componentes y sus diferentes parámetros. Se hace uso de funciones de LuaBridge para obtener las diferentes tablas.
+        - Lectura de archivos .lua específicos para prefabs.
+        - Lectura de funciones de Lua.
 <br>
 
 

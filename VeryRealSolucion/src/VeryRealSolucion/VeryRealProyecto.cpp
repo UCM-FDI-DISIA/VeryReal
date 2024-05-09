@@ -5,8 +5,7 @@
 #include <filesystem>
 
 
-#pragma region LUA LUENGO
-#include <LuaLuengo.h>
+#pragma region LUA LUENGOº
 //creators de Lua:
 #include "SceneManager.h"
 #include "ScriptManager.h"
