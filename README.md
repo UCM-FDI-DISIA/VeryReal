@@ -1,5 +1,39 @@
-# Proyecto 3 - MOTOR VERYREAL
+# MOTOR VERYREAL - Proyecto 3
+![Logo](VeryRealSolucion\bin\logo.png)
+
+
+## Autores
+
+- [Cristina Mora Velasco](https://github.com/CristinaMora)
+- [Francisco Miguel Galvan Muñoz](https://github.com/CiscoGalvan)
+- [Sheila Julvez Lopez](https://github.com/sheilajulvez)
+- [Pablo Martínez Quesada ](https://github.com/Ares75643)
+- [Alfonso Jaime Rodulfo Guío](https://github.com/ARodulfo)
+- [Pablo Cerrada Vega](https://github.com/PabloCerrada)
+- [Jose Moreno Barbero](https://github.com/JoseMorenob)
+- [Jose E. Robles Roca](https://github.com/josepk01)
+- [Agustín Castro De Troya](https://github.com/AgusCDT)
+- [Manuel Prada Mínguez](https://github.com/manuelpr07)
 <br>
+## Guia de estilos
+
+## Compilación del motor
+
+Clona el repositorio
+
+```bash
+  git clone https://github.com/UCM-FDI-DISIA/VeryReal.git
+```
+
+Abre el directorio correspondiente
+```bash
+  cd tu ruta de descarga + VeryReal\VeryRealSolucion\dependencias\cMake\
+```
+Descarga las  dependencias
+
+```bash
+ All.bat
+```
 
 ## Estructura del Motor:
 Contamos con 1 solución con varios Proyectos en ella. Estos están definidos uno por cada módulo o parte diferenciada en el motor:
@@ -7,11 +41,14 @@ Contamos con 1 solución con varios Proyectos en ella. Estos están definidos un
 <br>
 
 ### AudioLeon
+Audio leon es el proyecto encargado de la  parte de sonidos. Utiliza como libreria FMOD
 <br>
 
 
 
 ### GuilleElArquitecto
+
+Guille el  arquitecto es el proyecto encargado en definir toda nuestra arquitectura básica. Sin tener dependencia de ningún modulo. 
 <br>
 .
 .
@@ -27,8 +64,9 @@ Contamos con 1 solución con varios Proyectos en ella. Estos están definidos un
 
 
 ### RomeRender
-RomeRender es el proyecto encargado de toda la parte de renderizado del motor, esto lo hace mediante Ogre. Para ello esta formado por una serie de clases que tienen las siguientes
+RomeRender es el proyecto encargado de toda la parte de renderizado del motor (3D como 2D), esto lo hace mediante Ogre. Para ello esta formado por una serie de clases que tienen las siguientes
 funcionalidades:
+
         - RenderManager: Manager que se encarga de la inicialización de Ogre a partir de los archivos .cfgs, también se encarga del renderizado de cada frame en su Update y de la carga de
         shaders y recursos. Para finalizar, se encarga también de la creación de nodos para dar al usuario una interfaz desde la que gestionar estos.
 
@@ -64,22 +102,4 @@ TonInput es el proyecto encargado del input del motor a través de SDL. Para ell
 Actualmente también contamos con 2 Proyectos por Módulo:
 · El proyecto en si que es la biblioteca
 · El proyecto llamado "modulo_test" que nos sirve temporalmente para hacer pruebas de ese módulo
-
-
-
-
-## Autores
-<br>
-
-- [Pablo Cao](https://github.com/Cao33).
-- [ Agustín Castro](https://github.com/AgusCDT).
-- [Pablo Cerrada](https://github.com/PabloCerrada).
-- [ Francisco Miguel Galván](https://github.com/CiscoGalvan).
-- [ Pablo Martinez](https://github.com/Ares75643).
-- [Jose Moreno](https://github.com/JoseMorenob).
-- [Cristina Mora](https://github.com/CristinaMora).
-- [Manuel Prada](https://github.com/manuelpr07).
-- [Sheila Julvez](https://github.com/sheilajulvez).
-- [Jose Eduardo Robles](https://github.com/josepk01).
-- [Alfonso Jaime Rodulfo](https://github.com/ARodulfo).
 
