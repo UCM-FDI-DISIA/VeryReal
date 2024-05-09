@@ -64,7 +64,7 @@ std::pair<bool, std::string> AudioSourceComponent::Create3DSound() {
 }
 
 std::pair<bool, std::string> AudioSourceComponent::CreateNormalSound() {
-    std::string soundPath = "Assets/SONIDOS/" + sound_path;
+    std::string soundPath = "Assets/Sonidos/" + sound_path;
     AM().NameToLower(sound_name);
     FMOD::Sound* newSoundHandle;
     auto soundHandle = AM().GetSound(sound_name);
