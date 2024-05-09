@@ -84,14 +84,22 @@ En el caso de la carpeta de elementos sonoros, esta se llamara "Sonidos"
 >All.bat: elemento cuya funcion es iniciar el motor por primera vez, descargando las dependencias de nuestro motor y compilandolo, copiando su carpeta bin en nuestro directorio y por ultimo compilando nuestra solucion.
 El codigo proporcionado para el All.bat es el siguiente:
 ```bash
+::compilamos el motor
 cd VeryReal\VeryRealSolucion\dependencies\cMake
 call All.bat
-cd VeryReal\VeryRealSolucion
-xcopy bin .\..\..\bin\ /s /e
-
 cd ..\..\
 msbuild "OvejaVeganaSolucion.sln" /p:configuration=Debug /p:Platform=x64 /p:PlatformToolset=v143
 msbuild "OvejaVeganaSolucion.sln" /p:configuration=Release /p:Platform=x64 /p:PlatformToolset=v143
+cd VeryReal\VeryRealSolucion
+::copiamos la carpeta entera de bin a bin de juego
+xcopy bin .\..\..\bin\ /s /e
+
+
+cd .\bin
+
+ren  VeryRealProyecto_Release*.exe ______OvejaVegana_______*.exe
+start .
+
 ```
 
 >Nuevo_Juego.sln: solucion de Visual Studio.
