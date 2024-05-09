@@ -40,7 +40,7 @@ void callBackEnter(btPersistentManifold* const& manifold) {
 }
 
 void callBackExit(btPersistentManifold* const& manifold) {
-    const btCollisionObject* ent1 = manifold->getBody0();
+   /* const btCollisionObject* ent1 = manifold->getBody0();
     const btCollisionObject* ent2 = manifold->getBody1();
 
     if (ent1 && ent2) {
@@ -62,7 +62,7 @@ void callBackExit(btPersistentManifold* const& manifold) {
             }
         }
 
-    }
+    }*/
 }
 
 //Tiene que devolver un bool

@@ -24,9 +24,11 @@ std::pair<bool, std::string> ScriptManager::Error(int status) {
         return {true, "The .lua file was loaded"};
 	}
     
-    std::string message = "[LUA ERROR]" + *(lua_tostring(lua_state, -1)); 
+   std::string message = "[LUA ERROR]: ";
+        std::string a = (lua_tostring(lua_state, -1));
+        std::string mas = message + a;
 	lua_pop(lua_state, 1);
-    return {false, message};
+    return {false, mas};
 }
 
 
