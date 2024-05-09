@@ -138,6 +138,14 @@ Guille el  arquitecto es el proyecto encargado en definir toda nuestra arquitect
 
 
 ### PedroBullet
+PedroBullet es el proyecto encargado de la parte de fisicas del motor mediante la libreria de Bullet. Esta compuesto por un un gestor de fisicas y varios componentes.
+Clases:
+
+        -PhysicsManager: Se encarga de llevar a cabo las funciones generales de fisicas. Crear el mundo fisico y actualizarlo. Los metodos principales son los que se encargan de la gesion de colisiones mediante callback, aadir elementos fisicos a la escena y gestrionar variables globales como la gravedad.  
+
+        -ColliderComponent: Componente que se encarga de de llamar al callback de colisiones, solo es necesario meterlo si se pretende llamar a alguna funcionalidad al colisionar. En caso de que no se usen callbacks, el RigidBodyComponent se ocupa
+
+        -RigidBodyComponent: Componente que contiene un elemento rigidboddy de Bullet, un componente colider del motor, y todas las variables necesarias para simular un objeto fisico. Tambien contiene la mascara y grupo de la entidad para la comprobación de colisiones usando bits.
 <br>
 
 
