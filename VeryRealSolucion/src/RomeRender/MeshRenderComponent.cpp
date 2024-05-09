@@ -28,20 +28,12 @@ std::pair<bool, std::string> MeshRenderComponent::InitComponent(bool isstatic, s
     entity_name = entityname;
     mesh_name = modelname;
     scene_node = VeryReal::RenderManager::Instance()->CreateNode();
-    //como se deberia hacer pero que falla
+  
 
     ent_ogre = mSM->createEntity(modelname);
     scene_node->attachObject(ent_ogre);
     scene_node->setVisible(true);
-    //TIENE QUE SER ENTIDAD MIAm??
-    // auto t = getComponent<Transform>(m_ent);
-
-    /* m_scene_node->setScale(t->getScale());
-    m_scene_node->setPosition(t->getPosition());
-    m_scene_node->setOrientation(t->getRotation());
-    m_scene_node->attachObject(m_ent_ogre);*/
-
-    transform = GetEntity()->GetComponent<TransformComponent>();
+     transform = GetEntity()->GetComponent<TransformComponent>();
     if (material_name != "") ent_ogre->setMaterialName(material_name, "General");
 
     return {true, "MeshRenderComponent initialized"};
