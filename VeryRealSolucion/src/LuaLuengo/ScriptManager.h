@@ -5,12 +5,7 @@
 #include "Manager.h"
 #include <string>
 #include "exportLuaLuengo.h"
-extern "C" {
-    #include "../../dependencies/Lua/src/lua.h"
-    #include "../../dependencies/Lua/src/lauxlib.h"
-    #include "../../dependencies/Lua/src/lualib.h"
-}
-#include "../../dependencies/LuaBridge/src/LuaBridge.h"
+#include <functional>   
 
 #pragma warning(disable : 4251)
 

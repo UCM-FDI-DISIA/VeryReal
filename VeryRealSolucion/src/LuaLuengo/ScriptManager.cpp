@@ -1,11 +1,11 @@
-/* extern "C" {
+extern "C" {
 #include "lua.h"
 #include "lauxlib.h"
 #include "lualib.h"
-}*/
+}
 #include "ScriptManager.h"
 #include <lua.hpp>
-//#include <LuaBridge.h>
+#include <LuaBridge.h>
 #include <Scene.h>
 #include <SceneManager.h>
 #include <Entity.h>
