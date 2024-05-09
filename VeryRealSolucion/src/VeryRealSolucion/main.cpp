@@ -11,7 +11,7 @@ int main(int argc, char* argv []) {
         //Error de carga inicial / motor
         if (!veryRealInit.first) {
             std::string p = veryRealInit.second;
-            VeryReal::ErrorInformant::Instance()->showErrorMessageBox(p, p, VeryReal::EI_ERROR, VeryReal::EI_W_OK);
+            VeryReal::ErrorInformant::Instance()->showErrorMessageBox("ERROR Init Loading", p, VeryReal::EI_ERROR, VeryReal::EI_W_OK);
             VeryReal::VR().Delete();
             return 0;
         }
@@ -21,7 +21,7 @@ int main(int argc, char* argv []) {
         auto veryRealLoopEnded = VeryReal::ErrorManager::Instance()->getError();
         if (!veryRealLoopEnded.first) {
             std::string p = veryRealLoopEnded.second;
-            VeryReal::ErrorInformant::Instance()->showErrorMessageBox(p, p, VeryReal::EI_ERROR, VeryReal::EI_W_OK);
+            VeryReal::ErrorInformant::Instance()->showErrorMessageBox("ERROR Loop Execution", p, VeryReal::EI_ERROR, VeryReal::EI_W_OK);
             VeryReal::VR().Delete();
             return 0;
         }

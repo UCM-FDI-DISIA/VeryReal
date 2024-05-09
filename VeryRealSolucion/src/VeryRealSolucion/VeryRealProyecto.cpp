@@ -75,8 +75,7 @@ SetUpMessage VeryRealProyecto::InitVeryReal() {
     if (!loadGame.first) {
         return loadGame;
     }
-    gameLoop = (MainLoop)GetProcAddress(gameDll, "loop");
-    if (gameLoop == NULL) return {false, "There wasn't a method called loop in your loaded game DLL "};
+  
     return {true, "The engine is ready to start the game!"};
 }
 
@@ -209,7 +208,6 @@ void VeryRealProyecto::Loop() {
 
         VeryReal::InputManager::Instance()->Refresh();
         if (frameTime >= FRAME_RATE) {
-            gameLoop(frameTime);
             VeryReal::PhysicsManager::Instance()->Update(frameTime);
             VeryReal::SceneManager::Instance()->Update(frameTime);
             VeryReal::RenderManager::Instance()->Update(frameTime);
