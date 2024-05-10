@@ -101,7 +101,7 @@ std::pair<bool, std::string> AudioSourceComponent::CreateNormalSound() {
 std::pair<bool, std::string> AudioSourceComponent::Set3DSoundAtributes(VeryReal::Vector3 position, VeryReal::Vector3 velocity) {
     AM().NameToLower(sound_name);
     FMOD::Channel* channelHandle = AM().GetChannel(sound_name);
-    if (channelHandle == nullptr) return {false, "AudioSourceComponent error :Set3DSoundAtributes(). No channels linked to this sound available to set 3D atributes."};
+    if (channelHandle == nullptr) return {true, "AudioSourceComponent. No channels linked to this sound available to set 3D atributes."};
     FMOD_VECTOR p = AM().V3ToFmodV3(position), v = AM().V3ToFmodV3(velocity);
 
     this->result = channelHandle->set3DAttributes(&p, &v);
