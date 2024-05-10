@@ -136,7 +136,14 @@ Contamos con 1 solución con varios Proyectos en ella. Estos están definidos un
 <br>
 
 ### AudioLeon
-Audio leon es el proyecto encargado de la  parte de sonidos. Utiliza como libreria FMOD
+AudioLeon es el proyecto encargado de la parte de sonidos, utilizando la librería FMOD para ello. Consta de un manager:
+- AudioManager: se encarga de la creación, almacenaje y borrado de todos los sonidos. Añade sonidos, crea los canales y los actualiza.
+
+Y dos componentes:
+- AudioSourceComponent: se encarga de la reproducción de archivos de audio en la escena. Contiene métodos para ajustar volumen, atenuación y velocidad de reproducción
+- AudioListenerComponent: gestiona el listener de una entidad, actualizando sus parámetros.
+
+
 <br>
 
 ### GuilleElArquitecto
@@ -200,9 +207,9 @@ Hemos definido nuestros propios Vectores de nuestro motor. Estos irán acompaña
 
 ### LuaLuengo
 LuaLuengo es el módulo encargado de la comunicación entre Lua y nuestro motor. En su script principal, el ScriptManager, se gestionan las siguientes tareas:
-        - Lectura de archivos .lua como tabla de entidades, componentes y sus diferentes parámetros. Se hace uso de funciones de LuaBridge para obtener las diferentes tablas.
-        - Lectura de archivos .lua específicos para prefabs.
-        - Lectura de funciones de Lua.
+- Lectura de archivos .lua como tabla de entidades, componentes y sus diferentes parámetros. Se hace uso de funciones de LuaBridge para obtener las diferentes tablas.
+- Lectura de archivos .lua específicos para prefabs.
+- Lectura de funciones de Lua.        
 <br>
 
 
