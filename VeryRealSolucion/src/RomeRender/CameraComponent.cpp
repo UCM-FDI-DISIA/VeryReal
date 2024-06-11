@@ -25,6 +25,7 @@ CameraComponent::~CameraComponent()
 
 std::pair<bool, std::string> CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset, int zOrder,
                                                             VeryReal::Vector3 position) {
+    my_z_order = zOrder;
     //camara
     mgr = VeryReal::RenderManager::Instance()->SceneManagerOgree();
     if (mgr == nullptr) return {false, "SceneManager was null, ERROR from InitComponent CameraComponent"};
