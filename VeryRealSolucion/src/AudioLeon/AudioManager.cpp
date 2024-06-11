@@ -205,6 +205,9 @@ std::pair<bool, std::string> AudioManager::ResumeEverySound() {
 
 std::pair<bool, std::string> AudioManager::DeleteSound(std::string soundName) {
     NameToLower(soundName);
+    auto returnedSound = GetSound(soundName);
+    returnedSound->release();
+    sounds_map.erase(soundName);
     FMOD::Sound* soundHandle = GetSound(soundName);
     if (soundHandle == nullptr) return {false, "No sound found with that name loaded in the AudioManager to delete."};
 

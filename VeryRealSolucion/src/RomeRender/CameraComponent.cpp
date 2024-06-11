@@ -18,7 +18,9 @@ using namespace Ogre;
 CameraComponent::~CameraComponent()
 {
     VeryReal::RenderManager::Instance()->DeleteNode(mNode);
-    delete v; 
+    mgr->destroyCamera(camara->getName());
+    RenderManager::Instance()->GetRenderWindow()->removeViewport(my_z_order);
+    delete v;
 }
 
 std::pair<bool, std::string> CameraComponent::InitComponent(std::string name, Vector3 color, float alfa, VeryReal::Vector3 offset, int zOrder,

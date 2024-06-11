@@ -97,6 +97,7 @@ class CameraComponent : public Component {
    private:
     // Establece el color de fondo del puerto de vista de la cámara.
     void setViewPortBackgroundColour(Ogre::ColourValue color);
+    int my_z_order;
 };
 }
 
