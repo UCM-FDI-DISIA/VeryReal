@@ -16,7 +16,7 @@
 #endif   // _DEBUG
 
 VeryReal::PhysicsManager::PhysicsManager()
-    : collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr),seeObjects(false) { }
+    : collisionConfiguration(nullptr), dispatcher(nullptr), overlappingPairCache(nullptr), solver(nullptr), dynamicsWorld(nullptr){ }
 
 //btPersistentManifold almacena los puntos de contacto entre dos objetos y proporciona métodos para acceder a ambos cuerpos.
 void callBackEnter(btPersistentManifold* const& manifold) {
@@ -103,7 +103,7 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     gContactProcessedCallback = onCollisionStay;
 
     dynamicsWorld->setGravity(btVector3(0, (btScalar)(-9.8), 0));
-
+    this->seeObjects = false;
 
 #ifdef _DEBUG
     debugger = new PhysicsDebug();
