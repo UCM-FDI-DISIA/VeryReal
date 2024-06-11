@@ -103,9 +103,10 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     gContactProcessedCallback = onCollisionStay;
 
     dynamicsWorld->setGravity(btVector3(0, (btScalar)(-9.8), 0));
-    this->seeObjects = false;
+   
 
 #ifdef _DEBUG
+    this->seeObjects = false;
     debugger = new PhysicsDebug();
     dynamicsWorld->setDebugDrawer(debugger);
 #endif             // DEBUG
