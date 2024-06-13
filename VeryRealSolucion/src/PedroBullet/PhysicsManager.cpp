@@ -116,7 +116,7 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
 
 void VeryReal::PhysicsManager::Update(float deltaTime) {
     if (dynamicsWorld) {
-        dynamicsWorld->stepSimulation(deltaTime, 10);
+        dynamicsWorld->stepSimulation(deltaTime);
 #ifdef _DEBUG
         if (seeObjects)
             dynamicsWorld->debugDrawWorld();
