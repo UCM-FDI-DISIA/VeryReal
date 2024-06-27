@@ -18,9 +18,11 @@
     <ClCompile Include="..\..\src\RomeRender\CreatorCameraComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\CreatorLightComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\CreatorMeshRenderComponent.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\CreatorSmokeEffect.cpp" />
     <ClCompile Include="..\..\src\RomeRender\LightComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\MeshRenderComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\RenderManager.cpp" />
+    <ClCompile Include="..\..\src\RomeRender\SmokeEffect.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\CreatorUIButtonComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\CreatorUIProgressBarComponent.cpp" />
     <ClCompile Include="..\..\src\RomeRender\UI\CreatorUISpriteRenderComponent.cpp" />
@@ -41,10 +43,12 @@
     <ClInclude Include="..\..\src\RomeRender\CreatorCameraComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\CreatorLightComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\CreatorMeshRenderComponent.h" />
+    <ClInclude Include="..\..\src\RomeRender\CreatorSmokeEffect.h" />
     <ClInclude Include="..\..\src\RomeRender\exportRomeRender.h" />
     <ClInclude Include="..\..\src\RomeRender\LightComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\MeshRenderComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\RenderManager.h" />
+    <ClInclude Include="..\..\src\RomeRender\SmokeEffect.h" />
     <ClInclude Include="..\..\src\RomeRender\UI\CreatorUIButtonComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\UI\CreatorUIProgressBarComponent.h" />
     <ClInclude Include="..\..\src\RomeRender\UI\CreatorUISpriteRenderComponent.h" />

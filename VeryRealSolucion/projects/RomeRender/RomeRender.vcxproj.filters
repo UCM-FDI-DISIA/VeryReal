@@ -84,6 +84,12 @@
     <ClCompile Include="..\..\src\RomeRender\UI\CreatorUIButtonComponent.cpp">
       <Filter>Archivos de origen\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\SmokeEffect.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\RomeRender\CreatorSmokeEffect.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\RomeRender\Window.h">
@@ -150,6 +156,12 @@
       <Filter>Archivos de encabezado\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\RomeRender\exportRomeRender.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\SmokeEffect.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RomeRender\CreatorSmokeEffect.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

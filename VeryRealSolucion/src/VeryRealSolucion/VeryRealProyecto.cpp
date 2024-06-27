@@ -44,6 +44,7 @@
 #include "CreatorCameraComponent.h"
 #include "CreatorLightComponent.h"
 #include "CreatorMeshRenderComponent.h"
+#include "CreatorSmokeEffect.h"
 #pragma endregion
 
 
@@ -174,6 +175,7 @@ void VeryRealProyecto::CreateCreators() {
     VeryReal::Creator::Instance()->AddCreator("UISpriteRendererComponent", new VeryReal::CreatorUISpriteRenderComponent());
     VeryReal::Creator::Instance()->AddCreator("UIButtonComponent", new VeryReal::CreatorButtonComponent());
     VeryReal::Creator::Instance()->AddCreator("UIProgressBarComponent", new VeryReal::CreatorUIProgressBarComponent());
+    VeryReal::Creator::Instance()->AddCreator("SmokeEffect", new VeryReal::CreatorSmokeEffect());
 }
 
 SetUpMessage VeryRealProyecto::LoadGame(std::string gameName) {
