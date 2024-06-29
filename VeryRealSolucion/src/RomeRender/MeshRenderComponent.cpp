@@ -20,25 +20,25 @@ using namespace Ogre;
 
 
 std::pair<bool, std::string> MeshRenderComponent::InitComponent(bool isstatic, std::string modelname, std::string entityname,
-                                                                std::string matirialname) {
+                                                                std::string materialname) {
     mSM = VeryReal::RenderManager::Instance()->SceneManagerOgree();
-    // filesystemlayer_ = VeryReal::RenderManager::Instance()->filesystem_layer;
     if (mSM == nullptr) {
-        return {false, "SceneManager was nullptr Initcomponent ERROR from Messh Render Component"};
+        return {false, "SceneManager was nullptr Initcomponent ERROR from Mesh Render Component"};
     }
-    material_name = matirialname;
     mStaticObject = isstatic;
     entity_name = entityname;
     mesh_name = modelname;
     scene_node = VeryReal::RenderManager::Instance()->CreateNode();
-  
 
     ent_ogre = mSM->createEntity(modelname);
     scene_node->attachObject(ent_ogre);
     scene_node->setVisible(true);
-     transform = GetEntity()->GetComponent<TransformComponent>();
-    if (transform == nullptr) return {false, "Transforms was nullptr Initcomponent ERROR from Messh Render Component"};
-     if (material_name != "" || material_name != " ") ent_ogre->setMaterialName(material_name, "General");
+    transform = GetEntity()->GetComponent<TransformComponent>();
+    if (transform == nullptr) return {false, "Transforms was nullptr Initcomponent ERROR from Mesh Render Component"};
+    if (!materialname.empty()) {
+        material_name = materialname;
+        ent_ogre->setMaterialName(materialname, "General");
+    }
     return {true, "MeshRenderComponent initialized"};
 }
 
