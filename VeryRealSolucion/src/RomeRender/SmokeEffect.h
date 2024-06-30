@@ -13,9 +13,12 @@ class ParticleSystem;
 class SceneManager;
 class SceneNode;
 }
+namespace VeryReal {
+class Entity;
+}
 
 namespace VeryReal {
-class SmokeEffect : public Component {
+class VERYREAL_ROMERENDER SmokeEffect : public Component {
         public:
     // Constructor
     SmokeEffect();

@@ -33,11 +33,11 @@ std::pair<bool, std::string> CreatorSmokeEffect::SpecificInitComponent(Component
             templateName = std::get<std::string>(parameters_map.at("templateName").GetVariant());
         }
         else {
-            templateName = "Examples/Smoke";
+            templateName = "smokegraydark";
         }
     }
     else {
-        templateName = "Examples/Smoke";
+        templateName = "smokegraydark";
     }
 
     // Repetir para otros parámetros: position, scale, color, duration, density
