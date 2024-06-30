@@ -48,6 +48,7 @@
 
 
 const float FRAME_RATE = 1.0f / 60.0f;
+const float FIXED_UPDATE_RATE = 1.0f / 50.0f;
 typedef bool(__cdecl* GameStartingPoint)();
 typedef bool(__cdecl* Prueba)();
 typedef std::pair<bool, std::string>(__cdecl* Start)();
@@ -204,19 +205,36 @@ SetUpMessage VeryRealProyecto::LoadGame(std::string gameName) {
     return {true, "Game was loaded!"};
 }
 void VeryRealProyecto::Loop() {
+
     auto startTime = std::chrono::high_resolution_clock::now();
+    auto previousTime = startTime;
+    auto previousFixedUpdateTime = startTime;
+
     while (!VeryReal::InputManager::Instance()->getQuit() && VeryReal::ErrorManager::Instance()->getError().first) {
+        
         auto currentTime = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<float> elapsedTime = currentTime - startTime;
+        std::chrono::duration<float> elapsedTime = currentTime - previousTime;
+        std::chrono::duration<float> fixedUpdateElapsedTime = currentTime - previousFixedUpdateTime;
         float frameTime = elapsedTime.count();
 
         VeryReal::InputManager::Instance()->Refresh();
+
+         while (fixedUpdateElapsedTime.count() >= FIXED_UPDATE_RATE) {
+            VeryReal::PhysicsManager::Instance()->FixedUpdate(FIXED_UPDATE_RATE);   // Función de FixedUpdate
+             fixedUpdateElapsedTime -= std::chrono::duration<float>(FIXED_UPDATE_RATE);
+            previousFixedUpdateTime += std::chrono::duration_cast<std::chrono::steady_clock::duration>(std::chrono::duration<float>(FIXED_UPDATE_RATE));
+         }
+
         if (frameTime >= FRAME_RATE) {
             VeryReal::PhysicsManager::Instance()->Update(frameTime);
             VeryReal::SceneManager::Instance()->Update(frameTime);
             VeryReal::RenderManager::Instance()->Update(frameTime);
             VeryReal::AudioManager::Instance()->Update(frameTime);
-            startTime = currentTime;
+            previousTime = currentTime;
+        }
+        else {
+            auto sleepDuration = std::chrono::duration<float>(FRAME_RATE - frameTime);
+            std::this_thread::sleep_for(sleepDuration);
         }
     }
 }

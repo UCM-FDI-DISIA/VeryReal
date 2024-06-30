@@ -67,7 +67,8 @@ class VERYREAL_PEDROBULLET PhysicsManager : public Manager<PhysicsManager> {
         return {false, "PhysicsManager pointer had a problem while it was initializing"};
     }
     std::pair<bool, std::string> InitManager();   // Inicializa el mundo de Bullet y otros componentes necesarios
-    void Update(float deltaTime);   // Actualiza la simulación física
+    void Update(float deltaTime);   
+    void FixedUpdate(float fixedDeltaTime);   // Actualiza la simulación física
     void Shutdown();                // Limpia y libera recursos
 
     btDiscreteDynamicsWorld* GetWorld() const;   // Getter para el mundo físico
