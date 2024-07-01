@@ -66,60 +66,62 @@ std::pair<bool, std::string> SmokeEffect::InitComponent(std::string particleSyst
         return {false, "Failed to create SceneNode"};
     }
 
- try {
-        // Check if particle system already exists
-        if (particleSystemCache.find(particle_name) != particleSystemCache.end()) {
-            particleSystem = particleSystemCache [particle_name];
+    // Check if particle system already exists
+    if (particleSystemCache.find(particle_name) != particleSystemCache.end()) {
+        particleSystem = particleSystemCache [particle_name];
 
-            // Detach from the old node if it's already attached
-            if (particleSystem->isAttached()) {
-                particleSystem->getParentSceneNode()->detachObject(particleSystem);
-            }
-
-            // Attach to the new node
-            node->attachObject(particleSystem);
-            node->setPosition(VR2OgreV3(position));
-
-            std::cout << "ParticleSystem " << particle_name << " already exists, reattached to the new node." << std::endl;
-        } 
-        else {
-            // Create new particle system
-            particleSystem = sceneManager->createParticleSystem(particle_name, template_name);
-            particleSystemCache [particle_name] = particleSystem;
-
-            node->attachObject(particleSystem);
-            node->setScale(VR2OgreV3(scale));
-
-                if (particleSystem->getNumEmitters() > 0) {
-                Ogre::ParticleEmitter* emitter = particleSystem->getEmitter(0);
-                emitter->setParameter("particle_width", std::to_string(scale.GetX()));
-                emitter->setParameter("particle_height", std::to_string(scale.GetY()));
-                emitter->setParameter("emission_rate", std::to_string(density));
-                emitter->setParameter("time_to_live", std::to_string(duration));
-                emitter->setParameter("velocity", "5");   // Ajusta la velocidad de las partículas si es necesario
-                emitter->setParameter(
-                    "direction", std::to_string(1) + " " + std::to_string(1) + " " + std::to_string(1));
-
-                std::cout << "Emitter parameters set:" << std::endl;
-                std::cout << "Particle Width: " << scale.GetX() << std::endl;
-                std::cout << "Particle Height: " << scale.GetY() << std::endl;
-                std::cout << "Emission Rate: " << density << std::endl;
-                std::cout << "Time to Live: " << duration << std::endl;
-                std::cout << "Velocity: 100" << std::endl;
-                std::cout << "Angle: 30" << std::endl;
-                std::cout << "Direction: " << direction.GetX() << " " << direction.GetY() << " " << direction.GetZ() << std::endl;
-            }
-
-            particleSystem->setDefaultDimensions(1, 1);
-            particleSystem->setEmitting(true);
+        // Detach from the old node if it's already attached
+        if (particleSystem->isAttached()) {
+            particleSystem->getParentSceneNode()->detachObject(particleSystem);
         }
 
-       
+        // Attach to the new node
+        node->attachObject(particleSystem);
+        node->setPosition(VR2OgreV3(position));
+
+        std::cout << "ParticleSystem " << particle_name << " already exists, reattached to the new node." << std::endl;
+    }
+    else {
+        // Create new particle system
+        particleSystem = sceneManager->createParticleSystem(particle_name, template_name);
+        particleSystemCache [particle_name] = particleSystem;
+
+        node->attachObject(particleSystem);
+        node->setScale(VR2OgreV3(scale));
+
+        if (particleSystem->getNumEmitters() > 0) {
+            Ogre::ParticleEmitter* emitter = particleSystem->getEmitter(0);
+            emitter->setParameter("particle_width", std::to_string(scale.GetX()));
+            emitter->setParameter("particle_height", std::to_string(scale.GetY()));
+            emitter->setParameter("emission_rate", std::to_string(density));
+            emitter->setParameter("time_to_live", std::to_string(duration));
+            emitter->setParameter("velocity", "5");   // Ajusta la velocidad de las partículas si es necesario
+            emitter->setParameter("direction", std::to_string(1) + " " + std::to_string(1) + " " + std::to_string(1));
+
+            std::cout << "Emitter parameters set:" << std::endl;
+            std::cout << "Particle Width: " << scale.GetX() << std::endl;
+            std::cout << "Particle Height: " << scale.GetY() << std::endl;
+            std::cout << "Emission Rate: " << density << std::endl;
+            std::cout << "Time to Live: " << duration << std::endl;
+            std::cout << "Velocity: 100" << std::endl;
+            std::cout << "Angle: 30" << std::endl;
+            std::cout << "Direction: " << direction.GetX() << " " << direction.GetY() << " " << direction.GetZ() << std::endl;
+        }
+
+        particleSystem->setDefaultDimensions(1, 1);
+        particleSystem->setEmitting(true);
+    }
+
+    if (particleSystem){
         std::cout << "SmokeEffect initialized successfully" << std::endl;
         return {true, "SmokeEffect initialized"};
-    } catch (Ogre::Exception& e) {
-        return {false, "Failed to create ParticleSystem: " + std::string(e.what())};
     }
+    else
+    {
+        return {false, "Failed to create ParticleSystem"};
+    }
+
+
 }
 
 void SmokeEffect::Update(const double& dt) {
