@@ -11,5 +11,8 @@ class VERYREAL_ROMERENDER CreatorSmokeEffect : public CreatorComponent {
     Component* CreatorSpecificComponent() override;
     std::pair<bool, std::string> SpecificInitComponent(Component* c) override;
     std::pair<bool, std::string> SpecificInitComponentByCopy(Component* c, Component* other) override;
+
+        private:
+    static int smokeEffectCounter;   // Static counter for unique names
 };
 }

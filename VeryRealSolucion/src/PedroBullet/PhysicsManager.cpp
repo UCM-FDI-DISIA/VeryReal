@@ -114,15 +114,26 @@ bool onCollisionStay(btManifoldPoint& manifold, void* obj1, void* obj2) {
     return {true, "PhysicsManager sucesfully initialized"};
  }
 
-void VeryReal::PhysicsManager::Update(float deltaTime) {
-    if (dynamicsWorld) {
-        dynamicsWorld->stepSimulation(deltaTime);
+ void VeryReal::PhysicsManager::FixedUpdate(float fixedDeltaTime) {
+     if (dynamicsWorld) {
+         dynamicsWorld->stepSimulation(fixedDeltaTime);
 #ifdef _DEBUG
-        if (seeObjects)
-            dynamicsWorld->debugDrawWorld();
+         if (seeObjects)
+             dynamicsWorld->debugDrawWorld();
 #endif   // DEBUG
-    }
-}
+     }
+ }
+ void VeryReal::PhysicsManager::Update(float deltaTime) {
+     //no debería ser necesario el update
+
+//    if (dynamicsWorld) {
+//        dynamicsWorld->stepSimulation(deltaTime);
+//#ifdef _DEBUG
+//        if (seeObjects)
+//            dynamicsWorld->debugDrawWorld();
+//#endif   // DEBUG
+//    }
+ }
 
 void VeryReal::PhysicsManager::Shutdown()
 {

@@ -12,35 +12,33 @@ namespace Ogre {
 class ParticleSystem;
 class SceneManager;
 class SceneNode;
-}
-namespace VeryReal {
 class Entity;
 }
 
 namespace VeryReal {
-class VERYREAL_ROMERENDER SmokeEffect : public Component {
+class SmokeEffect : public Component {
         public:
     // Constructor
-    SmokeEffect();
+    VERYREAL_ROMERENDER SmokeEffect();
 
     // Destructor
-    virtual ~SmokeEffect();
+    VERYREAL_ROMERENDER virtual ~SmokeEffect();
 
     // Inicializa el efecto de humo con los parámetros proporcionados
-    std::pair<bool, std::string> InitComponent(std::string particleSystemName, std::string templateName, VeryReal::Vector3 position,
-                                               VeryReal::Vector3 scale, VeryReal::Vector4 color, float duration, float density);
+    VERYREAL_ROMERENDER std::pair<bool, std::string> InitComponent(std::string particleSystemName, std::string templateName,
+                                                                   VeryReal::Vector3 position, VeryReal::Vector3 scale, VeryReal::Vector4 color,
+                                                                   float density);
 
     // Actualiza el efecto de humo
-    virtual void Update(const double& dt);
+    VERYREAL_ROMERENDER virtual void Update(const double& dt);
 
     // Getters para los miembros privados
-    const VeryReal::Vector3& getPosition() const;
-    const VeryReal::Vector3& getScale() const;
-    const VeryReal::Vector4& getColor() const;
-    float getDuration() const;
-    float getDensity() const;
-    std::string getParticleSystemName() const;
-    std::string getTemplateName() const;
+    VERYREAL_ROMERENDER const VeryReal::Vector3& getPosition() const;
+    VERYREAL_ROMERENDER const VeryReal::Vector3& getScale() const;
+    VERYREAL_ROMERENDER const VeryReal::Vector4& getColor() const;
+    VERYREAL_ROMERENDER float getDensity() const;
+    VERYREAL_ROMERENDER std::string getParticleSystemName() const;
+    VERYREAL_ROMERENDER std::string getTemplateName() const;
 
         private:
     Ogre::ParticleSystem* particleSystem = nullptr;
@@ -49,7 +47,7 @@ class VERYREAL_ROMERENDER SmokeEffect : public Component {
     VeryReal::Vector3 position;
     VeryReal::Vector3 scale;
     VeryReal::Vector4 color;
-    float duration;
+
     float density;
     std::string particle_name;
     std::string template_name;
